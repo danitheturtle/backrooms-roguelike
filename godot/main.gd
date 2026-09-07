@@ -15,7 +15,7 @@ func _ready() -> void:
     SignalBus.game_unpaused.connect(continue_game)
     SignalBus.game_paused.connect(pause_menu)
     # debug
-    #new_game()
+    new_game()
 
 func main_menu() -> void:
     get_tree().paused = false
