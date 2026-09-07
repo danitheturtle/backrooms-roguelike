@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bm41jmwi0xr2p"]
+
+[ext_resource type="Script" uid="uid://dug62gb53st4j" path="res://ui/popups/popup_for_area.gd" id="1_3llp7"]
+
+[node name="PopupForArea" type="Node" unique_id=405273844]
+script = ExtResource("1_3llp7")

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d1lrwgc8w1ni3"]
+
+[ext_resource type="Texture2D" uid="uid://bwo42tf1vueo0" path="res://assets/materials/Carpet01/Carpet01_Color.jpg" id="1_blfcg"]
+[ext_resource type="Texture2D" uid="uid://emlrnq1hcf6l" path="res://assets/materials/Carpet01/Carpet01_Height.jpg" id="2_qks1x"]
+[ext_resource type="Texture2D" uid="uid://de1en5u2xmh7s" path="res://assets/materials/Carpet01/Carpet01_Roughness.jpg" id="3_afkoy"]
+[ext_resource type="Texture2D" uid="uid://chboshqdggy5t" path="res://assets/materials/Carpet01/Carpet01_Normal.jpg" id="3_qks1x"]
+
+[resource]
+albedo_texture = ExtResource("1_blfcg")
+roughness_texture = ExtResource("3_afkoy")
+normal_enabled = true
+normal_texture = ExtResource("3_qks1x")
+heightmap_texture = ExtResource("2_qks1x")
+uv1_triplanar = true

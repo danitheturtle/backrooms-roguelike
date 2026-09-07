@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ci7bodpcl3vsc"]
+
+[ext_resource type="Script" uid="uid://dnthdn1kdk0ak" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dip6qkew0xpsc" path="res://ui/main_menu/main_menu.tscn" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dnjv1gj08j8bo" path="res://ui/hud_menu/hud_menu.tscn" id="3_7mycd"]
+[ext_resource type="PackedScene" uid="uid://c2faun8ojgbxn" path="res://ui/pause_menu/pause_menu.tscn" id="4_272bh"]
+
+[node name="Main" type="Node3D" unique_id=921363074]
+script = ExtResource("1_1bvp3")
+
+[node name="MainMenu" parent="." unique_id=1523116074 instance=ExtResource("2_lquwl")]
+
+[node name="HUDMenu" parent="." unique_id=401719110 instance=ExtResource("3_7mycd")]
+visible = false
+
+[node name="PauseMenu" parent="." unique_id=650517184 instance=ExtResource("4_272bh")]
+visible = false

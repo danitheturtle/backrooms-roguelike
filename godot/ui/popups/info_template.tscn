@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://0mevr3i1chgs"]
+
+[ext_resource type="Texture2D" uid="uid://bslat30vpjehi" path="res://assets/ui/info-icon.png" id="1_510g8"]
+
+[node name="InfoTemplate" type="HBoxContainer" unique_id=913283793]
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="InfoIcon" type="TextureRect" parent="." unique_id=89799651]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_510g8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="InfoRichText" type="RichTextLabel" parent="." unique_id=1438551660]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "This is example tutorial text"
+fit_content = true
+autowrap_mode = 2

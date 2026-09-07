@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://dnjv1gj08j8bo"]
+
+[ext_resource type="Texture2D" uid="uid://clt4iyabv43li" path="res://assets/ui/crosshair.png" id="1_6k6t2"]
+[ext_resource type="Script" uid="uid://du6keckrlid2j" path="res://ui/hud_menu/hud_menu.gd" id="1_cg6vh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_068i4"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.15, 0.15, 0.15, 0.5882353)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="HUDMenu" type="CanvasLayer" unique_id=401719110]
+script = ExtResource("1_cg6vh")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1941558731]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer" unique_id=149261741]
+layout_mode = 2
+columns = 3
+
+[node name="TopLeftContainer" type="CenterContainer" parent="MarginContainer/GridContainer" unique_id=1038387563]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="TopContainer" type="CenterContainer" parent="MarginContainer/GridContainer" unique_id=885537582]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="TopRightContainer" type="CenterContainer" parent="MarginContainer/GridContainer" unique_id=889981453]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 2
+
+[node name="CenterLeftContainer" type="CenterContainer" parent="MarginContainer/GridContainer" unique_id=1040144164]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/GridContainer" unique_id=911061415]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Crosshair" type="TextureRect" parent="MarginContainer/GridContainer/CenterContainer" unique_id=1840666105]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_6k6t2")
+
+[node name="CenterRightContainer" type="CenterContainer" parent="MarginContainer/GridContainer" unique_id=1407422479]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 3
+
+[node name="BottomLeftContainer" type="CenterContainer" parent="MarginContainer/GridContainer" unique_id=1014340282]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 10
+
+[node name="BottomContainer" type="FlowContainer" parent="MarginContainer/GridContainer" unique_id=1328831306]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PopupPanel" type="PanelContainer" parent="MarginContainer/GridContainer/BottomContainer" unique_id=607633251]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_068i4")
+
+[node name="BottomRightContainer" type="CenterContainer" parent="MarginContainer/GridContainer" unique_id=114160523]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 10

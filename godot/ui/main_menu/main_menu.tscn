@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dip6qkew0xpsc"]
+
+[ext_resource type="Script" uid="uid://b78qi6krfnkcg" path="res://ui/main_menu/main_menu.gd" id="1_1ch07"]
+
+[node name="MainMenu" type="CanvasLayer" unique_id=1523116074]
+process_mode = 3
+script = ExtResource("1_1ch07")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1120021218]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.68384945, 0.63570976, 0.4245934, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=915208107]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1776990580]
+layout_mode = 2
+
+[node name="StartGameButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1219763791]
+layout_mode = 2
+text = "Start Game"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1678686144]
+layout_mode = 2
+text = "Exit"

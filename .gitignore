@@ -1,0 +1,16 @@
+# Godot
+**/.godot/
+**/.nomedia
+**/android/
+**/.import/
+**/export.cfg
+**/export_credentials.cfg
+**/*.tmp
+
+# Imported translations (automatically generated from CSV files)
+**/*.translation
+
+# OS settings and caches
+**/.vscode/
+**/.trash/
+**/.DS_Store

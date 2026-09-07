@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cr1tto0s84kcr"]
+
+[ext_resource type="Material" uid="uid://n5y15ykfg13e" path="res://assets/materials/Wallpaper01/Wallpaper01.tres" id="1_x4g3e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
+resource_local_to_scene = true
+size = Vector3(5, 3.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gn8jm"]
+resource_local_to_scene = true
+size = Vector3(5, 3.5, 0.5)
+
+[node name="Wall1" type="StaticBody3D" unique_id=421061249]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2143880878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.25)
+shape = SubResource("BoxShape3D_lquwl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1254821254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.25)
+layers = 5
+material_override = ExtResource("1_x4g3e")
+mesh = SubResource("BoxMesh_gn8jm")

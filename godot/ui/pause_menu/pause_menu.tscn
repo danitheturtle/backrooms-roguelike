@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c2faun8ojgbxn"]
+
+[ext_resource type="Script" uid="uid://bpx0dd5abb566" path="res://ui/pause_menu/pause_menu.gd" id="1_mnjdh"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=650517184]
+process_mode = 2
+script = ExtResource("1_mnjdh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1360115765]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.24313726)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2085415946]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1326358300]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=704519492]
+layout_mode = 2
+text = "Continue"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1660507431]
+layout_mode = 2
+disabled = true
+text = "Settings"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=689811646]
+layout_mode = 2
+text = "Quit to Menu"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1923917445]
+layout_mode = 2
+text = "Quit to Desktop"
