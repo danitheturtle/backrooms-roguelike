@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cr1tto0s84kcr"]
 
 [ext_resource type="Material" uid="uid://n5y15ykfg13e" path="res://assets/materials/Wallpaper01/Wallpaper01.tres" id="1_x4g3e"]
+[ext_resource type="ArrayMesh" uid="uid://0wb4hynwcx0f" path="res://assets/meshes/molding.glb" id="2_245kt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
 resource_local_to_scene = true
@@ -13,11 +14,27 @@ size = Vector3(5, 3.5, 0.5)
 [node name="Wall1" type="StaticBody3D" unique_id=421061249]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2143880878]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -0.25)
 shape = SubResource("BoxShape3D_lquwl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1254821254]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -0.25)
 layers = 5
 material_override = ExtResource("1_x4g3e")
 mesh = SubResource("BoxMesh_gn8jm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=108903421]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.5, 0, -0.5)
+mesh = ExtResource("2_245kt")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1184100624]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -2.5, 0, 0)
+mesh = ExtResource("2_245kt")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1641265833]
+transform = Transform3D(1.0000001, 0, 1.7484549e-08, 0, 1, 0, -1.7484557e-07, 0, 0.099999964, 2.5, 0, 0)
+mesh = ExtResource("2_245kt")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1988296854]
+transform = Transform3D(-1, 0, -2.6226822e-08, 0, 1, 0, 2.6226832e-07, 0, -0.09999996, -2.5, 0, -0.5)
+mesh = ExtResource("2_245kt")

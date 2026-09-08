@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://jpugse6grl5b"]
+
+[ext_resource type="Texture2D" uid="uid://cuik17lnn24v6" path="res://assets/materials/Molding01/molding_Paint004_2K-PNG_Color.png" id="1_p88vp"]
+[ext_resource type="Texture2D" uid="uid://beohx3j6osjmt" path="res://assets/materials/Molding01/molding_Paint004_2K-PNG_Roughness.png" id="2_u327x"]
+[ext_resource type="Texture2D" uid="uid://bstlsredxpujb" path="res://assets/materials/Molding01/molding_Paint004_2K-PNG_NormalGL.png" id="3_e1oqx"]
+
+[resource]
+resource_name = "Paint004_2K-PNG_NORMAL"
+cull_mode = 2
+albedo_texture = ExtResource("1_p88vp")
+metallic_texture = ExtResource("2_u327x")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_u327x")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_e1oqx")
+uv1_scale = Vector3(5, 5, 5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+metadata/_gltf_primary_texture_coord = 0

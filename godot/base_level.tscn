@@ -97,10 +97,24 @@ mesh = SubResource("PlaneMesh_xjg0i")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5, 1.5, -3.5)
 
 [node name="CollisionShape3D" parent="Wall1" index="0" unique_id=2143880878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.25)
 shape = SubResource("BoxShape3D_ykwpl")
 
 [node name="MeshInstance3D" parent="Wall1" index="1" unique_id=1254821254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.25)
 mesh = SubResource("BoxMesh_fxpm7")
+
+[node name="MeshInstance3D2" parent="Wall1" index="2" unique_id=108903421]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 2.5000002, -1.5, -0.5)
+
+[node name="MeshInstance3D3" parent="Wall1" index="3" unique_id=1184100624]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -2.5, -1.5, 0)
+
+[node name="MeshInstance3D4" parent="Wall1" index="4" unique_id=1641265833]
+transform = Transform3D(1.0000001, 0, 1.7484549e-08, 0, 1, 0, -1.7484555e-07, 0, 0.099999964, 2.5000002, -1.5, 0)
+
+[node name="MeshInstance3D5" parent="Wall1" index="5" unique_id=1988296854]
+transform = Transform3D(-1, 0, -2.6226822e-08, 0, 1, 0, 2.6226832e-07, 0, -0.09999996, -2.5, -1.5, -0.5)
 
 [node name="Wall2" parent="." unique_id=519344315 instance=ExtResource("3_xjg0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.5, -3.5)
@@ -113,6 +127,18 @@ shape = SubResource("BoxShape3D_4c57u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0.25, 0.25)
 mesh = SubResource("BoxMesh_efxa6")
 
+[node name="MeshInstance3D2" parent="Wall2" index="2" unique_id=108903421]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.5, -1.5, 0)
+
+[node name="MeshInstance3D3" parent="Wall2" index="3" unique_id=1184100624]
+transform = Transform3D(7.5422406e-08, 0, -4.802, 0, 0.999, 0, 0.999, 0, 3.6254093e-07, -12, -1.5, 0.5)
+
+[node name="MeshInstance3D4" parent="Wall2" index="4" unique_id=1641265833]
+transform = Transform3D(1.0000001, 0, 1.7484549e-08, 0, 1, 0, -1.7484557e-07, 0, 0.099999964, 12, -1.5, 0.5)
+
+[node name="MeshInstance3D5" parent="Wall2" index="5" unique_id=1988296854]
+transform = Transform3D(-1, 0, -2.6226822e-08, 0, 1, 0, 2.6226832e-07, 0, -0.09999996, -2.5, -1.5, 0)
+
 [node name="Wall3" parent="." unique_id=415404087 instance=ExtResource("3_xjg0i")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7, 1.5, 9)
 
@@ -123,6 +149,21 @@ shape = SubResource("BoxShape3D_dg77c")
 [node name="MeshInstance3D" parent="Wall3" index="1" unique_id=1254821254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.25, -0.24999905)
 mesh = SubResource("BoxMesh_ycdy4")
+
+[node name="MeshInstance3D2" parent="Wall3" index="2" unique_id=108903421]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.5, -1.5, -0.5)
+visible = false
+
+[node name="MeshInstance3D3" parent="Wall3" index="3" unique_id=1184100624]
+transform = Transform3D(1.3113412e-07, 0, -4.512, 0, 1, 0, 0.9999997, 0, 5.9167735e-07, -12.000001, -1.5, 9.536743e-07)
+
+[node name="MeshInstance3D4" parent="Wall3" index="4" unique_id=1641265833]
+transform = Transform3D(1.0000001, 0, 1.7484549e-08, 0, 1, 0, -1.7484557e-07, 0, 0.099999964, 2.5, -1.5, 0)
+visible = false
+
+[node name="MeshInstance3D5" parent="Wall3" index="5" unique_id=1988296854]
+transform = Transform3D(-1, 0, -2.6226822e-08, 0, 1, 0, 2.6226832e-07, 0, -0.09999996, -2.5000005, -1.5, -0.5)
+visible = false
 
 [node name="Wall4" parent="." unique_id=623854599 instance=ExtResource("3_xjg0i")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -20.5, 1.5, 9)
@@ -135,6 +176,18 @@ shape = SubResource("BoxShape3D_w48qg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, -0.25)
 mesh = SubResource("BoxMesh_vivmo")
 
+[node name="MeshInstance3D2" parent="Wall4" index="2" unique_id=108903421]
+transform = Transform3D(-4.371139e-08, 0, 4.8, 0, 1, 0, -1, 0, -2.0981467e-07, 10.5, -1.5, -0.50000036)
+
+[node name="MeshInstance3D3" parent="Wall4" index="3" unique_id=1184100624]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -2.5, -1.5, 0)
+
+[node name="MeshInstance3D4" parent="Wall4" index="4" unique_id=1641265833]
+transform = Transform3D(1.0000001, 0, 1.7484549e-08, 0, 1, 0, -1.7484557e-07, 0, 0.099999964, 2.5, -1.5, 0)
+
+[node name="MeshInstance3D5" parent="Wall4" index="5" unique_id=1988296854]
+transform = Transform3D(-1, 0, -2.6226822e-08, 0, 1, 0, 2.6226832e-07, 0, -0.09999996, -2.5, -1.5, -0.5)
+
 [node name="Wall5" parent="." unique_id=1887877349 instance=ExtResource("3_xjg0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.5, 19.5)
 
@@ -145,6 +198,18 @@ shape = SubResource("BoxShape3D_2cqfq")
 [node name="MeshInstance3D" parent="Wall5" index="1" unique_id=1254821254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.25, -0.25)
 mesh = SubResource("BoxMesh_yaehf")
+
+[node name="MeshInstance3D2" parent="Wall5" index="2" unique_id=108903421]
+transform = Transform3D(-4.371139e-08, 0, 5.5, 0, 1, 0, -1, 0, -2.4041265e-07, 16.5, -1.5, -0.50000066)
+
+[node name="MeshInstance3D3" parent="Wall5" index="3" unique_id=1184100624]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -2.5, -1.5, 0)
+
+[node name="MeshInstance3D4" parent="Wall5" index="4" unique_id=1641265833]
+transform = Transform3D(1.0000001, 0, 1.7484549e-08, 0, 1, 0, -1.7484557e-07, 0, 0.099999964, 2.5, -1.5, 0)
+
+[node name="MeshInstance3D5" parent="Wall5" index="5" unique_id=1988296854]
+transform = Transform3D(-1, 0, -2.6226822e-08, 0, 1, 0, 2.6226832e-07, 0, -0.09999996, -2.5, -1.5, -0.5)
 
 [node name="Wall6" parent="." unique_id=830963630 instance=ExtResource("3_xjg0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, -7.5)
@@ -167,6 +232,18 @@ shape = SubResource("BoxShape3D_83eob")
 [node name="MeshInstance3D" parent="Wall7" index="1" unique_id=1254821254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2499981, 0.25, -0.24999952)
 mesh = SubResource("BoxMesh_i6nmd")
+
+[node name="MeshInstance3D2" parent="Wall7" index="2" unique_id=108903421]
+transform = Transform3D(-2.9802322e-08, 0, 2.1200001, 0, 1, 0, -1, 0, -6.318093e-08, 4.1, -1.5, -0.49999958)
+
+[node name="MeshInstance3D3" parent="Wall7" index="3" unique_id=1184100624]
+transform = Transform3D(1.1920929e-07, 0, -2.2, 0, 1, 0, 1, 0, 2.6226044e-07, -6.5, -1.5, 4.7683716e-07)
+
+[node name="MeshInstance3D4" parent="Wall7" index="4" unique_id=1641265833]
+transform = Transform3D(1.0000001, 0, 1.8626451e-08, 0, 1, 0, -1.7881393e-07, 0, 0.099999964, 2.5, -1.5, 1.4305115e-06)
+
+[node name="MeshInstance3D5" parent="Wall7" index="5" unique_id=1988296854]
+transform = Transform3D(-1, 0, -2.6077032e-08, 0, 1, 0, 2.682209e-07, 0, -0.09999996, -6.499999, -1.5, -0.49999797)
 
 [node name="Ceiling" parent="." unique_id=1906218234 instance=ExtResource("4_ykwpl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
