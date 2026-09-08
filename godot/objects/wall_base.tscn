@@ -12,6 +12,8 @@ resource_local_to_scene = true
 size = Vector3(5, 3.5, 0.5)
 
 [node name="Wall1" type="StaticBody3D" unique_id=421061249]
+collision_layer = 4
+collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2143880878]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -0.25)
@@ -19,7 +21,7 @@ shape = SubResource("BoxShape3D_lquwl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1254821254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -0.25)
-layers = 5
+layers = 4
 material_override = ExtResource("1_x4g3e")
 mesh = SubResource("BoxMesh_gn8jm")
 

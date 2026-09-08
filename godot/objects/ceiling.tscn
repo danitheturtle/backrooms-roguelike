@@ -11,6 +11,8 @@ resource_local_to_scene = true
 size = Vector2(16, 16)
 
 [node name="Ceiling" type="StaticBody3D" unique_id=1906218234]
+collision_layer = 2
+collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1427049802]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
@@ -18,6 +20,6 @@ shape = SubResource("BoxShape3D_gn8jm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1724270469]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)
-layers = 3
+layers = 2
 material_override = ExtResource("1_2prej")
 mesh = SubResource("PlaneMesh_v6h8l")

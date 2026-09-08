@@ -4,29 +4,87 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
 radius = 0.4
-height = 1.75
+height = 1.65
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sugp2"]
 radius = 0.4
-height = 1.75
+height = 1.65
+
+[sub_resource type="Animation" id="Animation_cqmt1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCamera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g7ett"]
+_data = {
+&"RESET": SubResource("Animation_cqmt1")
+}
+
+[sub_resource type="Animation" id="Animation_ssrue"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCamera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jnjyq"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gnkmh"]
+_data = {
+&"crouch": SubResource("Animation_ssrue"),
+&"stand": SubResource("Animation_jnjyq")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cqmt1"]
+radius = 0.4
+height = 1.65
 
 [node name="Player" type="CharacterBody3D" unique_id=66642413]
-collision_mask = 9
+collision_layer = 16
+collision_mask = 15
 floor_constant_speed = true
 floor_snap_length = 1.0
 platform_on_leave = 2
 script = ExtResource("1_3vyb7")
 
 [node name="PlayerCollisionShape3D" type="CollisionShape3D" parent="." unique_id=1019509889]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825, 0)
 shape = SubResource("CapsuleShape3D_3vyb7")
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="." unique_id=1393645793]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825, 0)
 mesh = SubResource("CapsuleMesh_sugp2")
 
 [node name="PlayerCamera" type="Camera3D" parent="." unique_id=1892713137]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 current = true
 fov = 85.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=569379203]
+libraries/ = SubResource("AnimationLibrary_g7ett")
+libraries/fps_camera = SubResource("AnimationLibrary_gnkmh")
+
+[node name="RoomForStateChangeDetector" type="Area3D" parent="." unique_id=1767535878]
+collision_layer = 0
+collision_mask = 7
+
+[node name="StateChangeCollisionShape3D" type="CollisionShape3D" parent="RoomForStateChangeDetector" unique_id=1099717571]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825, 0)
+shape = SubResource("CapsuleShape3D_cqmt1")
