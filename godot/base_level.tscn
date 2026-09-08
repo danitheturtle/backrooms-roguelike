@@ -10,19 +10,19 @@
 [ext_resource type="PackedScene" uid="uid://bm41jmwi0xr2p" path="res://ui/popups/popup_for_area.tscn" id="7_i6nmd"]
 [ext_resource type="ArrayMesh" uid="uid://cr6jebaqctgt8" path="res://assets/meshes/school_chair.glb" id="9_xjg0i"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ykwpl"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_xjg0i"]
 resource_local_to_scene = true
 size = Vector3(50, 0.5, 50)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_fxpm7"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_ykwpl"]
 resource_local_to_scene = true
 size = Vector2(50, 50)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_83eob"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_fxpm7"]
 resource_local_to_scene = true
 size = Vector3(5, 3.5, 0.5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_i6nmd"]
+[sub_resource type="BoxMesh" id="BoxMesh_83eob"]
 resource_local_to_scene = true
 size = Vector3(5, 3.5, 0.5)
 
@@ -56,11 +56,11 @@ size = Vector3(23, 3.5, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_cegan"]
 size = Vector3(23, 3.5, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_upirv"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_i6nmd"]
 resource_local_to_scene = true
 size = Vector3(10.5, 3.5, 0.5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_7lcpk"]
+[sub_resource type="BoxMesh" id="BoxMesh_upirv"]
 resource_local_to_scene = true
 size = Vector3(10.5, 3.5, 0.5)
 
@@ -89,21 +89,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2784653, 1.9073486e-06, 0.0
 [node name="Floor" parent="." unique_id=718479042 instance=ExtResource("2_bkkah")]
 
 [node name="CollisionShape3D" parent="Floor" index="0" unique_id=1995177646]
-shape = SubResource("BoxShape3D_ykwpl")
+shape = SubResource("BoxShape3D_xjg0i")
 
 [node name="MeshInstance3D" parent="Floor" index="1" unique_id=442888087]
-mesh = SubResource("PlaneMesh_fxpm7")
+mesh = SubResource("PlaneMesh_ykwpl")
 
 [node name="Wall1" parent="." unique_id=421061249 instance=ExtResource("3_xjg0i")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5, 1.5, -3.5)
 
 [node name="CollisionShape3D" parent="Wall1" index="0" unique_id=2143880878]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.25)
-shape = SubResource("BoxShape3D_83eob")
+shape = SubResource("BoxShape3D_fxpm7")
 
 [node name="MeshInstance3D" parent="Wall1" index="1" unique_id=1254821254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.25)
-mesh = SubResource("BoxMesh_i6nmd")
+mesh = SubResource("BoxMesh_83eob")
 
 [node name="MeshInstance3D2" parent="Wall1" index="2" unique_id=108903421]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 2.5000002, -1.5, -0.5)
@@ -228,11 +228,11 @@ transform = Transform3D(-0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.25
 
 [node name="CollisionShape3D" parent="Wall7" index="0" unique_id=2143880878]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2499962, 0.25, -0.24999905)
-shape = SubResource("BoxShape3D_upirv")
+shape = SubResource("BoxShape3D_i6nmd")
 
 [node name="MeshInstance3D" parent="Wall7" index="1" unique_id=1254821254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2499981, 0.25, -0.24999952)
-mesh = SubResource("BoxMesh_7lcpk")
+mesh = SubResource("BoxMesh_upirv")
 
 [node name="MeshInstance3D2" parent="Wall7" index="2" unique_id=108903421]
 transform = Transform3D(-2.9802322e-08, 0, 2.1200001, 0, 1, 0, -1, 0, -6.318093e-08, 4.1, -1.5, -0.49999958)
@@ -318,6 +318,10 @@ mesh = ExtResource("9_xjg0i")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2091619116]
 transform = Transform3D(8.940697e-08, 0, 1, 0, 1, 0, -1, 0, 8.940697e-08, -4.098077, 0, 1.0358982)
+mesh = ExtResource("9_xjg0i")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=284664785]
+transform = Transform3D(-1.6634586, 0, 2.1393938, 0, 2.71, 0, -2.1393938, 0, -1.6634586, -15.649179, -1.192093e-07, 11.711132)
 mesh = ExtResource("9_xjg0i")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1071930824]

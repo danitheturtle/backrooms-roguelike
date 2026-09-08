@@ -3,4 +3,6 @@
 Explore, if you dare
 
 Asset sources:
-- Yasu's Backrooms Material pack - CC BY 4.0
+- Backrooms Material Pack by Yasu - CC BY 4.0 - https://mvyasu.itch.io/backrooms-material-pack
+- School Chair by Ethan Place - CC0 - https://polyhaven.com/a/SchoolChair_01
+- Original assets (not listed here) - using repo liscense "Creative Commons Attribution-NonCommercial 4.0"
