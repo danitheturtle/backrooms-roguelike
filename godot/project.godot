@@ -28,6 +28,10 @@ window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/material batch apply/plugin.cfg")
+
 [input]
 
 jump={
@@ -106,3 +110,5 @@ squeeze={
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+limits/opengl/max_renderable_lights=64
+limits/opengl/max_lights_per_object=16

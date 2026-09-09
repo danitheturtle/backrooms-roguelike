@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://drbjwwtxjt4k0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n0o2s"]
+resource_local_to_scene = true
+
+[node name="RectCollider" type="CollisionShape3D" unique_id=415124710]
+shape = SubResource("BoxShape3D_n0o2s")

@@ -1,10 +1,10 @@
 extends CharacterBody3D
 class_name Player
 
-@export var PLAYER_SPEED = 4.5
+@export var PLAYER_SPEED = 4.0
 @export var SPRINT_SPEED = 7.0
-@export var SLOWED_SPEED = 2.0
-@export var CRAWL_SPEED = 0.75
+@export var SLOWED_SPEED = 1.5
+@export var CRAWL_SPEED = 0.5
 @export var CAMERA_ANGULAR_VELOCITY = 0.1
 @export var STRONGER_DOWNWARD_GRAVITY_THRESHOLD = 5.0
 @export var STRONGER_GRAVITY_MULTIPLIER = 2.0

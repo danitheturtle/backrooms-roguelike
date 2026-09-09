@@ -16,24 +16,24 @@ mesh = SubResource("PlaneMesh_n0o2s")
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1465214622]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742277e-08, 0, -8.742277e-08, -1, 0, 0, 0)
 light_color = Color(0.9607843, 1, 1, 1)
-light_energy = 3.0
+light_energy = 4.0
+light_size = 0.5
 shadow_enabled = true
-shadow_bias = 0.2
+shadow_bias = 0.04
 distance_fade_enabled = true
-spot_range = 7.0
-spot_angle = 84.0
+spot_range = 10.0
+spot_angle = 80.0
 
 [node name="BounceAndShadowLight" type="OmniLight3D" parent="." unique_id=998894534]
-transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, 0, 0, 1.25)
+transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, 0, 0, 1.1)
 light_color = Color(0.9607843, 1, 1, 1)
-light_energy = 0.815
+light_energy = 0.5
 light_size = 1.0
-light_specular = 0.05
+light_specular = 0.0
 light_cull_mask = 4293918734
-shadow_enabled = true
 shadow_bias = 0.2
 shadow_blur = 1.1
 shadow_caster_mask = 4293918734
 distance_fade_enabled = true
-omni_range = 10.0
+omni_range = 15.0
 omni_attenuation = 1.5
