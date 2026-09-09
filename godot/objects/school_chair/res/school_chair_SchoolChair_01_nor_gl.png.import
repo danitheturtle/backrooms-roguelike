@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dop1ny0ooajls"
-path.s3tc="res://.godot/imported/school_chair_SchoolChair_01_diff_4k.jpg-5cb88b3f0076f9c9d80cf755ca6437cd.s3tc.ctex"
+uid="uid://dsxiooftdlijr"
+path.s3tc="res://.godot/imported/school_chair_SchoolChair_01_nor_gl.png-e3c4cea74481311223e881941f7e28e6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b9e7a08533251de1eb8103db3dea66ef"
+"md5": "0752ccebca4389a97ce4d17cd2bd0a06"
 }
 
 [deps]
 
-source_file="res://assets/materials/SchoolChair/school_chair_SchoolChair_01_diff_4k.jpg"
-dest_files=["res://.godot/imported/school_chair_SchoolChair_01_diff_4k.jpg-5cb88b3f0076f9c9d80cf755ca6437cd.s3tc.ctex"]
+source_file="res://objects/school_chair/res/school_chair_SchoolChair_01_nor_gl.png"
+dest_files=["res://.godot/imported/school_chair_SchoolChair_01_nor_gl.png-e3c4cea74481311223e881941f7e28e6.s3tc.ctex"]
 
 [params]
 
@@ -25,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://assets/meshes/school_chair_SchoolChair_01_nor_gl.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

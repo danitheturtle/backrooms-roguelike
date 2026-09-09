@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://gvu7a8nb8ace"]
+
+[ext_resource type="Material" uid="uid://lm8m3c317rwc" path="res://assets/materials/CeilingLightRectangle01/CeilingLightRectangle01.tres" id="1_erhp3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n0o2s"]
+size = Vector2(2, 1)
+center_offset = Vector3(0, 0, 0.01)
+orientation = 2
+
+[node name="CeilingLight" type="MeshInstance3D" unique_id=447946989]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+layers = 3
+material_override = ExtResource("1_erhp3")
+mesh = SubResource("PlaneMesh_n0o2s")

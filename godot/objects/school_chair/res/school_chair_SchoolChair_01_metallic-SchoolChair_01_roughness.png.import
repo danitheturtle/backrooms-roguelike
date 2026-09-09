@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnn5kujeq5qql"
-path.s3tc="res://.godot/imported/school_chair_SchoolChair_01_metallic-SchoolChair_01_roughness.png-753dc55675cda5fb900de057e3d5bfd2.s3tc.ctex"
+uid="uid://wd6cpo7m0yam"
+path.s3tc="res://.godot/imported/school_chair_SchoolChair_01_metallic-SchoolChair_01_roughness.png-c96706193b36da932c0f0b7615ae6ce9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b9df3650899940491dcb63cdc304e9b4"
+"md5": "cd19e089f3eefca59b391c2e36e005cd"
 }
 
 [deps]
 
-source_file="res://assets/materials/SchoolChair/school_chair_SchoolChair_01_metallic-SchoolChair_01_roughness.png"
-dest_files=["res://.godot/imported/school_chair_SchoolChair_01_metallic-SchoolChair_01_roughness.png-753dc55675cda5fb900de057e3d5bfd2.s3tc.ctex"]
+source_file="res://objects/school_chair/res/school_chair_SchoolChair_01_metallic-SchoolChair_01_roughness.png"
+dest_files=["res://.godot/imported/school_chair_SchoolChair_01_metallic-SchoolChair_01_roughness.png-c96706193b36da932c0f0b7615ae6ce9.s3tc.ctex"]
 
 [params]
 

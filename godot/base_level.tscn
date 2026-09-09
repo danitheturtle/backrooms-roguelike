@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c0thkvhu37he4" path="res://objects/player/player.tscn" id="1_2elnx"]
 [ext_resource type="Script" uid="uid://c61w1b375al4r" path="res://scripts/level.gd" id="1_bkkah"]
-[ext_resource type="PackedScene" uid="uid://edeppxnasd36" path="res://objects/rooms/room_1.tscn" id="4_3o4py"]
+[ext_resource type="PackedScene" uid="uid://edeppxnasd36" path="res://rooms/room1/room1.tscn" id="4_3o4py"]
 [ext_resource type="PackedScene" uid="uid://bm41jmwi0xr2p" path="res://ui/popups/popup_for_area.tscn" id="7_i6nmd"]
 
 [sub_resource type="Environment" id="Environment_5q0ne"]

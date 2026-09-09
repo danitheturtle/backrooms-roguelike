@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://py5kl73bnesj"]
+
+[ext_resource type="PackedScene" uid="uid://gvu7a8nb8ace" path="res://objects/ceiling_light/ceiling_light_only_emissive.tscn" id="1_lrtwr"]
+
+[node name="CeilingLight" unique_id=447946989 instance=ExtResource("1_lrtwr")]
+
+[node name="SpotLight" type="SpotLight3D" parent="." index="0" unique_id=1233206479]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742277e-08, 0, -8.742277e-08, -1, 0, 0, 0)
+light_color = Color(0.9607843, 1, 1, 1)
+light_energy = 4.0
+light_size = 0.5
+shadow_enabled = true
+shadow_bias = 0.04
+distance_fade_enabled = true
+spot_range = 10.0
+spot_angle = 80.0
+
+[node name="BounceAndShadow" type="OmniLight3D" parent="." index="1" unique_id=1159096795]
+transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, 0, 0, 1.1)
+light_color = Color(0.9607843, 1, 1, 1)
+light_energy = 0.5
+light_size = 1.0
+light_specular = 0.0
+light_cull_mask = 4293918734
+shadow_bias = 0.2
+shadow_blur = 1.1
+shadow_caster_mask = 4293918734
+distance_fade_enabled = true
+omni_range = 15.0
+omni_attenuation = 1.5

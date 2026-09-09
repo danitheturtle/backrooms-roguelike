@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cprxcxn2misde"
-path="res://.godot/imported/room1.blend-71be119af4426769c2d71814d7ad6c59.scn"
+path="res://.godot/imported/room1.blend-108d26b163afe3edfa37e59aaf493e16.scn"
 
 [deps]
 
-source_file="res://blends/room1.blend"
-dest_files=["res://.godot/imported/room1.blend-71be119af4426769c2d71814d7ad6c59.scn"]
+source_file="res://rooms/room1/res/room1.blend"
+dest_files=["res://.godot/imported/room1.blend-108d26b163afe3edfa37e59aaf493e16.scn"]
 
 [params]
 

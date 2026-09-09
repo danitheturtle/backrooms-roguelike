@@ -3,13 +3,13 @@
 importer="ArrayMesh"
 importer_version=1
 type="ArrayMesh"
-uid="uid://cr6jebaqctgt8"
-path="res://.godot/imported/school_chair.glb-cf9e2c7247b53cf1cd0f675aa0656925.res"
+uid="uid://dggbumjrdc4kg"
+path="res://.godot/imported/school_chair.glb-139e9a4bd87762c9366709f388b44c8b.res"
 
 [deps]
 
-source_file="res://assets/meshes/school_chair.glb"
-dest_files=["res://.godot/imported/school_chair.glb-cf9e2c7247b53cf1cd0f675aa0656925.res"]
+source_file="res://objects/school_chair/res/school_chair.glb"
+dest_files=["res://.godot/imported/school_chair.glb-139e9a4bd87762c9366709f388b44c8b.res"]
 
 [params]
 
@@ -38,7 +38,7 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 materials/extract=2
 materials/extract_format=0
-materials/extract_path="res://assets/materials/SchoolChair"
+materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1

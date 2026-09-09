@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://duc4oaovoos26"]
+
+[ext_resource type="ArrayMesh" uid="uid://dggbumjrdc4kg" path="res://objects/school_chair/res/school_chair.glb" id="1_tqvvg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5q0ne"]
+size = Vector3(0.6358032, 0.07086182, 0.66539764)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71vqq"]
+size = Vector3(0.6358032, 0.062286377, 0.7099285)
+
+[node name="SchoolChairPhysics" type="RigidBody3D" unique_id=524059820]
+collision_mask = 31
+mass = 10.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2091450025]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 0, 0, 0)
+mesh = ExtResource("1_tqvvg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1431239322]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010833739, 0.6598506, 0.11404797)
+shape = SubResource("BoxShape3D_5q0ne")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1826728697]
+transform = Transform3D(1, 0, 0, 0, 0.13834031, -0.99038476, 0, 0.99038476, 0.13834031, 0.008544922, 1.0047348, -0.26606074)
+shape = SubResource("BoxShape3D_71vqq")
