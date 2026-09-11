@@ -12,6 +12,7 @@ Asset sources:
 - Sofa 03 by Fran Calvente - CC0 - https://polyhaven.com/a/sofa_03
 - Wooden Chair 01 by Jake Mobley - CC0 - https://polyhaven.com/a/WoodenChair_01
 - Wall Fire Alarm Lever by Slinc - CC0 - https://polyhaven.com/a/fire_alarm
+- Wooden Ladder by Miroslav Turura - CC0 - https://polyhaven.com/a/wooden_ladder
 - lowercase - song for OST by TheHugoCollective - using repo license
 - spookymallsong - song for OST by TheHugoCollective - using repo license
 - Original assets (not listed here) - using repo license

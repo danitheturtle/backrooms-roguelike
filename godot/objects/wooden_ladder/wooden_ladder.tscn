@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cj3x3dbcuf7ja"]
+
+[ext_resource type="ArrayMesh" uid="uid://cibiji6jxusk3" path="res://objects/wooden_ladder/res/wooden_ladder.glb" id="1_pqyb0"]
+[ext_resource type="ArrayMesh" uid="uid://cxsv14xgq0p0l" path="res://objects/wooden_ladder/res/wooden_ladder_supports.glb" id="2_4j06i"]
+[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/rect_collider.tscn" id="2_aqc6c"]
+[ext_resource type="Material" uid="uid://c5a6tmd4jjju1" path="res://objects/wooden_ladder/res/wooden_ladder.tres" id="3_aqc6c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4j06i"]
+resource_local_to_scene = true
+size = Vector3(0.15463257, 2.562683, 0.87213135)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aqc6c"]
+resource_local_to_scene = true
+size = Vector3(0.11796188, 2.098463, 0.87213135)
+
+[node name="wooden_ladder" type="Node3D" unique_id=1062347463]
+
+[node name="StepsRigidBody" type="RigidBody3D" parent="." unique_id=1432222003]
+collision_mask = 31
+
+[node name="StepsMeshInstance" type="MeshInstance3D" parent="StepsRigidBody" unique_id=1879803046]
+mesh = ExtResource("1_pqyb0")
+
+[node name="StepsCollider" parent="StepsRigidBody" unique_id=415124710 instance=ExtResource("2_aqc6c")]
+transform = Transform3D(0.93899703, 0.34392524, 0, -0.34392524, 0.93899703, 0, 0, 0, 1, -0.35162842, -0.7630869, 0.0015563965)
+shape = SubResource("BoxShape3D_4j06i")
+
+[node name="SupportRigidBody" type="RigidBody3D" parent="." unique_id=1662395064]
+collision_mask = 31
+
+[node name="SupportMeshInstance" type="MeshInstance3D" parent="SupportRigidBody" unique_id=1594791588]
+transform = Transform3D(1, -2.9802322e-08, 0, 2.9802322e-08, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("2_4j06i")
+surface_material_override/0 = ExtResource("3_aqc6c")
+
+[node name="SupportsCollider" parent="SupportRigidBody" unique_id=184477877 instance=ExtResource("2_aqc6c")]
+transform = Transform3D(0.93912035, -0.34358817, 0, 0.34358817, 0.93912035, 0, 0, 0, 1, 0.42962044, -0.98025316, 0.0015563965)
+shape = SubResource("BoxShape3D_aqc6c")
+
+[node name="LadderHinge" type="HingeJoint3D" parent="." unique_id=1166785200]
+node_a = NodePath("../StepsRigidBody")
+node_b = NodePath("../SupportRigidBody")
+angular_limit/enable = true
+angular_limit/upper = 0.6981317
+angular_limit/lower = 0.0

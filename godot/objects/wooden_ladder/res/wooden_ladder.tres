@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c5a6tmd4jjju1"]
+
+[ext_resource type="Texture2D" uid="uid://gb4b8awliaxp" path="res://objects/wooden_ladder/res/wooden_ladder_wooden_ladder_diff_2k.webp" id="1_bj1dk"]
+[ext_resource type="Texture2D" uid="uid://e3uh3lncow13" path="res://objects/wooden_ladder/res/wooden_ladder_wooden_ladder_metal-wooden_ladder_rough.webp" id="2_2ovlt"]
+[ext_resource type="Texture2D" uid="uid://dnppsyahro4ds" path="res://objects/wooden_ladder/res/wooden_ladder_wooden_ladder_nor_gl.webp" id="3_d4ib2"]
+
+[resource]
+resource_name = "wooden_ladder"
+cull_mode = 2
+albedo_texture = ExtResource("1_bj1dk")
+metallic = 1.0
+metallic_texture = ExtResource("2_2ovlt")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_2ovlt")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_d4ib2")
+metadata/_gltf_primary_texture_coord = 0
