@@ -4,7 +4,7 @@ class_name Player
 @export var PLAYER_SPEED = 4.0
 @export var SPRINT_SPEED = 7.0
 @export var SLOWED_SPEED = 1.5
-@export var CRAWL_SPEED = 0.5
+@export var EXTRA_SLOW_SPEED = 0.5
 @export var CAMERA_ANGULAR_VELOCITY = 0.1
 @export var STRONGER_DOWNWARD_GRAVITY_THRESHOLD = 5.0
 @export var STRONGER_GRAVITY_MULTIPLIER = 2.0
@@ -16,18 +16,20 @@ var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
 var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
 # child nodes
-@onready var camera: Camera3D = $PlayerCamera
+@onready var camera: Camera3D = $Camera
 @onready var playerCollider: CollisionShape3D = $PlayerCollisionShape3D
 @onready var playerShape: CapsuleShape3D = $PlayerCollisionShape3D.shape
 @onready var roomForStateChangeArea: Area3D = $RoomForStateChangeDetector
+@onready var flashlight: SpotLight3D = $Camera/Flashlight
+@onready var grabAnchor: Area3D = $Camera/GrabArm/Anchor
 @onready var roomForStateChangeCollider: CollisionShape3D = $RoomForStateChangeDetector/StateChangeCollisionShape3D
 @onready var roomForStateChangeShape: CapsuleShape3D = roomForStateChangeCollider.shape
-
 # local state
 var moveDir = Vector2(0.0,0.0)
 var cameraMoveDir = Vector2(0.0,0.0)
 var movePriority = { left = false, right = false, forward = false, backward = false }
 var mouseCaptured = false
+var objectInReachRef: RigidBody3D = null
 
 #state machine
 var jumping = false
@@ -37,18 +39,24 @@ var running = false
 var climbing = false
 var squeezing = false
 var photographing = false
+var grabbing = false
+var dragging = false 
 
 #runtime calculated state
-var standingHeight
-var standingRadius
-var cameraTopOffset
+var standingHeight: float
+var standingRadius: float
+var cameraTopOffset: float
+var flashlightOffset: Vector3
 
 func _ready() -> void:
     State.player = self
     standingHeight = playerShape.height
     standingRadius = playerShape.radius
     cameraTopOffset = playerShape.height - camera.position.y
+    flashlightOffset = flashlight.position
     roomForStateChangeArea.body_exited.connect(on_room_for_state_change_body_exited)
+    grabAnchor.body_entered.connect(on_grab_anchor_entered)
+    grabAnchor.body_exited.connect(on_grab_anchor_exited)
     capture_mouse()
 
 func _physics_process(_delta: float) -> void:
@@ -61,10 +69,10 @@ func _physics_process(_delta: float) -> void:
     var movementSpeed = PLAYER_SPEED
     if (running):
         movementSpeed = SPRINT_SPEED
-    elif (crouching || photographing || squeezing):
+    elif (crouching || photographing || squeezing || grabbing):
         movementSpeed = SLOWED_SPEED
-    elif (crawling):
-        movementSpeed = CRAWL_SPEED
+    elif (crawling || dragging):
+        movementSpeed = EXTRA_SLOW_SPEED
     #multiply basis vectors by input direction. preserve vertical velocity
     velocity = Vector3(0,velocity.y,0) + Vector3(basis.x * moveDir.x + basis.z * moveDir.y).limit_length() * movementSpeed
     #handle jump
@@ -112,6 +120,7 @@ func handle_crouch():
     roomForStateChangeShape.radius = standingRadius
     roomForStateChangeCollider.position.y = standingHeight / 2.0
     camera.position.y = CROUCH_HEIGHT - cameraTopOffset
+    flashlight.position.y = flashlightOffset.y
     if (running):
         # apply slide impulse in direction of run
         running = false
@@ -134,12 +143,13 @@ func handle_crawl():
     roomForStateChangeShape.radius = CRAWL_HEIGHT / 2.0
     roomForStateChangeCollider.position.y = CROUCH_HEIGHT / 2.0
     camera.position.y = CRAWL_HEIGHT - cameraTopOffset
+    flashlight.position.y = flashlightOffset.y / 3.0
     crouching = false
     photographing = false
     crawling = true
 
 func can_squeeze():
-    if (!crawling && !crouching && !climbing):
+    if (!crawling && !crouching && !climbing && !dragging && !grabbing):
         return is_on_floor()
     elif (crouching):
         return can_stand()
@@ -148,6 +158,7 @@ func can_squeeze():
 func handle_squeeze():
     handle_stand()
     playerShape.radius = SQUEEZE_RADIUS
+    flashlight.position.x = 0
     running = false
     squeezing = true
 
@@ -161,6 +172,9 @@ func can_run():
 
 func handle_run():
     running = true
+    if (grabbing || dragging || photographing):
+        # drop out of alternate states
+        pass
 
 func can_stand():
     return can_shape_change()
@@ -173,8 +187,24 @@ func handle_stand():
         crouching = false
     if (playerShape.radius != standingRadius):
         playerShape.radius = standingRadius
+        flashlight.position.x = flashlightOffset.x
         squeezing = false
     running = false
+
+func can_grab():
+    if (!dragging && !crouching && !crawling && !squeezing && !running && !climbing && !photographing):
+        return is_on_floor()
+    else:
+        return false
+
+func handle_grab():
+    pass
+
+func can_drag():
+    if (!grabbing && !crouching && !crawling && !squeezing && !running && !climbing && !photographing):
+        return is_on_floor()
+    else:
+        return false
 
 func on_room_for_state_change_body_exited(_body: Node3D):
     if (squeezing && !Input.is_action_pressed("squeeze")):
@@ -182,6 +212,15 @@ func on_room_for_state_change_body_exited(_body: Node3D):
             handle_stand()
             if (Input.is_action_pressed("run")):
                 handle_run()
+
+func on_grab_anchor_entered(body: Node3D):
+    if (body is RigidBody3D && objectInReachRef != body):
+        objectInReachRef = body
+        print("testing")
+
+func on_grab_anchor_exited(body: Node3D):
+    if (body == objectInReachRef):
+        objectInReachRef = null
 
 func handle_mouse_input(event: InputEventMouseMotion) -> void:
     if mouseCaptured:
@@ -210,6 +249,16 @@ func handle_key_input(event: InputEvent ) -> void:
     elif (event.is_action_released("squeeze")):
         if (squeezing && can_stand()):
             handle_stand()
+    elif (event.is_action_released("flashlight")):
+        flashlight.visible = !flashlight.visible
+    elif (event.is_action_released("grab")):
+        if (grabbing):
+            # stop
+            pass
+        elif (!grabbing && can_grab()):
+            pass
+        else:
+            pass
     elif (event.is_action_pressed("run")):
         if (!running && can_run()):
             handle_stand()

@@ -19,81 +19,85 @@
 [ext_resource type="PackedScene" uid="uid://bgv77pthsednf" path="res://objects/fire_alarm/fire_alarm.tscn" id="17_gb8yi"]
 [ext_resource type="PackedScene" uid="uid://d0ykk16hgjceh" path="res://objects/wooden_ladder/wooden_ladder_closed.tscn" id="18_sxw6q"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6lawt"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_sxw6q"]
 resource_local_to_scene = true
 size = Vector3(22.5, 0.25, 22.75)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_eqkh2"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_6lawt"]
 resource_local_to_scene = true
 size = Vector3(19, 0.25, 27.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mg00w"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_eqkh2"]
 resource_local_to_scene = true
 size = Vector3(3.25, 0.25, 10)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_b7w5u"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_mg00w"]
 resource_local_to_scene = true
 size = Vector3(10.75, 0.25, 14.75)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_cil8a"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_b7w5u"]
 resource_local_to_scene = true
 size = Vector3(17, 0.25, 25.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_cr804"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_cil8a"]
 resource_local_to_scene = true
 size = Vector3(10.25, 0.25, 2.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_2shs5"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_cr804"]
 resource_local_to_scene = true
 size = Vector3(14.75, 0.25, 25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_d04n5"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_2shs5"]
 resource_local_to_scene = true
 size = Vector3(10.25, 0.25, 22.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wrgdt"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_d04n5"]
 resource_local_to_scene = true
 size = Vector3(2.75, 0.25, 19)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_v170t"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_wrgdt"]
 resource_local_to_scene = true
 size = Vector3(5, 0.25, 5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gxesw"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_v170t"]
 resource_local_to_scene = true
 size = Vector3(4.5, 0.25, 20.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7mctu"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_gxesw"]
 resource_local_to_scene = true
 size = Vector3(15.25, 0.25, 7.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_drom3"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7mctu"]
 resource_local_to_scene = true
 size = Vector3(19.75, 0.25, 25.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ekowq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_drom3"]
 resource_local_to_scene = true
 size = Vector3(7.75, 0.25, 25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fagdo"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ekowq"]
 resource_local_to_scene = true
 size = Vector3(19.5, 0.25, 50)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_in5wy"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_fagdo"]
 resource_local_to_scene = true
 size = Vector3(3, 0.25, 19)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_niu04"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_in5wy"]
 resource_local_to_scene = true
 size = Vector3(5.5, 0.75, 6)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xe0fk"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_niu04"]
 resource_local_to_scene = true
 size = Vector3(12, 0.25, 17.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gc6qu"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_xe0fk"]
 resource_local_to_scene = true
 size = Vector3(10.75, 0.25, 14.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gc6qu"]
+resource_local_to_scene = true
+size = Vector3(4, 3.5, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eof1k"]
 resource_local_to_scene = true
@@ -181,7 +185,7 @@ size = Vector3(4, 3.5, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kuyyd"]
 resource_local_to_scene = true
-size = Vector3(4, 3.5, 1.5)
+size = Vector3(4, 9, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k2n1b"]
 resource_local_to_scene = true
@@ -213,55 +217,55 @@ size = Vector3(4, 9, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ivqa"]
 resource_local_to_scene = true
-size = Vector3(4, 9, 1.5)
+size = Vector3(3.25, 1, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pmpt3"]
 resource_local_to_scene = true
-size = Vector3(3.25, 1, 0.25)
+size = Vector3(4.25, 1, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_htlga"]
 resource_local_to_scene = true
-size = Vector3(4.25, 1, 0.25)
+size = Vector3(7.25, 1, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d3qxa"]
 resource_local_to_scene = true
-size = Vector3(7.25, 1, 0.25)
+size = Vector3(6, 1, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xc0d"]
 resource_local_to_scene = true
-size = Vector3(6, 1, 0.25)
+size = Vector3(1.75, 1, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0icua"]
 resource_local_to_scene = true
-size = Vector3(1.75, 1, 0.25)
+size = Vector3(2, 1, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_30bdr"]
 resource_local_to_scene = true
-size = Vector3(2, 1, 0.25)
+size = Vector3(3.5, 0.25, 1.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7f3pb"]
 resource_local_to_scene = true
-size = Vector3(3.5, 0.25, 1.25)
+size = Vector3(1.5, 0.25, 5.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c42ka"]
 resource_local_to_scene = true
-size = Vector3(1.5, 0.25, 5.75)
+size = Vector3(1.5, 0.25, 3.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8yf40"]
 resource_local_to_scene = true
-size = Vector3(1.5, 0.25, 3.25)
+size = Vector3(3.5, 0.25, 1.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yrhjq"]
 resource_local_to_scene = true
-size = Vector3(3.5, 0.25, 1.25)
+size = Vector3(1.5, 0.25, 5.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t4iwe"]
 resource_local_to_scene = true
-size = Vector3(1.5, 0.25, 5.75)
+size = Vector3(1.5, 0.25, 3.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aoj5h"]
 resource_local_to_scene = true
-size = Vector3(1.5, 0.25, 3.25)
+size = Vector3(5, 7.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uf22l"]
 resource_local_to_scene = true
@@ -277,91 +281,91 @@ size = Vector3(5, 7.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t6jow"]
 resource_local_to_scene = true
-size = Vector3(5, 7.5, 0.25)
+size = Vector3(3.375, 3.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3e68n"]
 resource_local_to_scene = true
-size = Vector3(3.375, 3.5, 0.25)
+size = Vector3(11, 3.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yd4yg"]
 resource_local_to_scene = true
-size = Vector3(11, 3.5, 0.25)
+size = Vector3(7.25, 3.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4cjn0"]
 resource_local_to_scene = true
-size = Vector3(7.25, 3.5, 0.25)
+size = Vector3(32.75, 3.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nxjo0"]
 resource_local_to_scene = true
-size = Vector3(32.75, 3.5, 0.25)
+size = Vector3(3.25, 3.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ytftf"]
 resource_local_to_scene = true
-size = Vector3(3.25, 3.5, 0.25)
+size = Vector3(17.25, 3.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r05tc"]
 resource_local_to_scene = true
-size = Vector3(17.25, 3.5, 0.25)
+size = Vector3(10.5, 3.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_30ttr"]
 resource_local_to_scene = true
-size = Vector3(10.5, 3.5, 0.25)
+size = Vector3(4, 2.25, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0sn4j"]
 resource_local_to_scene = true
-size = Vector3(4, 2.25, 0.25)
+size = Vector3(6.25, 3.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_guvic"]
 resource_local_to_scene = true
-size = Vector3(6.25, 3.5, 0.25)
+size = Vector3(11, 3.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dmfm2"]
 resource_local_to_scene = true
-size = Vector3(11, 3.5, 0.25)
+size = Vector3(18.75, 3.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_auxv3"]
 resource_local_to_scene = true
-size = Vector3(18.75, 3.5, 0.25)
+size = Vector3(5.25, 3, 4.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iiby2"]
 resource_local_to_scene = true
-size = Vector3(5.25, 3, 4.75)
+size = Vector3(7.5, 3.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w731o"]
 resource_local_to_scene = true
-size = Vector3(7.5, 3.5, 0.25)
+size = Vector3(9.25, 5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3m71t"]
 resource_local_to_scene = true
-size = Vector3(9.25, 5, 0.25)
+size = Vector3(2, 1.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l4itw"]
 resource_local_to_scene = true
-size = Vector3(2, 1.5, 0.25)
+size = Vector3(11.25, 3.375, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cxxw7"]
 resource_local_to_scene = true
-size = Vector3(11.25, 3.375, 0.25)
+size = Vector3(7.75, 1.625, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iqyua"]
 resource_local_to_scene = true
-size = Vector3(7.75, 1.625, 0.25)
+size = Vector3(3.5, 0.875, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ok8af"]
 resource_local_to_scene = true
-size = Vector3(3.5, 0.875, 0.25)
+size = Vector3(5, 3.75, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1qxv5"]
 resource_local_to_scene = true
-size = Vector3(5, 3.75, 0.25)
+size = Vector3(22.25, 3.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aqpht"]
 resource_local_to_scene = true
-size = Vector3(22.25, 3.5, 0.25)
+size = Vector3(16.75, 9, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kcuy8"]
 resource_local_to_scene = true
-size = Vector3(16.75, 9, 0.25)
+size = Vector3(10.25, 5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_77f36"]
 resource_local_to_scene = true
@@ -369,43 +373,43 @@ size = Vector3(10.25, 5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kpc7x"]
 resource_local_to_scene = true
-size = Vector3(10.25, 5, 0.25)
+size = Vector3(25, 4, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_knefw"]
 resource_local_to_scene = true
-size = Vector3(25, 4, 0.25)
+size = Vector3(14.5, 5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7x7di"]
 resource_local_to_scene = true
-size = Vector3(14.5, 5, 0.25)
+size = Vector3(5.5, 5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iaoa4"]
 resource_local_to_scene = true
-size = Vector3(5.5, 5, 0.25)
+size = Vector3(4.25, 5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4wpmp"]
 resource_local_to_scene = true
-size = Vector3(4.25, 5, 0.25)
+size = Vector3(1, 2.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gsbnp"]
 resource_local_to_scene = true
-size = Vector3(1, 2.5, 0.25)
+size = Vector3(1, 1.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kp51d"]
 resource_local_to_scene = true
-size = Vector3(1, 1.5, 0.25)
+size = Vector3(6.75, 9, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dquoe"]
 resource_local_to_scene = true
-size = Vector3(6.75, 9, 0.25)
+size = Vector3(2, 9, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_prydf"]
 resource_local_to_scene = true
-size = Vector3(2, 9, 0.25)
+size = Vector3(10, 9, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2fyg3"]
 resource_local_to_scene = true
-size = Vector3(10, 9, 0.25)
+size = Vector3(3.5, 5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fsefg"]
 resource_local_to_scene = true
@@ -413,53 +417,49 @@ size = Vector3(3.5, 5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x6do1"]
 resource_local_to_scene = true
-size = Vector3(3.5, 5, 0.25)
+size = Vector3(1, 1.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qbnlr"]
 resource_local_to_scene = true
-size = Vector3(1, 1.5, 0.25)
+size = Vector3(1, 2.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ltjvb"]
 resource_local_to_scene = true
-size = Vector3(1, 2.5, 0.25)
+size = Vector3(19, 5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y25wp"]
 resource_local_to_scene = true
-size = Vector3(19, 5, 0.25)
+size = Vector3(6.25, 5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_je1ls"]
 resource_local_to_scene = true
-size = Vector3(6.25, 5, 0.25)
+size = Vector3(2.5, 5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_np1dx"]
 resource_local_to_scene = true
-size = Vector3(2.5, 5, 0.25)
+size = Vector3(27.25, 5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lhdyc"]
 resource_local_to_scene = true
-size = Vector3(27.25, 5, 0.25)
+size = Vector3(27.5, 5.25, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwoi8"]
 resource_local_to_scene = true
-size = Vector3(27.5, 5.25, 0.25)
+size = Vector3(8, 3.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2otf"]
 resource_local_to_scene = true
-size = Vector3(8, 3.5, 0.25)
+size = Vector3(5.75, 3.5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qc0ob"]
 resource_local_to_scene = true
-size = Vector3(5.75, 3.5, 0.25)
+size = Vector3(10.75, 5, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cp05r"]
 resource_local_to_scene = true
-size = Vector3(10.75, 5, 0.25)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_cqjvk"]
-resource_local_to_scene = true
 size = Vector3(3.75, 1.25, 0.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7je4l"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_cqjvk"]
 resource_local_to_scene = true
 size = Vector3(6.75, 1.5, 0.25)
 
@@ -519,17 +519,6 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.25
 
 [node name="CeilingLight11" parent="lights" index="13" unique_id=493078454 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.25, 5, 13.575)
-
-[node name="SpotLight6" type="SpotLight3D" parent="lights/CeilingLight11" index="0" unique_id=1295660000]
-transform = Transform3D(1, 0, 0, 0, -1, 8.742277e-08, 0, -8.742277e-08, -1, 0, 0, 0)
-light_color = Color(0.9607843, 1, 1, 1)
-light_energy = 4.0
-light_size = 0.5
-shadow_enabled = true
-shadow_bias = 0.04
-distance_fade_enabled = true
-spot_range = 10.0
-spot_angle = 80.0
 
 [node name="CeilingLight12" parent="lights" index="14" unique_id=394528659 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.25, 5, 17.575)
@@ -610,12 +599,11 @@ spot_range = 10.0
 spot_angle = 80.0
 
 [node name="BounceAndShadow5" type="OmniLight3D" parent="lights/CeilingLight21" index="1" unique_id=2138801452]
-transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, -12, 4.000001, 2.5999973)
+transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, -12, 9.536743e-07, 2.5999973)
 light_color = Color(0.9607843, 1, 1, 1)
 light_energy = 2.0
-light_size = 1.0
 light_specular = 0.0
-light_cull_mask = 4293918734
+light_cull_mask = 4293918735
 shadow_bias = 0.2
 shadow_blur = 1.1
 shadow_caster_mask = 4293918734
@@ -626,9 +614,8 @@ omni_range = 15.0
 transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, -4.5, 6.000001, 2.5999966)
 light_color = Color(0.9607843, 1, 1, 1)
 light_energy = 2.0
-light_size = 1.0
 light_specular = 0.0
-light_cull_mask = 4293918734
+light_cull_mask = 4293918735
 shadow_bias = 0.2
 shadow_blur = 1.1
 shadow_caster_mask = 4293918734
@@ -639,9 +626,8 @@ omni_range = 15.0
 transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, 5, 4.250001, 2.5999966)
 light_color = Color(0.9607843, 1, 1, 1)
 light_energy = 2.0
-light_size = 1.0
 light_specular = 0.0
-light_cull_mask = 4293918734
+light_cull_mask = 4293918735
 shadow_bias = 0.2
 shadow_blur = 1.1
 shadow_caster_mask = 4293918734
@@ -652,48 +638,32 @@ omni_range = 15.0
 transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, -6, -4.249999, 2.5999966)
 light_color = Color(0.9607843, 1, 1, 1)
 light_energy = 2.0
-light_size = 1.0
 light_specular = 0.0
-light_cull_mask = 4293918734
+light_cull_mask = 4293918735
 shadow_bias = 0.2
 shadow_blur = 1.1
 shadow_caster_mask = 4293918734
 distance_fade_enabled = true
 omni_range = 15.0
 
-[node name="BounceAndShadow11" type="OmniLight3D" parent="lights/CeilingLight21" index="5" unique_id=1128088594]
-transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, -12.5, -5.249999, 2.5999963)
-light_color = Color(0.9607843, 1, 1, 1)
-light_energy = 2.0
-light_size = 1.0
-light_specular = 0.0
-light_cull_mask = 4293918734
-shadow_bias = 0.2
-shadow_blur = 1.1
-shadow_caster_mask = 4293918734
-distance_fade_enabled = true
-omni_range = 15.0
-
-[node name="BounceAndShadow10" type="OmniLight3D" parent="lights/CeilingLight21" index="6" unique_id=1601193068]
+[node name="BounceAndShadow10" type="OmniLight3D" parent="lights/CeilingLight21" index="5" unique_id=1601193068]
 transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, -3.75, -7.999999, 2.5999956)
 light_color = Color(0.9607843, 1, 1, 1)
 light_energy = 2.0
-light_size = 1.0
 light_specular = 0.0
-light_cull_mask = 4293918734
+light_cull_mask = 4293918735
 shadow_bias = 0.2
 shadow_blur = 1.1
 shadow_caster_mask = 4293918734
 distance_fade_enabled = true
 omni_range = 15.0
 
-[node name="BounceAndShadow7" type="OmniLight3D" parent="lights/CeilingLight21" index="7" unique_id=190854658]
+[node name="BounceAndShadow7" type="OmniLight3D" parent="lights/CeilingLight21" index="6" unique_id=190854658]
 transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, 2.5, -6.249999, 2.5999956)
 light_color = Color(0.9607843, 1, 1, 1)
 light_energy = 2.0
-light_size = 1.0
 light_specular = 0.0
-light_cull_mask = 4293918734
+light_cull_mask = 4293918735
 shadow_bias = 0.2
 shadow_blur = 1.1
 shadow_caster_mask = 4293918734
@@ -807,7 +777,7 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/CeilingStaticBody" index="0" unique_id=415124710 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0.125)
-shape = SubResource("BoxShape3D_6lawt")
+shape = SubResource("BoxShape3D_sxw6q")
 
 [node name="CeilingStaticBody2" type="StaticBody3D" parent="collision" index="1" unique_id=534097590]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -1.5)
@@ -816,11 +786,11 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/CeilingStaticBody2" index="0" unique_id=1594035246 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25, -0.375, 12.875)
-shape = SubResource("BoxShape3D_eqkh2")
+shape = SubResource("BoxShape3D_6lawt")
 
 [node name="RectCollider2" parent="collision/CeilingStaticBody2" index="1" unique_id=1860752929 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.37207, -0.375, 4.25)
-shape = SubResource("BoxShape3D_mg00w")
+shape = SubResource("BoxShape3D_eqkh2")
 
 [node name="CeilingStaticBody3" type="StaticBody3D" parent="collision" index="2" unique_id=525120594]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5, 5, -17.5)
@@ -829,7 +799,7 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/CeilingStaticBody3" index="0" unique_id=270605417 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0.125, -0.13274384)
-shape = SubResource("BoxShape3D_b7w5u")
+shape = SubResource("BoxShape3D_mg00w")
 
 [node name="CeilingStaticBody4" type="StaticBody3D" parent="collision" index="3" unique_id=519041447]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 9, -10.5)
@@ -838,11 +808,11 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/CeilingStaticBody4" index="0" unique_id=1291930448 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, -1.875)
-shape = SubResource("BoxShape3D_cil8a")
+shape = SubResource("BoxShape3D_b7w5u")
 
 [node name="RectCollider2" parent="collision/CeilingStaticBody4" index="1" unique_id=1780825145 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.375, 0.125, 11.875)
-shape = SubResource("BoxShape3D_cr804")
+shape = SubResource("BoxShape3D_cil8a")
 
 [node name="CeilingStaticBody5" type="StaticBody3D" parent="collision" index="4" unique_id=2086052286]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 5, 12)
@@ -851,15 +821,15 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/CeilingStaticBody5" index="0" unique_id=1364502448 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.625, 0.125, 0.5)
-shape = SubResource("BoxShape3D_2shs5")
+shape = SubResource("BoxShape3D_cr804")
 
 [node name="RectCollider2" parent="collision/CeilingStaticBody5" index="1" unique_id=2074596633 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.125, 0.125, 1.75)
-shape = SubResource("BoxShape3D_d04n5")
+shape = SubResource("BoxShape3D_2shs5")
 
 [node name="RectCollider3" parent="collision/CeilingStaticBody5" index="2" unique_id=1272764865 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.125, 0.125, 3.5)
-shape = SubResource("BoxShape3D_wrgdt")
+shape = SubResource("BoxShape3D_d04n5")
 
 [node name="PitFloorStaticBody3D" type="StaticBody3D" parent="collision" index="5" unique_id=552854419]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.499999, -7.5, 2.4999998)
@@ -868,7 +838,7 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/PitFloorStaticBody3D" index="0" unique_id=1099787437 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
-shape = SubResource("BoxShape3D_v170t")
+shape = SubResource("BoxShape3D_wrgdt")
 
 [node name="FloorStaticBody" type="StaticBody3D" parent="collision" index="6" unique_id=1474444267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 0, 5.25)
@@ -877,7 +847,7 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/FloorStaticBody" index="0" unique_id=1287737973 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, -0.125, 9.625)
-shape = SubResource("BoxShape3D_gxesw")
+shape = SubResource("BoxShape3D_v170t")
 
 [node name="FloorStaticBody2" type="StaticBody3D" parent="collision" index="7" unique_id=1932975023]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.75, 0, 6.75)
@@ -886,7 +856,7 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/FloorStaticBody2" index="0" unique_id=1371222704 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.625, -0.125, -2.75)
-shape = SubResource("BoxShape3D_7mctu")
+shape = SubResource("BoxShape3D_gxesw")
 
 [node name="FloorStaticBody3" type="StaticBody3D" parent="collision" index="8" unique_id=1776824576]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, -14)
@@ -895,7 +865,7 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/FloorStaticBody3" index="0" unique_id=1424059784 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -0.125, 1.625)
-shape = SubResource("BoxShape3D_drom3")
+shape = SubResource("BoxShape3D_7mctu")
 
 [node name="FloorStaticBody4" type="StaticBody3D" parent="collision" index="9" unique_id=668837546]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, -0.25, 12)
@@ -904,15 +874,15 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/FloorStaticBody4" index="0" unique_id=1667690781 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.625, 0.125, 0.5)
-shape = SubResource("BoxShape3D_ekowq")
+shape = SubResource("BoxShape3D_drom3")
 
 [node name="RectCollider2" parent="collision/FloorStaticBody4" index="1" unique_id=1196740770 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.125, -12)
-shape = SubResource("BoxShape3D_fagdo")
+shape = SubResource("BoxShape3D_ekowq")
 
 [node name="RectCollider3" parent="collision/FloorStaticBody4" index="2" unique_id=142064166 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.125, 3.5)
-shape = SubResource("BoxShape3D_in5wy")
+shape = SubResource("BoxShape3D_fagdo")
 
 [node name="FloorStaticBody5" type="StaticBody3D" parent="collision" index="10" unique_id=649935036]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.499999, 0.75, 22)
@@ -921,7 +891,7 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/FloorStaticBody5" index="0" unique_id=1912710810 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.375, 0)
-shape = SubResource("BoxShape3D_niu04")
+shape = SubResource("BoxShape3D_in5wy")
 
 [node name="FloorStaticBody6" type="StaticBody3D" parent="collision" index="11" unique_id=1540686999]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 0, 16)
@@ -930,7 +900,7 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/FloorStaticBody6" index="0" unique_id=845792847 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.125, 0.375)
-shape = SubResource("BoxShape3D_xe0fk")
+shape = SubResource("BoxShape3D_niu04")
 
 [node name="FloorStaticBody7" type="StaticBody3D" parent="collision" index="12" unique_id=336417608]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 0, -17.5)
@@ -939,7 +909,7 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/FloorStaticBody7" index="0" unique_id=1682479857 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, -0.125, -0.125)
-shape = SubResource("BoxShape3D_gc6qu")
+shape = SubResource("BoxShape3D_xe0fk")
 
 [node name="PillarStaticBody" type="StaticBody3D" parent="collision" index="13" unique_id=185221366]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.25, 0, 1.25)
@@ -948,11 +918,11 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/PillarStaticBody" index="0" unique_id=1260437577 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.25)
-shape = SubResource("BoxShape3D_eof1k")
+shape = SubResource("BoxShape3D_gc6qu")
 
 [node name="RectCollider2" parent="collision/PillarStaticBody" index="1" unique_id=719077351 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.75, 0.25)
-shape = SubResource("BoxShape3D_dc0ty")
+shape = SubResource("BoxShape3D_eof1k")
 
 [node name="PillarStaticBody3" type="StaticBody3D" parent="collision" index="14" unique_id=1513724240]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.75, 0, 12.25)
@@ -961,11 +931,11 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/PillarStaticBody3" index="0" unique_id=524855060 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.25)
-shape = SubResource("BoxShape3D_lag6s")
+shape = SubResource("BoxShape3D_dc0ty")
 
 [node name="RectCollider2" parent="collision/PillarStaticBody3" index="1" unique_id=1697587232 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.75, 0.25)
-shape = SubResource("BoxShape3D_5jacb")
+shape = SubResource("BoxShape3D_lag6s")
 
 [node name="PillarStaticBody2" type="StaticBody3D" parent="collision" index="15" unique_id=197113451]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.25, 0, -6)
@@ -974,27 +944,27 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/PillarStaticBody2" index="0" unique_id=51310974 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.25)
-shape = SubResource("BoxShape3D_18is6")
+shape = SubResource("BoxShape3D_5jacb")
 
 [node name="RectCollider2" parent="collision/PillarStaticBody2" index="1" unique_id=868571127 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.75, 0.25)
-shape = SubResource("BoxShape3D_nvgpk")
+shape = SubResource("BoxShape3D_18is6")
 
 [node name="RectCollider3" parent="collision/PillarStaticBody2" index="2" unique_id=1988561633 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, -6.75)
-shape = SubResource("BoxShape3D_r0wjs")
+shape = SubResource("BoxShape3D_nvgpk")
 
 [node name="RectCollider4" parent="collision/PillarStaticBody2" index="3" unique_id=2136521895 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.75, -6.75)
-shape = SubResource("BoxShape3D_haf0r")
+shape = SubResource("BoxShape3D_r0wjs")
 
 [node name="RectCollider5" parent="collision/PillarStaticBody2" index="4" unique_id=3397540 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, -13.75)
-shape = SubResource("BoxShape3D_fabf3")
+shape = SubResource("BoxShape3D_haf0r")
 
 [node name="RectCollider6" parent="collision/PillarStaticBody2" index="5" unique_id=736125562 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.75, -13.75)
-shape = SubResource("BoxShape3D_261ft")
+shape = SubResource("BoxShape3D_fabf3")
 
 [node name="PillarStaticBody4" type="StaticBody3D" parent="collision" index="16" unique_id=2131213462]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -6)
@@ -1003,27 +973,27 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/PillarStaticBody4" index="0" unique_id=935359353 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.25)
-shape = SubResource("BoxShape3D_fpgo8")
+shape = SubResource("BoxShape3D_261ft")
 
 [node name="RectCollider2" parent="collision/PillarStaticBody4" index="1" unique_id=911932938 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.75, 0.25)
-shape = SubResource("BoxShape3D_do68j")
+shape = SubResource("BoxShape3D_fpgo8")
 
 [node name="RectCollider3" parent="collision/PillarStaticBody4" index="2" unique_id=1296289241 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, -13.75)
-shape = SubResource("BoxShape3D_o6f7j")
+shape = SubResource("BoxShape3D_do68j")
 
 [node name="RectCollider4" parent="collision/PillarStaticBody4" index="3" unique_id=1218453377 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.75, -13.75)
-shape = SubResource("BoxShape3D_gtryn")
+shape = SubResource("BoxShape3D_o6f7j")
 
 [node name="RectCollider5" parent="collision/PillarStaticBody4" index="4" unique_id=703230592 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, -6.75)
-shape = SubResource("BoxShape3D_r446x")
+shape = SubResource("BoxShape3D_gtryn")
 
 [node name="RectCollider6" parent="collision/PillarStaticBody4" index="5" unique_id=45203635 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.75, -6.75)
-shape = SubResource("BoxShape3D_dudt5")
+shape = SubResource("BoxShape3D_r446x")
 
 [node name="PillarStaticBody5" type="StaticBody3D" parent="collision" index="17" unique_id=2020058836]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -6)
@@ -1032,27 +1002,27 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/PillarStaticBody5" index="0" unique_id=2103046258 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.25)
-shape = SubResource("BoxShape3D_r033u")
+shape = SubResource("BoxShape3D_dudt5")
 
 [node name="RectCollider2" parent="collision/PillarStaticBody5" index="1" unique_id=147010155 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.75, 0.25)
-shape = SubResource("BoxShape3D_4whio")
+shape = SubResource("BoxShape3D_r033u")
 
 [node name="RectCollider3" parent="collision/PillarStaticBody5" index="2" unique_id=1450438194 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, -6.75)
-shape = SubResource("BoxShape3D_ajj2v")
+shape = SubResource("BoxShape3D_4whio")
 
 [node name="RectCollider4" parent="collision/PillarStaticBody5" index="3" unique_id=846732085 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.75, -6.75)
-shape = SubResource("BoxShape3D_xxf1n")
+shape = SubResource("BoxShape3D_ajj2v")
 
 [node name="RectCollider5" parent="collision/PillarStaticBody5" index="4" unique_id=304275727 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, -13.75)
-shape = SubResource("BoxShape3D_owph0")
+shape = SubResource("BoxShape3D_xxf1n")
 
 [node name="RectCollider6" parent="collision/PillarStaticBody5" index="5" unique_id=1978248816 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.75, -13.75)
-shape = SubResource("BoxShape3D_kuyyd")
+shape = SubResource("BoxShape3D_owph0")
 
 [node name="PillarStaticBody6" type="StaticBody3D" parent="collision" index="18" unique_id=764392040]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -20)
@@ -1061,19 +1031,19 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/PillarStaticBody6" index="0" unique_id=387236685 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 4.5, 0.25)
-shape = SubResource("BoxShape3D_k2n1b")
+shape = SubResource("BoxShape3D_kuyyd")
 
 [node name="RectCollider2" parent="collision/PillarStaticBody6" index="1" unique_id=2120035191 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 4.5, 0.25)
-shape = SubResource("BoxShape3D_u6puw")
+shape = SubResource("BoxShape3D_k2n1b")
 
 [node name="RectCollider3" parent="collision/PillarStaticBody6" index="2" unique_id=2102427981 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 4.5, 7.25)
-shape = SubResource("BoxShape3D_4866r")
+shape = SubResource("BoxShape3D_u6puw")
 
 [node name="RectCollider4" parent="collision/PillarStaticBody6" index="3" unique_id=1890020300 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 4.5, 7.25)
-shape = SubResource("BoxShape3D_0qhos")
+shape = SubResource("BoxShape3D_4866r")
 
 [node name="PillarStaticBody7" type="StaticBody3D" parent="collision" index="19" unique_id=1860313813]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -13)
@@ -1082,19 +1052,19 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/PillarStaticBody7" index="0" unique_id=517293262 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 4.5, 0.25)
-shape = SubResource("BoxShape3D_lfgh1")
+shape = SubResource("BoxShape3D_0qhos")
 
 [node name="RectCollider2" parent="collision/PillarStaticBody7" index="1" unique_id=694486493 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 4.5, 0.25)
-shape = SubResource("BoxShape3D_e2p0p")
+shape = SubResource("BoxShape3D_lfgh1")
 
 [node name="RectCollider3" parent="collision/PillarStaticBody7" index="2" unique_id=1722113299 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 4.5, -6.75)
-shape = SubResource("BoxShape3D_j6i1k")
+shape = SubResource("BoxShape3D_e2p0p")
 
 [node name="RectCollider4" parent="collision/PillarStaticBody7" index="3" unique_id=1569285720 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 4.5, -6.75)
-shape = SubResource("BoxShape3D_4ivqa")
+shape = SubResource("BoxShape3D_j6i1k")
 
 [node name="WallTunnelStaticBody" type="StaticBody3D" parent="collision" index="20" unique_id=293855643]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.25, 2.5, -7.25)
@@ -1103,51 +1073,51 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/WallTunnelStaticBody" index="0" unique_id=124709709 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.375, 0.5, -0.125)
-shape = SubResource("BoxShape3D_pmpt3")
+shape = SubResource("BoxShape3D_4ivqa")
 
 [node name="RectCollider2" parent="collision/WallTunnelStaticBody" index="1" unique_id=1787658571 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 0.5, -1.375)
-shape = SubResource("BoxShape3D_htlga")
+shape = SubResource("BoxShape3D_pmpt3")
 
 [node name="RectCollider3" parent="collision/WallTunnelStaticBody" index="2" unique_id=587946218 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6250005, 0.5, 1.875)
-shape = SubResource("BoxShape3D_d3qxa")
+shape = SubResource("BoxShape3D_htlga")
 
 [node name="RectCollider4" parent="collision/WallTunnelStaticBody" index="3" unique_id=1247896137 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.250001, 0.5, 0.625)
-shape = SubResource("BoxShape3D_5xc0d")
+shape = SubResource("BoxShape3D_d3qxa")
 
 [node name="RectCollider5" parent="collision/WallTunnelStaticBody" index="4" unique_id=1429200282 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.12500095, 0.5, 0.875)
-shape = SubResource("BoxShape3D_0icua")
+shape = SubResource("BoxShape3D_5xc0d")
 
 [node name="RectCollider6" parent="collision/WallTunnelStaticBody" index="5" unique_id=982629134 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.375001, 0.5, -0.5)
-shape = SubResource("BoxShape3D_30bdr")
+shape = SubResource("BoxShape3D_0icua")
 
 [node name="RectCollider7" parent="collision/WallTunnelStaticBody" index="6" unique_id=1143673839 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.87500095, -0.125, 0.25)
-shape = SubResource("BoxShape3D_7f3pb")
+shape = SubResource("BoxShape3D_30bdr")
 
 [node name="RectCollider8" parent="collision/WallTunnelStaticBody" index="7" unique_id=1352163082 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.375001, -0.125, 1.25)
-shape = SubResource("BoxShape3D_c42ka")
+shape = SubResource("BoxShape3D_7f3pb")
 
 [node name="RectCollider9" parent="collision/WallTunnelStaticBody" index="8" unique_id=1584008334 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.374999, -0.125, -0.75)
-shape = SubResource("BoxShape3D_8yf40")
+shape = SubResource("BoxShape3D_c42ka")
 
 [node name="RectCollider10" parent="collision/WallTunnelStaticBody" index="9" unique_id=687962984 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.87500095, 1.125, 0.25)
-shape = SubResource("BoxShape3D_yrhjq")
+shape = SubResource("BoxShape3D_8yf40")
 
 [node name="RectCollider11" parent="collision/WallTunnelStaticBody" index="10" unique_id=1494043950 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.375001, 1.125, 1.25)
-shape = SubResource("BoxShape3D_t4iwe")
+shape = SubResource("BoxShape3D_yrhjq")
 
 [node name="RectCollider12" parent="collision/WallTunnelStaticBody" index="11" unique_id=1532593642 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.374999, 1.125, -0.75)
-shape = SubResource("BoxShape3D_aoj5h")
+shape = SubResource("BoxShape3D_t4iwe")
 
 [node name="WallStaticBody" type="StaticBody3D" parent="collision" index="21" unique_id=211459189]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -3, 0.25)
@@ -1156,19 +1126,19 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/WallStaticBody" index="0" unique_id=1864439288 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.75, -0.125)
-shape = SubResource("BoxShape3D_uf22l")
+shape = SubResource("BoxShape3D_aoj5h")
 
 [node name="RectCollider2" parent="collision/WallStaticBody" index="1" unique_id=1213751997 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.75, 4.625)
-shape = SubResource("BoxShape3D_d3rhb")
+shape = SubResource("BoxShape3D_uf22l")
 
 [node name="RectCollider3" parent="collision/WallStaticBody" index="2" unique_id=964797030 instance=ExtResource("4_seo54")]
 transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -2.875, -0.75, 2.25)
-shape = SubResource("BoxShape3D_y8qhx")
+shape = SubResource("BoxShape3D_d3rhb")
 
 [node name="RectCollider4" parent="collision/WallStaticBody" index="3" unique_id=1522116978 instance=ExtResource("4_seo54")]
 transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 1.875, -0.75, 2.25)
-shape = SubResource("BoxShape3D_t6jow")
+shape = SubResource("BoxShape3D_y8qhx")
 
 [node name="WallStaticBody2" type="StaticBody3D" parent="collision" index="22" unique_id=1404988649]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -2.25)
@@ -1177,15 +1147,15 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/WallStaticBody2" index="0" unique_id=778230455 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0625, 1.75, -0.125)
-shape = SubResource("BoxShape3D_3e68n")
+shape = SubResource("BoxShape3D_t6jow")
 
 [node name="RectCollider2" parent="collision/WallStaticBody2" index="1" unique_id=946648141 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 1.75, -0.125)
-shape = SubResource("BoxShape3D_yd4yg")
+shape = SubResource("BoxShape3D_3e68n")
 
 [node name="RectCollider3" parent="collision/WallStaticBody2" index="2" unique_id=694686877 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.625, 1.75, -0.125)
-shape = SubResource("BoxShape3D_4cjn0")
+shape = SubResource("BoxShape3D_yd4yg")
 
 [node name="WallStaticBody3" type="StaticBody3D" parent="collision" index="23" unique_id=811540642]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24.75, 0, -2.25)
@@ -1194,7 +1164,7 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/WallStaticBody3" index="0" unique_id=967356405 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.375, 1.75, -0.125)
-shape = SubResource("BoxShape3D_nxjo0")
+shape = SubResource("BoxShape3D_4cjn0")
 
 [node name="WallStaticBody4" type="StaticBody3D" parent="collision" index="24" unique_id=1647008841]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -21.25, 0, 7.5)
@@ -1203,11 +1173,11 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/WallStaticBody4" index="0" unique_id=1466695 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, 1.75, -0.125)
-shape = SubResource("BoxShape3D_ytftf")
+shape = SubResource("BoxShape3D_nxjo0")
 
 [node name="RectCollider2" parent="collision/WallStaticBody4" index="1" unique_id=1309391284 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 0.37499428, 1.75, -8.875)
-shape = SubResource("BoxShape3D_r05tc")
+shape = SubResource("BoxShape3D_ytftf")
 
 [node name="WallStaticBody5" type="StaticBody3D" parent="collision" index="25" unique_id=576436377]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 0, 12)
@@ -1216,11 +1186,11 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/WallStaticBody5" index="0" unique_id=1468976342 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.75, -0.125)
-shape = SubResource("BoxShape3D_30ttr")
+shape = SubResource("BoxShape3D_r05tc")
 
 [node name="RectCollider2" parent="collision/WallStaticBody5" index="1" unique_id=1887045851 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.625, 2.375, -2.25)
-shape = SubResource("BoxShape3D_0sn4j")
+shape = SubResource("BoxShape3D_30ttr")
 
 [node name="WallStaticBody6" type="StaticBody3D" parent="collision" index="26" unique_id=1204027882]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -10, 0, 15)
@@ -1229,15 +1199,15 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/WallStaticBody6" index="0" unique_id=639006821 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.375, 1.75, -0.125)
-shape = SubResource("BoxShape3D_guvic")
+shape = SubResource("BoxShape3D_0sn4j")
 
 [node name="RectCollider2" parent="collision/WallStaticBody6" index="1" unique_id=696381415 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.624997, 1.75, -4.249999)
-shape = SubResource("BoxShape3D_dmfm2")
+shape = SubResource("BoxShape3D_guvic")
 
 [node name="RectCollider3" parent="collision/WallStaticBody6" index="2" unique_id=1204659780 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.125001, 1.75, -9.874999)
-shape = SubResource("BoxShape3D_auxv3")
+shape = SubResource("BoxShape3D_dmfm2")
 
 [node name="WallStaticBody7" type="StaticBody3D" parent="collision" index="27" unique_id=1420118463]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.25, 0, 19.75)
@@ -1246,11 +1216,11 @@ collision_mask = 17
 
 [node name="RectCollider2" parent="collision/WallStaticBody7" index="0" unique_id=592244014 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.375, 2, 2.125001)
-shape = SubResource("BoxShape3D_iiby2")
+shape = SubResource("BoxShape3D_auxv3")
 
 [node name="RectCollider" parent="collision/WallStaticBody7" index="1" unique_id=266730846 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.75, -0.12499905)
-shape = SubResource("BoxShape3D_w731o")
+shape = SubResource("BoxShape3D_iiby2")
 
 [node name="WallStaticBody8" type="StaticBody3D" parent="collision" index="28" unique_id=681758578]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -2.75, 1.625, 2.5)
@@ -1259,27 +1229,27 @@ collision_mask = 17
 
 [node name="RectCollider5" parent="collision/WallStaticBody8" index="0" unique_id=1270433285 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.875002, 0.875, -0.12499905)
-shape = SubResource("BoxShape3D_3m71t")
+shape = SubResource("BoxShape3D_w731o")
 
 [node name="RectCollider6" parent="collision/WallStaticBody8" index="1" unique_id=1708832784 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.250002, 2.625, -0.125)
-shape = SubResource("BoxShape3D_l4itw")
+shape = SubResource("BoxShape3D_3m71t")
 
 [node name="RectCollider" parent="collision/WallStaticBody8" index="2" unique_id=1969814111 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6250024, 1.6875, -0.12499952)
-shape = SubResource("BoxShape3D_cxxw7")
+shape = SubResource("BoxShape3D_l4itw")
 
 [node name="RectCollider2" parent="collision/WallStaticBody8" index="3" unique_id=1092772129 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3750024, -0.8125, -0.12499905)
-shape = SubResource("BoxShape3D_iqyua")
+shape = SubResource("BoxShape3D_cxxw7")
 
 [node name="RectCollider3" parent="collision/WallStaticBody8" index="4" unique_id=1313434384 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7500014, -1.1875, -0.125)
-shape = SubResource("BoxShape3D_ok8af")
+shape = SubResource("BoxShape3D_iqyua")
 
 [node name="RectCollider4" parent="collision/WallStaticBody8" index="5" unique_id=1564628273 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4999988, 0.25, -0.12500048)
-shape = SubResource("BoxShape3D_1qxv5")
+shape = SubResource("BoxShape3D_ok8af")
 
 [node name="WallStaticBody9" type="StaticBody3D" parent="collision" index="29" unique_id=1721055425]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.75, 0, -24.75)
@@ -1288,11 +1258,11 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/WallStaticBody9" index="0" unique_id=364536106 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 1.75, -0.125)
-shape = SubResource("BoxShape3D_aqpht")
+shape = SubResource("BoxShape3D_1qxv5")
 
 [node name="RectCollider2" parent="collision/WallStaticBody9" index="1" unique_id=737114725 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.625, 4.5, -0.125)
-shape = SubResource("BoxShape3D_kcuy8")
+shape = SubResource("BoxShape3D_aqpht")
 
 [node name="WallStaticBody10" type="StaticBody3D" parent="collision" index="30" unique_id=2062623626]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14, 0, -10.5)
@@ -1301,15 +1271,15 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/WallStaticBody10" index="0" unique_id=200783328 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.375002, 2.5, -0.125)
-shape = SubResource("BoxShape3D_77f36")
+shape = SubResource("BoxShape3D_kcuy8")
 
 [node name="RectCollider2" parent="collision/WallStaticBody10" index="1" unique_id=1946771685 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3750024, 2.5, -8.125)
-shape = SubResource("BoxShape3D_kpc7x")
+shape = SubResource("BoxShape3D_77f36")
 
 [node name="RectCollider3" parent="collision/WallStaticBody10" index="2" unique_id=942725433 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 7, -0.12499905)
-shape = SubResource("BoxShape3D_knefw")
+shape = SubResource("BoxShape3D_kpc7x")
 
 [node name="WallStaticBody11" type="StaticBody3D" parent="collision" index="31" unique_id=2079946370]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -10.25)
@@ -1318,23 +1288,23 @@ collision_mask = 17
 
 [node name="RectCollider5" parent="collision/WallStaticBody11" index="0" unique_id=2116135147 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.875, 2.5, -7.25)
-shape = SubResource("BoxShape3D_7x7di")
+shape = SubResource("BoxShape3D_knefw")
 
 [node name="RectCollider" parent="collision/WallStaticBody11" index="1" unique_id=1878677630 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 2.5, -0.125)
-shape = SubResource("BoxShape3D_iaoa4")
+shape = SubResource("BoxShape3D_7x7di")
 
 [node name="RectCollider2" parent="collision/WallStaticBody11" index="2" unique_id=1296683582 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.625, 2.5, -0.125)
-shape = SubResource("BoxShape3D_4wpmp")
+shape = SubResource("BoxShape3D_iaoa4")
 
 [node name="RectCollider3" parent="collision/WallStaticBody11" index="3" unique_id=2031042269 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.25, -0.125)
-shape = SubResource("BoxShape3D_gsbnp")
+shape = SubResource("BoxShape3D_4wpmp")
 
 [node name="RectCollider4" parent="collision/WallStaticBody11" index="4" unique_id=1499649692 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4.25, -0.125)
-shape = SubResource("BoxShape3D_kp51d")
+shape = SubResource("BoxShape3D_gsbnp")
 
 [node name="WallStaticBody12" type="StaticBody3D" parent="collision" index="32" unique_id=1529433420]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 0, 0.25)
@@ -1343,15 +1313,15 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/WallStaticBody12" index="0" unique_id=1186978115 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, 4.5, -0.125)
-shape = SubResource("BoxShape3D_dquoe")
+shape = SubResource("BoxShape3D_kp51d")
 
 [node name="RectCollider2" parent="collision/WallStaticBody12" index="1" unique_id=146857327 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.375, 4.5, 1)
-shape = SubResource("BoxShape3D_prydf")
+shape = SubResource("BoxShape3D_dquoe")
 
 [node name="RectCollider3" parent="collision/WallStaticBody12" index="2" unique_id=1776902496 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25, 4.5, 2.125)
-shape = SubResource("BoxShape3D_2fyg3")
+shape = SubResource("BoxShape3D_prydf")
 
 [node name="WallStaticBody13" type="StaticBody3D" parent="collision" index="33" unique_id=1216262376]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 0, 0.25)
@@ -1360,19 +1330,19 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/WallStaticBody13" index="0" unique_id=2026106670 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -0.125)
-shape = SubResource("BoxShape3D_fsefg")
+shape = SubResource("BoxShape3D_2fyg3")
 
 [node name="RectCollider2" parent="collision/WallStaticBody13" index="1" unique_id=1915268599 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.5, -0.125)
-shape = SubResource("BoxShape3D_x6do1")
+shape = SubResource("BoxShape3D_fsefg")
 
 [node name="RectCollider3" parent="collision/WallStaticBody13" index="2" unique_id=681836792 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 4.25, -0.125)
-shape = SubResource("BoxShape3D_qbnlr")
+shape = SubResource("BoxShape3D_x6do1")
 
 [node name="RectCollider4" parent="collision/WallStaticBody13" index="3" unique_id=518487501 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 1.25, -0.125)
-shape = SubResource("BoxShape3D_ltjvb")
+shape = SubResource("BoxShape3D_qbnlr")
 
 [node name="WallStaticBody14" type="StaticBody3D" parent="collision" index="34" unique_id=506394417]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 22, 0, 4.25)
@@ -1381,15 +1351,15 @@ collision_mask = 17
 
 [node name="RectCollider3" parent="collision/WallStaticBody14" index="0" unique_id=887075926 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.25, 2.5, -2.875)
-shape = SubResource("BoxShape3D_y25wp")
+shape = SubResource("BoxShape3D_ltjvb")
 
 [node name="RectCollider" parent="collision/WallStaticBody14" index="1" unique_id=188371060 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, 2.5, -0.125)
-shape = SubResource("BoxShape3D_je1ls")
+shape = SubResource("BoxShape3D_y25wp")
 
 [node name="RectCollider2" parent="collision/WallStaticBody14" index="2" unique_id=1839999956 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.875, 2.5, -1.4995003)
-shape = SubResource("BoxShape3D_np1dx")
+shape = SubResource("BoxShape3D_je1ls")
 
 [node name="WallStaticBody15" type="StaticBody3D" parent="collision" index="35" unique_id=1963599730]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.25, 0, 25)
@@ -1398,7 +1368,7 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/WallStaticBody15" index="0" unique_id=1957126339 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.125, 2.5, -0.125)
-shape = SubResource("BoxShape3D_lhdyc")
+shape = SubResource("BoxShape3D_np1dx")
 
 [node name="WallStaticBody16" type="StaticBody3D" parent="collision" index="36" unique_id=1681290010]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.75, 3.75, -15.75)
@@ -1407,7 +1377,7 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/WallStaticBody16" index="0" unique_id=72660247 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2.625, -0.125)
-shape = SubResource("BoxShape3D_hwoi8")
+shape = SubResource("BoxShape3D_lhdyc")
 
 [node name="WallStaticBody17" type="StaticBody3D" parent="collision" index="37" unique_id=1861401057]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.25, 0, -19)
@@ -1416,15 +1386,15 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/WallStaticBody17" index="0" unique_id=184214165 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.75, -0.125)
-shape = SubResource("BoxShape3D_b2otf")
+shape = SubResource("BoxShape3D_hwoi8")
 
 [node name="RectCollider2" parent="collision/WallStaticBody17" index="1" unique_id=1581985763 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.125, 1.75, -2.875)
-shape = SubResource("BoxShape3D_qc0ob")
+shape = SubResource("BoxShape3D_b2otf")
 
 [node name="RectCollider3" parent="collision/WallStaticBody17" index="2" unique_id=643729013 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.375, 2.5, -5.875)
-shape = SubResource("BoxShape3D_cp05r")
+shape = SubResource("BoxShape3D_qc0ob")
 
 [node name="WallStaticBody18" type="StaticBody3D" parent="collision" index="38" unique_id=1930163363]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, -2.25)
@@ -1433,11 +1403,11 @@ collision_mask = 17
 
 [node name="RectCollider" parent="collision/WallStaticBody18" index="0" unique_id=319365860 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.625, -0.125)
-shape = SubResource("BoxShape3D_cqjvk")
+shape = SubResource("BoxShape3D_cp05r")
 
 [node name="RectCollider2" parent="collision/WallStaticBody18" index="1" unique_id=615765954 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.625, 4.25, -0.125)
-shape = SubResource("BoxShape3D_7je4l")
+shape = SubResource("BoxShape3D_cqjvk")
 
 [node name="ceiling_001" parent="." index="2" unique_id=801805094]
 layers = 2

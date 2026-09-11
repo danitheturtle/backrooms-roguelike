@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://c38wmb61wavf1" path="res://objects/player/player.gd" id="1_3vyb7"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_5q0ne"]
+radius = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gn8jm"]
+radius = 0.12
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
 radius = 0.4
 height = 1.65
@@ -15,7 +21,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerCamera:position")
+tracks/0/path = NodePath("Camera:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,7 +40,7 @@ _data = {
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerCamera:position")
+tracks/0/path = NodePath("Camera:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,6 +70,35 @@ floor_snap_length = 1.0
 platform_on_leave = 2
 script = ExtResource("1_3vyb7")
 
+[node name="Camera" type="Camera3D" parent="." unique_id=1892713137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+current = true
+fov = 85.0
+
+[node name="Flashlight" type="SpotLight3D" parent="Camera" unique_id=1664328846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.256, 0)
+visible = false
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_caster_mask = 4293918735
+spot_range = 20.0
+spot_angle = 40.0
+
+[node name="GrabArm" type="SpringArm3D" parent="Camera" unique_id=1434044525]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+collision_mask = 15
+shape = SubResource("SphereShape3D_5q0ne")
+spring_length = 1.5
+
+[node name="Anchor" type="Area3D" parent="Camera/GrabArm" unique_id=1246998598]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera/GrabArm/Anchor" unique_id=1516774872]
+shape = SubResource("SphereShape3D_gn8jm")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Camera/GrabArm/Anchor" unique_id=815132984]
+radius = 0.15
+
 [node name="PlayerCollisionShape3D" type="CollisionShape3D" parent="." unique_id=1019509889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825, 0)
 shape = SubResource("CapsuleShape3D_3vyb7")
@@ -72,11 +107,6 @@ shape = SubResource("CapsuleShape3D_3vyb7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_sugp2")
-
-[node name="PlayerCamera" type="Camera3D" parent="." unique_id=1892713137]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-current = true
-fov = 85.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=569379203]
 libraries/ = SubResource("AnimationLibrary_g7ett")

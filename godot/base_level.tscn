@@ -6,20 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://bm41jmwi0xr2p" path="res://ui/popups/popup_for_area.tscn" id="7_i6nmd"]
 
 [sub_resource type="Environment" id="Environment_5q0ne"]
-background_energy_multiplier = 0.1
+background_mode = 1
+background_color = Color(0.25808161, 0.25808164, 0.25808156, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.21568628, 0.21568628, 0.14117648, 1)
 ambient_light_energy = 0.1
 reflected_light_source = 1
-ssao_enabled = true
-ssao_intensity = 4.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5q0ne"]
 size = Vector3(9, 3, 7)
 
 [node name="base_level" type="Node3D" unique_id=958888166]
 script = ExtResource("1_bkkah")
-
-[node name="Player" parent="." unique_id=66642413 instance=ExtResource("1_2elnx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.43872, 0, -6.941988)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1616886304]
 environment = SubResource("Environment_5q0ne")
@@ -37,3 +35,6 @@ popupText = "Welcome to the backrooms tutorial text!"
 
 [node name="room1" parent="." unique_id=1945725387 instance=ExtResource("4_3o4py")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 0, -11.5)
+
+[node name="Player" parent="." unique_id=66642413 instance=ExtResource("1_2elnx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34371, -1.7881393e-07, 8.480121)

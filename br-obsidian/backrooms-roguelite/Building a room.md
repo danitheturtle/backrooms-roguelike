@@ -1,0 +1,3 @@
+- One-sided wall meshes only
+- If no connections, leave large space between rooms to avoid light bleed
+- 
