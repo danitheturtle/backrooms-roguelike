@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://eksubm8tj0xy"]
+
+[ext_resource type="ArrayMesh" uid="uid://dxhquaeb00onb" path="res://objects/furniture/sofa_03/res/sofa_03.glb" id="1_tguwy"]
+[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/rect_collider.tscn" id="2_tnpg4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kuwms"]
+resource_local_to_scene = true
+size = Vector3(2.65, 0.6, 1.03479)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ygbxd"]
+resource_local_to_scene = true
+size = Vector3(1.95, 0.575, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yb12u"]
+resource_local_to_scene = true
+size = Vector3(0.5, 0.35, 1.025)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kpqxc"]
+resource_local_to_scene = true
+size = Vector3(0.5, 0.35, 1.025)
+
+[node name="Sofa02" type="StaticBody3D" unique_id=656323614]
+collision_mask = 17
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1452907601]
+mesh = ExtResource("1_tguwy")
+
+[node name="RectCollider" parent="." unique_id=415124710 instance=ExtResource("2_tnpg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0.006652832)
+shape = SubResource("BoxShape3D_kuwms")
+
+[node name="RectCollider2" parent="." unique_id=934219675 instance=ExtResource("2_tnpg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-07, 0.88750005, -0.3857422)
+shape = SubResource("BoxShape3D_ygbxd")
+
+[node name="RectCollider3" parent="." unique_id=1579257444 instance=ExtResource("2_tnpg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.225, 0.77500004, 0.0017578602)
+shape = SubResource("BoxShape3D_yb12u")
+
+[node name="RectCollider4" parent="." unique_id=37246917 instance=ExtResource("2_tnpg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.225, 0.77500004, 0.0017578602)
+shape = SubResource("BoxShape3D_kpqxc")

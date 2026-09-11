@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bdtobr2b2i7tw"]
+
+[ext_resource type="Texture2D" uid="uid://brn2teim84g7r" path="res://objects/furniture/sofa_03/res/sofa_03_sofa_03_diff.webp" id="1_p0xen"]
+[ext_resource type="Texture2D" uid="uid://ka56evj5kavd" path="res://objects/furniture/sofa_03/res/sofa_03_sofa_03_rough_2k.webp" id="2_hts88"]
+[ext_resource type="Texture2D" uid="uid://c46ihadhi638v" path="res://objects/furniture/sofa_03/res/sofa_03_sofa_03_nor_gl.webp" id="3_ywsdq"]
+
+[resource]
+resource_name = "sofa_03_fringe"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_p0xen")
+metallic_texture = ExtResource("2_hts88")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_hts88")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_ywsdq")
+metadata/_gltf_primary_texture_coord = 0

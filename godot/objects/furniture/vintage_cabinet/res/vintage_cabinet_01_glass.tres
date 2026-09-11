@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cadbcna1a7v1k"]
+
+[ext_resource type="Texture2D" uid="uid://ny8wmmayuiem" path="res://objects/furniture/vintage_cabinet/res/vintage_cabinet_vintage_cabinet_01_a_rough_2k.webp" id="1_t2ccu"]
+[ext_resource type="Texture2D" uid="uid://da4kvs0ny04nb" path="res://objects/furniture/vintage_cabinet/res/vintage_cabinet_vintage_cabinet_01_a_nor_gl_2k.webp" id="2_jp6rg"]
+
+[resource]
+resource_name = "vintage_cabinet_01_glass"
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.18974829, 0.18974829, 0.18974829, 0.3)
+metallic_texture = ExtResource("1_t2ccu")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("1_t2ccu")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_jp6rg")

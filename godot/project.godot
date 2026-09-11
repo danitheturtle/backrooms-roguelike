@@ -110,5 +110,6 @@ squeeze={
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+lights_and_shadows/directional_shadow/size=8192
 limits/opengl/max_renderable_lights=64
 limits/opengl/max_lights_per_object=16

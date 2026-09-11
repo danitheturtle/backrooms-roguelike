@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bgv77pthsednf"]
+
+[ext_resource type="ArrayMesh" uid="uid://dc2v7uwr57dfq" path="res://objects/fire_alarm/res/fire_alarm.glb" id="1_k221m"]
+
+[node name="FireAlarm" type="MeshInstance3D" unique_id=646455141]
+mesh = ExtResource("1_k221m")

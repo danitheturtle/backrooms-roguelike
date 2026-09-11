@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b160k414l2773"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5q0ne"]
+resource_local_to_scene = true
+
+[node name="SphereCollider" type="CollisionShape3D" unique_id=653304792]
+shape = SubResource("SphereShape3D_5q0ne")
