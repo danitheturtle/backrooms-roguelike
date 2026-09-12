@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b3txy1m8ovq0n" path="res://objects/furniture/green_chair/green_chair_physics.tscn" id="15_av4jq"]
 [ext_resource type="PackedScene" uid="uid://gluxbvhkfuna" path="res://objects/furniture/rocking_chair/rocking_chair_physics.tscn" id="16_s73p8"]
 [ext_resource type="PackedScene" uid="uid://bgv77pthsednf" path="res://objects/fire_alarm/fire_alarm.tscn" id="17_gb8yi"]
-[ext_resource type="PackedScene" uid="uid://d0ykk16hgjceh" path="res://objects/wooden_ladder/wooden_ladder_closed.tscn" id="18_sxw6q"]
+[ext_resource type="PackedScene" uid="uid://cj3x3dbcuf7ja" path="res://objects/wooden_ladder/wooden_ladder.tscn" id="19_6lawt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sxw6q"]
 resource_local_to_scene = true
@@ -520,30 +520,13 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.25
 [node name="CeilingLight11" parent="lights" index="13" unique_id=493078454 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.25, 5, 13.575)
 
-[node name="CeilingLight12" parent="lights" index="14" unique_id=394528659 instance=ExtResource("3_8b6bf")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.25, 5, 17.575)
-
-[node name="CeilingLight13" parent="lights" index="15" unique_id=505044024 instance=ExtResource("3_8b6bf")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.25, 5, 21.575)
-
-[node name="SpotLight7" type="SpotLight3D" parent="lights/CeilingLight13" index="0" unique_id=95075867]
-transform = Transform3D(1, 0, 0, 0, -1, 8.742277e-08, 0, -8.742277e-08, -1, 0, 0, 0)
-light_color = Color(0.9607843, 1, 1, 1)
-light_energy = 4.0
-light_size = 0.5
-shadow_enabled = true
-shadow_bias = 0.04
-distance_fade_enabled = true
-spot_range = 10.0
-spot_angle = 80.0
-
-[node name="CeilingLight14" parent="lights" index="16" unique_id=227340741 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight14" parent="lights" index="14" unique_id=227340741 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 8.25, 5, 5.575)
 
-[node name="CeilingLight15" parent="lights" index="17" unique_id=1410247438 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight15" parent="lights" index="15" unique_id=1410247438 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 8.25, 5, 9.575)
 
-[node name="CeilingLight16" parent="lights" index="18" unique_id=1712336483 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight16" parent="lights" index="16" unique_id=1712336483 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 8.25, 5, 13.575)
 
 [node name="SpotLight3" type="SpotLight3D" parent="lights/CeilingLight16" index="0" unique_id=1362571575]
@@ -557,16 +540,16 @@ distance_fade_enabled = true
 spot_range = 10.0
 spot_angle = 80.0
 
-[node name="CeilingLight17" parent="lights" index="19" unique_id=1156630219 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight17" parent="lights" index="17" unique_id=1156630219 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 8.25, 5, 17.575)
 
-[node name="CeilingLight18" parent="lights" index="20" unique_id=900296452 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight18" parent="lights" index="18" unique_id=900296452 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 8.25, 5, 21.575)
 
-[node name="CeilingLight19" parent="lights" index="21" unique_id=1982366877 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight19" parent="lights" index="19" unique_id=1982366877 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 14.25, 5, 5.575)
 
-[node name="CeilingLight29" parent="lights" index="22" unique_id=1452184057 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight29" parent="lights" index="20" unique_id=1452184057 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 14.25, 5, 1.5749998)
 
 [node name="SpotLight" type="SpotLight3D" parent="lights/CeilingLight29" index="0" unique_id=553269857]
@@ -581,10 +564,10 @@ distance_fade_enabled = true
 spot_range = 10.0
 spot_angle = 80.0
 
-[node name="CeilingLight20" parent="lights" index="23" unique_id=1392572059 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight20" parent="lights" index="21" unique_id=1392572059 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 14.25, 5, 9.575)
 
-[node name="CeilingLight21" parent="lights" index="24" unique_id=206715493 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight21" parent="lights" index="22" unique_id=206715493 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 14.25, 5, 13.575)
 
 [node name="SpotLight2" type="SpotLight3D" parent="lights/CeilingLight21" index="0" unique_id=1464501489]
@@ -611,7 +594,7 @@ distance_fade_enabled = true
 omni_range = 15.0
 
 [node name="BounceAndShadow8" type="OmniLight3D" parent="lights/CeilingLight21" index="2" unique_id=1916813902]
-transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, -4.5, 6.000001, 2.5999966)
+transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, -6, 6.750001, 2.599996)
 light_color = Color(0.9607843, 1, 1, 1)
 light_energy = 2.0
 light_specular = 0.0
@@ -670,10 +653,10 @@ shadow_caster_mask = 4293918734
 distance_fade_enabled = true
 omni_range = 15.0
 
-[node name="CeilingLight22" parent="lights" index="25" unique_id=1940462492 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight22" parent="lights" index="23" unique_id=1940462492 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 14.25, 5, 17.575)
 
-[node name="CeilingLight23" parent="lights" index="26" unique_id=328606457 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight23" parent="lights" index="24" unique_id=328606457 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 14.25, 5, 21.575)
 
 [node name="SpotLight3" type="SpotLight3D" parent="lights/CeilingLight23" index="0" unique_id=498881113]
@@ -687,7 +670,7 @@ distance_fade_enabled = true
 spot_range = 10.0
 spot_angle = 80.0
 
-[node name="CeilingLight24" parent="lights" index="27" unique_id=1385925543 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight24" parent="lights" index="25" unique_id=1385925543 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 20.25, 5, 5.575)
 
 [node name="SpotLight6" type="SpotLight3D" parent="lights/CeilingLight24" index="0" unique_id=620335615]
@@ -701,10 +684,10 @@ distance_fade_enabled = true
 spot_range = 10.0
 spot_angle = 80.0
 
-[node name="CeilingLight25" parent="lights" index="28" unique_id=220994177 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight25" parent="lights" index="26" unique_id=220994177 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 20.25, 5, 9.575)
 
-[node name="CeilingLight26" parent="lights" index="29" unique_id=640676951 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight26" parent="lights" index="27" unique_id=640676951 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 20.25, 5, 13.575)
 
 [node name="SpotLight5" type="SpotLight3D" parent="lights/CeilingLight26" index="0" unique_id=148062287]
@@ -718,10 +701,10 @@ distance_fade_enabled = true
 spot_range = 10.0
 spot_angle = 80.0
 
-[node name="CeilingLight27" parent="lights" index="30" unique_id=1984209697 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight27" parent="lights" index="28" unique_id=1984209697 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 20.25, 5, 17.575)
 
-[node name="CeilingLight28" parent="lights" index="31" unique_id=2145859244 instance=ExtResource("3_8b6bf")]
+[node name="CeilingLight28" parent="lights" index="29" unique_id=2145859244 instance=ExtResource("3_8b6bf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 20.25, 5, 21.575)
 
 [node name="SpotLight4" type="SpotLight3D" parent="lights/CeilingLight28" index="0" unique_id=813382821]
@@ -735,37 +718,37 @@ distance_fade_enabled = true
 spot_range = 10.0
 spot_angle = 80.0
 
-[node name="CeilingLight" parent="lights" index="32" unique_id=1935880481 instance=ExtResource("9_vl0fk")]
+[node name="CeilingLight" parent="lights" index="30" unique_id=1935880481 instance=ExtResource("9_vl0fk")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -19.325, 3.5, 16.9)
 
-[node name="CeilingLight6" parent="lights" index="33" unique_id=250901003 instance=ExtResource("9_vl0fk")]
+[node name="CeilingLight6" parent="lights" index="31" unique_id=250901003 instance=ExtResource("9_vl0fk")]
 transform = Transform3D(0.57357645, 0.81915206, -3.5806274e-08, 0, -4.371139e-08, -1, -0.81915206, 0.57357645, -2.5071824e-08, -11.575001, 3.5, 17.9)
 
-[node name="CeilingLight7" parent="lights" index="34" unique_id=590028831 instance=ExtResource("9_vl0fk")]
+[node name="CeilingLight7" parent="lights" index="32" unique_id=590028831 instance=ExtResource("9_vl0fk")]
 transform = Transform3D(0.9063078, 0.42261827, -1.8473225e-08, 0, -4.371139e-08, -1, -0.42261827, 0.9063078, -3.961597e-08, -12.825001, 3.5, 22.4)
 
-[node name="CeilingLight2" parent="lights" index="35" unique_id=1560721536 instance=ExtResource("9_vl0fk")]
+[node name="CeilingLight2" parent="lights" index="33" unique_id=1560721536 instance=ExtResource("9_vl0fk")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -13.325001, 3.5, 4.8999996)
 
-[node name="CeilingLight8" parent="lights" index="36" unique_id=885680444 instance=ExtResource("9_vl0fk")]
+[node name="CeilingLight8" parent="lights" index="34" unique_id=885680444 instance=ExtResource("9_vl0fk")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.825001, 3.5, -8.75)
 
-[node name="CeilingLight30" parent="lights" index="37" unique_id=68961716 instance=ExtResource("9_vl0fk")]
+[node name="CeilingLight30" parent="lights" index="35" unique_id=68961716 instance=ExtResource("9_vl0fk")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.825001, 3.5, -15.75)
 
-[node name="CeilingLight31" parent="lights" index="38" unique_id=962814479 instance=ExtResource("9_vl0fk")]
+[node name="CeilingLight31" parent="lights" index="36" unique_id=962814479 instance=ExtResource("9_vl0fk")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -18.825, 3.5, -15.75)
 
-[node name="CeilingLight3" parent="lights" index="39" unique_id=1570459725 instance=ExtResource("9_vl0fk")]
+[node name="CeilingLight3" parent="lights" index="37" unique_id=1570459725 instance=ExtResource("9_vl0fk")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -7.325001, 3.5, 4.8999996)
 
 [node name="BounceAndShadow" parent="lights/CeilingLight3" index="1" unique_id=1159096795]
 transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, -0.25, -2.2500017, 4.5696936)
 
-[node name="CeilingLight4" parent="lights" index="40" unique_id=702450595 instance=ExtResource("9_vl0fk")]
+[node name="CeilingLight4" parent="lights" index="38" unique_id=702450595 instance=ExtResource("9_vl0fk")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -7.325001, 3.5, 8.9)
 
-[node name="CeilingLight5" parent="lights" index="41" unique_id=794459147 instance=ExtResource("9_vl0fk")]
+[node name="CeilingLight5" parent="lights" index="39" unique_id=794459147 instance=ExtResource("9_vl0fk")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -7.325001, 3.5, 0.8999996)
 
 [node name="collision" type="Node3D" parent="." index="1" unique_id=1112539330]
@@ -1679,7 +1662,13 @@ transform = Transform3D(0.12940954, 0.8660254, -0.48296288, -0.22414389, 0.5, 0.
 [node name="FireAlarm" parent="." index="73" unique_id=646455141 instance=ExtResource("17_gb8yi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.667814, 1.418001, -2.2500005)
 
-[node name="wooden_ladder_closed" parent="." index="74" unique_id=1062347463 instance=ExtResource("18_sxw6q")]
-transform = Transform3D(-4.3711392e-08, 0, 1, -0.12484053, 0.99217695, -5.456952e-09, -0.99217695, -0.12484053, -4.336943e-08, 18, 1.9425485, 0.5223545)
+[node name="wooden_ladder" parent="." index="74" unique_id=1230734075 instance=ExtResource("19_6lawt")]
+transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 2.75, -0.25159347, 21)
+
+[node name="CeilingLightOff" parent="." index="75" unique_id=1659200182 instance=ExtResource("2_cxxje")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.25, 5, 21.6)
+
+[node name="CeilingLightOff2" parent="." index="76" unique_id=1790175558 instance=ExtResource("2_cxxje")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.25, 5, 17.6)
 
 [editable path="lights/CeilingLight3"]

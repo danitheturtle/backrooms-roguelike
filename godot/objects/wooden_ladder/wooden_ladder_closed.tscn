@@ -5,29 +5,37 @@
 [ext_resource type="ArrayMesh" uid="uid://cxsv14xgq0p0l" path="res://objects/wooden_ladder/res/wooden_ladder_supports.glb" id="3_4u3nw"]
 [ext_resource type="Material" uid="uid://c5a6tmd4jjju1" path="res://objects/wooden_ladder/res/wooden_ladder.tres" id="4_efgl8"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4j06i"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3wesh"]
 resource_local_to_scene = true
 size = Vector3(0.15463257, 2.562683, 0.87213135)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_aqc6c"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_56jxp"]
 resource_local_to_scene = true
 size = Vector3(0.11796188, 2.098463, 0.87213135)
 
 [node name="wooden_ladder_closed" type="Node3D" unique_id=1062347463]
 
 [node name="StepsRigidBody" type="RigidBody3D" parent="." unique_id=1432222003]
+transform = Transform3D(0.94483715, -0.32754055, 0, 0.32754055, 0.94483715, 0, 0, 0, 1, 0, 2.122811, 0)
 collision_mask = 31
+center_of_mass_mode = 1
+center_of_mass = Vector3(-0.37314147, -0.81365323, 0)
+
+[node name="GrabOrigin" type="Marker3D" parent="StepsRigidBody" unique_id=675547414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27131802, -0.5199292, 0)
 
 [node name="StepsMeshInstance" type="MeshInstance3D" parent="StepsRigidBody" unique_id=1879803046]
 mesh = ExtResource("1_3wesh")
 
 [node name="StepsCollider" parent="StepsRigidBody" unique_id=415124710 instance=ExtResource("2_56jxp")]
 transform = Transform3D(0.93899703, 0.34392524, 0, -0.34392524, 0.93899703, 0, 0, 0, 1, -0.35162842, -0.7630869, 0.0015563965)
-shape = SubResource("BoxShape3D_4j06i")
+shape = SubResource("BoxShape3D_3wesh")
 
 [node name="SupportRigidBody" type="RigidBody3D" parent="." unique_id=1662395064]
-transform = Transform3D(0.76604444, 0.6427876, 0, -0.6427876, 0.76604444, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.9399649, 0.3412713, 0, -0.3412713, 0.9399649, 0, 0, 0, 1, 0, 2.122811, 0)
+collision_layer = 0
 collision_mask = 31
+mass = 0.2
 
 [node name="SupportMeshInstance" type="MeshInstance3D" parent="SupportRigidBody" unique_id=1594791588]
 transform = Transform3D(1, -2.9802322e-08, 0, 2.9802322e-08, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -36,11 +44,13 @@ surface_material_override/0 = ExtResource("4_efgl8")
 
 [node name="SupportsCollider" parent="SupportRigidBody" unique_id=184477877 instance=ExtResource("2_56jxp")]
 transform = Transform3D(0.93912035, -0.34358817, 0, 0.34358817, 0.93912035, 0, 0, 0, 1, 0.42962044, -0.98025316, 0.0015563965)
-shape = SubResource("BoxShape3D_aqc6c")
+shape = SubResource("BoxShape3D_56jxp")
 
 [node name="LadderHinge" type="HingeJoint3D" parent="." unique_id=1166785200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.122811, 0)
 node_a = NodePath("../StepsRigidBody")
 node_b = NodePath("../SupportRigidBody")
 angular_limit/enable = true
 angular_limit/upper = 0.0
 angular_limit/lower = -0.6981317
+motor/target_velocity = -0.43633232

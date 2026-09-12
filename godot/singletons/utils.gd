@@ -41,3 +41,12 @@ func get_children_in_group(parentNode: Node, groupName: String, recursive: bool 
         if nextChild.is_in_group(groupName):
             foundChildren.append(nextChild)
     return foundChildren
+
+func get_materials_on_mesh(mesh: MeshInstance3D):
+    var totalSurfaces = mesh.mesh.get_surface_count()
+    var activeMaterials: Array[BaseMaterial3D] = []
+    for surfaceIndex in range(0,totalSurfaces):
+        var nextMaterial = mesh.get_active_material(surfaceIndex)
+        if nextMaterial != null: activeMaterials.append(nextMaterial)
+    return activeMaterials
+    
