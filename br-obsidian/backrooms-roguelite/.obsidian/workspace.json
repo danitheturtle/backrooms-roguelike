@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Building a room.md",
+                "file": "Musical Inspiration.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Building a room"
+              "title": "Musical Inspiration"
             }
           }
         ],
@@ -219,13 +219,17 @@
   },
   "active": "b5a7d647281ad89c",
   "lastOpenFiles": [
+    "Async Investigations - Game Pitch.md",
     "Mechanic Brainstorm.md",
+    "Musical Inspiration.md",
+    "Design Pillars.md",
+    "Exits.md",
+    "Today.md",
+    "Todo.md",
+    "Name Ideas.md",
     "Building a room.md",
     "Building a Room.md",
     "Spooky Wall Writing.md",
-    "Exits.md",
-    "Name Ideas.md",
-    "Game Pitch.md",
     "Welcome.md"
   ]
 }

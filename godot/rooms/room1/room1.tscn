@@ -463,6 +463,14 @@ size = Vector3(3.75, 1.25, 0.25)
 resource_local_to_scene = true
 size = Vector3(6.75, 1.5, 0.25)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7je4l"]
+resource_local_to_scene = true
+size = Vector3(0.15463257, 2.562683, 0.87213135)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ijsh"]
+resource_local_to_scene = true
+size = Vector3(0.11796188, 2.098463, 0.87213135)
+
 [node name="room1" unique_id=501995463 instance=ExtResource("1_t0nly")]
 
 [node name="lights" type="Node3D" parent="." index="0" unique_id=1455180231]
@@ -756,7 +764,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -7.3
 [node name="CeilingStaticBody" type="StaticBody3D" parent="collision" index="0" unique_id=100390807]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.75, 3.75, -13.75)
 collision_layer = 2
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/CeilingStaticBody" index="0" unique_id=415124710 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0.125)
@@ -765,7 +773,7 @@ shape = SubResource("BoxShape3D_sxw6q")
 [node name="CeilingStaticBody2" type="StaticBody3D" parent="collision" index="1" unique_id=534097590]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -1.5)
 collision_layer = 2
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/CeilingStaticBody2" index="0" unique_id=1594035246 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25, -0.375, 12.875)
@@ -778,7 +786,7 @@ shape = SubResource("BoxShape3D_eqkh2")
 [node name="CeilingStaticBody3" type="StaticBody3D" parent="collision" index="2" unique_id=525120594]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5, 5, -17.5)
 collision_layer = 2
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/CeilingStaticBody3" index="0" unique_id=270605417 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0.125, -0.13274384)
@@ -787,7 +795,7 @@ shape = SubResource("BoxShape3D_mg00w")
 [node name="CeilingStaticBody4" type="StaticBody3D" parent="collision" index="3" unique_id=519041447]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 9, -10.5)
 collision_layer = 2
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/CeilingStaticBody4" index="0" unique_id=1291930448 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, -1.875)
@@ -800,7 +808,7 @@ shape = SubResource("BoxShape3D_cil8a")
 [node name="CeilingStaticBody5" type="StaticBody3D" parent="collision" index="4" unique_id=2086052286]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 5, 12)
 collision_layer = 2
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/CeilingStaticBody5" index="0" unique_id=1364502448 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.625, 0.125, 0.5)
@@ -817,7 +825,7 @@ shape = SubResource("BoxShape3D_d04n5")
 [node name="PitFloorStaticBody3D" type="StaticBody3D" parent="collision" index="5" unique_id=552854419]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.499999, -7.5, 2.4999998)
 collision_layer = 8
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/PitFloorStaticBody3D" index="0" unique_id=1099787437 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
@@ -826,7 +834,7 @@ shape = SubResource("BoxShape3D_wrgdt")
 [node name="FloorStaticBody" type="StaticBody3D" parent="collision" index="6" unique_id=1474444267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 0, 5.25)
 collision_layer = 8
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/FloorStaticBody" index="0" unique_id=1287737973 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, -0.125, 9.625)
@@ -835,7 +843,7 @@ shape = SubResource("BoxShape3D_v170t")
 [node name="FloorStaticBody2" type="StaticBody3D" parent="collision" index="7" unique_id=1932975023]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.75, 0, 6.75)
 collision_layer = 8
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/FloorStaticBody2" index="0" unique_id=1371222704 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.625, -0.125, -2.75)
@@ -844,7 +852,7 @@ shape = SubResource("BoxShape3D_gxesw")
 [node name="FloorStaticBody3" type="StaticBody3D" parent="collision" index="8" unique_id=1776824576]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, -14)
 collision_layer = 8
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/FloorStaticBody3" index="0" unique_id=1424059784 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -0.125, 1.625)
@@ -853,7 +861,7 @@ shape = SubResource("BoxShape3D_7mctu")
 [node name="FloorStaticBody4" type="StaticBody3D" parent="collision" index="9" unique_id=668837546]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, -0.25, 12)
 collision_layer = 8
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/FloorStaticBody4" index="0" unique_id=1667690781 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.625, 0.125, 0.5)
@@ -870,7 +878,7 @@ shape = SubResource("BoxShape3D_fagdo")
 [node name="FloorStaticBody5" type="StaticBody3D" parent="collision" index="10" unique_id=649935036]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.499999, 0.75, 22)
 collision_layer = 8
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/FloorStaticBody5" index="0" unique_id=1912710810 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.375, 0)
@@ -879,7 +887,7 @@ shape = SubResource("BoxShape3D_in5wy")
 [node name="FloorStaticBody6" type="StaticBody3D" parent="collision" index="11" unique_id=1540686999]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 0, 16)
 collision_layer = 8
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/FloorStaticBody6" index="0" unique_id=845792847 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.125, 0.375)
@@ -888,7 +896,7 @@ shape = SubResource("BoxShape3D_niu04")
 [node name="FloorStaticBody7" type="StaticBody3D" parent="collision" index="12" unique_id=336417608]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 0, -17.5)
 collision_layer = 8
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/FloorStaticBody7" index="0" unique_id=1682479857 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, -0.125, -0.125)
@@ -897,7 +905,7 @@ shape = SubResource("BoxShape3D_xe0fk")
 [node name="PillarStaticBody" type="StaticBody3D" parent="collision" index="13" unique_id=185221366]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.25, 0, 1.25)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/PillarStaticBody" index="0" unique_id=1260437577 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.25)
@@ -910,7 +918,7 @@ shape = SubResource("BoxShape3D_eof1k")
 [node name="PillarStaticBody3" type="StaticBody3D" parent="collision" index="14" unique_id=1513724240]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.75, 0, 12.25)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/PillarStaticBody3" index="0" unique_id=524855060 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.25)
@@ -923,7 +931,7 @@ shape = SubResource("BoxShape3D_lag6s")
 [node name="PillarStaticBody2" type="StaticBody3D" parent="collision" index="15" unique_id=197113451]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.25, 0, -6)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/PillarStaticBody2" index="0" unique_id=51310974 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.25)
@@ -952,7 +960,7 @@ shape = SubResource("BoxShape3D_fabf3")
 [node name="PillarStaticBody4" type="StaticBody3D" parent="collision" index="16" unique_id=2131213462]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -6)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/PillarStaticBody4" index="0" unique_id=935359353 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.25)
@@ -981,7 +989,7 @@ shape = SubResource("BoxShape3D_r446x")
 [node name="PillarStaticBody5" type="StaticBody3D" parent="collision" index="17" unique_id=2020058836]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -6)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/PillarStaticBody5" index="0" unique_id=2103046258 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.25)
@@ -1010,7 +1018,7 @@ shape = SubResource("BoxShape3D_owph0")
 [node name="PillarStaticBody6" type="StaticBody3D" parent="collision" index="18" unique_id=764392040]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -20)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/PillarStaticBody6" index="0" unique_id=387236685 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 4.5, 0.25)
@@ -1031,7 +1039,7 @@ shape = SubResource("BoxShape3D_4866r")
 [node name="PillarStaticBody7" type="StaticBody3D" parent="collision" index="19" unique_id=1860313813]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -13)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/PillarStaticBody7" index="0" unique_id=517293262 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 4.5, 0.25)
@@ -1052,7 +1060,7 @@ shape = SubResource("BoxShape3D_j6i1k")
 [node name="WallTunnelStaticBody" type="StaticBody3D" parent="collision" index="20" unique_id=293855643]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.25, 2.5, -7.25)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/WallTunnelStaticBody" index="0" unique_id=124709709 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.375, 0.5, -0.125)
@@ -1105,7 +1113,7 @@ shape = SubResource("BoxShape3D_t4iwe")
 [node name="WallStaticBody" type="StaticBody3D" parent="collision" index="21" unique_id=211459189]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -3, 0.25)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/WallStaticBody" index="0" unique_id=1864439288 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.75, -0.125)
@@ -1126,7 +1134,7 @@ shape = SubResource("BoxShape3D_y8qhx")
 [node name="WallStaticBody2" type="StaticBody3D" parent="collision" index="22" unique_id=1404988649]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -2.25)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/WallStaticBody2" index="0" unique_id=778230455 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0625, 1.75, -0.125)
@@ -1143,7 +1151,7 @@ shape = SubResource("BoxShape3D_yd4yg")
 [node name="WallStaticBody3" type="StaticBody3D" parent="collision" index="23" unique_id=811540642]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24.75, 0, -2.25)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/WallStaticBody3" index="0" unique_id=967356405 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.375, 1.75, -0.125)
@@ -1152,7 +1160,7 @@ shape = SubResource("BoxShape3D_4cjn0")
 [node name="WallStaticBody4" type="StaticBody3D" parent="collision" index="24" unique_id=1647008841]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -21.25, 0, 7.5)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/WallStaticBody4" index="0" unique_id=1466695 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, 1.75, -0.125)
@@ -1165,7 +1173,7 @@ shape = SubResource("BoxShape3D_ytftf")
 [node name="WallStaticBody5" type="StaticBody3D" parent="collision" index="25" unique_id=576436377]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 0, 12)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/WallStaticBody5" index="0" unique_id=1468976342 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.75, -0.125)
@@ -1178,7 +1186,7 @@ shape = SubResource("BoxShape3D_30ttr")
 [node name="WallStaticBody6" type="StaticBody3D" parent="collision" index="26" unique_id=1204027882]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -10, 0, 15)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/WallStaticBody6" index="0" unique_id=639006821 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.375, 1.75, -0.125)
@@ -1195,7 +1203,7 @@ shape = SubResource("BoxShape3D_dmfm2")
 [node name="WallStaticBody7" type="StaticBody3D" parent="collision" index="27" unique_id=1420118463]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.25, 0, 19.75)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider2" parent="collision/WallStaticBody7" index="0" unique_id=592244014 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.375, 2, 2.125001)
@@ -1208,7 +1216,7 @@ shape = SubResource("BoxShape3D_iiby2")
 [node name="WallStaticBody8" type="StaticBody3D" parent="collision" index="28" unique_id=681758578]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -2.75, 1.625, 2.5)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider5" parent="collision/WallStaticBody8" index="0" unique_id=1270433285 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.875002, 0.875, -0.12499905)
@@ -1237,7 +1245,7 @@ shape = SubResource("BoxShape3D_ok8af")
 [node name="WallStaticBody9" type="StaticBody3D" parent="collision" index="29" unique_id=1721055425]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.75, 0, -24.75)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/WallStaticBody9" index="0" unique_id=364536106 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 1.75, -0.125)
@@ -1250,7 +1258,7 @@ shape = SubResource("BoxShape3D_aqpht")
 [node name="WallStaticBody10" type="StaticBody3D" parent="collision" index="30" unique_id=2062623626]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14, 0, -10.5)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/WallStaticBody10" index="0" unique_id=200783328 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.375002, 2.5, -0.125)
@@ -1267,7 +1275,7 @@ shape = SubResource("BoxShape3D_kpc7x")
 [node name="WallStaticBody11" type="StaticBody3D" parent="collision" index="31" unique_id=2079946370]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -10.25)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider5" parent="collision/WallStaticBody11" index="0" unique_id=2116135147 instance=ExtResource("4_seo54")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.875, 2.5, -7.25)
@@ -1292,7 +1300,7 @@ shape = SubResource("BoxShape3D_gsbnp")
 [node name="WallStaticBody12" type="StaticBody3D" parent="collision" index="32" unique_id=1529433420]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 0, 0.25)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/WallStaticBody12" index="0" unique_id=1186978115 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, 4.5, -0.125)
@@ -1309,7 +1317,7 @@ shape = SubResource("BoxShape3D_prydf")
 [node name="WallStaticBody13" type="StaticBody3D" parent="collision" index="33" unique_id=1216262376]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 0, 0.25)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/WallStaticBody13" index="0" unique_id=2026106670 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -0.125)
@@ -1330,7 +1338,7 @@ shape = SubResource("BoxShape3D_qbnlr")
 [node name="WallStaticBody14" type="StaticBody3D" parent="collision" index="34" unique_id=506394417]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 22, 0, 4.25)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider3" parent="collision/WallStaticBody14" index="0" unique_id=887075926 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.25, 2.5, -2.875)
@@ -1347,7 +1355,7 @@ shape = SubResource("BoxShape3D_je1ls")
 [node name="WallStaticBody15" type="StaticBody3D" parent="collision" index="35" unique_id=1963599730]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.25, 0, 25)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/WallStaticBody15" index="0" unique_id=1957126339 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.125, 2.5, -0.125)
@@ -1356,7 +1364,7 @@ shape = SubResource("BoxShape3D_np1dx")
 [node name="WallStaticBody16" type="StaticBody3D" parent="collision" index="36" unique_id=1681290010]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.75, 3.75, -15.75)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/WallStaticBody16" index="0" unique_id=72660247 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2.625, -0.125)
@@ -1365,7 +1373,7 @@ shape = SubResource("BoxShape3D_lhdyc")
 [node name="WallStaticBody17" type="StaticBody3D" parent="collision" index="37" unique_id=1861401057]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.25, 0, -19)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/WallStaticBody17" index="0" unique_id=184214165 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.75, -0.125)
@@ -1382,7 +1390,7 @@ shape = SubResource("BoxShape3D_qc0ob")
 [node name="WallStaticBody18" type="StaticBody3D" parent="collision" index="38" unique_id=1930163363]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, -2.25)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 49
 
 [node name="RectCollider" parent="collision/WallStaticBody18" index="0" unique_id=319365860 instance=ExtResource("4_seo54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.625, -0.125)
@@ -1630,16 +1638,16 @@ layers = 4
 material_override = ExtResource("8_wrwba")
 
 [node name="SchoolChairPhysics" parent="." index="63" unique_id=524059820 instance=ExtResource("10_0q75a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.562526, 0.98539567, 12.554466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.562526, 1.5013027, 12.554466)
 
 [node name="SchoolChairPhysics2" parent="." index="64" unique_id=1901366884 instance=ExtResource("10_0q75a")]
-transform = Transform3D(0.9892549, 0, 0.14620097, 0, 1, 0, -0.14620097, 0, 0.9892549, -7.4167433, 0.0023066106, -1.0209181)
+transform = Transform3D(0.9892549, 0, 0.14620097, 0, 1, 0, -0.14620097, 0, 0.9892549, -7.4167433, 0.5193823, -1.0209181)
 
 [node name="SchoolChairPhysics3" parent="." index="65" unique_id=1158700436 instance=ExtResource("10_0q75a")]
-transform = Transform3D(0.8188218, 0, -0.5740478, 0, 1, 0, 0.5740478, 0, 0.8188218, -4.599169, 0.0023066106, -0.71126604)
+transform = Transform3D(0.8188218, 0, -0.5740478, 0, 1, 0, 0.5740478, 0, 0.8188218, -4.599169, 0.5193823, -0.71126604)
 
 [node name="SchoolChairPhysics4" parent="." index="66" unique_id=960374122 instance=ExtResource("10_0q75a")]
-transform = Transform3D(-0.25944343, 0, -0.9657583, 0, 1, 0, 0.9657583, 0, -0.25944343, -4.037678, 0.0023066106, 2.8074431)
+transform = Transform3D(-0.25944343, 0, -0.9657583, 0, 1, 0, 0.9657583, 0, -0.25944343, -4.037678, 0.5193823, 2.8074431)
 
 [node name="VintageCabinet" parent="." index="67" unique_id=1391025079 instance=ExtResource("11_j8ih1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.5, 0, 12)
@@ -1654,21 +1662,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.569903, 0, -1.1797462)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 3.75)
 
 [node name="GreenChairPhysics" parent="." index="71" unique_id=2055800924 instance=ExtResource("15_av4jq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.853134, 0, 3.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.853134, 0.46269548, 3.75)
 
 [node name="RockingChairPhysics" parent="." index="72" unique_id=517176539 instance=ExtResource("16_s73p8")]
-transform = Transform3D(0.12940954, 0.8660254, -0.48296288, -0.22414389, 0.5, 0.83651626, 0.9659258, 7.450581e-09, 0.25881907, -19, 0.75, 6.25)
+transform = Transform3D(0.22414389, 0.5, -0.83651626, -0.12940952, 0.8660253, 0.48296285, 0.96592575, -4.440892e-16, 0.25881904, -19, 1.0157841, 6.25)
 
 [node name="FireAlarm" parent="." index="73" unique_id=646455141 instance=ExtResource("17_gb8yi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.667814, 1.418001, -2.2500005)
 
-[node name="wooden_ladder" parent="." index="74" unique_id=1230734075 instance=ExtResource("19_6lawt")]
-transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 2.75, -0.25159347, 21)
-
-[node name="CeilingLightOff" parent="." index="75" unique_id=1659200182 instance=ExtResource("2_cxxje")]
+[node name="CeilingLightOff" parent="." index="74" unique_id=1659200182 instance=ExtResource("2_cxxje")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.25, 5, 21.6)
 
-[node name="CeilingLightOff2" parent="." index="76" unique_id=1790175558 instance=ExtResource("2_cxxje")]
+[node name="CeilingLightOff2" parent="." index="75" unique_id=1790175558 instance=ExtResource("2_cxxje")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.25, 5, 17.6)
 
+[node name="WoodenLadderParent" parent="." index="76" unique_id=1062347463 instance=ExtResource("19_6lawt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 0, 19.25)
+
+[node name="StepsCollider" parent="WoodenLadderParent/WoodenLadder" parent_id_path=PackedInt32Array(1062347463, 1432222003) index="2" unique_id=415124710]
+shape = SubResource("BoxShape3D_7je4l")
+
+[node name="SupportsCollider" parent="WoodenLadderParent/SupportRigidBody" parent_id_path=PackedInt32Array(1062347463, 1662395064) index="1" unique_id=184477877]
+shape = SubResource("BoxShape3D_3ijsh")
+
 [editable path="lights/CeilingLight3"]
+[editable path="WoodenLadderParent"]

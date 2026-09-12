@@ -1,3 +1,3 @@
 - One-sided wall meshes only
 - If no connections, leave large space between rooms to avoid light bleed
-- 
+- default wall collider size should be 0.5, not 0.25. Helps with glitches. Can obviously still have thin walls, maybe even impossibly thin ones

@@ -3,56 +3,56 @@
 [ext_resource type="ArrayMesh" uid="uid://dggbumjrdc4kg" path="res://objects/furniture/school_chair/res/school_chair.glb" id="1_tqvvg"]
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/rect_collider.tscn" id="2_1q6os"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1q6os"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_5rahp"]
 resource_local_to_scene = true
 size = Vector3(0.5671997, 0.08251953, 0.6179199)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_330st"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_lbm5g"]
 resource_local_to_scene = true
 size = Vector3(0.5430908, 0.55978394, 0.07117462)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6o7wb"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_okbnt"]
 resource_local_to_scene = true
 size = Vector3(0.05, 0.5763264, 0.05)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_suryb"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_uy034"]
 resource_local_to_scene = true
 size = Vector3(0.05, 0.6054659, 0.05)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_m7hjs"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_tdwk1"]
 resource_local_to_scene = true
 size = Vector3(0.05, 0.5763264, 0.05)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fl2ck"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_nbps8"]
 resource_local_to_scene = true
 size = Vector3(0.05, 0.6054659, 0.05)
 
 [node name="SchoolChair" type="StaticBody3D" unique_id=917599130]
-collision_mask = 17
+collision_mask = 49
 
 [node name="SchoolChairMesh" type="MeshInstance3D" parent="." unique_id=1615369478]
 mesh = ExtResource("1_tqvvg")
 
 [node name="RectCollider" parent="." unique_id=415124710 instance=ExtResource("2_1q6os")]
 transform = Transform3D(0.99998623, 0, 0, 0, 0.99998623, 0, 0, 0, 0.99998623, 0.00021357775, 0.54889095, 0.071899444)
-shape = SubResource("BoxShape3D_1q6os")
+shape = SubResource("BoxShape3D_5rahp")
 
 [node name="RectCollider2" parent="." unique_id=1721755991 instance=ExtResource("2_1q6os")]
 transform = Transform3D(0.9999619, 0, 0, 0, 0.99043024, 0.13773401, 0, -0.13773401, 0.99043024, 0.0046993922, 0.87974757, -0.22825183)
-shape = SubResource("BoxShape3D_330st")
+shape = SubResource("BoxShape3D_lbm5g")
 
 [node name="RectCollider6" parent="." unique_id=1709909359 instance=ExtResource("2_1q6os")]
 transform = Transform3D(0.9999818, 0, 0, 0, 0.9042615, 0.42693147, 0, -0.42693147, 0.9042615, -0.30331638, 0.2743453, 0.22867322)
-shape = SubResource("BoxShape3D_6o7wb")
+shape = SubResource("BoxShape3D_okbnt")
 
 [node name="RectCollider7" parent="." unique_id=1200750628 instance=ExtResource("2_1q6os")]
 transform = Transform3D(0.9999788, 0, 0, 0, 0.82557696, -0.5642438, 0, 0.5642438, 0.82557696, -0.30327114, 0.26716858, -0.19051881)
-shape = SubResource("BoxShape3D_suryb")
+shape = SubResource("BoxShape3D_uy034")
 
 [node name="RectCollider8" parent="." unique_id=152583884 instance=ExtResource("2_1q6os")]
 transform = Transform3D(0.99998164, 0, 0, 0, 0.90426135, 0.42693138, 0, -0.42693138, 0.90426135, 0.302698, 0.27434525, 0.22867317)
-shape = SubResource("BoxShape3D_m7hjs")
+shape = SubResource("BoxShape3D_tdwk1")
 
 [node name="RectCollider9" parent="." unique_id=573036951 instance=ExtResource("2_1q6os")]
 transform = Transform3D(0.9999786, 0, 0, 0, 0.8255768, -0.5642437, 0, 0.5642437, 0.8255768, 0.30274323, 0.26716852, -0.19051877)
-shape = SubResource("BoxShape3D_fl2ck")
+shape = SubResource("BoxShape3D_nbps8")

@@ -41,9 +41,9 @@ var movePriority = { left = false, right = false, forward = false, backward = fa
 var mouseCaptured = false
 var onFloorLastFrame = false
 var justJumped = false
-var objectInReachRef: RigidBody3D = null
+var objectInReachRef: Holdable = null
 var objectInReachMesh: MeshInstance3D = null
-var heldObjectRef: RigidBody3D = null # grabbed or dragged
+var heldObjectRef: Holdable = null # grabbed or dragged
 
 #state machine
 var jumping = false
@@ -54,6 +54,7 @@ var climbing = false
 var squeezing = false
 var photographing = false
 var grabbing = false
+var rotating = false
 var dragging = false
 
 #runtime calculated state
@@ -82,7 +83,7 @@ func _physics_process(_delta: float) -> void:
     if (onFloorThisFrame && !onFloorLastFrame):
         handle_land_jump()
     onFloorLastFrame = onFloorThisFrame
-    if (Input.is_action_pressed("rotate") && grabbing && heldObjectRef != null):
+    if (rotating && grabbing && heldObjectRef != null):
         # rotate held object
         heldObjectRef.angular_velocity = (Vector3(0,-1,0)*cameraMoveDir.x + camera.global_basis.x * cameraMoveDir.y) * HELD_OBJECT_ROTATION_SPEED
     else:
@@ -129,7 +130,7 @@ func _physics_process(_delta: float) -> void:
     for i in get_slide_collision_count():
         var collision = get_slide_collision(i)
         var collider = collision.get_collider()
-        if collider is RigidBody3D and collider.get_parent() is not WoodenLadder:
+        if collider is RigidBody3D and not collider.is_in_group("player_cant_shove"):
             var oppositeCollisionDir = -collision.get_normal()
             oppositeCollisionDir.y = 0
             var velocityInShoveDir = max(
@@ -297,10 +298,16 @@ func _handle_grab_deferred():
     grabbing = true
     heldObjectRef = objectInReachRef
     clear_hover_material()
+    var heldObjectParent = heldObjectRef.get_parent()
+    if (heldObjectRef is Holdable):
+        heldObjectRef.on_hold()
+    elif (heldObjectParent is Holdable):
+        heldObjectParent.on_hold()
 func handle_drag():
     pass
 
 func handle_drop():
+    
     heldObjectRef = null
     grabbing = false
     dragging = false
@@ -317,7 +324,7 @@ func on_room_for_state_change_body_exited(_body: Node3D):
                 handle_run()
 
 func on_grab_anchor_entered(body: Node3D):
-    if (body is RigidBody3D && objectInReachRef != body && can_hold(150.0)):
+    if (body is Holdable && objectInReachRef != body && can_hold(150.0)):
         objectInReachRef = body
         objectInReachMesh = Utils.get_child_of_type(body, MeshInstance3D)
         apply_hover_material()
@@ -376,6 +383,14 @@ func handle_key_input(event: InputEvent ) -> void:
             handle_grab()
         elif (can_hold(150.0) && objectInReachRef != null):
             handle_drag()
+    elif (event.is_action_pressed("rotate")):
+        if grabbing && heldObjectRef != null:
+            rotating = true
+            heldObjectRef.on_rotate_start()
+    elif (event.is_action_released("rotate")):
+        rotating = false
+        if heldObjectRef != null:
+            heldObjectRef.on_rotate_end()
     elif (event.is_action_pressed("run")):
         if (!running && can_run()):
             handle_stand()

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c0thkvhu37he4" path="res://objects/player/player.tscn" id="1_2elnx"]
 [ext_resource type="Script" uid="uid://c61w1b375al4r" path="res://scripts/level.gd" id="1_bkkah"]
 [ext_resource type="PackedScene" uid="uid://edeppxnasd36" path="res://rooms/room1/room1.tscn" id="4_3o4py"]
+[ext_resource type="PackedScene" uid="uid://gluxbvhkfuna" path="res://objects/furniture/rocking_chair/rocking_chair_physics.tscn" id="5_ftfrf"]
 [ext_resource type="PackedScene" uid="uid://bm41jmwi0xr2p" path="res://ui/popups/popup_for_area.tscn" id="7_i6nmd"]
 
 [sub_resource type="Environment" id="Environment_5q0ne"]
@@ -37,4 +38,7 @@ popupText = "Welcome to the backrooms tutorial text!"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 0, -11.5)
 
 [node name="Player" parent="." unique_id=66642413 instance=ExtResource("1_2elnx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.715155, -1.7881393e-07, -6.014971)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.05679, -1.1324883e-06, -1.9886065)
+
+[node name="RockingChairPhysics" parent="." unique_id=517176539 instance=ExtResource("5_ftfrf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.957693, 0.5812132, -3.5053034)

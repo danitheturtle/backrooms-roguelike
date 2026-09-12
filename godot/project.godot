@@ -32,6 +32,10 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray()
 
+[global_group]
+
+player_cant_shove="Prevents player from applying shove force to a rigidbody. Useful for climbable things"
+
 [input]
 
 jump={
@@ -121,6 +125,8 @@ throw={
 3d_physics/layer_2="Ceiling"
 3d_physics/layer_3="Walls"
 3d_physics/layer_4="Floor"
+3d_physics/layer_5="Player"
+3d_physics/layer_6="HeldProp"
 
 [physics]
 

@@ -1,0 +1,2 @@
+- The primary horror should come from claustrophobia, environmental storytelling, and unsettling impossible spaces. NOT monsters/entities, though those can exist in some fashion
+- Might add multiplayer. build in a way where that's possible

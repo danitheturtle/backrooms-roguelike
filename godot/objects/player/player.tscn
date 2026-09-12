@@ -66,8 +66,11 @@ height = 1.65
 collision_layer = 16
 collision_mask = 15
 floor_constant_speed = true
+floor_max_angle = 0.6981317
 floor_snap_length = 1.0
 platform_on_leave = 2
+platform_floor_layers = 4278190089
+platform_wall_layers = 5
 script = ExtResource("1_3vyb7")
 
 [node name="Camera" type="Camera3D" parent="." unique_id=1892713137]

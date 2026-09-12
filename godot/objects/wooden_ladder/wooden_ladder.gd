@@ -1,2 +1,2 @@
-extends Node3D
+extends Holdable
 class_name WoodenLadder

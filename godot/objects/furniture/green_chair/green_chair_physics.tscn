@@ -1,19 +1,16 @@
 [gd_scene format=3 uid="uid://b3txy1m8ovq0n"]
 
+[ext_resource type="Script" uid="uid://edobctxmw14j" path="res://scripts/holdable.gd" id="1_4ow4n"]
 [ext_resource type="ArrayMesh" uid="uid://igghnp03nive" path="res://objects/furniture/green_chair/res/green_chair.glb" id="1_m101v"]
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/rect_collider.tscn" id="2_51w33"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bcr6u"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ow4n"]
 resource_local_to_scene = true
 size = Vector3(0.7546509, 0.20791015, 0.80576783)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4ow4n"]
-resource_local_to_scene = true
-size = Vector3(0.7, 0.83361816, 0.1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ybh3"]
 resource_local_to_scene = true
-size = Vector3(0.088256836, 0.575, 0.08502197)
+size = Vector3(0.7, 0.83361816, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_utt7s"]
 resource_local_to_scene = true
@@ -21,54 +18,63 @@ size = Vector3(0.088256836, 0.575, 0.08502197)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k37vf"]
 resource_local_to_scene = true
-size = Vector3(0.075, 0.41003418, 0.0890625)
+size = Vector3(0.088256836, 0.575, 0.08502197)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tlpm5"]
 resource_local_to_scene = true
-size = Vector3(0.075, 0.40576172, 0.0890625)
+size = Vector3(0.075, 0.41003418, 0.0890625)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y554v"]
 resource_local_to_scene = true
-size = Vector3(0.1, 0.5082153, 0.5857056)
+size = Vector3(0.075, 0.40576172, 0.0890625)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3wewb"]
+resource_local_to_scene = true
+size = Vector3(0.1, 0.5082153, 0.5857056)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sxh4c"]
 resource_local_to_scene = true
 size = Vector3(0.1, 0.5082153, 0.57642823)
 
 [node name="GreenChairPhysics" type="RigidBody3D" unique_id=2055800924]
 collision_mask = 31
+mass = 10.0
+center_of_mass_mode = 1
+script = ExtResource("1_4ow4n")
+heldDistance = 1.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1348561036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4626956, 0.09170556)
 mesh = ExtResource("1_m101v")
 
 [node name="RectCollider" parent="." unique_id=415124710 instance=ExtResource("2_51w33")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012750179, 0.53011864, 0.0063079894)
-shape = SubResource("BoxShape3D_bcr6u")
-
-[node name="RectCollider2" parent="." unique_id=1531419301 instance=ExtResource("2_51w33")]
-transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, -0.010546833, 1.0310885, -0.42376596)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012750179, 0.067423046, 0.09801355)
 shape = SubResource("BoxShape3D_4ow4n")
 
-[node name="RectCollider3" parent="." unique_id=393810486 instance=ExtResource("2_51w33")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.436483, 0.2875, 0.34585524)
+[node name="RectCollider2" parent="." unique_id=1531419301 instance=ExtResource("2_51w33")]
+transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, -0.010546833, 0.5683929, -0.3320604)
 shape = SubResource("BoxShape3D_5ybh3")
 
-[node name="RectCollider4" parent="." unique_id=1659589830 instance=ExtResource("2_51w33")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42923477, 0.2875, 0.34585524)
+[node name="RectCollider3" parent="." unique_id=393810486 instance=ExtResource("2_51w33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.436483, -0.1751956, 0.4375608)
 shape = SubResource("BoxShape3D_utt7s")
 
-[node name="RectCollider5" parent="." unique_id=1320311202 instance=ExtResource("2_51w33")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26250005, 0.20501709, -0.3195313)
+[node name="RectCollider4" parent="." unique_id=1659589830 instance=ExtResource("2_51w33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42923477, -0.1751956, 0.4375608)
 shape = SubResource("BoxShape3D_k37vf")
 
-[node name="RectCollider6" parent="." unique_id=1512898688 instance=ExtResource("2_51w33")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2662884, 0.20288086, -0.3195313)
+[node name="RectCollider5" parent="." unique_id=1320311202 instance=ExtResource("2_51w33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26250005, -0.2576785, -0.22782573)
 shape = SubResource("BoxShape3D_tlpm5")
 
-[node name="RectCollider8" parent="." unique_id=1185666114 instance=ExtResource("2_51w33")]
-transform = Transform3D(0.9848077, 0, 0.1736482, 0, 1, 0, -0.1736482, 0, 0.9848077, 0.38659468, 0.7086309, -0.10506131)
+[node name="RectCollider6" parent="." unique_id=1512898688 instance=ExtResource("2_51w33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2662884, -0.25981474, -0.22782573)
 shape = SubResource("BoxShape3D_y554v")
 
-[node name="RectCollider9" parent="." unique_id=1134728995 instance=ExtResource("2_51w33")]
-transform = Transform3D(0.98690915, 0, -0.16127743, 0, 1, 0, 0.16127743, 0, 0.98690915, -0.38449925, 0.7086309, -0.10056056)
+[node name="RectCollider8" parent="." unique_id=1185666114 instance=ExtResource("2_51w33")]
+transform = Transform3D(0.9848077, 0, 0.1736482, 0, 1, 0, -0.1736482, 0, 0.9848077, 0.38659468, 0.24593532, -0.013355747)
 shape = SubResource("BoxShape3D_3wewb")
+
+[node name="RectCollider9" parent="." unique_id=1134728995 instance=ExtResource("2_51w33")]
+transform = Transform3D(0.98690915, 0, -0.16127743, 0, 1, 0, 0.16127743, 0, 0.98690915, -0.38449925, 0.24593532, -0.008855)
+shape = SubResource("BoxShape3D_sxh4c")
