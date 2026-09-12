@@ -1,4 +1,4 @@
-extends Node3D
+extends RigidBody3D
 class_name Holdable
 
 @export var heldDistance = 2.0
@@ -12,13 +12,14 @@ func _ready() -> void:
         grabOrigin = grabOriginNode.global_position
 
 func on_hold():
-    pass
+    # move to held layer to avoid collision with player and wierd skyrim-style bullshit
+    collision_layer = 0b00000000000000100000
 
 func on_drop():
-    pass
+    collision_layer = 0b00000000000000000001
 
 func on_rotate_start():
     pass
 
-func on_rotate_end():
+func on_rotate_stop():
     pass

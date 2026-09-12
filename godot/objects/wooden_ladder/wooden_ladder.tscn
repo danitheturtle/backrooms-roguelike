@@ -1,24 +1,22 @@
 [gd_scene format=3 uid="uid://cj3x3dbcuf7ja"]
 
-[ext_resource type="Script" uid="uid://d4d1qqb5wae7y" path="res://objects/wooden_ladder/editor_state_toggle.gd" id="1_1y61k"]
 [ext_resource type="Script" uid="uid://bdtdhexv2u2mh" path="res://objects/wooden_ladder/wooden_ladder.gd" id="1_aqc6c"]
 [ext_resource type="ArrayMesh" uid="uid://cibiji6jxusk3" path="res://objects/wooden_ladder/res/wooden_ladder.glb" id="1_pqyb0"]
 [ext_resource type="ArrayMesh" uid="uid://cxsv14xgq0p0l" path="res://objects/wooden_ladder/res/wooden_ladder_supports.glb" id="2_4j06i"]
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/rect_collider.tscn" id="2_aqc6c"]
 [ext_resource type="Material" uid="uid://c5a6tmd4jjju1" path="res://objects/wooden_ladder/res/wooden_ladder.tres" id="3_aqc6c"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1y61k"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_aqc6c"]
 resource_local_to_scene = true
 size = Vector3(0.15463257, 2.562683, 0.87213135)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_awx4h"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_1y61k"]
 resource_local_to_scene = true
 size = Vector3(0.11796188, 2.098463, 0.87213135)
 
-[node name="WoodenLadderParent" type="Node3D" unique_id=1062347463]
-script = ExtResource("1_1y61k")
+[node name="WoodenLadder" type="Node3D" unique_id=1062347463]
 
-[node name="WoodenLadder" type="RigidBody3D" parent="." unique_id=1432222003 groups=["player_cant_shove"]]
+[node name="Ladder" type="RigidBody3D" parent="." unique_id=1432222003 groups=["player_cant_shove"]]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 2, 0)
 collision_mask = 31
 mass = 10.0
@@ -26,17 +24,17 @@ center_of_mass_mode = 1
 center_of_mass = Vector3(-0.41183284, -0.9211441, 0)
 script = ExtResource("1_aqc6c")
 
-[node name="GrabOrigin" type="Marker3D" parent="WoodenLadder" unique_id=343746697]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22986507, -0.41299558, 0)
+[node name="GrabOrigin" type="Marker3D" parent="Ladder" unique_id=343746697]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -0.31454206, -0.611264, 0)
 
-[node name="StepsMeshInstance" type="MeshInstance3D" parent="WoodenLadder" unique_id=1879803046]
+[node name="StepsMeshInstance" type="MeshInstance3D" parent="Ladder" unique_id=1879803046]
 mesh = ExtResource("1_pqyb0")
 
-[node name="StepsCollider" parent="WoodenLadder" unique_id=415124710 instance=ExtResource("2_aqc6c")]
+[node name="StepsCollider" parent="Ladder" unique_id=415124710 instance=ExtResource("2_aqc6c")]
 transform = Transform3D(0.93899703, 0.34392524, 0, -0.34392524, 0.93899703, 0, 0, 0, 1, -0.35162842, -0.7630869, 0.0015563965)
-shape = SubResource("BoxShape3D_1y61k")
+shape = SubResource("BoxShape3D_aqc6c")
 
-[node name="CenterOfMass" type="Marker3D" parent="WoodenLadder" unique_id=2029596967]
+[node name="CenterOfMass" type="Marker3D" parent="Ladder" unique_id=2029596967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41183284, -0.9211441, 0)
 
 [node name="SupportRigidBody" type="RigidBody3D" parent="." unique_id=1662395064 groups=["player_cant_shove"]]
@@ -52,14 +50,14 @@ surface_material_override/0 = ExtResource("3_aqc6c")
 
 [node name="SupportsCollider" parent="SupportRigidBody" unique_id=184477877 instance=ExtResource("2_aqc6c")]
 transform = Transform3D(0.93912035, -0.34358817, 0, 0.34358817, 0.93912035, 0, 0, 0, 1, 0.42962044, -0.98025316, 0.0015563965)
-shape = SubResource("BoxShape3D_awx4h")
+shape = SubResource("BoxShape3D_1y61k")
 
 [node name="LadderHinge" type="HingeJoint3D" parent="." unique_id=1166785200]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-node_a = NodePath("../WoodenLadder")
+node_a = NodePath("../Ladder")
 node_b = NodePath("../SupportRigidBody")
 angular_limit/enable = true
 angular_limit/upper = 0.6981317
 angular_limit/lower = 0.0
-motor/enable = true
-motor/target_velocity = -0.43633232
+motor/target_velocity = -0.7853982
+motor/max_impulse = 4.0

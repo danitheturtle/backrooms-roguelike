@@ -17,10 +17,8 @@ var HOVER_OVER_OBJECT_MATERIAL = preload("res://assets/materials/HoverOverObject
 @export var CROUCH_HEIGHT = 0.95
 @export var CRAWL_HEIGHT = 0.45
 @export var SQUEEZE_RADIUS = 0.2
-@export var HELD_OBJECT_DISTANCE = 2.25
 @export var HELD_OBJECT_ROTATION_SPEED = 10.0
 @export var SLOWED_CAMERA_DAMPING = 0.4
-@export var GRAB_ARM_INFLATED_RADIUS = 0.5
 var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
 var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
@@ -140,7 +138,6 @@ func _physics_process(_delta: float) -> void:
             var massRatio = min(1.0, PLAYER_MASS / collider.mass)
             var shoveForce = SHOVING_FORCE * massRatio
             collider.apply_impulse(oppositeCollisionDir * velocityInShoveDir * shoveForce, collision.get_position() - collider.global_position)
-            
     move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -289,29 +286,24 @@ func can_hold(maxMass: float = 20.0):
     else:
         return false
 func handle_grab():
-    grabArm.collision_mask = 0b00000000000000001110
-    grabArm.spring_length = HELD_OBJECT_DISTANCE
-    grabArm.shape.radius = GRAB_ARM_INFLATED_RADIUS
+    objectInReachRef.on_hold()
+    grabArm.spring_length = objectInReachRef.heldDistance
+    grabArm.shape.radius = objectInReachRef.heldCollisionRadius
+    print(grabArm.shape.radius)
     # causes visual bug as arm rapidly shifts if we don't defer
     call_deferred("_handle_grab_deferred")
 func _handle_grab_deferred():
     grabbing = true
     heldObjectRef = objectInReachRef
     clear_hover_material()
-    var heldObjectParent = heldObjectRef.get_parent()
-    if (heldObjectRef is Holdable):
-        heldObjectRef.on_hold()
-    elif (heldObjectParent is Holdable):
-        heldObjectParent.on_hold()
 func handle_drag():
     pass
 
 func handle_drop():
-    
+    heldObjectRef.on_drop()
     heldObjectRef = null
     grabbing = false
     dragging = false
-    grabArm.collision_mask = 0b00000000000000001111
     grabArm.spring_length = grabArmLength
     grabArm.shape.radius = grabArmShapeRadius
     handle_stand()
@@ -390,7 +382,7 @@ func handle_key_input(event: InputEvent ) -> void:
     elif (event.is_action_released("rotate")):
         rotating = false
         if heldObjectRef != null:
-            heldObjectRef.on_rotate_end()
+            heldObjectRef.on_rotate_stop()
     elif (event.is_action_pressed("run")):
         if (!running && can_run()):
             handle_stand()
