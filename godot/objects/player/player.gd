@@ -4,7 +4,7 @@ class_name Player
 var HOVER_OVER_OBJECT_MATERIAL = preload("res://assets/materials/HoverOverObject/HoverOverObject.tres")
 
 @export var PLAYER_SPEED = 4.0
-@export var PLAYER_MASS = 80.0
+@export var PLAYER_MASS = 40.0
 @export var SPRINT_SPEED = 7.0
 @export var SLOWED_SPEED = 1.5
 @export var EXTRA_SLOW_SPEED = 0.5
@@ -173,6 +173,9 @@ func can_crouch():
     else:
         return can_shape_change()
 func handle_crouch():
+    if (grabbing || dragging || photographing):
+        # stop photographing
+        handle_drop()
     # move camera down and set player height to crouched
     playerShape.height = CROUCH_HEIGHT
     playerShape.radius = standingRadius
@@ -243,8 +246,8 @@ func handle_run():
     running = true
     clear_hover_material()
     if (grabbing || dragging || photographing):
-        # drop out of alternate states
-        pass
+        # stop photographing
+        handle_drop()
 
 ###
 ### STANDING
@@ -269,12 +272,13 @@ func handle_stand():
             on_grab_anchor_entered(nextBody)
             break
 
+
 ###
-### GRABBING
+### Grabbing / Dragging
 ###
-func can_grab():
-    if (!dragging && !jumping && !crouching && !crawling && !squeezing && !running && !climbing && !photographing && onFloorLastFrame):
-        if (objectInReachRef != null && objectInReachRef.mass > 20.0):
+func can_hold(maxMass: float = 20.0):
+    if (!dragging && !grabbing && !jumping && !crouching && !crawling && !squeezing && !running && !climbing && !photographing && onFloorLastFrame):
+        if (objectInReachRef != null && objectInReachRef.mass > maxMass):
             return false
         else:
             return true
@@ -288,18 +292,7 @@ func handle_grab():
 func _handle_grab_deferred():
     grabbing = true
     heldObjectRef = objectInReachRef
-
-###
-### DRAGGING
-###
-func can_drag():
-    if (!grabbing && !jumping && !crouching && !crawling && !squeezing && !running && !climbing && !photographing && onFloorLastFrame):
-        if (objectInReachRef != null && objectInReachRef.mass > 150.0):
-            return false
-        else:
-            return true
-    else:
-        return false
+    clear_hover_material()
 func handle_drag():
     pass
 
@@ -319,7 +312,7 @@ func on_room_for_state_change_body_exited(_body: Node3D):
                 handle_run()
 
 func on_grab_anchor_entered(body: Node3D):
-    if (body is RigidBody3D && objectInReachRef != body && (can_grab() || can_drag())):
+    if (body is RigidBody3D && objectInReachRef != body && can_hold(150.0)):
         objectInReachRef = body
         objectInReachMesh = Utils.get_child_of_type(body, MeshInstance3D)
         apply_hover_material()
@@ -374,9 +367,9 @@ func handle_key_input(event: InputEvent ) -> void:
     elif (event.is_action_released("hold")):
         if (grabbing || dragging):
             handle_drop()
-        elif (!grabbing && can_grab() && objectInReachRef != null):
+        elif (can_hold(15.0) && objectInReachRef != null):
             handle_grab()
-        elif (!dragging && can_drag() && objectInReachRef != null):
+        elif (can_hold(150.0) && objectInReachRef != null):
             handle_drag()
     elif (event.is_action_pressed("run")):
         if (!running && can_run()):

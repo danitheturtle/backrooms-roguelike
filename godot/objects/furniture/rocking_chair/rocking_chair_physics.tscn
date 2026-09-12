@@ -80,7 +80,7 @@ radius = 0.06936573
 collision_mask = 31
 mass = 5.0
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, 0.675, -0.075)
+center_of_mass = Vector3(0, 0.3, 0)
 
 [node name="GrabOrigin" type="Marker3D" parent="." unique_id=399382757]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.675, -0.075)

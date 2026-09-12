@@ -88,7 +88,7 @@ spot_angle = 40.0
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 collision_mask = 15
 shape = SubResource("SphereShape3D_5q0ne")
-spring_length = 2.5
+spring_length = 2.25
 
 [node name="Anchor" type="Area3D" parent="Camera/GrabArm" unique_id=1246998598]
 collision_layer = 0
