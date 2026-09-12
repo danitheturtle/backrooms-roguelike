@@ -1,14 +1,13 @@
 extends CharacterBody3D
 class_name Player
 
-var HOVER_OVER_OBJECT_MATERIAL = preload("res://assets/materials/HoverOverObject/HoverOverObject.tres")
-
 @export var PLAYER_SPEED = 4.0
 @export var PLAYER_MASS = 40.0
 @export var SPRINT_SPEED = 7.0
 @export var SLOWED_SPEED = 1.5
 @export var EXTRA_SLOW_SPEED = 0.5
-@export var GRABBING_SPEED = 2.5
+@export var CLIMB_SPEED = 2.0
+@export var GRAB_SPEED = 2.5
 @export var CAMERA_ANGULAR_VELOCITY = 0.1
 @export var SHOVING_FORCE = 2.0
 @export var STRONGER_DOWNWARD_GRAVITY_THRESHOLD = 5.0
@@ -26,12 +25,17 @@ var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vec
 @onready var camera: Camera3D = $Camera
 @onready var playerCollider: CollisionShape3D = $PlayerCollisionShape3D
 @onready var playerShape: CapsuleShape3D = $PlayerCollisionShape3D.shape
-@onready var roomForStateChangeArea: Area3D = $RoomForStateChangeDetector
 @onready var flashlight: SpotLight3D = $Camera/Flashlight
 @onready var grabArm: SpringArm3D = $Camera/GrabArm
 @onready var grabAnchor: Area3D = $Camera/GrabArm/Anchor
+@onready var roomForStateChangeArea: Area3D = $RoomForStateChangeDetector
 @onready var roomForStateChangeCollider: CollisionShape3D = $RoomForStateChangeDetector/StateChangeCollisionShape3D
 @onready var roomForStateChangeShape: CapsuleShape3D = roomForStateChangeCollider.shape
+@onready var adjacentArea: Area3D = $AdjacentDetector
+@onready var adjacentCollider: CollisionShape3D = $AdjacentDetector/CollisionShape3D
+@onready var adjacentShape: BoxShape3D = adjacentCollider.shape
+
+
 # local state
 var moveDir = Vector2(0.0,0.0)
 var cameraMoveDir = Vector2(0.0,0.0)
@@ -39,9 +43,15 @@ var movePriority = { left = false, right = false, forward = false, backward = fa
 var mouseCaptured = false
 var onFloorLastFrame = false
 var justJumped = false
+# holdable object targeted by spring arm (but not picked up)
 var objectInReachRef: Holdable = null
-var objectInReachMesh: MeshInstance3D = null
-var heldObjectRef: Holdable = null # grabbed or dragged
+# grabbed or dragged
+var heldObjectRef: Holdable = null
+# some objects change player controls contextually based on adjacency, eg ladders
+var adjacentRef: Node3D = null
+# climbing uses path-following
+var climbPath: Path3D = null
+var climbCurve: Curve3D = null
 
 #state machine
 var jumping = false
@@ -72,6 +82,8 @@ func _ready() -> void:
     grabArmLength = grabArm.spring_length
     grabArmShapeRadius = grabArm.shape.radius
     roomForStateChangeArea.body_exited.connect(on_room_for_state_change_body_exited)
+    adjacentArea.body_entered.connect(on_adjacent_entered)
+    adjacentArea.body_exited.connect(on_adjacent_exited)
     grabAnchor.body_entered.connect(on_grab_anchor_entered)
     grabAnchor.body_exited.connect(on_grab_anchor_exited)
     capture_mouse()
@@ -83,7 +95,7 @@ func _physics_process(_delta: float) -> void:
     onFloorLastFrame = onFloorThisFrame
     if (rotating && grabbing && heldObjectRef != null):
         # rotate held object
-        heldObjectRef.angular_velocity = (Vector3(0,-1,0)*cameraMoveDir.x + camera.global_basis.x * cameraMoveDir.y) * HELD_OBJECT_ROTATION_SPEED
+        heldObjectRef.angular_velocity = (-camera.global_basis.y*cameraMoveDir.x + camera.global_basis.x * cameraMoveDir.y) * HELD_OBJECT_ROTATION_SPEED
     else:
         var cameraVelocity = -CAMERA_ANGULAR_VELOCITY
         if (grabbing || dragging):
@@ -93,18 +105,52 @@ func _physics_process(_delta: float) -> void:
         rotate_y(cameraMoveDir.x * cameraVelocity)
         if (mouseCaptured):
             cameraMoveDir = Vector2.ZERO
-    #determine move speed based on state
-    var movementSpeed = PLAYER_SPEED
-    if (running):
-        movementSpeed = SPRINT_SPEED
-    elif (crouching || photographing || squeezing || dragging):
-        movementSpeed = SLOWED_SPEED
-    elif (grabbing):
-        movementSpeed = GRABBING_SPEED
-    elif (crawling || dragging):
-        movementSpeed = EXTRA_SLOW_SPEED
-    #multiply basis vectors by input direction. preserve vertical velocity
-    velocity = Vector3(0,velocity.y,0) + Vector3(basis.x * moveDir.x + basis.z * moveDir.y).limit_length() * movementSpeed
+    if !climbing:
+        #determine move speed based on state
+        var movementSpeed = PLAYER_SPEED
+        if (running):
+            movementSpeed = SPRINT_SPEED
+        elif (crouching || photographing || squeezing || dragging):
+            movementSpeed = SLOWED_SPEED
+        elif (grabbing):
+            movementSpeed = GRAB_SPEED
+        elif (crawling || dragging):
+            movementSpeed = EXTRA_SLOW_SPEED
+        #multiply basis vectors by input direction. preserve vertical velocity
+        velocity = Vector3(0,velocity.y,0) + Vector3(basis.x * moveDir.x + basis.z * moveDir.y).limit_length() * movementSpeed
+    else:
+        # climbing behavior based velocity
+        if climbCurve != null && climbPath != null:
+            var playerPosInLocalCurveSpace = climbPath.to_local(global_position)
+            var closestOffset = climbCurve.get_closest_offset(playerPosInLocalCurveSpace)
+            # adjust offset based on direction clamped to up/down
+            closestOffset -= moveDir.y * CLIMB_SPEED
+            var nearestPoint = climbPath.global_position + climbCurve.sample_baked(closestOffset)
+            # get required velocity to keep player at new location
+            velocity = nearestPoint - global_position
+    #handle jump
+    if justJumped: handle_jump()
+    # some behaviors only happen when not climbing, like gravity and shoving
+    if !climbing:
+        #apply gravity acceleration. apply more strongly if falling
+        if (velocity.y >= STRONGER_DOWNWARD_GRAVITY_THRESHOLD):
+            velocity += GRAVITY*_delta * GRAVITY_VECTOR
+        else:
+            velocity += GRAVITY*STRONGER_GRAVITY_MULTIPLIER*_delta * GRAVITY_VECTOR
+        # shove any rigidbodies
+        for i in get_slide_collision_count():
+            var collision = get_slide_collision(i)
+            var collider = collision.get_collider()
+            if collider is RigidBody3D and not collider.is_in_group("player_cant_shove"):
+                var oppositeCollisionDir = -collision.get_normal()
+                oppositeCollisionDir.y = 0
+                var velocityInShoveDir = max(
+                    velocity.dot(oppositeCollisionDir) - collider.linear_velocity.dot(oppositeCollisionDir),
+                    0.0
+                )
+                var massRatio = min(1.0, PLAYER_MASS / collider.mass)
+                var shoveForce = SHOVING_FORCE * massRatio
+                collider.apply_impulse(oppositeCollisionDir * velocityInShoveDir * shoveForce, collision.get_position() - collider.global_position)
     #handle held object
     if heldObjectRef != null:
         if grabbing:
@@ -116,28 +162,7 @@ func _physics_process(_delta: float) -> void:
             heldObjectRef.angular_velocity *= 0.1
         elif dragging:
             pass
-    #handle 
-    #handle jump
-    if justJumped: handle_jump()
-    #apply gravity acceleration. apply more strongly if falling
-    if (velocity.y >= STRONGER_DOWNWARD_GRAVITY_THRESHOLD):
-        velocity += GRAVITY*_delta * GRAVITY_VECTOR
-    else:
-        velocity += GRAVITY*STRONGER_GRAVITY_MULTIPLIER*_delta * GRAVITY_VECTOR
-    # shove any rigidbodies
-    for i in get_slide_collision_count():
-        var collision = get_slide_collision(i)
-        var collider = collision.get_collider()
-        if collider is RigidBody3D and not collider.is_in_group("player_cant_shove"):
-            var oppositeCollisionDir = -collision.get_normal()
-            oppositeCollisionDir.y = 0
-            var velocityInShoveDir = max(
-                velocity.dot(oppositeCollisionDir) - collider.linear_velocity.dot(oppositeCollisionDir),
-                0.0
-            )
-            var massRatio = min(1.0, PLAYER_MASS / collider.mass)
-            var shoveForce = SHOVING_FORCE * massRatio
-            collider.apply_impulse(oppositeCollisionDir * velocityInShoveDir * shoveForce, collision.get_position() - collider.global_position)
+    # finally, move and slide
     move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -152,14 +177,14 @@ func _unhandled_input(event: InputEvent) -> void:
 ### JUMPING
 ###
 func can_jump():
-    return !jumping && !crouching && !crawling && !squeezing && !photographing && onFloorLastFrame
+    return !jumping && !crouching && !crawling && !squeezing && !photographing && (onFloorLastFrame || climbing)
 func handle_jump():
-    clear_hover_material()
+    try_clear_hover_state()
     velocity += Vector3(0,JUMP_IMPULSE,0)
     justJumped = false
     jumping = true
+    stop_climbing()
 func handle_land_jump():
-    handle_stand()
     jumping = false
 
 func can_shape_change():
@@ -192,7 +217,7 @@ func handle_crouch():
         running = false
     crawling = false
     crouching = true
-    clear_hover_material()
+    try_clear_hover_state()
 
 ###
 ### CRAWLING
@@ -227,7 +252,7 @@ func can_squeeze():
         return false
 func handle_squeeze():
     handle_stand()
-    clear_hover_material()
+    try_clear_hover_state()
     playerShape.radius = SQUEEZE_RADIUS
     flashlight.position.x = 0
     running = false
@@ -245,7 +270,7 @@ func can_run():
         return onFloorLastFrame
 func handle_run():
     running = true
-    clear_hover_material()
+    try_clear_hover_state()
     if (grabbing || dragging || photographing):
         # stop photographing
         handle_drop()
@@ -289,13 +314,12 @@ func handle_grab():
     objectInReachRef.on_hold()
     grabArm.spring_length = objectInReachRef.heldDistance
     grabArm.shape.radius = objectInReachRef.heldCollisionRadius
-    print(grabArm.shape.radius)
     # causes visual bug as arm rapidly shifts if we don't defer
     call_deferred("_handle_grab_deferred")
 func _handle_grab_deferred():
     grabbing = true
     heldObjectRef = objectInReachRef
-    clear_hover_material()
+    heldObjectRef.clear_hover_material()
 func handle_drag():
     pass
 
@@ -308,6 +332,28 @@ func handle_drop():
     grabArm.shape.radius = grabArmShapeRadius
     handle_stand()
 
+func try_clear_hover_state():
+    if objectInReachRef != null:
+        objectInReachRef.clear_hover_material()
+        objectInReachRef = null
+###
+### CLIMBING
+###
+func can_climb():
+    if (adjacentRef != null && !climbing && !photographing && !dragging && !squeezing):
+        if crouching: return can_shape_change()
+        return true
+    return false
+func handle_climb():
+    climbPath = adjacentRef.get_node_or_null("ClimbPath")
+    if climbPath != null:
+        climbCurve = climbPath.curve
+        climbing = true
+func stop_climbing():
+    climbing = false
+    climbPath = null
+    climbCurve = null
+
 func on_room_for_state_change_body_exited(_body: Node3D):
     if (squeezing && !Input.is_action_pressed("squeeze")):
         if (can_stand()):
@@ -318,26 +364,19 @@ func on_room_for_state_change_body_exited(_body: Node3D):
 func on_grab_anchor_entered(body: Node3D):
     if (body is Holdable && objectInReachRef != body && can_hold(150.0)):
         objectInReachRef = body
-        objectInReachMesh = Utils.get_child_of_type(body, MeshInstance3D)
-        apply_hover_material()
+        objectInReachRef.apply_hover_material()
 
 func on_grab_anchor_exited(body: Node3D):
-    if (body == objectInReachRef):
-        clear_hover_material()
+    if (body == objectInReachRef): try_clear_hover_state()
 
-func apply_hover_material():
-    for nextMaterial in Utils.get_materials_on_mesh(objectInReachMesh):
-        HOVER_OVER_OBJECT_MATERIAL.next_pass = nextMaterial
-        objectInReachMesh.set_surface_override_material(0, HOVER_OVER_OBJECT_MATERIAL)
+func on_adjacent_entered(body: Node3D):
+    # only used for climbing right now
+    if (body.is_in_group("climbable")):
+        adjacentRef = body
 
-func clear_hover_material():
-    if objectInReachMesh == null: return
-    for surfaceIndex in objectInReachMesh.mesh.get_surface_count():
-        var surfaceMaterial = objectInReachMesh.get_surface_override_material(surfaceIndex)
-        if surfaceMaterial == HOVER_OVER_OBJECT_MATERIAL:
-            objectInReachMesh.set_surface_override_material(surfaceIndex, null)
-    objectInReachRef = null
-    objectInReachMesh = null
+func on_adjacent_exited(body: Node3D):
+    if (adjacentRef == body):
+        adjacentRef = null
 
 func handle_mouse_input(event: InputEventMouseMotion) -> void:
     if mouseCaptured:
@@ -351,6 +390,8 @@ func handle_key_input(event: InputEvent ) -> void:
             handle_crouch()
         elif (crouching && can_stand()):
             handle_stand()
+        elif (can_climb()):
+            handle_climb()
         elif (can_jump()):
             justJumped = true
         eventHandled = true
@@ -384,6 +425,8 @@ func handle_key_input(event: InputEvent ) -> void:
         if heldObjectRef != null:
             heldObjectRef.on_rotate_stop()
     elif (event.is_action_pressed("run")):
+        if (climbing):
+            stop_climbing()
         if (!running && can_run()):
             handle_stand()
             handle_run()

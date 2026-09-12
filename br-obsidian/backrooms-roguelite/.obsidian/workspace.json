@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Musical Inspiration.md",
+                "file": "Today.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Musical Inspiration"
+              "title": "Today"
             }
           }
         ],
@@ -219,13 +219,13 @@
   },
   "active": "b5a7d647281ad89c",
   "lastOpenFiles": [
+    "Todo.md",
+    "Musical Inspiration.md",
     "Async Investigations - Game Pitch.md",
     "Mechanic Brainstorm.md",
-    "Musical Inspiration.md",
     "Design Pillars.md",
     "Exits.md",
     "Today.md",
-    "Todo.md",
     "Name Ideas.md",
     "Building a room.md",
     "Building a Room.md",

@@ -1,4 +1,3 @@
-- standardize grabbable props with data relevant to how they get rotated (spring arm radius, hold distance, etc)
 - keep ladder closed when held. Force open when rotate is held.
 - add hooks for onPickup and onDrop onRotateStart, onRotateStop
 - ladder should be more bottom heavy

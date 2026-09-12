@@ -35,6 +35,7 @@ enabled=PackedStringArray()
 [global_group]
 
 player_cant_shove="Prevents player from applying shove force to a rigidbody. Useful for climbable things"
+climbable=""
 
 [input]
 
@@ -126,7 +127,9 @@ throw={
 3d_physics/layer_3="Walls"
 3d_physics/layer_4="Floor"
 3d_physics/layer_5="Player"
-3d_physics/layer_6="HeldProp"
+3d_physics/layer_6="Carried"
+3d_physics/layer_7="OnlyPlayerCollision"
+3d_physics/layer_8="NoPlayerCollision"
 
 [physics]
 
