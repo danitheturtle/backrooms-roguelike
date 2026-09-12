@@ -37,4 +37,4 @@ popupText = "Welcome to the backrooms tutorial text!"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 0, -11.5)
 
 [node name="Player" parent="." unique_id=66642413 instance=ExtResource("1_2elnx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.039043, -1.7881393e-07, -1.2096252)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.715155, -1.7881393e-07, -6.014971)

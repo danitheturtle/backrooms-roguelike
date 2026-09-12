@@ -20,6 +20,7 @@ var HOVER_OVER_OBJECT_MATERIAL = preload("res://assets/materials/HoverOverObject
 @export var HELD_OBJECT_DISTANCE = 2.25
 @export var HELD_OBJECT_ROTATION_SPEED = 10.0
 @export var SLOWED_CAMERA_DAMPING = 0.4
+@export var GRAB_ARM_INFLATED_RADIUS = 0.5
 var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
 var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
@@ -61,6 +62,7 @@ var standingRadius: float
 var cameraTopOffset: float
 var flashlightOffset: Vector3
 var grabArmLength: float
+var grabArmShapeRadius: float
 
 func _ready() -> void:
     State.player = self
@@ -69,6 +71,7 @@ func _ready() -> void:
     cameraTopOffset = playerShape.height - camera.position.y
     flashlightOffset = flashlight.position
     grabArmLength = grabArm.spring_length
+    grabArmShapeRadius = grabArm.shape.radius
     roomForStateChangeArea.body_exited.connect(on_room_for_state_change_body_exited)
     grabAnchor.body_entered.connect(on_grab_anchor_entered)
     grabAnchor.body_exited.connect(on_grab_anchor_exited)
@@ -126,7 +129,7 @@ func _physics_process(_delta: float) -> void:
     for i in get_slide_collision_count():
         var collision = get_slide_collision(i)
         var collider = collision.get_collider()
-        if collider is RigidBody3D:
+        if collider is RigidBody3D and collider.get_parent() is not WoodenLadder:
             var oppositeCollisionDir = -collision.get_normal()
             oppositeCollisionDir.y = 0
             var velocityInShoveDir = max(
@@ -287,6 +290,7 @@ func can_hold(maxMass: float = 20.0):
 func handle_grab():
     grabArm.collision_mask = 0b00000000000000001110
     grabArm.spring_length = HELD_OBJECT_DISTANCE
+    grabArm.shape.radius = GRAB_ARM_INFLATED_RADIUS
     # causes visual bug as arm rapidly shifts if we don't defer
     call_deferred("_handle_grab_deferred")
 func _handle_grab_deferred():
@@ -302,6 +306,7 @@ func handle_drop():
     dragging = false
     grabArm.collision_mask = 0b00000000000000001111
     grabArm.spring_length = grabArmLength
+    grabArm.shape.radius = grabArmShapeRadius
     handle_stand()
 
 func on_room_for_state_change_body_exited(_body: Node3D):
