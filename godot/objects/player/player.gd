@@ -18,6 +18,7 @@ class_name Player
 @export var SQUEEZE_RADIUS = 0.2
 @export var HELD_OBJECT_ROTATION_SPEED = 10.0
 @export var SLOWED_CAMERA_DAMPING = 0.4
+@export var HELD_INPUT_TIMEOUT = 0.5
 var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
 var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
@@ -34,7 +35,8 @@ var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vec
 @onready var adjacentArea: Area3D = $AdjacentDetector
 @onready var adjacentCollider: CollisionShape3D = $AdjacentDetector/CollisionShape3D
 @onready var adjacentShape: BoxShape3D = adjacentCollider.shape
-
+@onready var actionTimer: Timer = $ActionTimer
+@onready var interactTimer: Timer = $InteractTimer
 
 # local state
 var moveDir = Vector2(0.0,0.0)
@@ -43,10 +45,13 @@ var movePriority = { left = false, right = false, forward = false, backward = fa
 var mouseCaptured = false
 var onFloorLastFrame = false
 var justJumped = false
+var actionTimerFinished = false
+var interactTimerFinished = false
 # holdable object targeted by spring arm (but not picked up)
 var objectInReachRef: Holdable = null
 # grabbed or dragged
 var heldObjectRef: Holdable = null
+var throwHeldOnNextFrame: bool = false
 # some objects change player controls contextually based on adjacency, eg ladders
 var adjacentRef: Node3D = null
 # climbing uses path-following
@@ -86,7 +91,11 @@ func _ready() -> void:
     adjacentArea.body_exited.connect(on_adjacent_exited)
     grabAnchor.body_entered.connect(on_grab_anchor_entered)
     grabAnchor.body_exited.connect(on_grab_anchor_exited)
-    capture_mouse()
+    actionTimer.wait_time = HELD_INPUT_TIMEOUT
+    interactTimer.wait_time = HELD_INPUT_TIMEOUT
+    actionTimer.timeout.connect(on_action_timer_ended)
+    interactTimer.timeout.connect(on_interact_timer_ended)
+    call_deferred("capture_mouse")
 
 func _physics_process(_delta: float) -> void:
     var onFloorThisFrame = is_on_floor()
@@ -125,7 +134,8 @@ func _physics_process(_delta: float) -> void:
             var closestOffset = climbCurve.get_closest_offset(playerPosInLocalCurveSpace)
             # adjust offset based on direction clamped to up/down
             closestOffset -= moveDir.y * CLIMB_SPEED
-            var nearestPoint = climbPath.global_position + climbCurve.sample_baked(closestOffset)
+            # I don't know why the z axis needs reversed and at this point I'm too afraid to ask
+            var nearestPoint = climbPath.global_position + climbCurve.sample_baked(closestOffset) * Basis(climbPath.global_basis.x, climbPath.global_basis.y, -climbPath.global_basis.z)
             # get required velocity to keep player at new location
             velocity = nearestPoint - global_position
     #handle jump
@@ -141,7 +151,7 @@ func _physics_process(_delta: float) -> void:
         for i in get_slide_collision_count():
             var collision = get_slide_collision(i)
             var collider = collision.get_collider()
-            if collider is RigidBody3D and not collider.is_in_group("player_cant_shove"):
+            if collider is RigidBody3D:
                 var oppositeCollisionDir = -collision.get_normal()
                 oppositeCollisionDir.y = 0
                 var velocityInShoveDir = max(
@@ -154,12 +164,15 @@ func _physics_process(_delta: float) -> void:
     #handle held object
     if heldObjectRef != null:
         if grabbing:
-            # account for objects not moved from their default origin
-            var heldObjectOrigin = heldObjectRef.get_node_or_null("GrabOrigin")
-            var fromPos = heldObjectRef.global_position if heldObjectOrigin == null else heldObjectOrigin.global_position
-            var toPos = grabAnchor.global_position
-            heldObjectRef.linear_velocity = (toPos - fromPos) / _delta + velocity
-            heldObjectRef.angular_velocity *= 0.1
+            if throwHeldOnNextFrame:
+                handle_throw()
+            else:
+                # account for objects not moved from their default origin
+                var heldObjectOrigin = heldObjectRef.get_node_or_null("GrabOrigin")
+                var fromPos = heldObjectRef.global_position if heldObjectOrigin == null else heldObjectOrigin.global_position
+                var toPos = grabAnchor.global_position
+                heldObjectRef.linear_velocity = (toPos - fromPos) / _delta + velocity
+                heldObjectRef.angular_velocity *= 0.1
         elif dragging:
             pass
     # finally, move and slide
@@ -195,7 +208,7 @@ func can_shape_change():
 ###
 func can_crouch():
     if (!crawling):
-        return !squeezing && !climbing
+        return !squeezing
     else:
         return can_shape_change()
 func handle_crouch():
@@ -354,6 +367,15 @@ func stop_climbing():
     climbPath = null
     climbCurve = null
 
+###
+### THROWING
+###
+func handle_throw():
+    heldObjectRef.linear_velocity = (-camera.global_basis.z * heldObjectRef.throwImpulse) + Vector3(0.0, heldObjectRef.throwLobFactor, 0.0)
+    heldObjectRef.on_throw()
+    throwHeldOnNextFrame = false
+    handle_drop()
+
 func on_room_for_state_change_body_exited(_body: Node3D):
     if (squeezing && !Input.is_action_pressed("squeeze")):
         if (can_stand()):
@@ -378,6 +400,10 @@ func on_adjacent_exited(body: Node3D):
     if (adjacentRef == body):
         adjacentRef = null
 
+func on_action_timer_ended(): actionTimerFinished = true
+
+func on_interact_timer_ended(): interactTimerFinished = true
+
 func handle_mouse_input(event: InputEventMouseMotion) -> void:
     if mouseCaptured:
         cameraMoveDir = event.screen_relative / 100.0
@@ -390,7 +416,7 @@ func handle_key_input(event: InputEvent ) -> void:
             handle_crouch()
         elif (crouching && can_stand()):
             handle_stand()
-        elif (can_climb()):
+        elif (can_climb() && !Input.is_action_pressed("run")):
             handle_climb()
         elif (can_jump()):
             justJumped = true
@@ -407,23 +433,36 @@ func handle_key_input(event: InputEvent ) -> void:
     elif (event.is_action_released("squeeze")):
         if (squeezing && can_stand()):
             handle_stand()
-    elif (event.is_action_released("flashlight")):
-        flashlight.visible = !flashlight.visible
-    elif (event.is_action_released("hold")):
-        if (grabbing || dragging):
+    elif (event.is_action_pressed("action")):
+        actionTimer.start()
+        if ((grabbing || dragging) && heldObjectRef != null):
+            heldObjectRef.start_action()
+    elif (event.is_action_released("action")):
+        actionTimer.stop()
+        if ((grabbing || dragging) && heldObjectRef != null):
+            var playerActionResult = heldObjectRef.finish_action(actionTimerFinished)
+            if !playerActionResult && grabbing:
+                throwHeldOnNextFrame = true
+        elif (!actionTimerFinished):
+            flashlight.visible = !flashlight.visible
+        actionTimerFinished = false
+    elif (event.is_action_pressed("interact")):
+        interactTimer.start()
+        if grabbing && heldObjectRef != null:
+            rotating = true
+            heldObjectRef.on_rotate_start()
+    elif (event.is_action_released("interact")):
+        interactTimer.stop()
+        if ((grabbing || dragging) && !interactTimerFinished):
             handle_drop()
         elif (can_hold(15.0) && objectInReachRef != null):
             handle_grab()
         elif (can_hold(150.0) && objectInReachRef != null):
             handle_drag()
-    elif (event.is_action_pressed("rotate")):
-        if grabbing && heldObjectRef != null:
-            rotating = true
-            heldObjectRef.on_rotate_start()
-    elif (event.is_action_released("rotate")):
         rotating = false
         if heldObjectRef != null:
             heldObjectRef.on_rotate_stop()
+        interactTimerFinished = false
     elif (event.is_action_pressed("run")):
         if (climbing):
             stop_climbing()

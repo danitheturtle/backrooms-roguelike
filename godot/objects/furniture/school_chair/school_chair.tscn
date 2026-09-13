@@ -28,7 +28,7 @@ resource_local_to_scene = true
 size = Vector3(0.05, 0.6054659, 0.05)
 
 [node name="SchoolChair" type="StaticBody3D" unique_id=917599130]
-collision_mask = 49
+collision_mask = 177
 
 [node name="SchoolChairMesh" type="MeshInstance3D" parent="." unique_id=1615369478]
 mesh = ExtResource("1_tqvvg")

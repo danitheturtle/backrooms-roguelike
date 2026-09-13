@@ -1,0 +1,6 @@
+- refactor player behaviors into own scripts
+- player small step detection
+- add 'action' to holdable. Most things will be throw. sometimes it will be use
+- switch ladder open/close to holdable action. can't throw the ladder
+- rope climbing
+- can't start climbing ladder from sides or back

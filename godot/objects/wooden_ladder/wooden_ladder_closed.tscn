@@ -10,22 +10,57 @@ size = Vector3(0.15463257, 2.562683, 0.87213135)
 resource_local_to_scene = true
 size = Vector3(0.11796188, 2.098463, 0.87213135)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t2w86"]
+resource_local_to_scene = true
+radius = 0.13867188
+height = 1.1479492
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3wesh"]
+resource_local_to_scene = true
+size = Vector3(0.15463257, 2.4243011, 0.87213135)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_56jxp"]
+resource_local_to_scene = true
+size = Vector3(0.42601013, 0.1816864, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4u3nw"]
+resource_local_to_scene = true
+size = Vector3(0.11796188, 2.098463, 0.87213135)
+
 [node name="WoodenLadderClosed" unique_id=1062347463 instance=ExtResource("1_deyy8")]
 
-[node name="Ladder" parent="." index="0" unique_id=1432222003]
+[node name="LadderHinge" parent="." index="0" unique_id=1166785200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.125, 0)
+angular_limit/upper = 0.0
+angular_limit/lower = -0.6981317
+
+[node name="Ladder" parent="." index="1" unique_id=1432222003]
 transform = Transform3D(0.93969256, -0.3420201, 0, 0.3420201, 0.93969256, 0, 0, 0, 1, 0, 2.125, 0)
 isClosed = true
 
 [node name="StepsCollider" parent="Ladder" index="2" unique_id=415124710]
 shape = SubResource("BoxShape3D_deyy8")
 
-[node name="SupportRigidBody" parent="." index="1" unique_id=1662395064]
+[node name="SupportRigidBody" parent="." index="2" unique_id=1662395064]
 transform = Transform3D(0.93969256, 0.3420201, 0, -0.3420201, 0.93969256, 0, 0, 0, 1, 0, 2.125, 0)
 
 [node name="SupportsCollider" parent="SupportRigidBody" index="1" unique_id=184477877]
 shape = SubResource("BoxShape3D_1am7f")
 
-[node name="LadderHinge" parent="." index="2" unique_id=1166785200]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.125, 0)
-angular_limit/upper = 0.0
-angular_limit/lower = -0.6981317
+[node name="StairsPlatform" parent="." index="3" unique_id=1781771920]
+transform = Transform3D(0.9396926, -0.34202012, 0, 0.34202012, 0.9396926, 0, 0, 0, 1, 0, 2.125, 0)
+
+[node name="CapsuleCollider" parent="StairsPlatform" index="0" unique_id=741902935]
+shape = SubResource("CapsuleShape3D_t2w86")
+
+[node name="StepsCollider" parent="StairsPlatform" index="1" unique_id=1730063086]
+shape = SubResource("BoxShape3D_3wesh")
+
+[node name="RectCollider" parent="StairsPlatform" index="2" unique_id=406664547]
+shape = SubResource("BoxShape3D_56jxp")
+
+[node name="SupportPlatform" parent="." index="4" unique_id=940418065]
+transform = Transform3D(0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 0, 0, 0, 1, 0, 2.125, 0)
+
+[node name="SupportsCollider" parent="SupportPlatform" index="0" unique_id=362462584]
+shape = SubResource("BoxShape3D_4u3nw")

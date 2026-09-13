@@ -37,7 +37,7 @@ resource_local_to_scene = true
 size = Vector3(0.1, 0.5082153, 0.57642823)
 
 [node name="GreenChairPhysics" type="RigidBody3D" unique_id=2055800924]
-collision_mask = 31
+collision_mask = 191
 mass = 10.0
 center_of_mass_mode = 1
 script = ExtResource("1_4ow4n")

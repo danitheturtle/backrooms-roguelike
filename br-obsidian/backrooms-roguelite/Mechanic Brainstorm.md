@@ -1,9 +1,8 @@
-* Pickups that increase stamina / restore health
+* Almond Water that increase sstamina / restore health
 * Rope of a specific length. More rope can be found. Can climb down vertically as far as you can extend the rope
-* run, jump, crouch, squeeze
-* Flashlight?
 * camera zoom?
-* Camera?
+* Film Camera?
+* ledge grabs / climbups?
 
 
 Game is about finding unique "exits"

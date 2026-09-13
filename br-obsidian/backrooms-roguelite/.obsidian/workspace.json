@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mechanic Brainstorm.md",
+                "file": "Todo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Mechanic Brainstorm"
+              "title": "Todo"
             }
           },
           {
@@ -41,16 +41,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Today.md",
+                "file": "Todo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Today"
+              "title": "Todo"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -217,17 +217,17 @@
       "bases:Create new base": false
     }
   },
-  "active": "b5a7d647281ad89c",
+  "active": "fc523be4c1d6960a",
   "lastOpenFiles": [
-    "Todo.md",
-    "Musical Inspiration.md",
-    "Async Investigations - Game Pitch.md",
-    "Mechanic Brainstorm.md",
-    "Design Pillars.md",
-    "Exits.md",
     "Today.md",
-    "Name Ideas.md",
+    "Todo.md",
+    "Async Investigations - Game Pitch.md",
+    "Design Pillars.md",
+    "Mechanic Brainstorm.md",
     "Building a room.md",
+    "Musical Inspiration.md",
+    "Exits.md",
+    "Name Ideas.md",
     "Building a Room.md",
     "Spooky Wall Writing.md",
     "Welcome.md"

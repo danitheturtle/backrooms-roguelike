@@ -7,7 +7,7 @@
 [ext_resource type="Material" uid="uid://c5a6tmd4jjju1" path="res://objects/wooden_ladder/res/wooden_ladder.tres" id="3_aqc6c"]
 [ext_resource type="PackedScene" uid="uid://cg8ae5q8pnluf" path="res://objects/colliders/capsule_collider.tscn" id="6_1y61k"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_aqc6c"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_1y61k"]
 resource_local_to_scene = true
 size = Vector3(0.15463257, 2.562683, 0.87213135)
 
@@ -23,26 +23,36 @@ up_vector_enabled = false
 resource_local_to_scene = true
 size = Vector3(0.11796188, 2.098463, 0.87213135)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_awx4h"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4wkx0"]
 resource_local_to_scene = true
 radius = 0.13867188
 height = 1.1479492
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1y61k"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7gwxu"]
 resource_local_to_scene = true
 size = Vector3(0.15463257, 2.4243011, 0.87213135)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4wkx0"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_14ti7"]
 resource_local_to_scene = true
 size = Vector3(0.42601013, 0.1816864, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7gwxu"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_xhruk"]
 resource_local_to_scene = true
 size = Vector3(0.11796188, 2.098463, 0.87213135)
 
 [node name="WoodenLadder" type="Node3D" unique_id=1062347463]
 
-[node name="Ladder" type="RigidBody3D" parent="." unique_id=1432222003 groups=["climbable", "player_cant_shove"]]
+[node name="LadderHinge" type="HingeJoint3D" parent="." unique_id=1166785200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+node_a = NodePath("../Ladder")
+node_b = NodePath("../SupportRigidBody")
+angular_limit/enable = true
+angular_limit/upper = 0.6981317
+angular_limit/lower = 0.0
+motor/target_velocity = 2.0943952
+motor/max_impulse = 10.0
+
+[node name="Ladder" type="RigidBody3D" parent="." unique_id=1432222003 groups=["climbable"]]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 128
 collision_mask = 47
@@ -59,7 +69,7 @@ mesh = ExtResource("1_pqyb0")
 
 [node name="StepsCollider" parent="Ladder" unique_id=415124710 instance=ExtResource("2_aqc6c")]
 transform = Transform3D(0.93899703, 0.34392524, 0, -0.34392524, 0.93899703, 0, 0, 0, 1, -0.35162842, -0.7630869, 0.0015563965)
-shape = SubResource("BoxShape3D_aqc6c")
+shape = SubResource("BoxShape3D_1y61k")
 
 [node name="CenterOfMass" type="Marker3D" parent="Ladder" unique_id=2029596967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41183284, -0.9211441, 0)
@@ -68,7 +78,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41183284, -0.9211441, 0)
 transform = Transform3D(0.99999946, 0, 0, 0, 0.99999946, 0, 0, 0, 1, -0.8554944, -0.57436347, 0)
 curve = SubResource("Curve3D_1y61k")
 
-[node name="SupportRigidBody" type="RigidBody3D" parent="." unique_id=1662395064 groups=["player_cant_shove"]]
+[node name="SupportRigidBody" type="RigidBody3D" parent="." unique_id=1662395064]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 128
 collision_mask = 47
@@ -88,16 +98,6 @@ shape = SubResource("BoxShape3D_awx4h")
 [node name="CenterOfMass" type="Marker3D" parent="SupportRigidBody" unique_id=1736972010]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0.45, -1.05, 0)
 
-[node name="LadderHinge" type="HingeJoint3D" parent="." unique_id=1166785200]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-node_a = NodePath("../Ladder")
-node_b = NodePath("../SupportRigidBody")
-angular_limit/enable = true
-angular_limit/upper = 0.6981317
-angular_limit/lower = 0.0
-motor/target_velocity = -0.7853982
-motor/max_impulse = 4.0
-
 [node name="StairsPlatform" type="AnimatableBody3D" parent="." unique_id=1781771920]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 64
@@ -105,15 +105,15 @@ collision_mask = 16
 
 [node name="CapsuleCollider" parent="StairsPlatform" unique_id=741902935 instance=ExtResource("6_1y61k")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.10530472, 0.32277346, 0.006591797)
-shape = SubResource("CapsuleShape3D_awx4h")
+shape = SubResource("CapsuleShape3D_4wkx0")
 
 [node name="StepsCollider" parent="StairsPlatform" unique_id=1730063086 instance=ExtResource("2_aqc6c")]
 transform = Transform3D(0.93899703, 0.34392524, 0, -0.34392524, 0.93899703, 0, 0, 0, 1, -0.37542495, -0.82805705, 0.0015563965)
-shape = SubResource("BoxShape3D_1y61k")
+shape = SubResource("BoxShape3D_7gwxu")
 
 [node name="RectCollider" parent="StairsPlatform" unique_id=406664547 instance=ExtResource("2_aqc6c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23316193, 0.37067413, 0)
-shape = SubResource("BoxShape3D_4wkx0")
+shape = SubResource("BoxShape3D_14ti7")
 
 [node name="SupportPlatform" type="AnimatableBody3D" parent="." unique_id=940418065]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -122,4 +122,4 @@ collision_mask = 16
 
 [node name="SupportsCollider" parent="SupportPlatform" unique_id=362462584 instance=ExtResource("2_aqc6c")]
 transform = Transform3D(0.93912035, -0.34358817, 0, 0.34358817, 0.93912035, 0, 0, 0, 1, 0.42962044, -0.98025316, 0.0015563965)
-shape = SubResource("BoxShape3D_7gwxu")
+shape = SubResource("BoxShape3D_xhruk")

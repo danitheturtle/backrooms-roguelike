@@ -131,3 +131,11 @@ collision_mask = 129
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AdjacentDetector" unique_id=1415552624]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("BoxShape3D_5q0ne")
+
+[node name="ActionTimer" type="Timer" parent="." unique_id=946343371]
+process_callback = 0
+wait_time = 0.5
+
+[node name="InteractTimer" type="Timer" parent="." unique_id=1549516792]
+process_callback = 0
+wait_time = 0.5

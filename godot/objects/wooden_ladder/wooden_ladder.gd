@@ -19,6 +19,15 @@ func _physics_process(_delta: float) -> void:
     stairsPlatform.transform = transform
     supportPlatform.transform = support.transform
 
+func start_action():
+    super.start_action()
+    hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, -initialMotorVelocity)
+
+func finish_action(actionTimerFinished: bool) -> bool:
+    super.finish_action(actionTimerFinished)
+    hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, initialMotorVelocity)
+    return true
+
 func on_hold():
     super.on_hold()
     hinge.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, true)
@@ -36,11 +45,3 @@ func on_drop():
     support.center_of_mass = Vector3(0.45, -1.05, 0.0)
     stairsPlatform.collision_layer = 0b00000000000001000000
     supportPlatform.collision_layer = 0b00000000000001000000
-
-func on_rotate_start():
-    super.on_rotate_start()
-    hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, -initialMotorVelocity)
-
-func on_rotate_stop():
-    super.on_rotate_stop()
-    hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, initialMotorVelocity)

@@ -1,4 +1,0 @@
-- keep ladder closed when held. Force open when rotate is held.
-- add hooks for onPickup and onDrop onRotateStart, onRotateStop
-- ladder should be more bottom heavy
-- refactor player behaviors into own scripts

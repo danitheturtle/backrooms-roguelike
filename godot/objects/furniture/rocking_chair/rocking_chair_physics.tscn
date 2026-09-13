@@ -78,7 +78,7 @@ resource_local_to_scene = true
 radius = 0.06936573
 
 [node name="RockingChairPhysics" type="RigidBody3D" unique_id=517176539]
-collision_mask = 63
+collision_mask = 191
 mass = 5.0
 center_of_mass_mode = 1
 script = ExtResource("1_kjdew")

@@ -5,6 +5,8 @@ var HOVER_OVER_OBJECT_MATERIAL = preload("res://assets/materials/HoverOverObject
 
 @export var heldDistance = 2.0
 @export var heldCollisionRadius = 0.5
+@export var throwImpulse = 5.0
+@export var throwLobFactor = 1.0
 
 @onready var meshInstance = Utils.get_child_of_type(self, MeshInstance3D)
 
@@ -15,6 +17,12 @@ func _ready() -> void:
     if (grabOriginNode != null):
         grabOrigin = grabOriginNode.global_position
 
+func start_action():
+    pass
+
+func finish_action(_actionTimerFinished: bool) -> bool:
+    return false
+
 func on_hold():
     # move to held layer to avoid collision with player and wierd skyrim-style bullshit
     collision_layer = 0b00000000000000100000
@@ -22,11 +30,12 @@ func on_hold():
 func on_drop():
     collision_layer = 0b00000000000000000001
 
-func on_rotate_start():
+func on_throw():
     pass
 
-func on_rotate_stop():
-    pass
+func on_rotate_start(): pass
+
+func on_rotate_stop(): pass
 
 func apply_hover_material():
     for nextMaterial in Utils.get_materials_on_mesh(meshInstance):

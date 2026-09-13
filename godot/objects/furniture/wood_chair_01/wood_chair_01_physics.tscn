@@ -21,7 +21,7 @@ resource_local_to_scene = true
 size = Vector3(0.125, 0.37226564, 0.5450195)
 
 [node name="WoodChair01Physics" type="RigidBody3D" unique_id=1055268756]
-collision_mask = 63
+collision_mask = 191
 mass = 10.0
 script = ExtResource("1_hccyg")
 heldDistance = 1.8
