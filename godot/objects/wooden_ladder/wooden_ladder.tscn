@@ -9,7 +9,12 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1y61k"]
 resource_local_to_scene = true
-size = Vector3(0.15463257, 2.562683, 0.87213135)
+size = Vector3(0.15463257, 2.5591278, 0.87213135)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_awx4h"]
+resource_local_to_scene = true
+radius = 0.076660156
+height = 0.87194824
 
 [sub_resource type="Curve3D" id="Curve3D_1y61k"]
 _data = {
@@ -19,24 +24,28 @@ _data = {
 point_count = 7
 up_vector_enabled = false
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_awx4h"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_4wkx0"]
+resource_local_to_scene = true
+size = Vector3(0.049591064, 0.96247864, 0.3201294)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7gwxu"]
 resource_local_to_scene = true
 size = Vector3(0.11796188, 2.098463, 0.87213135)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4wkx0"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_14ti7"]
 resource_local_to_scene = true
 radius = 0.13867188
 height = 1.1479492
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7gwxu"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_xhruk"]
 resource_local_to_scene = true
-size = Vector3(0.15463257, 2.4243011, 0.87213135)
+size = Vector3(0.15463257, 2.4210796, 0.87213135)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_14ti7"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_h8ai0"]
 resource_local_to_scene = true
 size = Vector3(0.42601013, 0.1816864, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xhruk"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_2c24u"]
 resource_local_to_scene = true
 size = Vector3(0.11796188, 2.098463, 0.87213135)
 
@@ -68,8 +77,12 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -0.31454206
 mesh = ExtResource("1_pqyb0")
 
 [node name="StepsCollider" parent="Ladder" unique_id=415124710 instance=ExtResource("2_aqc6c")]
-transform = Transform3D(0.93899703, 0.34392524, 0, -0.34392524, 0.93899703, 0, 0, 0, 1, -0.35162842, -0.7630869, 0.0015563965)
+transform = Transform3D(0.9389886, 0.34392104, 0, -0.34392104, 0.9389886, 0, 0, 0, 1, -0.35101685, -0.7614174, 0.0015563965)
 shape = SubResource("BoxShape3D_1y61k")
+
+[node name="KickoverCollider" parent="Ladder" unique_id=741902935 instance=ExtResource("6_1y61k")]
+transform = Transform3D(0.99998707, 0, 0, 0, -4.3710692e-08, 0.99999183, 0, -0.99999523, -4.371139e-08, -0.7522701, -1.9314111, 0.005187965)
+shape = SubResource("CapsuleShape3D_awx4h")
 
 [node name="CenterOfMass" type="Marker3D" parent="Ladder" unique_id=2029596967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41183284, -0.9211441, 0)
@@ -77,6 +90,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41183284, -0.9211441, 0)
 [node name="ClimbPath" type="Path3D" parent="Ladder" unique_id=1074791459]
 transform = Transform3D(0.99999946, 0, 0, 0, 0.99999946, 0, 0, 0, 1, -0.8554944, -0.57436347, 0)
 curve = SubResource("Curve3D_1y61k")
+
+[node name="ActivationArea" type="Area3D" parent="Ladder" unique_id=754650913]
+collision_layer = 129
+collision_mask = 0
+monitoring = false
+
+[node name="RectCollider" parent="Ladder/ActivationArea" unique_id=1202648460 instance=ExtResource("2_aqc6c")]
+transform = Transform3D(0.9387757, 0.34452894, 0, -0.34452894, 0.9387757, 0, 0, 0, 1, -0.772532, -0.53367734, 0.013153076)
+shape = SubResource("BoxShape3D_4wkx0")
 
 [node name="SupportRigidBody" type="RigidBody3D" parent="." unique_id=1662395064]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 2, 0)
@@ -92,8 +114,8 @@ mesh = ExtResource("2_4j06i")
 surface_material_override/0 = ExtResource("3_aqc6c")
 
 [node name="SupportsCollider" parent="SupportRigidBody" unique_id=184477877 instance=ExtResource("2_aqc6c")]
-transform = Transform3D(0.93912035, -0.34358817, 0, 0.34358817, 0.93912035, 0, 0, 0, 1, 0.42962044, -0.98025316, 0.0015563965)
-shape = SubResource("BoxShape3D_awx4h")
+transform = Transform3D(0.9391182, -0.3435871, 0, 0.3435871, 0.9391182, 0, 0, 0, 1, 0.42962041, -0.9802531, 0.0015563965)
+shape = SubResource("BoxShape3D_7gwxu")
 
 [node name="CenterOfMass" type="Marker3D" parent="SupportRigidBody" unique_id=1736972010]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0.45, -1.05, 0)
@@ -103,17 +125,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 64
 collision_mask = 16
 
-[node name="CapsuleCollider" parent="StairsPlatform" unique_id=741902935 instance=ExtResource("6_1y61k")]
+[node name="CapsuleCollider" parent="StairsPlatform" unique_id=598229167 instance=ExtResource("6_1y61k")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.10530472, 0.32277346, 0.006591797)
-shape = SubResource("CapsuleShape3D_4wkx0")
+shape = SubResource("CapsuleShape3D_14ti7")
 
 [node name="StepsCollider" parent="StairsPlatform" unique_id=1730063086 instance=ExtResource("2_aqc6c")]
-transform = Transform3D(0.93899703, 0.34392524, 0, -0.34392524, 0.93899703, 0, 0, 0, 1, -0.37542495, -0.82805705, 0.0015563965)
-shape = SubResource("BoxShape3D_7gwxu")
+transform = Transform3D(0.93899703, 0.34392524, 0, -0.34392524, 0.93899703, 0, 0, 0, 1, -0.374871, -0.8265445, 0.0015563965)
+shape = SubResource("BoxShape3D_xhruk")
 
 [node name="RectCollider" parent="StairsPlatform" unique_id=406664547 instance=ExtResource("2_aqc6c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23316193, 0.37067413, 0)
-shape = SubResource("BoxShape3D_14ti7")
+shape = SubResource("BoxShape3D_h8ai0")
 
 [node name="SupportPlatform" type="AnimatableBody3D" parent="." unique_id=940418065]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -121,5 +143,5 @@ collision_layer = 64
 collision_mask = 16
 
 [node name="SupportsCollider" parent="SupportPlatform" unique_id=362462584 instance=ExtResource("2_aqc6c")]
-transform = Transform3D(0.93912035, -0.34358817, 0, 0.34358817, 0.93912035, 0, 0, 0, 1, 0.42962044, -0.98025316, 0.0015563965)
-shape = SubResource("BoxShape3D_xhruk")
+transform = Transform3D(0.93912035, -0.34358817, 0, 0.34358817, 0.93912035, 0, 0, 0, 1, 0.42962044, -0.9802532, 0.0015563965)
+shape = SubResource("BoxShape3D_2c24u")

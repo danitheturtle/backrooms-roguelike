@@ -1,6 +1,10 @@
 extends CharacterBody3D
 class_name Player
 
+# global constants
+var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
+var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
+
 @export var PLAYER_SPEED = 4.0
 @export var PLAYER_MASS = 40.0
 @export var SPRINT_SPEED = 7.0
@@ -19,8 +23,9 @@ class_name Player
 @export var HELD_OBJECT_ROTATION_SPEED = 10.0
 @export var SLOWED_CAMERA_DAMPING = 0.4
 @export var HELD_INPUT_TIMEOUT = 0.5
-var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
-var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
+@export var SLIDE_IMPULSE = 7.5
+@export var SLIDE_DECELERATION = 20.0
+@export var MAX_STEP_HEIGHT = 0.3
 
 # child nodes
 @onready var camera: Camera3D = $Camera
@@ -37,6 +42,8 @@ var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vec
 @onready var adjacentShape: BoxShape3D = adjacentCollider.shape
 @onready var actionTimer: Timer = $ActionTimer
 @onready var interactTimer: Timer = $InteractTimer
+@onready var stairSolver: Node3D = $StairSolver
+@onready var stairRayCast: RayCast3D = $StairSolver/StairRayCast3D
 
 # local state
 var moveDir = Vector2(0.0,0.0)
@@ -57,6 +64,9 @@ var adjacentRef: Node3D = null
 # climbing uses path-following
 var climbPath: Path3D = null
 var climbCurve: Curve3D = null
+var slideVelocity = 0.0
+#stair stepping
+var stairSteppedLastFrame = false
 
 #state machine
 var jumping = false
@@ -89,6 +99,8 @@ func _ready() -> void:
     roomForStateChangeArea.body_exited.connect(on_room_for_state_change_body_exited)
     adjacentArea.body_entered.connect(on_adjacent_entered)
     adjacentArea.body_exited.connect(on_adjacent_exited)
+    adjacentArea.area_entered.connect(on_adjacent_area_entered)
+    adjacentArea.area_exited.connect(on_adjacent_area_exited)
     grabAnchor.body_entered.connect(on_grab_anchor_entered)
     grabAnchor.body_exited.connect(on_grab_anchor_exited)
     actionTimer.wait_time = HELD_INPUT_TIMEOUT
@@ -126,7 +138,9 @@ func _physics_process(_delta: float) -> void:
         elif (crawling || dragging):
             movementSpeed = EXTRA_SLOW_SPEED
         #multiply basis vectors by input direction. preserve vertical velocity
-        velocity = Vector3(0,velocity.y,0) + Vector3(basis.x * moveDir.x + basis.z * moveDir.y).limit_length() * movementSpeed
+        velocity = Vector3(0,velocity.y,0) + Vector3(basis.x * moveDir.x + basis.z * moveDir.y).limit_length() * (movementSpeed + slideVelocity)
+        if slideVelocity > 0.0:
+            slideVelocity -= SLIDE_DECELERATION * _delta
     else:
         # climbing behavior based velocity
         if climbCurve != null && climbPath != null:
@@ -175,6 +189,21 @@ func _physics_process(_delta: float) -> void:
                 heldObjectRef.angular_velocity *= 0.1
         elif dragging:
             pass
+    # climb stairs
+    if velocity.y <= 0 && velocity.length_squared() > 0.05:
+        stairSolver.rotation.y = atan2(-moveDir.x, -moveDir.y)
+        var expectedPositionDelta = velocity * 0.4 * _delta
+        var collisionCastVector = Vector3(0,MAX_STEP_HEIGHT*1.5, 0)
+        var nextPosCollisionCastStart = global_transform.translated(expectedPositionDelta + collisionCastVector)
+        var collisionResult = KinematicCollision3D.new()
+        if test_move(nextPosCollisionCastStart, -collisionCastVector, collisionResult):
+            var foundCollider = collisionResult.get_collider()
+            if ((foundCollider is CollisionObject3D || foundCollider is CSGShape3D) \
+                && (foundCollider.get_collision_layer_value(3) || foundCollider.get_collision_layer_value(4))):
+                var castHeightTravelled = ((nextPosCollisionCastStart.origin + collisionResult.get_travel()) - global_position).y
+                if (castHeightTravelled > 0.01 && castHeightTravelled <= MAX_STEP_HEIGHT && (collisionResult.get_position() - global_position).y <= MAX_STEP_HEIGHT):
+                    if stairRayCast.get_collision_normal().dot(Vector3.UP) < 0.1:
+                        global_position = nextPosCollisionCastStart.origin + collisionResult.get_travel() + Vector3(0,0.02,0)
     # finally, move and slide
     move_and_slide()
 
@@ -227,6 +256,7 @@ func handle_crouch():
     flashlight.position.y = flashlightOffset.y
     if (running):
         # apply slide impulse in direction of run
+        slideVelocity = SLIDE_IMPULSE
         running = false
     crawling = false
     crouching = true
@@ -393,11 +423,22 @@ func on_grab_anchor_exited(body: Node3D):
 
 func on_adjacent_entered(body: Node3D):
     # only used for climbing right now
-    if (body.is_in_group("climbable")):
+    # some climbable objects don't need an activation area
+    if (body.is_in_group("climbable") && body.get_node_or_null("ActivationArea") == null):
         adjacentRef = body
 
 func on_adjacent_exited(body: Node3D):
-    if (adjacentRef == body):
+    if (adjacentRef == body && body.get_node_or_null("ActivationArea") == null):
+        adjacentRef = null
+
+func on_adjacent_area_entered(area: Node3D):
+    var areaParent = area.get_parent()
+    if (areaParent.is_in_group("climbable")):
+        adjacentRef = areaParent
+
+func on_adjacent_area_exited(area: Node3D):
+    var areaParent = area.get_parent()
+    if (areaParent == adjacentRef):
         adjacentRef = null
 
 func on_action_timer_ended(): actionTimerFinished = true

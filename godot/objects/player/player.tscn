@@ -119,13 +119,14 @@ libraries/fps_camera = SubResource("AnimationLibrary_gnkmh")
 [node name="RoomForStateChangeDetector" type="Area3D" parent="." unique_id=1767535878]
 collision_layer = 0
 collision_mask = 7
+monitorable = false
 
 [node name="StateChangeCollisionShape3D" type="CollisionShape3D" parent="RoomForStateChangeDetector" unique_id=1099717571]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825, 0)
 shape = SubResource("CapsuleShape3D_cqmt1")
 
 [node name="AdjacentDetector" type="Area3D" parent="." unique_id=775691077]
-collision_layer = 0
+collision_layer = 16
 collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AdjacentDetector" unique_id=1415552624]
@@ -139,3 +140,11 @@ wait_time = 0.5
 [node name="InteractTimer" type="Timer" parent="." unique_id=1549516792]
 process_callback = 0
 wait_time = 0.5
+
+[node name="StairSolver" type="Node3D" parent="." unique_id=356122944]
+
+[node name="StairRayCast3D" type="RayCast3D" parent="StairSolver" unique_id=876749670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -0.4)
+target_position = Vector3(0, 0, -0.4)
+collision_mask = 12
+hit_back_faces = false
