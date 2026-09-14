@@ -7,3 +7,5 @@ You know how to get to the backrooms. A null zone in the basement of a nearby ch
 You've only seen someone else here once. After days of exploration you were weary with exhaustion, miles deep into the labarynth. In the distance was a figure wearing a yellow hazmat suit carrying a box of industrial equipment. When you made eye contact with them, the figure stood still breifly before breaking into a sprint away from you. You're not sure what you saw or why they were in hazmat gear, but you're determined to find them again.
 
 Equipped with a film camera, some rope, and a flashlight you set off once again hoping to keep your sanity. Last time in the corridors you found a makeshift AM radio station filled with broadcast and recording equipment; wires leading in all directions. The space looked like it had been used recently. You're trying to find it again.
+
+

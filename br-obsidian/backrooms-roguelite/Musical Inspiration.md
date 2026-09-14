@@ -7,3 +7,5 @@ I wanna make effective use of tense silence. Maybe many minutes of quiet only br
 "10 hours of silence broken up by windows start noises" vibes.
 
 And it would be fun to play with the "silence". Not all silence is equal. maybe some white noise of flourecent lights. faint footsteps you can't quite hear. A low dull buzzing that makes the brain uncomfortable.
+
+A haunted house you want to go into but know you shouldn't

@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Todo.md",
+                "file": "Today.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Todo"
+              "title": "Today"
             }
           },
           {
@@ -112,7 +112,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 277.1870002746582
   },
   "right": {
     "id": "60e38da9fe88d717",
@@ -219,17 +219,17 @@
   },
   "active": "fc523be4c1d6960a",
   "lastOpenFiles": [
-    "Today.md",
     "Todo.md",
-    "Async Investigations - Game Pitch.md",
-    "Design Pillars.md",
+    "Today.md",
+    "Spooky Wall Writing.md",
     "Mechanic Brainstorm.md",
-    "Building a room.md",
     "Musical Inspiration.md",
+    "Design Pillars.md",
     "Exits.md",
+    "Async Investigations - Game Pitch.md",
+    "Building a room.md",
     "Name Ideas.md",
     "Building a Room.md",
-    "Spooky Wall Writing.md",
     "Welcome.md"
   ]
 }

@@ -3,6 +3,7 @@
 * camera zoom?
 * Film Camera?
 * ledge grabs / climbups?
+* rotate held / grabbed object with player camera (hard)
 
 
 Game is about finding unique "exits"

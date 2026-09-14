@@ -1,6 +1,6 @@
 - refactor player behaviors into own scripts
-- player small step detection
-- add 'action' to holdable. Most things will be throw. sometimes it will be use
-- switch ladder open/close to holdable action. can't throw the ladder
 - rope climbing
-- can't start climbing ladder from sides or back
+- color grade textures and lighting
+- root scene for props so I stop forgetting to set collision mask and axis lock. change it once for every inheriting object, etc.
+- dial in climbup min/max height
+- 

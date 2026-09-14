@@ -1,0 +1,2 @@
+- color grading
+- tutorial layout
