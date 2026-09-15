@@ -199,7 +199,7 @@ func _physics_process(_delta: float) -> void:
                 heldObjectRef.linear_velocity = (toPos - fromPos) / _delta + velocity
                 heldObjectRef.angular_velocity *= 0.1
         elif dragging:
-            if (global_position - (heldObjectRef.global_position + draggedPoint)).length_squared() > 4.0:
+            if (global_position - (heldObjectRef.global_position + draggedPoint)).length_squared() > 12.0:
                 handle_drop()
             else:
                 heldObjectRef.linear_velocity = Vector3(velocity.x, 0.0, velocity.z)

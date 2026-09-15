@@ -1,49 +1,44 @@
 [gd_scene format=3 uid="uid://ch6oue2dlb35s"]
 
-[ext_resource type="Script" uid="uid://edobctxmw14j" path="res://scripts/holdable.gd" id="1_xsym8"]
+[ext_resource type="PackedScene" uid="uid://bpa4y10qbxd5f" path="res://objects/colliders/draggable_prop.tscn" id="1_xsym8"]
 [ext_resource type="ArrayMesh" uid="uid://dxhquaeb00onb" path="res://objects/furniture/sofa_03/res/sofa_03.glb" id="2_uatx7"]
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="3_nyclf"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xsym8"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_uatx7"]
 resource_local_to_scene = true
 size = Vector3(2.65, 0.6, 1.03479)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uatx7"]
-resource_local_to_scene = true
-size = Vector3(1.95, 0.575, 0.25)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_nyclf"]
 resource_local_to_scene = true
-size = Vector3(0.5, 0.35, 1.025)
+size = Vector3(1.95, 0.575, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jvyjc"]
 resource_local_to_scene = true
 size = Vector3(0.5, 0.35, 1.025)
 
-[node name="Sofa03Physics" type="RigidBody3D" unique_id=1859849572]
-collision_mask = 191
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-mass = 75.0
-script = ExtResource("1_xsym8")
+[sub_resource type="BoxShape3D" id="BoxShape3D_qx5lm"]
+resource_local_to_scene = true
+size = Vector3(0.5, 0.35, 1.025)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=274192361]
+[node name="Sofa03Physics" unique_id=1565635138 instance=ExtResource("1_xsym8")]
+mass = 75.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0" unique_id=1719364392]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3520022, 0)
 mesh = ExtResource("2_uatx7")
 
-[node name="RectCollider" parent="." unique_id=415124710 instance=ExtResource("3_nyclf")]
+[node name="RectCollider" parent="." index="1" unique_id=415124710 instance=ExtResource("3_nyclf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05200219, 0.006652832)
-shape = SubResource("BoxShape3D_xsym8")
-
-[node name="RectCollider2" parent="." unique_id=872111854 instance=ExtResource("3_nyclf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-07, 0.53549784, -0.3857422)
 shape = SubResource("BoxShape3D_uatx7")
 
-[node name="RectCollider3" parent="." unique_id=806352708 instance=ExtResource("3_nyclf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.225, 0.42299783, 0.0017578602)
+[node name="RectCollider2" parent="." index="2" unique_id=1647322181 instance=ExtResource("3_nyclf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-07, 0.53549784, -0.3857422)
 shape = SubResource("BoxShape3D_nyclf")
 
-[node name="RectCollider4" parent="." unique_id=2114154426 instance=ExtResource("3_nyclf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.225, 0.42299783, 0.0017578602)
+[node name="RectCollider3" parent="." index="3" unique_id=861520626 instance=ExtResource("3_nyclf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.225, 0.42299783, 0.0017578602)
 shape = SubResource("BoxShape3D_jvyjc")
+
+[node name="RectCollider4" parent="." index="4" unique_id=2018786023 instance=ExtResource("3_nyclf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.225, 0.42299783, 0.0017578602)
+shape = SubResource("BoxShape3D_qx5lm")

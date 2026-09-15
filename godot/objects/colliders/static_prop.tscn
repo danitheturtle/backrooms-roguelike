@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cvcchcq6yxrci"]
+
+[node name="StaticProp" type="StaticBody3D" unique_id=308446481]
+collision_mask = 177
+input_ray_pickable = false

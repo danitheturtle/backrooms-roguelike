@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4wu7kqyskjug"]
 
 [ext_resource type="ArrayMesh" uid="uid://7yjov2d8vofa" path="res://objects/furniture/sofa_01/res/sofa_01.glb" id="1_3uj5s"]
-[ext_resource type="Script" uid="uid://edobctxmw14j" path="res://scripts/holdable.gd" id="1_sxc1n"]
+[ext_resource type="PackedScene" uid="uid://bpa4y10qbxd5f" path="res://objects/colliders/draggable_prop.tscn" id="1_sxc1n"]
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="2_sxc1n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rrnjy"]
@@ -20,30 +20,25 @@ size = Vector3(0.125, 0.22500001, 0.6)
 resource_local_to_scene = true
 size = Vector3(0.125, 0.22500001, 0.6)
 
-[node name="Sofa01Physics" type="RigidBody3D" unique_id=1936716065]
-collision_mask = 191
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
+[node name="Sofa01Physics" unique_id=1565635138 instance=ExtResource("1_sxc1n")]
 mass = 75.0
-script = ExtResource("1_sxc1n")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=234798647]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0" unique_id=1083892502]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366669, 0)
 mesh = ExtResource("1_3uj5s")
 
-[node name="RectCollider" parent="." unique_id=415124710 instance=ExtResource("2_sxc1n")]
+[node name="RectCollider" parent="." index="1" unique_id=415124710 instance=ExtResource("2_sxc1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0124999285, -0.09166899, -0.012499988)
 shape = SubResource("BoxShape3D_rrnjy")
 
-[node name="RectCollider2" parent="." unique_id=425249252 instance=ExtResource("2_sxc1n")]
+[node name="RectCollider2" parent="." index="2" unique_id=1623121620 instance=ExtResource("2_sxc1n")]
 transform = Transform3D(1, 0, 0, 0, 0.98480785, 0.17364821, 0, -0.17364821, 0.98480785, 0.0124999285, 0.46343195, -0.40419737)
 shape = SubResource("BoxShape3D_ceorw")
 
-[node name="RectCollider3" parent="." unique_id=346837105 instance=ExtResource("2_sxc1n")]
+[node name="RectCollider3" parent="." index="3" unique_id=1725237790 instance=ExtResource("2_sxc1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1125, 0.29583097, 0)
 shape = SubResource("BoxShape3D_hujwr")
 
-[node name="RectCollider4" parent="." unique_id=7093827 instance=ExtResource("2_sxc1n")]
+[node name="RectCollider4" parent="." index="4" unique_id=2081701155 instance=ExtResource("2_sxc1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0875002, 0.29583097, 0)
 shape = SubResource("BoxShape3D_hw6nr")

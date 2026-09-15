@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c0thkvhu37he4" path="res://objects/player/player.tscn" id="1_2elnx"]
 [ext_resource type="Script" uid="uid://c61w1b375al4r" path="res://scripts/level.gd" id="1_bkkah"]
-[ext_resource type="PackedScene" uid="uid://cwq4k3mxd86fb" path="res://rooms/room2/room_2.tscn" id="3_eesb3"]
+[ext_resource type="PackedScene" uid="uid://cwq4k3mxd86fb" path="res://rooms/room_tutorial/room_tutorial.tscn" id="3_eesb3"]
 
 [sub_resource type="Environment" id="Environment_5q0ne"]
 background_mode = 1
@@ -12,7 +12,7 @@ ambient_light_color = Color(0.21568628, 0.21568628, 0.14117648, 1)
 ambient_light_energy = 0.1
 reflected_light_source = 1
 
-[node name="base_level" type="Node3D" unique_id=958888166]
+[node name="BaseLevel" type="Node3D" unique_id=958888166]
 script = ExtResource("1_bkkah")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1616886304]
@@ -20,6 +20,5 @@ environment = SubResource("Environment_5q0ne")
 
 [node name="Player" parent="." unique_id=66642413 instance=ExtResource("1_2elnx")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.722849, 0.49999994, -10.511302)
-MOUSE_SENSITIVITY = 0.5
 
-[node name="room2" parent="." unique_id=52152568 instance=ExtResource("3_eesb3")]
+[node name="RoomTutorial" parent="." unique_id=52152568 instance=ExtResource("3_eesb3")]

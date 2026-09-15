@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cprxcxn2misde"
-path="res://.godot/imported/room1.blend-108d26b163afe3edfa37e59aaf493e16.scn"
+uid="uid://bv2j44sulc7o4"
+path="res://.godot/imported/room_tutorial.blend-6c0e46839b6ab43c5fbece3f8de98600.scn"
 
 [deps]
 
-source_file="res://rooms/room1/res/room1.blend"
-dest_files=["res://.godot/imported/room1.blend-108d26b163afe3edfa37e59aaf493e16.scn"]
+source_file="res://rooms/room_tutorial/res/room_tutorial.blend"
+dest_files=["res://.godot/imported/room_tutorial.blend-6c0e46839b6ab43c5fbece3f8de98600.scn"]
 
 [params]
 
@@ -21,7 +21,7 @@ array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
-nodes/use_name_suffixes=true
+nodes/use_name_suffixes=false
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -29,7 +29,7 @@ meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
-skins/use_named_skins=true
+skins/use_named_skins=false
 animation/import=false
 animation/fps=30
 animation/trimming=false
@@ -54,7 +54,7 @@ blender/meshes/gpu_instances=false
 blender/meshes/tangents=true
 blender/meshes/skins=2
 blender/meshes/export_bones_deforming_mesh_only=false
-blender/materials/unpack_enabled=true
+blender/materials/unpack_enabled=false
 blender/materials/export_materials=1
 blender/animation/limit_playback=true
 blender/animation/always_sample=true
