@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cprxcxn2misde" path="res://rooms/room1/res/room1.blend" id="1_t0nly"]
 [ext_resource type="PackedScene" uid="uid://8sf117bxhjkb" path="res://objects/ceiling_light/ceiling_light_off.tscn" id="2_cxxje"]
 [ext_resource type="PackedScene" uid="uid://gvu7a8nb8ace" path="res://objects/ceiling_light/ceiling_light_only_emissive.tscn" id="3_8b6bf"]
-[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/rect_collider.tscn" id="4_seo54"]
+[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="4_seo54"]
 [ext_resource type="Material" uid="uid://b3ofgrdcrwlk7" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01.tres" id="5_02nsu"]
 [ext_resource type="Material" uid="uid://d1lrwgc8w1ni3" path="res://assets/materials/Carpet01/Carpet01.tres" id="6_n548t"]
 [ext_resource type="Material" uid="uid://jpugse6grl5b" path="res://assets/materials/Molding01/Paint004_2K-PNG_NORMAL.tres" id="7_10j8q"]

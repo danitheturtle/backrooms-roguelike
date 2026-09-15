@@ -161,8 +161,8 @@ func _physics_process(_delta: float) -> void:
         var didVault = false
         vaultRayCast.force_raycast_update()
         if vaultRayCast.is_colliding():
-            print("try vault")
-            didVault = handle_vault(vaultRayCast.get_collision_point())
+            if vaultRayCast.get_collider() is not RigidBody3D:
+                didVault = handle_vault(vaultRayCast.get_collision_point())
         if !didVault && onFloorLastFrame:
             handle_jump()
     # some behaviors only happen when not climbing, like gravity and shoving

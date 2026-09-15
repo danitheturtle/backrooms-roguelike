@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://bdtdhexv2u2mh" path="res://objects/wooden_ladder/wooden_ladder.gd" id="1_aqc6c"]
 [ext_resource type="ArrayMesh" uid="uid://cibiji6jxusk3" path="res://objects/wooden_ladder/res/wooden_ladder.glb" id="1_pqyb0"]
 [ext_resource type="ArrayMesh" uid="uid://cxsv14xgq0p0l" path="res://objects/wooden_ladder/res/wooden_ladder_supports.glb" id="2_4j06i"]
-[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/rect_collider.tscn" id="2_aqc6c"]
+[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="2_aqc6c"]
 [ext_resource type="Material" uid="uid://c5a6tmd4jjju1" path="res://objects/wooden_ladder/res/wooden_ladder.tres" id="3_aqc6c"]
-[ext_resource type="PackedScene" uid="uid://cg8ae5q8pnluf" path="res://objects/colliders/capsule_collider.tscn" id="6_1y61k"]
+[ext_resource type="PackedScene" uid="uid://cg8ae5q8pnluf" path="res://objects/colliders/primitives/capsule_collider.tscn" id="6_1y61k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1y61k"]
 resource_local_to_scene = true

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://eksubm8tj0xy"]
 
 [ext_resource type="ArrayMesh" uid="uid://dxhquaeb00onb" path="res://objects/furniture/sofa_03/res/sofa_03.glb" id="1_tguwy"]
-[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/rect_collider.tscn" id="2_tnpg4"]
+[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="2_tnpg4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6pvct"]
 resource_local_to_scene = true

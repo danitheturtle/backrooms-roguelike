@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://edobctxmw14j" path="res://scripts/holdable.gd" id="1_kjdew"]
 [ext_resource type="ArrayMesh" uid="uid://dv27thger1paf" path="res://objects/furniture/rocking_chair/res/rocking_chair.glb" id="1_u0ssf"]
-[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/rect_collider.tscn" id="2_e7rdj"]
-[ext_resource type="PackedScene" uid="uid://b160k414l2773" path="res://objects/colliders/sphere_collider.tscn" id="3_8r43g"]
+[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="2_e7rdj"]
+[ext_resource type="PackedScene" uid="uid://b160k414l2773" path="res://objects/colliders/primitives/sphere_collider.tscn" id="3_8r43g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kjdew"]
 resource_local_to_scene = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://edobctxmw14j" path="res://scripts/holdable.gd" id="1_4ow4n"]
 [ext_resource type="ArrayMesh" uid="uid://igghnp03nive" path="res://objects/furniture/green_chair/res/green_chair.glb" id="1_m101v"]
-[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/rect_collider.tscn" id="2_51w33"]
+[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="2_51w33"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ow4n"]
 resource_local_to_scene = true

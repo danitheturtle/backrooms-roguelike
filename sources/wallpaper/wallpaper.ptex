@@ -1,0 +1,189 @@
+{
+	"connections": [
+		{
+			"from": "image",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		},
+		{
+			"from": "image_2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 2
+		},
+		{
+			"from": "image_3",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 4
+		},
+		{
+			"from": "shape",
+			"from_port": 0,
+			"to": "rotate",
+			"to_port": 0
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@Node@973",
+	"node_position": {
+		"x": 0.0,
+		"y": 0.0
+	},
+	"nodes": [
+		{
+			"export_paths": {},
+			"name": "Material",
+			"node_position": {
+				"x": 0.0,
+				"y": 0.0
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1.0,
+					"b": 1.0,
+					"g": 1.0,
+					"r": 1.0,
+					"type": "Color"
+				},
+				"ao": 1.0,
+				"depth_scale": 0.5,
+				"emission_energy": 1.0,
+				"flags_transparent": true,
+				"metallic": 0.0,
+				"normal": 1.0,
+				"roughness": 1.0,
+				"size": 11,
+				"sss": 1.0
+			},
+			"seed_int": 0,
+			"type": "material"
+		},
+		{
+			"name": "image",
+			"node_position": {
+				"x": -1131.5,
+				"y": -387.0
+			},
+			"parameters": {
+				"clamp": false,
+				"fix_ar": false,
+				"image": "/mnt/B/Asset Library/Textures/Yasu's_Backrooms_Material_Pack/Walls/Backrooms_Wallpaper_09_Tintable.jpg"
+			},
+			"seed_int": 0,
+			"type": "image"
+		},
+		{
+			"name": "image_2",
+			"node_position": {
+				"x": -1136.5,
+				"y": -58.0
+			},
+			"parameters": {
+				"clamp": false,
+				"fix_ar": false,
+				"image": "/mnt/B/Asset Library/Textures/Yasu's_Backrooms_Material_Pack/Walls/Backrooms_Wallpaper_09_Roughness.jpg"
+			},
+			"seed_int": 0,
+			"type": "image"
+		},
+		{
+			"name": "image_3",
+			"node_position": {
+				"x": -631.5,
+				"y": 343.0
+			},
+			"parameters": {
+				"clamp": false,
+				"fix_ar": false,
+				"image": "/mnt/B/Asset Library/Textures/Yasu's_Backrooms_Material_Pack/Walls/Backrooms_Wallpaper_09_Normal.jpg"
+			},
+			"seed_int": 0,
+			"type": "image"
+		},
+		{
+			"name": "shape",
+			"node_position": {
+				"x": -1507.5,
+				"y": -145.0
+			},
+			"parameters": {
+				"edge": 0.0,
+				"radius": 0.06,
+				"shape": 1.0,
+				"sides": 2.0
+			},
+			"seed_int": 0,
+			"type": "shape"
+		},
+		{
+			"generic_size": 1,
+			"name": "rotate",
+			"node_position": {
+				"x": -1357.5,
+				"y": -159.0
+			},
+			"parameters": {
+				"cx": 0.0,
+				"cy": 0.0,
+				"rotate": 90.0
+			},
+			"seed_int": 0,
+			"type": "rotate"
+		},
+		{
+			"name": "polycurve",
+			"node_position": {
+				"x": -1506.22717285156,
+				"y": -510.818206787109
+			},
+			"parameters": {
+				"curve": {
+					"points": [
+						{
+							"x": 0.756151974201202,
+							"y": 0.89485502243042
+						},
+						{
+							"x": 0.205816999077797,
+							"y": 0.917226016521454
+						},
+						{
+							"x": 0.217896997928619,
+							"y": 0.63400399684906
+						},
+						{
+							"x": 0.72035801410675,
+							"y": 0.69351202249527
+						},
+						{
+							"x": 0.661969006061554,
+							"y": 0.406711995601654
+						},
+						{
+							"x": 0.181207999587059,
+							"y": 0.355704009532928
+						},
+						{
+							"x": 0.274720996618271,
+							"y": 0.140716001391411
+						}
+					],
+					"type": "Polygon"
+				},
+				"ends": true,
+				"repeat": 1.0,
+				"width": 0.1
+			},
+			"seed_int": 0,
+			"type": "polycurve"
+		}
+	],
+	"parameters": {},
+	"project_thumbnail": "UklGRtYEAABXRUJQVlA4WAoAAAAQAAAALwAALwAAQUxQSJQCAAANoCNteyJJevXrV9HAMpNX7Q9UrMd4gGEea5ksZmYGi3n3AG12ZIzVFT0X4BmrrOXdqqiUUlooyNIJImICmFOsBzh//bn89tcvAK6K1C9SVmbLdb1uM1Y0ZXysX6yVaIx1aRmvObyDqe3OZd3edRt/+PQkGmqR5K945gZIFWIwJFLELu3cv/LMWWPifFry8D0QxFomGoxAjK2Dj374ZtIwjxtd9BN4dcwrksL6lzZvGzg/mxtu+gavDeo0msLNn+xZdX4WN7z2PXyHuo36S5fvP+L8NB1teo/QZoEuNIv7VzVMkvKibwgtFqqhubxnIHFC4id8mwWrv/STbYn/q38Y32Hhzt+8+U0NIOUV96BkqLz04VmJSHwa38jB+PWPPCtRymtuQMlSObhyUmx1GN/Iw/jOvk+tNzuwZGrZ+UPJFlI2kpY2rnEdVTZU9rqCHln3+nSRfITusfObmHwMl43XR7LuyLkVJh9Du0n2vzXbyWSTzGj8l3TIeRh/GV+WTDbJDOBYN0o2UY5Bv0fOfSius/lYCljbuBQlk2iP/YErf9hZ2Uwq+z2u4tN9nWSySA3/FVXUkysHg2YR9HO0JPLsI+uTySA1xq8QIerZD18KmkHQx9ASCObNzTd7tzDfKY4az/9N2vbJpUEXFNo/34lJE6IO9iw3gy4ktKo70JLJwa3eXzS9W4BvV9fhRkz37sj9y5d6NTWl0Pn5DtyQWb1b3fPJzXg1NaTQ0OJO3JDZvQ62bX5pPUFkjhidjh87io6YN0h688NHD7ZIFWIwJFLEWgmfv4wxJfNH9OwzK/t3LlkmGozAse+/BPWJWoPIyU9/2Hhdr3tZp81oODjWL/4AjSV1xyi2XCv6x8bSZBz5v6tKZgdWUDggHAIAALANAJ0BKjAAMAA+kTqXR6WjIiEuOAzIsBIJZwDHr3+f4pBAd8d6SP9p5LPnL/ne4F/I/6N/sOuJ+t3sAfqOVaaTk18EzeWm+AIe0L7Z7kb8EVOT/HDosFvvrOfdSUUk/4K8eb1mtIOK+vCkrH5utUXsyjyK4gAA/v1T5tnah9Nn+sYAIcPkiyR4/xGCGc5Y/ayf+LI7w7+yBB/iwknGQi/Kgwjw/JoQp1PQVYotgtadfYj2eNNEXAJgoVSqJFZIxjztaP4LkSPjmSnWPU/zKfvGnBZWdd15B5/WgoCI2n6x/6yw88FUSMDrD3HSs0O5oW+LDyWLA+dp9U2Q5SQJ7WCI/XrW+TFMT4bi0Kbk+xf+n5KNNK3UBJ6aJHCA/x7E8y8G+Rl5eF1Abt+uF+c/udCdwtJ/PMgO902sGh+k33pdpcDkStF6Ia87L8QeBh5Pu7lwJY/pNF/5ov8/nUx8ZLjXggL6P/DUfe6Tszl9slX0A7y8HDWp8V4j6zer0/xMfyKW4ql5zhJ+N2ytI6cyBAokT/DtkT+/F3IEpseb8Cf1gBlxilYmLBza2Gd9YFRo6a+Z8VRFP3k/VTsCH7p04yPwK5D3CMWcp/tYO3HSdCO+UkOs9MhJlFNvYaRqfPWTb0irfxbeQWEgwE8TeEG0XI4kTNn0T+KLn4cvC7e3iF7yuOyJmyCXedcht7dC7Ne5EtGv+4AB6tUfwgAAAA==",
+	"seed_int": 0,
+	"shortdesc": "",
+	"type": "graph"
+}

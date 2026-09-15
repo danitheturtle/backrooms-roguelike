@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b500l15l80jvq"]
+
+[node name="FloorStaticBody" type="StaticBody3D" unique_id=446596967]
+collision_layer = 8
+collision_mask = 177

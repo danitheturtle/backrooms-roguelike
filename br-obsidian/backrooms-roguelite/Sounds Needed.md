@@ -1,0 +1,14 @@
+If you only do one floor type do carpet.
+- Sneakers walking on carpet, hardwood, and lenolium
+- Dragging heavy furniture across carpet, hardwood, and lenolium
+- Held object banging on surfaces it collides with. Usually a wooden object / furniture colliding with the floor or drywall
+- Held object dropped on floor (carpet, hardwood, lenolium)
+- Flourescent light buzz
+- Exertion noise (like you would make climbing up onto a ledge)
+- Flashlight turning on / off
+- Old film SLR noises - taking a photo, winding film, zoom / focus motor
+- Old electrical circuits with mechanical switches turning on
+- Old computer hard drives and electrical gear spinning up
+- Muffled voices you can't quite understand heard through a shitty apartment wall with no insulation
+- Electrical shorts / sparks
+- blowing a fuse / breaker
