@@ -300,7 +300,7 @@ func can_crouch():
         return !squeezing
     else:
         return can_shape_change()
-func handle_crouch():
+func handle_crouch(tryStandAfterCrouching: bool = false):
     if (grabbing || dragging || photographing):
         # stop photographing
         handle_drop()
@@ -321,6 +321,7 @@ func handle_crouch():
     crawling = false
     crouching = true
     try_clear_hover_state()
+    if tryStandAfterCrouching: call_deferred("try_stand")
 
 ###
 ### CRAWLING
@@ -384,6 +385,8 @@ func handle_run():
 ###
 func can_stand():
     return can_shape_change()
+func try_stand():
+    if can_stand(): handle_stand()
 # reset to base collision state
 func handle_stand():
     if (playerShape.height != standingHeight):
@@ -525,7 +528,7 @@ func handle_key_input(event: InputEvent ) -> void:
     var eventHandled: bool = false
     if (event.is_action_pressed("jump")):
         if (crawling && can_crouch()):
-            handle_crouch()
+            handle_crouch(true)
         elif (crouching && can_stand()):
             handle_stand()
         elif (can_climb() && !Input.is_action_pressed("run")):
@@ -543,8 +546,7 @@ func handle_key_input(event: InputEvent ) -> void:
         if (!squeezing && can_squeeze()):
             handle_squeeze()
     elif (event.is_action_released("squeeze")):
-        if (squeezing && can_stand()):
-            handle_stand()
+        if (squeezing): try_stand()
     elif (event.is_action_pressed("action")):
         actionTimer.start()
         if ((grabbing || dragging) && heldObjectRef != null):

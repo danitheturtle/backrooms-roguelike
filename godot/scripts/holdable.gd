@@ -68,7 +68,6 @@ func on_body_entered(body: PhysicsBody3D):
     if get_collision_layer_value(6): return
     # if colliding body is not held, do nothing
     if !body.get_collision_layer_value(6): return
-    print("held object entered")
     if (body == repeatCollider):
         freezeTimeout.start()
         if (repeatCollisions > propNonsenseLimit):
@@ -81,7 +80,6 @@ func on_body_entered(body: PhysicsBody3D):
         repeatCollisions = 0
 
 func on_frozen_timer_timeout():
-    print((global_position - repeatCollider.global_position).length_squared())
     if (global_position - repeatCollider.global_position).length_squared() > heldDistance * heldDistance:
         repeatCollider = null
         freeze = false

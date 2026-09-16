@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Sounds Needed.md",
+                "file": "Bugs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Sounds Needed"
+              "title": "Bugs"
             }
           },
           {
@@ -219,8 +219,9 @@
   },
   "active": "fc523be4c1d6960a",
   "lastOpenFiles": [
-    "Deco Ideas.md",
     "Sounds Needed.md",
+    "Bugs.md",
+    "Deco Ideas.md",
     "Today.md",
     "Todo.md",
     "Spooky Wall Writing.md",
