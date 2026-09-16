@@ -907,311 +907,312 @@ size = Vector3(5.25, 4, 4.75)
 
 [node name="RoomTutorial" unique_id=52152568 instance=ExtResource("1_l7p5v")]
 
-[node name="ceiling_000" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="0" unique_id=1477258835]
+[node name="ceiling_000" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="0" unique_id=409403387]
 layers = 2
 material_override = ExtResource("2_1iljx")
 
-[node name="ceiling_001" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="1" unique_id=1723861109]
+[node name="ceiling_001" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="1" unique_id=1499122815]
 transform = Transform3D(1.01, 0, 0, 0, 0.94768965, 0.34926265, 0, -0.34926265, 0.94768965, 8.75, 4.7456417, 0.625)
 layers = 2
 material_override = ExtResource("2_1iljx")
 
-[node name="ceiling_002" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="2" unique_id=948823631]
+[node name="ceiling_002" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="2" unique_id=784539373]
 layers = 2
 material_override = ExtResource("2_1iljx")
 
-[node name="ceiling_003" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="3" unique_id=1781685486]
+[node name="ceiling_003" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="3" unique_id=739700570]
 layers = 2
 material_override = ExtResource("2_1iljx")
 
-[node name="ceiling_004" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="4" unique_id=1283888131]
+[node name="ceiling_004" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="4" unique_id=785531290]
 layers = 2
 material_override = ExtResource("2_1iljx")
 
-[node name="ceiling_005" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="5" unique_id=187174612]
+[node name="ceiling_005" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="5" unique_id=1684573523]
 layers = 2
 material_override = ExtResource("2_1iljx")
 
-[node name="ceiling_006" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="6" unique_id=1941191812]
+[node name="ceiling_006" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="6" unique_id=2112174685]
 layers = 2
 material_override = ExtResource("2_1iljx")
 
-[node name="ceiling_007" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="7" unique_id=1594035777]
+[node name="ceiling_007" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="7" unique_id=2025182047]
 layers = 2
 material_override = ExtResource("2_1iljx")
 
-[node name="ceiling_008" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="8" unique_id=348712231]
+[node name="ceiling_008" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="8" unique_id=1601955713]
 layers = 2
 material_override = ExtResource("2_1iljx")
 
-[node name="ceiling_009" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="9" unique_id=1451070676]
+[node name="ceiling_009" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="9" unique_id=1849937113]
 layers = 2
 material_override = ExtResource("2_1iljx")
 
-[node name="ceiling_010" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="10" unique_id=976188829]
+[node name="ceiling_010" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="10" unique_id=949678925]
 material_override = ExtResource("2_1iljx")
 
-[node name="ceiling_011" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="11" unique_id=1162616543]
+[node name="ceiling_011" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="11" unique_id=368897941]
 material_override = ExtResource("2_1iljx")
 
-[node name="ceiling_012" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="12" unique_id=651702304]
+[node name="ceiling_012" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="12" unique_id=2082059437]
 material_override = ExtResource("2_1iljx")
 
-[node name="ceiling_013" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="13" unique_id=1777030729]
+[node name="ceiling_013" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="13" unique_id=740439305]
 material_override = ExtResource("2_1iljx")
 
-[node name="floor_000" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="14" unique_id=10513201]
+[node name="floor_000" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="14" unique_id=738288364]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_001" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="15" unique_id=340239369]
+[node name="floor_001" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="15" unique_id=1755626113]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_002" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="16" unique_id=873781196]
+[node name="floor_002" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="16" unique_id=611290772]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_003" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="17" unique_id=1237449135]
+[node name="floor_003" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="17" unique_id=1213417770]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_004" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="18" unique_id=1932638195]
+[node name="floor_004" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="18" unique_id=2124391136]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_005" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="19" unique_id=374534908]
+[node name="floor_005" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="19" unique_id=1492630319]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_006" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="20" unique_id=1257042165]
+[node name="floor_006" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="20" unique_id=688629777]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_007" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="21" unique_id=817128523]
+[node name="floor_007" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="21" unique_id=186482535]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_008" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="22" unique_id=701169112]
+[node name="floor_008" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="22" unique_id=1600632393]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_009" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="23" unique_id=543909284]
+[node name="floor_009" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="23" unique_id=1957117719]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_010" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="24" unique_id=194807371]
+[node name="floor_010" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="24" unique_id=1292046936]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_011" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="25" unique_id=1041642381]
+[node name="floor_011" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="25" unique_id=195659295]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_012" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="26" unique_id=41853884]
+[node name="floor_012" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="26" unique_id=725221118]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_013" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="27" unique_id=1975306724]
+[node name="floor_013" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="27" unique_id=892678602]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_014" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="28" unique_id=1092320823]
+[node name="floor_014" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="28" unique_id=721626548]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_015" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="29" unique_id=674768736]
+[node name="floor_015" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="29" unique_id=19173220]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_016" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="30" unique_id=44466251]
+[node name="floor_016" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="30" unique_id=187284296]
 material_override = ExtResource("3_2vefq")
 
-[node name="floor_017" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="31" unique_id=1480874359]
+[node name="floor_017" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="31" unique_id=1102245997]
 material_override = ExtResource("3_2vefq")
 
-[node name="wall_000" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="32" unique_id=1275622620]
+[node name="wall_000" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="32" unique_id=1252960978]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_001" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="33" unique_id=1644967958]
+[node name="wall_001" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="33" unique_id=1620618293]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_002" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="34" unique_id=1777833538]
+[node name="wall_002" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="34" unique_id=931427644]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_003" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="35" unique_id=340872598]
+[node name="wall_003" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="35" unique_id=1768713184]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_004" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="36" unique_id=280178562]
+[node name="wall_004" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="36" unique_id=1619458558]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_005" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="37" unique_id=1564153243]
+[node name="wall_005" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="37" unique_id=745068842]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_006" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="38" unique_id=281843526]
+[node name="wall_006" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="38" unique_id=273226345]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_007" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="39" unique_id=2117480071]
+[node name="wall_007" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="39" unique_id=1257777354]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_008" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="40" unique_id=1785568482]
+[node name="wall_008" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="40" unique_id=695325701]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_009" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="41" unique_id=544570206]
+[node name="wall_009" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="41" unique_id=572028266]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_010" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="42" unique_id=1292194344]
+[node name="wall_010" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="42" unique_id=2023000373]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_011" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="43" unique_id=1594005698]
+[node name="wall_011" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="43" unique_id=151176982]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_012" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="44" unique_id=903406525]
+[node name="wall_012" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="44" unique_id=1229944183]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_013" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="45" unique_id=632238739]
+[node name="wall_013" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="45" unique_id=2024408461]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_014" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="46" unique_id=304083004]
+[node name="wall_014" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="46" unique_id=1095607354]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_015" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="47" unique_id=410722964]
+[node name="wall_015" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="47" unique_id=332913114]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_016" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="48" unique_id=2131852689]
+[node name="wall_016" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="48" unique_id=264273731]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_017" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="49" unique_id=1718150743]
+[node name="wall_017" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="49" unique_id=518850357]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_018" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="50" unique_id=83300732]
+[node name="wall_018" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="50" unique_id=2113797830]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_019" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="51" unique_id=1917838589]
+[node name="wall_019" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="51" unique_id=414713710]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_020" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="52" unique_id=1290679872]
+[node name="wall_020" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="52" unique_id=265321719]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_021" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="53" unique_id=1120162874]
+[node name="wall_021" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="53" unique_id=1065930651]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_022" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="54" unique_id=739452715]
+[node name="wall_022" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="54" unique_id=2132401415]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_023" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="55" unique_id=2009853146]
+[node name="wall_023" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="55" unique_id=2060976526]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_024" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="56" unique_id=220571036]
+[node name="wall_024" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="56" unique_id=2135986426]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_025" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="57" unique_id=785418548]
+[node name="wall_025" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="57" unique_id=1071921577]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_026" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="58" unique_id=457092897]
+[node name="wall_026" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="58" unique_id=533585951]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_027" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="59" unique_id=830113836]
+[node name="wall_027" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="59" unique_id=1442639908]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_028" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="60" unique_id=897377163]
+[node name="wall_028" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="60" unique_id=608067755]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_029" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="61" unique_id=1935967929]
+[node name="wall_029" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="61" unique_id=569317662]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_030" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="62" unique_id=306574658]
+[node name="wall_030" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="62" unique_id=1542761925]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_031" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="63" unique_id=2007947063]
+[node name="wall_031" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="63" unique_id=385485833]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_032" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="64" unique_id=1378255342]
+[node name="wall_032" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="64" unique_id=384469827]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_033" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="65" unique_id=486084215]
+[node name="wall_033" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="65" unique_id=2077063177]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_034" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="66" unique_id=709099517]
+[node name="wall_034" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="66" unique_id=2121811610]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_035" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="67" unique_id=1854290246]
+[node name="wall_035" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="67" unique_id=761000023]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_036" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="68" unique_id=7105479]
+[node name="wall_036" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="68" unique_id=868089366]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_037" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="69" unique_id=2005673630]
+[node name="wall_037" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="69" unique_id=1732279704]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_038" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="70" unique_id=40869418]
+[node name="wall_038" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="70" unique_id=251722832]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_039" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="71" unique_id=2025833291]
+[node name="wall_039" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="71" unique_id=845072291]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_040" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="72" unique_id=962672936]
+[node name="wall_040" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="72" unique_id=498809177]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_041" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="73" unique_id=1222557990]
+[node name="wall_041" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="73" unique_id=945959433]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_042" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="74" unique_id=720381527]
+[node name="wall_042" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="74" unique_id=78640170]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_043" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="75" unique_id=851801580]
+[node name="wall_043" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="75" unique_id=1635815686]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_044" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="76" unique_id=459901335]
+[node name="wall_044" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="76" unique_id=1059323769]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_045" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="77" unique_id=845267136]
+[node name="wall_045" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="77" unique_id=1636935556]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_046" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="78" unique_id=2034723736]
+[node name="wall_046" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="78" unique_id=2032893435]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_047" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="79" unique_id=1280640567]
+[node name="wall_047" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="79" unique_id=1503890184]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_048" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="80" unique_id=340725995]
+[node name="wall_048" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="80" unique_id=1123172905]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_049" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="81" unique_id=1365770595]
+[node name="wall_049" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="81" unique_id=1339093723]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_050" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="82" unique_id=1464888913]
+[node name="wall_050" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="82" unique_id=290488192]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_051" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="83" unique_id=1586438650]
+[node name="wall_051" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="83" unique_id=2036785965]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_052" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="84" unique_id=1612890826]
+[node name="wall_052" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="84" unique_id=388256295]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_053" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="85" unique_id=309865796]
+[node name="wall_053" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="85" unique_id=1903014222]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_054" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="86" unique_id=926155621]
+[node name="wall_054" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="86" unique_id=1157786810]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_055" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="87" unique_id=326528825]
+[node name="wall_055" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="87" unique_id=1097324626]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_056" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="88" unique_id=390904415]
+[node name="wall_056" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="88" unique_id=325391512]
 material_override = ExtResource("4_py2y4")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="levelGeometry/wall_056" index="0" unique_id=295756338]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4145739, 1.7317238)
 material_override = SubResource("StandardMaterial3D_o41gw")
 
-[node name="wall_057" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="89" unique_id=1708668502]
+[node name="wall_057" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="89" unique_id=127703364]
 layers = 4
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_058" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="90" unique_id=1574288047]
+[node name="wall_058" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="90" unique_id=429028808]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_059" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="91" unique_id=189725448]
+[node name="wall_059" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="91" unique_id=1606339199]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_060" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="92" unique_id=1196130075]
+[node name="wall_060" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="92" unique_id=888232233]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_061" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="93" unique_id=1831155342]
+[node name="wall_061" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="93" unique_id=325306125]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_062" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="94" unique_id=450750264]
+[node name="wall_062" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="94" unique_id=1940804875]
 material_override = ExtResource("4_py2y4")
 
-[node name="wall_064" parent="levelGeometry" parent_id_path=PackedInt32Array(1972787720) index="95" unique_id=1845291991]
+[node name="wall_064" parent="levelGeometry" parent_id_path=PackedInt32Array(838664873) index="95" unique_id=1213773398]
 material_override = ExtResource("4_py2y4")
 
 [node name="collision" type="Node3D" parent="." index="1" unique_id=1025676281]
+visible = false
 
 [node name="FloorStaticBody" parent="collision" index="0" unique_id=446596967 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, -12)
@@ -2208,17 +2209,23 @@ omni_range = 4.0750003
 [node name="CeilingLight2" parent="lighting" index="1" unique_id=1156678179 instance=ExtResource("10_o41gw")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 8.55, -3.5, 7.125)
 
+[node name="SpotLight" parent="lighting/CeilingLight2" index="0" unique_id=1233206479]
+spot_range = 12.0
+
 [node name="BounceAndShadow" parent="lighting/CeilingLight2" index="1" unique_id=1159096795]
-omni_range = 7.5
+omni_range = 10.0
 
 [node name="CeilingLight3" parent="lighting" index="2" unique_id=386198342 instance=ExtResource("10_o41gw")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 12.53884, -3.5, 3.125)
 
-[node name="BounceAndShadow" parent="lighting/CeilingLight3" index="1" unique_id=1159096795]
-omni_range = 9.25
+[node name="SpotLight" parent="lighting/CeilingLight3" index="0" unique_id=1233206479]
+spot_range = 12.0
 
 [node name="CeilingLight4" parent="lighting" index="3" unique_id=1179141360 instance=ExtResource("10_o41gw")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 12.5447445, -3.5, 15.124847)
+
+[node name="SpotLight" parent="lighting/CeilingLight4" index="0" unique_id=1233206479]
+spot_range = 12.0
 
 [node name="CeilingLightOff" parent="lighting" index="4" unique_id=292285577 instance=ExtResource("11_ydlc0")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 8.537025, -3.5, 11.125)
@@ -2241,17 +2248,35 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 4, 3
 [node name="CeilingLight6" parent="lighting" index="10" unique_id=2123264721 instance=ExtResource("10_o41gw")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.825, 5, 22.25)
 
+[node name="SpotLight" parent="lighting/CeilingLight6" index="0" unique_id=1233206479]
+spot_range = 12.0
+
+[node name="BounceAndShadow" parent="lighting/CeilingLight6" index="1" unique_id=1159096795]
+omni_range = 13.75
+
 [node name="CeilingLight10" parent="lighting" index="11" unique_id=271319673 instance=ExtResource("10_o41gw")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 8.825, 5, 26.25)
+
+[node name="SpotLight" parent="lighting/CeilingLight10" index="0" unique_id=1233206479]
+spot_range = 10.0
 
 [node name="CeilingLight7" parent="lighting" index="12" unique_id=671985118 instance=ExtResource("10_o41gw")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 4.25, 5, 39.5)
 
+[node name="SpotLight" parent="lighting/CeilingLight7" index="0" unique_id=1233206479]
+spot_range = 10.0
+
 [node name="CeilingLight8" parent="lighting" index="13" unique_id=549044281 instance=ExtResource("10_o41gw")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 10.25, 5, 35.5)
 
+[node name="SpotLight" parent="lighting/CeilingLight8" index="0" unique_id=1233206479]
+spot_range = 10.0
+
 [node name="CeilingLight9" parent="lighting" index="14" unique_id=319614583 instance=ExtResource("10_o41gw")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 14.849999, 5, 44.975002)
+
+[node name="SpotLight" parent="lighting/CeilingLight9" index="0" unique_id=1233206479]
+spot_range = 10.0
 
 [node name="CeilingLightOff33" parent="lighting" index="15" unique_id=2045829071 instance=ExtResource("11_ydlc0")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 8.85, 5, 22.25)
@@ -2317,10 +2342,10 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 4.25
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 8.85, 5, 30.25)
 
 [node name="CeilingLightOff29" parent="lighting" index="36" unique_id=1137372681 instance=ExtResource("11_ydlc0")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 7.7522755, 3.5, -12.870567)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.752275, 3.5, -12.870567)
 
 [node name="CeilingLightOff30" parent="lighting" index="37" unique_id=1244963891 instance=ExtResource("11_ydlc0")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 7.7522755, 3.5, -9.895568)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.752275, 3.5, -9.895568)
 
 [node name="CeilingLightOff32" parent="lighting" index="38" unique_id=1217683964 instance=ExtResource("11_ydlc0")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1.3727244, 2.25, -12.445567)
@@ -2341,11 +2366,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -19.
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -19.872725, 2.25, -11.570567)
 
 [node name="CeilingLight11" parent="lighting" index="44" unique_id=1172529650 instance=ExtResource("10_o41gw")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 7.725, 3.5, -6.875)
-
-[node name="BounceAndShadow" parent="lighting/CeilingLight11" index="1" unique_id=1159096795]
-transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, 0.25, 0, 1.1)
-omni_range = 4.5
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.725, 3.5, -6.875)
 
 [node name="CeilingLight13" parent="lighting" index="45" unique_id=1008692614 instance=ExtResource("10_o41gw")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1.375, 2.25, -8.425)
@@ -2363,30 +2384,53 @@ omni_range = 8.0
 [node name="CeilingLight12" parent="lighting" index="47" unique_id=1323000358 instance=ExtResource("10_o41gw")]
 transform = Transform3D(1, 0, 0, 0, 0.34844676, -0.93732864, 0, 0.93732864, 0.34844676, 9.775, 4.9293647, 1.0999997)
 
-[node name="BounceAndShadow" parent="lighting/CeilingLight12" index="1" unique_id=1159096795]
-visible = false
-
 [node name="CeilingLight14" parent="lighting" index="48" unique_id=1478586719 instance=ExtResource("10_o41gw")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 6.65, 6, 10.3)
 
+[node name="BounceAndShadow" parent="lighting/CeilingLight14" index="1" unique_id=1159096795]
+omni_range = 20.0
+
 [node name="CeilingLight15" parent="lighting" index="49" unique_id=969367436 instance=ExtResource("10_o41gw")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 12.65, 6, 14.3)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 6.6499996, 6, 14.3)
+
+[node name="BounceAndShadow" parent="lighting/CeilingLight15" index="1" unique_id=1159096795]
+transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, 1, 0, 1.1)
+omni_range = 11.75
 
 [node name="CeilingLight16" parent="lighting" index="50" unique_id=1100059435 instance=ExtResource("10_o41gw")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.65, 6, 10.3)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.65, 6, 14.3)
 
 [node name="BounceAndShadow" parent="lighting/CeilingLight16" index="1" unique_id=1159096795]
-transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, 1, 0, 1.1)
-omni_range = 8.75
+transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, 1, -1.25, 1.6000001)
+omni_range = 10.25
 
 [node name="CeilingLight21" parent="lighting" index="51" unique_id=1891260427 instance=ExtResource("10_o41gw")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 12.65, 6, 6.293799)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 12.65, 6, 10.293798)
+
+[node name="BounceAndShadow" parent="lighting/CeilingLight21" index="1" unique_id=1159096795]
+transform = Transform3D(1, 0, 0, 0, -1, -8.7422784e-08, 0, 8.7422784e-08, -1, 0, 6.5567086e-08, 1.85)
+omni_range = 14.75
 
 [node name="CeilingLight17" parent="lighting" index="52" unique_id=1786255751 instance=ExtResource("12_o41gw")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 6.65, 6, 14.3)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 12.65, 6, 14.3)
+
+[node name="SpotLight2" type="SpotLight3D" parent="lighting/CeilingLight17" index="0" unique_id=203574822]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742277e-08, 0, -8.742277e-08, -1, 0, 0, 3.4969108e-07)
+light_color = Color(0.9607843, 1, 1, 1)
+light_energy = 4.0
+light_size = 0.5
+light_cull_mask = 4293918733
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_caster_mask = 4293918733
+distance_fade_enabled = true
+distance_fade_begin = 30.0
+distance_fade_shadow = 40.0
+spot_range = 7.5
+spot_angle = 80.0
 
 [node name="CeilingLight22" parent="lighting" index="53" unique_id=247187396 instance=ExtResource("12_o41gw")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 12.65, 6, 10.3)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 12.65, 6, 6.3)
 
 [node name="SpotLight" type="SpotLight3D" parent="lighting/CeilingLight22" index="0" unique_id=1913377886]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742277e-08, 0, -8.742277e-08, -1, 0, 0, 0)
@@ -2401,7 +2445,7 @@ spot_range = 10.0
 spot_angle = 80.0
 
 [node name="CeilingLight19" parent="lighting" index="54" unique_id=443725357 instance=ExtResource("12_o41gw")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.65, 6, 14.3)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.65, 6, 10.3)
 
 [node name="SpotLight" type="SpotLight3D" parent="lighting/CeilingLight19" index="0" unique_id=1094024716]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742277e-08, 0, -8.742277e-08, -1, 0, 0, 0)
@@ -2658,9 +2702,15 @@ popupText = "That's it! Thanks for playing and be honest with your feedback :)"
 [editable path="lighting/CeilingLight"]
 [editable path="lighting/CeilingLight2"]
 [editable path="lighting/CeilingLight3"]
-[editable path="lighting/CeilingLight11"]
+[editable path="lighting/CeilingLight4"]
+[editable path="lighting/CeilingLight6"]
+[editable path="lighting/CeilingLight10"]
+[editable path="lighting/CeilingLight7"]
+[editable path="lighting/CeilingLight8"]
+[editable path="lighting/CeilingLight9"]
 [editable path="lighting/CeilingLight20"]
-[editable path="lighting/CeilingLight12"]
 [editable path="lighting/CeilingLight14"]
+[editable path="lighting/CeilingLight15"]
 [editable path="lighting/CeilingLight16"]
+[editable path="lighting/CeilingLight21"]
 [editable path="props/WoodChair01"]

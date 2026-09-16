@@ -24,6 +24,7 @@ script = ExtResource("1_bkkah")
 environment = SubResource("Environment_5q0ne")
 
 [node name="Player" parent="." unique_id=66642413 instance=ExtResource("1_2elnx")]
-transform = Transform3D(0.8744119, 0, 0.48518443, 0, 1, 0, -0.48518443, 0, 0.8744119, -13.474888, -0.9789269, -9.004626)
+transform = Transform3D(0.8744119, 0, 0.48518443, 0, 1, 0, -0.48518443, 0, 0.8744119, -13.382146, -0.95553637, -10.138169)
+MOUSE_SENSITIVITY = 0.5
 
 [node name="RoomTutorial" parent="." unique_id=52152568 instance=ExtResource("3_eesb3")]

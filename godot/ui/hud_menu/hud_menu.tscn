@@ -58,9 +58,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Crosshair" type="TextureRect" parent="MarginContainer/GridContainer/CenterContainer" unique_id=1840666105]
-visible = false
 layout_mode = 2
 texture = ExtResource("1_6k6t2")
+stretch_mode = 2
 
 [node name="CenterRightContainer" type="CenterContainer" parent="MarginContainer/GridContainer" unique_id=1407422479]
 layout_mode = 2
@@ -75,7 +75,8 @@ size_flags_vertical = 10
 [node name="BottomContainer" type="FlowContainer" parent="MarginContainer/GridContainer" unique_id=1328831306]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 4
+offset_transform_position = Vector2(0, -100)
 
 [node name="PopupPanel" type="PanelContainer" parent="MarginContainer/GridContainer/BottomContainer" unique_id=607633251]
 visible = false

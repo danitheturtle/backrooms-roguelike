@@ -386,6 +386,8 @@ func handle_run():
 func can_stand():
     return can_shape_change()
 func try_stand():
+    await get_tree().process_frame
+    await get_tree().process_frame
     if can_stand(): handle_stand()
 # reset to base collision state
 func handle_stand():
@@ -452,7 +454,7 @@ func try_clear_hover_state():
 ### CLIMBING
 ###
 func can_climb():
-    if (adjacentRef != null && !climbing && !photographing && !dragging && !squeezing && !vaulting):
+    if (adjacentRef != null && adjacentRef != heldObjectRef && !climbing && !photographing && !dragging && !squeezing && !vaulting):
         if crouching: return can_shape_change()
         return true
     return false
