@@ -4,6 +4,7 @@
 * Film Camera?
 * ledge grabs / climbups?
 * rotate held / grabbed object with player camera (hard)
+* progressive clue system like endfield but good. pick up parts of different stories on different runs. take pictures of environmental storytelling and it gets catalogued. etc.
 
 
 Game is about finding unique "exits"

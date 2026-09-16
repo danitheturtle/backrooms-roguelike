@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mechanic Brainstorm.md",
+                "file": "Decoration/Deco Ideas.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Mechanic Brainstorm"
+              "title": "Deco Ideas"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Bugs.md",
+                "file": "Decoration/Spooky Wall Writing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Bugs"
+              "title": "Spooky Wall Writing"
             }
           },
           {
@@ -49,8 +49,7 @@
               "title": "Todo"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -217,21 +216,27 @@
       "bases:Create new base": false
     }
   },
-  "active": "fc523be4c1d6960a",
+  "active": "e69299dbe188f118",
   "lastOpenFiles": [
-    "Sounds Needed.md",
-    "Bugs.md",
-    "Deco Ideas.md",
-    "Today.md",
     "Todo.md",
-    "Spooky Wall Writing.md",
-    "Mechanic Brainstorm.md",
-    "Musical Inspiration.md",
-    "Design Pillars.md",
-    "Exits.md",
-    "Async Investigations - Game Pitch.md",
-    "Building a room.md",
+    "Today.md",
+    "Decoration/Sounds Needed.md",
+    "Technical",
+    "Untitled.md",
     "Name Ideas.md",
+    "Decoration/Spooky Wall Writing.md",
+    "Decoration/Musical Inspiration.md",
+    "Design Pillars.md",
+    "Technical/Building a room.md",
+    "Mechanics/Exits.md",
+    "Async Investigations - Game Pitch.md",
+    "Lore",
+    "Decoration",
+    "Mechanics",
+    "Mechanics/Mechanic Brainstorm.md",
+    "Decoration/Deco Ideas.md",
+    "Lore/lore ideas.md",
+    "Technical/Bugs.md",
     "Building a Room.md",
     "Welcome.md"
   ]

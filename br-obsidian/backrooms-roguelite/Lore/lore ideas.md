@@ -1,0 +1,1 @@
+maybe the entities that are watching you explore feed off of the time and curiosity you spend in their maze. a very meta entity that could be abstract and only hinted about

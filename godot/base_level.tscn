@@ -11,6 +11,11 @@ ambient_light_source = 2
 ambient_light_color = Color(0.21568628, 0.21568628, 0.14117648, 1)
 ambient_light_energy = 0.1
 reflected_light_source = 1
+ssao_power = 3.3287072
+ssao_detail = 0.36
+ssao_horizon = 0.0
+ssao_light_affect = 0.34
+ssao_ao_channel_affect = 0.42
 
 [node name="BaseLevel" type="Node3D" unique_id=958888166]
 script = ExtResource("1_bkkah")
@@ -19,6 +24,6 @@ script = ExtResource("1_bkkah")
 environment = SubResource("Environment_5q0ne")
 
 [node name="Player" parent="." unique_id=66642413 instance=ExtResource("1_2elnx")]
-transform = Transform3D(0.15343076, 0, 0.9881594, 0, 1, 0, -0.9881594, 0, 0.15343076, 2.4083045, -0.75, -7.762521)
+transform = Transform3D(0.8744119, 0, 0.48518443, 0, 1, 0, -0.48518443, 0, 0.8744119, -13.474888, -0.9789269, -9.004626)
 
 [node name="RoomTutorial" parent="." unique_id=52152568 instance=ExtResource("3_eesb3")]

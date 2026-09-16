@@ -142,5 +142,6 @@ common/physics_interpolation=true
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
 lights_and_shadows/directional_shadow/size=8192
+limits/opengl/max_lights_per_object=12
 lights_and_shadows/positional_shadow/atlas_size=8192
 lights_and_shadows/positional_shadow/atlas_quadrant_0_subdiv=1

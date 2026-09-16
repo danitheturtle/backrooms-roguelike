@@ -1,6 +1,4 @@
 - refactor player behaviors into own scripts
 - rope climbing
 - color grade textures and lighting
-- root scene for props so I stop forgetting to set collision mask and axis lock. change it once for every inheriting object, etc.
 - dial in climbup min/max height
-- 

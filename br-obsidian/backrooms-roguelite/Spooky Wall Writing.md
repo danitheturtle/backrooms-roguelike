@@ -1,3 +1,0 @@
-- They Know You're Here
-- Don't Blink
-- Walk Quietly, They Can Hear You
