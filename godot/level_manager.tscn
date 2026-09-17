@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://84l7jcg6di1h"]
+
+[ext_resource type="Script" uid="uid://grby62ikpgvh" path="res://level_manager.gd" id="1_3maf5"]
+[ext_resource type="PackedScene" uid="uid://c0thkvhu37he4" path="res://objects/player/player.tscn" id="2_gpfvb"]
+
+[sub_resource type="Environment" id="Environment_5q0ne"]
+background_mode = 1
+background_color = Color(0.25808161, 0.25808164, 0.25808156, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.21568628, 0.21568628, 0.14117648, 1)
+ambient_light_energy = 0.1
+reflected_light_source = 1
+ssao_power = 3.3287072
+ssao_detail = 0.36
+ssao_horizon = 0.0
+ssao_light_affect = 0.34
+ssao_ao_channel_affect = 0.42
+
+[node name="LevelManager" type="Node3D" unique_id=958888166]
+script = ExtResource("1_3maf5")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1616886304]
+environment = SubResource("Environment_5q0ne")
+
+[node name="Player" parent="." unique_id=66642413 instance=ExtResource("2_gpfvb")]
+transform = Transform3D(0.8744119, 0, 0.48518443, 0, 1, 0, -0.48518443, 0, 0.8744119, 0, 0, 0)

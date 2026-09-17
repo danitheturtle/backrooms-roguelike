@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://8wmkw48iqur6"]
+
+[ext_resource type="PackedScene" uid="uid://4r2n50ip6oyp" path="res://rooms/room_square_small/res/room_square_small.blend" id="1_vljpo"]
+[ext_resource type="Material" uid="uid://b3ofgrdcrwlk7" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01.tres" id="2_agusu"]
+[ext_resource type="Material" uid="uid://d1lrwgc8w1ni3" path="res://assets/materials/Carpet01/Carpet01.tres" id="3_fw6ac"]
+[ext_resource type="Material" uid="uid://n5y15ykfg13e" path="res://assets/materials/Wallpaper01/Wallpaper01.tres" id="4_b2ook"]
+
+[node name="LevelMeshes" unique_id=2080579553 instance=ExtResource("1_vljpo")]
+
+[node name="ceiling_000" parent="." index="0" unique_id=300934685]
+material_override = ExtResource("2_agusu")
+
+[node name="floor_000" parent="." index="1" unique_id=165410309]
+material_override = ExtResource("3_fw6ac")
+
+[node name="wall_000" parent="." index="2" unique_id=202746937]
+material_override = ExtResource("4_b2ook")

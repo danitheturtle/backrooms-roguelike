@@ -5,6 +5,9 @@
 * ledge grabs / climbups?
 * rotate held / grabbed object with player camera (hard)
 * progressive clue system like endfield but good. pick up parts of different stories on different runs. take pictures of environmental storytelling and it gets catalogued. etc.
+* temporary basebuilding with found objects. saveable? new start location?
+* certain structures only show up after you've traveled a certain distance
+* Puzzles about noticing patterns and putting them back togetehr
 
 
 Game is about finding unique "exits"

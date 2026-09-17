@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dxun115m4alsw"]
+
+[ext_resource type="Script" uid="uid://c61w1b375al4r" path="res://scripts/room.gd" id="1_xe5ka"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61bum"]
+resource_local_to_scene = true
+size = Vector3(8, 3.5, 8)
+
+[node name="RoomBase" type="Node3D" unique_id=1900576414]
+script = ExtResource("1_xe5ka")
+
+[node name="Colliders" type="Node3D" parent="." unique_id=1940976534]
+
+[node name="Lights" type="Node3D" parent="." unique_id=1959239223]
+
+[node name="Props" type="Node3D" parent="." unique_id=1670016214]
+
+[node name="Connections" type="Node3D" parent="." unique_id=1690603826]
+
+[node name="Bounds" type="Area3D" parent="." unique_id=1272779199]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounds" unique_id=787654336]
+shape = SubResource("BoxShape3D_61bum")

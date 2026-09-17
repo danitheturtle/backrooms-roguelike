@@ -1,3 +1,5 @@
+(Async Investigations is a Backrooms-themed investigative roguelite about solving the mysteries of an impossible space)
+
 Most backrooms stories start with a rando clipping into the space between realities, but not this one.
 
 You've been to the backrooms before, and you will go back again. Its just too fascinating. You've got a deep urge to document everything you find, like an itch you keep scratching that won't go away. 

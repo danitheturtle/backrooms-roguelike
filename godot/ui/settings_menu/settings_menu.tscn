@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://c6wy7kt5c6cxm"]
+
+[ext_resource type="Script" uid="uid://sfmg1rx420wa" path="res://ui/settings_menu/settings_menu.gd" id="1_cobfr"]
+[ext_resource type="Texture2D" uid="uid://cvu8chq3s27a4" path="res://assets/ui/reset_icon.png" id="2_kvsec"]
+
+[node name="SettingsMenu" type="CanvasLayer" unique_id=835332129]
+process_mode = 4
+script = ExtResource("1_cobfr")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=644928605]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.57860935, 0.5313528, 0.32098702, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=243161940]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=132361092]
+layout_mode = 2
+
+[node name="SettingsTopControlsHBox" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=60882606]
+layout_mode = 2
+
+[node name="CancelButton" type="Button" parent="CenterContainer/VBoxContainer/SettingsTopControlsHBox" unique_id=1393913290]
+layout_mode = 2
+size_flags_horizontal = 0
+text = " Cancel "
+
+[node name="SaveAndReturnButton" type="Button" parent="CenterContainer/VBoxContainer/SettingsTopControlsHBox" unique_id=1820712948]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+text = " Save and Return "
+
+[node name="Spacer33" type="Control" parent="CenterContainer/VBoxContainer" unique_id=285989399]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="CameraSensitivityLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=2128490890]
+layout_mode = 2
+text = "Camera Sensitivity"
+
+[node name="CameraSensitivityHBox" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1902840069]
+layout_mode = 2
+alignment = 2
+
+[node name="CameraSensitivityValue" type="Label" parent="CenterContainer/VBoxContainer/CameraSensitivityHBox" unique_id=1139644586]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "0.1"
+
+[node name="CameraSensitivityHSlider" type="HSlider" parent="CenterContainer/VBoxContainer/CameraSensitivityHBox" unique_id=1351059571]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.1
+max_value = 1.5
+step = 0.05
+value = 0.1
+
+[node name="ResetCameraSensitivityButton" type="TextureButton" parent="CenterContainer/VBoxContainer/CameraSensitivityHBox" unique_id=1816377839]
+visible = false
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+tooltip_text = "Reset to default"
+texture_normal = ExtResource("2_kvsec")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Spacer32" type="Control" parent="CenterContainer/VBoxContainer" unique_id=318847889]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="SettingsBottomControlsHBox" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1342791790]
+layout_mode = 2
+
+[node name="UndoChangesButton" type="Button" parent="CenterContainer/VBoxContainer/SettingsBottomControlsHBox" unique_id=1844699325]
+layout_mode = 2
+theme_override_constants/icon_max_width = 24
+text = "Undo Changes "
+icon = ExtResource("2_kvsec")
+
+[node name="LoadDefaultsButton" type="Button" parent="CenterContainer/VBoxContainer/SettingsBottomControlsHBox" unique_id=857028900]
+layout_mode = 2
+text = " Load Defaults "
+
+[node name="SaveButton" type="Button" parent="CenterContainer/VBoxContainer/SettingsBottomControlsHBox" unique_id=522829483]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+text = " Save"

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cprxcxn2misde"
-path="res://.godot/imported/room_1.blend-61cce66beaf84c0b0f1807470abec8d2.scn"
+uid="uid://4r2n50ip6oyp"
+path="res://.godot/imported/room_square_small.blend-cf294e63bc2c8ab608017b115824593c.scn"
 
 [deps]
 
-source_file="res://rooms/room_1/res/room_1.blend"
-dest_files=["res://.godot/imported/room_1.blend-61cce66beaf84c0b0f1807470abec8d2.scn"]
+source_file="res://rooms/room_square_small/res/room_square_small.blend"
+dest_files=["res://.godot/imported/room_square_small.blend-cf294e63bc2c8ab608017b115824593c.scn"]
 
 [params]
 
@@ -21,7 +21,7 @@ array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
-nodes/use_name_suffixes=true
+nodes/use_name_suffixes=false
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true

@@ -68,6 +68,7 @@ size = Vector3(2, 2.5, 2)
 [node name="Player" type="CharacterBody3D" unique_id=66642413]
 collision_layer = 16
 collision_mask = 79
+input_ray_pickable = false
 floor_constant_speed = true
 floor_max_angle = 0.6981317
 floor_snap_length = 1.0
@@ -148,7 +149,9 @@ collision_mask = 13
 [node name="ActionTimer" type="Timer" parent="." unique_id=946343371]
 process_callback = 0
 wait_time = 0.5
+one_shot = true
 
 [node name="InteractTimer" type="Timer" parent="." unique_id=1549516792]
 process_callback = 0
 wait_time = 0.5
+one_shot = true

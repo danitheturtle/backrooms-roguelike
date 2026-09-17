@@ -2,3 +2,9 @@
 - rope climbing
 - color grade textures and lighting
 - dial in climbup min/max height
+- tutorial updates
+	- Extend run tutorial hallway
+	- Move jump tutorial to after run tutorial
+	- Add crouch tutorial after new jump tutorial
+	- Add ledge section to squeeze tutorial before the crawl tutorial; extend the whole hallway to give camera tutorial room to breathe
+	- Make climbup space in ladder section bigger so player doesn't hit the ceiling on imprecice placement of ladder

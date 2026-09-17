@@ -6,7 +6,6 @@ var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
 var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
 @export var PLAYER_SPEED = 4.0
-@export var MOUSE_SENSITIVITY = 0.1
 @export var PLAYER_MASS = 40.0
 @export var SPRINT_SPEED = 7.0
 @export var SLOWED_SPEED = 1.5
@@ -47,48 +46,89 @@ var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vec
 @onready var vaultRayCast: RayCast3D = $VaultSolverRayCast
 
 # local state
-var moveDir = Vector2(0.0,0.0)
-var cameraMoveDir = Vector2(0.0,0.0)
-var movePriority = { left = false, right = false, forward = false, backward = false }
-var mouseCaptured = false
-var onFloorLastFrame = false
-var justJumped = false
-var justVaulted = false
-var actionTimerFinished = false
-var interactTimerFinished = false
+var moveDir: Vector2
+var cameraMoveDir: Vector2
+var movePriority: Dictionary[String, bool]
+var mouseCaptured: bool
+var onFloorLastFrame: bool
+var justJumped: bool
+var justVaulted: bool
+var actionTimerFinished: bool
+var interactTimerFinished: bool
 # holdable object targeted by spring arm (but not picked up)
-var objectInReachRef: Holdable = null
+var objectInReachRef: Holdable
 # grabbed or dragged
-var heldObjectRef: Holdable = null
-var throwHeldOnNextFrame: bool = false
-var draggedPoint = Vector3.ZERO
+var heldObjectRef: Holdable
+var throwHeldOnNextFrame: bool
+var draggedPoint: Vector3
 # some objects change player controls contextually based on adjacency, eg ladders
-var adjacentRef: Node3D = null
+var adjacentRef: Node3D
 # climbing uses path-following
-var climbPath: Path3D = null
-var climbCurve: Curve3D = null
-var slideVelocity = 0.0
+var climbPath: Path3D
+var climbCurve: Curve3D
+var slideVelocity: float
 
 #state machine
-var jumping = false
-var crouching = false
-var crawling = false
-var running = false
-var climbing = false
-var vaulting = false
-var squeezing = false
-var photographing = false
-var grabbing = false
-var rotating = false
-var dragging = false
+var jumping: bool
+var crouching: bool
+var crawling: bool
+var running: bool
+var climbing: bool
+var vaulting: bool
+var squeezing: bool
+var photographing: bool
+var grabbing: bool
+var rotating: bool
+var dragging: bool
 
-#runtime calculated state
+# defaults stored at runtime
 var standingHeight: float
 var standingRadius: float
 var cameraTopOffset: float
 var flashlightOffset: Vector3
 var grabArmLength: float
 var grabArmShapeRadius: float
+
+func reinit() -> void:
+    moveDir = Vector2(0.0,0.0)
+    cameraMoveDir = Vector2(0.0,0.0)
+    movePriority = { left = false, right = false, forward = false, backward = false }
+    mouseCaptured = false
+    onFloorLastFrame = false
+    justJumped = false
+    justVaulted = false
+    actionTimerFinished = false
+    interactTimerFinished = false
+    objectInReachRef = null
+    heldObjectRef = null
+    throwHeldOnNextFrame = false
+    draggedPoint = Vector3.ZERO
+    adjacentRef = null
+    climbPath = null
+    climbCurve = null
+    slideVelocity = 0.0
+    jumping = false
+    crouching = false
+    crawling = false
+    running = false
+    climbing = false
+    vaulting = false
+    squeezing = false
+    photographing = false
+    grabbing = false
+    rotating = false
+    dragging = false
+    global_position = Vector3(0,0,0)
+    global_rotation = Vector3(0,0,0)
+    flashlight.visible = false
+    playerShape.height = standingHeight
+    playerShape.radius = standingRadius
+    camera.position.y = standingHeight - cameraTopOffset
+    flashlight.position = flashlightOffset
+    grabArm.spring_length = grabArmLength
+    grabArm.shape.radius = grabArmShapeRadius
+    actionTimer.stop()
+    interactTimer.stop()
 
 func _ready() -> void:
     State.player = self
@@ -109,7 +149,7 @@ func _ready() -> void:
     interactTimer.wait_time = HELD_INPUT_TIMEOUT
     actionTimer.timeout.connect(on_action_timer_ended)
     interactTimer.timeout.connect(on_interact_timer_ended)
-    call_deferred("capture_mouse")
+    reinit()
 
 func _physics_process(_delta: float) -> void:
     var onFloorThisFrame = is_on_floor()
@@ -118,9 +158,9 @@ func _physics_process(_delta: float) -> void:
     onFloorLastFrame = onFloorThisFrame
     if (rotating && grabbing && heldObjectRef != null):
         # rotate held object
-        heldObjectRef.angular_velocity = (-camera.global_basis.y*cameraMoveDir.x + camera.global_basis.x * cameraMoveDir.y) * MOUSE_SENSITIVITY * 100.0
+        heldObjectRef.angular_velocity = (-camera.global_basis.y*cameraMoveDir.x + camera.global_basis.x * cameraMoveDir.y) * GameSettings.CameraSensitivity * 100.0
     else:
-        var cameraVelocity = -MOUSE_SENSITIVITY
+        var cameraVelocity = -GameSettings.CameraSensitivity
         if (grabbing || dragging):
             cameraVelocity *= SLOWED_CAMERA_DAMPING
         if (cameraMoveDir.y < 0 && camera.rotation_degrees.x < 85) || (cameraMoveDir.y > 0 && camera.rotation_degrees.x > -85):
@@ -630,6 +670,7 @@ func handle_key_input(event: InputEvent ) -> void:
             release_mouse()
         eventHandled = true
         SignalBus.game_paused.emit()
+        SignalBus.goto_pause_menu.emit()
     # tell game event was handled and stop propagating
     if (eventHandled):
         get_tree().root.set_input_as_handled()

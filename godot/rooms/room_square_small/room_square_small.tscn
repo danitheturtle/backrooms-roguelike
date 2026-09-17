@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bdknq7mv1sj2f"]
+
+[ext_resource type="PackedScene" uid="uid://dxun115m4alsw" path="res://rooms/room_base.tscn" id="1_fyklc"]
+[ext_resource type="PackedScene" uid="uid://8wmkw48iqur6" path="res://rooms/room_square_small/res/room_square_small_mesh.tscn" id="2_ait8c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oyeap"]
+resource_local_to_scene = true
+size = Vector3(8, 3.5, 8)
+
+[node name="RoomSquareSmall" unique_id=1900576414 instance=ExtResource("1_fyklc")]
+
+[node name="CollisionShape3D" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="0" unique_id=787654336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+shape = SubResource("BoxShape3D_oyeap")
+
+[node name="LevelMeshes" parent="." index="5" unique_id=2080579553 instance=ExtResource("2_ait8c")]

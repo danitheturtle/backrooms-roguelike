@@ -50,3 +50,10 @@ func get_materials_on_mesh(mesh: MeshInstance3D) -> Array[BaseMaterial3D]:
         if nextMaterial != null: activeMaterials.append(nextMaterial)
     return activeMaterials
     
+func load_or_create_config(file: ConfigFile, filepath: String) -> Error:
+    var loadError = file.load(filepath)
+    if loadError != OK:
+        var saveError: Error = file.save(filepath)
+        return saveError
+    else:
+        return loadError

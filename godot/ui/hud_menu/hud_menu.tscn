@@ -15,6 +15,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="HUDMenu" type="CanvasLayer" unique_id=401719110]
+process_mode = 1
 script = ExtResource("1_cg6vh")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1941558731]

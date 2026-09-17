@@ -30,7 +30,6 @@ text = "Continue"
 
 [node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1660507431]
 layout_mode = 2
-disabled = true
 text = "Settings"
 
 [node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=689811646]
