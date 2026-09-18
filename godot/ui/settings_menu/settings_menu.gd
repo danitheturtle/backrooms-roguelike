@@ -10,7 +10,7 @@ class_name SettingsMenu
 @onready var loadDefaultsButton: Button = $CenterContainer/VBoxContainer/SettingsBottomControlsHBox/LoadDefaultsButton
 @onready var saveButton: Button = $CenterContainer/VBoxContainer/SettingsBottomControlsHBox/SaveButton
 
-var previousMenu: Main.MenuType
+var previousMenu: Enum.MenuType
 
 func _ready() -> void:
     cancelButton.button_up.connect(on_cancel_pressed)

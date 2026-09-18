@@ -8,6 +8,7 @@
 * temporary basebuilding with found objects. saveable? new start location?
 * certain structures only show up after you've traveled a certain distance
 * Puzzles about noticing patterns and putting them back togetehr
+* A save slot can't use the same seed twice
 
 
 Game is about finding unique "exits"

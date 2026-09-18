@@ -6,8 +6,10 @@ extends Node
 
 @warning_ignore("unused_signal") signal goto_previous_menu
 @warning_ignore("unused_signal") signal goto_main_menu
-@warning_ignore("unused_signal") signal goto_pause_menu
 @warning_ignore("unused_signal") signal goto_settings_menu
+@warning_ignore("unused_signal") signal goto_save_select_menu
+@warning_ignore("unused_signal") signal goto_pause_menu
+@warning_ignore("unused_signal") signal goto_hud_menu
 
 @warning_ignore("unused_signal") signal game_created
 @warning_ignore("unused_signal") signal game_loaded

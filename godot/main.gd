@@ -3,21 +3,14 @@ class_name Main
 
 @onready var viewport := get_tree().root
 
-enum MenuType { MAIN, SETTINGS, PAUSE, HUD }
-# menus
-@onready var mainMenu := $MainMenu
-@onready var pauseMenu := $PauseMenu
-@onready var settingsMenu := $SettingsMenu
-@onready var hudMenu := $HUDMenu
+const LevelManagerScene = preload("res://level_manager.tscn")
+const MenuManagerClass = preload("res://scripts/menu_manager.gd")
 
-const levelManagerScene = preload("res://level_manager.tscn")
+var menuManager: MenuManager
 
 func _ready() -> void:
     get_tree().paused = true
-    SignalBus.goto_previous_menu.connect(on_goto_previous_menu)
-    SignalBus.goto_main_menu.connect(on_goto_main_menu)
-    SignalBus.goto_pause_menu.connect(on_goto_pause_menu)
-    SignalBus.goto_settings_menu.connect(on_goto_settings_menu)
+    menuManager = MenuManagerClass.new($MainMenu, $SettingsMenu, $SaveSelectMenu, $PauseMenu, $HUDMenu)
     SignalBus.game_exited.connect(on_game_exited)
     SignalBus.game_paused.connect(on_game_paused)
     SignalBus.game_unpaused.connect(on_game_unpaused)
@@ -27,7 +20,7 @@ func _ready() -> void:
     # init state
     State.reinit()
     # init level manager
-    State.levelManager = levelManagerScene.instantiate()
+    State.levelManager = LevelManagerScene.instantiate()
     get_tree().root.add_child.call_deferred(State.levelManager)
     State.levelManager.reinit()
     # debug
@@ -38,21 +31,24 @@ func _ready() -> void:
 ### Game State Transitions
 ###
 func on_new_run_started() -> void:
+    State.levelManager.reinit()
     get_tree().paused = false
     State.levelManager.generate_initial_level()
     await State.levelManager.level_ready
-    mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
-    mainMenu.hide()
-    hudMenu.show()
+    menuManager.mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
+    menuManager.mainMenu.hide()
+    menuManager.hudMenu.show()
+    State.player.process_mode = Node.PROCESS_MODE_INHERIT
     State.player.capture_mouse.call_deferred()
 
 func on_tutorial_started() -> void:
+    State.levelManager.reinit()
     get_tree().paused = false
     State.levelManager.load_tutorial()
     await State.levelManager.level_ready
-    mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
-    mainMenu.hide()
-    hudMenu.show()
+    menuManager.mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
+    menuManager.mainMenu.hide()
+    menuManager.hudMenu.show()
     State.player.capture_mouse.call_deferred()
 
 func on_game_exited() -> void: get_tree().quit()
@@ -61,53 +57,8 @@ func on_game_paused() -> void: get_tree().paused = true
 
 func on_game_unpaused() -> void:
     get_tree().paused = false
-    settingsMenu.process_mode = Node.PROCESS_MODE_DISABLED
-    pauseMenu.process_mode = Node.PROCESS_MODE_DISABLED
-    settingsMenu.hide()
-    pauseMenu.hide()
-    hudMenu.show()
+    SignalBus.goto_hud_menu.emit()
     State.player.capture_mouse()
-
-###
-### Menu Transitions
-###
-func on_goto_previous_menu(previousMenuName: MenuType):
-    match previousMenuName:
-        MenuType.MAIN:
-            on_goto_main_menu()
-        MenuType.PAUSE:
-            on_goto_pause_menu()
-        MenuType.SETTINGS:
-            on_goto_settings_menu(previousMenuName)
-
-func on_goto_main_menu() -> void:
-    State.levelManager.reinit()
-    pauseMenu.process_mode = Node.PROCESS_MODE_DISABLED
-    settingsMenu.process_mode = Node.PROCESS_MODE_DISABLED
-    hudMenu.hide()
-    pauseMenu.hide()
-    settingsMenu.hide()
-    mainMenu.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-    mainMenu.show()
-
-func on_goto_settings_menu(previousMenuName: MenuType) -> void:
-    mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
-    pauseMenu.process_mode = Node.PROCESS_MODE_DISABLED
-    mainMenu.hide()
-    pauseMenu.hide()
-    settingsMenu.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-    settingsMenu.previousMenu = previousMenuName
-    settingsMenu.load_settings_into_controls()
-    settingsMenu.show()
-
-func on_goto_pause_menu() -> void:
-    mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
-    settingsMenu.process_mode = Node.PROCESS_MODE_DISABLED
-    hudMenu.hide()
-    mainMenu.hide()
-    settingsMenu.hide()
-    pauseMenu.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-    pauseMenu.show()
 
 func _unhandled_input(event: InputEvent) -> void:
     var eventHandled = false

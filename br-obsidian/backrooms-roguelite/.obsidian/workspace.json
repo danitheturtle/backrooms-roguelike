@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Playtest Notes.md",
+                "file": "Mechanics/Mechanic Brainstorm.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Playtest Notes"
+              "title": "Mechanic Brainstorm"
             }
           },
           {
@@ -218,18 +218,18 @@
   },
   "active": "e69299dbe188f118",
   "lastOpenFiles": [
-    "Async Investigations - Game Pitch.md",
-    "Playtest Notes.md",
-    "Todo.md",
     "Technical/Building a room.md",
+    "Today.md",
+    "Todo.md",
+    "Decoration/Spooky Wall Writing.md",
+    "Decoration/Deco Ideas.md",
+    "Playtest Notes.md",
+    "Async Investigations - Game Pitch.md",
     "Mechanics/Mechanic Brainstorm.md",
     "Design Pillars.md",
-    "Decoration/Deco Ideas.md",
-    "Today.md",
     "Decoration/Sounds Needed.md",
     "Technical",
     "Name Ideas.md",
-    "Decoration/Spooky Wall Writing.md",
     "Decoration/Musical Inspiration.md",
     "Mechanics/Exits.md",
     "Lore",

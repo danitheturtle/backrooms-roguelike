@@ -72,7 +72,7 @@ var slideVelocity: float
 var jumping: bool
 var crouching: bool
 var crawling: bool
-var running: bool
+var sprinting: bool
 var climbing: bool
 var vaulting: bool
 var squeezing: bool
@@ -110,7 +110,7 @@ func reinit() -> void:
     jumping = false
     crouching = false
     crawling = false
-    running = false
+    sprinting = false
     climbing = false
     vaulting = false
     squeezing = false
@@ -129,6 +129,8 @@ func reinit() -> void:
     grabArm.shape.radius = grabArmShapeRadius
     actionTimer.stop()
     interactTimer.stop()
+    # disable until level_ready
+    process_mode = Node.PROCESS_MODE_DISABLED
 
 func _ready() -> void:
     State.player = self
@@ -172,7 +174,7 @@ func _physics_process(_delta: float) -> void:
         if !climbing:
             #determine move speed based on state
             var movementSpeed = PLAYER_SPEED
-            if (running):
+            if (sprinting):
                 movementSpeed = SPRINT_SPEED
             elif (crouching || photographing || squeezing || dragging):
                 movementSpeed = SLOWED_SPEED
@@ -312,7 +314,7 @@ func handle_vault(ledgePoint: Vector3):
             return false
         else:
             handle_crouch()
-    running = false
+    sprinting = false
     vaulting = true
     velocity = Vector3.ZERO
     var destination = ledgePoint - global_transform.basis.z * 0.1
@@ -354,10 +356,10 @@ func handle_crouch(tryStandAfterCrouching: bool = false):
     roomForStateChangeCollider.position.y = standingHeight / 2.0
     camera.position.y = CROUCH_HEIGHT - cameraTopOffset
     flashlight.position.y = flashlightOffset.y
-    if (running):
-        # apply slide impulse in direction of run
+    if (sprinting):
+        # apply slide impulse in direction of sprint
         slideVelocity = SLIDE_IMPULSE
-        running = false
+        sprinting = false
     crawling = false
     crouching = true
     try_clear_hover_state()
@@ -399,13 +401,13 @@ func handle_squeeze():
     try_clear_hover_state()
     playerShape.radius = SQUEEZE_RADIUS
     flashlight.position.x = 0
-    running = false
+    sprinting = false
     squeezing = true
 
 ###
-### RUNNING
+### sprinting
 ###
-func can_run():
+func can_sprint():
     if (squeezing || crawling || climbing):
         return false
     elif (crouching):
@@ -413,8 +415,8 @@ func can_run():
     elif (!vaulting):
         return onFloorLastFrame
     return false
-func handle_run():
-    running = true
+func handle_sprint():
+    sprinting = true
     try_clear_hover_state()
     if (grabbing || dragging || photographing):
         # stop photographing
@@ -440,7 +442,7 @@ func handle_stand():
         playerShape.radius = standingRadius
         flashlight.position.x = flashlightOffset.x
         squeezing = false
-    running = false
+    sprinting = false
     # find first rigidbody touching anchor, if it exists, and apply hover material
     for nextBody in grabAnchor.get_overlapping_bodies():
         if nextBody is RigidBody3D:
@@ -452,7 +454,7 @@ func handle_stand():
 ### Grabbing / Dragging
 ###
 func can_hold(maxMass: float = 20.0):
-    if (!dragging && !grabbing && !jumping && !vaulting && !crouching && !crawling && !squeezing && !running && !climbing && !photographing && onFloorLastFrame):
+    if (!dragging && !grabbing && !jumping && !vaulting && !crouching && !crawling && !squeezing && !sprinting && !climbing && !photographing && onFloorLastFrame):
         if (objectInReachRef != null && objectInReachRef.mass > maxMass):
             return false
         else:
@@ -526,8 +528,8 @@ func on_room_for_state_change_body_exited(_body: Node3D):
     if (squeezing && !Input.is_action_pressed("squeeze")):
         if (can_stand()):
             handle_stand()
-            if (Input.is_action_pressed("run")):
-                handle_run()
+            if (Input.is_action_pressed("sprint")):
+                handle_sprint()
 
 func on_grab_anchor_entered(body: Node3D):
     if (body is Holdable && objectInReachRef != body && can_hold(150.0)):
@@ -573,7 +575,7 @@ func handle_key_input(event: InputEvent ) -> void:
             handle_crouch(true)
         elif (crouching && can_stand()):
             handle_stand()
-        elif (can_climb() && !Input.is_action_pressed("run")):
+        elif (can_climb() && !Input.is_action_pressed("sprint")):
             handle_climb()
         elif (can_jump() || can_vault()):
             justJumped = true
@@ -619,14 +621,14 @@ func handle_key_input(event: InputEvent ) -> void:
         if heldObjectRef != null:
             heldObjectRef.on_rotate_stop()
         interactTimerFinished = false
-    elif (event.is_action_pressed("run")):
+    elif (event.is_action_pressed("sprint")):
         if (climbing):
             stop_climbing()
-        if (!running && can_run()):
+        if (!sprinting && can_sprint()):
             handle_stand()
-            handle_run()
-    elif (event.is_action_released("run")):
-        if (running):
+            handle_sprint()
+    elif (event.is_action_released("sprint")):
+        if (sprinting):
             handle_stand()
     elif (event.is_action_pressed("forward")):
         moveDir = Vector2(moveDir.x, -1)

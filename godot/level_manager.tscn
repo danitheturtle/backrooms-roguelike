@@ -17,10 +17,12 @@ ssao_light_affect = 0.34
 ssao_ao_channel_affect = 0.42
 
 [node name="LevelManager" type="Node3D" unique_id=958888166]
+process_mode = 3
 script = ExtResource("1_3maf5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1616886304]
 environment = SubResource("Environment_5q0ne")
 
-[node name="Player" parent="." unique_id=66642413 instance=ExtResource("2_gpfvb")]
+[node name="Player" parent="." unique_id=66642413 groups=["save_to_disk"] instance=ExtResource("2_gpfvb")]
+process_mode = 1
 transform = Transform3D(0.8744119, 0, 0.48518443, 0, 1, 0, -0.48518443, 0, 0.8744119, 0, 0, 0)

@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://cesp3sq2ck3q4"]
+
+[ext_resource type="Script" uid="uid://chhnppwpfbd21" path="res://ui/save_select_menu/save_select_menu.gd" id="1_use0v"]
+
+[node name="SaveSelectMenu" type="CanvasLayer" unique_id=1970624827]
+process_mode = 2
+script = ExtResource("1_use0v")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=319382384]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.68384945, 0.63570976, 0.4245934, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1091485944]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -21.5
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Spacer2" type="Control" parent="HBoxContainer" unique_id=1457836936]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=725459787]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=1377928914]
+layout_mode = 2
+theme_override_constants/margin_bottom = 16
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer" unique_id=1852291676]
+layout_mode = 2
+text = "Save Slots"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=511801893]
+layout_mode = 2
+
+[node name="Panel" type="PanelContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=40536730]
+clip_contents = true
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/VBoxContainer/HBoxContainer/Panel" unique_id=1161540761]
+layout_mode = 2
+color = Color(0.21230483, 0.21230483, 0.21230483, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/Panel" unique_id=310927721]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer" unique_id=20099268]
+layout_mode = 2
+text = "Slot1"
+
+[node name="Spacer" type="Control" parent="HBoxContainer" unique_id=872657923]
+layout_mode = 2
+size_flags_horizontal = 3

@@ -1,4 +1,6 @@
-var possibleConnections: Array[AABB]
+var spawnWeight: float
+var onlySpawnAfterNIterations: int
+var roomBounds: Array[AABB]
 
 func _init() -> void:
     pass

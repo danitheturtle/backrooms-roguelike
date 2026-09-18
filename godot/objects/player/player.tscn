@@ -65,7 +65,7 @@ height = 1.65
 [sub_resource type="BoxShape3D" id="BoxShape3D_5q0ne"]
 size = Vector3(2, 2.5, 2)
 
-[node name="Player" type="CharacterBody3D" unique_id=66642413]
+[node name="Player" type="CharacterBody3D" unique_id=66642413 groups=["save_to_disk"]]
 collision_layer = 16
 collision_mask = 79
 input_ray_pickable = false
