@@ -31,14 +31,17 @@ func _ready() -> void:
 ### Game State Transitions
 ###
 func on_new_run_started() -> void:
+    menuManager.mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
+    menuManager.saveSelectMenu.process_mode = Node.PROCESS_MODE_DISABLED
+    menuManager.mainMenu.hide()
+    menuManager.saveSelectMenu.hide()
     State.levelManager.reinit()
     get_tree().paused = false
     State.levelManager.generate_initial_level()
+    # TODO show loading screen here
     await State.levelManager.level_ready
-    menuManager.mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
-    menuManager.mainMenu.hide()
+    # once ready, put player in game
     menuManager.hudMenu.show()
-    State.player.process_mode = Node.PROCESS_MODE_INHERIT
     State.player.capture_mouse.call_deferred()
 
 func on_tutorial_started() -> void:

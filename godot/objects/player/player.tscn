@@ -66,6 +66,7 @@ height = 1.65
 size = Vector3(2, 2.5, 2)
 
 [node name="Player" type="CharacterBody3D" unique_id=66642413 groups=["save_to_disk"]]
+process_mode = 4
 collision_layer = 16
 collision_mask = 79
 input_ray_pickable = false

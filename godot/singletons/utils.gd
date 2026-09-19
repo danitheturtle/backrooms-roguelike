@@ -57,3 +57,14 @@ func load_or_create_config(file: ConfigFile, filepath: String) -> Error:
         return saveError
     else:
         return loadError
+
+func read_first_line_json(filepath: String) -> Dictionary:
+    var openedFile := FileAccess.open(filepath, FileAccess.READ)
+    var unparsedString = openedFile.get_line()
+    openedFile.close()
+    var jsonParser = JSON.new()
+    var parseResult = jsonParser.parse(unparsedString)
+    if parseResult != OK:
+        print("JSON Parse Error: ", jsonParser.get_error_message(), " in ", unparsedString, " at line ", jsonParser.get_error_line())
+        return {}
+    return jsonParser.data

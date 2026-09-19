@@ -34,6 +34,8 @@ func on_goto_previous_menu(previousMenuName: Enum.MenuType):
             on_goto_pause_menu()
         Enum.MenuType.SETTINGS:
             on_goto_settings_menu(previousMenuName)
+        Enum.MenuType.SAVE_SELECT:
+            on_goto_save_select_menu(previousMenuName)
 
 func on_goto_main_menu() -> void:
     settingsMenu.process_mode = Node.PROCESS_MODE_DISABLED
@@ -70,11 +72,12 @@ func on_goto_pause_menu() -> void:
     pauseMenu.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
     pauseMenu.show()
 
-func on_goto_save_select_menu() -> void:
+func on_goto_save_select_menu(previousMenuName: Enum.MenuType) -> void:
     mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
     mainMenu.hide()
     
     saveSelectMenu.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+    saveSelectMenu.previousMenu = previousMenuName
     saveSelectMenu.show()
 
 func on_goto_hud_menu() -> void:

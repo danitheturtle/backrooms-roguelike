@@ -1,13 +1,26 @@
 extends Node
 
-const saveRootPath = "user://saves"
+const savesRootPath = "user://saves"
+func slot_name(slotIndex: int) -> String:
+    return "slot" + str(slotIndex)
+func slot_folder_path(slotIndex: int) -> String:
+    return savesRootPath + "/" + slot_name(slotIndex)
+func slot_savegame_path(slotIndex: int) -> String:
+    return slot_folder_path(slotIndex) + "/savegame.json"
+func slot_node_data_path(slotIndex: int) -> String:
+    return slot_folder_path(slotIndex) + "/node_data.json"
+    
+
 var inMemoryMode: bool
-var savesOnDisk: Array[int]
+var savesOnDisk: Dictionary[int, SaveSlotStats]
 var activeSlot: int # -1 means no active slot
 
 # global serialized data
+var customName: String
 var runs: Array[Run]
 var exitsFound: Array[int] = []
+var playTime: float
+var lastSavedTime: float
 
 # properties
 var totalScore: int:
@@ -17,72 +30,84 @@ var totalScore: int:
             for nextEvent in nextRun.scoreEvents:
                 scoreValue += nextEvent.value
         return scoreValue
-var slotName: String:
-    get: return "slot" + str(activeSlot)
-var slotFolderPath: String:
-    get: return saveRootPath + "/" + slotName
-var slotSavegamePath: String:
-    get: return slotFolderPath + "/savegame.json"
-var slotNodeDataPath: String:
-    get: return slotFolderPath + "/node_data.json"
 
 func _init() -> void:
     inMemoryMode = false
     # ensure saves folder exists
-    if not DirAccess.dir_exists_absolute(saveRootPath):
-        var error = DirAccess.make_dir_absolute(saveRootPath)
+    if not DirAccess.dir_exists_absolute(savesRootPath):
+        var error = DirAccess.make_dir_absolute(savesRootPath)
         if error != OK:
             print("could not create save directory", error)
             inMemoryMode = true
     reinit()
+    load_stats_for_saves_on_disk()
 
 func reinit() -> void:
     activeSlot = 1
+    customName = "slot1"
     runs = []
-    savesOnDisk = []
-    if !inMemoryMode:
-        activeSlot = -1
-        var saveDirectories: PackedStringArray = DirAccess.get_directories_at(saveRootPath)
-        for nextSave: String in saveDirectories:
-            # strip 'slot' from beginning of string; cast to int
-            var saveNumber = int(nextSave.right(-4))
-            savesOnDisk.append(saveNumber)
+    savesOnDisk = {}
+    if inMemoryMode: return
+    activeSlot = -1
 
-func new_slot(slotNumber: int) -> void:
-    delete_slot(slotNumber)
+func load_stats_for_saves_on_disk():
+    var saveDirectories: PackedStringArray = DirAccess.get_directories_at(savesRootPath)
+    for nextSave: String in saveDirectories:
+        # strip 'slot' from beginning of string; cast to int
+        var nextSaveIndex = int(nextSave.right(-4))
+        var nextData = Utils.read_first_line_json(slot_savegame_path(nextSaveIndex))
+        savesOnDisk.set(nextSaveIndex, SaveSlotStats.new(nextData))
+
+func first_empty_slot_index() -> int:
+    var emptySlotIndex = 1
+    if SaveSlot.savesOnDisk.size() < emptySlotIndex: return emptySlotIndex
+    while SaveSlot.savesOnDisk.has(emptySlotIndex):
+        emptySlotIndex += 1
+    return emptySlotIndex
+
+func new_slot(slotIndex: int) -> void:
+    delete_slot(slotIndex)
     reinit()
-    activeSlot = slotNumber
+    activeSlot = slotIndex
     save_game()
+    SignalBus.new_run_started.emit()
 
 func save_game() -> void:
     if inMemoryMode: return
-    var saveFile := FileAccess.open(slotFolderPath + "/savegame.json", FileAccess.WRITE)
-    if saveFile == null:
+    if not DirAccess.dir_exists_absolute(slot_folder_path(activeSlot)):
+        var error = DirAccess.make_dir_absolute(slot_folder_path(activeSlot))
+        if error != OK:
+            print("could not create save slot directory", error)
+            inMemoryMode = true
+            return
+    var savegameFile := FileAccess.open(slot_savegame_path(activeSlot), FileAccess.WRITE)
+    if savegameFile == null:
         print("could not save game", FileAccess.get_open_error())
         inMemoryMode = true
-    saveFile.store_line(JSON.stringify(serialize()))
-    # TODO save nodes in group save_to_disk
+    else:
+        lastSavedTime = Time.get_unix_time_from_system()
+        var textToStore = JSON.stringify(serialize())
+        savegameFile.store_line(textToStore)
+        savegameFile.close()
+        # TODO save nodes in group save_to_disk
 
-func load_slot(slotNumber: int) -> void:
+func load_slot(slotIndex: int) -> void:
     if inMemoryMode: return
-    activeSlot = slotNumber
-    var saveFile := FileAccess.open(slotSavegamePath, FileAccess.READ)
-    if saveFile == null:
+    activeSlot = slotIndex
+    var savegameFile := FileAccess.open(slot_savegame_path(activeSlot), FileAccess.READ)
+    if savegameFile == null:
         print("could not load game", FileAccess.get_open_error())
         inMemoryMode = true
     else:
-        var jsonParser = JSON.new()
-        var jsonString = saveFile.get_line()
-        var parseResult = jsonParser.parse(jsonString)
-        if parseResult != OK:
-            print("JSON Parse Error: ", jsonParser.get_error_message(), " in ", jsonString, " at line ", jsonParser.get_error_line())
-            return
-        deserialize(jsonParser.data)
+        var saveData = Utils.read_first_line_json(slot_savegame_path(activeSlot))
+        if saveData.keys().size() > 0:
+            deserialize(saveData)
+        savegameFile.close()
         # TODO load nodes from group save_to_disk
 
-func delete_slot(slotNumber: int) -> void:
+func delete_slot(slotIndex: int) -> void:
     if inMemoryMode: return
-    var slotAbsolutePath = saveRootPath + "/" + "slot" + str(slotNumber)
+    var slotAbsolutePath = slot_folder_path(slotIndex)
     if DirAccess.dir_exists_absolute(slotAbsolutePath):
         var deleteResult = DirAccess.remove_absolute(slotAbsolutePath)
         if deleteResult != OK:
@@ -90,17 +115,25 @@ func delete_slot(slotNumber: int) -> void:
             inMemoryMode = true
 
 # should serialize the full game state
-func serialize() -> Dictionary[String,Variant]:
+func serialize() -> Dictionary:
     var dataDict = {
+        "index": activeSlot,
+        "customName": "slot" + str(activeSlot),
         "runs": [],
-        "exitsFound": exitsFound
+        "totalScore": totalScore,
+        "exitsFound": exitsFound,
+        "playTime": playTime,
+        "lastSavedTime": lastSavedTime
     }
     for nextRun in runs:
         dataDict.runs.append(nextRun.serialize())
     return dataDict
 
-func deserialize(dataDict: Dictionary[String,Variant]) -> void:
+func deserialize(dataDict: Dictionary) -> void:
+    customName = dataDict.customName
     runs = []
     for nextRun in dataDict.runs:
         runs.append(Run.new().deserialize(nextRun))
     exitsFound = dataDict.exitsFound
+    playTime = dataDict.playTime
+    lastSavedTime = dataDict.lastSavedTime

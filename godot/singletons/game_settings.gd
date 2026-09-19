@@ -3,7 +3,8 @@ extends Node
 const defaults = {
     "General": {
         "Initialized": false,
-        "CameraSensitivity": 0.1
+        "CameraSensitivity": 0.1,
+        "UIScale": 16
     }
 }
 
@@ -14,6 +15,12 @@ var CameraSensitivity: float:
         settings.set_value("General", "CameraSensitivity", newSensitivity)
     get:
         return settings.get_value("General", "CameraSensitivity", defaults.General.CameraSensitivity)
+
+var UIScale: int:
+    set(newScale):
+        settings.set_value("General", "UIScale", newScale)
+    get:
+        return settings.get_value("General", "UIScale", defaults.General.UIScale)
 
 func _init() -> void:
     # load config or create it if it doesn't exist
@@ -26,6 +33,7 @@ func _init() -> void:
 
 func write_default_settings() -> void:
     settings.set_value("General", "CameraSensitivity", defaults.General.CameraSensitivity)
+    settings.set_value("General", "UIScale", defaults.General.UIScale)
     settings.set_value("General", "Initialized", defaults.General.Initialized)
 
 func load_from_disk() -> void:

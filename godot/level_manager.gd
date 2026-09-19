@@ -49,11 +49,13 @@ func load_tutorial() -> void:
     await get_tree().process_frame
     add_child(tutorialRoom)
     loadedRooms.append(tutorialRoom)
+    # Player is disabled by default to prevent physics jank during setup
     player.process_mode = Node.PROCESS_MODE_PAUSABLE
     level_ready.emit()
 
 # called at the start of a run
 func generate_initial_level() -> void:
+    # Player is disabled by default to prevent physics jank during setup
     player.process_mode = Node.PROCESS_MODE_PAUSABLE
     await get_tree().process_frame
     level_ready.emit()

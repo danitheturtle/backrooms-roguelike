@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cesp3sq2ck3q4"]
 
 [ext_resource type="Script" uid="uid://chhnppwpfbd21" path="res://ui/save_select_menu/save_select_menu.gd" id="1_use0v"]
+[ext_resource type="Texture2D" uid="uid://mal7cxe1xw8n" path="res://assets/ui/plus_icon.png" id="3_qxvo6"]
 
 [node name="SaveSelectMenu" type="CanvasLayer" unique_id=1970624827]
 process_mode = 2
@@ -34,35 +35,66 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 4.0
 
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=1099603004]
+layout_mode = 2
+theme_override_constants/margin_bottom = 16
+
+[node name="CancelButton" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer2" unique_id=80636269]
+layout_mode = 2
+size_flags_horizontal = 0
+text = " Cancel "
+
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=1377928914]
 layout_mode = 2
 theme_override_constants/margin_bottom = 16
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer" unique_id=1852291676]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Save Slots"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=511801893]
+[node name="HBoxContainer" type="HFlowContainer" parent="HBoxContainer/VBoxContainer" unique_id=1664380421]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+
+[node name="NewGameButton" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=716309067]
+custom_minimum_size = Vector2(256, 160)
+custom_maximum_size = Vector2(256, 160)
 layout_mode = 2
 
-[node name="Panel" type="PanelContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=40536730]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/NewGameButton" unique_id=815660157]
 clip_contents = true
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="HBoxContainer/VBoxContainer/HBoxContainer/Panel" unique_id=1161540761]
-layout_mode = 2
-color = Color(0.21230483, 0.21230483, 0.21230483, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/Panel" unique_id=310927721]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer" unique_id=20099268]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/NewGameButton/MarginContainer" unique_id=1143934446]
 layout_mode = 2
-text = "Slot1"
+
+[node name="NewGameLabel" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/NewGameButton/MarginContainer/VBoxContainer" unique_id=1095722479]
+layout_mode = 2
+text = "New Game"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/NewGameButton/MarginContainer/VBoxContainer" unique_id=1454098279]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer/NewGameButton/MarginContainer/VBoxContainer/CenterContainer" unique_id=1051778160]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_qxvo6")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="Spacer" type="Control" parent="HBoxContainer" unique_id=872657923]
 layout_mode = 2
