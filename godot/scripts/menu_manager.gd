@@ -72,12 +72,13 @@ func on_goto_pause_menu() -> void:
     pauseMenu.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
     pauseMenu.show()
 
-func on_goto_save_select_menu(previousMenuName: Enum.MenuType) -> void:
+func on_goto_save_select_menu(_previousMenuName: Enum.MenuType) -> void:
     mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
+    pauseMenu.process_mode = Node.PROCESS_MODE_DISABLED
     mainMenu.hide()
+    pauseMenu.hide()
     
     saveSelectMenu.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-    saveSelectMenu.previousMenu = previousMenuName
     saveSelectMenu.show()
 
 func on_goto_hud_menu() -> void:

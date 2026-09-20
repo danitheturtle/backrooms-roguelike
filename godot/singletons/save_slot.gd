@@ -18,7 +18,7 @@ var activeSlot: int # -1 means no active slot
 # global serialized data
 var customName: String
 var runs: Array[Run]
-var exitsFound: Array[int] = []
+var exitsFound: Array = []
 var playTime: float
 var lastSavedTime: float
 
@@ -51,6 +51,7 @@ func reinit() -> void:
     activeSlot = -1
 
 func load_stats_for_saves_on_disk():
+    savesOnDisk = {}
     var saveDirectories: PackedStringArray = DirAccess.get_directories_at(savesRootPath)
     for nextSave: String in saveDirectories:
         # strip 'slot' from beginning of string; cast to int
@@ -104,6 +105,7 @@ func load_slot(slotIndex: int) -> void:
             deserialize(saveData)
         savegameFile.close()
         # TODO load nodes from group save_to_disk
+    SignalBus.new_run_started.emit()
 
 func delete_slot(slotIndex: int) -> void:
     if inMemoryMode: return

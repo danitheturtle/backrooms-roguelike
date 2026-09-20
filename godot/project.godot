@@ -132,6 +132,7 @@ screenshot={
 3d_physics/layer_6="Carried"
 3d_physics/layer_7="OnlyPlayerCollision"
 3d_physics/layer_8="NoPlayerCollision"
+3d_physics/layer_9="Connection"
 
 [physics]
 

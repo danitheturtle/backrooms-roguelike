@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://di65tcxw57kit"]
+
+[ext_resource type="Script" uid="uid://cp3makgqqe3a0" path="res://objects/room_connector/wall/wall_connector.gd" id="1_y6l5e"]
+[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="2_1h1xp"]
+[ext_resource type="PackedScene" uid="uid://d0ywucxig7gvo" path="res://objects/colliders/wall_static_body.tscn" id="3_mrkkk"]
+[ext_resource type="Material" uid="uid://n5y15ykfg13e" path="res://assets/materials/Wallpaper01/Wallpaper01.tres" id="4_s6g4b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y6l5e"]
+resource_local_to_scene = true
+size = Vector3(4, 3.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1h1xp"]
+resource_local_to_scene = true
+size = Vector3(4, 3.5, 0.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5q0ne"]
+resource_local_to_scene = true
+size = Vector2(4, 3.5)
+orientation = 2
+
+[node name="WallConnector" type="Node3D" unique_id=1632024163]
+script = ExtResource("1_y6l5e")
+
+[node name="Adjacent" type="Area3D" parent="." unique_id=786542423]
+collision_layer = 256
+collision_mask = 256
+
+[node name="RectCollider" parent="Adjacent" unique_id=415124710 instance=ExtResource("2_1h1xp")]
+shape = SubResource("BoxShape3D_y6l5e")
+
+[node name="Collider" parent="." unique_id=237774776 instance=ExtResource("3_mrkkk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75, -0.25)
+
+[node name="RectCollider" parent="Collider" unique_id=1692528920 instance=ExtResource("2_1h1xp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0.25)
+shape = SubResource("BoxShape3D_1h1xp")
+
+[node name="WallZPosMesh" type="MeshInstance3D" parent="." unique_id=1345220754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+material_override = ExtResource("4_s6g4b")
+mesh = SubResource("PlaneMesh_5q0ne")

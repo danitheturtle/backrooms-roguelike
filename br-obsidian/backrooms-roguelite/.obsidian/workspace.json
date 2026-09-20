@@ -49,7 +49,8 @@
               "title": "Todo"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -216,16 +217,17 @@
       "bases:Create new base": false
     }
   },
-  "active": "e69299dbe188f118",
+  "active": "b5a7d647281ad89c",
   "lastOpenFiles": [
-    "Technical/Building a room.md",
     "Today.md",
+    "Lore/The Creator.md",
     "Todo.md",
+    "Mechanics/Mechanic Brainstorm.md",
+    "Technical/Building a room.md",
     "Decoration/Spooky Wall Writing.md",
     "Decoration/Deco Ideas.md",
     "Playtest Notes.md",
     "Async Investigations - Game Pitch.md",
-    "Mechanics/Mechanic Brainstorm.md",
     "Design Pillars.md",
     "Decoration/Sounds Needed.md",
     "Technical",

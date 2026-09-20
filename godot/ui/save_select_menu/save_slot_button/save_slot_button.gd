@@ -1,7 +1,7 @@
 extends Button
 class_name SaveSlotButton
 
-var saveSlotStats: SaveSlotStats = null
+var data: SaveSlotStats = null
 var hydrated = false
 
 @onready var saveNameLabel: Label = $MarginContainer/VBoxContainer/SaveNameLabel
@@ -11,17 +11,17 @@ var hydrated = false
 @onready var lastSavedTimeLabel: Label = $MarginContainer/VBoxContainer/LastSavedTimeLabel
 
 func _ready() -> void:
-    button_up.connect(on_save_slot_up)
+    pressed.connect(on_save_slot_pressed)
 
-func hydrate(data: SaveSlotStats):
-    saveSlotStats = data
-    saveNameLabel.text = data.customName
-    saveScoreLabel.text = "Score: " + str(data.totalScore)
-    runCountLabel.text = "Runs: " + str(data.runCount)
-    playTimeLabel.text = "Playtime: " + str(data.playTime)
-    lastSavedTimeLabel.text = "Saved: " + str(data.lastSavedTime)
+func hydrate(_data: SaveSlotStats):
+    data = _data
+    saveNameLabel.text = _data.customName
+    saveScoreLabel.text = "Score: " + str(_data.totalScore)
+    runCountLabel.text = "Runs: " + str(_data.runCount)
+    playTimeLabel.text = "Playtime: " + str(_data.playTime)
+    lastSavedTimeLabel.text = "Saved: " + str(_data.lastSavedTime)
     hydrated = true
 
-func on_save_slot_up() -> void:
+func on_save_slot_pressed() -> void:
     if !hydrated: return
-    SaveSlot.load_slot(saveSlotStats.index)
+    SaveSlot.load_slot(data.index)

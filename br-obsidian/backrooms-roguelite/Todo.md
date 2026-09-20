@@ -2,9 +2,19 @@
 - rope climbing
 - color grade textures and lighting
 - dial in climbup min/max height
+- save slot delete, rename, sort by save time
 - tutorial updates
 	- Extend run tutorial hallway
 	- Move jump tutorial to after run tutorial
 	- Add crouch tutorial after new jump tutorial
 	- Add ledge section to squeeze tutorial before the crawl tutorial; extend the whole hallway to give camera tutorial room to breathe
 	- Make climbup space in ladder section bigger so player doesn't hit the ceiling on imprecice placement of ladder
+	- can't jump while climbing anymore
+	- can still vault while climbing (bad)
+	- disable flashlight when performing two-handed actions
+	- if held prop is stuck, player remains in holding state. use drop distance or something
+	- you can move ladder with held prop while climbing it
+	- you can walk into drag objects
+	- you can drag things you're standing on
+	- dragged objects don't fall and aren't affected by gravity
+	- dragged objects move at expected player velocity, not final velocity. lets player shove stuff weird
