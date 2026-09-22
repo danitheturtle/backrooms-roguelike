@@ -5,14 +5,24 @@ class_name WallConnector
 const WallConnectorEditorHelperRes = preload("res://objects/room_connector/wall/wall_connector_editor_helper.gd")
 var editorHelper: WallConnectorEditorHelper = null
 
-@export_range(0.5, 30.0, 0.5, "or_greater") var connectionWidth: float = 4.0:
+@export_range(0.5, 15.0, 0.5, "or_greater") var connectionWidth: float = 4.0:
     set(newValue):
         if editorHelper != null: editorHelper.update_connection_width(newValue)
         connectionWidth = newValue
-@export_range(0.5, 30.0, 0.5, "or_greater") var connectionHeight: float = 3.5:
+@export_range(0.5, 15.0, 0.5, "or_greater") var connectionHeight: float = 3.50:
     set(newValue):
         if editorHelper != null: editorHelper.update_connection_height(newValue)
         connectionHeight = newValue
+@export_range(0.25,5.0,0.25, "or_greater") var connectionDepth: float = 0.25:
+    set(newValue):
+        if editorHelper != null: editorHelper.update_connection_depth(newValue)
+        connectionDepth = newValue
+
+@export_group('Generate Edges', 'wallFor')
+@export var wallForLeftEdge: bool = true
+@export var wallForTopEdge: bool = true
+@export var wallForRightEdge: bool = true
+@export var wallForBottomEdge: bool = true
 
 @onready var staticBody: StaticBody3D = $Collider
 @onready var collider: CollisionShape3D = $Collider/RectCollider
@@ -83,8 +93,6 @@ func build_connections() -> bool:
         disable_default_geometry()
         return true
     # holes form a subsurface, generate 2d planes to fill the voids (expensive)
-    if coplanarConnections.size() > 1:
-        print("maintest")
     var surfacesInLocalSpace = generate_surfaces_around_holes(Vector2(connectionWidth,connectionHeight), holesInLocalSpace)
     if surfacesInLocalSpace.size() == 0:
         disable_default_geometry()
@@ -92,55 +100,52 @@ func build_connections() -> bool:
     for nextSurface in surfacesInLocalSpace:
         var centerRelativeToParent: Vector3 = get_relative_center(nextSurface, centerOffset)
         var newCollider: CollisionShape3D = new_collider()
-        newCollider.position = centerRelativeToParent - Vector3(0.0,0.0,collider.shape.size.z / 2.0)
-        newCollider.shape.size = Vector3(nextSurface.size.x, nextSurface.size.y, collider.shape.size.z)
-        var newMesh: MeshInstance3D = new_mesh()
-        newMesh.position = centerRelativeToParent
-        newMesh.mesh.size = nextSurface.size
+        newCollider.position = centerRelativeToParent - Vector3(0.0,0.0,connectionDepth / 2.0)
+        newCollider.shape.size = Vector3(nextSurface.size.x, nextSurface.size.y, connectionDepth)
+        var newMesh: MeshInstance3D = new_mesh(centerRelativeToParent, nextSurface.size)
     for nextHole in holesInLocalSpace:
         var holeCenter: Vector3 = get_relative_center(nextHole, centerOffset)
-        var holeDepth = collider.shape.size.z
         var halfHoleWidth = nextHole.size.x / 2.0
         var halfHoleHeight = nextHole.size.y / 2.0
         # skip meshes at the edge of the wall
-        if !Utils.equalsf(nextHole.position.x,0.0):
+        if wallForLeftEdge || !Utils.equalsf(nextHole.position.x,0.0):
             # build left mesh
-            var leftHoleMesh = new_mesh()
-            leftHoleMesh.rotate_y(deg_to_rad(90))
-            leftHoleMesh.mesh.size = Vector2(holeDepth, nextHole.size.y)
-            leftHoleMesh.position = Vector3(holeCenter.x - halfHoleWidth, holeCenter.y, holeDepth / 2.0)
-        if !Utils.equalsf(nextHole.position.y,0.0):
+            var leftHoleMesh = new_mesh(Vector3(holeCenter.x - halfHoleWidth, holeCenter.y, connectionDepth / 2.0), Vector2(connectionDepth, nextHole.size.y), 0.0, 90.0)
+        if wallForTopEdge || !Utils.equalsf(nextHole.position.y,0.0):
             # build top mesh
-            var topHoleMesh = new_mesh()
-            topHoleMesh.rotate_x(deg_to_rad(90))
-            topHoleMesh.mesh.size = Vector2(nextHole.size.x, holeDepth)
-            topHoleMesh.position = Vector3(holeCenter.x, holeCenter.y + halfHoleHeight, holeDepth / 2.0)
-        if !Utils.equalsf(nextHole.end.x,connectionWidth):
+            var topHoleMesh = new_mesh(Vector3(holeCenter.x, holeCenter.y + halfHoleHeight, connectionDepth / 2.0), Vector2(nextHole.size.x, connectionDepth), 90.0)
+        if wallForRightEdge || !Utils.equalsf(nextHole.end.x,connectionWidth):
             # build right mesh
-            var rightHoleMesh = new_mesh()
-            rightHoleMesh.rotate_y(deg_to_rad(-90))
-            rightHoleMesh.mesh.size = Vector2(holeDepth, nextHole.size.y)
-            rightHoleMesh.position = Vector3(holeCenter.x + halfHoleWidth, holeCenter.y, holeDepth / 2.0)
-        if !Utils.equalsf(nextHole.end.y,connectionHeight):
+            var rightHoleMesh = new_mesh(Vector3(holeCenter.x + halfHoleWidth, holeCenter.y, connectionDepth / 2.0), Vector2(connectionDepth, nextHole.size.y), 0.0, -90.0)
+        if wallForBottomEdge || !Utils.equalsf(nextHole.end.y,connectionHeight):
             # build bottom mesh
-            var bottomHoleMesh = new_mesh()
-            bottomHoleMesh.rotate_x(deg_to_rad(-90))
-            bottomHoleMesh.mesh.size = Vector2(nextHole.size.x, holeDepth)
-            bottomHoleMesh.position = Vector3(holeCenter.x, holeCenter.y - halfHoleHeight, holeDepth / 2.0)
+            var bottomHoleMesh = new_mesh(Vector3(holeCenter.x, holeCenter.y - halfHoleHeight, connectionDepth / 2.0), Vector2(nextHole.size.x, connectionDepth), -90.0)
     disable_default_geometry()
     return coplanarConnections.size() > 0
 
 func disable_default_geometry():
+    if wallForLeftEdge:
+        var farLeftMesh = new_mesh(Vector3(-connectionWidth/2.0,0.0,connectionDepth/2.0), Vector2(connectionDepth,connectionHeight),0.0,90.0)
+    if wallForTopEdge:
+        var farTopMesh = new_mesh(Vector3(0.0,-connectionHeight/2.0,connectionDepth/2.0), Vector2(connectionWidth, connectionDepth), 90.0)
+    if wallForRightEdge:
+        var farRightMesh = new_mesh(Vector3(connectionWidth/2.0,0.0,connectionDepth/2.0), Vector2(connectionDepth,connectionHeight),0.0,-90.0)
+    if wallForBottomEdge:
+        var farBottomMesh = new_mesh(Vector3(0.0,connectionHeight/2.0,connectionDepth/2.0), Vector2(connectionWidth, connectionDepth), -90.0)
     collider.process_mode = Node.PROCESS_MODE_DISABLED
     collider.set_deferred("disabled", true)
     collider.hide()
     mesh.process_mode = Node.PROCESS_MODE_DISABLED
     mesh.hide()
 
-func new_mesh() -> MeshInstance3D:
+func new_mesh(_position: Vector3, _size: Vector2, _rotateXDeg: float = 0.0, _rotateYDeg: float = 0.0) -> MeshInstance3D:
     var newMesh: MeshInstance3D = mesh.duplicate()
     newMesh.mesh = mesh.mesh.duplicate()
     self.add_child(newMesh)
+    newMesh.mesh.size = _size
+    newMesh.position = _position
+    if !Utils.equalsf(0.0,_rotateXDeg): newMesh.rotate_x(deg_to_rad(_rotateXDeg))
+    if !Utils.equalsf(0.0,_rotateYDeg): newMesh.rotate_y(deg_to_rad(_rotateYDeg))
     if Engine.is_editor_hint(): newMesh.owner = EditorInterface.get_edited_scene_root()
     return newMesh
 
