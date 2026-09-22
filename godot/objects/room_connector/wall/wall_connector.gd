@@ -125,13 +125,13 @@ func build_connections() -> bool:
 
 func disable_default_geometry():
     if wallForLeftEdge:
-        var farLeftMesh = new_mesh(Vector3(-connectionWidth/2.0,0.0,connectionDepth/2.0), Vector2(connectionDepth,connectionHeight),0.0,90.0)
+        var farLeftMesh = new_mesh(Vector3(connectionWidth/2.0,0.0,connectionDepth/2.0), Vector2(connectionDepth,connectionHeight),0.0,-90.0)
     if wallForTopEdge:
-        var farTopMesh = new_mesh(Vector3(0.0,-connectionHeight/2.0,connectionDepth/2.0), Vector2(connectionWidth, connectionDepth), 90.0)
+        var farTopMesh = new_mesh(Vector3(0.0,connectionHeight/2.0,connectionDepth/2.0), Vector2(connectionWidth, connectionDepth), 90.0)
     if wallForRightEdge:
-        var farRightMesh = new_mesh(Vector3(connectionWidth/2.0,0.0,connectionDepth/2.0), Vector2(connectionDepth,connectionHeight),0.0,-90.0)
+        var farRightMesh = new_mesh(Vector3(-connectionWidth/2.0,0.0,connectionDepth/2.0), Vector2(connectionDepth,connectionHeight),0.0,90.0)
     if wallForBottomEdge:
-        var farBottomMesh = new_mesh(Vector3(0.0,connectionHeight/2.0,connectionDepth/2.0), Vector2(connectionWidth, connectionDepth), -90.0)
+        var farBottomMesh = new_mesh(Vector3(0.0,-connectionHeight/2.0,connectionDepth/2.0), Vector2(connectionWidth, connectionDepth), -90.0)
     collider.process_mode = Node.PROCESS_MODE_DISABLED
     collider.set_deferred("disabled", true)
     collider.hide()

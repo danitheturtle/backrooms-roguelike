@@ -57,7 +57,7 @@ func load_tutorial() -> void:
 
 # called at the start of a run
 func generate_initial_level() -> void:
-    var firstRoom: Room = rooms["test"].instantiate()
+    var firstRoom: Room = rooms["square_small"].instantiate()
     firstRoom.setup(RoomDefinition.new())
     # Player is disabled by default to prevent physics jank during setup
     await get_tree().process_frame
