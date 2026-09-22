@@ -24,7 +24,7 @@ func _ready() -> void:
     get_tree().root.add_child.call_deferred(State.levelManager)
     State.levelManager.reinit()
     # debug
-    SignalBus.new_run_started.emit.call_deferred()
+    $MainMenu.on_new_game_pressed.call_deferred()
 
 
 ###

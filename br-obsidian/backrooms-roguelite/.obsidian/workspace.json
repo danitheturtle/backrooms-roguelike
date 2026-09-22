@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Todo.md",
+                "file": "Mechanics/Mechanic Brainstorm.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Todo"
+              "title": "Mechanic Brainstorm"
             }
           }
         ],
@@ -219,14 +219,15 @@
   },
   "active": "b5a7d647281ad89c",
   "lastOpenFiles": [
-    "Today.md",
-    "Lore/The Creator.md",
-    "Todo.md",
+    "Decoration/Deco Ideas.md",
     "Mechanics/Mechanic Brainstorm.md",
+    "Decoration/just a really long cat.md",
+    "Today.md",
+    "Playtest Notes.md",
+    "Todo.md",
+    "Lore/The Creator.md",
     "Technical/Building a room.md",
     "Decoration/Spooky Wall Writing.md",
-    "Decoration/Deco Ideas.md",
-    "Playtest Notes.md",
     "Async Investigations - Game Pitch.md",
     "Design Pillars.md",
     "Decoration/Sounds Needed.md",

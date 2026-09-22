@@ -31,15 +31,22 @@ var totalScore: int:
                 scoreValue += nextEvent.value
         return scoreValue
 
+var sortedSaves: Array[SaveSlotStats]:
+    get:
+        var sortedArray = savesOnDisk.values()
+        sortedArray.sort_custom(func(a, b): return a.lastSavedTime > b.lastSavedTime)
+        return sortedArray
+
 func _init() -> void:
-    inMemoryMode = false
+    inMemoryMode = true
+    reinit()
+    if inMemoryMode: return
     # ensure saves folder exists
     if not DirAccess.dir_exists_absolute(savesRootPath):
         var error = DirAccess.make_dir_absolute(savesRootPath)
         if error != OK:
             print("could not create save directory", error)
             inMemoryMode = true
-    reinit()
     load_stats_for_saves_on_disk()
 
 func reinit() -> void:
@@ -51,6 +58,7 @@ func reinit() -> void:
     activeSlot = -1
 
 func load_stats_for_saves_on_disk():
+    if inMemoryMode: return
     savesOnDisk = {}
     var saveDirectories: PackedStringArray = DirAccess.get_directories_at(savesRootPath)
     for nextSave: String in saveDirectories:
@@ -60,6 +68,7 @@ func load_stats_for_saves_on_disk():
         savesOnDisk.set(nextSaveIndex, SaveSlotStats.new(nextData))
 
 func first_empty_slot_index() -> int:
+    if inMemoryMode: return 1
     var emptySlotIndex = 1
     if SaveSlot.savesOnDisk.size() < emptySlotIndex: return emptySlotIndex
     while SaveSlot.savesOnDisk.has(emptySlotIndex):

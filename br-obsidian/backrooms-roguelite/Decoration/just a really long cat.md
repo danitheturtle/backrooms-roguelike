@@ -1,0 +1,1 @@
+cat that walks normally but its stretched in the middle

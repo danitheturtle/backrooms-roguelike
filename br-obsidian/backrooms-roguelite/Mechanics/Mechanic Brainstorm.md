@@ -10,6 +10,7 @@
 * Puzzles about noticing patterns and putting them back togetehr
 * A save slot can't use the same seed twice
 * If you end a run with a photo of a unique room or setpiece, you can spend the photo to increase / decrease the chances of it appearing again
+* if you destroy a security camera, another one materializes behind you. Out of view but facing the player. Spooky!
 
 
 Game is about finding unique "exits"

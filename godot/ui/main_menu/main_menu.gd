@@ -3,24 +3,34 @@ class_name MainMenu
 
 @onready var continueButton: Button = $CenterContainer/VBoxContainer/ContinueButton
 @onready var newGameButton = $CenterContainer/VBoxContainer/NewGameButton
-@onready var loadGamebutton: Button = $CenterContainer/VBoxContainer/LoadGameButton
+@onready var loadGameButton: Button = $CenterContainer/VBoxContainer/LoadGameButton
 @onready var tutorialButton: Button = $CenterContainer/VBoxContainer/TutorialButton
 @onready var settingsButton: Button = $CenterContainer/VBoxContainer/SettingsButton
 @onready var quitButton = $CenterContainer/VBoxContainer/QuitButton
 
 func _ready() -> void:
-    # if no savegames, hide continue button
-    continueButton.button_up.connect(on_continue_pressed)
+    SignalBus.goto_main_menu.connect(on_goto_main_menu)
     newGameButton.button_up.connect(on_new_game_pressed)
-    loadGamebutton.button_up.connect(on_load_game_pressed)
     tutorialButton.button_up.connect(on_tutorial_pressed)
     settingsButton.button_up.connect(on_settings_pressed)
     quitButton.button_up.connect(on_quit_pressed)
+    continueButton.button_up.connect(on_continue_pressed)
+    loadGameButton.button_up.connect(on_load_game_pressed)
+    on_goto_main_menu()
+
+func on_goto_main_menu() -> void:
+    if SaveSlot.savesOnDisk.keys().size() > 0:
+        continueButton.show()
+        loadGameButton.show()
+    else:
+        continueButton.hide()
+        loadGameButton.hide()
 
 func on_continue_pressed() -> void:
     # go directly to latest save
     SaveSlot.load_stats_for_saves_on_disk()
-    pass
+    if SaveSlot.savesOnDisk.keys().size() > 0:
+        SaveSlot.load_slot(SaveSlot.sortedSaves[0].index)
 
 func on_new_game_pressed() -> void:
     SaveSlot.load_stats_for_saves_on_disk()

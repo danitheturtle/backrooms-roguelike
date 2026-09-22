@@ -14,6 +14,22 @@ func easeInOutCubic(x: float) -> float:
 func equalsf(a: float, b: float, precision: float = 0.00001):
     return a + precision >= b && a - precision <= b
 
+# get 2d index in a 1d array given a width
+func coordIndex(x: int, y: int, width: int):
+    return x + (y * width)
+
+# as opposed to default implementation only returns true with overlap greater than epsilon
+func rect_intersectsf(rect1: Rect2, rect2: Rect2, epsilon: float = 0.001) -> bool:
+    var rect1Pos = rect1.position
+    var rect2Pos = rect2.position
+    var rect1End = rect1.end
+    var rect2End = rect2.end
+    var test1 = rect1.position.x + epsilon < rect2.end.x
+    var test2 = rect1.end.x - epsilon > rect2.position.x
+    var test3 = rect1.position.y + epsilon < rect2.end.y
+    var test4 = rect1.end.y - epsilon > rect2.position.y
+    return test1 && test2 && test3 && test4
+
 # gets first found child of given type
 func get_child_of_type(parentNode: Node, type: Variant, recursive: bool = false):
     var allChildren = parentNode.get_children(true) if !recursive else parentNode.find_children("*")
