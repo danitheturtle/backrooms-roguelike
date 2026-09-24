@@ -7,11 +7,11 @@
 
 [node name="LevelMeshes" unique_id=2080579553 instance=ExtResource("1_vljpo")]
 
-[node name="ceiling_000" parent="." index="0" unique_id=300934685]
+[node name="ceiling_000" parent="." index="0" unique_id=1230717721]
 material_override = ExtResource("2_agusu")
 
-[node name="floor_000" parent="." index="1" unique_id=165410309]
+[node name="floor_000" parent="." index="1" unique_id=315902471]
 material_override = ExtResource("3_fw6ac")
 
-[node name="wall_000" parent="." index="2" unique_id=202746937]
+[node name="wall_000" parent="." index="2" unique_id=14256109]
 material_override = ExtResource("4_b2ook")

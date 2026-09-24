@@ -1,8 +1,6 @@
 extends Node3D
 class_name Room
 
-const RoomDefinition = preload("res://scripts/room_definition.gd")
-
 # room placed manually and is not part of level generation
 @export var excludeFromGeneration: bool = false
 # before room spawns it has custom sub-generation to run

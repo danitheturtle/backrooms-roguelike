@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bk3vtqjw2is47"]
+
+[ext_resource type="Texture2D" uid="uid://cnajvglblohlr" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_Color.jpg" id="1_wwtvx"]
+[ext_resource type="Texture2D" uid="uid://bchmwu2aw6jms" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_Metallic.jpg" id="2_nqfcr"]
+[ext_resource type="Texture2D" uid="uid://dlmpft4p8tnjm" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_Height.jpg" id="2_xmfh8"]
+[ext_resource type="Texture2D" uid="uid://bjphfvwxqbxps" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_Normal.jpg" id="3_xmfh8"]
+[ext_resource type="Texture2D" uid="uid://423g3s531lu" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_Roughness.jpg" id="4_dbff2"]
+
+[resource]
+albedo_texture = ExtResource("1_wwtvx")
+metallic = 1.0
+metallic_texture = ExtResource("2_nqfcr")
+roughness_texture = ExtResource("4_dbff2")
+normal_enabled = true
+normal_texture = ExtResource("3_xmfh8")
+heightmap_enabled = true
+heightmap_texture = ExtResource("2_xmfh8")
+uv1_scale = Vector3(0.5, 0.5, 0.5)

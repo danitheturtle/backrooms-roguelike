@@ -1,7 +1,7 @@
 extends RigidBody3D
 class_name Holdable
 
-var HOVER_OVER_OBJECT_MATERIAL = preload("res://assets/materials/HoverOverObject/HoverOverObject.tres")
+const hoverOverObjectMaterial = preload("res://assets/materials/HoverOverObject/HoverOverObject.tres")
 var hoveringMaterials: Array[Material] = []
 @export var heldDistance = 2.0
 @export var heldCollisionRadius = 0.5
@@ -21,7 +21,7 @@ var freezeTimeout: Timer = null
 
 func _ready() -> void:
     for nextMaterial in Utils.get_materials_on_mesh(meshInstance):
-        var dupedHoverMaterial = HOVER_OVER_OBJECT_MATERIAL.duplicate()
+        var dupedHoverMaterial = hoverOverObjectMaterial.duplicate()
         dupedHoverMaterial.next_pass = nextMaterial
         hoveringMaterials.append(dupedHoverMaterial)
     var grabOriginNode = get_node_or_null("GrabOrigin")

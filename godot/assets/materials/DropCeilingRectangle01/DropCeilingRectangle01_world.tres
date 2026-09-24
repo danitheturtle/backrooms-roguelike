@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://xeql16pj4ajo"]
+
+[ext_resource type="Texture2D" uid="uid://cnajvglblohlr" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_Color.jpg" id="1_2og4n"]
+[ext_resource type="Texture2D" uid="uid://bchmwu2aw6jms" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_Metallic.jpg" id="2_nmwx6"]
+[ext_resource type="Texture2D" uid="uid://bjphfvwxqbxps" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_Normal.jpg" id="3_6wi28"]
+[ext_resource type="Texture2D" uid="uid://423g3s531lu" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_Roughness.jpg" id="4_0j2dl"]
+
+[resource]
+albedo_texture = ExtResource("1_2og4n")
+metallic = 1.0
+metallic_texture = ExtResource("2_nmwx6")
+roughness_texture = ExtResource("4_0j2dl")
+normal_enabled = true
+normal_texture = ExtResource("3_6wi28")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true

@@ -11,8 +11,8 @@ func easeInOutCubic(x: float) -> float:
         return 1 - ((-2 * x + 2) ** 3) / 2
 
 # compare two floats with a given precision
-func equalsf(a: float, b: float, precision: float = 0.00001):
-    return a + precision >= b && a - precision <= b
+func equalsf(a: float, b: float, epsilon: float = 0.001):
+    return a + epsilon >= b && a - epsilon <= b
 
 # get 2d index in a 1d array given a width
 func coordIndex(x: int, y: int, width: int):
@@ -20,10 +20,6 @@ func coordIndex(x: int, y: int, width: int):
 
 # as opposed to default implementation only returns true with overlap greater than epsilon
 func rect_intersectsf(rect1: Rect2, rect2: Rect2, epsilon: float = 0.001) -> bool:
-    var rect1Pos = rect1.position
-    var rect2Pos = rect2.position
-    var rect1End = rect1.end
-    var rect2End = rect2.end
     var test1 = rect1.position.x + epsilon < rect2.end.x
     var test2 = rect1.end.x - epsilon > rect2.position.x
     var test3 = rect1.position.y + epsilon < rect2.end.y

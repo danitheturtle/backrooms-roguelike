@@ -10,12 +10,13 @@ func slot_savegame_path(slotIndex: int) -> String:
 func slot_node_data_path(slotIndex: int) -> String:
     return slot_folder_path(slotIndex) + "/node_data.json"
     
-
+var currentGameVersion = ProjectSettings.get_setting("application/config/version")
 var inMemoryMode: bool
 var savesOnDisk: Dictionary[int, SaveSlotStats]
 var activeSlot: int # -1 means no active slot
 
 # global serialized data
+var gameVersion: String
 var customName: String
 var runs: Array[Run]
 var exitsFound: Array = []
@@ -129,6 +130,7 @@ func delete_slot(slotIndex: int) -> void:
 func serialize() -> Dictionary:
     var dataDict = {
         "index": activeSlot,
+        "gameVersion": currentGameVersion,
         "customName": "slot" + str(activeSlot),
         "runs": [],
         "totalScore": totalScore,
@@ -141,6 +143,9 @@ func serialize() -> Dictionary:
     return dataDict
 
 func deserialize(dataDict: Dictionary) -> void:
+    if dataDict.gameVersion != currentGameVersion:
+        print("save file is not for this version of the game, expect issues")
+    gameVersion = dataDict.gameVersion
     customName = dataDict.customName
     runs = []
     for nextRun in dataDict.runs:

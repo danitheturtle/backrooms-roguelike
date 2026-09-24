@@ -4,13 +4,12 @@ class_name Main
 @onready var viewport := get_tree().root
 
 const LevelManagerScene = preload("res://level_manager.tscn")
-const MenuManagerClass = preload("res://scripts/menu_manager.gd")
 
 var menuManager: MenuManager
 
 func _ready() -> void:
     get_tree().paused = true
-    menuManager = MenuManagerClass.new($MainMenu, $SettingsMenu, $SaveSelectMenu, $PauseMenu, $HUDMenu)
+    menuManager = MenuManager.new($MainMenu, $SettingsMenu, $SaveSelectMenu, $PauseMenu, $HUDMenu)
     SignalBus.game_exited.connect(on_game_exited)
     SignalBus.game_paused.connect(on_game_paused)
     SignalBus.game_unpaused.connect(on_game_unpaused)

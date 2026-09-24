@@ -3,8 +3,6 @@ class_name LevelManager
 
 signal level_ready
 
-const RoomDefinition = preload("res://scripts/room_definition.gd")
-
 const rooms: Dictionary[String, PackedScene] = {
     "tutorial": preload("res://rooms/room_tutorial/room_tutorial.tscn"),
     "square_small": preload("res://rooms/room_square_small/room_square_small.tscn"),
@@ -57,7 +55,7 @@ func load_tutorial() -> void:
 
 # called at the start of a run
 func generate_initial_level() -> void:
-    var firstRoom: Room = rooms["square_small"].instantiate()
+    var firstRoom: Room = rooms["test"].instantiate()
     firstRoom.setup(RoomDefinition.new())
     # Player is disabled by default to prevent physics jank during setup
     await get_tree().process_frame

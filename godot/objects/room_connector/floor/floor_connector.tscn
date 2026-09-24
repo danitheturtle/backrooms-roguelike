@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cnapbejxxdkpf"]
+
+[ext_resource type="Script" uid="uid://cggqolps4mgv7" path="res://objects/room_connector/floor/floor_connector.gd" id="1_eu7cu"]
+[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="2_ipm7n"]
+[ext_resource type="PackedScene" uid="uid://b500l15l80jvq" path="res://objects/colliders/floor_static_body.tscn" id="3_182iv"]
+[ext_resource type="Material" uid="uid://ft3l0gt1bi8u" path="res://assets/materials/Carpet01/Carpet01_world.tres" id="4_ipm7n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s5omn"]
+resource_local_to_scene = true
+size = Vector3(3, 0.5, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l3v8f"]
+resource_local_to_scene = true
+size = Vector3(3, 0.25, 3)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5q0ne"]
+resource_local_to_scene = true
+size = Vector2(3, 3)
+
+[node name="FloorConnector" type="Node3D" unique_id=674166013]
+script = ExtResource("1_eu7cu")
+innerEdgeWestMaterial = ExtResource("4_ipm7n")
+innerEdgeNorthMaterial = ExtResource("4_ipm7n")
+innerEdgeEastMaterial = ExtResource("4_ipm7n")
+innerEdgeSouthMaterial = ExtResource("4_ipm7n")
+
+[node name="Adjacent" type="Area3D" parent="." unique_id=1418678597]
+
+[node name="RectCollider" parent="Adjacent" unique_id=415124710 instance=ExtResource("2_ipm7n")]
+shape = SubResource("BoxShape3D_s5omn")
+
+[node name="Collider" parent="." unique_id=446596967 instance=ExtResource("3_182iv")]
+
+[node name="RectCollider" parent="Collider" unique_id=813981425 instance=ExtResource("2_ipm7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+shape = SubResource("BoxShape3D_l3v8f")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=240402684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+material_override = ExtResource("4_ipm7n")
+mesh = SubResource("PlaneMesh_5q0ne")

@@ -2,8 +2,6 @@
 * Rope of a specific length. More rope can be found. Can climb down vertically as far as you can extend the rope
 * camera zoom?
 * Film Camera?
-* ledge grabs / climbups?
-* rotate held / grabbed object with player camera (hard)
 * progressive clue system like endfield but good. pick up parts of different stories on different runs. take pictures of environmental storytelling and it gets catalogued. etc.
 * temporary basebuilding with found objects. saveable? new start location?
 * certain structures only show up after you've traveled a certain distance
@@ -11,7 +9,6 @@
 * A save slot can't use the same seed twice
 * If you end a run with a photo of a unique room or setpiece, you can spend the photo to increase / decrease the chances of it appearing again
 * if you destroy a security camera, another one materializes behind you. Out of view but facing the player. Spooky!
-
 
 Game is about finding unique "exits"
 
