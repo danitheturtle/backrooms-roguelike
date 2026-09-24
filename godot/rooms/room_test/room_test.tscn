@@ -1,40 +1,23 @@
 [gd_scene format=3 uid="uid://gjg6he51hgey"]
 
 [ext_resource type="PackedScene" uid="uid://dxun115m4alsw" path="res://rooms/room_base.tscn" id="1_xurkv"]
-[ext_resource type="PackedScene" uid="uid://dp5ght2v7oyut" path="res://rooms/room_four_way/room_four_way.tscn" id="2_jbj8l"]
 [ext_resource type="PackedScene" uid="uid://bkadirr1e44v7" path="res://rooms/room_all_way/room_all_way.tscn" id="3_80c2i"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_80c2i"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_jbj8l"]
 resource_local_to_scene = true
 size = Vector3(8, 3.5, 8)
 
 [node name="RoomTest" unique_id=1900576414 instance=ExtResource("1_xurkv")]
 
-[node name="CollisionShape3D" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="0" unique_id=787654336]
-shape = SubResource("BoxShape3D_80c2i")
+[node name="Bounds" parent="." index="4" unique_id=1272779199]
+visible = false
+
+[node name="CollisionShape3D" parent="Bounds" index="0" unique_id=787654336]
+shape = SubResource("BoxShape3D_jbj8l")
 
 [node name="SubRooms" type="Node3D" parent="." index="5" unique_id=298216911]
 
-[node name="RoomFourWay" parent="SubRooms" index="0" unique_id=88232578 instance=ExtResource("2_jbj8l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0.75)
+[node name="RoomAllWay" parent="SubRooms" index="0" unique_id=1016549174 instance=ExtResource("3_80c2i")]
 
-[node name="RoomFourWay2" parent="SubRooms" index="1" unique_id=968059028 instance=ExtResource("2_jbj8l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.75)
-
-[node name="RoomFourWay3" parent="SubRooms" index="2" unique_id=281354658 instance=ExtResource("2_jbj8l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.75)
-
-[node name="RoomFourWay4" parent="SubRooms" index="3" unique_id=979903590 instance=ExtResource("2_jbj8l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8.75)
-
-[node name="RoomAllWay" parent="SubRooms" index="4" unique_id=2042820542 instance=ExtResource("3_80c2i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8.75)
-
-[node name="RoomAllWay2" parent="SubRooms" index="5" unique_id=1432908838 instance=ExtResource("3_80c2i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -4, 8.75)
-
-[node name="RoomAllWay3" parent="SubRooms" index="6" unique_id=384622702 instance=ExtResource("3_80c2i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -4, 0.75)
-
-[node name="RoomAllWay4" parent="SubRooms" index="7" unique_id=1959829617 instance=ExtResource("3_80c2i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0.75)
+[node name="RoomAllWay2" parent="SubRooms" index="1" unique_id=698693849 instance=ExtResource("3_80c2i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.5, 0)

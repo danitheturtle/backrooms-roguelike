@@ -3,6 +3,7 @@
 - color grade textures and lighting
 - dial in climbup min/max height
 - save slot delete, rename, sort by save time
+- parent/child relationship for connections so only one of them generates the edges (and also doors when we get there)
 - tutorial updates
 	- Extend run tutorial hallway
 	- Move jump tutorial to after run tutorial

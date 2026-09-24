@@ -4,30 +4,49 @@ extends Node3D
 class_name RoomConnector
 
 const Wallpaper01WorldMaterial = preload("res://assets/materials/Wallpaper01/Wallpaper01_world.tres")
+const DropCeilingRectangle01WorldMaterial = preload("res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_world.tres")
+const Carpet01WorldMaterial = preload("res://assets/materials/Carpet01/Carpet01_world.tres")
 
 # basic bounds
-@export_range(0.5, 16.0, 0.5, "or_greater") var connectionWidth: float = 3.0: set = set_connection_width
+@export_range(State.VOXEL, 16.0, State.VOXEL, "or_greater") var connectionWidth: float = 3.0: set = set_connection_width
 func set_connection_width(newWidth: float) -> void: #only one that's the same for all connections
     if editorHelper != null: editorHelper.update_connection_width(newWidth, "x")
     connectionWidth = newWidth
-@export_range(0.5, 16.0, 0.5, "or_greater") var connectionHeight: float = 3.0: set = set_connection_height
+@export_range(State.VOXEL, 16.0, State.VOXEL, "or_greater") var connectionHeight: float = 3.0: set = set_connection_height
 @abstract func set_connection_height(newHeight: float) -> void
-@export_range(0.25,8.0,0.25, "or_greater") var connectionDepth: float = 0.25: set = set_connection_depth
+@export_range(State.HALF_VOXEL,8.0,State.HALF_VOXEL, "or_greater") var connectionDepth: float = State.HALF_VOXEL: set = set_connection_depth
 @abstract func set_connection_depth(newDepth: float) -> void
+
+var halfWidth: float: get = get_half_width
+func get_half_width(): return connectionWidth / 2.0
+var halfHeight: float: get = get_half_height
+func get_half_height(): return connectionHeight / 2.0
+var halfDepth: float: get = get_half_depth
+func get_half_depth(): return connectionDepth / 2.0
 
 # Edge meshes are generated when hole overlaps surface edge
 # Disable to prevent z-fighting with existing geometry
-@export_group('Generate Edges', 'wallFor')
-@export var wallForWestEdge: bool = true
-@export var wallForNorthEdge: bool = true
-@export var wallForEastEdge: bool = true
-@export var wallForSouthEdge: bool = true
+@export_group('Generate Edges', 'edgeGen')
+@export var edgeGenWest: bool = true
+@export var edgeGenNorth: bool = true
+@export var edgeGenEast: bool = true
+@export var edgeGenSouth: bool = true
+# edge collision usually exists, false by default. Only generates collison for enabled edges
+@export var edgeGenCollision: bool = false
 
+# materials for hole edges generated in the middle of the surface
 @export_group('Inner Edge Materials', 'innerEdge')
 @export var innerEdgeWestMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
 @export var innerEdgeNorthMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
 @export var innerEdgeEastMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
 @export var innerEdgeSouthMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
+
+# materials for hole edges generated at the outer edge of the surface
+@export_group('Far Edge Materials', 'farEdge')
+@export var farEdgeWestMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
+@export var farEdgeNorthMaterial: StandardMaterial3D = DropCeilingRectangle01WorldMaterial
+@export var farEdgeEastMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
+@export var farEdgeSouthMaterial: StandardMaterial3D = Carpet01WorldMaterial
 
 # connection metadata for the level generator
 @export_group('Connection Metadata', 'meta')
@@ -84,7 +103,7 @@ func on_other_connection_exited(body: Area3D):
         coplanarConnections.remove_at(parentIndex)
 
 # Punch hole for every coplanar connection and store metadata about it
-# assumes holes never overlap with .5 voxel (0.25) gaps
+# assumes holes never overlap with half voxel gaps
 # returns true if at least one connection was made
 func build_connections() -> bool:
     if coplanarConnections.size() == 0: return false
@@ -114,9 +133,6 @@ func build_connections() -> bool:
         return true
     # holes form a subsurface, generate 2d planes to fill the voids (expensive)
     var surfacesInLocalSpace = generate_surfaces_around_holes(localSpace.size, holesInLocalSpace)
-    #if surfacesInLocalSpace.size() == 0:
-        #disable_default_geometry(true)
-        #return true
     for nextSurface in surfacesInLocalSpace:
         build_geometry_for_surface(nextSurface, centerOffset)
     for nextHole in holesInLocalSpace:
@@ -161,10 +177,10 @@ func generate_surfaces_around_holes(surfaceSize: Vector2, allHoles: Array[Rect2]
     var xStopsSet: Dictionary[float, bool] = {0: true, surfaceSize.x: true}
     var yStopsSet: Dictionary[float, bool] = {0: true, surfaceSize.y: true}
     for nextHole in allHoles:
-        xStopsSet.set(snappedf(nextHole.position.x, 0.25), true)
-        xStopsSet.set(snappedf(nextHole.end.x, 0.25), true)
-        yStopsSet.set(snappedf(nextHole.position.y, 0.25), true)
-        yStopsSet.set(snappedf(nextHole.end.y, 0.25), true)
+        xStopsSet.set(snappedf(nextHole.position.x, State.HALF_VOXEL), true)
+        xStopsSet.set(snappedf(nextHole.end.x, State.HALF_VOXEL), true)
+        yStopsSet.set(snappedf(nextHole.position.y, State.HALF_VOXEL), true)
+        yStopsSet.set(snappedf(nextHole.end.y, State.HALF_VOXEL), true)
     var xStops: Array[float] = xStopsSet.keys()
     var yStops: Array[float] = yStopsSet.keys()
     xStops.sort()

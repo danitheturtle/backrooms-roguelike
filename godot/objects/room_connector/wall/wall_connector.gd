@@ -21,27 +21,22 @@ func on_other_connection_entered(body: Area3D):
 
 func disable_default_geometry(generateEdges: bool = false):
     if generateEdges:
-        # TODO collisions too
-        if wallForWestEdge:
-            new_mesh(Vector3(-connectionWidth / 2.0, 0.0, connectionDepth / 2.0),
-                     Vector2(connectionDepth, connectionHeight),
-                     innerEdgeWestMaterial,
-                     0.0, 90.0)
-        if wallForNorthEdge:
-            new_mesh(Vector3(0.0, connectionHeight / 2.0, connectionDepth / 2.0),
-                     Vector2(connectionWidth, connectionDepth),
-                     innerEdgeNorthMaterial,
-                     90.0)
-        if wallForEastEdge:
-            new_mesh(Vector3(connectionWidth / 2.0, 0.0, connectionDepth / 2.0),
-                     Vector2(connectionDepth, connectionHeight),
-                     innerEdgeEastMaterial,
-                     0.0, -90.0)
-        if wallForSouthEdge:
-            new_mesh(Vector3(0.0, -connectionHeight / 2.0, connectionDepth / 2.0),
-                     Vector2(connectionWidth, connectionDepth),
-                     innerEdgeSouthMaterial,
-                     -90.0)
+        if edgeGenWest:
+            new_mesh(Vector3(-halfWidth, 0.0, halfDepth), Vector2(connectionDepth, connectionHeight), farEdgeWestMaterial, 0.0, 90.0)
+            if edgeGenCollision:
+                new_collider(Vector3(-halfWidth - State.QUARTER_VOXEL, 0.0, halfDepth), Vector3(State.HALF_VOXEL,connectionHeight,connectionDepth))
+        if edgeGenNorth:
+            new_mesh(Vector3(0.0, halfHeight, halfDepth), Vector2(connectionWidth, connectionDepth), farEdgeNorthMaterial, 90.0)
+            if edgeGenCollision:
+                new_collider(Vector3(0.0, halfHeight + State.QUARTER_VOXEL, halfDepth), Vector3(connectionWidth, State.HALF_VOXEL, connectionDepth))
+        if edgeGenEast:
+            new_mesh(Vector3(halfWidth, 0.0, halfDepth), Vector2(connectionDepth, connectionHeight), farEdgeEastMaterial, 0.0, -90.0)
+            if edgeGenCollision:
+                new_collider(Vector3(halfWidth + State.QUARTER_VOXEL, 0.0, halfDepth), Vector3(State.HALF_VOXEL, connectionHeight, connectionDepth))
+        if edgeGenSouth:
+            new_mesh(Vector3(0.0, -halfHeight, halfDepth), Vector2(connectionWidth, connectionDepth), farEdgeSouthMaterial, -90.0)
+            if edgeGenCollision:
+                new_collider(Vector3(0.0, -halfHeight - State.QUARTER_VOXEL, halfDepth), Vector3(connectionWidth, State.HALF_VOXEL, connectionDepth))
     # this disables the mesh we just cloned, call it after we're done
     super.disable_default_geometry(generateEdges)
 
@@ -60,7 +55,7 @@ func get_center_relative_to_parent(surfaceRect: Rect2, centerOffset: Vector3) ->
 
 func build_geometry_for_surface(surface: Rect2, centerOffset: Vector3) -> void:
     var centerRelativeToParent: Vector3 = get_center_relative_to_parent(surface, centerOffset)
-    new_collider(centerRelativeToParent - Vector3(0.0,0.0,connectionDepth / 2.0), Vector3(surface.size.x, surface.size.y, connectionDepth))
+    new_collider(centerRelativeToParent - Vector3(0.0,0.0,halfDepth), Vector3(surface.size.x, surface.size.y, connectionDepth))
     new_mesh(centerRelativeToParent, surface.size)
 
 func build_geometry_for_hole(hole: Rect2, centerOffset: Vector3) -> void:
@@ -68,23 +63,39 @@ func build_geometry_for_hole(hole: Rect2, centerOffset: Vector3) -> void:
     var halfHoleWidth = hole.size.x / 2.0
     var halfHoleHeight = hole.size.y / 2.0
     # skip meshes at the edge of the wall
-    if wallForWestEdge || !Utils.equalsf(hole.position.x,0.0):
-        new_mesh(Vector3(holeCenter.x - halfHoleWidth, holeCenter.y, connectionDepth / 2.0),
+    var atWestEdge = Utils.equalsf(hole.position.x,0.0)
+    if edgeGenWest || !atWestEdge:
+        new_mesh(Vector3(holeCenter.x - halfHoleWidth, holeCenter.y, halfDepth),
                  Vector2(connectionDepth, hole.size.y),
-                 innerEdgeWestMaterial,
+                 farEdgeWestMaterial if atWestEdge else innerEdgeWestMaterial,
                  0.0, 90.0)
-    if wallForNorthEdge || !Utils.equalsf(hole.position.y,0.0):
-        new_mesh(Vector3(holeCenter.x, holeCenter.y + halfHoleHeight, connectionDepth / 2.0),
+        if edgeGenCollision:
+            new_collider(Vector3(holeCenter.x - halfHoleWidth - State.QUARTER_VOXEL, holeCenter.y, halfDepth),
+                         Vector3(State.HALF_VOXEL, hole.size.y, connectionDepth))
+    var atNorthEdge = Utils.equalsf(hole.position.y,0.0)
+    if edgeGenNorth || !atNorthEdge:
+        new_mesh(Vector3(holeCenter.x, holeCenter.y + halfHoleHeight, halfDepth),
                  Vector2(hole.size.x, connectionDepth),
-                 innerEdgeNorthMaterial,
+                 farEdgeNorthMaterial if atNorthEdge else innerEdgeNorthMaterial,
                  90.0)
-    if wallForEastEdge || !Utils.equalsf(hole.end.x,connectionWidth):
-        new_mesh(Vector3(holeCenter.x + halfHoleWidth, holeCenter.y, connectionDepth / 2.0),
+        if edgeGenCollision:
+            new_collider(Vector3(holeCenter.x, holeCenter.y + halfHoleHeight + State.QUARTER_VOXEL, halfDepth),
+                         Vector3(hole.size.x, State.HALF_VOXEL, connectionDepth))
+    var atEastEdge = Utils.equalsf(hole.end.x,connectionWidth)
+    if edgeGenEast || !atEastEdge:
+        new_mesh(Vector3(holeCenter.x + halfHoleWidth, holeCenter.y, halfDepth),
                  Vector2(connectionDepth, hole.size.y),
-                 innerEdgeEastMaterial,
+                 farEdgeEastMaterial if atEastEdge else innerEdgeEastMaterial,
                  0.0, -90.0)
-    if wallForSouthEdge || !Utils.equalsf(hole.end.y,connectionHeight):
-        new_mesh(Vector3(holeCenter.x, holeCenter.y - halfHoleHeight, connectionDepth / 2.0),
+        if edgeGenCollision:
+            new_collider(Vector3(holeCenter.x + halfHoleWidth + State.QUARTER_VOXEL, holeCenter.y, halfDepth),
+                         Vector3(State.HALF_VOXEL, hole.size.y, connectionDepth))
+    var atSouthEdge = Utils.equalsf(hole.end.y,connectionHeight)
+    if edgeGenSouth || !atSouthEdge:
+        new_mesh(Vector3(holeCenter.x, holeCenter.y - halfHoleHeight, halfDepth),
                  Vector2(hole.size.x, connectionDepth),
-                 innerEdgeSouthMaterial,
+                 farEdgeSouthMaterial if atSouthEdge else innerEdgeSouthMaterial,
                  -90.0)
+        if edgeGenCollision:
+            new_collider(Vector3(holeCenter.x, holeCenter.y - halfHoleHeight - State.QUARTER_VOXEL, halfDepth),
+                         Vector3(hole.size.x, State.HALF_VOXEL, connectionDepth))
