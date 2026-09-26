@@ -2309,14 +2309,14 @@ shape = SubResource("BoxShape3D_pxf5c")
 [node name="PopupForArea" parent="Tutorials/FinishTutorialArea" index="1" unique_id=889054482 instance=ExtResource("25_m6f5b")]
 popupText = "That's it! Thanks for playing and be honest with your feedback :)"
 
-[node name="LevelMeshes" parent="." index="4" unique_id=1646079298 instance=ExtResource("24_m6f5b")]
+[node name="Connections" parent="." index="4" unique_id=1690603826]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)
 
-[node name="Connections" parent="." index="5" unique_id=1690603826]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)
-
-[node name="Bounds" parent="." index="6" unique_id=1272779199]
+[node name="Bounds" parent="." index="5" unique_id=1272779199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)
 
 [node name="CollisionShape3D" parent="Bounds" index="0" unique_id=787654336]
 shape = SubResource("BoxShape3D_oubl5")
+
+[node name="LevelMeshes" parent="." index="7" unique_id=1646079298 instance=ExtResource("24_m6f5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)

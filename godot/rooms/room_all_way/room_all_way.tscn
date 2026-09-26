@@ -7,7 +7,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mdv3c"]
 resource_local_to_scene = true
-size = Vector3(7, 0.75, 7)
+size = Vector3(7, 0.5, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b6y2s"]
 resource_local_to_scene = true
@@ -19,7 +19,7 @@ size = Vector2(7, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lvn7y"]
 resource_local_to_scene = true
-size = Vector3(7, 0.75, 7)
+size = Vector3(7, 0.5, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eg8m8"]
 resource_local_to_scene = true
@@ -32,7 +32,7 @@ size = Vector2(7, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_snimf"]
 resource_local_to_scene = true
-size = Vector3(7, 3.5, 0.75)
+size = Vector3(7, 3.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xnxdn"]
 resource_local_to_scene = true
@@ -45,7 +45,7 @@ orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f4te1"]
 resource_local_to_scene = true
-size = Vector3(7, 3.5, 0.75)
+size = Vector3(7, 3.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_37p4u"]
 resource_local_to_scene = true
@@ -58,7 +58,7 @@ orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f0afk"]
 resource_local_to_scene = true
-size = Vector3(7, 3.5, 0.75)
+size = Vector3(7, 3.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c57nh"]
 resource_local_to_scene = true
@@ -71,7 +71,7 @@ orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_npa5b"]
 resource_local_to_scene = true
-size = Vector3(7, 3.5, 0.75)
+size = Vector3(7, 3.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qfseg"]
 resource_local_to_scene = true
@@ -96,7 +96,6 @@ connectionDepth = 0.5
 edgeGenCollision = true
 
 [node name="RectCollider" parent="Connections/FloorConnector/Adjacent" parent_id_path=PackedInt32Array(674166013, 1418678597) index="0" unique_id=415124710]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 shape = SubResource("BoxShape3D_mdv3c")
 
 [node name="RectCollider" parent="Connections/FloorConnector/Collider" parent_id_path=PackedInt32Array(674166013, 446596967) index="0" unique_id=813981425]
@@ -115,7 +114,6 @@ connectionDepth = 0.5
 edgeGenCollision = true
 
 [node name="RectCollider" parent="Connections/CeilingConnector/Adjacent" parent_id_path=PackedInt32Array(407118955, 1101334803) index="0" unique_id=415124710]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
 shape = SubResource("BoxShape3D_lvn7y")
 
 [node name="RectCollider" parent="Connections/CeilingConnector/Collider" parent_id_path=PackedInt32Array(407118955, 1707928833) index="0" unique_id=350048483]
@@ -134,7 +132,6 @@ connectionDepth = 0.5
 edgeGenCollision = true
 
 [node name="RectCollider" parent="Connections/WallConnector/Adjacent" parent_id_path=PackedInt32Array(1632024163, 786542423) index="0" unique_id=415124710]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
 shape = SubResource("BoxShape3D_snimf")
 
 [node name="RectCollider" parent="Connections/WallConnector/Collider" parent_id_path=PackedInt32Array(1632024163, 237774776) index="0" unique_id=1692528920]
@@ -153,7 +150,6 @@ connectionDepth = 0.5
 edgeGenCollision = true
 
 [node name="RectCollider" parent="Connections/WallConnector2/Adjacent" parent_id_path=PackedInt32Array(155153685, 786542423) index="0" unique_id=415124710]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
 shape = SubResource("BoxShape3D_f4te1")
 
 [node name="RectCollider" parent="Connections/WallConnector2/Collider" parent_id_path=PackedInt32Array(155153685, 237774776) index="0" unique_id=1692528920]
@@ -172,7 +168,6 @@ connectionDepth = 0.5
 edgeGenCollision = true
 
 [node name="RectCollider" parent="Connections/WallConnector3/Adjacent" parent_id_path=PackedInt32Array(904081223, 786542423) index="0" unique_id=415124710]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
 shape = SubResource("BoxShape3D_f0afk")
 
 [node name="RectCollider" parent="Connections/WallConnector3/Collider" parent_id_path=PackedInt32Array(904081223, 237774776) index="0" unique_id=1692528920]
@@ -191,7 +186,6 @@ connectionDepth = 0.5
 edgeGenCollision = true
 
 [node name="RectCollider" parent="Connections/WallConnector4/Adjacent" parent_id_path=PackedInt32Array(1163107441, 786542423) index="0" unique_id=415124710]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
 shape = SubResource("BoxShape3D_npa5b")
 
 [node name="RectCollider" parent="Connections/WallConnector4/Collider" parent_id_path=PackedInt32Array(1163107441, 237774776) index="0" unique_id=1692528920]

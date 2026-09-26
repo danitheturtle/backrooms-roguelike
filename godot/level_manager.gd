@@ -5,7 +5,6 @@ signal level_ready
 
 const rooms: Dictionary[String, PackedScene] = {
     "tutorial": preload("res://rooms/room_tutorial/room_tutorial.tscn"),
-    "square_small": preload("res://rooms/room_square_small/room_square_small.tscn"),
     "four_way": preload("res://rooms/room_four_way/room_four_way.tscn"),
     "test": preload("res://rooms/room_test/room_test.tscn")
 }

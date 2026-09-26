@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://4r2n50ip6oyp"
-path="res://.godot/imported/room_square_small.blend-cf294e63bc2c8ab608017b115824593c.scn"
+uid="uid://c6mejo3tm40gg"
+path="res://.godot/imported/room_nook_with_ramp.blend-cf469b053b9f02971cdd7e5cf72be57f.scn"
 
 [deps]
 
-source_file="res://rooms/room_square_small/res/room_square_small.blend"
-dest_files=["res://.godot/imported/room_square_small.blend-cf294e63bc2c8ab608017b115824593c.scn"]
+source_file="res://rooms/room_nook_with_ramp/res/room_nook_with_ramp.blend"
+dest_files=["res://.godot/imported/room_nook_with_ramp.blend-cf469b053b9f02971cdd7e5cf72be57f.scn"]
 
 [params]
 
@@ -21,7 +21,7 @@ array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
-nodes/use_name_suffixes=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -30,7 +30,7 @@ meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=false
+animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true

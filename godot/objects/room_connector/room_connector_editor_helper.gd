@@ -40,5 +40,3 @@ func update_connection_depth(newValue: float, axis: String):
     mesh.position[axis] = newValue
     collider.shape.size[axis] = abs(newValue)
     collider.position[axis] = newValue / 2.0
-    adjacentCollider.shape.size[axis] = abs(newValue) + State.HALF_VOXEL
-    adjacentCollider.position[axis] = ((newValue - State.HALF_VOXEL) if newValue > 0.0 else (newValue + State.HALF_VOXEL)) / 2.0

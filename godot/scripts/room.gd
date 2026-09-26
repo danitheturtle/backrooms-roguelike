@@ -13,6 +13,7 @@ class_name Room
 @onready var props: Node3D = $Props
 @onready var bounds: Area3D = $Bounds
 @onready var connections: Node3D = $Connections
+@onready var subRooms: Node3D = $SubRooms
 
 # Returns an array of RoomDefinition objects telling the level generator how this room can be used.
 # the level generator should pass the room definition it wants to the setup() function

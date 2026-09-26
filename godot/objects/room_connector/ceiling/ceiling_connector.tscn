@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dgwmutwf473uv" path="res://objects/colliders/ceiling_static_body.tscn" id="3_twjph"]
 [ext_resource type="Material" uid="uid://xeql16pj4ajo" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_world.tres" id="4_nedpx"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_i8mbr"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_twjph"]
 resource_local_to_scene = true
 size = Vector3(3, 0.5, 3)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jdd8a"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_nedpx"]
 resource_local_to_scene = true
 size = Vector3(3, 0.25, 3)
 
@@ -32,15 +32,16 @@ farEdgeSouthMaterial = ExtResource("3_nedpx")
 [node name="Adjacent" type="Area3D" parent="." unique_id=1101334803]
 
 [node name="RectCollider" parent="Adjacent" unique_id=415124710 instance=ExtResource("2_wdkuk")]
-shape = SubResource("BoxShape3D_i8mbr")
+shape = SubResource("BoxShape3D_twjph")
 
 [node name="Collider" parent="." unique_id=1707928833 instance=ExtResource("3_twjph")]
 
 [node name="RectCollider" parent="Collider" unique_id=350048483 instance=ExtResource("2_wdkuk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
-shape = SubResource("BoxShape3D_jdd8a")
+shape = SubResource("BoxShape3D_nedpx")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=103419973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+layers = 2
 material_override = ExtResource("4_nedpx")
 mesh = SubResource("PlaneMesh_5q0ne")

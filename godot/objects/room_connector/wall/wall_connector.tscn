@@ -36,5 +36,6 @@ shape = SubResource("BoxShape3D_1h1xp")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1345220754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+layers = 4
 material_override = ExtResource("4_y6l5e")
 mesh = SubResource("PlaneMesh_5q0ne")
