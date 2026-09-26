@@ -26,6 +26,13 @@ func rect_intersectsf(rect1: Rect2, rect2: Rect2, epsilon: float = 0.001) -> boo
     var test4 = rect1.end.y - epsilon > rect2.position.y
     return test1 && test2 && test3 && test4
 
+# gets self or first found child of given type
+func get_self_or_child_of_type(selfNode: Node, type: Variant, recursive: bool = false):
+    if is_instance_of(selfNode, type):
+        return selfNode
+    else:
+        return get_child_of_type(selfNode, type, recursive)
+
 # gets first found child of given type
 func get_child_of_type(parentNode: Node, type: Variant, recursive: bool = false):
     var allChildren = parentNode.get_children(true) if !recursive else parentNode.find_children("*")

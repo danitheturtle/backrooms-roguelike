@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dxvdloumixkbk"]
+
+[ext_resource type="Texture2D" uid="uid://by1l5jjdlxfcm" path="res://assets/materials/CeilingLightSquare01/CeilingLightSquare01_Color.jpg" id="1_o25mf"]
+[ext_resource type="Texture2D" uid="uid://bi4f2j3scxwt7" path="res://assets/materials/CeilingLightSquare01/CeilingLightSquare01_Emissive.jpg" id="2_o25mf"]
+[ext_resource type="Texture2D" uid="uid://nxkbtd7dkdvb" path="res://assets/materials/CeilingLightSquare01/CeilingLightSquare01_Metallic.jpg" id="3_uoujq"]
+[ext_resource type="Texture2D" uid="uid://cg1jou2i1bxik" path="res://assets/materials/CeilingLightSquare01/CeilingLightSquare01_Normal.jpg" id="4_vrkky"]
+[ext_resource type="Texture2D" uid="uid://d12k5nn6nkey" path="res://assets/materials/CeilingLightSquare01/CeilingLightSquare01_Roughness.jpg" id="5_a5jpn"]
+
+[resource]
+albedo_texture = ExtResource("1_o25mf")
+metallic = 1.0
+metallic_texture = ExtResource("3_uoujq")
+roughness_texture = ExtResource("5_a5jpn")
+emission_enabled = true
+emission_texture = ExtResource("2_o25mf")
+normal_enabled = true
+normal_texture = ExtResource("4_vrkky")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0.25, 0, 0.245)
+uv1_triplanar = true

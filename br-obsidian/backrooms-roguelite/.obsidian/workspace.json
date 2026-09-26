@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Today.md",
+                "file": "Todo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Today"
+              "title": "Todo"
             }
           }
         ],
@@ -219,15 +219,15 @@
   },
   "active": "b5a7d647281ad89c",
   "lastOpenFiles": [
-    "Todo.md",
+    "Lore/The Creator.md",
+    "Decoration/Spooky Wall Writing.md",
     "Today.md",
+    "Todo.md",
     "Playtest Notes.md",
     "Mechanics/Mechanic Brainstorm.md",
     "Decoration/Deco Ideas.md",
     "Decoration/just a really long cat.md",
-    "Lore/The Creator.md",
     "Technical/Building a room.md",
-    "Decoration/Spooky Wall Writing.md",
     "Async Investigations - Game Pitch.md",
     "Design Pillars.md",
     "Decoration/Sounds Needed.md",

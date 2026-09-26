@@ -1,5 +1,5 @@
 @tool
-extends "res://objects/room_connector/room_connector.gd"
+extends "res://scripts/room_connector.gd"
 class_name WallConnector
 
 func set_connection_height(newHeight: float) -> void:

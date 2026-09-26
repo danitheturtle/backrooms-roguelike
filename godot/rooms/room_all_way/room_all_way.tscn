@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bkadirr1e44v7"]
 
 [ext_resource type="PackedScene" uid="uid://dxun115m4alsw" path="res://rooms/room_base.tscn" id="1_s2072"]
-[ext_resource type="PackedScene" uid="uid://cnapbejxxdkpf" path="res://objects/room_connector/floor/floor_connector.tscn" id="2_mdv3c"]
-[ext_resource type="PackedScene" uid="uid://dkaflqjkli2wg" path="res://objects/room_connector/ceiling/ceiling_connector.tscn" id="3_b6y2s"]
-[ext_resource type="PackedScene" uid="uid://di65tcxw57kit" path="res://objects/room_connector/wall/wall_connector.tscn" id="4_t1q3e"]
+[ext_resource type="PackedScene" uid="uid://cnapbejxxdkpf" path="res://objects/connectors/floor/floor_connector.tscn" id="2_mdv3c"]
+[ext_resource type="PackedScene" uid="uid://dkaflqjkli2wg" path="res://objects/connectors/ceiling/ceiling_connector.tscn" id="3_b6y2s"]
+[ext_resource type="PackedScene" uid="uid://di65tcxw57kit" path="res://objects/connectors/wall/wall_connector.tscn" id="4_t1q3e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mdv3c"]
 resource_local_to_scene = true

@@ -1,5 +1,5 @@
 @tool
-extends "res://objects/room_connector/floor/floor_connector.gd"
+extends "res://objects/connectors/floor/floor_connector.gd"
 class_name CeilingConnector
 
 func _init() -> void:

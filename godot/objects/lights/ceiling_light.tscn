@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b1jb75ylvwe4t"]
+
+[ext_resource type="Script" uid="uid://18xyhqooul7s" path="res://scripts/light.gd" id="1_baok3"]
+[ext_resource type="Material" uid="uid://dxvdloumixkbk" path="res://assets/materials/CeilingLightSquare01/CeilingLightSquare01.tres" id="2_baok3"]
+[ext_resource type="Material" uid="uid://cwstn063leu4l" path="res://assets/materials/CeilingLightSquare01/CeilingLightSquareOff01.tres" id="3_idj2a"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ji2ch"]
+flip_faces = true
+size = Vector2(1, 1)
+center_offset = Vector3(0, 0, 0.01)
+
+[node name="CeilingLight" type="Node3D" unique_id=1957474247]
+script = ExtResource("1_baok3")
+onMaterial = ExtResource("2_baok3")
+offMaterial = ExtResource("3_idj2a")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=666675144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
+layers = 2
+material_override = ExtResource("2_baok3")
+mesh = SubResource("PlaneMesh_ji2ch")
+
+[node name="Primary" type="SpotLight3D" parent="." unique_id=1907237583]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+light_color = Color(0.9607843, 1, 1, 1)
+light_energy = 4.0
+light_size = 0.25
+light_cull_mask = 4293918733
+shadow_enabled = true
+shadow_bias = 0.06
+shadow_caster_mask = 4293918733
+distance_fade_enabled = true
+distance_fade_begin = 30.0
+distance_fade_shadow = 40.0
+spot_range = 7.5
+spot_angle = 80.0
+
+[node name="Bounce" type="OmniLight3D" parent="." unique_id=2129061489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
+light_color = Color(0.9607843, 1, 1, 1)
+light_energy = 0.5
+light_specular = 0.0
+light_cull_mask = 4293918735
+distance_fade_enabled = true
+distance_fade_begin = 30.0
+distance_fade_shadow = 40.0
+omni_range = 8.5
+omni_attenuation = 1.15

@@ -1,3 +1,6 @@
+- ramp ambient light power depending on distance inside room boundary. Each room gets its own bespoke level calculated based on number of lights turned on.
+	- This lets us raise base light level while letting some areas be extra dark and some extra bright. Default should be midrange
+	- Sub-rooms shouldn't affect it. only parent room sets ambient level
 - refactor player behaviors into own scripts
 - rope climbing
 - color grade textures and lighting

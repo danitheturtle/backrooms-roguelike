@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dkaflqjkli2wg"]
 
-[ext_resource type="Script" uid="uid://bhxc1wchak6o0" path="res://objects/room_connector/ceiling/ceiling_connector.gd" id="1_21bm7"]
+[ext_resource type="Script" uid="uid://bhxc1wchak6o0" path="res://objects/connectors/ceiling/ceiling_connector.gd" id="1_21bm7"]
 [ext_resource type="Material" uid="uid://ft3l0gt1bi8u" path="res://assets/materials/Carpet01/Carpet01_world.tres" id="2_twjph"]
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="2_wdkuk"]
 [ext_resource type="Material" uid="uid://d1infe3mw6u2" path="res://assets/materials/Wallpaper01/Wallpaper01_world.tres" id="3_nedpx"]

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://daxkl3ttr5cya"]
+
+[ext_resource type="PackedScene" uid="uid://b1jb75ylvwe4t" path="res://objects/lights/ceiling_light.tscn" id="1_67t7e"]
+[ext_resource type="Material" uid="uid://lm8m3c317rwc" path="res://assets/materials/CeilingLightRectangle01/CeilingLightRectangle01.tres" id="2_mrfp5"]
+[ext_resource type="Material" uid="uid://ec8faiyjyfde" path="res://assets/materials/CeilingLightRectangle01/CeilingLightRectangleOff01.tres" id="3_7av1i"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ddarv"]
+flip_faces = true
+size = Vector2(2, 1)
+center_offset = Vector3(0, 0, 0.01)
+
+[node name="CeilingLightRectangle" unique_id=1957474247 instance=ExtResource("1_67t7e")]
+onMaterial = ExtResource("2_mrfp5")
+offMaterial = ExtResource("3_7av1i")
+
+[node name="Mesh" parent="." index="0" unique_id=666675144]
+material_override = ExtResource("2_mrfp5")
+mesh = SubResource("PlaneMesh_ddarv")
