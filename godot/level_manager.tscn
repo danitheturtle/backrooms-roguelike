@@ -8,7 +8,6 @@ background_mode = 1
 background_color = Color(0.25808161, 0.25808164, 0.25808156, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.21568628, 0.21568628, 0.14117648, 1)
-ambient_light_energy = 0.1
 reflected_light_source = 1
 ssao_power = 3.3287072
 ssao_detail = 0.36
@@ -23,6 +22,6 @@ script = ExtResource("1_3maf5")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1616886304]
 environment = SubResource("Environment_5q0ne")
 
-[node name="Player" parent="." unique_id=66642413 groups=["save_to_disk"] instance=ExtResource("2_gpfvb")]
+[node name="Player" parent="." unique_id=66642413 instance=ExtResource("2_gpfvb")]
 process_mode = 1
 transform = Transform3D(0.8744119, 0, 0.48518443, 0, 1, 0, -0.48518443, 0, 0.8744119, 0, 0, 0)

@@ -248,7 +248,7 @@ func _physics_process(_delta: float) -> void:
     # climb stairs
     if !vaulting && !jumping && !crawling && !squeezing && velocity.y <= 0 && velocity.length_squared() > 0.05:
         stairSolver.rotation.y = atan2(-moveDir.x, -moveDir.y)
-        var expectedPositionDelta = velocity * 0.4 * _delta
+        var expectedPositionDelta = velocity * (0.4 if !crouching else 0.6) * _delta
         var collisionCastVector = Vector3(0,MAX_STEP_HEIGHT*1.5, 0)
         var nextPosCollisionCastStart = global_transform.translated(expectedPositionDelta + collisionCastVector)
         var collisionResult = KinematicCollision3D.new()

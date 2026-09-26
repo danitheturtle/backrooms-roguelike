@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bye4u7b7krjye" path="res://assets/materials/DropCeilingSquare01/DropCeilingSquare01_Normal.jpg" id="6_n0u27"]
 [ext_resource type="Texture2D" uid="uid://2pgm5i7g3idl" path="res://assets/materials/DropCeilingSquare01/DropCeilingSquare01_Roughness.jpg" id="7_reavp"]
 [ext_resource type="Material" uid="uid://dkub5aq63keux" path="res://assets/materials/Carpet01/Carpet01_uv.tres" id="9_itruj"]
+[ext_resource type="Material" uid="uid://d1infe3mw6u2" path="res://assets/materials/Wallpaper01/Wallpaper01_world.tres" id="10_patgu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_26wup"]
 albedo_texture = ExtResource("4_itruj")
@@ -34,178 +35,178 @@ uv1_triplanar = true
 
 [node name="LevelMeshes" unique_id=938641233 instance=ExtResource("1_uup3y")]
 
-[node name="ceiling_000" parent="." index="0" unique_id=763819770]
+[node name="ceiling_000" parent="." index="0" unique_id=1625822311]
 layers = 2
 material_override = ExtResource("2_yu18x")
 
-[node name="ceiling_001" parent="." index="1" unique_id=1539686077]
+[node name="ceiling_001" parent="." index="1" unique_id=314037063]
 layers = 2
 material_override = ExtResource("3_yu18x")
 
-[node name="ceiling_002" parent="." index="2" unique_id=511824931]
+[node name="ceiling_002" parent="." index="2" unique_id=489768743]
+layers = 2
+material_override = ExtResource("3_yu18x")
+
+[node name="ceiling_003" parent="." index="3" unique_id=983795052]
 layers = 2
 material_override = ExtResource("2_yu18x")
 
-[node name="ceiling_003" parent="." index="3" unique_id=452847535]
+[node name="ceiling_004" parent="." index="4" unique_id=1000837040]
 layers = 2
 material_override = ExtResource("2_yu18x")
 
-[node name="ceiling_004" parent="." index="4" unique_id=1179174526]
-layers = 2
-material_override = ExtResource("2_yu18x")
-
-[node name="ceiling_005" parent="." index="5" unique_id=1700479507]
+[node name="ceiling_005" parent="." index="5" unique_id=1879277499]
 layers = 2
 material_override = SubResource("StandardMaterial3D_26wup")
 
-[node name="ceiling_006" parent="." index="6" unique_id=1827443554]
+[node name="ceiling_006" parent="." index="6" unique_id=1653836608]
 layers = 2
 material_override = ExtResource("2_yu18x")
 
-[node name="ceiling_007" parent="." index="7" unique_id=264391488]
+[node name="ceiling_007" parent="." index="7" unique_id=1784654459]
 layers = 2
 material_override = SubResource("StandardMaterial3D_itruj")
 
-[node name="floor_001" parent="." index="8" unique_id=1301600793]
+[node name="floor_001" parent="." index="8" unique_id=1746338419]
 layers = 8
 material_override = ExtResource("9_itruj")
 
-[node name="floor_002" parent="." index="9" unique_id=374174654]
+[node name="floor_002" parent="." index="9" unique_id=1717035546]
 layers = 8
 material_override = ExtResource("4_aw2pl")
 
-[node name="floor_003" parent="." index="10" unique_id=638931846]
+[node name="floor_003" parent="." index="10" unique_id=188507788]
 layers = 8
 material_override = ExtResource("4_aw2pl")
 
-[node name="floor_004" parent="." index="11" unique_id=1906829922]
+[node name="floor_004" parent="." index="11" unique_id=1726613178]
 layers = 8
 material_override = ExtResource("4_aw2pl")
 
-[node name="floor_005" parent="." index="12" unique_id=991242906]
+[node name="floor_005" parent="." index="12" unique_id=1268755308]
 layers = 8
 material_override = ExtResource("4_aw2pl")
 
-[node name="floor_006" parent="." index="13" unique_id=732221948]
+[node name="floor_006" parent="." index="13" unique_id=1884802998]
 layers = 8
 material_override = ExtResource("4_aw2pl")
 
-[node name="floor_008" parent="." index="14" unique_id=1648590800]
+[node name="floor_008" parent="." index="14" unique_id=1470566128]
 layers = 8
 material_override = ExtResource("9_itruj")
 
-[node name="wall_000" parent="." index="15" unique_id=964262306]
+[node name="wall_000" parent="." index="15" unique_id=1630082169]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_001" parent="." index="16" unique_id=353892198]
+[node name="wall_001" parent="." index="16" unique_id=1797375245]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_003" parent="." index="17" unique_id=1420356054]
+[node name="wall_003" parent="." index="17" unique_id=2048578182]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_004" parent="." index="18" unique_id=837974068]
+[node name="wall_004" parent="." index="18" unique_id=1707505195]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_005" parent="." index="19" unique_id=1727063524]
+[node name="wall_005" parent="." index="19" unique_id=768629988]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_006" parent="." index="20" unique_id=560189113]
+[node name="wall_006" parent="." index="20" unique_id=758060933]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_007" parent="." index="21" unique_id=1757776290]
+[node name="wall_007" parent="." index="21" unique_id=144050397]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_008" parent="." index="22" unique_id=1465017665]
+[node name="wall_008" parent="." index="22" unique_id=1646619104]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_009" parent="." index="23" unique_id=661116722]
+[node name="wall_009" parent="." index="23" unique_id=1735456647]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_010" parent="." index="24" unique_id=446673405]
+[node name="wall_010" parent="." index="24" unique_id=354213447]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_011" parent="." index="25" unique_id=1759302441]
+[node name="wall_011" parent="." index="25" unique_id=2109262124]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_012" parent="." index="26" unique_id=1242857334]
+[node name="wall_012" parent="." index="26" unique_id=2110159279]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_013" parent="." index="27" unique_id=1386943394]
+[node name="wall_013" parent="." index="27" unique_id=177950968]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_014" parent="." index="28" unique_id=721755743]
+[node name="wall_014" parent="." index="28" unique_id=1870423399]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_015" parent="." index="29" unique_id=478521351]
+[node name="wall_015" parent="." index="29" unique_id=575169297]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_016" parent="." index="30" unique_id=1899956515]
+[node name="wall_016" parent="." index="30" unique_id=1857183262]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_017" parent="." index="31" unique_id=1263326270]
+[node name="wall_017" parent="." index="31" unique_id=1210031228]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_018" parent="." index="32" unique_id=977799719]
+[node name="wall_018" parent="." index="32" unique_id=598634929]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_019" parent="." index="33" unique_id=594582572]
+[node name="wall_019" parent="." index="33" unique_id=86688549]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_020" parent="." index="34" unique_id=657079107]
+[node name="wall_020" parent="." index="34" unique_id=832445302]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_021" parent="." index="35" unique_id=649533617]
+[node name="wall_021" parent="." index="35" unique_id=1513782865]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_022" parent="." index="36" unique_id=1497483109]
+[node name="wall_022" parent="." index="36" unique_id=1041375139]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_023" parent="." index="37" unique_id=842020565]
+[node name="wall_023" parent="." index="37" unique_id=533025753]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_024" parent="." index="38" unique_id=1558337841]
+[node name="wall_024" parent="." index="38" unique_id=1267994056]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_025" parent="." index="39" unique_id=457992107]
+[node name="wall_025" parent="." index="39" unique_id=1021817851]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_026" parent="." index="40" unique_id=1676206823]
+[node name="wall_026" parent="." index="40" unique_id=1024055104]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_027" parent="." index="41" unique_id=1009676648]
+[node name="wall_027" parent="." index="41" unique_id=830488273]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_028" parent="." index="42" unique_id=1533387339]
+[node name="wall_028" parent="." index="42" unique_id=1253071473]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")
 
-[node name="wall_029" parent="." index="43" unique_id=357170521]
+[node name="wall_029" parent="." index="43" unique_id=1839159600]
 layers = 4
-material_override = ExtResource("3_yu18x")
+material_override = ExtResource("10_patgu")

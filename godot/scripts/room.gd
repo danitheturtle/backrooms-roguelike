@@ -30,6 +30,8 @@ func get_room_definitions() -> Array[RoomDefinition]:
 # called after initialization but before being added to the tree. Make wall holes, add sub-props, etc
 func setup(_definition: RoomDefinition) -> void:
     if hasSubRandomization: self.shuffle()
+    # get ambient light level based on number of active lights and their intensities. An approximation for bounce light
+    
 
 # called during setup, or manually, to 
 func shuffle() -> void:
