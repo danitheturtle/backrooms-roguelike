@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c3311m867qoxp"]
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_5q0ne"]
+resource_local_to_scene = true
+size = Vector2(8, 8)
+
+[node name="OccluderPlane" type="OccluderInstance3D" unique_id=755082067]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+occluder = SubResource("QuadOccluder3D_5q0ne")

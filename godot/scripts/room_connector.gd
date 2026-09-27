@@ -7,22 +7,34 @@ const Wallpaper01WorldMaterial = preload("res://assets/materials/Wallpaper01/Wal
 const DropCeilingRectangle01WorldMaterial = preload("res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_world.tres")
 const Carpet01WorldMaterial = preload("res://assets/materials/Carpet01/Carpet01_world.tres")
 
-# basic bounds
-@export_range(State.VOXEL, 16.0, State.VOXEL, "or_greater") var connectionWidth: float = 3.0: set = set_connection_width
-func set_connection_width(newWidth: float) -> void: #only one that's the same for all connections
+@export_group('Voxel Sizing', 'voxel')
+# basic bounds in voxels
+@export_range(1, 32, 1, "or_greater", "prefer_slider") var voxelWidth: int = 6: set = set_connection_width
+func set_connection_width(newWidth: int) -> void: #only one that's the same for all connections
     if editorHelper != null: editorHelper.update_connection_width(newWidth, "x")
-    connectionWidth = newWidth
-@export_range(State.VOXEL, 16.0, State.VOXEL, "or_greater") var connectionHeight: float = 3.0: set = set_connection_height
-@abstract func set_connection_height(newHeight: float) -> void
-@export_range(State.HALF_VOXEL,8.0,State.HALF_VOXEL, "or_greater") var connectionDepth: float = State.HALF_VOXEL: set = set_connection_depth
+    voxelWidth = newWidth
+@export_range(1, 32, 1, "or_greater", "prefer_slider") var voxelHeight: int = 6: set = set_connection_height
+@abstract func set_connection_height(newHeight: int) -> void
+@export_range(0.5,8.0,0.5, "or_greater", "prefer_slider") var voxelDepth: float = 0.5: set = set_connection_depth
 @abstract func set_connection_depth(newDepth: float) -> void
+# distance to floor in voxels from lowest y-point on connection mesh
+@export_range(0.0,10.0,0.5, "or_greater", "prefer_slider") var voxelDistanceToFloor: float = 0.0
+# don't need distance to ceiling, so only track if connection is touching
+@export var voxelBorderAtCeiling: bool = false
 
+# props that use editor-set vars to get worldspace units
+var globalWidth: float: get = get_global_width
+func get_global_width(): return float(voxelWidth) * State.VOXEL
+var globalHeight: float: get = get_global_height
+func get_global_height(): return float(voxelHeight) * State.VOXEL
+var globalDepth: float: get = get_global_depth
+func get_global_depth(): return float(voxelDepth) * State.VOXEL
 var halfWidth: float: get = get_half_width
-func get_half_width(): return connectionWidth / 2.0
+func get_half_width(): return globalWidth / 2.0
 var halfHeight: float: get = get_half_height
-func get_half_height(): return connectionHeight / 2.0
+func get_half_height(): return globalHeight / 2.0
 var halfDepth: float: get = get_half_depth
-func get_half_depth(): return connectionDepth / 2.0
+func get_half_depth(): return globalDepth / 2.0
 
 # Edge meshes are generated when hole overlaps surface edge
 # Disable to prevent z-fighting with existing geometry
@@ -69,7 +81,7 @@ var coplanarConnections: Array[RoomConnector]
 
 var editorHelper: RoomConnectorEditorHelper = null
 var localSpace: Rect2:
-    get: return Rect2(0.0,0.0,connectionWidth,connectionHeight)
+    get: return Rect2(0.0,0.0,globalWidth,globalHeight)
 
 @abstract func get_center_offset() -> Vector3
 @abstract func get_local_hole_position(corner1: Vector3, corner2: Vector3) -> Vector2

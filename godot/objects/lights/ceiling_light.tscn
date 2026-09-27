@@ -16,7 +16,6 @@ offMaterial = ExtResource("3_idj2a")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=666675144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
-layers = 2
 material_override = ExtResource("2_baok3")
 mesh = SubResource("PlaneMesh_ji2ch")
 
@@ -30,8 +29,8 @@ shadow_enabled = true
 shadow_bias = 0.06
 shadow_caster_mask = 4293918733
 distance_fade_enabled = true
-distance_fade_begin = 30.0
-distance_fade_shadow = 40.0
+distance_fade_begin = 25.0
+distance_fade_shadow = 25.0
 spot_range = 7.5
 spot_angle = 80.0
 
@@ -42,7 +41,7 @@ light_energy = 0.5
 light_specular = 0.0
 light_cull_mask = 4293918735
 distance_fade_enabled = true
-distance_fade_begin = 30.0
-distance_fade_shadow = 40.0
+distance_fade_begin = 20.0
+distance_fade_shadow = 20.0
 omni_range = 8.5
 omni_attenuation = 1.15

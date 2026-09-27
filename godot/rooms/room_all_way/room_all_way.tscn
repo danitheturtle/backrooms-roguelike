@@ -90,9 +90,9 @@ size = Vector3(8, 4.5, 8)
 
 [node name="FloorConnector" parent="Connections" parent_id_path=PackedInt32Array(1690603826) index="0" unique_id=674166013 instance=ExtResource("2_mdv3c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-connectionWidth = 7.0
-connectionHeight = 7.0
-connectionDepth = 0.5
+voxelWidth = 14
+voxelHeight = 14
+voxelDepth = 1.0
 edgeGenCollision = true
 
 [node name="RectCollider" parent="Connections/FloorConnector/Adjacent" parent_id_path=PackedInt32Array(674166013, 1418678597) index="0" unique_id=415124710]
@@ -108,9 +108,10 @@ mesh = SubResource("PlaneMesh_t1q3e")
 
 [node name="CeilingConnector" parent="Connections" parent_id_path=PackedInt32Array(1690603826) index="1" unique_id=407118955 instance=ExtResource("3_b6y2s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
-connectionWidth = 7.0
-connectionHeight = 7.0
-connectionDepth = 0.5
+voxelWidth = 14
+voxelHeight = 14
+voxelDepth = 1.0
+voxelDistanceToFloor = 7.0
 edgeGenCollision = true
 
 [node name="RectCollider" parent="Connections/CeilingConnector/Adjacent" parent_id_path=PackedInt32Array(407118955, 1101334803) index="0" unique_id=415124710]
@@ -126,9 +127,10 @@ mesh = SubResource("PlaneMesh_4he7e")
 
 [node name="WallConnector" parent="Connections" parent_id_path=PackedInt32Array(1690603826) index="2" unique_id=1632024163 instance=ExtResource("4_t1q3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -4)
-connectionWidth = 7.0
-connectionHeight = 3.5
-connectionDepth = 0.5
+voxelWidth = 14
+voxelHeight = 7
+voxelDepth = 1.0
+voxelBorderAtCeiling = true
 edgeGenCollision = true
 
 [node name="RectCollider" parent="Connections/WallConnector/Adjacent" parent_id_path=PackedInt32Array(1632024163, 786542423) index="0" unique_id=415124710]
@@ -144,9 +146,10 @@ mesh = SubResource("PlaneMesh_fvd6y")
 
 [node name="WallConnector2" parent="Connections" parent_id_path=PackedInt32Array(1690603826) index="3" unique_id=155153685 instance=ExtResource("4_t1q3e")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.75, 4)
-connectionWidth = 7.0
-connectionHeight = 3.5
-connectionDepth = 0.5
+voxelWidth = 14
+voxelHeight = 7
+voxelDepth = 1.0
+voxelBorderAtCeiling = true
 edgeGenCollision = true
 
 [node name="RectCollider" parent="Connections/WallConnector2/Adjacent" parent_id_path=PackedInt32Array(155153685, 786542423) index="0" unique_id=415124710]
@@ -162,9 +165,10 @@ mesh = SubResource("PlaneMesh_y826x")
 
 [node name="WallConnector3" parent="Connections" parent_id_path=PackedInt32Array(1690603826) index="4" unique_id=904081223 instance=ExtResource("4_t1q3e")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 1.75, 0)
-connectionWidth = 7.0
-connectionHeight = 3.5
-connectionDepth = 0.5
+voxelWidth = 14
+voxelHeight = 7
+voxelDepth = 1.0
+voxelBorderAtCeiling = true
 edgeGenCollision = true
 
 [node name="RectCollider" parent="Connections/WallConnector3/Adjacent" parent_id_path=PackedInt32Array(904081223, 786542423) index="0" unique_id=415124710]
@@ -180,9 +184,10 @@ mesh = SubResource("PlaneMesh_er78x")
 
 [node name="WallConnector4" parent="Connections" parent_id_path=PackedInt32Array(1690603826) index="5" unique_id=1163107441 instance=ExtResource("4_t1q3e")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 1.75, 0)
-connectionWidth = 7.0
-connectionHeight = 3.5
-connectionDepth = 0.5
+voxelWidth = 14
+voxelHeight = 7
+voxelDepth = 1.0
+voxelBorderAtCeiling = true
 edgeGenCollision = true
 
 [node name="RectCollider" parent="Connections/WallConnector4/Adjacent" parent_id_path=PackedInt32Array(1163107441, 786542423) index="0" unique_id=415124710]

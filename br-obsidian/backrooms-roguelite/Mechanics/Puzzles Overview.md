@@ -18,12 +18,6 @@ Object Placement Puzzles:
 - **Object placement puzzles open otherwise un-openable doors** automatically with an audible hinge creak to let the player know something in the level changed
 - Taking a photo of a solved object placement puzzle rewards extra points, enough that waiting until you notice a puzzle is worth it over taking pictures of individual props.
 
-Locked Doors
-- Connections can sometimes be locked doors. Skeleton Keys found in the level open them. Probably not 1-1, any key can open any locked door. Mayyyybe add a tier or color system.
-- Definitely no lockpicking minigame
-- **Give player fewer skeleton keys than there are locked doors**, forcing them to choose one to unlock.
-- **If a player unlocks a door, garuntee that there is (1) level progression, or if that's not possible (2) something interesting on the other side worth photo points.**
-
 Rope
 - The player starts the game with a certain length of consumable rope, and can find more.
 - Rope can be attached to a static or heavy prop anchor point. This starts the length counter as the player moves away.
@@ -47,6 +41,7 @@ One-way Drops:
 - Floor holes are almost always one-way without rope.
 - **Assume player has no rope at generation-time**
 - Generator should garuntee that players can continue their run after taking a one-way drop
+- Player can take fall damage if they fall too far. Playtest for good height
 - One-way drops, even done with rope, reward extra points.
 
 Climb-ups at 6 or more voxels:
@@ -84,3 +79,9 @@ The Creator's Fungus & Oxygen Masks
 - **Player cannot progress through rooms entirely overtaken by fungus without a gas mask and available oxygen**
 	- Generate them to the side of the critical path before mask is unlocked to build curiosity
 	- Once mask is unlocked, they can be part of the late-game critical path if enough oxygen is placed in the level
+
+Locked Doors
+- Connections can sometimes be locked doors. Skeleton Keys found in the level open them. Probably not 1-1, any key can open any locked door. Mayyyybe add a tier or color system.
+- Definitely no lockpicking minigame
+- **Give player fewer skeleton keys than there are locked doors**, forcing them to choose one to unlock.
+- **If a player unlocks a door, garuntee that there is (1) level progression, or if that's not possible (2) something interesting on the other side worth photo points.**

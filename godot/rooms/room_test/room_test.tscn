@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dxun115m4alsw" path="res://rooms/room_base.tscn" id="1_xurkv"]
 [ext_resource type="PackedScene" uid="uid://bx5044eu1cd6c" path="res://rooms/room_nook_with_ramp/room_nook_with_ramp.tscn" id="2_jbj8l"]
 [ext_resource type="PackedScene" uid="uid://dp5ght2v7oyut" path="res://rooms/room_four_way/room_four_way.tscn" id="3_80c2i"]
+[ext_resource type="PackedScene" uid="uid://bkadirr1e44v7" path="res://rooms/room_all_way/room_all_way.tscn" id="4_gwgcl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gwgcl"]
 resource_local_to_scene = true
@@ -10,7 +11,7 @@ size = Vector3(8, 3.5, 8)
 
 [node name="RoomTest" unique_id=1900576414 instance=ExtResource("1_xurkv")]
 
-[node name="Bounds" parent="." index="4" unique_id=1272779199]
+[node name="Bounds" parent="." index="5" unique_id=1272779199]
 visible = false
 
 [node name="CollisionShape3D" parent="Bounds" index="0" unique_id=787654336]
@@ -21,3 +22,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 
 [node name="RoomFourWay" parent="SubRooms" parent_id_path=PackedInt32Array(1023009072) index="1" unique_id=347720715 instance=ExtResource("3_80c2i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, -2, 5.75)
+
+[node name="RoomFourWay2" parent="SubRooms" parent_id_path=PackedInt32Array(1023009072) index="2" unique_id=1106546484 instance=ExtResource("3_80c2i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, -2, 5.75)
+
+[node name="RoomAllWay" parent="SubRooms" parent_id_path=PackedInt32Array(1023009072) index="3" unique_id=414456877 instance=ExtResource("4_gwgcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, -7.25, 0)
+
+[node name="RoomAllWay2" parent="SubRooms" parent_id_path=PackedInt32Array(1023009072) index="4" unique_id=698087057 instance=ExtResource("4_gwgcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 4.25, -4)

@@ -26,17 +26,20 @@ func _init(_parent: RoomConnector) -> void:
             adjacentDetector = nextChild
             adjacentCollider = adjacentDetector.get_child(0)
 
-func update_connection_width(newValue: float, axis: String):
-    collider.shape.size[axis] = newValue
-    adjacentCollider.shape.size[axis] = newValue
-    mesh.mesh.size.x = newValue
+func update_connection_width(newValue: int, axis: String):
+    var newWidth: float = float(newValue) * State.VOXEL
+    collider.shape.size[axis] = newWidth
+    adjacentCollider.shape.size[axis] = newWidth
+    mesh.mesh.size.x = newWidth
 
-func update_connection_height(newValue: float, axis: String):
-    collider.shape.size[axis] = newValue
-    adjacentCollider.shape.size[axis] = newValue
-    mesh.mesh.size.y = newValue
+func update_connection_height(newValue: int, axis: String):
+    var newHeight: float = float(newValue) * State.VOXEL
+    collider.shape.size[axis] = newHeight
+    adjacentCollider.shape.size[axis] = newHeight
+    mesh.mesh.size.y = newHeight
 
 func update_connection_depth(newValue: float, axis: String):
-    mesh.position[axis] = newValue
-    collider.shape.size[axis] = abs(newValue)
-    collider.position[axis] = newValue / 2.0
+    var newDepth: float = float(newValue) * State.VOXEL
+    mesh.position[axis] = newDepth
+    collider.shape.size[axis] = abs(newDepth)
+    collider.position[axis] = newDepth / 2.0

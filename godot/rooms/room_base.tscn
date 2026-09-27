@@ -11,6 +11,8 @@ script = ExtResource("1_xe5ka")
 
 [node name="Colliders" type="Node3D" parent="." unique_id=1940976534]
 
+[node name="Occluders" type="Node3D" parent="." unique_id=2028419292]
+
 [node name="Lights" type="Node3D" parent="." unique_id=1959239223]
 
 [node name="Props" type="Node3D" parent="." unique_id=1670016214]
