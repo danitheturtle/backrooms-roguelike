@@ -1,1 +1,3 @@
-maybe the entities that are watching you explore feed off of the time and curiosity you spend in their maze. a very meta entity that could be abstract and only hinted about
+Any digital data loaded into any sort of digital storage / memory gets irrevocably corrupted. The only way to record things here is film, tape, and analog equipment.
+- maybe it doesn't corrupt immediately, but entities get sent after digital data. paranatural netwatch
+- Maybe the creator is feeding on anything digital it comes across

@@ -3,6 +3,8 @@ extends Node
 const VOXEL: float = 0.5
 const HALF_VOXEL: float = VOXEL / 2.0
 const QUARTER_VOXEL: float = VOXEL / 4.0
+const AMBIENT_MAX: float = 0.4
+
 # variable state
 var player: Player = null
 var levelManager: LevelManager = null

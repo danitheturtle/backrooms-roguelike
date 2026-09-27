@@ -1,6 +1,8 @@
 Manequines
 Security cameras
 glass bricks
+wacky flailing inflatable tube man
+life-size decapitated lego man with yellow smiley face
 
 video:
 - 90s commercials

@@ -4,6 +4,7 @@
 - refactor player behaviors into own scripts
 - rope climbing
 - color grade textures and lighting
+- sprint toggle 
 - dial in climbup min/max height
 - save slot delete, rename, sort by save time
 - parent/child relationship for connections so only one of them generates the edges (and also doors when we get there)
