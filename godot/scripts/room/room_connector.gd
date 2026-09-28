@@ -9,26 +9,26 @@ const Carpet01WorldMaterial = preload("res://assets/materials/Carpet01/Carpet01_
 
 @export_group('Voxel Sizing', 'voxel')
 # basic bounds in voxels
-@export_range(1, 32, 1, "or_greater", "prefer_slider") var voxelWidth: int = 6: set = set_connection_width
-func set_connection_width(newWidth: int) -> void: #only one that's the same for all connections
-    if editorHelper != null: editorHelper.update_connection_width(newWidth, "x")
+@export_range(1, 32, 1, "or_greater", "prefer_slider") var voxelWidth: int = 6: set = set_connector_width
+func set_connector_width(newWidth: int) -> void: #only one that's the same for all connector
+    if editorHelper != null: editorHelper.update_connector_width(newWidth, "x")
     voxelWidth = newWidth
-@export_range(1, 32, 1, "or_greater", "prefer_slider") var voxelHeight: int = 6: set = set_connection_height
-@abstract func set_connection_height(newHeight: int) -> void
-@export_range(0.5,8.0,0.5, "or_greater", "prefer_slider") var voxelDepth: float = 0.5: set = set_connection_depth
-@abstract func set_connection_depth(newDepth: float) -> void
-# distance to floor in voxels from lowest y-point on connection mesh
+@export_range(1, 32, 1, "or_greater", "prefer_slider") var voxelHeight: int = 6: set = set_connector_height
+@abstract func set_connector_height(newHeight: int) -> void
+@export_range(0.5,8.0,0.5, "or_greater", "prefer_slider") var voxelDepth: float = 0.5: set = set_connector_depth
+@abstract func set_connector_depth(newDepth: float) -> void
+# distance to floor in voxels from lowest y-point on connector mesh
 @export_range(0.0,10.0,0.5, "or_greater", "prefer_slider") var voxelDistanceToFloor: float = 0.0
-# don't need distance to ceiling, so only track if connection is touching
-@export var voxelBorderAtCeiling: bool = false
+# don't need distance to ceiling, so only track if connector is touching
+@export var voxelBordersCeiling: bool = false
 
 # props that use editor-set vars to get worldspace units
 var globalWidth: float: get = get_global_width
-func get_global_width(): return float(voxelWidth) * State.VOXEL
+func get_global_width(): return float(voxelWidth) * Const.VOXEL
 var globalHeight: float: get = get_global_height
-func get_global_height(): return float(voxelHeight) * State.VOXEL
+func get_global_height(): return float(voxelHeight) * Const.VOXEL
 var globalDepth: float: get = get_global_depth
-func get_global_depth(): return float(voxelDepth) * State.VOXEL
+func get_global_depth(): return float(voxelDepth) * Const.VOXEL
 var halfWidth: float: get = get_half_width
 func get_half_width(): return globalWidth / 2.0
 var halfHeight: float: get = get_half_height
@@ -60,12 +60,12 @@ func get_half_depth(): return globalDepth / 2.0
 @export var farEdgeEastMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
 @export var farEdgeSouthMaterial: StandardMaterial3D = Carpet01WorldMaterial
 
-# connection metadata for the level generator
-@export_group('Connection Metadata', 'meta')
-# what connection sub-type is this? Unused for now
-@export_enum("SIMPLE") var metaSubType: String = "SIMPLE"
-# what biome does this connection work in? Unused for now
-@export_enum("LEVEL_0") var metaBiome: String = "LEVEL_0"
+# connector metadata for the level generator
+@export_group('Connector Metadata', 'meta')
+# what connector sub-type is this? Unused for now
+@export var metaSubType: Const.RoomConnectorSubType = Const.RoomConnectorSubType.SIMPLE
+# what biome does this connector work in?
+@export var metaBiome: Const.BiomeType = Const.BiomeType.LEVEL_0
 
 @onready var staticBody: StaticBody3D = $Collider
 @onready var collider: CollisionShape3D = $Collider/RectCollider
@@ -77,7 +77,7 @@ var adjacentAABB: AABB
 var surfaceOffsetInNormal: float
 var generatedColliders: Array[CollisionShape3D]
 var generatedMeshes: Array[MeshInstance3D]
-var coplanarConnections: Array[RoomConnector]
+var coplanarConnectors: Array[RoomConnector]
 
 var editorHelper: RoomConnectorEditorHelper = null
 var localSpace: Rect2:
@@ -89,7 +89,7 @@ var localSpace: Rect2:
 @abstract func get_center_relative_to_parent(surfaceRect: Rect2, centerOffset: Vector3) -> Vector3
 @abstract func build_geometry_for_surface(surfaceRect: Rect2, centerOffset: Vector3) -> void
 @abstract func build_geometry_for_hole(hole: Rect2, centerOffset: Vector3) -> void
-@abstract func on_other_connection_entered(body: Area3D) -> void
+@abstract func on_other_connector_entered(body: Area3D) -> void
 
 func _ready() -> void:
     if Engine.is_editor_hint():
@@ -99,34 +99,30 @@ func _ready() -> void:
     adjacentAABB.position = to_global(adjacentCollider.position - (adjacentCollider.shape.size / 2.0))
     adjacentAABB.end = to_global(adjacentCollider.position + (adjacentCollider.shape.size / 2.0))
     adjacentAABB = adjacentAABB.abs()
-    coplanarConnections = []
+    coplanarConnectors = []
     generatedColliders = []
     generatedMeshes = []
-    adjacent.area_exited.connect(on_other_connection_exited)
-    adjacent.area_entered.connect(on_other_connection_entered)
-    await get_tree().physics_frame
-    await get_tree().physics_frame
-    # TODO move to level manager
-    build_connections()
+    adjacent.area_exited.connect(on_other_connector_exited)
+    adjacent.area_entered.connect(on_other_connector_entered)
 
-func on_other_connection_exited(body: Area3D):
-    var parentIndex = coplanarConnections.find(body.get_parent())
+func on_other_connector_exited(body: Area3D):
+    var parentIndex = coplanarConnectors.find(body.get_parent())
     if parentIndex != -1:
-        coplanarConnections.remove_at(parentIndex)
+        coplanarConnectors.remove_at(parentIndex)
 
-# Punch hole for every coplanar connection and store metadata about it
+# Punch hole for every coplanar connector and store metadata about it
 # assumes holes never overlap with half voxel gaps
-# returns true if at least one connection was made
-func build_connections() -> bool:
-    if coplanarConnections.size() == 0: return false
+# returns true if at least one connector was made
+func build_connectors() -> bool:
+    if coplanarConnectors.size() == 0: return false
     var holesInLocalSpace: Array[Rect2] = []
     # shapes work from center, but AABB and Rect2 work from the corners
     var centerOffset = get_center_offset()
-    for nextConnection in coplanarConnections:
-        if adjacentAABB.is_equal_approx(nextConnection.adjacentAABB):
+    for nextConnector in coplanarConnectors:
+        if adjacentAABB.is_equal_approx(nextConnector.adjacentAABB):
             holesInLocalSpace.append(localSpace)
             continue
-        var intersection: AABB = adjacentAABB.intersection(nextConnection.adjacentAABB)
+        var intersection: AABB = adjacentAABB.intersection(nextConnector.adjacentAABB)
         # put AABB intersection into local space and offset the center
         var corner1 = to_local(intersection.position) + centerOffset
         var corner2 = to_local(intersection.end) + centerOffset
@@ -139,7 +135,7 @@ func build_connections() -> bool:
             holesInLocalSpace.append(Rect2(localHolePosition,localHoleSize))
     # exit early if coplanar surfaces had trouble forming holes
     if holesInLocalSpace.size() == 0: return false
-    # exit early if this connection gets removed entirely
+    # exit early if this connector gets removed entirely
     if holesInLocalSpace[0].is_equal_approx(localSpace):
         disable_default_geometry(true)
         return true
@@ -150,7 +146,7 @@ func build_connections() -> bool:
     for nextHole in holesInLocalSpace:
         build_geometry_for_hole(nextHole, centerOffset)
     disable_default_geometry()
-    return coplanarConnections.size() > 0
+    return coplanarConnectors.size() > 0
 
 # duplicate reference collider and move it into position
 func new_collider(_position: Vector3, _size: Vector3):
@@ -189,10 +185,10 @@ func generate_surfaces_around_holes(surfaceSize: Vector2, allHoles: Array[Rect2]
     var xStopsSet: Dictionary[float, bool] = {0: true, surfaceSize.x: true}
     var yStopsSet: Dictionary[float, bool] = {0: true, surfaceSize.y: true}
     for nextHole in allHoles:
-        xStopsSet.set(snappedf(nextHole.position.x, State.HALF_VOXEL), true)
-        xStopsSet.set(snappedf(nextHole.end.x, State.HALF_VOXEL), true)
-        yStopsSet.set(snappedf(nextHole.position.y, State.HALF_VOXEL), true)
-        yStopsSet.set(snappedf(nextHole.end.y, State.HALF_VOXEL), true)
+        xStopsSet.set(snappedf(nextHole.position.x, Const.HALF_VOXEL), true)
+        xStopsSet.set(snappedf(nextHole.end.x, Const.HALF_VOXEL), true)
+        yStopsSet.set(snappedf(nextHole.position.y, Const.HALF_VOXEL), true)
+        yStopsSet.set(snappedf(nextHole.end.y, Const.HALF_VOXEL), true)
     var xStops: Array[float] = xStopsSet.keys()
     var yStops: Array[float] = yStopsSet.keys()
     xStops.sort()

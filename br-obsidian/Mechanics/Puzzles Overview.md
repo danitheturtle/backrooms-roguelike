@@ -18,6 +18,12 @@ Object Placement Puzzles:
 - **Object placement puzzles open otherwise un-openable doors** automatically with an audible hinge creak to let the player know something in the level changed
 - Taking a photo of a solved object placement puzzle rewards extra points, enough that waiting until you notice a puzzle is worth it over taking pictures of individual props.
 
+Null Zones
+* Sometimes walls aren't walls and floors aren't floors. They let you clip through what looks like a wall
+* By default, no visual indication. Occasionally they will start showing visual artifacts or there will be blue painters tape outlining them
+* Null zones do not appear in photographs. Instead you can see what's behind them without comitting
+* Solving a puzzle can cause a nearby null zone to become obvious
+
 Rope
 - The player starts the game with a certain length of consumable rope, and can find more.
 - Rope can be attached to a static or heavy prop anchor point. This starts the length counter as the player moves away.

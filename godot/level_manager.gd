@@ -6,6 +6,8 @@ signal level_ready
 const rooms: Dictionary[String, PackedScene] = {
     "tutorial": preload("res://rooms/room_tutorial/room_tutorial.tscn"),
     "four_way": preload("res://rooms/room_four_way/room_four_way.tscn"),
+    "all_way": preload("res://rooms/room_all_way/room_all_way.tscn"),
+    "nook_with_ramp": preload("res://rooms/room_nook_with_ramp/room_nook_with_ramp.tscn"),
     "test": preload("res://rooms/room_test/room_test.tscn")
 }
 
@@ -13,13 +15,11 @@ const rooms: Dictionary[String, PackedScene] = {
 
 var currentLevelSeed: int = 0
 var loadedRooms: Array[Room] = []
-var allRoomDefinitions: Array[RoomDefinition] = []
 
 func _ready() -> void:
     for nextRoomName in rooms.keys():
         var temporaryRoomInstance: Room = rooms[nextRoomName].instantiate()
-        for nextDefinition in temporaryRoomInstance.get_room_definitions():
-            allRoomDefinitions.append(nextDefinition)
+        State.allRoomDefinitions.append_array(temporaryRoomInstance.get_room_definitions())
         temporaryRoomInstance.free()
     # TODO give room definitions to the generator
 
@@ -44,7 +44,8 @@ func reinit(nextSeed: int = -1) -> void:
 # tutorial is its own game mode since it has no rng
 func load_tutorial() -> void:
     var tutorialRoom: Room = rooms["tutorial"].instantiate()
-    tutorialRoom.setup(RoomDefinition.new())
+    var tutorialDefinition: RoomDefinition = tutorialRoom.get_room_definitions()[0]
+    tutorialRoom.setup(tutorialDefinition)
     await get_tree().process_frame
     add_child(tutorialRoom)
     loadedRooms.append(tutorialRoom)
@@ -54,11 +55,12 @@ func load_tutorial() -> void:
 
 # called at the start of a run
 func generate_initial_level() -> void:
-    var firstRoom: Room = rooms["test"].instantiate()
-    firstRoom.setup(RoomDefinition.new())
+    var testRoom: Room = rooms["test"].instantiate()
+    var testRoomDefinition: RoomDefinition = testRoom.get_room_definitions()[0]
+    testRoom.setup(testRoomDefinition)
     # Player is disabled by default to prevent physics jank during setup
     await get_tree().process_frame
-    add_child(firstRoom)
-    loadedRooms.append(firstRoom)
+    add_child(testRoom)
+    loadedRooms.append(testRoom)
     player.process_mode = Node.PROCESS_MODE_PAUSABLE
     level_ready.emit()

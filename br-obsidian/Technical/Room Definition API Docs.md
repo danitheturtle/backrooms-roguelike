@@ -16,6 +16,13 @@ Can Spawn Object Tags
 
 Connections
 * position in room-local space
+* subtype
+  *If subtype is NONE at gen-time, it can be changed by the level generator to force a specific subtype. If the subtype already exists, its an intentional part of the room design*
+	* NONE is just a straight passthrough
+	* DOOR is any kind of door
+	* LOCKED_DOOR is a locked door that requires some action to open
+	* NULL_ZONE is a hidden door. a wall you can noclip through
+	* NULL_ZONE_ONE_WAY is a null zone that can only be clipped through in one direction
 * normal
 * size (vec2)
 * corner1, corner2

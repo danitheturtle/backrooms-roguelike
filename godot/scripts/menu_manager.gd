@@ -26,15 +26,15 @@ func _init(
     SignalBus.goto_pause_menu.connect(on_goto_pause_menu)
     SignalBus.goto_hud_menu.connect(on_goto_hud_menu)
 
-func on_goto_previous_menu(previousMenuName: Enum.MenuType):
+func on_goto_previous_menu(previousMenuName: Const.MenuType):
     match previousMenuName:
-        Enum.MenuType.MAIN:
+        Const.MenuType.MAIN:
             on_goto_main_menu()
-        Enum.MenuType.PAUSE:
+        Const.MenuType.PAUSE:
             on_goto_pause_menu()
-        Enum.MenuType.SETTINGS:
+        Const.MenuType.SETTINGS:
             on_goto_settings_menu(previousMenuName)
-        Enum.MenuType.SAVE_SELECT:
+        Const.MenuType.SAVE_SELECT:
             on_goto_save_select_menu(previousMenuName)
 
 func on_goto_main_menu() -> void:
@@ -50,7 +50,7 @@ func on_goto_main_menu() -> void:
     mainMenu.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
     mainMenu.show()
 
-func on_goto_settings_menu(previousMenuName: Enum.MenuType) -> void:
+func on_goto_settings_menu(previousMenuName: Const.MenuType) -> void:
     mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
     pauseMenu.process_mode = Node.PROCESS_MODE_DISABLED
     mainMenu.hide()
@@ -72,7 +72,7 @@ func on_goto_pause_menu() -> void:
     pauseMenu.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
     pauseMenu.show()
 
-func on_goto_save_select_menu(_previousMenuName: Enum.MenuType) -> void:
+func on_goto_save_select_menu(_previousMenuName: Const.MenuType) -> void:
     mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
     pauseMenu.process_mode = Node.PROCESS_MODE_DISABLED
     mainMenu.hide()

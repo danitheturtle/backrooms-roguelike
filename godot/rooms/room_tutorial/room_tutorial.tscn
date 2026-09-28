@@ -840,54 +840,57 @@ size = Vector3(3.75, 3.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ng20"]
 resource_local_to_scene = true
-size = Vector3(4, 2.25, 5.75)
+size = Vector3(8, 3.5, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aumdd"]
 resource_local_to_scene = true
-size = Vector3(2.5, 3, 3.5)
+size = Vector3(4, 2.25, 5.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0gqtv"]
 resource_local_to_scene = true
-size = Vector3(8.5, 4.25, 2.75)
+size = Vector3(2.5, 3, 3.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iiqoj"]
 resource_local_to_scene = true
-size = Vector3(3.75, 3.25, 4.25)
+size = Vector3(8.5, 4.25, 2.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n40au"]
 resource_local_to_scene = true
-size = Vector3(3.25, 4, 2)
+size = Vector3(3.75, 3.25, 4.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dp4co"]
 resource_local_to_scene = true
-size = Vector3(5.75, 2.75, 2.5)
+size = Vector3(3.25, 4, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_16nfl"]
 resource_local_to_scene = true
-size = Vector3(7, 4, 3)
+size = Vector3(5.75, 2.75, 2.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6vw0h"]
 resource_local_to_scene = true
-size = Vector3(1.25, 3.75, 1.75)
+size = Vector3(7, 4, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nw0fa"]
 resource_local_to_scene = true
-size = Vector3(3.25, 3.75, 4)
+size = Vector3(1.25, 3.75, 1.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1slam"]
 resource_local_to_scene = true
-size = Vector3(3.25, 2.25, 2)
+size = Vector3(3.25, 3.75, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ga800"]
 resource_local_to_scene = true
-size = Vector3(5.25, 4, 4.75)
+size = Vector3(3.25, 2.25, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_agpe8"]
 resource_local_to_scene = true
-size = Vector3(8, 3.5, 8)
+size = Vector3(5.25, 4, 4.75)
 
 [node name="RoomTutorial" unique_id=1900576414 instance=ExtResource("1_xl1nk")]
+roomId = "tutorial"
 excludeFromGeneration = true
+spawnWeight = 0.0
+affectsAmbient = false
 
 [node name="Colliders" parent="." index="0" unique_id=1940976534]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)
@@ -1875,10 +1878,10 @@ shape = SubResource("BoxShape3D_urb64")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.375, 1.75, 4)
 shape = SubResource("BoxShape3D_08elj")
 
-[node name="Lights" parent="." index="1" unique_id=1959239223]
+[node name="Lights" parent="." index="2" unique_id=1959239223]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)
 
-[node name="Props" parent="." index="2" unique_id=1670016214]
+[node name="Props" parent="." index="3" unique_id=1670016214]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)
 
 [node name="WoodenLadder" parent="Props" index="0" unique_id=1062347463 instance=ExtResource("9_3reo8")]
@@ -1965,7 +1968,19 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.2
 [node name="VintageCabinetPhysics2" parent="Props" index="27" unique_id=1664976243 instance=ExtResource("13_kn1d3")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16.075, -0.23676097, -13)
 
-[node name="Tutorials" type="Node3D" parent="." index="3" unique_id=1888722781]
+[node name="Connectors" parent="." index="4" unique_id=1690603826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)
+
+[node name="Bounds" parent="." index="5" unique_id=1272779199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)
+
+[node name="BoundsAABB" parent="Bounds" index="0" unique_id=415124710]
+shape = SubResource("BoxShape3D_8ng20")
+
+[node name="LevelMeshes" parent="." index="6" unique_id=1646079298 instance=ExtResource("24_m6f5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)
+
+[node name="Tutorials" type="Node3D" parent="." index="7" unique_id=1888722781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)
 
 [node name="DragTutorialArea" parent="Tutorials" index="0" unique_id=1578869902 instance=ExtResource("25_7xnmx")]
@@ -1973,7 +1988,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.25, -1, -13.75)
 
 [node name="RectCollider" parent="Tutorials/DragTutorialArea" index="0" unique_id=1017813292 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.125, -0.375)
-shape = SubResource("BoxShape3D_8ng20")
+shape = SubResource("BoxShape3D_aumdd")
 
 [node name="PopupForArea" parent="Tutorials/DragTutorialArea" index="1" unique_id=405273844 instance=ExtResource("25_m6f5b")]
 popupText = "Welcome to the Async Investigations Prototype! Imagine you just saw some really cool high effort animation of walking into the backrooms lmao. For now the goal is just linear progression and testing gamefeel. The exit is marked by a red sphere.
@@ -1985,7 +2000,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.25, -1, -10.75)
 
 [node name="RectCollider" parent="Tutorials/ActionFlashlightTutorialArea" index="0" unique_id=1482887759 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1.25)
-shape = SubResource("BoxShape3D_aumdd")
+shape = SubResource("BoxShape3D_0gqtv")
 
 [node name="PopupForArea" parent="Tutorials/ActionFlashlightTutorialArea" index="1" unique_id=2117522302 instance=ExtResource("25_m6f5b")]
 popupText = "This place gets dark. Your Action key is 'F'. By default this toggles your flashlight."
@@ -1995,7 +2010,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, -2, -1.25)
 
 [node name="RectCollider" parent="Tutorials/RunTutorialArea" index="0" unique_id=499811336 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 2.125, -0.125)
-shape = SubResource("BoxShape3D_0gqtv")
+shape = SubResource("BoxShape3D_iiqoj")
 
 [node name="PopupForArea" parent="Tutorials/RunTutorialArea" index="1" unique_id=282030534 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Shift' to run and stop performing certain actions."
@@ -2005,7 +2020,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.2500002, -7.75)
 
 [node name="RectCollider" parent="Tutorials/PickUpTutorialArea" index="0" unique_id=1542412958 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 1.125, -0.625)
-shape = SubResource("BoxShape3D_iiqoj")
+shape = SubResource("BoxShape3D_n40au")
 
 [node name="PopupForArea" parent="Tutorials/PickUpTutorialArea" index="1" unique_id=398090632 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Mouse Button' to pick up smaller objects. Hold and drag to rotate. Press again to drop.
@@ -2017,7 +2032,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2500001, -12.75)
 
 [node name="RectCollider" parent="Tutorials/SqueezeTutorialArea" index="0" unique_id=1773988015 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 1.5, 0)
-shape = SubResource("BoxShape3D_n40au")
+shape = SubResource("BoxShape3D_dp4co")
 
 [node name="PopupForArea" parent="Tutorials/SqueezeTutorialArea" index="1" unique_id=1273100879 instance=ExtResource("25_m6f5b")]
 popupText = "Hold 'E' to squeeze through tight spaces or shimmy along narrow ledges"
@@ -2027,7 +2042,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.383949, 0, -4.1287465)
 
 [node name="RectCollider" parent="Tutorials/CrouchCrawlTutorialArea" index="0" unique_id=929287383 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.375, -0.75)
-shape = SubResource("BoxShape3D_dp4co")
+shape = SubResource("BoxShape3D_16nfl")
 
 [node name="PopupForArea" parent="Tutorials/CrouchCrawlTutorialArea" index="1" unique_id=589731623 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Ctrl' to crouch. Press again to crawl."
@@ -2037,7 +2052,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3.25)
 
 [node name="RectCollider" parent="Tutorials/JumpTutorialArea" index="0" unique_id=1477332365 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.75, -1)
-shape = SubResource("BoxShape3D_16nfl")
+shape = SubResource("BoxShape3D_6vw0h")
 
 [node name="PopupForArea" parent="Tutorials/JumpTutorialArea" index="1" unique_id=1612662540 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Space' to jump, climb up onto small ledges, or stop performing certain actions."
@@ -2047,7 +2062,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 1, 16.25)
 
 [node name="RectCollider" parent="Tutorials/TooNarrowTutorialArea" index="0" unique_id=1378385993 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.875, 0.125)
-shape = SubResource("BoxShape3D_6vw0h")
+shape = SubResource("BoxShape3D_nw0fa")
 
 [node name="PopupForArea" parent="Tutorials/TooNarrowTutorialArea" index="1" unique_id=589094466 instance=ExtResource("25_m6f5b")]
 popupText = "Some gaps are too narrow for you to fit. Usually you can find the other side via other means."
@@ -2057,7 +2072,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, -9, 3.75)
 
 [node name="RectCollider" parent="Tutorials/LadderTutorialArea" index="0" unique_id=1019370618 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 1.875, 0)
-shape = SubResource("BoxShape3D_nw0fa")
+shape = SubResource("BoxShape3D_1slam")
 
 [node name="PopupForArea" parent="Tutorials/LadderTutorialArea" index="1" unique_id=1812749223 instance=ExtResource("25_m6f5b")]
 popupText = "You found a ladder! Move it to aid exploration.
@@ -2069,7 +2084,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, -3, 17.75)
 
 [node name="RectCollider" parent="Tutorials/VaultTutorialArea" index="0" unique_id=1745721293 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.375, -0.5)
-shape = SubResource("BoxShape3D_1slam")
+shape = SubResource("BoxShape3D_ga800")
 
 [node name="PopupForArea" parent="Tutorials/VaultTutorialArea" index="1" unique_id=2112005554 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Space' while facing a ledge to climb up onto it. This even works in the air!"
@@ -2079,19 +2094,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 0, 51.25)
 
 [node name="RectCollider" parent="Tutorials/FinishTutorialArea" index="0" unique_id=1264953497 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.625, 1.5, 1.125)
-shape = SubResource("BoxShape3D_ga800")
+shape = SubResource("BoxShape3D_agpe8")
 
 [node name="PopupForArea" parent="Tutorials/FinishTutorialArea" index="1" unique_id=889054482 instance=ExtResource("25_m6f5b")]
 popupText = "That's it! Thanks for playing and be honest with your feedback :)"
-
-[node name="Connections" parent="." index="4" unique_id=1690603826]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)
-
-[node name="Bounds" parent="." index="5" unique_id=1272779199]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)
-
-[node name="CollisionShape3D" parent="Bounds" index="0" unique_id=787654336]
-shape = SubResource("BoxShape3D_agpe8")
-
-[node name="LevelMeshes" parent="." index="7" unique_id=1646079298 instance=ExtResource("24_m6f5b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)

@@ -19,11 +19,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 Utils="*uid://cu07gvumtv2o4"
+Const="*uid://duy2bpllqnea1"
 SignalBus="*uid://dk6y1qaopgk3s"
 GameSettings="*uid://canerbvvm7gom"
 State="*uid://cmkndey7ntami"
 SaveSlot="*uid://26t2jxqf74j8"
-Enum="*uid://duy2bpllqnea1"
 
 [display]
 

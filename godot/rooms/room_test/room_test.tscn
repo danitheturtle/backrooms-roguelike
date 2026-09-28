@@ -10,11 +10,12 @@ resource_local_to_scene = true
 size = Vector3(8, 3.5, 8)
 
 [node name="RoomTest" unique_id=1900576414 instance=ExtResource("1_xurkv")]
+roomId = "test"
 
 [node name="Bounds" parent="." index="5" unique_id=1272779199]
 visible = false
 
-[node name="CollisionShape3D" parent="Bounds" index="0" unique_id=787654336]
+[node name="BoundsAABB" parent="Bounds" index="0" unique_id=415124710]
 shape = SubResource("BoxShape3D_gwgcl")
 
 [node name="RoomNookWithRamp" parent="SubRooms" parent_id_path=PackedInt32Array(1023009072) index="0" unique_id=501420838 instance=ExtResource("2_jbj8l")]

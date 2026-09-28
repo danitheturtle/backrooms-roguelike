@@ -1,23 +1,23 @@
 @tool
-extends "res://scripts/room_connector.gd"
+extends "res://scripts/room/room_connector.gd"
 class_name FloorConnector
 
 var depthDirection: float = 1.0
 
-func set_connection_height(newHeight: int) -> void:
-    if editorHelper != null: editorHelper.update_connection_height(newHeight, "z")
+func set_connector_height(newHeight: int) -> void:
+    if editorHelper != null: editorHelper.update_connector_height(newHeight, "z")
     voxelHeight = newHeight
 
-func set_connection_depth(newDepth: float) -> void:
-    if editorHelper != null: editorHelper.update_connection_depth(depthDirection * newDepth, "y")
+func set_connector_depth(newDepth: float) -> void:
+    if editorHelper != null: editorHelper.update_connector_depth(depthDirection * newDepth, "y")
     voxelDepth = newDepth
 
-func on_other_connection_entered(body: Area3D):
-    var otherConnection = body.get_parent()
-    if not otherConnection is CeilingConnector: return
-    var otherIndex = coplanarConnections.find(otherConnection)
+func on_other_connector_entered(body: Area3D):
+    var otherConnector = body.get_parent()
+    if not otherConnector is CeilingConnector: return
+    var otherIndex = coplanarConnectors.find(otherConnector)
     if otherIndex != -1: return
-    coplanarConnections.append(otherConnection)
+    coplanarConnectors.append(otherConnector)
 
 func disable_default_geometry(generateEdges: bool = false):
     if generateEdges:
@@ -27,32 +27,32 @@ func disable_default_geometry(generateEdges: bool = false):
                      farEdgeWestMaterial,
                      0.0, 0.0, -90.0 * depthDirection)
             if edgeGenCollision:
-                new_collider(Vector3(-halfWidth - State.QUARTER_VOXEL, halfDepth * depthDirection, 0.0),
-                             Vector3(State.HALF_VOXEL, globalDepth, globalHeight))
+                new_collider(Vector3(-halfWidth - Const.QUARTER_VOXEL, halfDepth * depthDirection, 0.0),
+                             Vector3(Const.HALF_VOXEL, globalDepth, globalHeight))
         if edgeGenNorth:
             new_mesh(Vector3(0.0, halfDepth * depthDirection, halfHeight),
                      Vector2(globalWidth, globalDepth),
                      farEdgeNorthMaterial,
                      -90.0 * depthDirection)
             if edgeGenCollision:
-                new_collider(Vector3(0.0, halfDepth * depthDirection, halfHeight + State.QUARTER_VOXEL),
-                             Vector3(globalWidth, globalDepth, State.HALF_VOXEL))
+                new_collider(Vector3(0.0, halfDepth * depthDirection, halfHeight + Const.QUARTER_VOXEL),
+                             Vector3(globalWidth, globalDepth, Const.HALF_VOXEL))
         if edgeGenEast:
             new_mesh(Vector3(halfWidth, halfDepth * depthDirection, 0.0),
                      Vector2(globalDepth, globalHeight),
                      farEdgeEastMaterial,
                      0.0, 0.0, 90.0 * depthDirection)
             if edgeGenCollision:
-                new_collider(Vector3(halfWidth + State.QUARTER_VOXEL, halfDepth * depthDirection, 0.0),
-                             Vector3(State.HALF_VOXEL, globalDepth, globalHeight))
+                new_collider(Vector3(halfWidth + Const.QUARTER_VOXEL, halfDepth * depthDirection, 0.0),
+                             Vector3(Const.HALF_VOXEL, globalDepth, globalHeight))
         if edgeGenSouth:
             new_mesh(Vector3(0.0, halfDepth * depthDirection, -halfHeight),
                      Vector2(globalWidth, globalDepth),
                      farEdgeSouthMaterial,
                      90.0 * depthDirection)
             if edgeGenCollision:
-                new_collider(Vector3(0.0, halfDepth * depthDirection, -halfHeight - State.QUARTER_VOXEL),
-                             Vector3(globalWidth, globalDepth, State.HALF_VOXEL))
+                new_collider(Vector3(0.0, halfDepth * depthDirection, -halfHeight - Const.QUARTER_VOXEL),
+                             Vector3(globalWidth, globalDepth, Const.HALF_VOXEL))
     # this disables the mesh we just cloned, call it after we're done
     super.disable_default_geometry()
 
@@ -85,8 +85,8 @@ func build_geometry_for_hole(hole: Rect2, centerOffset: Vector3) -> void:
                  farEdgeWestMaterial if atWestEdge else innerEdgeWestMaterial,
                  0.0, 0.0, -90.0 * depthDirection)
         if edgeGenCollision:
-            new_collider(Vector3(holeCenter.x - halfHoleWidth - State.QUARTER_VOXEL, halfDepth * depthDirection, holeCenter.z),
-                         Vector3(State.HALF_VOXEL, globalDepth, hole.size.y))
+            new_collider(Vector3(holeCenter.x - halfHoleWidth - Const.QUARTER_VOXEL, halfDepth * depthDirection, holeCenter.z),
+                         Vector3(Const.HALF_VOXEL, globalDepth, hole.size.y))
     var atNorthEdge = Utils.equalsf(hole.position.y, 0.0)
     if edgeGenNorth || !atNorthEdge:
         new_mesh(Vector3(holeCenter.x, halfDepth * depthDirection, holeCenter.z - halfHoleHeight),
@@ -94,8 +94,8 @@ func build_geometry_for_hole(hole: Rect2, centerOffset: Vector3) -> void:
                  farEdgeNorthMaterial if atNorthEdge else innerEdgeNorthMaterial,
                  90.0 * depthDirection)
         if edgeGenCollision:
-            new_collider(Vector3(holeCenter.x, halfDepth * depthDirection, holeCenter.z - halfHoleHeight - State.QUARTER_VOXEL),
-                         Vector3(hole.size.x, globalDepth, State.HALF_VOXEL))
+            new_collider(Vector3(holeCenter.x, halfDepth * depthDirection, holeCenter.z - halfHoleHeight - Const.QUARTER_VOXEL),
+                         Vector3(hole.size.x, globalDepth, Const.HALF_VOXEL))
     var atEastEdge = Utils.equalsf(hole.end.x, globalWidth)
     if edgeGenEast || !atEastEdge:
         new_mesh(Vector3(holeCenter.x + halfHoleWidth, halfDepth * depthDirection, holeCenter.z),
@@ -103,8 +103,8 @@ func build_geometry_for_hole(hole: Rect2, centerOffset: Vector3) -> void:
                  farEdgeEastMaterial if atEastEdge else innerEdgeEastMaterial,
                  0.0, 0.0, 90.0 * depthDirection)
         if edgeGenCollision:
-            new_collider(Vector3(holeCenter.x + halfHoleWidth + State.QUARTER_VOXEL, halfDepth * depthDirection, holeCenter.z),
-                         Vector3(State.HALF_VOXEL, globalDepth, hole.size.y))
+            new_collider(Vector3(holeCenter.x + halfHoleWidth + Const.QUARTER_VOXEL, halfDepth * depthDirection, holeCenter.z),
+                         Vector3(Const.HALF_VOXEL, globalDepth, hole.size.y))
     var atSouthEdge = Utils.equalsf(hole.end.y, globalHeight)
     if edgeGenSouth || !atSouthEdge:
         new_mesh(Vector3(holeCenter.x, halfDepth * depthDirection, holeCenter.z + halfHoleHeight),
@@ -112,5 +112,5 @@ func build_geometry_for_hole(hole: Rect2, centerOffset: Vector3) -> void:
                  farEdgeSouthMaterial if atSouthEdge else innerEdgeSouthMaterial,
                  -90.0*depthDirection)
         if edgeGenCollision:
-            new_collider(Vector3(holeCenter.x, halfDepth * depthDirection, holeCenter.z + halfHoleHeight + State.QUARTER_VOXEL),
-                         Vector3(hole.size.x, globalDepth, State.HALF_VOXEL))
+            new_collider(Vector3(holeCenter.x, halfDepth * depthDirection, holeCenter.z + halfHoleHeight + Const.QUARTER_VOXEL),
+                         Vector3(hole.size.x, globalDepth, Const.HALF_VOXEL))

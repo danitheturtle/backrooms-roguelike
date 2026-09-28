@@ -1,11 +1,11 @@
 extends Node
 
-const popupTemplates: Dictionary[String,Resource] = {
-    "INFO": preload("res://ui/popups/info_template.tscn")
+const popupTemplates: Dictionary[Const.PopupType,Resource] = {
+    Const.PopupType.INFO: preload("res://ui/popups/info_template.tscn")
 }
 
 @export_multiline var popupText: String
-@export_enum("INFO") var popupType: String = "INFO"
+@export var popupType: Const.PopupType = Const.PopupType.INFO
 
 var popup = null
 

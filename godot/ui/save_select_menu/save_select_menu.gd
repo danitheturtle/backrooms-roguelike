@@ -7,14 +7,14 @@ const SaveSlotButtonScene: PackedScene = preload("res://ui/save_select_menu/save
 @onready var slotButtonsContainer: HFlowContainer = $HBoxContainer/VBoxContainer/HBoxContainer
 @onready var newGameButton: Button = $HBoxContainer/VBoxContainer/HBoxContainer/NewGameButton
 
-var previousMenu: Enum.MenuType
+var previousMenu: Const.MenuType
 
 func _ready() -> void:
     SignalBus.goto_save_select_menu.connect(on_goto_save_select_menu)
     cancelButton.pressed.connect(on_cancel_pressed)
     newGameButton.pressed.connect(on_new_game_pressed)
 
-func on_goto_save_select_menu(_previousMenu: Enum.MenuType):
+func on_goto_save_select_menu(_previousMenu: Const.MenuType):
     previousMenu = _previousMenu
     SaveSlot.load_stats_for_saves_on_disk()
     var buttonContainerChildren: Array[Node] = slotButtonsContainer.get_children()

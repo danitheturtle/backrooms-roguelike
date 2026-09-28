@@ -32,7 +32,7 @@ func on_main_menu_pressed() -> void:
     SignalBus.goto_main_menu.emit()
 
 func on_settings_pressed() -> void:
-    SignalBus.goto_settings_menu.emit(Enum.MenuType.PAUSE)
+    SignalBus.goto_settings_menu.emit(Const.MenuType.PAUSE)
 
 func on_quit_pressed() -> void:
     SignalBus.game_exited.emit()

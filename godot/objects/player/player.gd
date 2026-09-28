@@ -48,7 +48,7 @@ var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vec
 # local state
 var moveDir: Vector2
 var cameraMoveDir: Vector2
-var movePriority: Dictionary[String, bool]
+var movePriority: Dictionary[StringName, bool]
 var mouseCaptured: bool
 var onFloorLastFrame: bool
 var justJumped: bool

@@ -38,13 +38,13 @@ func on_new_game_pressed() -> void:
 
 func on_load_game_pressed() -> void:
     SaveSlot.load_stats_for_saves_on_disk()
-    SignalBus.goto_save_select_menu.emit(Enum.MenuType.MAIN)
+    SignalBus.goto_save_select_menu.emit(Const.MenuType.MAIN)
 
 func on_tutorial_pressed() -> void:
     SignalBus.tutorial_started.emit()
 
 func on_settings_pressed() -> void:
-    SignalBus.goto_settings_menu.emit(Enum.MenuType.MAIN)
+    SignalBus.goto_settings_menu.emit(Const.MenuType.MAIN)
 
 func on_quit_pressed() -> void:
     SignalBus.game_exited.emit()

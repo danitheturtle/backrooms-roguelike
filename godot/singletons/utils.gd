@@ -51,6 +51,16 @@ func get_children_of_type(parentNode: Node, type: Variant, recursive: bool = fal
             foundChildren.append(nextChild)
     return foundChildren
 
+# gets first parent of given type, or null
+func get_parent_of_type(childNode: Node, type: Variant):
+    var rootNode = get_tree().root
+    var parentNode = childNode.get_parent()
+    if !is_instance_of(parentNode, type):
+        if parentNode == rootNode: return null
+        return get_parent_of_type(parentNode, type)
+    else:
+        return parentNode
+
 # gets all children of node in given group
 func get_children_in_group(parentNode: Node, groupName: String, recursive: bool = false):
     var foundChildren = []
