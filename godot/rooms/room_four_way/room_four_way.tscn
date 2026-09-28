@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://di65tcxw57kit" path="res://objects/connectors/wall/wall_connector.tscn" id="2_agk4p"]
 [ext_resource type="PackedScene" uid="uid://b500l15l80jvq" path="res://objects/colliders/floor_static_body.tscn" id="2_gd123"]
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="3_17yjc"]
-[ext_resource type="PackedScene" uid="uid://bqkwwyequvbq3" path="res://rooms/room_four_way/res/room_four_way_mesh.tscn" id="3_vmydo"]
+[ext_resource type="PackedScene" uid="uid://bqkwwyequvbq3" path="res://rooms/room_four_way/res/level_meshes.tscn" id="3_vmydo"]
 [ext_resource type="PackedScene" uid="uid://dgwmutwf473uv" path="res://objects/colliders/ceiling_static_body.tscn" id="4_61qi8"]
 [ext_resource type="PackedScene" uid="uid://d0ywucxig7gvo" path="res://objects/colliders/wall_static_body.tscn" id="5_17yjc"]
+[ext_resource type="PackedScene" uid="uid://c3311m867qoxp" path="res://objects/colliders/occluders/occluder_plane.tscn" id="6_61qi8"]
 [ext_resource type="PackedScene" uid="uid://daxkl3ttr5cya" path="res://objects/lights/ceiling_light_rectangle.tscn" id="7_17yjc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_17yjc"]
@@ -32,6 +33,14 @@ size = Vector3(0.5, 4.5, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_t11xq"]
 resource_local_to_scene = true
 size = Vector3(0.5, 4.5, 0.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_2ycrs"]
+resource_local_to_scene = true
+size = Vector2(7.5, 7.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_aaffp"]
+resource_local_to_scene = true
+size = Vector2(7.5, 7.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yfdt1"]
 resource_local_to_scene = true
@@ -122,6 +131,17 @@ shape = SubResource("BoxShape3D_as8kd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 1.75, 3.75)
 shape = SubResource("BoxShape3D_t11xq")
 
+[node name="FloorOccluder" parent="Occluders" parent_id_path=PackedInt32Array(2028419292) index="0" unique_id=755082067 instance=ExtResource("6_61qi8")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.25, 0)
+occluder = SubResource("QuadOccluder3D_2ycrs")
+
+[node name="CeilingOccluder" parent="Occluders" parent_id_path=PackedInt32Array(2028419292) index="1" unique_id=1800209511 instance=ExtResource("6_61qi8")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.75, 0)
+occluder = SubResource("QuadOccluder3D_aaffp")
+
+[node name="CeilingLightRectangle" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="0" unique_id=1957474247 instance=ExtResource("7_17yjc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3.5, 0.5)
+
 [node name="WallConnector" parent="Connections" parent_id_path=PackedInt32Array(1690603826) index="0" unique_id=1632024163 instance=ExtResource("2_agk4p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -4)
 voxelWidth = 14
@@ -202,14 +222,11 @@ shape = SubResource("BoxShape3D_gm61u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 mesh = SubResource("PlaneMesh_tn5sf")
 
+[node name="LevelMeshes" parent="." index="5" unique_id=1822211858 instance=ExtResource("3_vmydo")]
+
 [node name="CollisionShape3D" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="0" unique_id=787654336]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 shape = SubResource("BoxShape3D_c0nre")
-
-[node name="CeilingLightRectangle" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="1" unique_id=1957474247 instance=ExtResource("7_17yjc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3.5, 0.5)
-
-[node name="RoomMeshes" parent="." index="5" unique_id=1822211858 instance=ExtResource("3_vmydo")]
 
 [editable path="Connections/WallConnector"]
 [editable path="Connections/WallConnector2"]

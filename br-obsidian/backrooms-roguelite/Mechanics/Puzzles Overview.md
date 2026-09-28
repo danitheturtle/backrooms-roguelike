@@ -50,6 +50,9 @@ Climb-ups at 6 or more voxels:
 	- Ensure player has access to at least 1 ladder
 	- Generate a second, fully accessible path as well
 
+Invisible Noclip Doors:
+- clipping through the walls is sometimes possible, with various levels of hint.
+
 Almond Water
 - 3 types: Energy (Blue), Sanity (White), Health (Red)
 - Blue is very common. White is uncommon. Red is extremely rare
@@ -81,6 +84,7 @@ The Creator's Fungus & Oxygen Masks
 	- Once mask is unlocked, they can be part of the late-game critical path if enough oxygen is placed in the level
 
 Locked Doors
+* Smallest lockable door size is 2x2 voxels
 - Connections can sometimes be locked doors. Skeleton Keys found in the level open them. Probably not 1-1, any key can open any locked door. Mayyyybe add a tier or color system.
 - Definitely no lockpicking minigame
 - **Give player fewer skeleton keys than there are locked doors**, forcing them to choose one to unlock.

@@ -23,7 +23,9 @@ func get_room_definitions() -> Array[RoomDefinition]:
     thisRoomDefinition.spawnWeight = spawnWeight
     thisRoomDefinition.onlySpawnAfterNIterations = onlySpawnAfterNIterations
     # TODO include bounds
-    
+    for nextBounds in bounds.get_children():
+        if nextBounds is CollisionShape3D:
+            pass
     # some rooms can define multiple shapes
     return [thisRoomDefinition]
 

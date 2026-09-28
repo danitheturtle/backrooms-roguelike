@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://e7fg2javspiw" path="res://objects/furniture/rocking_chair/rocking_chair.tscn" id="21_31wma"]
 [ext_resource type="PackedScene" uid="uid://ch6oue2dlb35s" path="res://objects/furniture/sofa_03/sofa_03_physics.tscn" id="22_62hgi"]
 [ext_resource type="PackedScene" uid="uid://b1fed526asuor" path="res://objects/furniture/vintage_cabinet/vintage_cabinet.tscn" id="23_k0hq8"]
-[ext_resource type="PackedScene" uid="uid://3vqs4y4bh5cc" path="res://rooms/room_tutorial/res/room_tutorial_mesh.tscn" id="24_m6f5b"]
+[ext_resource type="PackedScene" uid="uid://3vqs4y4bh5cc" path="res://rooms/room_tutorial/res/level_meshes.tscn" id="24_m6f5b"]
 [ext_resource type="PackedScene" uid="uid://c0yvxi1qvu685" path="res://objects/furniture/green_chair/green_chair.tscn" id="24_pa5nj"]
 [ext_resource type="PackedScene" uid="uid://c26bvdsf5dkty" path="res://ui/popups/area_for_popup.tscn" id="25_7xnmx"]
 [ext_resource type="PackedScene" uid="uid://bm41jmwi0xr2p" path="res://ui/popups/popup_for_area.tscn" id="25_m6f5b"]
