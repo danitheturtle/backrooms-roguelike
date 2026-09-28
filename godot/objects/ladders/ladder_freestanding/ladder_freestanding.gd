@@ -1,5 +1,5 @@
 extends Holdable
-class_name WoodenLadder
+class_name LadderFreestanding
 
 @export var isClosed = false
 

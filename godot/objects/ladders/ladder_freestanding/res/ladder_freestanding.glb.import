@@ -3,13 +3,13 @@
 importer="ArrayMesh"
 importer_version=1
 type="ArrayMesh"
-uid="uid://cxsv14xgq0p0l"
-path="res://.godot/imported/wooden_ladder_supports.glb-5fe00abfb4be87440fb5f610f5544328.res"
+uid="uid://cibiji6jxusk3"
+path="res://.godot/imported/ladder_freestanding.glb-f153e3974527ca659886713e40746a70.res"
 
 [deps]
 
-source_file="res://objects/wooden_ladder/res/wooden_ladder_supports.glb"
-dest_files=["res://.godot/imported/wooden_ladder_supports.glb-5fe00abfb4be87440fb5f610f5544328.res"]
+source_file="res://objects/ladders/ladder_freestanding/res/ladder_freestanding.glb"
+dest_files=["res://.godot/imported/ladder_freestanding.glb-f153e3974527ca659886713e40746a70.res"]
 
 [params]
 

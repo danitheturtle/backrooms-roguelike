@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="6_py2y4"]
 [ext_resource type="PackedScene" uid="uid://dgwmutwf473uv" path="res://objects/colliders/ceiling_static_body.tscn" id="7_py2y4"]
 [ext_resource type="PackedScene" uid="uid://d0ywucxig7gvo" path="res://objects/colliders/wall_static_body.tscn" id="8_daq7p"]
-[ext_resource type="PackedScene" uid="uid://cj3x3dbcuf7ja" path="res://objects/wooden_ladder/wooden_ladder.tscn" id="9_3reo8"]
+[ext_resource type="PackedScene" uid="uid://cj3x3dbcuf7ja" path="res://objects/ladders/ladder_freestanding/ladder_freestanding.tscn" id="9_3reo8"]
 [ext_resource type="PackedScene" uid="uid://cdnfvcgn28gni" path="res://objects/furniture/vintage_cabinet/vintage_cabinet_physics.tscn" id="13_kn1d3"]
 [ext_resource type="PackedScene" uid="uid://duc4oaovoos26" path="res://objects/furniture/school_chair/school_chair_physics.tscn" id="14_iyjvp"]
 [ext_resource type="PackedScene" uid="uid://eksubm8tj0xy" path="res://objects/furniture/sofa_03/sofa_03.tscn" id="15_an542"]

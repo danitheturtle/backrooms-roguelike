@@ -21,10 +21,14 @@ var spawnWeight: float
 var onlySpawnAfterNIterations: int
 var bounds: Array[AABB]
 var connections: Array[Connection]
+var canSpawnObject: Dictionary[String, bool]
 
 # make sure to include biome data with connections. If a room transitions between one or more biomes, also note that
 func _init() -> void:
     pass
+
+func append_bounds_shape(collisionShape: CollisionShape3D) -> void:
+    bounds.append(AABB(collisionShape.position - (collisionShape.shape.size / 2.0), collisionShape.shape.size))
 
 func get_voxel_bounds():
     # TODO

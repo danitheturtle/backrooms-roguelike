@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnppsyahro4ds"
-path.s3tc="res://.godot/imported/wooden_ladder_wooden_ladder_nor_gl.webp-b87448835e319479423a0e2be70dde72.s3tc.ctex"
+uid="uid://4ykxhfrfwloe"
+path.s3tc="res://.godot/imported/ladder_freestanding_wooden_ladder_nor_gl.webp-8e64154b285cf4f4d8c237613fb04944.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://objects/wooden_ladder/res/wooden_ladder_wooden_ladder_nor_gl.webp"
-dest_files=["res://.godot/imported/wooden_ladder_wooden_ladder_nor_gl.webp-b87448835e319479423a0e2be70dde72.s3tc.ctex"]
+source_file="res://objects/ladders/ladder_freestanding/res/ladder_freestanding_wooden_ladder_nor_gl.webp"
+dest_files=["res://.godot/imported/ladder_freestanding_wooden_ladder_nor_gl.webp-8e64154b285cf4f4d8c237613fb04944.s3tc.ctex"]
 
 [params]
 
@@ -29,8 +29,8 @@ compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://objects/ladders/ladder_freestanding/res/ladder_freestanding_wooden_ladder_nor_gl.webp"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
