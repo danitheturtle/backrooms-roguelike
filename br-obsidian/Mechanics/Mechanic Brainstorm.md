@@ -1,4 +1,4 @@
-* Almond Water that increase sstamina / restore health
+* Almond Water that increase stamina / restore health
 * Rope of a specific length. More rope can be found. Can climb down vertically as far as you can extend the rope
 * camera zoom?
 * Film Camera?

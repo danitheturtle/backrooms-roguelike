@@ -17,10 +17,7 @@ var currentLevelSeed: int = 0
 var loadedRooms: Array[Room] = []
 
 func _ready() -> void:
-    for nextRoomName in rooms.keys():
-        var temporaryRoomInstance: Room = rooms[nextRoomName].instantiate()
-        State.allRoomDefinitions.append_array(temporaryRoomInstance.get_room_definitions())
-        temporaryRoomInstance.free()
+    pass
     # TODO give room definitions to the generator
 
 # called when a run ends or player switches game modes

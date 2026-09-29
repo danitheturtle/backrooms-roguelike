@@ -20,7 +20,7 @@ func _init(connector: RoomConnector):
     subType = connector.metaSubType
     biome = connector.metaBiome
     position = connector.position
-    depth = connector.fullDepth
+    depth = connector.globalDepth
     distFromFloor = connector.voxelDistanceToFloor * Const.VOXEL
     bordersCeiling = connector.voxelBordersCeiling
     # translate to room-local space from connector-local space

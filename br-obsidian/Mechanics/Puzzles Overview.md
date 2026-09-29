@@ -21,8 +21,15 @@ Object Placement Puzzles:
 Null Zones
 * Sometimes walls aren't walls and floors aren't floors. They let you clip through what looks like a wall
 * By default, no visual indication. Occasionally they will start showing visual artifacts or there will be blue painters tape outlining them
-* Null zones do not appear in photographs. Instead you can see what's behind them without comitting
+* Null zones do not appear on camera. Instead you can see what's behind them without comitting
 * Solving a puzzle can cause a nearby null zone to become obvious
+
+Cameras
+* Some things can only be seen on film or through a digital sensor
+* After getting a digital camera upgrade, player can use the camera's digital viewfinder held up in front of them to visualize camera-only things in real time
+* Taking a photo with a digital camera attracts the ravenous hunger of The Creator. The photo never makes it off the device as the second its stored to memory a black blobby entity comes out of the walls and eats the data and destroys the camera, requiring the player to get a new one
+* Some puzzle solutions and wall writing are only visible through a camera
+* all cameras can zoom
 
 Rope
 - The player starts the game with a certain length of consumable rope, and can find more.
@@ -55,9 +62,6 @@ Climb-ups at 6 or more voxels:
 - When generating a climb-up at a leaf node, either:
 	- Ensure player has access to at least 1 ladder
 	- Generate a second, fully accessible path as well
-
-Invisible Noclip Doors:
-- clipping through the walls is sometimes possible, with various levels of hint.
 
 Almond Water
 - 3 types: Energy (Blue), Sanity (White), Health (Red)

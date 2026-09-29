@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lore/The Creator.md",
+                "file": "Mechanics/Puzzles Overview.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "The Creator"
+              "title": "Puzzles Overview"
             }
           }
         ],
@@ -219,13 +219,14 @@
   },
   "active": "b5a7d647281ad89c",
   "lastOpenFiles": [
-    "Lore/lore ideas.md",
-    "Technical/Room Definition API Docs.md",
-    "Mechanics/Puzzles Overview.md",
-    "Mechanics/What Not to do.md",
+    "Mechanics/Upgrades.md",
     "Mechanics/Mechanic Brainstorm.md",
-    "Todo.md",
+    "Mechanics/Puzzles Overview.md",
+    "Technical/Room Definition API Docs.md",
     "Lore/The Creator.md",
+    "Lore/lore ideas.md",
+    "Mechanics/What Not to do.md",
+    "Todo.md",
     "Decoration/Deco Ideas.md",
     "Decoration/Spooky Wall Writing.md",
     "Today.md",

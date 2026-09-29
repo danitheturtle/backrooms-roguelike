@@ -1370,7 +1370,6 @@ voxelWidth = 4
 voxelHeight = 4
 voxelDepth = 4.0
 voxelDistanceToFloor = 6.0
-voxelBordersCeiling = null
 edgeGenCollision = true
 innerEdgeWestMaterial = ExtResource("3_e68pr")
 innerEdgeNorthMaterial = ExtResource("3_e68pr")
@@ -1395,7 +1394,6 @@ voxelWidth = 2
 voxelHeight = 4
 voxelDepth = 3.5
 voxelDistanceToFloor = 7.0
-voxelBordersCeiling = null
 edgeGenCollision = true
 innerEdgeWestMaterial = ExtResource("3_e68pr")
 innerEdgeNorthMaterial = ExtResource("3_e68pr")
@@ -1418,7 +1416,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, -3, -2)
 voxelWidth = 3
 voxelHeight = 4
 voxelDepth = 6.0
-voxelBordersCeiling = null
 edgeGenCollision = true
 farEdgeWestMaterial = ExtResource("9_1c3yd")
 farEdgeNorthMaterial = ExtResource("9_1c3yd")
@@ -1439,7 +1436,6 @@ mesh = SubResource("PlaneMesh_8mdr1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -8)
 voxelWidth = 2
 voxelHeight = 2
-voxelBordersCeiling = null
 edgeGenCollision = true
 farEdgeWestMaterial = ExtResource("9_1c3yd")
 farEdgeSouthMaterial = ExtResource("9_1c3yd")
@@ -1457,7 +1453,6 @@ mesh = SubResource("PlaneMesh_uhdr1")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.5, 1, 7)
 voxelWidth = 2
 voxelHeight = 2
-voxelBordersCeiling = null
 edgeGenWest = false
 edgeGenNorth = false
 edgeGenEast = false
@@ -1476,7 +1471,6 @@ mesh = SubResource("PlaneMesh_io7ft")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 0.5, -8.5)
 voxelWidth = 5
 voxelDepth = 1.0
-voxelBordersCeiling = null
 
 [node name="RectCollider" parent="Connectors/WallConnector2/Adjacent" parent_id_path=PackedInt32Array(1453344296, 786542423) index="0" unique_id=415124710]
 shape = SubResource("BoxShape3D_gqbw3")
@@ -1493,7 +1487,6 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9, 
 voxelWidth = 11
 voxelHeight = 5
 voxelDepth = 1.0
-voxelBordersCeiling = null
 farEdgeNorthMaterial = ExtResource("3_e68pr")
 
 [node name="RectCollider" parent="Connectors/WallConnector3/Adjacent" parent_id_path=PackedInt32Array(279738985, 786542423) index="0" unique_id=415124710]
@@ -1512,7 +1505,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2, 
 voxelWidth = 10
 voxelHeight = 5
 voxelDistanceToFloor = 0.5
-voxelBordersCeiling = null
 farEdgeNorthMaterial = ExtResource("3_e68pr")
 
 [node name="RectCollider" parent="Connectors/WallConnector4/Adjacent" parent_id_path=PackedInt32Array(921872525, 786542423) index="0" unique_id=415124710]
@@ -1529,7 +1521,6 @@ mesh = SubResource("PlaneMesh_olamr")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.5, 1.5, 3.75)
 voxelWidth = 7
 voxelDepth = 1.0
-voxelBordersCeiling = null
 farEdgeNorthMaterial = ExtResource("3_e68pr")
 
 [node name="RectCollider" parent="Connectors/WallConnector5/Adjacent" parent_id_path=PackedInt32Array(431172117, 786542423) index="0" unique_id=415124710]
@@ -1547,7 +1538,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.75, -6)
 voxelWidth = 4
 voxelHeight = 5
 voxelDepth = 1.5
-voxelBordersCeiling = null
 
 [node name="RectCollider" parent="Connectors/WallConnector6/Adjacent" parent_id_path=PackedInt32Array(854416398, 786542423) index="0" unique_id=415124710]
 shape = SubResource("BoxShape3D_0q2vw")
@@ -1564,7 +1554,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.5,
 voxelWidth = 3
 voxelHeight = 4
 voxelDepth = 3.0
-voxelBordersCeiling = null
 
 [node name="RectCollider" parent="Connectors/WallConnector7/Adjacent" parent_id_path=PackedInt32Array(1889273619, 786542423) index="0" unique_id=415124710]
 shape = SubResource("BoxShape3D_grg0v")

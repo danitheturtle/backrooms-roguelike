@@ -3,7 +3,6 @@ extends Node
 # variable state
 var player: Player = null
 var levelManager: LevelManager = null
-var roomDefinitions: Array[RoomDefinition] = []
 var rng: RandomNumberGenerator = null
 
 #State Reinit should only be called when switching save slots
@@ -17,5 +16,3 @@ func reinit() -> void:
     if rng != null:
         rng.free()
         rng = null
-    if roomDefinitions.size() > 0:
-        roomDefinitions = []
