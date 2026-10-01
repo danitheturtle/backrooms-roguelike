@@ -1,0 +1,4 @@
+class_name Region
+
+var voxel_to_room_idx: PackedInt32Array
+var unresolved_connections_gen_idx: PackedInt64Array
