@@ -5,12 +5,15 @@ static var instanceCounter: int = 0
 var roomInstanceId: StringName = "room_-1"
 # unique room scene name
 var sceneName: StringName = ""
+# which room definition this instance is using
+var indexInScene: int = 0
 # copied from room definition, needed by dynamic rooms
 var dynamicRoomData: Dictionary[StringName, Variant] = {}
 
 # don't call directly, get_generated_instance() from RoomDefinition instead
 func _init(_definition: RoomDefinition) -> void:
     sceneName = _definition.sceneName
+    indexInScene = _definition.indexInScene
     dynamicRoomData = _definition.dynamicRoomData
     roomInstanceId = "room_" + str(instanceCounter)
     instanceCounter += 1

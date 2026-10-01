@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cnapbejxxdkpf" path="res://objects/connectors/floor/floor_connector.tscn" id="2_mdv3c"]
 [ext_resource type="Resource" uid="uid://bu011qyywc4fe" path="res://rooms/room_all_way/defs/definition_0.tres" id="2_t1q3e"]
 [ext_resource type="PackedScene" uid="uid://dkaflqjkli2wg" path="res://objects/connectors/ceiling/ceiling_connector.tscn" id="3_b6y2s"]
-[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://assets/data/connector_definition.gd" id="3_t1q3e"]
+[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="3_t1q3e"]
 [ext_resource type="PackedScene" uid="uid://di65tcxw57kit" path="res://objects/connectors/wall/wall_connector.tscn" id="4_t1q3e"]
 
 [sub_resource type="Resource" id="Resource_eg8m8"]

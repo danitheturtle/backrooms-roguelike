@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://d1bi0o1vpk0a1"]
 
-[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://assets/data/connector_definition.gd" id="1_wum8g"]
-[ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://assets/data/room_definition.gd" id="2_rvwex"]
+[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="1_wum8g"]
+[ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_rvwex"]
 
 [sub_resource type="Resource" id="Resource_dmo16"]
 script = ExtResource("1_wum8g")

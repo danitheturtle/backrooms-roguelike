@@ -34,7 +34,10 @@ func get_generated_instance() -> GeneratedRoom:
 ###
 ### BAKED
 ###
-var roomScenePath: String = ""
+# room scene path for instantiation
+var scenePath: String = ""
+# this definition's index in the room's array of definitions
+var indexInScene: int = 0
 # biomes this room is a part of. if more than one, this is a transition room
 var biomes: Dictionary[Const.BiomeType, bool] = {}
 var isTransitionRoom:
@@ -52,7 +55,7 @@ var dynamicRoomData: Dictionary[StringName, Variant] = {}
 
 # called by room level editor
 func bake(room: Room) -> RoomDefinition:
-    roomScenePath = room.owner.scene_file_path
+    scenePath = room.owner.scene_file_path
     ## connector
     #name = connector.get_name()
     #subType = connector.metaSubType

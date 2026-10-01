@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ywucxig7gvo" path="res://objects/colliders/wall_static_body.tscn" id="5_17yjc"]
 [ext_resource type="PackedScene" uid="uid://c3311m867qoxp" path="res://objects/colliders/occluders/occluder_plane.tscn" id="6_61qi8"]
 [ext_resource type="PackedScene" uid="uid://daxkl3ttr5cya" path="res://objects/lights/ceiling_light_rectangle.tscn" id="7_17yjc"]
-[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://assets/data/connector_definition.gd" id="9_2ycrs"]
+[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="9_2ycrs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_as8kd"]
 resource_local_to_scene = true
