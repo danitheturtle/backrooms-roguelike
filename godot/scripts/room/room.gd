@@ -2,9 +2,7 @@
 extends Node3D
 class_name Room
 
-const RoomDefinitionRes = preload("res://scripts/room/data/room_definition.tres.gd")
-
-@export var definitions: Array[RoomDefinition] = []
+@export var definitions: Array[Resource] = []
 
 @export_tool_button("Bake Room Definitions") var bakeRoomDefinition = bake_room_definition
 @export var needsBaked: bool = false
@@ -31,7 +29,8 @@ func _ready() -> void:
     if parentRoom != null: isSubRoom = true
     if Engine.is_editor_hint():
         if definitions.size() == 0 && !isSubRoom:
-            definitions.append(RoomDefinitionRes.new())
+            definitions.append(RoomDefinition.new())
+            bake_room_definition()
             persist_definitions()
     # TODO get all object spawn locations
 
@@ -40,7 +39,11 @@ func _notification(what: int):
 
 func bake_room_definition() -> void:
     if isSubRoom: return #sub-rooms don't get baked
-    pass
+    var connectorDefinitions: Dictionary[StringName, ConnectorDefinition] = {}
+    for nextConnector in connectors.get_children():
+        connectorDefinitions[nextConnector.name] = nextConnector.definition
+    definitions[0].connectors = connectorDefinitions
+
 # Returns an array of RoomDefinition objects telling the level generator how this room can be used.
 # the level generator should pass the room definition it wants to the setup() function
 #func get_room_definitions() -> Array[RoomDefinition]:
@@ -122,13 +125,14 @@ func persist_definitions() -> void:
     for definitionIndex: int in definitions.size():
         var nextDefinition = definitions[definitionIndex]
         if nextDefinition.resource_path.get_base_dir() != definitionsFolder:
+            var destinationPath = definitionsFolder + "/definition_" + str(definitionIndex) + ".tres"
             var saveError = ResourceSaver.save(
-                nextDefinition, 
-                definitionsFolder + "/definition_" + str(definitionIndex) + ".tres",
-                ResourceSaver.FLAG_CHANGE_PATH | ResourceSaver.FLAG_REPLACE_SUBRESOURCE_PATHS | ResourceSaver.FLAG_BUNDLE_RESOURCES
+                nextDefinition,
+                destinationPath
             )
             if saveError != OK:
                 print("could not save room definition " + str(definitionIndex), saveError)
                 return
+            definitions[definitionIndex] = load(destinationPath)
             shouldUpdateFilesystem = true
     if shouldUpdateFilesystem: EditorInterface.get_resource_filesystem().scan()

@@ -89,6 +89,9 @@ var localSpace: Rect2:
 func _ready() -> void:
     if Engine.is_editor_hint():
         editorHelper = RoomConnectorEditorHelper.new(self)
+        voxelWidth = voxelWidth
+        voxelHeight = voxelHeight
+        voxelDepth = voxelDepth
         if definition == null:
             definition = ConnectorDefinition.new()
         return

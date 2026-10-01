@@ -1,96 +1,33 @@
 [gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://bu011qyywc4fe"]
 
-[sub_resource type="GDScript" id="GDScript_b6b2w"]
-script/source = "extends Resource
-class_name RoomDefinition
+[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://assets/data/connector_definition.gd" id="1_3ymmk"]
+[ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://assets/data/room_definition.gd" id="2_wp20d"]
 
-# Room-local space is defined relative to the room's origin which is always Vector3.ZERO
-# External transformations should only be applied to the room and they will automatically cascade
-# all values here will remain in room-local space which makes it easy to calculate
-# global coords for any of the values in this data structure
+[sub_resource type="Resource" id="Resource_ko24d"]
+script = ExtResource("1_3ymmk")
 
-# Called by level generator to get a levelgen output object
-func get_generated_instance() -> GeneratedRoom:
-    var newGeneratedRoom = GeneratedRoom.new(self)
-    for nextConnectorName: StringName in connectors.keys():
-        var newGeneratedConnector = connectors[nextConnectorName].get_generated_instance(newGeneratedRoom.roomInstanceId)
-        newGeneratedRoom.generatedConnectors[nextConnectorName] = newGeneratedConnector
-    return newGeneratedRoom
+[sub_resource type="Resource" id="Resource_eg8m8"]
+script = ExtResource("1_3ymmk")
 
-###
-### ROOM EDITOR
-###
-# unique name for room scene
-@export var sceneName: StringName = \"\"
-# room placed manually and is not part of level generation
-@export var excludeFromGeneration: bool = false
-# controls room rarity. range and representative values TBD
-@export var spawnWeight: float = 1.0
-# controls how late-game the room is. Mainly used for exits. Range and representative values TBD
-@export var minSpawnIteration: int = 0
-# before room spawns it has custom sub-generation to run
-@export var hasSubRandomization: bool = false
-# set of puzzle objects the level generator can force-spawn in this room to prevent puzzle lockouts
-# TODO add to bake system once object spawners can inform pipeline
-@export var canSpawnGameplayProp: Dictionary[Const.GameplayPropType, bool] = {}
+[sub_resource type="Resource" id="Resource_y826x"]
+script = ExtResource("1_3ymmk")
 
-###
-### BAKED
-###
-var roomScenePath: String = \"\"
-# biomes this room is a part of. if more than one, this is a transition room
-var biomes: Dictionary[Const.BiomeType, bool] = {}
-var isTransitionRoom:
-    get: return biomes.keys().size() > 1
-# A single AABB that fits all smaller bounding boxes inside it. Useful for very fast checks
-var approximateBounds: AABB = AABB(Vector3.ZERO,Vector3.ZERO)
-# AABB ordered array in room-local space of room extents. Garunteed to be on voxel grid
-var bounds: Array[AABB] = []
-# Room connectors. Every connector is a surface on the face of a bounds AABB
-var connectors: Dictionary[StringName, ConnectorDefinition] = {}
-# Used to tell dynamic scenes how to spawn. A single scene defining multiple rooms will create 
-# multiple room definitions. At instantiation time, that scene creates a specific room based on 
-# what's stored here
-var dynamicRoomData: Dictionary[StringName, Variant] = {}
+[sub_resource type="Resource" id="Resource_npa5b"]
+script = ExtResource("1_3ymmk")
 
-# called by room level editor
-func bake(room: Room) -> RoomDefinition:
-    roomScenePath = room.owner.scene_file_path
-    ## connector
-    #name = connector.get_name()
-    #subType = connector.metaSubType
-    #biome = connector.metaBiome
-    #position = connector.position
-    #depth = connector.globalDepth
-    #distFromFloor = connector.voxelDistanceToFloor * Const.VOXEL
-    #bordersCeiling = connector.voxelBordersCeiling
-    ## translate to room-local space from connector-local space
-    #var shapeSize = connector.adjacentCollider.shape.size
-    #var localCornerMin: Vector3
-    #var localCornerMax: Vector3
-    #if connector is WallConnector:
-        #normal = -connector.global_basis.z
-        #size = Vector2(shapeSize.x, shapeSize.y)
-        #localCornerMin = -0.5 * Vector3(shapeSize.x, shapeSize.y, 0.0)
-        #localCornerMax = 0.5 * Vector3(shapeSize.x, shapeSize.y, 0.0)
-    #else:
-        #normal = Vector3.UP if connector is CeilingConnector else Vector3.DOWN
-        #size = Vector2(shapeSize.x, shapeSize.z)
-        #localCornerMin = -0.5 * Vector3(shapeSize.x, 0.0, shapeSize.z)
-        #localCornerMax = 0.5 * Vector3(shapeSize.x, 0.0, shapeSize.z)
-    #cornerMin = position + connector.basis * localCornerMin
-    #cornerMax = position + connector.basis * localCornerMax
-    return self
+[sub_resource type="Resource" id="Resource_f4uve"]
+script = ExtResource("1_3ymmk")
 
-func add_bounds_shape(collisionShape: CollisionShape3D) -> void:
-    var newBoundingBox = AABB(collisionShape.position - (collisionShape.shape.size / 2.0), collisionShape.shape.size)
-    approximateBounds.expand(newBoundingBox)
-    bounds.append(newBoundingBox)
-
-func add_connector(connector: RoomConnector):
-    biomes.set(connector.definition.biome, true)
-    connectors.set(connector.definition.name, connector.definition)
-"
+[sub_resource type="Resource" id="Resource_hi86o"]
+script = ExtResource("1_3ymmk")
 
 [resource]
-script = SubResource("GDScript_b6b2w")
+script = ExtResource("2_wp20d")
+connectors = Dictionary[StringName, ExtResource("1_3ymmk")]({
+&"CeilingConnector": SubResource("Resource_ko24d"),
+&"FloorConnector": SubResource("Resource_eg8m8"),
+&"WallConnector": SubResource("Resource_y826x"),
+&"WallConnector2": SubResource("Resource_npa5b"),
+&"WallConnector3": SubResource("Resource_f4uve"),
+&"WallConnector4": SubResource("Resource_hi86o")
+})

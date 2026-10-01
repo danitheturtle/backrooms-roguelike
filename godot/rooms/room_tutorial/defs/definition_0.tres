@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://dyl6xrutlmd2a"]
+
+[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://assets/data/connector_definition.gd" id="1_25any"]
+[ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://assets/data/room_definition.gd" id="2_hh7no"]
+
+[resource]
+script = ExtResource("2_hh7no")
+excludeFromGeneration = true

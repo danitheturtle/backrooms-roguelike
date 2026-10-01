@@ -1,4 +1,5 @@
-class_name RoomDefinition extends Resource
+class_name RoomDefinition
+extends Resource
 
 # Room-local space is defined relative to the room's origin which is always Vector3.ZERO
 # External transformations should only be applied to the room and they will automatically cascade
@@ -43,7 +44,7 @@ var approximateBounds: AABB = AABB(Vector3.ZERO,Vector3.ZERO)
 # AABB ordered array in room-local space of room extents. Garunteed to be on voxel grid
 var bounds: Array[AABB] = []
 # Room connectors. Every connector is a surface on the face of a bounds AABB
-var connectors: Dictionary[StringName, ConnectorDefinition] = {}
+@export var connectors: Dictionary[StringName, ConnectorDefinition] = {}
 # Used to tell dynamic scenes how to spawn. A single scene defining multiple rooms will create 
 # multiple room definitions. At instantiation time, that scene creates a specific room based on 
 # what's stored here
@@ -78,11 +79,11 @@ func bake(room: Room) -> RoomDefinition:
     #cornerMax = position + connector.basis * localCornerMax
     return self
 
-func add_bounds_shape(collisionShape: CollisionShape3D) -> void:
-    var newBoundingBox = AABB(collisionShape.position - (collisionShape.shape.size / 2.0), collisionShape.shape.size)
-    approximateBounds.expand(newBoundingBox)
-    bounds.append(newBoundingBox)
+#func add_bounds_shape(collisionShape: CollisionShape3D) -> void:
+    #var newBoundingBox = AABB(collisionShape.position - (collisionShape.shape.size / 2.0), collisionShape.shape.size)
+    #approximateBounds.expand(newBoundingBox)
+    #bounds.append(newBoundingBox)
 
-func add_connector(connector: RoomConnector):
-    biomes.set(connector.definition.biome, true)
-    connectors.set(connector.definition.name, connector.definition)
+#func add_connector(connector: RoomConnector):
+    #biomes.set(connector.definition.biome, true)
+    #connectors.set(connector.definition.name, connector.definition)

@@ -1,4 +1,5 @@
-class_name ConnectorDefinition extends Resource
+class_name ConnectorDefinition
+extends Resource
 
 static var instanceCounter: int = 0
 var connectorInstanceId: StringName = "connector_-1"
