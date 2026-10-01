@@ -3,7 +3,8 @@ class_name LevelManager
 
 signal level_ready
 
-const rooms: Dictionary[String, PackedScene] = {
+# TODO build dynamically at runtime from saved files
+const rooms: Dictionary[StringName, PackedScene] = {
     "tutorial": preload("res://rooms/room_tutorial/room_tutorial.tscn"),
     "four_way": preload("res://rooms/room_four_way/room_four_way.tscn"),
     "all_way": preload("res://rooms/room_all_way/room_all_way.tscn"),
@@ -41,8 +42,8 @@ func reinit(nextSeed: int = -1) -> void:
 # tutorial is its own game mode since it has no rng
 func load_tutorial() -> void:
     var tutorialRoom: Room = rooms["tutorial"].instantiate()
-    var tutorialDefinition: RoomDefinition = tutorialRoom.get_room_definitions()[0]
-    tutorialRoom.setup(tutorialDefinition)
+    var tutorialInstance: GeneratedRoom = tutorialRoom.definitions[0].get_generated_instance()
+    tutorialRoom.setup(tutorialInstance)
     await get_tree().process_frame
     add_child(tutorialRoom)
     loadedRooms.append(tutorialRoom)
@@ -52,9 +53,9 @@ func load_tutorial() -> void:
 
 # called at the start of a run
 func generate_initial_level() -> void:
-    var testRoom: Room = rooms["test"].instantiate()
-    var testRoomDefinition: RoomDefinition = testRoom.get_room_definitions()[0]
-    testRoom.setup(testRoomDefinition)
+    var testRoom: Room = rooms["nook_with_ramp"].instantiate()
+    var testRoomInstance: GeneratedRoom = testRoom.definitions[0].get_generated_instance()
+    testRoom.setup(testRoomInstance)
     # Player is disabled by default to prevent physics jank during setup
     await get_tree().process_frame
     add_child(testRoom)

@@ -6,12 +6,16 @@
 [ext_resource type="Material" uid="uid://d1infe3mw6u2" path="res://assets/materials/Wallpaper01/Wallpaper01_world.tres" id="3_nedpx"]
 [ext_resource type="PackedScene" uid="uid://dgwmutwf473uv" path="res://objects/colliders/ceiling_static_body.tscn" id="3_twjph"]
 [ext_resource type="Material" uid="uid://xeql16pj4ajo" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_world.tres" id="4_nedpx"]
+[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="4_qtfxj"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1bj7x"]
+[sub_resource type="Resource" id="Resource_sfcsh"]
+script = ExtResource("4_qtfxj")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5uq4n"]
 resource_local_to_scene = true
 size = Vector3(3, 0.5, 3)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qtfxj"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2s7a"]
 resource_local_to_scene = true
 size = Vector3(3, 0.25, 3)
 
@@ -28,18 +32,19 @@ innerEdgeEastMaterial = ExtResource("2_twjph")
 innerEdgeSouthMaterial = ExtResource("2_twjph")
 farEdgeNorthMaterial = ExtResource("3_nedpx")
 farEdgeSouthMaterial = ExtResource("3_nedpx")
+definition = SubResource("Resource_sfcsh")
 
 [node name="Adjacent" type="Area3D" parent="." unique_id=1101334803]
 
 [node name="RectCollider" parent="Adjacent" unique_id=415124710 instance=ExtResource("2_wdkuk")]
-shape = SubResource("BoxShape3D_1bj7x")
+shape = SubResource("BoxShape3D_5uq4n")
 debug_color = Color(0.6799758, 0.5042543, 0, 0.72700006)
 
 [node name="Collider" parent="." unique_id=1707928833 instance=ExtResource("3_twjph")]
 
 [node name="RectCollider" parent="Collider" unique_id=350048483 instance=ExtResource("2_wdkuk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
-shape = SubResource("BoxShape3D_qtfxj")
+shape = SubResource("BoxShape3D_t2s7a")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=103419973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)

@@ -60,12 +60,7 @@ func get_half_depth(): return globalDepth / 2.0
 @export var farEdgeEastMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
 @export var farEdgeSouthMaterial: StandardMaterial3D = Carpet01WorldMaterial
 
-# connector metadata for the level generator
-@export_group('Connector Metadata', 'meta')
-# what connector sub-type is this? Unused for now
-@export var metaSubType: Const.RoomConnectorSubType = Const.RoomConnectorSubType.SIMPLE
-# what biome does this connector work in?
-@export var metaBiome: Const.BiomeType = Const.BiomeType.LEVEL_0
+@export var definition: ConnectorDefinition = null
 
 @onready var staticBody: StaticBody3D = $Collider
 @onready var collider: CollisionShape3D = $Collider/RectCollider
@@ -94,6 +89,8 @@ var localSpace: Rect2:
 func _ready() -> void:
     if Engine.is_editor_hint():
         editorHelper = RoomConnectorEditorHelper.new(self)
+        if definition == null:
+            definition = ConnectorDefinition.new()
         return
     adjacentAABB = AABB()
     adjacentAABB.position = to_global(adjacentCollider.position - (adjacentCollider.shape.size / 2.0))

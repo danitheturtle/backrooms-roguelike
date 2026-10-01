@@ -1,3 +1,4 @@
+@tool
 extends Node
 # in all functions, X represents a float between 0 and 1
 

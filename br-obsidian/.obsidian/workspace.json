@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mechanics/Puzzles Overview.md",
+                "file": "Mechanics/Room Constraints.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Puzzles Overview"
+              "title": "Room Constraints"
             }
           }
         ],
@@ -219,9 +219,10 @@
   },
   "active": "b5a7d647281ad89c",
   "lastOpenFiles": [
+    "Mechanics/Puzzles Overview.md",
+    "Mechanics/Room Constraints.md",
     "Mechanics/Upgrades.md",
     "Mechanics/Mechanic Brainstorm.md",
-    "Mechanics/Puzzles Overview.md",
     "Technical/Room Definition API Docs.md",
     "Lore/The Creator.md",
     "Lore/lore ideas.md",

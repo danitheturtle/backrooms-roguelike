@@ -2,11 +2,15 @@
 extends Node3D
 class_name Room
 
+const RoomDefinitionRes = preload("res://scripts/room/data/room_definition.tres.gd")
+
+@export var definitions: Array[RoomDefinition] = []
+
+@export_tool_button("Bake Room Definitions") var bakeRoomDefinition = bake_room_definition
+@export var needsBaked: bool = false
+
 # controls whether entering this room causes an ambience change. usually toggled off for sub-rooms
 @export var affectsAmbient: bool = true
-
-@export_tool_button("Bake Room Definition") var bakeRoomDefinition = bake_room_definition
-@export var needsBaked: bool = false
 
 # node refs grabbed on ready
 @onready var colliders: Node3D = $Colliders
@@ -25,10 +29,17 @@ func _ready() -> void:
     subRooms = Utils.get_children_of_type($SubRooms, Room)
     parentRoom = Utils.get_parent_of_type(self, Room)
     if parentRoom != null: isSubRoom = true
+    if Engine.is_editor_hint():
+        if definitions.size() == 0 && !isSubRoom:
+            definitions.append(RoomDefinitionRes.new())
+            persist_definitions()
     # TODO get all object spawn locations
 
+func _notification(what: int):
+    if (what == NOTIFICATION_EDITOR_PRE_SAVE && needsBaked): bake_room_definition()
+
 func bake_room_definition() -> void:
-    if isSubRoom: return #only sub-room colliders get baked which is handled by parent
+    if isSubRoom: return #sub-rooms don't get baked
     pass
 # Returns an array of RoomDefinition objects telling the level generator how this room can be used.
 # the level generator should pass the room definition it wants to the setup() function
@@ -65,33 +76,59 @@ func bake_room_definition() -> void:
         #if atBoundsEdge: thisRoomDefinition.connectors.append(nextConnector)
     #return [thisRoomDefinition]
 
-func get_all_connectors() -> Array:
-    var returnedRoomConnectors = []
-    for nextSubRoom: Room in subRooms:
-        var subConnectors = nextSubRoom.get_all_connectors()
-        returnedRoomConnectors.append_array(subConnectors)
-    for nextConnector: RoomConnector in Utils.get_children_of_type(connectors, RoomConnector):
-        returnedRoomConnectors.append(RoomConnectorDefinition.new(nextConnector))
-    return returnedRoomConnectors
+#func get_all_connectors() -> Array:
+    #var returnedRoomConnectors = []
+    #for nextSubRoom: Room in subRooms:
+        #var subConnectors = nextSubRoom.get_all_connectors()
+        #returnedRoomConnectors.append_array(subConnectors)
+    #for nextConnector: RoomConnector in Utils.get_children_of_type(connectors, RoomConnector):
+        #returnedRoomConnectors.append(RoomConnectorDefinition.new(nextConnector))
+    #return returnedRoomConnectors
 
 # called after initialization but before being added to the tree. Make wall holes, add sub-props, etc
-func setup(_roomDefinition: RoomDefinition) -> void:
+func setup(_generatedRoom: GeneratedRoom) -> void:
     # setup sub-rooms first
-    for nextSubRoom: Room in subRooms: nextSubRoom.setup(_roomDefinition)
+    for nextSubRoom: Room in subRooms: nextSubRoom.setup(_generatedRoom)
     # hole-punch connectors
-    for nextConnector: RoomConnector in connectors:
-        nextConnector.build_connectors()
+    #for nextConnector: RoomConnector in Utils.get_children_of_type(connectors, RoomConnector):
+        #nextConnector.build_connectors()
     # if sub-random elements, shuffle them
     # TODO let the level generator force-spawn things first
-    #if hasSubRandomization: self.shuffle()
+    #if _generatedRoom.hasSubRandomization: self.shuffle()
     # get ambient light level based on number of active lights and their intensities. An approximation for bounce light
-    if affectsAmbient:
-        var lightNodes = Utils.get_children_of_type(lights, Light)
-        calculatedAmbient = 0.0
-        for nextLight: Light in lightNodes:
-            if nextLight.lightOn: calculatedAmbient += 0.05
-        calculatedAmbient = min(calculatedAmbient, Const.AMBIENT_MAX)
+    #if affectsAmbient:
+        #var lightNodes: Array[Light] = Utils.get_children_of_type(lights, Light)
+        #calculatedAmbient = 0.0
+        #for nextLight: Light in lightNodes:
+            #if nextLight.lightOn: calculatedAmbient += 0.05
+        #calculatedAmbient = min(calculatedAmbient, Const.AMBIENT_MAX)
 
 # called during setup to randomize stuff in the room and spawn props
 func shuffle() -> void:
     pass
+
+# editorOnly
+func persist_definitions() -> void:
+    if !Engine.is_editor_hint(): return
+    var editedRoomFolder = EditorInterface.get_edited_scene_root().scene_file_path.get_base_dir()
+    var definitionsFolder = editedRoomFolder + "/defs"
+    var shouldUpdateFilesystem = false
+    if not DirAccess.dir_exists_absolute(definitionsFolder):
+        var dirCreateError = DirAccess.make_dir_absolute(definitionsFolder)
+        if dirCreateError != OK:
+            print("could not create room definitions directory", dirCreateError)
+            return
+        shouldUpdateFilesystem = true
+    for definitionIndex: int in definitions.size():
+        var nextDefinition = definitions[definitionIndex]
+        if nextDefinition.resource_path.get_base_dir() != definitionsFolder:
+            var saveError = ResourceSaver.save(
+                nextDefinition, 
+                definitionsFolder + "/definition_" + str(definitionIndex) + ".tres",
+                ResourceSaver.FLAG_CHANGE_PATH | ResourceSaver.FLAG_REPLACE_SUBRESOURCE_PATHS | ResourceSaver.FLAG_BUNDLE_RESOURCES
+            )
+            if saveError != OK:
+                print("could not save room definition " + str(definitionIndex), saveError)
+                return
+            shouldUpdateFilesystem = true
+    if shouldUpdateFilesystem: EditorInterface.get_resource_filesystem().scan()

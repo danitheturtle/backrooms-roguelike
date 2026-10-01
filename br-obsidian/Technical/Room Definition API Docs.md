@@ -1,5 +1,6 @@
-global position
-global y rotation
+placed position
+
+placed forward normal
 
 room instance ID (room gets placed multiple times. level generator needs a way to refer to this specific room for puzzle linking)
 
@@ -9,7 +10,7 @@ Prop density (weighted value for the sub-generation prop spawner. set by level g
 
 placedAtIteration (how far into level gen this room got placed)
 
-Only spawn after n iterations (late game room)
+min spawn iteration (late game room)
 
 Bounds (AABB ordered array in room-local space)
 - special case for infinite 
