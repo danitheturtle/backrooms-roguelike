@@ -31,7 +31,7 @@ func bake_room_definitions() -> void:
             var newBoundingBox = AABB(nextBounds.transform.origin - (nextBounds.shape.size / 2.0), nextBounds.shape.size)
             approximateAABB = approximateAABB.merge(newBoundingBox)
             boundingAABBs.append(newBoundingBox)
-    # TODO: multiple unique defs
+    # TODO: multiple unique defs with size-adjusted connections. gonna have to run some sort of subprocess
     for definitionIndex: int in definitions.size():
         definitions[definitionIndex].sceneName = parent.uniqueName
         definitions[definitionIndex].scenePath = EditorInterface.get_edited_scene_root().scene_file_path

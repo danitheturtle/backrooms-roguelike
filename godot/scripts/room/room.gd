@@ -5,12 +5,9 @@ class_name Room
 var editorHelper: RoomEditorHelper = null
 
 @export var uniqueName: StringName = ""
-@export var definitions: Array[RoomDefinition] = []
-
-@export_tool_button("Bake Definitions") var bakeRoomDefinition = try_bake_definitions
-@export var needsBaked: bool = false
-# controls whether entering this room causes an ambience change. usually toggled off for sub-rooms
 @export var affectsAmbient: bool = true
+@export var definitions: Array[RoomDefinition] = []
+@export_tool_button("Bake Definitions") var bakeRoomDefinition = try_bake_definitions
 
 # node refs
 var colliders: Node3D
@@ -35,13 +32,13 @@ var calculatedAmbient: float = -1.0 # off by default
 func _notification(what: int):
     match what:
         Node.NOTIFICATION_SCENE_INSTANTIATED:
-            post_init()
+            grab_refs()
         NOTIFICATION_EDITOR_PRE_SAVE:
-            if needsBaked && editorHelper != null:
+            if editorHelper != null:
                 editorHelper.bake_room_definitions()
-            editorHelper.persist_definitions()
+                editorHelper.persist_definitions()
 
-func post_init() -> void:
+func grab_refs() -> void:
     colliders = get_node("%Colliders")
     lights = get_node("%Lights")
     props = get_node("%Props")
@@ -56,10 +53,10 @@ func post_init() -> void:
     if parentRoom != null: isSubRoom = true
 
 func _ready() -> void:
-    if colliders == null: post_init()
-    if Engine.is_editor_hint():
+    if colliders == null: grab_refs()
+    if Engine.is_editor_hint() && !isSubRoom:
         if editorHelper == null: editorHelper = RoomEditorHelper.new(self)
-        if definitions.size() == 0 && !isSubRoom:
+        if definitions.size() == 0:
             definitions.append(RoomDefinition.new())
             editorHelper.bake_room_definitions()
             editorHelper.persist_definitions()
@@ -68,16 +65,15 @@ func _ready() -> void:
 func try_bake_definitions() -> void:
     if editorHelper != null:
         editorHelper.bake_room_definitions()
-        needsBaked = false
 
-#func get_all_connectors() -> Array:
-    #var returnedRoomConnectors = []
-    #for nextSubRoom: Room in subRooms:
-        #var subConnectors = nextSubRoom.get_all_connectors()
-        #returnedRoomConnectors.append_array(subConnectors)
-    #for nextConnector: RoomConnector in Utils.get_children_of_type(connectors, RoomConnector):
-        #returnedRoomConnectors.append(RoomConnectorDefinition.new(nextConnector))
-    #return returnedRoomConnectors
+# gets a combined array of connectors for room and all sub rooms
+func get_all_connectors() -> Array[RoomConnector]:
+    var returnedRoomConnectors: Array[RoomConnector] = []
+    for nextSubRoom: Room in subRooms:
+        var subConnectors = nextSubRoom.get_all_connectors()
+        returnedRoomConnectors.append_array(subConnectors)
+    returnedRoomConnectors.append_array(connectors.values())
+    return returnedRoomConnectors
 
 # called after initialization but before being added to the tree. Make wall holes, add sub-props, etc
 func setup(_generatedRoom: GeneratedRoom) -> void:

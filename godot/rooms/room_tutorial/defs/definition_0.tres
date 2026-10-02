@@ -6,3 +6,7 @@
 [resource]
 script = ExtResource("2_hh7no")
 excludeFromGeneration = true
+sceneName = &"tutorial"
+scenePath = "res://rooms/room_tutorial/room_tutorial.tscn"
+approximateBounds = AABB(-4, -1.75, -4, 8, 3.5, 8)
+bounds = Array[AABB]([AABB(-4, -1.75, -4, 8, 3.5, 8)])
