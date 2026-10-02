@@ -25,10 +25,11 @@ enum ConnectorSubType {
     # different doors. mostly down to visual and molding difference
     DOOR_WOODEN_01, DOOR_WOODEN_02,
     # Null zone visual distinctions
-    NULL_INVISIBLE, NULL_LIGHTING_ERROR, NULL_PIXEL_GAP, NULL_SHIMMER
+    NULL_INVISIBLE, NULL_OUTLINED, NULL_LIGHTING_ERROR, NULL_PIXEL_GAP, NULL_SHIMMER
 }
 enum GameplayPropType {
     OBJECT_PLACEMENT_PUZZLE,
+    ALT_WAVELENGTH_PUZZLE,
     LADDER,
     LADDER_FREESTANDING,
     LADDER_TALL,

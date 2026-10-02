@@ -1,0 +1,3 @@
+- Objects in a room will be in a sequence or pattern, with one or two out of place. Player must look around and find the missing object, then place it in the correct position/orientation.
+- **Object placement puzzles open otherwise un-openable doors** automatically with an audible hinge creak to let the player know something in the level changed
+- Taking a photo of a solved object placement puzzle rewards extra points, enough that waiting until you notice a puzzle is worth it over taking pictures of individual props.

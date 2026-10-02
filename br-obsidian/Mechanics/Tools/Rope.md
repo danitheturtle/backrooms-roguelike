@@ -1,0 +1,9 @@
+- The player starts the game with a certain length of consumable rope, and can find more.
+- Rope can be attached to a static or heavy prop anchor point. This starts the length counter as the player moves away.
+- The rope does not pull on its anchor - treats it as static
+- The player can drop off the rope at any point and the rope will stop its extension there
+- If the player runs out of rope, the only option is to climb back up or drop.
+- Rope only gets extended if player has enough rope and climbs past the end.
+- Rope only gets recoiled when interacting with its anchor point, which picks the whole line up
+- Rope uses an ammo system and is not a prop. Rope pickups get consumed to increase rope ammo.
+- Props can be carried while climbing

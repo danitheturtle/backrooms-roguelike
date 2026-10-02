@@ -1,3 +1,5 @@
 - Infinite sprint (you've done a few runs and stamina has naturally improved)
 - Digital camera
 	- Digital camera timer, which lets the player set the camera down so it goes off on a delay. Only available for digital camera, and is used to attract entities
+- Oxygen Mask
+	- bigger tanks
