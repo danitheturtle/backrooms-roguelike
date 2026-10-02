@@ -1,14 +1,6 @@
 class_name ConnectorDefinition
 extends Resource
 
-static var instanceCounter: int = 0
-var connectorInstanceId: StringName = "connector_-1"
-var parentRoomInstanceId: StringName = "room_-1"
-
-func _init() -> void:
-    connectorInstanceId = "connector_" + str(instanceCounter)
-    instanceCounter += 1
-
 ###
 ### Set In Editor
 ###
@@ -20,8 +12,9 @@ func _init() -> void:
 @export var blockable: bool = false
 # Whether a connector is lockble is defined by its ConnectorType. If false and  level gen picks 
 # a higher connector type, this can become true
-var lockable: bool:
-    get: return initialType >= Const.ConnectorType.NULL_ZONE
+var lockable: bool: get = get_lockable
+func get_lockable() -> bool:
+    return initialType >= Const.ConnectorType.NULL_ZONE
 # Each connection layer in a room is mutually inaccessible (unbreakable glass, 
 # large drops that can't be jumped, etc.)
 @export var layer: int = 1
@@ -31,27 +24,28 @@ var lockable: bool:
 ###
 ### Baked
 ###
+@export_group("Baked")
 # name of this connection in the room scene. unique per room
-var name: StringName = ""
+@export var name: StringName = ""
 # Which room is this connector in? unique name
-var partOfRoomName: StringName = ""
+@export var partOfRoomName: StringName = ""
 # center position of this connector in room-local space
-var position: Vector3 = Vector3.ZERO
-# 3d position of 2d connector rect on surface of bounds. Garunteed to be on voxel grid
-var cornerMin: Vector3 = Vector3.ZERO
-var cornerMax: Vector3 = Vector3.ZERO
-# direction connector is facing on surface of bounds
-var normal: Vector3 = Vector3.FORWARD
+@export var position: Vector3 = Vector3.ZERO
 # depth of this connector (from visible collision surface to edge of room bounds)
-var depth: float = Const.HALF_VOXEL
+@export var depth: float = Const.HALF_VOXEL
+# direction connector is facing on surface of bounds
+@export var normal: Vector3 = Vector3.ZERO
 # width / height of connector surface
-var size: Vector2 = Vector2.ZERO
+@export var size: Vector2 = Vector2.ZERO
+# 3d position of 2d connector rect on surface of bounds. Garunteed to be on voxel grid
+@export var cornerMin: Vector3 = Vector3.ZERO
+@export var cornerMax: Vector3 = Vector3.ZERO
 # distance to the floor from the lowest point on the connector surface
-var distFromFloor: float = 0.0
-var bordersCeiling: bool = false
+@export var distFromFloor: float = 0.0
+@export var bordersCeiling: bool = false
 
 # debug to confirm things get baked correctly. will go away
-var aabb: AABB = AABB()
+@export var aabb: AABB = AABB()
 
 func get_generated_instance(_parentInstanceId: StringName) -> GeneratedConnector:
     return GeneratedConnector.new(self, _parentInstanceId)

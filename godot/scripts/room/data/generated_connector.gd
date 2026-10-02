@@ -7,6 +7,15 @@ var parentRoomInstanceId: StringName = "room_-1"
 # room-unique connector name passed from ConnectorDefinition
 var connectorName: StringName
 
+# don't call directly, get_generated_instance() on room instead
+func _init(_definition: Resource, _parentRoomInstanceId: StringName) -> void:
+    connectorName = _definition.name
+    type = _definition.initialType
+    subType = _definition.initialSubType
+    parentRoomInstanceId = _parentRoomInstanceId
+    connectorInstanceId = "connector_" + str(instanceCounter)
+    instanceCounter += 1
+
 ###
 ### Set by level generator
 ###
@@ -21,12 +30,3 @@ var subType: Const.ConnectorSubType = Const.ConnectorSubType.EMPTY
 var locked: bool = false
 # Spawn a draggable prop in front of the connection to obscure it, if supported
 var blocked: bool = false
-
-# don't call directly, get_generated_instance() on room instead
-func _init(_definition: Resource, _parentRoomInstanceId: StringName) -> void:
-    connectorName = _definition.name
-    type = _definition.initialType
-    subType = _definition.initialSubType
-    parentRoomInstanceId = _parentRoomInstanceId
-    connectorInstanceId = "connector_" + str(instanceCounter)
-    instanceCounter += 1

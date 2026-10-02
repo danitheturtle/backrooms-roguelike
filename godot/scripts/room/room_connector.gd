@@ -7,6 +7,11 @@ const Wallpaper01WorldMaterial = preload("res://assets/materials/Wallpaper01/Wal
 const DropCeilingRectangle01WorldMaterial = preload("res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_world.tres")
 const Carpet01WorldMaterial = preload("res://assets/materials/Carpet01/Carpet01_world.tres")
 
+var editorHelper: ConnectorEditorHelper = null
+
+###
+### Editor Adjustable
+###
 @export_group('Voxel Sizing', 'voxel')
 # basic bounds in voxels
 @export_range(1, 32, 1, "or_greater", "prefer_slider") var voxelWidth: int = 6: set = set_connector_width
@@ -35,6 +40,8 @@ var halfHeight: float: get = get_half_height
 func get_half_height(): return globalHeight / 2.0
 var halfDepth: float: get = get_half_depth
 func get_half_depth(): return globalDepth / 2.0
+var localSpace: Rect2:
+    get: return Rect2(0.0,0.0,globalWidth,globalHeight)
 
 # Edge meshes are generated when hole overlaps surface edge
 # Disable to prevent z-fighting with existing geometry
@@ -60,23 +67,33 @@ func get_half_depth(): return globalDepth / 2.0
 @export var farEdgeEastMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
 @export var farEdgeSouthMaterial: StandardMaterial3D = Carpet01WorldMaterial
 
+# definition passed to levelgen
 @export var definition: ConnectorDefinition = null
 
+# Refs grabbed on ready
 @onready var staticBody: StaticBody3D = $Collider
 @onready var collider: CollisionShape3D = $Collider/RectCollider
 @onready var mesh: MeshInstance3D = $Mesh
 @onready var adjacent: Area3D = $Adjacent
 @onready var adjacentCollider: CollisionShape3D = $Adjacent/RectCollider
 
+# per-instance levelgen output
+var generatedProps: GeneratedConnector = null
+var resolvedType: Const.ConnectorType:
+    get:
+        if generatedProps == null: return Const.ConnectorType.SIMPLE
+        return generatedProps.type
+var resolvedSubType: Const.ConnectorSubType:
+    get:
+        if generatedProps == null: return Const.ConnectorSubType.EMPTY
+        return generatedProps.subType
+
+# runtime local state
 var adjacentAABB: AABB
 var surfaceOffsetInNormal: float
 var generatedColliders: Array[CollisionShape3D]
 var generatedMeshes: Array[MeshInstance3D]
 var coplanarConnectors: Array[RoomConnector]
-
-var editorHelper: RoomConnectorEditorHelper = null
-var localSpace: Rect2:
-    get: return Rect2(0.0,0.0,globalWidth,globalHeight)
 
 @abstract func get_center_offset() -> Vector3
 @abstract func get_local_hole_position(corner1: Vector3, corner2: Vector3) -> Vector2
@@ -88,12 +105,11 @@ var localSpace: Rect2:
 
 func _ready() -> void:
     if Engine.is_editor_hint():
-        editorHelper = RoomConnectorEditorHelper.new(self)
+        if editorHelper == null: editorHelper = ConnectorEditorHelper.new(self)
+        if definition == null: definition = ConnectorDefinition.new()
         voxelWidth = voxelWidth
         voxelHeight = voxelHeight
         voxelDepth = voxelDepth
-        if definition == null:
-            definition = ConnectorDefinition.new()
         return
     adjacentAABB = AABB()
     adjacentAABB.position = to_global(adjacentCollider.position - (adjacentCollider.shape.size / 2.0))

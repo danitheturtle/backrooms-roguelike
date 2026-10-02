@@ -17,8 +17,6 @@ func get_generated_instance() -> GeneratedRoom:
 ###
 ### ROOM EDITOR
 ###
-# unique name for room scene
-@export var sceneName: StringName = ""
 # room placed manually and is not part of level generation
 @export var excludeFromGeneration: bool = false
 # controls room rarity. range and representative values TBD
@@ -34,59 +32,25 @@ func get_generated_instance() -> GeneratedRoom:
 ###
 ### BAKED
 ###
+@export_group("Baked")
+# unique name for room scene
+@export var sceneName: StringName = ""
 # room scene path for instantiation
-var scenePath: String = ""
+@export var scenePath: String = ""
 # this definition's index in the room's array of definitions
-var indexInScene: int = 0
+@export var indexInScene: int = 0
 # biomes this room is a part of. if more than one, this is a transition room
-var biomes: Dictionary[Const.BiomeType, bool] = {}
-var isTransitionRoom:
-    get: return biomes.keys().size() > 1
+@export var biomes: Dictionary[Const.BiomeType, bool] = {}
 # A single AABB that fits all smaller bounding boxes inside it. Useful for very fast checks
-var approximateBounds: AABB = AABB(Vector3.ZERO,Vector3.ZERO)
+@export var approximateBounds: AABB = AABB(Vector3.ZERO,Vector3.ZERO)
 # AABB ordered array in room-local space of room extents. Garunteed to be on voxel grid
-var bounds: Array[AABB] = []
+@export var bounds: Array[AABB] = []
 # Room connectors. Every connector is a surface on the face of a bounds AABB
 @export var connectors: Dictionary[StringName, ConnectorDefinition] = {}
 # Used to tell dynamic scenes how to spawn. A single scene defining multiple rooms will create 
 # multiple room definitions. At instantiation time, that scene creates a specific room based on 
 # what's stored here
-var dynamicRoomData: Dictionary[StringName, Variant] = {}
+@export var dynamicRoomData: Dictionary[StringName, Variant] = {}
 
-# called by room level editor
-func bake(room: Room) -> RoomDefinition:
-    scenePath = room.owner.scene_file_path
-    ## connector
-    #name = connector.get_name()
-    #subType = connector.metaSubType
-    #biome = connector.metaBiome
-    #position = connector.position
-    #depth = connector.globalDepth
-    #distFromFloor = connector.voxelDistanceToFloor * Const.VOXEL
-    #bordersCeiling = connector.voxelBordersCeiling
-    ## translate to room-local space from connector-local space
-    #var shapeSize = connector.adjacentCollider.shape.size
-    #var localCornerMin: Vector3
-    #var localCornerMax: Vector3
-    #if connector is WallConnector:
-        #normal = -connector.global_basis.z
-        #size = Vector2(shapeSize.x, shapeSize.y)
-        #localCornerMin = -0.5 * Vector3(shapeSize.x, shapeSize.y, 0.0)
-        #localCornerMax = 0.5 * Vector3(shapeSize.x, shapeSize.y, 0.0)
-    #else:
-        #normal = Vector3.UP if connector is CeilingConnector else Vector3.DOWN
-        #size = Vector2(shapeSize.x, shapeSize.z)
-        #localCornerMin = -0.5 * Vector3(shapeSize.x, 0.0, shapeSize.z)
-        #localCornerMax = 0.5 * Vector3(shapeSize.x, 0.0, shapeSize.z)
-    #cornerMin = position + connector.basis * localCornerMin
-    #cornerMax = position + connector.basis * localCornerMax
-    return self
-
-#func add_bounds_shape(collisionShape: CollisionShape3D) -> void:
-    #var newBoundingBox = AABB(collisionShape.position - (collisionShape.shape.size / 2.0), collisionShape.shape.size)
-    #approximateBounds.expand(newBoundingBox)
-    #bounds.append(newBoundingBox)
-
-#func add_connector(connector: RoomConnector):
-    #biomes.set(connector.definition.biome, true)
-    #connectors.set(connector.definition.name, connector.definition)
+var isTransitionRoom: bool: get = get_is_transition_room
+func get_is_transition_room() -> bool: return biomes.keys().size() > 1

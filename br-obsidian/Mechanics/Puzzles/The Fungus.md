@@ -12,3 +12,5 @@ AKA The Creator's Fungus
 - **Player cannot progress through rooms entirely overtaken by fungus without a gas mask and available oxygen**
 	- Generate them to the side of the critical path before mask is unlocked to build curiosity
 	- Once mask is unlocked, they can be part of the late-game critical path if enough oxygen is placed in the level
+
+Inspiration: https://backrooms.fandom.com/wiki/Phenomenon_35

@@ -19,7 +19,7 @@ enum ConnectorType {
 }
 enum ConnectorSubType {
     # SIMPLE types. Won't generate if there isn't room
-    EMPTY, ARCH, DIVIDED, NARROW, GRID,
+    EMPTY, ARCH, DIVIDED, NARROW,
     # Force alternate movement at this connection
     ONLY_CROUCH, ONLY_CRAWL, ONLY_SQUEEZE,
     # different doors. mostly down to visual and molding difference
