@@ -9,9 +9,9 @@ extends Resource
 # Called by level generator to get a levelgen output object
 func get_generated_instance() -> GeneratedRoom:
     var newGeneratedRoom = GeneratedRoom.new(self)
-    for nextConnectorName: StringName in connectors.keys():
-        var newGeneratedConnector = connectors[nextConnectorName].get_generated_instance(newGeneratedRoom.roomInstanceId)
-        newGeneratedRoom.generatedConnectors[nextConnectorName] = newGeneratedConnector
+    for nextConnectorPath: NodePath in connectors.keys():
+        var newGeneratedConnector = connectors[nextConnectorPath].get_generated_instance(newGeneratedRoom.roomInstanceId)
+        newGeneratedRoom.generatedConnectors[nextConnectorPath] = newGeneratedConnector
     return newGeneratedRoom
 
 ###
@@ -46,7 +46,7 @@ func get_generated_instance() -> GeneratedRoom:
 # AABB ordered array in room-local space of room extents. Garunteed to be on voxel grid
 @export var bounds: Array[AABB] = []
 # Room connectors. Every connector is a surface on the face of a bounds AABB
-@export var connectors: Dictionary[StringName, ConnectorDefinition] = {}
+@export var connectors: Dictionary[NodePath, ConnectorDefinition] = {}
 # Used to tell dynamic scenes how to spawn. A single scene defining multiple rooms will create 
 # multiple room definitions. At instantiation time, that scene creates a specific room based on 
 # what's stored here

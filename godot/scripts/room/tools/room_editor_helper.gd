@@ -1,28 +1,28 @@
 class_name RoomEditorHelper
 
-var parent: Room
-var connectors: Dictionary[StringName, RoomConnector]
+var room: Room
+var connectors: Dictionary[NodePath, RoomConnector]
 var boundsArea: Area3D
 var definitions: Array[RoomDefinition]
 
-func _init(_parent: Room):
-    parent = _parent
+func _init(_room: Room):
+    room = _room
     update_refs()
 
 func update_refs() -> void:
-    connectors = parent.connectors
-    definitions = parent.definitions
-    boundsArea = parent.boundsArea
+    connectors = room.connectors
+    definitions = room.definitions
+    boundsArea = room.boundsArea
 
 func bake_room_definitions() -> void:
-    if parent.isSubRoom: return #sub-rooms don't get baked
+    if room.isSubRoom: return #sub-rooms don't get baked
     update_refs()
-    var connectorDefinitions: Dictionary[StringName, ConnectorDefinition] = {}
+    if definitions.size() == 0: definitions.append(RoomDefinition.new())
+    var connectorDefinitions: Dictionary[NodePath, ConnectorDefinition] = {}
     var allBiomes: Dictionary[Const.BiomeType, bool] = {}
     for nextConnector: RoomConnector in connectors.values():
         nextConnector.editorHelper.bake_connector_definition()
-        nextConnector.definition.partOfRoomName = parent.uniqueName
-        connectorDefinitions[nextConnector.name] = nextConnector.definition
+        connectorDefinitions[nextConnector.definition.pathInRoom] = nextConnector.definition
         allBiomes[nextConnector.definition.biome] = true
     var approximateAABB: AABB = AABB(Vector3.ZERO,Vector3.ZERO)
     var boundingAABBs: Array[AABB] = []
@@ -32,8 +32,8 @@ func bake_room_definitions() -> void:
             approximateAABB = approximateAABB.merge(newBoundingBox)
             boundingAABBs.append(newBoundingBox)
     # TODO: multiple unique defs with size-adjusted connections. gonna have to run some sort of subprocess
-    for definitionIndex: int in definitions.size():
-        definitions[definitionIndex].sceneName = parent.uniqueName
+    for definitionIndex: int in room.definitions.size():
+        definitions[definitionIndex].sceneName = room.uniqueName
         definitions[definitionIndex].scenePath = EditorInterface.get_edited_scene_root().scene_file_path
         definitions[definitionIndex].indexInScene = definitionIndex
         definitions[definitionIndex].connectors = connectorDefinitions
@@ -56,7 +56,7 @@ func bake_room_definitions() -> void:
         #if atBoundsEdge: thisRoomDefinition.connectors.append(nextConnector)
 
 func persist_definitions() -> void:
-    if parent.isSubRoom: return #sub-rooms don't get baked
+    if room.isSubRoom: return #sub-rooms don't get baked
     update_refs()
     var editedRoomFolder = EditorInterface.get_edited_scene_root().scene_file_path.get_base_dir()
     var definitionsFolder = editedRoomFolder + "/defs"

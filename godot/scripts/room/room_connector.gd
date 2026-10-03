@@ -105,19 +105,8 @@ var coplanarConnectors: Array[RoomConnector]
 
 func _ready() -> void:
     if Engine.is_editor_hint():
-        var room: Room = Utils.get_parent_of_type(self, Room)
-        var isInSubRoom: bool = false
-        if room != null:
-            isInSubRoom = Utils.get_parent_of_type(room, Room) != null
         if editorHelper == null: editorHelper = ConnectorEditorHelper.new(self)
-        if definition == null: definition = ConnectorDefinition.new()
-        if isInSubRoom && definition.name == name:
-            definition = definition.duplicate()
-            var newName = StringName(EditorInterface.get_edited_scene_root().get_path_to(self, true))
-            definition.name = newName
-        voxelWidth = voxelWidth
-        voxelHeight = voxelHeight
-        voxelDepth = voxelDepth
+        editorHelper.on_connector_ready()
         return
     adjacentAABB = AABB()
     adjacentAABB.position = to_global(adjacentCollider.position - (adjacentCollider.shape.size / 2.0))

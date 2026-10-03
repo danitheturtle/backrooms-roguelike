@@ -25,10 +25,8 @@ func get_lockable() -> bool:
 ### Baked
 ###
 @export_group("Baked")
-# name of this connection in the room scene. unique per room
-@export var name: StringName = ""
-# Which room is this connector in? unique name
-@export var partOfRoomName: StringName = ""
+# how to get this connector by calling get_node() on root room
+@export var pathInRoom: NodePath = ""
 # center position of this connector in room-local space
 @export var position: Vector3 = Vector3.ZERO
 # depth of this connector (from visible collision surface to edge of room bounds)

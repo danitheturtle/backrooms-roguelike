@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dxun115m4alsw" path="res://rooms/room_base.tscn" id="1_el8vr"]
 [ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_2p7ip"]
 [ext_resource type="PackedScene" uid="uid://dkaflqjkli2wg" path="res://objects/connectors/ceiling/ceiling_connector.tscn" id="2_env8l"]
-[ext_resource type="Resource" uid="uid://dj1wy70ok1tka" path="res://rooms/room_nook_with_ramp/defs/definition_0.tres" id="2_f0ukq"]
+[ext_resource type="Resource" uid="uid://ccmf7obsrfc43" path="res://rooms/room_nook_with_ramp/defs/definition_0.tres" id="2_f0ukq"]
 [ext_resource type="PackedScene" uid="uid://cqoeu0j6sffu6" path="res://rooms/room_nook_with_ramp/res/level_meshes.tscn" id="2_fax84"]
 [ext_resource type="PackedScene" uid="uid://b1jb75ylvwe4t" path="res://objects/lights/ceiling_light.tscn" id="2_gud1n"]
 [ext_resource type="PackedScene" uid="uid://b500l15l80jvq" path="res://objects/colliders/floor_static_body.tscn" id="2_xwr73"]
@@ -540,8 +540,7 @@ uv1_triplanar = true
 
 [sub_resource type="Resource" id="Resource_qv53x"]
 script = ExtResource("17_2p7ip")
-name = &"CeilingConnector"
-partOfRoomName = &"nook_with_ramp"
+pathInRoom = NodePath("Connectors/CeilingConnector")
 position = Vector3(-7.5, 4, -6.5)
 depth = 2.0
 normal = Vector3(0, 1, 0)
@@ -564,8 +563,7 @@ flip_faces = true
 
 [sub_resource type="Resource" id="Resource_fpt8s"]
 script = ExtResource("17_2p7ip")
-name = &"CeilingConnector2"
-partOfRoomName = &"nook_with_ramp"
+pathInRoom = NodePath("Connectors/CeilingConnector2")
 position = Vector3(-1, 7.5, -7.5)
 depth = 1.75
 normal = Vector3(0, 1, 0)
@@ -589,8 +587,7 @@ size = Vector2(1, 2)
 
 [sub_resource type="Resource" id="Resource_8jovn"]
 script = ExtResource("17_2p7ip")
-name = &"FloorConnector"
-partOfRoomName = &"nook_with_ramp"
+pathInRoom = NodePath("Connectors/FloorConnector")
 position = Vector3(2.75, -3, -2)
 depth = 3.0
 normal = Vector3(0, -1, 0)
@@ -613,8 +610,7 @@ size = Vector2(1.5, 2)
 
 [sub_resource type="Resource" id="Resource_3iqsw"]
 script = ExtResource("17_2p7ip")
-name = &"FloorConnector2"
-partOfRoomName = &"nook_with_ramp"
+pathInRoom = NodePath("Connectors/FloorConnector2")
 position = Vector3(1.5, 2, -8)
 normal = Vector3(0, -1, 0)
 size = Vector2(1, 1)
@@ -636,8 +632,7 @@ size = Vector2(1, 1)
 
 [sub_resource type="Resource" id="Resource_rw6p2"]
 script = ExtResource("17_2p7ip")
-name = &"WallConnector"
-partOfRoomName = &"nook_with_ramp"
+pathInRoom = NodePath("Connectors/WallConnector")
 position = Vector3(-12.5, 1, 7)
 normal = Vector3(-1, 0, 4.371139e-08)
 size = Vector2(1, 1)
@@ -660,8 +655,7 @@ orientation = 2
 
 [sub_resource type="Resource" id="Resource_6wyk7"]
 script = ExtResource("17_2p7ip")
-name = &"WallConnector2"
-partOfRoomName = &"nook_with_ramp"
+pathInRoom = NodePath("Connectors/WallConnector2")
 position = Vector3(-7.25, 0.5, -8.5)
 depth = 0.5
 normal = Vector3(0, 0, -1)
@@ -685,8 +679,7 @@ orientation = 2
 
 [sub_resource type="Resource" id="Resource_0dj38"]
 script = ExtResource("17_2p7ip")
-name = &"WallConnector3"
-partOfRoomName = &"nook_with_ramp"
+pathInRoom = NodePath("Connectors/WallConnector3")
 position = Vector3(-9, 0.25, -3.75)
 depth = 0.5
 normal = Vector3(-1, 0, 4.371139e-08)
@@ -710,8 +703,7 @@ orientation = 2
 
 [sub_resource type="Resource" id="Resource_gqu2c"]
 script = ExtResource("17_2p7ip")
-name = &"WallConnector4"
-partOfRoomName = &"nook_with_ramp"
+pathInRoom = NodePath("Connectors/WallConnector4")
 position = Vector3(-2, 1.25, 9)
 depth = 0.75
 normal = Vector3(8.742278e-08, 0, 1)
@@ -735,8 +727,7 @@ orientation = 2
 
 [sub_resource type="Resource" id="Resource_adi0u"]
 script = ExtResource("17_2p7ip")
-name = &"WallConnector5"
-partOfRoomName = &"nook_with_ramp"
+pathInRoom = NodePath("Connectors/WallConnector5")
 position = Vector3(6.5, 1.5, 3.75)
 depth = 0.5
 normal = Vector3(1, 0, 4.371139e-08)
@@ -760,8 +751,7 @@ orientation = 2
 
 [sub_resource type="Resource" id="Resource_c3rqn"]
 script = ExtResource("17_2p7ip")
-name = &"WallConnector6"
-partOfRoomName = &"nook_with_ramp"
+pathInRoom = NodePath("Connectors/WallConnector6")
 position = Vector3(5, 3.75, -6)
 depth = 0.75
 normal = Vector3(0, 0, -1)
@@ -785,8 +775,7 @@ orientation = 2
 
 [sub_resource type="Resource" id="Resource_4s5h6"]
 script = ExtResource("17_2p7ip")
-name = &"WallConnector7"
-partOfRoomName = &"nook_with_ramp"
+pathInRoom = NodePath("Connectors/WallConnector7")
 position = Vector3(3.5, 1, -5.25)
 depth = 1.5
 normal = Vector3(1, 0, 4.371139e-08)

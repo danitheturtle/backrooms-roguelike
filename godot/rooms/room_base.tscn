@@ -2,15 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c61w1b375al4r" path="res://scripts/room/room.gd" id="1_xe5ka"]
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="2_61bum"]
-[ext_resource type="Resource" uid="uid://iwue3tybbj3j" path="res://rooms/defs/definition_0.tres" id="2_jg44g"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_224ey"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_61bum"]
 resource_local_to_scene = true
 size = Vector3(8, 3.5, 8)
 
 [node name="RoomBase" type="Node3D" unique_id=1900576414]
 script = ExtResource("1_xe5ka")
-definitions = Array[Resource]([ExtResource("2_jg44g")])
+uniqueName = &"base"
 
 [node name="Colliders" type="Node3D" parent="." unique_id=1940976534]
 unique_name_in_owner = true
@@ -31,7 +30,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="BoundsAABB" parent="Bounds" unique_id=415124710 instance=ExtResource("2_61bum")]
-shape = SubResource("BoxShape3D_224ey")
+shape = SubResource("BoxShape3D_61bum")
 debug_color = Color(0, 0.6365585, 0.40732598, 0.41960785)
 
 [node name="SubRooms" type="Node3D" parent="." unique_id=1023009072]

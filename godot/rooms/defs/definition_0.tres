@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://iwue3tybbj3j"]
-
-[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="1_y0bpk"]
-[ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_tubl2"]
-
-[resource]
-script = ExtResource("2_tubl2")

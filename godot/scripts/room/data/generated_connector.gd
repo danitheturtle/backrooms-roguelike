@@ -4,12 +4,12 @@ class_name GeneratedConnector
 static var instanceCounter: int = 0
 var connectorInstanceId: StringName = "connector_-1"
 var parentRoomInstanceId: StringName = "room_-1"
-# room-unique connector name passed from ConnectorDefinition
-var connectorName: StringName
+# unique connector path passed from ConnectorDefinition
+var pathInRoom: NodePath
 
 # don't call directly, get_generated_instance() on room instead
 func _init(_definition: Resource, _parentRoomInstanceId: StringName) -> void:
-    connectorName = _definition.name
+    pathInRoom = _definition.pathInRoom
     type = _definition.initialType
     subType = _definition.initialSubType
     parentRoomInstanceId = _parentRoomInstanceId
