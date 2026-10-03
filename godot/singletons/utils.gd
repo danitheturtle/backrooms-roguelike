@@ -55,10 +55,9 @@ func get_children_of_type(parentNode: Node, type: Variant, recursive: bool = fal
 # gets first parent of given type, or null
 func get_parent_of_type(childNode: Node, type: Variant):
     if childNode == null: return null
-    var rootNode = get_tree().root
     var parentNode = childNode.get_parent()
     if !is_instance_of(parentNode, type):
-        if parentNode == rootNode: return null
+        if parentNode == null: return null
         return get_parent_of_type(parentNode, type)
     else:
         return parentNode

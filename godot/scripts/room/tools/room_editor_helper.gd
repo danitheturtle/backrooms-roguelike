@@ -56,6 +56,7 @@ func bake_room_definitions() -> void:
         #if atBoundsEdge: thisRoomDefinition.connectors.append(nextConnector)
 
 func persist_definitions() -> void:
+    if parent.isSubRoom: return #sub-rooms don't get baked
     update_refs()
     var editedRoomFolder = EditorInterface.get_edited_scene_root().scene_file_path.get_base_dir()
     var definitionsFolder = editedRoomFolder + "/defs"

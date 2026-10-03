@@ -34,7 +34,7 @@ func _notification(what: int):
         Node.NOTIFICATION_SCENE_INSTANTIATED:
             grab_refs()
         NOTIFICATION_EDITOR_PRE_SAVE:
-            if editorHelper != null:
+            if editorHelper != null && !isSubRoom:
                 editorHelper.bake_room_definitions()
                 editorHelper.persist_definitions()
 
@@ -49,11 +49,12 @@ func grab_refs() -> void:
         if nextConnector is RoomConnector: connectors.set(nextConnector.name, nextConnector)
     for nextSubRoom in get_node("%SubRooms").get_children():
         if nextSubRoom is Room: subRooms.append(nextSubRoom)
+
+func _enter_tree() -> void:
     parentRoom = Utils.get_parent_of_type(self, Room)
     if parentRoom != null: isSubRoom = true
 
 func _ready() -> void:
-    if colliders == null: grab_refs()
     if Engine.is_editor_hint() && !isSubRoom:
         if editorHelper == null: editorHelper = RoomEditorHelper.new(self)
         if definitions.size() == 0:
