@@ -660,22 +660,22 @@ pathInRoom = NodePath("Connectors/WallConnector2")
 position = Vector3(-7.25, 0.5, -8.5)
 depth = 0.5
 normal = Vector3(0, 0, -1)
-size = Vector2(2.5, 0)
-cornerMin = Vector3(-8.5, 0.5, -8.5)
-cornerMax = Vector3(-6, 0.5, -8.5)
-aabb = AABB(-8.5, 0.5, -8.75, 2.5, 0, 0.5)
+size = Vector2(2.5, 3)
+cornerMin = Vector3(-8.5, -1, -8.5)
+cornerMax = Vector3(-6, 2, -8.5)
+aabb = AABB(-8.5, -1, -8.75, 2.5, 3, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w5xyi"]
 resource_local_to_scene = true
-size = Vector3(2.5, 0, 0.5)
+size = Vector3(2.5, 3, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ineot"]
 resource_local_to_scene = true
-size = Vector3(2.5, 0, 0.5)
+size = Vector3(2.5, 3, 0.5)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8i3ns"]
 resource_local_to_scene = true
-size = Vector2(2.5, 0)
+size = Vector2(2.5, 3)
 orientation = 2
 
 [sub_resource type="Resource" id="Resource_0dj38"]
@@ -1602,7 +1602,6 @@ mesh = SubResource("PlaneMesh_0txq0")
 [node name="WallConnector2" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="5" unique_id=1453344296 instance=ExtResource("10_xdqlc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 0.5, -8.5)
 voxelWidth = 5
-voxelHeight = 0
 voxelDepth = 1.0
 innerEdgeWestMaterial = null
 innerEdgeNorthMaterial = null

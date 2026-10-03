@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mechanics/Mechanic Brainstorm.md",
+                "file": "Decoration/Deco Ideas.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Mechanic Brainstorm"
+              "title": "Deco Ideas"
             }
           }
         ]
@@ -190,6 +190,7 @@
   },
   "active": "46516998497d2586",
   "lastOpenFiles": [
+    "Mechanics/Mechanic Brainstorm.md",
     "Mechanics/Puzzles/The Fungus.md",
     "What Not To Do.md",
     "Technical/Generation Constraints.md",
@@ -197,7 +198,6 @@
     "Technical/Room Constraints.md",
     "Mechanics/Tools/Oxygen Tank.md",
     "Mechanics/Puzzles Overview.md",
-    "Mechanics/Mechanic Brainstorm.md",
     "Mechanics/Tools/Oxygen Mask.md",
     "Mechanics/Tools/Film Canister.md",
     "Mechanics/Tools/Almond Water.md",

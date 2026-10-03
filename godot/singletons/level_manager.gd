@@ -1,9 +1,8 @@
-extends Node3D
-class_name LevelManager
+extends Node
 
 signal level_ready
 
-# TODO build dynamically at runtime from saved files
+# TODO build dynamically at runtime from saved files in threaded resource loader
 const rooms: Dictionary[StringName, PackedScene] = {
     "tutorial": preload("res://rooms/room_tutorial/room_tutorial.tscn"),
     "four_way": preload("res://rooms/room_four_way/room_four_way.tscn"),
@@ -11,25 +10,29 @@ const rooms: Dictionary[StringName, PackedScene] = {
     "nook_with_ramp": preload("res://rooms/room_nook_with_ramp/room_nook_with_ramp.tscn"),
     "test": preload("res://rooms/room_test/room_test.tscn")
 }
+# TODO build dynamically at runtime from saved files in threaded resource loader
+const allDefinitions: Array[RoomDefinition] = [
+    preload("res://rooms/room_all_way/defs/definition_0.tres"),
+    preload("res://rooms/room_four_way/defs/definition_0.tres"),
+    preload("res://rooms/room_nook_with_ramp/defs/definition_0.tres"),
+    preload("res://rooms/room_test/defs/definition_0.tres"),
+    preload("res://rooms/room_tutorial/defs/definition_0.tres")
+]
 
-@onready var player: Player = $Player
-
+var root: LevelRoot = null
 var currentLevelSeed: int = 0
-var loadedRooms: Array[Room] = []
-
-func _ready() -> void:
-    pass
-    # TODO give room definitions to the generator
+var roomInstances: Dictionary[StringName, Room] = {}
+var connectorInstances: Dictionary[StringName, RoomConnector] = {}
 
 # called when a run ends or player switches game modes
 func reinit(nextSeed: int = -1) -> void:
-    for nextLoadedRoom in loadedRooms:
+    for nextLoadedRoom in roomInstances.values():
         nextLoadedRoom.free()
-    loadedRooms = []
-    # TODO: clear generated level state
+    roomInstances = {}
+    connectorInstances = {}
     # reinit player
-    if player != null:
-        player.reinit()
+    if State.player != null:
+        State.player.reinit()
     # reset random number gen
     State.rng = RandomNumberGenerator.new()
     if nextSeed != -1:
@@ -46,9 +49,8 @@ func load_tutorial() -> void:
     tutorialRoom.setup(tutorialInstance)
     await get_tree().process_frame
     add_child(tutorialRoom)
-    loadedRooms.append(tutorialRoom)
     # Player is disabled by default to prevent physics jank during setup
-    player.process_mode = Node.PROCESS_MODE_PAUSABLE
+    State.player.process_mode = Node.PROCESS_MODE_PAUSABLE
     level_ready.emit()
 
 # called at the start of a run
@@ -56,9 +58,8 @@ func generate_initial_level() -> void:
     var testRoom: Room = rooms["test"].instantiate()
     var testRoomInstance: GeneratedRoom = testRoom.definitions[0].get_generated_instance()
     testRoom.setup(testRoomInstance)
-    # Player is disabled by default to prevent physics jank during setup
     await get_tree().process_frame
     add_child(testRoom)
-    loadedRooms.append(testRoom)
-    player.process_mode = Node.PROCESS_MODE_PAUSABLE
+    # Player is disabled by default to prevent physics jank during setup
+    State.player.process_mode = Node.PROCESS_MODE_PAUSABLE
     level_ready.emit()

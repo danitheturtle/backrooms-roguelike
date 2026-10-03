@@ -3,6 +3,8 @@ Security cameras
 glass bricks
 wacky flailing inflatable tube man
 life-size decapitated lego man with yellow smiley face
+walkman
+arcade machines
 
 video:
 - 90s commercials

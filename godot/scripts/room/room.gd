@@ -79,9 +79,10 @@ func _ready() -> void:
 func try_bake_definitions() -> void:
     if editorHelper != null: editorHelper.bake_room_definitions()
 
-# called after initialization but before being added to the tree. Make wall holes, add sub-props, etc
+# called after initialization but before being added to the tree
 func setup(_generatedRoom: GeneratedRoom) -> void:
     var chosenDefinition = definitions[_generatedRoom.indexInScene]
+    LevelManager.roomInstances.set(_generatedRoom.roomInstanceId, self)
     # setup sub-rooms first
     # for nextSubRoom: Room in subRooms: nextSubRoom.setup(_generatedRoom)
     transform.origin = _generatedRoom.placedPosition
@@ -93,6 +94,7 @@ func setup(_generatedRoom: GeneratedRoom) -> void:
         var nextGeneratedProps = _generatedRoom.generatedConnectors[nextConnectorPath]
         var nextConnector = get_node(nextConnectorPath)
         nextConnector.generatedProps = nextGeneratedProps
+        LevelManager.connectorInstances.set(nextGeneratedProps.connectorInstanceId, nextConnector)
     # TODO place props
     # TODO wire up puzzles
     # if sub-random elements, shuffle them
