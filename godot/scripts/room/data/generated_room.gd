@@ -7,14 +7,11 @@ var roomInstanceId: StringName = "room_-1"
 var sceneName: StringName = ""
 # which room definition this instance is using
 var indexInScene: int = 0
-# copied from room definition, needed by dynamic rooms
-var dynamicRoomData: Dictionary[StringName, Variant] = {}
 
 # don't call directly, get_generated_instance() from RoomDefinition instead
 func _init(_definition: RoomDefinition) -> void:
     sceneName = _definition.sceneName
     indexInScene = _definition.indexInScene
-    dynamicRoomData = _definition.dynamicRoomData
     roomInstanceId = "room_" + str(instanceCounter)
     instanceCounter += 1
 
@@ -28,7 +25,8 @@ var placedForwardNormal: Vector3 = Vector3.FORWARD
 # set by level generator and used by room sub-generator
 var placedAtIteration: int = -1
 # generatedConnectors tell the room how to change each connector from the default value
-var generatedConnectors: Dictionary[StringName, GeneratedConnector] = {}
+# can delete keys that remain unchanged from room definition
+var generatedConnectors: Dictionary[NodePath, GeneratedConnector] = {}
 # tells room what should *definitely* spawn
 var spawnGameplayProp: Dictionary[Const.GameplayPropType, bool] = {}
 # adjusted prop spawn weight for room sub-generator

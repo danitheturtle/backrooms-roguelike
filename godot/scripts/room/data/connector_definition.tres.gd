@@ -41,8 +41,7 @@ func get_lockable() -> bool:
 # distance to the floor from the lowest point on the connector surface
 @export var distFromFloor: float = 0.0
 @export var bordersCeiling: bool = false
-
-# debug to confirm things get baked correctly. will go away
+# AABB used to detect other connectors. Centered with WxHxD = Size.x,size.y,0.5
 @export var aabb: AABB = AABB()
 
 func get_generated_instance(_parentInstanceId: StringName) -> GeneratedConnector:

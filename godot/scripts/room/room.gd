@@ -24,7 +24,7 @@ var instanceId: StringName:
         if generatedProps == null: return ""
         return generatedProps.roomInstanceId
 
-# calculated
+# runtime calculated
 var parentRoom: Room = null
 var isSubRoom: bool = false
 var calculatedAmbient: float = -1.0 # off by default
@@ -54,44 +54,49 @@ func grab_refs() -> void:
             subRooms.append(nextSubRoom)
             var nextSubPath = get_path_to(nextSubRoom)
             for nextSubConnectorPath: NodePath in nextSubRoom.connectors.keys():
-                connectors.set(
-                    NodePath(str(nextSubPath) + "/" + str(nextSubConnectorPath)),
-                    nextSubRoom.connectors[nextSubConnectorPath]
-                )
+                connectors.set(NodePath(str(nextSubPath) + "/" + str(nextSubConnectorPath)),
+                               nextSubRoom.connectors[nextSubConnectorPath])
 
 func _enter_tree() -> void:
     parentRoom = Utils.get_parent_of_type(self, Room)
     if parentRoom != null: isSubRoom = true
 
 func _ready() -> void:
-    if Engine.is_editor_hint() && !isSubRoom && uniqueName != "base":
-        if editorHelper == null: editorHelper = RoomEditorHelper.new(self)
-        if definitions.size() == 0:
-            editorHelper.bake_room_definitions()
-            editorHelper.persist_definitions()
-    # TODO get all object spawn locations
+    if Engine.is_editor_hint():
+        if !isSubRoom && uniqueName != "":
+            if editorHelper == null:
+                editorHelper = RoomEditorHelper.new(self)
+            if definitions.size() == 0:
+                editorHelper.bake_room_definitions()
+                editorHelper.persist_definitions()
+    else:
+        # hole-punch connectors
+        await get_tree().process_frame
+        for nextConnector: RoomConnector in connectors.values():
+            if nextConnector.doesNotConnect: continue
+            nextConnector.build_connectors()
 
 func try_bake_definitions() -> void:
     if editorHelper != null: editorHelper.bake_room_definitions()
 
 # called after initialization but before being added to the tree. Make wall holes, add sub-props, etc
 func setup(_generatedRoom: GeneratedRoom) -> void:
+    var chosenDefinition = definitions[_generatedRoom.indexInScene]
     # setup sub-rooms first
-    for nextSubRoom: Room in subRooms: nextSubRoom.setup(_generatedRoom)
+    # for nextSubRoom: Room in subRooms: nextSubRoom.setup(_generatedRoom)
     transform.origin = _generatedRoom.placedPosition
     transform.basis = Basis.looking_at(_generatedRoom.placedForwardNormal)
-    for nextConnectorName in _generatedRoom.generatedConnectors.keys():
-        var nextGeneratedProps = _generatedRoom.generatedConnectors[nextConnectorName]
-        var nextConnector = connectors[nextConnectorName]
-        # TODO wire up connector stuff
-        pass
+    for nextConnectorPath: NodePath in _generatedRoom.generatedConnectors.keys():
+        if !has_node(nextConnectorPath):
+            print("extra connector found in room definition, probably an error", str(nextConnectorPath))
+            continue
+        var nextGeneratedProps = _generatedRoom.generatedConnectors[nextConnectorPath]
+        var nextConnector = get_node(nextConnectorPath)
+        nextConnector.generatedProps = nextGeneratedProps
     # TODO place props
     # TODO wire up puzzles
     # if sub-random elements, shuffle them
-    if definitions[_generatedRoom.indexInScene].hasSubRandomization: shuffle()
-    # hole-punch connectors
-    for nextConnector: RoomConnector in connectors.values():
-        nextConnector.build_connectors()
+    if chosenDefinition.hasSubRandomization: shuffle()
     # get ambient light level based on number of active lights and their intensities. An approximation for bounce light
     if affectsAmbient:
         var lightNodes: Array = Utils.get_children_of_type(get_node("%Lights"), Light)

@@ -5,122 +5,91 @@
 
 [sub_resource type="Resource" id="Resource_2hanj"]
 script = ExtResource("1_2hanj")
-pathInRoom = NodePath("SubRooms/RoomNookWithRamp/Connectors/CeilingConnector")
-position = Vector3(-7.5, 4, -6.5)
-depth = 2.0
-normal = Vector3(0, 1, 0)
-size = Vector2(2, 2)
-cornerMin = Vector3(-8.5, 4, -7.5)
-cornerMax = Vector3(-6.5, 4, -5.5)
-aabb = AABB(-8.5, 3.75, -7.5, 2, 0.5, 2)
-
-[sub_resource type="Resource" id="Resource_vqn3w"]
-script = ExtResource("1_2hanj")
 pathInRoom = NodePath("SubRooms/RoomNookWithRamp/Connectors/CeilingConnector2")
-position = Vector3(-1, 7.5, -7.5)
+position = Vector3(0.75, 7.5, -7.5)
 depth = 1.75
 normal = Vector3(0, 1, 0)
 size = Vector2(1, 2)
-cornerMin = Vector3(-1.5, 7.5, -8.5)
-cornerMax = Vector3(-0.5, 7.5, -6.5)
-aabb = AABB(-1.5, 7.25, -8.5, 1, 0.5, 2)
+cornerMin = Vector3(0.25, 7.5, -8.5)
+cornerMax = Vector3(1.25, 7.5, -6.5)
+aabb = AABB(0.25, 7.25, -8.5, 1, 0.5, 2)
+
+[sub_resource type="Resource" id="Resource_vqn3w"]
+script = ExtResource("1_2hanj")
+pathInRoom = NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector")
+position = Vector3(-10.75, 1, 7)
+depth = 0.0
+normal = Vector3(-1, 0, 4.371139e-08)
+size = Vector2(1, 1)
+cornerMin = Vector3(-10.75, 0.5, 7.5)
+cornerMax = Vector3(-10.75, 1.5, 6.5)
+aabb = AABB(-11, 0.5, 6.5, 0.5, 1, 1)
 
 [sub_resource type="Resource" id="Resource_p0qrj"]
 script = ExtResource("1_2hanj")
-pathInRoom = NodePath("SubRooms/RoomNookWithRamp/Connectors/FloorConnector")
-position = Vector3(2.75, -3, -2)
-depth = 3.0
-normal = Vector3(0, -1, 0)
-size = Vector2(1.5, 2)
-cornerMin = Vector3(2, -3, -3)
-cornerMax = Vector3(3.5, -3, -1)
-aabb = AABB(2, -3.25, -3, 1.5, 0.5, 2)
+pathInRoom = NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector2")
+position = Vector3(-5.5, 0.5, -8.5)
+depth = 0.5
+normal = Vector3(0, 0, -1)
+size = Vector2(2.5, 0)
+cornerMin = Vector3(-6.75, 0.5, -8.5)
+cornerMax = Vector3(-4.25, 0.5, -8.5)
+aabb = AABB(-6.75, 0.5, -8.75, 2.5, 0, 0.5)
 
 [sub_resource type="Resource" id="Resource_bxbtr"]
 script = ExtResource("1_2hanj")
-pathInRoom = NodePath("SubRooms/RoomNookWithRamp/Connectors/FloorConnector2")
-position = Vector3(1.5, 2, -8)
-normal = Vector3(0, -1, 0)
-size = Vector2(1, 1)
-cornerMin = Vector3(1, 2, -8.5)
-cornerMax = Vector3(2, 2, -7.5)
-aabb = AABB(1, 1.75, -8.5, 1, 0.5, 1)
-
-[sub_resource type="Resource" id="Resource_sh2ve"]
-script = ExtResource("1_2hanj")
-pathInRoom = NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector")
-position = Vector3(-12.5, 1, 7)
-normal = Vector3(-1, 0, 4.371139e-08)
-size = Vector2(1, 1)
-cornerMin = Vector3(-12.5, 0.5, 7.5)
-cornerMax = Vector3(-12.5, 1.5, 6.5)
-aabb = AABB(-12.75, 0.5, 6.5, 0.5, 1, 1)
-
-[sub_resource type="Resource" id="Resource_3o5is"]
-script = ExtResource("1_2hanj")
-pathInRoom = NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector2")
-position = Vector3(-7.25, 0.5, -8.5)
-depth = 0.5
-normal = Vector3(0, 0, -1)
-size = Vector2(2.5, 3)
-cornerMin = Vector3(-8.5, -1, -8.5)
-cornerMax = Vector3(-6, 2, -8.5)
-aabb = AABB(-8.5, -1, -8.75, 2.5, 3, 0.5)
-
-[sub_resource type="Resource" id="Resource_e5xxv"]
-script = ExtResource("1_2hanj")
 pathInRoom = NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector3")
-position = Vector3(-9, 0.25, -3.75)
+position = Vector3(-7.25, 0.25, -3.75)
 depth = 0.5
 normal = Vector3(-1, 0, 4.371139e-08)
 size = Vector2(5.5, 2.5)
-cornerMin = Vector3(-9, -1, -1)
-cornerMax = Vector3(-9, 1.5, -6.5)
-aabb = AABB(-9.25, -1, -6.5, 0.5, 2.5, 5.5)
+cornerMin = Vector3(-7.25, -1, -1)
+cornerMax = Vector3(-7.25, 1.5, -6.5)
+aabb = AABB(-7.5, -1, -6.5, 0.5, 2.5, 5.5)
 
-[sub_resource type="Resource" id="Resource_r5h64"]
+[sub_resource type="Resource" id="Resource_sh2ve"]
 script = ExtResource("1_2hanj")
 pathInRoom = NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector4")
-position = Vector3(-2, 1.25, 9)
+position = Vector3(-0.25, 1.25, 9)
 depth = 0.75
 normal = Vector3(8.742278e-08, 0, 1)
 size = Vector2(5, 2.5)
-cornerMin = Vector3(0.5, 0, 9)
-cornerMax = Vector3(-4.5, 2.5, 9)
-aabb = AABB(-4.5, 0, 8.75, 5, 2.5, 0.5)
+cornerMin = Vector3(2.25, 0, 9)
+cornerMax = Vector3(-2.75, 2.5, 9)
+aabb = AABB(-2.75, 0, 8.75, 5, 2.5, 0.5)
 
-[sub_resource type="Resource" id="Resource_tl2kc"]
+[sub_resource type="Resource" id="Resource_3o5is"]
 script = ExtResource("1_2hanj")
 pathInRoom = NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector5")
-position = Vector3(6.5, 1.5, 3.75)
+position = Vector3(8.25, 1.5, 3.75)
 depth = 0.5
 normal = Vector3(1, 0, 4.371139e-08)
 size = Vector2(3.5, 3)
-cornerMin = Vector3(6.5, 0, 2)
-cornerMax = Vector3(6.5, 3, 5.5)
-aabb = AABB(6.25, 0, 2, 0.5, 3, 3.5)
+cornerMin = Vector3(8.25, 0, 2)
+cornerMax = Vector3(8.25, 3, 5.5)
+aabb = AABB(8, 0, 2, 0.5, 3, 3.5)
 
-[sub_resource type="Resource" id="Resource_ueqai"]
+[sub_resource type="Resource" id="Resource_e5xxv"]
 script = ExtResource("1_2hanj")
-pathInRoom = NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector6")
-position = Vector3(5, 3.75, -6)
-depth = 0.75
-normal = Vector3(0, 0, -1)
-size = Vector2(2, 2.5)
-cornerMin = Vector3(4, 2.5, -6)
-cornerMax = Vector3(6, 5, -6)
-aabb = AABB(4, 2.5, -6.25, 2, 2.5, 0.5)
+pathInRoom = NodePath("SubRooms/RoomAllWay/Connectors/FloorConnector")
+position = Vector3(4.25, -7.5, 0)
+depth = 0.5
+normal = Vector3(0, -1, 0)
+size = Vector2(7, 7)
+cornerMin = Vector3(0.75, -7.5, -3.5)
+cornerMax = Vector3(7.75, -7.5, 3.5)
+aabb = AABB(0.75, -7.75, -3.5, 7, 0.5, 7)
 
-[sub_resource type="Resource" id="Resource_urvlv"]
+[sub_resource type="Resource" id="Resource_r5h64"]
 script = ExtResource("1_2hanj")
-pathInRoom = NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector7")
-position = Vector3(3.5, 1, -5.25)
-depth = 1.5
+pathInRoom = NodePath("SubRooms/RoomAllWay/Connectors/WallConnector4")
+position = Vector3(8.25, -5.25, 0)
+depth = 0.5
 normal = Vector3(1, 0, 4.371139e-08)
-size = Vector2(1.5, 2)
-cornerMin = Vector3(3.5, 0, -6)
-cornerMax = Vector3(3.5, 2, -4.5)
-aabb = AABB(3.25, 0, -6, 0.5, 2, 1.5)
+size = Vector2(7, 3.5)
+cornerMin = Vector3(8.25, -7, -3.5)
+cornerMax = Vector3(8.25, -3.5, 3.5)
+aabb = AABB(8, -7, -3.5, 0.5, 3.5, 7)
 
 [resource]
 script = ExtResource("2_vqn3w")
@@ -129,18 +98,15 @@ scenePath = "res://rooms/room_test/room_test.tscn"
 biomes = Dictionary[int, bool]({
 0: true
 })
-approximateBounds = AABB(-4, -1.75, -4, 8, 3.5, 8)
-bounds = Array[AABB]([AABB(-4, -1.75, -4, 8, 3.5, 8)])
+approximateBounds = AABB(-7.25, -7.5, -8.5, 15.5, 15, 17.5)
+bounds = Array[AABB]([AABB(-7.25, -7.5, -8.5, 15.5, 15, 17.5)])
 connectors = Dictionary[NodePath, ExtResource("1_2hanj")]({
-NodePath("SubRooms/RoomNookWithRamp/Connectors/CeilingConnector"): SubResource("Resource_2hanj"),
-NodePath("SubRooms/RoomNookWithRamp/Connectors/CeilingConnector2"): SubResource("Resource_vqn3w"),
-NodePath("SubRooms/RoomNookWithRamp/Connectors/FloorConnector"): SubResource("Resource_p0qrj"),
-NodePath("SubRooms/RoomNookWithRamp/Connectors/FloorConnector2"): SubResource("Resource_bxbtr"),
-NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector"): SubResource("Resource_sh2ve"),
-NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector2"): SubResource("Resource_3o5is"),
-NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector3"): SubResource("Resource_e5xxv"),
-NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector4"): SubResource("Resource_r5h64"),
-NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector5"): SubResource("Resource_tl2kc"),
-NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector6"): SubResource("Resource_ueqai"),
-NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector7"): SubResource("Resource_urvlv")
+NodePath("SubRooms/RoomNookWithRamp/Connectors/CeilingConnector2"): SubResource("Resource_2hanj"),
+NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector"): SubResource("Resource_vqn3w"),
+NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector2"): SubResource("Resource_p0qrj"),
+NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector3"): SubResource("Resource_bxbtr"),
+NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector4"): SubResource("Resource_sh2ve"),
+NodePath("SubRooms/RoomNookWithRamp/Connectors/WallConnector5"): SubResource("Resource_3o5is"),
+NodePath("SubRooms/RoomAllWay/Connectors/FloorConnector"): SubResource("Resource_e5xxv"),
+NodePath("SubRooms/RoomAllWay/Connectors/WallConnector4"): SubResource("Resource_r5h64")
 })

@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://bu011qyywc4fe" path="res://rooms/room_all_way/defs/definition_0.tres" id="3_lvn7y"]
 [ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="3_t1q3e"]
 [ext_resource type="PackedScene" uid="uid://di65tcxw57kit" path="res://objects/connectors/wall/wall_connector.tscn" id="4_t1q3e"]
+[ext_resource type="Material" uid="uid://d1infe3mw6u2" path="res://assets/materials/Wallpaper01/Wallpaper01_world.tres" id="5_eg8m8"]
 
 [sub_resource type="Resource" id="Resource_eg8m8"]
 script = ExtResource("3_t1q3e")
@@ -19,15 +20,15 @@ cornerMin = Vector3(-3.5, -0.5, -3.5)
 cornerMax = Vector3(3.5, -0.5, 3.5)
 aabb = AABB(-3.5, -0.75, -3.5, 7, 0.5, 7)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lvn7y"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_4he7e"]
 resource_local_to_scene = true
 size = Vector3(7, 0.5, 7)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_eg8m8"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_snimf"]
 resource_local_to_scene = true
 size = Vector3(7, 0.5, 7)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_4he7e"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_xnxdn"]
 resource_local_to_scene = true
 size = Vector2(7, 7)
 
@@ -42,15 +43,15 @@ cornerMin = Vector3(-3.5, 4, -3.5)
 cornerMax = Vector3(3.5, 4, 3.5)
 aabb = AABB(-3.5, 3.75, -3.5, 7, 0.5, 7)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_snimf"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_fvd6y"]
 resource_local_to_scene = true
 size = Vector3(7, 0.5, 7)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xnxdn"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_f4te1"]
 resource_local_to_scene = true
 size = Vector3(7, 0.5, 7)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_fvd6y"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_37p4u"]
 resource_local_to_scene = true
 flip_faces = true
 size = Vector2(7, 7)
@@ -66,15 +67,15 @@ cornerMin = Vector3(-3.5, 0, -4)
 cornerMax = Vector3(3.5, 3.5, -4)
 aabb = AABB(-3.5, 0, -4.25, 7, 3.5, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_f4te1"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_y826x"]
 resource_local_to_scene = true
 size = Vector3(7, 3.5, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_37p4u"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_f0afk"]
 resource_local_to_scene = true
 size = Vector3(7, 3.5, 0.5)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_y826x"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_c57nh"]
 resource_local_to_scene = true
 size = Vector2(7, 3.5)
 orientation = 2
@@ -90,15 +91,15 @@ cornerMin = Vector3(3.5, 0, 4.0000005)
 cornerMax = Vector3(-3.5, 3.5, 3.9999998)
 aabb = AABB(-3.5, 0, 3.7499998, 7, 3.5, 0.5000007)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_f0afk"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_er78x"]
 resource_local_to_scene = true
 size = Vector3(7, 3.5, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_c57nh"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_npa5b"]
 resource_local_to_scene = true
 size = Vector3(7, 3.5, 0.5)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_er78x"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_qfseg"]
 resource_local_to_scene = true
 size = Vector2(7, 3.5)
 orientation = 2
@@ -114,15 +115,15 @@ cornerMin = Vector3(-3.9999998, 0, 3.5)
 cornerMax = Vector3(-4, 3.5, -3.5)
 aabb = AABB(-4.25, 0, -3.5, 0.5, 3.5, 7)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_npa5b"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_hi86o"]
 resource_local_to_scene = true
 size = Vector3(7, 3.5, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qfseg"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_gwsel"]
 resource_local_to_scene = true
 size = Vector3(7, 3.5, 0.5)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_hi86o"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_f4uve"]
 resource_local_to_scene = true
 size = Vector2(7, 3.5)
 orientation = 2
@@ -138,20 +139,20 @@ cornerMin = Vector3(4, 0, -3.5)
 cornerMax = Vector3(3.9999998, 3.5, 3.5)
 aabb = AABB(3.7499998, 0, -3.5, 0.50000024, 3.5, 7)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gwsel"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_umr3o"]
 resource_local_to_scene = true
 size = Vector3(7, 3.5, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_f4uve"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_l6qcp"]
 resource_local_to_scene = true
 size = Vector3(7, 3.5, 0.5)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_umr3o"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_dflkk"]
 resource_local_to_scene = true
 size = Vector2(7, 3.5)
 orientation = 2
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_l6qcp"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ocqf2"]
 resource_local_to_scene = true
 size = Vector3(8, 4.5, 8)
 
@@ -164,19 +165,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 voxelWidth = 14
 voxelHeight = 14
 voxelDepth = 1.0
+edgeGenWest = ExtResource("5_eg8m8")
+edgeGenNorth = ExtResource("5_eg8m8")
+edgeGenEast = ExtResource("5_eg8m8")
+edgeGenSouth = null
 edgeGenCollision = true
+farEdgeWestMaterial = 0.0
+farEdgeEastMaterial = 0.0
 definition = SubResource("Resource_eg8m8")
 
 [node name="RectCollider" parent="Connectors/FloorConnector/Adjacent" parent_id_path=PackedInt32Array(674166013, 1418678597) index="0" unique_id=415124710]
-shape = SubResource("BoxShape3D_lvn7y")
+shape = SubResource("BoxShape3D_4he7e")
 
 [node name="RectCollider" parent="Connectors/FloorConnector/Collider" parent_id_path=PackedInt32Array(674166013, 446596967) index="0" unique_id=813981425]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-shape = SubResource("BoxShape3D_eg8m8")
+shape = SubResource("BoxShape3D_snimf")
 
 [node name="Mesh" parent="Connectors/FloorConnector" index="2" unique_id=240402684]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("PlaneMesh_4he7e")
+mesh = SubResource("PlaneMesh_xnxdn")
 
 [node name="CeilingConnector" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="1" unique_id=407118955 instance=ExtResource("3_b6y2s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
@@ -184,99 +191,153 @@ voxelWidth = 14
 voxelHeight = 14
 voxelDepth = 1.0
 voxelDistanceToFloor = 7.0
+edgeGenWest = ExtResource("5_eg8m8")
+edgeGenNorth = ExtResource("5_eg8m8")
+edgeGenEast = ExtResource("5_eg8m8")
+edgeGenSouth = null
 edgeGenCollision = true
+farEdgeWestMaterial = 0.0
+farEdgeEastMaterial = 0.0
 definition = SubResource("Resource_ko24d")
 
 [node name="RectCollider" parent="Connectors/CeilingConnector/Adjacent" parent_id_path=PackedInt32Array(407118955, 1101334803) index="0" unique_id=415124710]
-shape = SubResource("BoxShape3D_snimf")
+shape = SubResource("BoxShape3D_fvd6y")
 
 [node name="RectCollider" parent="Connectors/CeilingConnector/Collider" parent_id_path=PackedInt32Array(407118955, 1707928833) index="0" unique_id=350048483]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-shape = SubResource("BoxShape3D_xnxdn")
+shape = SubResource("BoxShape3D_f4te1")
 
 [node name="Mesh" parent="Connectors/CeilingConnector" index="2" unique_id=103419973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("PlaneMesh_fvd6y")
+mesh = SubResource("PlaneMesh_37p4u")
 
 [node name="WallConnector" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="2" unique_id=1632024163 instance=ExtResource("4_t1q3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -4)
 voxelWidth = 14
 voxelHeight = 7
 voxelDepth = 1.0
+edgeGenWest = null
+edgeGenNorth = null
+edgeGenEast = null
+edgeGenSouth = null
 edgeGenCollision = true
+innerEdgeWestMaterial = null
+innerEdgeNorthMaterial = null
+innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = 0.0
+farEdgeWestMaterial = 0.0
+farEdgeNorthMaterial = 0.0
+farEdgeEastMaterial = 0.0
+farEdgeSouthMaterial = 0.0
 definition = SubResource("Resource_y826x")
 
 [node name="RectCollider" parent="Connectors/WallConnector/Adjacent" parent_id_path=PackedInt32Array(1632024163, 786542423) index="0" unique_id=415124710]
-shape = SubResource("BoxShape3D_f4te1")
+shape = SubResource("BoxShape3D_y826x")
 
 [node name="RectCollider" parent="Connectors/WallConnector/Collider" parent_id_path=PackedInt32Array(1632024163, 237774776) index="0" unique_id=1692528920]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
-shape = SubResource("BoxShape3D_37p4u")
+shape = SubResource("BoxShape3D_f0afk")
 
 [node name="Mesh" parent="Connectors/WallConnector" index="2" unique_id=1345220754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
-mesh = SubResource("PlaneMesh_y826x")
+mesh = SubResource("PlaneMesh_c57nh")
 
 [node name="WallConnector2" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="3" unique_id=155153685 instance=ExtResource("4_t1q3e")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.75, 4)
 voxelWidth = 14
 voxelHeight = 7
 voxelDepth = 1.0
+edgeGenWest = null
+edgeGenNorth = null
+edgeGenEast = null
+edgeGenSouth = null
 edgeGenCollision = true
+innerEdgeWestMaterial = null
+innerEdgeNorthMaterial = null
+innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = 0.0
+farEdgeWestMaterial = 0.0
+farEdgeNorthMaterial = 0.0
+farEdgeEastMaterial = 0.0
+farEdgeSouthMaterial = 0.0
 definition = SubResource("Resource_npa5b")
 
 [node name="RectCollider" parent="Connectors/WallConnector2/Adjacent" parent_id_path=PackedInt32Array(155153685, 786542423) index="0" unique_id=415124710]
-shape = SubResource("BoxShape3D_f0afk")
+shape = SubResource("BoxShape3D_er78x")
 
 [node name="RectCollider" parent="Connectors/WallConnector2/Collider" parent_id_path=PackedInt32Array(155153685, 237774776) index="0" unique_id=1692528920]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
-shape = SubResource("BoxShape3D_c57nh")
+shape = SubResource("BoxShape3D_npa5b")
 
 [node name="Mesh" parent="Connectors/WallConnector2" index="2" unique_id=1345220754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
-mesh = SubResource("PlaneMesh_er78x")
+mesh = SubResource("PlaneMesh_qfseg")
 
 [node name="WallConnector3" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="4" unique_id=904081223 instance=ExtResource("4_t1q3e")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 1.75, 0)
 voxelWidth = 14
 voxelHeight = 7
 voxelDepth = 1.0
+edgeGenWest = null
+edgeGenNorth = null
+edgeGenEast = null
+edgeGenSouth = null
 edgeGenCollision = true
+innerEdgeWestMaterial = null
+innerEdgeNorthMaterial = null
+innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = 0.0
+farEdgeWestMaterial = 0.0
+farEdgeNorthMaterial = 0.0
+farEdgeEastMaterial = 0.0
+farEdgeSouthMaterial = 0.0
 definition = SubResource("Resource_f4uve")
 
 [node name="RectCollider" parent="Connectors/WallConnector3/Adjacent" parent_id_path=PackedInt32Array(904081223, 786542423) index="0" unique_id=415124710]
-shape = SubResource("BoxShape3D_npa5b")
+shape = SubResource("BoxShape3D_hi86o")
 
 [node name="RectCollider" parent="Connectors/WallConnector3/Collider" parent_id_path=PackedInt32Array(904081223, 237774776) index="0" unique_id=1692528920]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
-shape = SubResource("BoxShape3D_qfseg")
+shape = SubResource("BoxShape3D_gwsel")
 
 [node name="Mesh" parent="Connectors/WallConnector3" index="2" unique_id=1345220754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
-mesh = SubResource("PlaneMesh_hi86o")
+mesh = SubResource("PlaneMesh_f4uve")
 
 [node name="WallConnector4" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="5" unique_id=1163107441 instance=ExtResource("4_t1q3e")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 1.75, 0)
 voxelWidth = 14
 voxelHeight = 7
 voxelDepth = 1.0
+edgeGenWest = null
+edgeGenNorth = null
+edgeGenEast = null
+edgeGenSouth = null
 edgeGenCollision = true
+innerEdgeWestMaterial = null
+innerEdgeNorthMaterial = null
+innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = 0.0
+farEdgeWestMaterial = 0.0
+farEdgeNorthMaterial = 0.0
+farEdgeEastMaterial = 0.0
+farEdgeSouthMaterial = 0.0
 definition = SubResource("Resource_hi86o")
 
 [node name="RectCollider" parent="Connectors/WallConnector4/Adjacent" parent_id_path=PackedInt32Array(1163107441, 786542423) index="0" unique_id=415124710]
-shape = SubResource("BoxShape3D_gwsel")
+shape = SubResource("BoxShape3D_umr3o")
 
 [node name="RectCollider" parent="Connectors/WallConnector4/Collider" parent_id_path=PackedInt32Array(1163107441, 237774776) index="0" unique_id=1692528920]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
-shape = SubResource("BoxShape3D_f4uve")
+shape = SubResource("BoxShape3D_l6qcp")
 
 [node name="Mesh" parent="Connectors/WallConnector4" index="2" unique_id=1345220754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
-mesh = SubResource("PlaneMesh_umr3o")
+mesh = SubResource("PlaneMesh_dflkk")
 
 [node name="BoundsAABB" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="0" unique_id=415124710]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
-shape = SubResource("BoxShape3D_l6qcp")
+shape = SubResource("BoxShape3D_ocqf2")
 
 [editable path="Connectors/FloorConnector"]
 [editable path="Connectors/CeilingConnector"]

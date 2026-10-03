@@ -17,20 +17,30 @@ func update_refs() -> void:
 func bake_room_definitions() -> void:
     if room.isSubRoom: return #sub-rooms don't get baked
     update_refs()
+    # ensure at least one room definition
     if definitions.size() == 0: definitions.append(RoomDefinition.new())
-    var connectorDefinitions: Dictionary[NodePath, ConnectorDefinition] = {}
-    var allBiomes: Dictionary[Const.BiomeType, bool] = {}
-    for nextConnector: RoomConnector in connectors.values():
-        nextConnector.editorHelper.bake_connector_definition()
-        connectorDefinitions[nextConnector.definition.pathInRoom] = nextConnector.definition
-        allBiomes[nextConnector.definition.biome] = true
     var approximateAABB: AABB = AABB(Vector3.ZERO,Vector3.ZERO)
     var boundingAABBs: Array[AABB] = []
+    # calculate AABB for all bounds
     for nextBounds in boundsArea.get_children():
         if nextBounds is CollisionShape3D:
             var newBoundingBox = AABB(nextBounds.transform.origin - (nextBounds.shape.size / 2.0), nextBounds.shape.size)
             approximateAABB = approximateAABB.merge(newBoundingBox)
             boundingAABBs.append(newBoundingBox)
+    var connectorDefinitions: Dictionary[NodePath, ConnectorDefinition] = {}
+    var allBiomes: Dictionary[Const.BiomeType, bool] = {}
+    # generator only cares about connectors on room boundary
+    for nextConnector: RoomConnector in connectors.values():
+        nextConnector.editorHelper.bake_connector_definition()
+        var nextConnectorDefinition = nextConnector.definition
+        var atBoundsEdge = true
+        for nextBoundingAABB: AABB in boundingAABBs:
+            if nextBoundingAABB.encloses(nextConnectorDefinition.aabb):
+                atBoundsEdge = false
+                break
+        if atBoundsEdge:
+            connectorDefinitions[nextConnector.definition.pathInRoom] = nextConnector.definition
+            allBiomes[nextConnector.definition.biome] = true
     # TODO: multiple unique defs with size-adjusted connections. gonna have to run some sort of subprocess
     for definitionIndex: int in room.definitions.size():
         definitions[definitionIndex].sceneName = room.uniqueName
@@ -41,19 +51,6 @@ func bake_room_definitions() -> void:
         definitions[definitionIndex].approximateBounds = approximateAABB
         definitions[definitionIndex].bounds = boundingAABBs
         definitions[definitionIndex].dynamicRoomData = {} # TODO not used yet
-    #var allConnectors: Array = get_all_connectors()
-    #for nextConnector in allConnectors:
-        #var atBoundsEdge = true
-        #for nextBounds: AABB in thisRoomDefinition.bounds:
-            ## re-create connector's adjacent AABB which is larger than a flat plane
-            #var quarterVoxelNormal = (10.0*nextConnector.normal).limit_length(Const.QUARTER_VOXEL)
-            #var connectorPos: Vector3 = nextConnector.cornerMin + quarterVoxelNormal
-            #var connectorEnd: Vector3 = nextConnector.cornerMax - quarterVoxelNormal
-            #nextConnector.aabb = AABB(connectorPos, connectorEnd - connectorPos).abs()
-            #if nextBounds.encloses(nextConnector.aabb):
-                #atBoundsEdge = false
-                #break
-        #if atBoundsEdge: thisRoomDefinition.connectors.append(nextConnector)
 
 func persist_definitions() -> void:
     if room.isSubRoom: return #sub-rooms don't get baked

@@ -9,7 +9,6 @@ size = Vector3(8, 3.5, 8)
 
 [node name="RoomBase" type="Node3D" unique_id=1900576414]
 script = ExtResource("1_xe5ka")
-uniqueName = &"base"
 
 [node name="Colliders" type="Node3D" parent="." unique_id=1940976534]
 unique_name_in_owner = true

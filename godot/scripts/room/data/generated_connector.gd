@@ -30,3 +30,5 @@ var subType: Const.ConnectorSubType = Const.ConnectorSubType.EMPTY
 var locked: bool = false
 # Spawn a draggable prop in front of the connection to obscure it, if supported
 var blocked: bool = false
+# set to true if levelgen knows for sure that this connector doesn't go anywhere
+var doesNotConnect: bool = false

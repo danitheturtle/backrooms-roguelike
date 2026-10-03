@@ -53,7 +53,7 @@ func load_tutorial() -> void:
 
 # called at the start of a run
 func generate_initial_level() -> void:
-    var testRoom: Room = rooms["nook_with_ramp"].instantiate()
+    var testRoom: Room = rooms["test"].instantiate()
     var testRoomInstance: GeneratedRoom = testRoom.definitions[0].get_generated_instance()
     testRoom.setup(testRoomInstance)
     # Player is disabled by default to prevent physics jank during setup

@@ -26,8 +26,33 @@ func set_connector_width(newWidth: int) -> void: #only one that's the same for a
 @export_range(0.0,10.0,0.5, "or_greater", "prefer_slider") var voxelDistanceToFloor: float = 0.0
 # don't need distance to ceiling, so only track if connector is touching
 @export var voxelBordersCeiling: bool = false
+# Edge meshes are generated when hole overlaps surface edge
+# Disable to prevent z-fighting with existing geometry
+@export_group('Generate Edges', 'edgeGen')
+@export var edgeGenWest: bool = true
+@export var edgeGenNorth: bool = true
+@export var edgeGenEast: bool = true
+@export var edgeGenSouth: bool = true
+# edge collision usually exists, false by default. Only generates collison for enabled edges
+@export var edgeGenCollision: bool = false
+# materials for hole edges generated in the middle of the surface
+@export_group('Inner Edge Materials', 'innerEdge')
+@export var innerEdgeWestMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
+@export var innerEdgeNorthMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
+@export var innerEdgeEastMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
+@export var innerEdgeSouthMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
+# materials for hole edges generated at the outer edge of the surface
+@export_group('Far Edge Materials', 'farEdge')
+@export var farEdgeWestMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
+@export var farEdgeNorthMaterial: StandardMaterial3D = DropCeilingRectangle01WorldMaterial
+@export var farEdgeEastMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
+@export var farEdgeSouthMaterial: StandardMaterial3D = Carpet01WorldMaterial
+# definition passed to levelgen
+@export var definition: ConnectorDefinition = null
 
-# props that use editor-set vars to get worldspace units
+###
+### Properties
+###
 var globalWidth: float: get = get_global_width
 func get_global_width(): return float(voxelWidth) * Const.VOXEL
 var globalHeight: float: get = get_global_height
@@ -42,33 +67,20 @@ var halfDepth: float: get = get_half_depth
 func get_half_depth(): return globalDepth / 2.0
 var localSpace: Rect2:
     get: return Rect2(0.0,0.0,globalWidth,globalHeight)
-
-# Edge meshes are generated when hole overlaps surface edge
-# Disable to prevent z-fighting with existing geometry
-@export_group('Generate Edges', 'edgeGen')
-@export var edgeGenWest: bool = true
-@export var edgeGenNorth: bool = true
-@export var edgeGenEast: bool = true
-@export var edgeGenSouth: bool = true
-# edge collision usually exists, false by default. Only generates collison for enabled edges
-@export var edgeGenCollision: bool = false
-
-# materials for hole edges generated in the middle of the surface
-@export_group('Inner Edge Materials', 'innerEdge')
-@export var innerEdgeWestMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
-@export var innerEdgeNorthMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
-@export var innerEdgeEastMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
-@export var innerEdgeSouthMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
-
-# materials for hole edges generated at the outer edge of the surface
-@export_group('Far Edge Materials', 'farEdge')
-@export var farEdgeWestMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
-@export var farEdgeNorthMaterial: StandardMaterial3D = DropCeilingRectangle01WorldMaterial
-@export var farEdgeEastMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
-@export var farEdgeSouthMaterial: StandardMaterial3D = Carpet01WorldMaterial
-
-# definition passed to levelgen
-@export var definition: ConnectorDefinition = null
+var resolvedType: Const.ConnectorType:
+    get:
+        if generatedProps != null: return generatedProps.type
+        if definition != null: return definition.initialType
+        return Const.ConnectorType.SIMPLE
+var resolvedSubType: Const.ConnectorSubType:
+    get:
+        if generatedProps != null: return generatedProps.subType
+        if definition != null: return definition.initialSubType
+        return Const.ConnectorSubType.EMPTY
+var doesNotConnect: bool:
+    get:
+        if generatedProps != null: return generatedProps.doesNotConnect
+        return false
 
 # Refs grabbed on ready
 @onready var staticBody: StaticBody3D = $Collider
@@ -79,15 +91,6 @@ var localSpace: Rect2:
 
 # per-instance levelgen output
 var generatedProps: GeneratedConnector = null
-var resolvedType: Const.ConnectorType:
-    get:
-        if generatedProps == null: return Const.ConnectorType.SIMPLE
-        return generatedProps.type
-var resolvedSubType: Const.ConnectorSubType:
-    get:
-        if generatedProps == null: return Const.ConnectorSubType.EMPTY
-        return generatedProps.subType
-
 # runtime local state
 var adjacentAABB: AABB
 var surfaceOffsetInNormal: float
@@ -119,7 +122,9 @@ func _ready() -> void:
     adjacent.area_entered.connect(on_other_connector_entered)
 
 func on_other_connector_exited(body: Area3D):
-    var parentIndex = coplanarConnectors.find(body.get_parent())
+    var parentNode = body.get_parent()
+    if parentNode == null: return
+    var parentIndex = coplanarConnectors.find(parentNode)
     if parentIndex != -1:
         coplanarConnectors.remove_at(parentIndex)
 

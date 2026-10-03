@@ -196,8 +196,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -4)
 voxelWidth = 14
 voxelHeight = 7
 voxelDepth = 1.0
+edgeGenWest = null
 edgeGenNorth = false
+edgeGenEast = null
 edgeGenSouth = false
+edgeGenCollision = null
+innerEdgeWestMaterial = null
+innerEdgeNorthMaterial = null
+innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = 0.0
+farEdgeWestMaterial = 0.0
+farEdgeNorthMaterial = 0.0
+farEdgeEastMaterial = 0.0
+farEdgeSouthMaterial = 0.0
 definition = SubResource("Resource_dmo16")
 
 [node name="RectCollider" parent="Connectors/WallConnector/Adjacent" parent_id_path=PackedInt32Array(1632024163, 786542423) index="0" unique_id=415124710]
@@ -216,8 +227,19 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1
 voxelWidth = 14
 voxelHeight = 7
 voxelDepth = 1.0
+edgeGenWest = null
 edgeGenNorth = false
+edgeGenEast = null
 edgeGenSouth = false
+edgeGenCollision = null
+innerEdgeWestMaterial = null
+innerEdgeNorthMaterial = null
+innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = 0.0
+farEdgeWestMaterial = 0.0
+farEdgeNorthMaterial = 0.0
+farEdgeEastMaterial = 0.0
+farEdgeSouthMaterial = 0.0
 definition = SubResource("Resource_gm61u")
 
 [node name="RectCollider" parent="Connectors/WallConnector2/Adjacent" parent_id_path=PackedInt32Array(350298859, 786542423) index="0" unique_id=415124710]
@@ -236,8 +258,19 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 
 voxelWidth = 14
 voxelHeight = 8
 voxelDepth = 1.0
+edgeGenWest = null
 edgeGenNorth = false
+edgeGenEast = null
 edgeGenSouth = false
+edgeGenCollision = null
+innerEdgeWestMaterial = null
+innerEdgeNorthMaterial = null
+innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = 0.0
+farEdgeWestMaterial = 0.0
+farEdgeNorthMaterial = 0.0
+farEdgeEastMaterial = 0.0
+farEdgeSouthMaterial = 0.0
 definition = SubResource("Resource_ykvj0")
 
 [node name="RectCollider" parent="Connectors/WallConnector3/Adjacent" parent_id_path=PackedInt32Array(1710313204, 786542423) index="0" unique_id=415124710]
@@ -256,8 +289,19 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 1
 voxelWidth = 14
 voxelHeight = 8
 voxelDepth = 1.0
+edgeGenWest = null
 edgeGenNorth = false
+edgeGenEast = null
 edgeGenSouth = false
+edgeGenCollision = null
+innerEdgeWestMaterial = null
+innerEdgeNorthMaterial = null
+innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = 0.0
+farEdgeWestMaterial = 0.0
+farEdgeNorthMaterial = 0.0
+farEdgeEastMaterial = 0.0
+farEdgeSouthMaterial = 0.0
 definition = SubResource("Resource_f4duu")
 
 [node name="RectCollider" parent="Connectors/WallConnector4/Adjacent" parent_id_path=PackedInt32Array(1441787851, 786542423) index="0" unique_id=415124710]
