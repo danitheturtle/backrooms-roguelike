@@ -27,7 +27,8 @@ var connectorInstances: Dictionary[StringName, RoomConnector] = {}
 # called when a run ends or player switches game modes
 func reinit(nextSeed: int = -1) -> void:
     for nextLoadedRoom in roomInstances.values():
-        nextLoadedRoom.free()
+        if is_instance_valid(nextLoadedRoom):
+            nextLoadedRoom.free()
     roomInstances = {}
     connectorInstances = {}
     # reinit player

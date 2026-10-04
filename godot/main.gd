@@ -14,17 +14,19 @@ func _ready() -> void:
     SignalBus.game_exited.connect(on_game_exited)
     SignalBus.game_paused.connect(on_game_paused)
     SignalBus.game_unpaused.connect(on_game_unpaused)
+    SignalBus.goto_main_menu.connect(on_goto_main_menu)
     SignalBus.new_run_started.connect(on_new_run_started)
     SignalBus.tutorial_started.connect(on_tutorial_started)
     SignalBus.game_paused.emit()
-    # init state
+    # init state and level manager
     State.reinit()
-    # init level manager
-    LevelManager.root = LevelRootScene.instantiate()
-    get_tree().root.add_child.call_deferred(LevelManager.root)
     LevelManager.reinit()
     # debug
     mainMenu.on_new_game_pressed.call_deferred()
+
+func create_level_root() -> void:
+    LevelManager.root = LevelRootScene.instantiate()
+    add_child.call_deferred(LevelManager.root)
 
 ###
 ### Game State Transitions
@@ -34,6 +36,7 @@ func on_new_run_started() -> void:
     menuManager.saveSelectMenu.process_mode = Node.PROCESS_MODE_DISABLED
     menuManager.mainMenu.hide()
     menuManager.saveSelectMenu.hide()
+    create_level_root()
     LevelManager.reinit()
     get_tree().paused = false
     LevelManager.generate_initial_level()
@@ -44,6 +47,7 @@ func on_new_run_started() -> void:
     State.player.capture_mouse.call_deferred()
 
 func on_tutorial_started() -> void:
+    create_level_root()
     LevelManager.reinit()
     get_tree().paused = false
     LevelManager.load_tutorial()
@@ -61,6 +65,9 @@ func on_game_unpaused() -> void:
     get_tree().paused = false
     SignalBus.goto_hud_menu.emit()
     State.player.capture_mouse()
+
+func on_goto_main_menu() -> void:
+    LevelManager.root.queue_free()
 
 func _unhandled_input(event: InputEvent) -> void:
     var eventHandled = false

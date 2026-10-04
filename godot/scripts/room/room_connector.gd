@@ -49,6 +49,8 @@ func set_connector_width(newWidth: int) -> void: #only one that's the same for a
 @export var farEdgeSouthMaterial: StandardMaterial3D = Carpet01WorldMaterial
 # definition passed to levelgen
 @export var definition: ConnectorDefinition = null
+# toggle to make children selectable. by default clicking a child selects the connector
+@export var selectableChildren: bool = false
 
 ###
 ### Properties
@@ -123,7 +125,7 @@ func _ready() -> void:
 
 func on_other_connector_exited(body: Area3D):
     var parentNode = body.get_parent()
-    if parentNode == null: return
+    if not parentNode is RoomConnector: return
     var parentIndex = coplanarConnectors.find(parentNode)
     if parentIndex != -1:
         coplanarConnectors.remove_at(parentIndex)

@@ -1586,6 +1586,11 @@ edgeGenSouth = false
 innerEdgeWestMaterial = null
 innerEdgeNorthMaterial = null
 innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = null
+farEdgeWestMaterial = null
+farEdgeNorthMaterial = null
+farEdgeEastMaterial = null
+farEdgeSouthMaterial = null
 definition = SubResource("Resource_rw6p2")
 
 [node name="RectCollider" parent="Connectors/WallConnector/Adjacent" parent_id_path=PackedInt32Array(1632024163, 786542423) index="0" unique_id=415124710]
@@ -1603,9 +1608,18 @@ mesh = SubResource("PlaneMesh_0txq0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 0.5, -8.5)
 voxelWidth = 5
 voxelDepth = 1.0
+edgeGenWest = false
+edgeGenNorth = false
+edgeGenEast = false
+edgeGenSouth = false
 innerEdgeWestMaterial = null
 innerEdgeNorthMaterial = null
 innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = null
+farEdgeWestMaterial = null
+farEdgeNorthMaterial = null
+farEdgeEastMaterial = null
+farEdgeSouthMaterial = null
 definition = SubResource("Resource_6wyk7")
 
 [node name="RectCollider" parent="Connectors/WallConnector2/Adjacent" parent_id_path=PackedInt32Array(1453344296, 786542423) index="0" unique_id=415124710]
@@ -1624,10 +1638,18 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9, 
 voxelWidth = 11
 voxelHeight = 5
 voxelDepth = 1.0
+edgeGenWest = false
+edgeGenNorth = false
+edgeGenEast = false
+edgeGenSouth = false
 innerEdgeWestMaterial = null
 innerEdgeNorthMaterial = null
 innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = null
+farEdgeWestMaterial = null
 farEdgeNorthMaterial = ExtResource("3_e68pr")
+farEdgeEastMaterial = null
+farEdgeSouthMaterial = null
 definition = SubResource("Resource_0dj38")
 
 [node name="RectCollider" parent="Connectors/WallConnector3/Adjacent" parent_id_path=PackedInt32Array(279738985, 786542423) index="0" unique_id=415124710]
@@ -1646,10 +1668,18 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2, 
 voxelWidth = 10
 voxelHeight = 5
 voxelDepth = 1.5
+edgeGenWest = false
+edgeGenNorth = false
+edgeGenEast = false
+edgeGenSouth = false
 innerEdgeWestMaterial = null
 innerEdgeNorthMaterial = null
 innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = null
+farEdgeWestMaterial = null
 farEdgeNorthMaterial = ExtResource("3_e68pr")
+farEdgeEastMaterial = null
+farEdgeSouthMaterial = null
 definition = SubResource("Resource_gqu2c")
 
 [node name="RectCollider" parent="Connectors/WallConnector4/Adjacent" parent_id_path=PackedInt32Array(921872525, 786542423) index="0" unique_id=415124710]
@@ -1667,10 +1697,18 @@ mesh = SubResource("PlaneMesh_0q2vw")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.5, 1.5, 3.75)
 voxelWidth = 7
 voxelDepth = 1.0
+edgeGenWest = false
+edgeGenNorth = false
+edgeGenEast = false
+edgeGenSouth = false
 innerEdgeWestMaterial = null
 innerEdgeNorthMaterial = null
 innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = null
+farEdgeWestMaterial = null
 farEdgeNorthMaterial = ExtResource("3_e68pr")
+farEdgeEastMaterial = null
+farEdgeSouthMaterial = null
 definition = SubResource("Resource_adi0u")
 
 [node name="RectCollider" parent="Connectors/WallConnector5/Adjacent" parent_id_path=PackedInt32Array(431172117, 786542423) index="0" unique_id=415124710]
@@ -1689,9 +1727,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.75, -6)
 voxelWidth = 4
 voxelHeight = 5
 voxelDepth = 1.5
+edgeGenWest = false
+edgeGenNorth = false
+edgeGenEast = false
+edgeGenSouth = false
 innerEdgeWestMaterial = null
 innerEdgeNorthMaterial = null
 innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = null
+farEdgeWestMaterial = null
+farEdgeNorthMaterial = null
+farEdgeEastMaterial = null
+farEdgeSouthMaterial = null
 definition = SubResource("Resource_c3rqn")
 
 [node name="RectCollider" parent="Connectors/WallConnector6/Adjacent" parent_id_path=PackedInt32Array(854416398, 786542423) index="0" unique_id=415124710]
@@ -1710,9 +1757,18 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.5,
 voxelWidth = 3
 voxelHeight = 4
 voxelDepth = 3.0
+edgeGenWest = false
+edgeGenNorth = false
+edgeGenEast = false
+edgeGenSouth = false
 innerEdgeWestMaterial = null
 innerEdgeNorthMaterial = null
 innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = null
+farEdgeWestMaterial = null
+farEdgeNorthMaterial = null
+farEdgeEastMaterial = null
+farEdgeSouthMaterial = null
 definition = SubResource("Resource_4s5h6")
 
 [node name="RectCollider" parent="Connectors/WallConnector7/Adjacent" parent_id_path=PackedInt32Array(1889273619, 786542423) index="0" unique_id=415124710]

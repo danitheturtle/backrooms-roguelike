@@ -5,6 +5,8 @@ wacky flailing inflatable tube man
 life-size decapitated lego man with yellow smiley face
 walkman
 arcade machines
+baggage carousel
+back of airport luggage conveyor
 
 video:
 - 90s commercials

@@ -15,9 +15,11 @@ func _init(_connector: RoomConnector) -> void:
     connector = _connector
     # connectors must always be editable relative to parent room for sizing props to work. enforce here
     var container: Node = connector.get_parent()
-    if container != null:
+    if is_instance_valid(container):
         if !container.is_editable_instance(connector):
             container.set_editable_instance(connector, true)
+    # wire up selection to always select parent
+    EditorInterface.get_selection().connect('selection_changed', on_selection_changed)
     # grab refs to relevant child nodes
     var allChildren := connector.get_children()
     for nextChild in allChildren:
@@ -33,6 +35,15 @@ func _init(_connector: RoomConnector) -> void:
     var editedRoot = EditorInterface.get_edited_scene_root()
     isInSubRoom = room != editedRoot
     editedPathToConnector = editedRoot.get_path_to(connector, true)
+
+func on_selection_changed():
+    if connector.selectableChildren: return
+    var editorSelection = EditorInterface.get_selection()
+    var selected = editorSelection.get_selected_nodes()
+    if selected.size() == 1 && connector.is_ancestor_of(selected[0]):
+        var selectedChild = selected[0]
+        editorSelection.add_node(connector)
+        editorSelection.remove_node(selectedChild)
 
 func on_connector_ready() -> void:
     if connector.definition == null: connector.definition = ConnectorDefinition.new()

@@ -1,2 +1,1 @@
-Room Definition
-Player refactor and playtest note integration
+Dynamic room that generates multiple defs

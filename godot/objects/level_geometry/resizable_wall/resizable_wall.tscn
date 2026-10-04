@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://b8dgwpoftvv36"]
+
+[ext_resource type="PackedScene" uid="uid://d0ywucxig7gvo" path="res://objects/colliders/wall_static_body.tscn" id="1_71u5h"]
+[ext_resource type="Script" uid="uid://dvmeit4rwun77" path="res://objects/level_geometry/resizable_wall/resizable_wall.gd" id="2_io7lg"]
+[ext_resource type="Material" uid="uid://n5y15ykfg13e" path="res://assets/materials/Wallpaper01/Wallpaper01.tres" id="3_io7lg"]
+[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="3_wscvv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_io7lg"]
+resource_local_to_scene = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jj36u"]
+resource_local_to_scene = true
+size = Vector2(1, 1)
+orientation = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sexhm"]
+resource_local_to_scene = true
+size = Vector2(1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jnggj"]
+resource_local_to_scene = true
+size = Vector2(1, 1)
+orientation = 2
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_5q0ne"]
+size = Vector2(0.95, 0.95)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_wscvv"]
+size = Vector2(0.95, 0.95)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_wm7lr"]
+size = Vector2(0.95, 0.95)
+
+[node name="ResizeableWall" unique_id=237774776 instance=ExtResource("1_71u5h")]
+script = ExtResource("2_io7lg")
+defaultMaterial = ExtResource("3_io7lg")
+
+[node name="Collider" parent="." index="0" unique_id=415124710 instance=ExtResource("3_wscvv")]
+shape = SubResource("BoxShape3D_io7lg")
+
+[node name="MeshXNeg" type="MeshInstance3D" parent="." index="1" unique_id=1554681253]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.5, 0, 0)
+layers = 4
+material_override = ExtResource("3_io7lg")
+mesh = SubResource("PlaneMesh_jj36u")
+
+[node name="MeshXPos" type="MeshInstance3D" parent="." index="2" unique_id=1811081783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+layers = 4
+material_override = ExtResource("3_io7lg")
+mesh = SubResource("PlaneMesh_jj36u")
+
+[node name="MeshYNeg" type="MeshInstance3D" parent="." index="3" unique_id=1238171000]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -0.5, 0)
+layers = 4
+material_override = ExtResource("3_io7lg")
+mesh = SubResource("PlaneMesh_sexhm")
+
+[node name="MeshYPos" type="MeshInstance3D" parent="." index="4" unique_id=1955971628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+layers = 4
+material_override = ExtResource("3_io7lg")
+mesh = SubResource("PlaneMesh_sexhm")
+
+[node name="MeshZNeg" type="MeshInstance3D" parent="." index="5" unique_id=1109840084]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.5)
+layers = 4
+material_override = ExtResource("3_io7lg")
+mesh = SubResource("PlaneMesh_jnggj")
+
+[node name="MeshZPos" type="MeshInstance3D" parent="." index="6" unique_id=764429269]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+layers = 4
+material_override = ExtResource("3_io7lg")
+mesh = SubResource("PlaneMesh_jnggj")
+
+[node name="OccluderXY" type="OccluderInstance3D" parent="." index="7" unique_id=1522577169]
+process_mode = 4
+visible = false
+occluder = SubResource("QuadOccluder3D_5q0ne")
+
+[node name="OccluderZY" type="OccluderInstance3D" parent="." index="8" unique_id=867313267]
+process_mode = 4
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+visible = false
+occluder = SubResource("QuadOccluder3D_wscvv")
+
+[node name="OccluderXZ" type="OccluderInstance3D" parent="." index="9" unique_id=1263472784]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+visible = false
+occluder = SubResource("QuadOccluder3D_wm7lr")
