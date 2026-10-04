@@ -14,6 +14,11 @@ extends StaticBody3D
 @export var showYPos: bool = true: set = set_show_y_pos
 @export var showZNeg: bool = true: set = set_show_z_neg
 @export var showZPos: bool = true: set = set_show_z_pos
+@export_group("Extend Collision", "extendCollision")
+@export var extendCollisionLength: float = 0.5: set = set_extend_collision_length
+@export var extendCollisionX: bool = false: set = set_extend_collision_x
+@export var extendCollisionY: bool = false: set = set_extend_collision_y
+@export var extendCollisionZ: bool = false: set = set_extend_collision_z
 @export_group("Material Override", "material")
 @export var materialXNeg: BaseMaterial3D = null: set = set_material_x_neg
 @export var materialXPos: BaseMaterial3D = null: set = set_material_x_pos
@@ -26,7 +31,7 @@ extends StaticBody3D
 @export var occludeZY: bool = false: set = set_occlude_zy
 @export var occludeXZ: bool = false: set = set_occlude_xz
 
-@onready var collider: CollisionShape3D = $Collider
+@onready var collider: CollisionShape3D = $CollisionShape
 # each axis shares a surface mesh, only need to change one to change size
 @onready var meshXNeg: MeshInstance3D = $MeshXNeg
 @onready var meshXPos: MeshInstance3D = $MeshXPos
@@ -41,7 +46,8 @@ extends StaticBody3D
 func set_width(val: float):
     width = val
     if !is_instance_valid(collider): return
-    collider.shape.size.x = val
+    collider.shape.size.x = val + (0.0 if !extendCollisionX else 2.0 * extendCollisionLength)
+    print(val)
     meshZNeg.mesh.size.x = val
     meshYNeg.mesh.size.x = val
     occluderXY.occluder.size.x = val * 0.95
@@ -51,7 +57,7 @@ func set_width(val: float):
 func set_height(val: float):
     height = val
     if !is_instance_valid(collider): return
-    collider.shape.size.y = val
+    collider.shape.size.y = val + (0.0 if !extendCollisionY else 2.0 * extendCollisionLength)
     meshXNeg.mesh.size.y = val
     meshZNeg.mesh.size.y = val
     occluderXY.occluder.size.y = val * 0.95
@@ -61,7 +67,7 @@ func set_height(val: float):
 func set_depth(val: float):
     depth = val
     if !is_instance_valid(collider): return
-    collider.shape.size.z = val
+    collider.shape.size.z = val + (0.0 if !extendCollisionZ else 2.0 * extendCollisionLength)
     meshYNeg.mesh.size.y = val
     meshXNeg.mesh.size.x = val
     occluderZY.occluder.size.x = val * 0.95
@@ -86,6 +92,23 @@ func set_show_z_neg(val: bool):
 func set_show_z_pos(val: bool):
     showZPos = val
     show_hide_child(meshZPos, val)
+func set_extend_collision_length(val: float):
+    extendCollisionLength = val
+    set_extend_collision_x(extendCollisionX)
+    set_extend_collision_y(extendCollisionY)
+    set_extend_collision_z(extendCollisionZ)
+func set_extend_collision_x(val: bool):
+    extendCollisionX = val
+    if !is_instance_valid(collider): return
+    collider.shape.size.x = width + (0.0 if !val else 2.0 * extendCollisionLength)
+func set_extend_collision_y(val: bool):
+    extendCollisionY = val
+    if !is_instance_valid(collider): return
+    collider.shape.size.y = height + (0.0 if !val else 2.0 * extendCollisionLength)
+func set_extend_collision_z(val: bool):
+    extendCollisionZ = val
+    if !is_instance_valid(collider): return
+    collider.shape.size.z = depth + (0.0 if !val else 2.0 * extendCollisionLength)
 func set_default_material(val: BaseMaterial3D):
     defaultMaterial = val
     if materialXNeg == null && is_instance_valid(meshXNeg): meshXNeg.material_override = val
@@ -126,15 +149,7 @@ func _ready() -> void:
     if Engine.is_editor_hint():
         in_editor_ready()
     else:
-        if !showXNeg: meshXNeg.queue_free()
-        if !showXPos: meshXPos.queue_free()
-        if !showYNeg: meshYNeg.queue_free()
-        if !showYPos: meshYPos.queue_free()
-        if !showZNeg: meshZNeg.queue_free()
-        if !showZPos: meshZPos.queue_free()
-        if !occludeXY: occluderXY.queue_free()
-        if !occludeZY: occluderZY.queue_free()
-        if !occludeXZ: occluderXZ.queue_free()
+        cleanup_unused()
 
 func in_editor_ready():
     # must always be editable relative to parent for sizing props to work. enforce here
@@ -146,18 +161,30 @@ func in_editor_ready():
     EditorInterface.get_selection().connect('selection_changed', on_selection_changed)
     await get_tree().process_frame
     # call setters to prevent node-out-of-date issues
-    width = width
-    height = height
-    depth = depth
-    showXNeg = showXNeg
-    showXPos = showXPos
-    showYNeg = showYNeg
-    showYPos = showYPos
-    showZNeg = showZNeg
-    showZPos = showZPos
-    occludeXY = occludeXY
-    occludeZY = occludeZY
-    occludeXZ = occludeXZ
+    set_show_x_neg(showXNeg)
+    set_show_x_pos(showXPos)
+    set_show_y_neg(showYNeg)
+    set_show_y_pos(showYPos)
+    set_show_z_neg(showZNeg)
+    set_show_z_pos(showZPos)
+    set_occlude_xy(occludeXY)
+    set_occlude_zy(occludeZY)
+    set_occlude_xz(occludeXZ)
+    set_extend_collision_length(extendCollisionLength)
+    set_width(width)
+    set_height(height)
+    set_depth(depth)
+
+func cleanup_unused():
+    if !showXNeg: meshXNeg.queue_free()
+    if !showXPos: meshXPos.queue_free()
+    if !showYNeg: meshYNeg.queue_free()
+    if !showYPos: meshYPos.queue_free()
+    if !showZNeg: meshZNeg.queue_free()
+    if !showZPos: meshZPos.queue_free()
+    if !occludeXY: occluderXY.queue_free()
+    if !occludeZY: occluderZY.queue_free()
+    if !occludeXZ: occluderXZ.queue_free()
 
 func on_selection_changed():
     if selectableChildren: return

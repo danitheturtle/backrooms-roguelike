@@ -3,10 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://d0ywucxig7gvo" path="res://objects/colliders/wall_static_body.tscn" id="1_71u5h"]
 [ext_resource type="Script" uid="uid://dvmeit4rwun77" path="res://objects/level_geometry/resizable_wall/resizable_wall.gd" id="2_io7lg"]
 [ext_resource type="Material" uid="uid://n5y15ykfg13e" path="res://assets/materials/Wallpaper01/Wallpaper01.tres" id="3_io7lg"]
-[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="3_wscvv"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_io7lg"]
-resource_local_to_scene = true
+[sub_resource type="BoxShape3D" id="BoxShape3D_5q0ne"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jj36u"]
 resource_local_to_scene = true
@@ -34,9 +32,11 @@ size = Vector2(0.95, 0.95)
 [node name="ResizeableWall" unique_id=237774776 instance=ExtResource("1_71u5h")]
 script = ExtResource("2_io7lg")
 defaultMaterial = ExtResource("3_io7lg")
+showYNeg = false
+showYPos = false
 
-[node name="Collider" parent="." index="0" unique_id=415124710 instance=ExtResource("3_wscvv")]
-shape = SubResource("BoxShape3D_io7lg")
+[node name="CollisionShape" type="CollisionShape3D" parent="." index="0" unique_id=1479096797]
+shape = SubResource("BoxShape3D_5q0ne")
 
 [node name="MeshXNeg" type="MeshInstance3D" parent="." index="1" unique_id=1554681253]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.5, 0, 0)
@@ -51,13 +51,17 @@ material_override = ExtResource("3_io7lg")
 mesh = SubResource("PlaneMesh_jj36u")
 
 [node name="MeshYNeg" type="MeshInstance3D" parent="." index="3" unique_id=1238171000]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -0.5, 0)
+visible = false
 layers = 4
 material_override = ExtResource("3_io7lg")
 mesh = SubResource("PlaneMesh_sexhm")
 
 [node name="MeshYPos" type="MeshInstance3D" parent="." index="4" unique_id=1955971628]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
 layers = 4
 material_override = ExtResource("3_io7lg")
 mesh = SubResource("PlaneMesh_sexhm")
