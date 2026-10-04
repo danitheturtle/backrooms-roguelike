@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://v73vqq1gq568"]
+
+[ext_resource type="PackedScene" uid="uid://b500l15l80jvq" path="res://objects/colliders/floor_static_body.tscn" id="1_kl0oh"]
+[ext_resource type="Script" uid="uid://datlk0q18h36d" path="res://objects/level_geometry/resizable_ceiling/resizable_ceiling.gd" id="2_wpnce"]
+[ext_resource type="Material" uid="uid://b75agbyu011n4" path="res://assets/materials/DropCeilingSquare01/DropCeilingSquare01.tres" id="3_mge58"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_an8xy"]
+resource_local_to_scene = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_32bwx"]
+resource_local_to_scene = true
+flip_faces = true
+size = Vector2(1, 1)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_evnqi"]
+resource_local_to_scene = true
+size = Vector2(0.95, 0.95)
+
+[node name="ResizableCeiling" unique_id=446596967 instance=ExtResource("1_kl0oh")]
+script = ExtResource("2_wpnce")
+defaultMaterial = ExtResource("3_mge58")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=2009969633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_an8xy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1" unique_id=416331250]
+layers = 2
+material_override = ExtResource("3_mge58")
+mesh = SubResource("PlaneMesh_32bwx")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="2" unique_id=1014570430]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.05, 0)
+visible = false
+layers = 2
+occluder = SubResource("QuadOccluder3D_evnqi")

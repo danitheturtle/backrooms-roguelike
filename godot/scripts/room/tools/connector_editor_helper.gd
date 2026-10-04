@@ -18,6 +18,8 @@ func _init(_connector: RoomConnector) -> void:
     if is_instance_valid(container):
         if !container.is_editable_instance(connector):
             container.set_editable_instance(connector, true)
+            connector.set_display_folded(true)
+            connector.emit_signal("script_changed")
     # wire up selection to always select parent
     EditorInterface.get_selection().connect('selection_changed', on_selection_changed)
     # grab refs to relevant child nodes
@@ -44,6 +46,8 @@ func on_selection_changed():
         var selectedChild = selected[0]
         editorSelection.add_node(connector)
         editorSelection.remove_node(selectedChild)
+        connector.set_display_folded(true)
+        connector.emit_signal("script_changed")
 
 func on_connector_ready() -> void:
     if connector.definition == null: connector.definition = ConnectorDefinition.new()

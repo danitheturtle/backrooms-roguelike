@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://n5y15ykfg13e" path="res://assets/materials/Wallpaper01/Wallpaper01.tres" id="3_io7lg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5q0ne"]
+resource_local_to_scene = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jj36u"]
 resource_local_to_scene = true
@@ -21,21 +22,24 @@ size = Vector2(1, 1)
 orientation = 2
 
 [sub_resource type="QuadOccluder3D" id="QuadOccluder3D_5q0ne"]
+resource_local_to_scene = true
 size = Vector2(0.95, 0.95)
 
 [sub_resource type="QuadOccluder3D" id="QuadOccluder3D_wscvv"]
+resource_local_to_scene = true
 size = Vector2(0.95, 0.95)
 
 [sub_resource type="QuadOccluder3D" id="QuadOccluder3D_wm7lr"]
+resource_local_to_scene = true
 size = Vector2(0.95, 0.95)
 
 [node name="ResizeableWall" unique_id=237774776 instance=ExtResource("1_71u5h")]
 script = ExtResource("2_io7lg")
-defaultMaterial = ExtResource("3_io7lg")
 showYNeg = false
 showYPos = false
+defaultMaterial = ExtResource("3_io7lg")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="." index="0" unique_id=1479096797]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=1479096797]
 shape = SubResource("BoxShape3D_5q0ne")
 
 [node name="MeshXNeg" type="MeshInstance3D" parent="." index="1" unique_id=1554681253]
