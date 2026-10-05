@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://bc7fghdybo5ei"]
 
-[ext_resource type="PackedScene" uid="uid://dxun115m4alsw" path="res://rooms/room_base.tscn" id="1_dsubi"]
-[ext_resource type="Script" uid="uid://6gjw6ylobaek" path="res://rooms/level_0/room_hallway/room_hallway.gd" id="2_orxsx"]
-[ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="3_8dscp"]
-[ext_resource type="Resource" uid="uid://cd03p1dfk37jp" path="res://rooms/level_0/room_hallway/defs/definition_0.tres" id="4_liqwy"]
-[ext_resource type="PackedScene" uid="uid://di65tcxw57kit" path="res://objects/connectors/wall/wall_connector.tscn" id="5_jvtvq"]
-[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="6_jb4ep"]
-[ext_resource type="PackedScene" uid="uid://crexkx2b82nl2" path="res://objects/level_geometry/resizable_floor/resizable_floor.tscn" id="7_riktc"]
-[ext_resource type="PackedScene" uid="uid://v73vqq1gq568" path="res://objects/level_geometry/resizable_ceiling/resizable_ceiling.tscn" id="8_35bw3"]
-[ext_resource type="PackedScene" uid="uid://b8dgwpoftvv36" path="res://objects/level_geometry/resizable_wall/resizable_wall.tscn" id="10_vo6k1"]
+[ext_resource type="PackedScene" uid="uid://dxun115m4alsw" path="res://rooms/room_base.tscn" id="1_gr1p3"]
+[ext_resource type="Script" uid="uid://6gjw6ylobaek" path="res://rooms/level_0/hallway/room_L0_hallway.gd" id="2_gr1p3"]
+[ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="3_a2qcn"]
+[ext_resource type="Resource" uid="uid://cd03p1dfk37jp" path="res://rooms/level_0/hallway/defs/definition_0.tres" id="4_1kamk"]
+[ext_resource type="PackedScene" uid="uid://di65tcxw57kit" path="res://objects/connectors/wall/wall_connector.tscn" id="5_5kq66"]
+[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="6_8bbvc"]
+[ext_resource type="PackedScene" uid="uid://crexkx2b82nl2" path="res://objects/level_geometry/resizable_floor/resizable_floor.tscn" id="7_yq5kl"]
+[ext_resource type="PackedScene" uid="uid://v73vqq1gq568" path="res://objects/level_geometry/resizable_ceiling/resizable_ceiling.tscn" id="8_gug3b"]
+[ext_resource type="PackedScene" uid="uid://b8dgwpoftvv36" path="res://objects/level_geometry/resizable_wall/resizable_wall.tscn" id="9_iu5pl"]
 
 [sub_resource type="Resource" id="Resource_splww"]
-script = ExtResource("6_jb4ep")
+script = ExtResource("6_8bbvc")
 pathInRoom = NodePath("Connectors/WallConnectorXNeg")
 position = Vector3(-1, 1.5, 0)
 depth = 0.75
@@ -21,128 +21,128 @@ cornerMin = Vector3(-0.99999994, 0, 2)
 cornerMax = Vector3(-1.0000001, 3, -2)
 aabb = AABB(-1.25, 0, -2, 0.49999988, 3, 4)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5wrhq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_o3pfm"]
 resource_local_to_scene = true
 size = Vector3(4, 3, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8dscp"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_fbx2f"]
 resource_local_to_scene = true
 size = Vector3(4, 3, 0.75)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_liqwy"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_584vp"]
 resource_local_to_scene = true
 size = Vector2(4, 3)
 orientation = 2
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jvtvq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rh8no"]
 resource_local_to_scene = true
 size = Vector3(4, 3, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jb4ep"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_1acd0"]
 resource_local_to_scene = true
 size = Vector3(4, 3, 0.75)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_riktc"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_yiyf7"]
 resource_local_to_scene = true
 size = Vector2(4, 3)
 orientation = 2
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_35bw3"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_q8qne"]
 resource_local_to_scene = true
 size = Vector3(2, 7, 8)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tnmbe"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_r6b2x"]
 resource_local_to_scene = true
 size = Vector3(2, 1, 6)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_vo6k1"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_3awg3"]
 resource_local_to_scene = true
 size = Vector2(2, 6)
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_splww"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_ft18u"]
 resource_local_to_scene = true
 size = Vector2(1.9, 5.7)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_2ngmg"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ei4v"]
 resource_local_to_scene = true
 size = Vector3(2, 1, 6)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_eu4k7"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_tmkx1"]
 resource_local_to_scene = true
 flip_faces = true
 size = Vector2(2, 6)
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_e06fd"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_j2bfi"]
 resource_local_to_scene = true
 size = Vector2(1.9, 5.7)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ic8hs"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_l4s1y"]
 resource_local_to_scene = true
 size = Vector3(2, 4, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_3fawv"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_lsc08"]
 resource_local_to_scene = true
 size = Vector2(1, 3)
 orientation = 0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_mtlq6"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_n6ots"]
 resource_local_to_scene = true
 size = Vector2(2, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_65i7b"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_0hfwo"]
 resource_local_to_scene = true
 size = Vector2(2, 3)
 orientation = 2
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_g3w6b"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_td67j"]
 resource_local_to_scene = true
 size = Vector2(1.9, 2.85)
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_bliqa"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_h8f38"]
 resource_local_to_scene = true
 size = Vector2(0.95, 2.85)
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_6j3e8"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_g3lmy"]
 resource_local_to_scene = true
 size = Vector2(1.9, 0.95)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yj8vq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_np6ho"]
 resource_local_to_scene = true
 size = Vector3(2, 4, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_atfyk"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_rg44i"]
 resource_local_to_scene = true
 size = Vector2(1, 3)
 orientation = 0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_htrwt"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_q7w3x"]
 resource_local_to_scene = true
 size = Vector2(2, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_lr852"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_2ydqx"]
 resource_local_to_scene = true
 size = Vector2(2, 3)
 orientation = 2
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_ofa05"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_8s0i5"]
 resource_local_to_scene = true
 size = Vector2(1.9, 2.85)
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_xd1ep"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_m44ek"]
 resource_local_to_scene = true
 size = Vector2(0.95, 2.85)
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_xujth"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_iwag7"]
 resource_local_to_scene = true
 size = Vector2(1.9, 0.95)
 
-[node name="RoomHallway" unique_id=1900576414 instance=ExtResource("1_dsubi")]
-script = ExtResource("2_orxsx")
+[node name="RoomL0Hallway" unique_id=1900576414 instance=ExtResource("1_gr1p3")]
+script = ExtResource("2_gr1p3")
 voxelLength = 4
-uniqueName = &"hallway"
-definitions = Array[ExtResource("3_8dscp")]([ExtResource("4_liqwy")])
+uniqueName = &"L0_hallway"
+definitions = Array[ExtResource("3_a2qcn")]([ExtResource("4_1kamk")])
 
-[node name="WallConnectorXPos" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="0" unique_id=1936178321 instance=ExtResource("5_jvtvq")]
+[node name="WallConnectorXPos" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="0" unique_id=1936178321 instance=ExtResource("5_5kq66")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 1.5, 0)
 voxelWidth = 8
 voxelDepth = 1.5
@@ -154,17 +154,17 @@ edgeGenSouth = false
 definition = SubResource("Resource_splww")
 
 [node name="RectCollider" parent="Connectors/WallConnectorXPos/Adjacent" parent_id_path=PackedInt32Array(1936178321, 786542423) index="0" unique_id=415124710]
-shape = SubResource("BoxShape3D_5wrhq")
+shape = SubResource("BoxShape3D_o3pfm")
 
 [node name="RectCollider" parent="Connectors/WallConnectorXPos/Collider" parent_id_path=PackedInt32Array(1936178321, 237774776) index="0" unique_id=1692528920]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.375)
-shape = SubResource("BoxShape3D_8dscp")
+shape = SubResource("BoxShape3D_fbx2f")
 
 [node name="Mesh" parent="Connectors/WallConnectorXPos" index="2" unique_id=1345220754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.75)
-mesh = SubResource("PlaneMesh_liqwy")
+mesh = SubResource("PlaneMesh_584vp")
 
-[node name="WallConnectorXNeg" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="1" unique_id=1632024163 instance=ExtResource("5_jvtvq")]
+[node name="WallConnectorXNeg" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="1" unique_id=1632024163 instance=ExtResource("5_5kq66")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1, 1.5, 0)
 voxelWidth = 8
 voxelDepth = 1.5
@@ -176,56 +176,56 @@ edgeGenSouth = false
 definition = SubResource("Resource_splww")
 
 [node name="RectCollider" parent="Connectors/WallConnectorXNeg/Adjacent" parent_id_path=PackedInt32Array(1632024163, 786542423) index="0" unique_id=415124710]
-shape = SubResource("BoxShape3D_jvtvq")
+shape = SubResource("BoxShape3D_rh8no")
 
 [node name="RectCollider" parent="Connectors/WallConnectorXNeg/Collider" parent_id_path=PackedInt32Array(1632024163, 237774776) index="0" unique_id=1692528920]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.375)
-shape = SubResource("BoxShape3D_jb4ep")
+shape = SubResource("BoxShape3D_1acd0")
 
 [node name="Mesh" parent="Connectors/WallConnectorXNeg" index="2" unique_id=1345220754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.75)
-mesh = SubResource("PlaneMesh_riktc")
+mesh = SubResource("PlaneMesh_yiyf7")
 
 [node name="BoundsAABB" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="0" unique_id=415124710]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-shape = SubResource("BoxShape3D_35bw3")
+shape = SubResource("BoxShape3D_q8qne")
 
 [node name="LevelMeshes" type="Node3D" parent="." index="6" unique_id=68570288]
 
-[node name="ResizableFloor" parent="LevelMeshes" index="0" unique_id=446596967 instance=ExtResource("7_riktc")]
+[node name="ResizableFloor" parent="LevelMeshes" index="0" unique_id=446596967 instance=ExtResource("7_yq5kl")]
 shouldOcclude = true
 voxelWidth = 4.0
 voxelDepth = 12.0
 
 [node name="CollisionShape3D" parent="LevelMeshes/ResizableFloor" index="0" unique_id=1960740315]
-shape = SubResource("BoxShape3D_tnmbe")
+shape = SubResource("BoxShape3D_r6b2x")
 
 [node name="MeshInstance3D" parent="LevelMeshes/ResizableFloor" index="1" unique_id=2112293603]
-mesh = SubResource("PlaneMesh_vo6k1")
+mesh = SubResource("PlaneMesh_3awg3")
 
 [node name="OccluderInstance3D" parent="LevelMeshes/ResizableFloor" index="2" unique_id=1666973]
 process_mode = 0
 visible = true
-occluder = SubResource("QuadOccluder3D_splww")
+occluder = SubResource("QuadOccluder3D_ft18u")
 
-[node name="ResizableCeiling" parent="LevelMeshes" index="1" unique_id=1485536082 instance=ExtResource("8_35bw3")]
+[node name="ResizableCeiling" parent="LevelMeshes" index="1" unique_id=1485536082 instance=ExtResource("8_gug3b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 shouldOcclude = true
 voxelWidth = 4.0
 voxelDepth = 12.0
 
 [node name="CollisionShape3D" parent="LevelMeshes/ResizableCeiling" index="0" unique_id=2009969633]
-shape = SubResource("BoxShape3D_2ngmg")
+shape = SubResource("BoxShape3D_1ei4v")
 
 [node name="MeshInstance3D" parent="LevelMeshes/ResizableCeiling" index="1" unique_id=416331250]
-mesh = SubResource("PlaneMesh_eu4k7")
+mesh = SubResource("PlaneMesh_tmkx1")
 
 [node name="OccluderInstance3D" parent="LevelMeshes/ResizableCeiling" index="2" unique_id=1014570430]
 process_mode = 0
 visible = true
-occluder = SubResource("QuadOccluder3D_e06fd")
+occluder = SubResource("QuadOccluder3D_j2bfi")
 
-[node name="ResizeableWallZPos" parent="LevelMeshes" index="2" unique_id=237774776 instance=ExtResource("10_vo6k1")]
+[node name="ResizeableWallZPos" parent="LevelMeshes" index="2" unique_id=237774776 instance=ExtResource("9_iu5pl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2.5)
 showXNeg = false
 showXPos = false
@@ -236,48 +236,48 @@ voxelHeight = 6.0
 extendCollisionY = true
 
 [node name="CollisionShape3D" parent="LevelMeshes/ResizeableWallZPos" index="0" unique_id=1479096797]
-shape = SubResource("BoxShape3D_ic8hs")
+shape = SubResource("BoxShape3D_l4s1y")
 
 [node name="MeshXNeg" parent="LevelMeshes/ResizeableWallZPos" index="1" unique_id=1554681253]
 process_mode = 4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1, 0, 0)
 visible = false
-mesh = SubResource("PlaneMesh_3fawv")
+mesh = SubResource("PlaneMesh_lsc08")
 
 [node name="MeshXPos" parent="LevelMeshes/ResizeableWallZPos" index="2" unique_id=1811081783]
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 visible = false
-mesh = SubResource("PlaneMesh_3fawv")
+mesh = SubResource("PlaneMesh_lsc08")
 
 [node name="MeshYNeg" parent="LevelMeshes/ResizeableWallZPos" index="3" unique_id=1238171000]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -1.5, 0)
-mesh = SubResource("PlaneMesh_mtlq6")
+mesh = SubResource("PlaneMesh_n6ots")
 
 [node name="MeshYPos" parent="LevelMeshes/ResizeableWallZPos" index="4" unique_id=1955971628]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-mesh = SubResource("PlaneMesh_mtlq6")
+mesh = SubResource("PlaneMesh_n6ots")
 
 [node name="MeshZNeg" parent="LevelMeshes/ResizeableWallZPos" index="5" unique_id=1109840084]
-mesh = SubResource("PlaneMesh_65i7b")
+mesh = SubResource("PlaneMesh_0hfwo")
 
 [node name="MeshZPos" parent="LevelMeshes/ResizeableWallZPos" index="6" unique_id=764429269]
 process_mode = 4
 visible = false
-mesh = SubResource("PlaneMesh_65i7b")
+mesh = SubResource("PlaneMesh_0hfwo")
 
 [node name="OccluderXY" parent="LevelMeshes/ResizeableWallZPos" index="7" unique_id=1522577169]
 process_mode = 0
 visible = true
-occluder = SubResource("QuadOccluder3D_g3w6b")
+occluder = SubResource("QuadOccluder3D_td67j")
 
 [node name="OccluderZY" parent="LevelMeshes/ResizeableWallZPos" index="8" unique_id=867313267]
-occluder = SubResource("QuadOccluder3D_bliqa")
+occluder = SubResource("QuadOccluder3D_h8f38")
 
 [node name="OccluderXZ" parent="LevelMeshes/ResizeableWallZPos" index="9" unique_id=1263472784]
-occluder = SubResource("QuadOccluder3D_6j3e8")
+occluder = SubResource("QuadOccluder3D_g3lmy")
 
-[node name="ResizeableWallZNeg" parent="LevelMeshes" index="3" unique_id=1532450066 instance=ExtResource("10_vo6k1")]
+[node name="ResizeableWallZNeg" parent="LevelMeshes" index="3" unique_id=1532450066 instance=ExtResource("9_iu5pl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -2.5)
 showXNeg = false
 showXPos = false
@@ -288,46 +288,46 @@ voxelHeight = 6.0
 extendCollisionY = true
 
 [node name="CollisionShape3D" parent="LevelMeshes/ResizeableWallZNeg" index="0" unique_id=1479096797]
-shape = SubResource("BoxShape3D_yj8vq")
+shape = SubResource("BoxShape3D_np6ho")
 
 [node name="MeshXNeg" parent="LevelMeshes/ResizeableWallZNeg" index="1" unique_id=1554681253]
 process_mode = 4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1, 0, 0)
 visible = false
-mesh = SubResource("PlaneMesh_atfyk")
+mesh = SubResource("PlaneMesh_rg44i")
 
 [node name="MeshXPos" parent="LevelMeshes/ResizeableWallZNeg" index="2" unique_id=1811081783]
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 visible = false
-mesh = SubResource("PlaneMesh_atfyk")
+mesh = SubResource("PlaneMesh_rg44i")
 
 [node name="MeshYNeg" parent="LevelMeshes/ResizeableWallZNeg" index="3" unique_id=1238171000]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -1.5, 0)
-mesh = SubResource("PlaneMesh_htrwt")
+mesh = SubResource("PlaneMesh_q7w3x")
 
 [node name="MeshYPos" parent="LevelMeshes/ResizeableWallZNeg" index="4" unique_id=1955971628]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-mesh = SubResource("PlaneMesh_htrwt")
+mesh = SubResource("PlaneMesh_q7w3x")
 
 [node name="MeshZNeg" parent="LevelMeshes/ResizeableWallZNeg" index="5" unique_id=1109840084]
 process_mode = 4
 visible = false
-mesh = SubResource("PlaneMesh_lr852")
+mesh = SubResource("PlaneMesh_2ydqx")
 
 [node name="MeshZPos" parent="LevelMeshes/ResizeableWallZNeg" index="6" unique_id=764429269]
-mesh = SubResource("PlaneMesh_lr852")
+mesh = SubResource("PlaneMesh_2ydqx")
 
 [node name="OccluderXY" parent="LevelMeshes/ResizeableWallZNeg" index="7" unique_id=1522577169]
 process_mode = 0
 visible = true
-occluder = SubResource("QuadOccluder3D_ofa05")
+occluder = SubResource("QuadOccluder3D_8s0i5")
 
 [node name="OccluderZY" parent="LevelMeshes/ResizeableWallZNeg" index="8" unique_id=867313267]
-occluder = SubResource("QuadOccluder3D_xd1ep")
+occluder = SubResource("QuadOccluder3D_m44ek")
 
 [node name="OccluderXZ" parent="LevelMeshes/ResizeableWallZNeg" index="9" unique_id=1263472784]
-occluder = SubResource("QuadOccluder3D_xujth")
+occluder = SubResource("QuadOccluder3D_iwag7")
 
 [editable path="Connectors/WallConnectorXPos"]
 [editable path="Connectors/WallConnectorXNeg"]

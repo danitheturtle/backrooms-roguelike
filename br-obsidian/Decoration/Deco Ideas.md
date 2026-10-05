@@ -7,6 +7,8 @@ walkman
 arcade machines
 baggage carousel
 back of airport luggage conveyor
+giant pinball machine you can walk around inside
+tiles that randomly drop from the ceiling and make a loud clattering noise
 
 video:
 - 90s commercials
@@ -20,3 +22,4 @@ walls:
 	- saturn eating his son
 - shelves
 
+ 

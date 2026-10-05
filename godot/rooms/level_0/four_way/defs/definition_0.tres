@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://d1bi0o1vpk0a1"]
 
-[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="1_yboxu"]
-[ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_s6ghd"]
+[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="1_01k1b"]
+[ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_hwsps"]
 
 [sub_resource type="Resource" id="Resource_dmo16"]
-script = ExtResource("1_yboxu")
+script = ExtResource("1_01k1b")
 pathInRoom = NodePath("Connectors/WallConnector")
 position = Vector3(0, 1.75, -4)
 depth = 0.5
@@ -15,7 +15,7 @@ cornerMax = Vector3(3.5, 3.5, -4)
 aabb = AABB(-3.5, 0, -4.25, 7, 3.5, 0.5)
 
 [sub_resource type="Resource" id="Resource_gm61u"]
-script = ExtResource("1_yboxu")
+script = ExtResource("1_01k1b")
 pathInRoom = NodePath("Connectors/WallConnector2")
 position = Vector3(0, 1.75, 4)
 depth = 0.5
@@ -26,7 +26,7 @@ cornerMax = Vector3(-3.5, 3.5, 4.0000005)
 aabb = AABB(-3.5, 0, 3.7500005, 7, 3.5, 0.49999952)
 
 [sub_resource type="Resource" id="Resource_ykvj0"]
-script = ExtResource("1_yboxu")
+script = ExtResource("1_01k1b")
 pathInRoom = NodePath("Connectors/WallConnector3")
 position = Vector3(-4, 1.75, 0)
 depth = 0.5
@@ -37,7 +37,7 @@ cornerMax = Vector3(-4, 3.75, -3.5)
 aabb = AABB(-4.25, -0.25, -3.5, 0.5, 4, 7)
 
 [sub_resource type="Resource" id="Resource_f4duu"]
-script = ExtResource("1_yboxu")
+script = ExtResource("1_01k1b")
 pathInRoom = NodePath("Connectors/WallConnector4")
 position = Vector3(4, 1.75, 0)
 depth = 0.5
@@ -48,15 +48,15 @@ cornerMax = Vector3(3.9999998, 3.75, 3.5)
 aabb = AABB(3.7499998, -0.25, -3.5, 0.50000024, 4, 7)
 
 [resource]
-script = ExtResource("2_s6ghd")
-sceneName = &"four_way"
-scenePath = "res://rooms/room_four_way/room_four_way.tscn"
+script = ExtResource("2_hwsps")
+sceneName = &"L0_four_way"
+scenePath = "res://rooms/level_0/four_way/room_L0_four_way.tscn"
 biomes = Dictionary[int, bool]({
 0: true
 })
 approximateBounds = AABB(-4, -1, -4, 8, 5.5, 8)
 bounds = Array[AABB]([AABB(-4, -1, -4, 8, 5.5, 8)])
-connectors = Dictionary[NodePath, ExtResource("1_yboxu")]({
+connectors = Dictionary[NodePath, ExtResource("1_01k1b")]({
 NodePath("Connectors/WallConnector"): SubResource("Resource_dmo16"),
 NodePath("Connectors/WallConnector2"): SubResource("Resource_gm61u"),
 NodePath("Connectors/WallConnector3"): SubResource("Resource_ykvj0"),

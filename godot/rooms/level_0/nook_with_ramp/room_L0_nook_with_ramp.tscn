@@ -1,0 +1,1830 @@
+[gd_scene format=3 uid="uid://bx5044eu1cd6c"]
+
+[ext_resource type="PackedScene" uid="uid://dxun115m4alsw" path="res://rooms/room_base.tscn" id="1_vqwax"]
+[ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_qadr1"]
+[ext_resource type="Resource" uid="uid://ccmf7obsrfc43" path="res://rooms/level_0/nook_with_ramp/defs/definition_0.tres" id="3_oqrpp"]
+[ext_resource type="PackedScene" uid="uid://b500l15l80jvq" path="res://objects/colliders/floor_static_body.tscn" id="4_oypdh"]
+[ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="5_frf5n"]
+[ext_resource type="PackedScene" uid="uid://dgwmutwf473uv" path="res://objects/colliders/ceiling_static_body.tscn" id="6_ewe2w"]
+[ext_resource type="PackedScene" uid="uid://d0ywucxig7gvo" path="res://objects/colliders/wall_static_body.tscn" id="7_3i2ab"]
+[ext_resource type="ArrayOccluder3D" uid="uid://k31sf5ucsqbm" path="res://rooms/level_0/nook_with_ramp/res/occluder_mesh.occ" id="8_dt5gy"]
+[ext_resource type="PackedScene" uid="uid://c3311m867qoxp" path="res://objects/colliders/occluders/occluder_plane.tscn" id="9_dn2u4"]
+[ext_resource type="PackedScene" uid="uid://b1jb75ylvwe4t" path="res://objects/lights/ceiling_light.tscn" id="10_ctldr"]
+[ext_resource type="Texture2D" uid="uid://by1l5jjdlxfcm" path="res://assets/materials/CeilingLightSquare01/CeilingLightSquare01_Color.jpg" id="11_vx11l"]
+[ext_resource type="Texture2D" uid="uid://bi4f2j3scxwt7" path="res://assets/materials/CeilingLightSquare01/CeilingLightSquare01_Emissive.jpg" id="12_8dmor"]
+[ext_resource type="Texture2D" uid="uid://nxkbtd7dkdvb" path="res://assets/materials/CeilingLightSquare01/CeilingLightSquare01_Metallic.jpg" id="13_v0hnu"]
+[ext_resource type="Texture2D" uid="uid://cg1jou2i1bxik" path="res://assets/materials/CeilingLightSquare01/CeilingLightSquare01_Normal.jpg" id="14_l68ec"]
+[ext_resource type="Texture2D" uid="uid://d12k5nn6nkey" path="res://assets/materials/CeilingLightSquare01/CeilingLightSquare01_Roughness.jpg" id="15_dnw08"]
+[ext_resource type="PackedScene" uid="uid://dkaflqjkli2wg" path="res://objects/connectors/ceiling/ceiling_connector.tscn" id="16_48r0w"]
+[ext_resource type="Material" uid="uid://d1infe3mw6u2" path="res://assets/materials/Wallpaper01/Wallpaper01_world.tres" id="17_uyf8l"]
+[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="18_y65gd"]
+[ext_resource type="Material" uid="uid://b75agbyu011n4" path="res://assets/materials/DropCeilingSquare01/DropCeilingSquare01.tres" id="19_taakv"]
+[ext_resource type="Material" uid="uid://n5y15ykfg13e" path="res://assets/materials/Wallpaper01/Wallpaper01.tres" id="20_u5vwu"]
+[ext_resource type="PackedScene" uid="uid://cnapbejxxdkpf" path="res://objects/connectors/floor/floor_connector.tscn" id="21_00ig2"]
+[ext_resource type="Material" uid="uid://ft3l0gt1bi8u" path="res://assets/materials/Carpet01/Carpet01_world.tres" id="22_x54vx"]
+[ext_resource type="PackedScene" uid="uid://di65tcxw57kit" path="res://objects/connectors/wall/wall_connector.tscn" id="23_dc4p7"]
+[ext_resource type="PackedScene" uid="uid://cqoeu0j6sffu6" path="res://rooms/level_0/nook_with_ramp/res/level_meshes.tscn" id="24_vxp7b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tplrk"]
+resource_local_to_scene = true
+size = Vector3(5.25, 1, 8.225)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7c5kd"]
+resource_local_to_scene = true
+size = Vector3(3.25, 1, 3.375)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_72ics"]
+resource_local_to_scene = true
+size = Vector3(2, 1, 3.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7j7r0"]
+resource_local_to_scene = true
+size = Vector3(1.25, 1, 3.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sxixa"]
+resource_local_to_scene = true
+size = Vector3(4.5, 1, 7.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nr42e"]
+resource_local_to_scene = true
+size = Vector3(2.25, 1, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_41yy0"]
+resource_local_to_scene = true
+size = Vector3(1, 1, 4.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yadfl"]
+resource_local_to_scene = true
+size = Vector3(0.7, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p4gsc"]
+resource_local_to_scene = true
+size = Vector3(0.875, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_meofr"]
+resource_local_to_scene = true
+size = Vector3(2, 1, 2.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v2qli"]
+resource_local_to_scene = true
+size = Vector3(7.5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t07ur"]
+resource_local_to_scene = true
+size = Vector3(0.25, 0.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fadit"]
+resource_local_to_scene = true
+size = Vector3(5.1, 0.75, 2.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jdv68"]
+resource_local_to_scene = true
+size = Vector3(3, 1, 3.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ck3i"]
+resource_local_to_scene = true
+size = Vector3(3, 0.5, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5arnv"]
+resource_local_to_scene = true
+size = Vector3(2.75, 0.5, 6.970093)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n11wi"]
+resource_local_to_scene = true
+size = Vector3(3, 0.25, 2.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w6vm4"]
+resource_local_to_scene = true
+size = Vector3(2, 0.25, 1.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vjb7n"]
+resource_local_to_scene = true
+size = Vector3(4.25, 1, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oqvqh"]
+resource_local_to_scene = true
+size = Vector3(3.5, 1, 8.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5xx0e"]
+resource_local_to_scene = true
+size = Vector3(2.75, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u48w0"]
+resource_local_to_scene = true
+size = Vector3(9.75, 1, 11.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vqpp7"]
+resource_local_to_scene = true
+size = Vector3(10.25, 1, 2.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_72w35"]
+resource_local_to_scene = true
+size = Vector3(3.75, 0.5, 11.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1creq"]
+resource_local_to_scene = true
+size = Vector3(4.75, 0.5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xxjwv"]
+resource_local_to_scene = true
+size = Vector3(3, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3vgti"]
+resource_local_to_scene = true
+size = Vector3(1.5, 0.5, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8wqqw"]
+resource_local_to_scene = true
+size = Vector3(5, 1, 4.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wwnwy"]
+resource_local_to_scene = true
+size = Vector3(5.0543213, 0.75, 2.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7fixv"]
+resource_local_to_scene = true
+size = Vector3(0.25, 0.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w00fw"]
+resource_local_to_scene = true
+size = Vector3(5.75, 1, 2.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tfte0"]
+resource_local_to_scene = true
+size = Vector3(3.5, 1, 5.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_etaev"]
+resource_local_to_scene = true
+size = Vector3(3.5, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7q1xg"]
+resource_local_to_scene = true
+size = Vector3(1, 1, 3.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6b161"]
+resource_local_to_scene = true
+size = Vector3(1.5, 1, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pk7nl"]
+resource_local_to_scene = true
+size = Vector3(0.45000002, 6, 0.65000004)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3k7h"]
+resource_local_to_scene = true
+size = Vector3(3.75, 1.5, 0.65000004)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_alb6q"]
+resource_local_to_scene = true
+size = Vector3(3.5, 1.5, 0.15593262)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ew2h"]
+resource_local_to_scene = true
+size = Vector3(7.25, 1.038208, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fwal5"]
+resource_local_to_scene = true
+size = Vector3(0.75, 1.5, 5.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rxjhk"]
+resource_local_to_scene = true
+size = Vector3(3.25, 1.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ktx5"]
+resource_local_to_scene = true
+size = Vector3(0.5, 1.5, 3.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e677y"]
+resource_local_to_scene = true
+size = Vector3(0.5, 4, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iypau"]
+resource_local_to_scene = true
+size = Vector3(0.5, 4, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ufpxv"]
+resource_local_to_scene = true
+size = Vector3(0.5, 1, 6.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s3d2r"]
+resource_local_to_scene = true
+size = Vector3(0.5, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_emqvp"]
+resource_local_to_scene = true
+size = Vector3(2.5, 4, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dgrka"]
+resource_local_to_scene = true
+size = Vector3(1, 2, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tei06"]
+resource_local_to_scene = true
+size = Vector3(1, 2, 7.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8i7fl"]
+resource_local_to_scene = true
+size = Vector3(9.75, 2, 1.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5r8oh"]
+resource_local_to_scene = true
+size = Vector3(9.5, 2.75, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eoflc"]
+resource_local_to_scene = true
+size = Vector3(4.5, 2.25, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lyv0a"]
+resource_local_to_scene = true
+size = Vector3(2.75, 0.5, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x7c71"]
+resource_local_to_scene = true
+size = Vector3(2, 3.75, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_60nov"]
+resource_local_to_scene = true
+size = Vector3(1.5, 0.25, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1py35"]
+resource_local_to_scene = true
+size = Vector3(3, 1, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_phicu"]
+resource_local_to_scene = true
+size = Vector3(2, 3.75, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1j22n"]
+resource_local_to_scene = true
+size = Vector3(2.5, 2.75, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y451f"]
+resource_local_to_scene = true
+size = Vector3(0.5, 2.75, 2.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p56ch"]
+resource_local_to_scene = true
+size = Vector3(0.5, 3.75, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ua5dk"]
+resource_local_to_scene = true
+size = Vector3(0.5, 1.5, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h3l7q"]
+resource_local_to_scene = true
+size = Vector3(2.25, 6, 1.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_47ycl"]
+resource_local_to_scene = true
+size = Vector3(0.5, 3.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vhofw"]
+resource_local_to_scene = true
+size = Vector3(2, 3.5, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_28qpq"]
+resource_local_to_scene = true
+size = Vector3(2, 3.25, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w3vxt"]
+resource_local_to_scene = true
+size = Vector3(1, 0.75, 1.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wwhyi"]
+resource_local_to_scene = true
+size = Vector3(1, 1.25, 1.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4mhwe"]
+resource_local_to_scene = true
+size = Vector3(1, 1.75, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d8jnh"]
+resource_local_to_scene = true
+size = Vector3(0.5, 6, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g850g"]
+resource_local_to_scene = true
+size = Vector3(0.5, 2.5, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7vds5"]
+resource_local_to_scene = true
+size = Vector3(0.5, 4.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ydcyn"]
+resource_local_to_scene = true
+size = Vector3(0.5, 4.75, 3.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2gq1x"]
+resource_local_to_scene = true
+size = Vector3(0.5, 3.25, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pkg62"]
+resource_local_to_scene = true
+size = Vector3(4.5, 4.75, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ry5fd"]
+resource_local_to_scene = true
+size = Vector3(0.5, 4.25, 2.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1evap"]
+resource_local_to_scene = true
+size = Vector3(2, 4.25, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3osng"]
+resource_local_to_scene = true
+size = Vector3(6, 1.25, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_86dc1"]
+resource_local_to_scene = true
+size = Vector3(3.25, 4.25, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3wwq"]
+resource_local_to_scene = true
+size = Vector3(5.015625, 2.7129974, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fw27o"]
+resource_local_to_scene = true
+size = Vector3(0.25, 2, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p1twa"]
+resource_local_to_scene = true
+size = Vector3(0.25, 2, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6r085"]
+resource_local_to_scene = true
+size = Vector3(5.02417, 2.7129974, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pdloh"]
+resource_local_to_scene = true
+size = Vector3(0.5, 4, 2.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q6w4e"]
+resource_local_to_scene = true
+size = Vector3(0.5, 4.5, 4.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rfk6w"]
+resource_local_to_scene = true
+size = Vector3(3.5, 4, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_owrbv"]
+resource_local_to_scene = true
+size = Vector3(0.5, 1.25, 2.75)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_sjwx4"]
+resource_local_to_scene = true
+size = Vector2(4, 11.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_hko8w"]
+resource_local_to_scene = true
+size = Vector2(7.5, 15.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_yb3yd"]
+resource_local_to_scene = true
+size = Vector2(4, 14.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_sbjyk"]
+resource_local_to_scene = true
+size = Vector2(4, 2.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_sacj3"]
+resource_local_to_scene = true
+size = Vector2(2.75, 3)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_jxwas"]
+resource_local_to_scene = true
+size = Vector2(10.5, 9.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_xdqlc"]
+size = Vector2(2, 9.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_oc1ps"]
+size = Vector2(3, 11)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_4gux1"]
+size = Vector2(3.5, 7.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_11t1p"]
+size = Vector2(7.5, 5.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_lhi88"]
+size = Vector2(1.5, 3.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_a8nbv"]
+resource_local_to_scene = true
+size = Vector2(2.75, 2.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_2nt8c"]
+resource_local_to_scene = true
+size = Vector2(2, 1)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_qdlxt"]
+resource_local_to_scene = true
+size = Vector2(4.5, 2.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_isv8l"]
+resource_local_to_scene = true
+size = Vector2(6.5, 9)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_6b2a2"]
+resource_local_to_scene = true
+size = Vector2(4, 4)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_40mfe"]
+resource_local_to_scene = true
+size = Vector2(2, 4.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_yr7iq"]
+resource_local_to_scene = true
+size = Vector2(4.5, 5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_ksra3"]
+resource_local_to_scene = true
+size = Vector2(4.5, 5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_7xprp"]
+resource_local_to_scene = true
+size = Vector2(2.5, 5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_fnh0p"]
+resource_local_to_scene = true
+size = Vector2(5, 9)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_up6na"]
+resource_local_to_scene = true
+size = Vector2(15, 2.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_bdu8q"]
+resource_local_to_scene = true
+size = Vector2(2.5, 5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_k0pqn"]
+resource_local_to_scene = true
+size = Vector2(5.5, 2.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_sjpkq"]
+resource_local_to_scene = true
+size = Vector2(2, 5.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_wsh2m"]
+resource_local_to_scene = true
+size = Vector2(5.5, 1)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_je2f4"]
+resource_local_to_scene = true
+size = Vector2(7, 6)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_edcun"]
+resource_local_to_scene = true
+size = Vector2(4.5, 4)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_sjor8"]
+resource_local_to_scene = true
+size = Vector2(4.5, 4)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_up3yw"]
+resource_local_to_scene = true
+size = Vector2(2, 1.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_5fi7f"]
+resource_local_to_scene = true
+size = Vector2(3.5, 4.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_o0lld"]
+resource_local_to_scene = true
+size = Vector2(4.5, 3.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_v2cwc"]
+resource_local_to_scene = true
+size = Vector2(1, 5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_4535u"]
+resource_local_to_scene = true
+size = Vector2(3.5, 2.25)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_pkc27"]
+resource_local_to_scene = true
+size = Vector2(3.5, 8.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_nf4pn"]
+resource_local_to_scene = true
+size = Vector2(2.5, 8.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_nko1m"]
+resource_local_to_scene = true
+size = Vector2(2.5, 8.5)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_rlf47"]
+resource_local_to_scene = true
+size = Vector2(5.5, 4)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_3rvgx"]
+resource_local_to_scene = true
+size = Vector2(5, 2)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_cde4j"]
+resource_local_to_scene = true
+size = Vector2(4.5, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oc1ps"]
+albedo_texture = ExtResource("11_vx11l")
+metallic = 1.0
+metallic_texture = ExtResource("13_v0hnu")
+roughness_texture = ExtResource("15_dnw08")
+emission_enabled = true
+emission_energy_multiplier = 0.5
+emission_texture = ExtResource("12_8dmor")
+normal_enabled = true
+normal_texture = ExtResource("14_l68ec")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0.25, 0, 0.245)
+uv1_triplanar = true
+
+[sub_resource type="Resource" id="Resource_qv53x"]
+script = ExtResource("18_y65gd")
+pathInRoom = NodePath("Connectors/CeilingConnector")
+position = Vector3(-7.5, 4, -6.5)
+depth = 2.0
+normal = Vector3(0, 1, 0)
+size = Vector2(2, 2)
+cornerMin = Vector3(-8.5, 4, -7.5)
+cornerMax = Vector3(-6.5, 4, -5.5)
+aabb = AABB(-8.5, 3.75, -7.5, 2, 0.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f2s3s"]
+resource_local_to_scene = true
+size = Vector3(2, 0.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w8ytv"]
+resource_local_to_scene = true
+size = Vector3(2, 2, 2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_etnph"]
+resource_local_to_scene = true
+flip_faces = true
+
+[sub_resource type="Resource" id="Resource_fpt8s"]
+script = ExtResource("18_y65gd")
+pathInRoom = NodePath("Connectors/CeilingConnector2")
+position = Vector3(-1, 7.5, -7.5)
+depth = 1.75
+normal = Vector3(0, 1, 0)
+size = Vector2(1, 2)
+cornerMin = Vector3(-1.5, 7.5, -8.5)
+cornerMax = Vector3(-0.5, 7.5, -6.5)
+aabb = AABB(-1.5, 7.25, -8.5, 1, 0.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_swqjy"]
+resource_local_to_scene = true
+size = Vector3(1, 0.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v87tg"]
+resource_local_to_scene = true
+size = Vector3(1, 1.75, 2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n4r6v"]
+resource_local_to_scene = true
+flip_faces = true
+size = Vector2(1, 2)
+
+[sub_resource type="Resource" id="Resource_8jovn"]
+script = ExtResource("18_y65gd")
+pathInRoom = NodePath("Connectors/FloorConnector")
+position = Vector3(2.75, -3, -2)
+depth = 3.0
+normal = Vector3(0, -1, 0)
+size = Vector2(1.5, 2)
+cornerMin = Vector3(2, -3, -3)
+cornerMax = Vector3(3.5, -3, -1)
+aabb = AABB(2, -3.25, -3, 1.5, 0.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ccrkg"]
+resource_local_to_scene = true
+size = Vector3(1.5, 0.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2e0xm"]
+resource_local_to_scene = true
+size = Vector3(1.5, 3, 2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ng50m"]
+resource_local_to_scene = true
+size = Vector2(1.5, 2)
+
+[sub_resource type="Resource" id="Resource_3iqsw"]
+script = ExtResource("18_y65gd")
+pathInRoom = NodePath("Connectors/FloorConnector2")
+position = Vector3(1.5, 2, -8)
+normal = Vector3(0, -1, 0)
+size = Vector2(1, 1)
+cornerMin = Vector3(1, 2, -8.5)
+cornerMax = Vector3(2, 2, -7.5)
+aabb = AABB(1, 1.75, -8.5, 1, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_at6xp"]
+resource_local_to_scene = true
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kcblh"]
+resource_local_to_scene = true
+size = Vector3(1, 0.25, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nmcoe"]
+resource_local_to_scene = true
+size = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_rw6p2"]
+script = ExtResource("18_y65gd")
+pathInRoom = NodePath("Connectors/WallConnector")
+position = Vector3(-12.5, 1, 7)
+depth = 0.0
+normal = Vector3(-1, 0, 4.371139e-08)
+size = Vector2(1, 1)
+cornerMin = Vector3(-12.5, 0.5, 7.5)
+cornerMax = Vector3(-12.5, 1.5, 6.5)
+aabb = AABB(-12.75, 0.5, 6.5, 0.5, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c0ryh"]
+resource_local_to_scene = true
+size = Vector3(1, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2wx4"]
+resource_local_to_scene = true
+size = Vector3(1, 1, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ouc2f"]
+resource_local_to_scene = true
+size = Vector2(1, 1)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_6wyk7"]
+script = ExtResource("18_y65gd")
+pathInRoom = NodePath("Connectors/WallConnector2")
+position = Vector3(-7.25, 0.5, -8.5)
+depth = 0.5
+normal = Vector3(0, 0, -1)
+size = Vector2(2.5, 3)
+cornerMin = Vector3(-8.5, -1, -8.5)
+cornerMax = Vector3(-6, 2, -8.5)
+aabb = AABB(-8.5, -1, -8.75, 2.5, 3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vfc0w"]
+resource_local_to_scene = true
+size = Vector3(2.5, 3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_htxyj"]
+resource_local_to_scene = true
+size = Vector3(2.5, 3, 0.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_whqex"]
+resource_local_to_scene = true
+size = Vector2(2.5, 3)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_0dj38"]
+script = ExtResource("18_y65gd")
+pathInRoom = NodePath("Connectors/WallConnector3")
+position = Vector3(-9, 0.25, -3.75)
+depth = 0.5
+normal = Vector3(-1, 0, 4.371139e-08)
+size = Vector2(5.5, 2.5)
+cornerMin = Vector3(-9, -1, -1)
+cornerMax = Vector3(-9, 1.5, -6.5)
+aabb = AABB(-9.25, -1, -6.5, 0.5, 2.5, 5.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yrpgf"]
+resource_local_to_scene = true
+size = Vector3(5.5, 2.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_41hs3"]
+resource_local_to_scene = true
+size = Vector3(5.5, 2.5, 0.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o10hx"]
+resource_local_to_scene = true
+size = Vector2(5.5, 2.5)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_gqu2c"]
+script = ExtResource("18_y65gd")
+pathInRoom = NodePath("Connectors/WallConnector4")
+position = Vector3(-2, 1.25, 9)
+depth = 0.75
+normal = Vector3(8.742278e-08, 0, 1)
+size = Vector2(5, 2.5)
+cornerMin = Vector3(0.5, 0, 9)
+cornerMax = Vector3(-4.5, 2.5, 9)
+aabb = AABB(-4.5, 0, 8.75, 5, 2.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6cujj"]
+resource_local_to_scene = true
+size = Vector3(5, 2.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_acq7e"]
+resource_local_to_scene = true
+size = Vector3(5, 2.5, 0.75)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rqxqr"]
+resource_local_to_scene = true
+size = Vector2(5, 2.5)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_adi0u"]
+script = ExtResource("18_y65gd")
+pathInRoom = NodePath("Connectors/WallConnector5")
+position = Vector3(6.5, 1.5, 3.75)
+depth = 0.5
+normal = Vector3(1, 0, 4.371139e-08)
+size = Vector2(3.5, 3)
+cornerMin = Vector3(6.5, 0, 2)
+cornerMax = Vector3(6.5, 3, 5.5)
+aabb = AABB(6.25, 0, 2, 0.5, 3, 3.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hlmo1"]
+resource_local_to_scene = true
+size = Vector3(3.5, 3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k4rx6"]
+resource_local_to_scene = true
+size = Vector3(3.5, 3, 0.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sud2p"]
+resource_local_to_scene = true
+size = Vector2(3.5, 3)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_c3rqn"]
+script = ExtResource("18_y65gd")
+pathInRoom = NodePath("Connectors/WallConnector6")
+position = Vector3(5, 3.75, -6)
+depth = 0.75
+normal = Vector3(0, 0, -1)
+size = Vector2(2, 2.5)
+cornerMin = Vector3(4, 2.5, -6)
+cornerMax = Vector3(6, 5, -6)
+aabb = AABB(4, 2.5, -6.25, 2, 2.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3fevb"]
+resource_local_to_scene = true
+size = Vector3(2, 2.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o42j8"]
+resource_local_to_scene = true
+size = Vector3(2, 2.5, 0.75)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ty3am"]
+resource_local_to_scene = true
+size = Vector2(2, 2.5)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_4s5h6"]
+script = ExtResource("18_y65gd")
+pathInRoom = NodePath("Connectors/WallConnector7")
+position = Vector3(3.5, 1, -5.25)
+depth = 1.5
+normal = Vector3(1, 0, 4.371139e-08)
+size = Vector2(1.5, 2)
+cornerMin = Vector3(3.5, 0, -6)
+cornerMax = Vector3(3.5, 2, -4.5)
+aabb = AABB(3.25, 0, -6, 0.5, 2, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3whri"]
+resource_local_to_scene = true
+size = Vector3(1.5, 2, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_an2aw"]
+resource_local_to_scene = true
+size = Vector3(1.5, 2, 1.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yid5x"]
+resource_local_to_scene = true
+size = Vector2(1.5, 2)
+orientation = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8pn3i"]
+resource_local_to_scene = true
+size = Vector3(3.5, 7, 17.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6anhs"]
+resource_local_to_scene = true
+size = Vector3(3.5, 6, 3.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_he4up"]
+resource_local_to_scene = true
+size = Vector3(9, 10.5, 15.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ylg3j"]
+resource_local_to_scene = true
+size = Vector3(3, 9.5, 11)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4w23o"]
+resource_local_to_scene = true
+size = Vector3(3, 4.5, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dg61"]
+resource_local_to_scene = true
+size = Vector3(4.5, 5.5, 2.5)
+
+[node name="RoomL0NookWithRamp" unique_id=1900576414 instance=ExtResource("1_vqwax")]
+uniqueName = &"L0_nook_with_ramp"
+definitions = Array[ExtResource("2_qadr1")]([ExtResource("3_oqrpp")])
+
+[node name="FloorStaticBody" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="0" unique_id=446596967 instance=ExtResource("4_oypdh")]
+
+[node name="RectCollider" parent="Colliders/FloorStaticBody" index="0" unique_id=415124710 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.625, -0.5, -2.2624998)
+shape = SubResource("BoxShape3D_tplrk")
+
+[node name="RectCollider2" parent="Colliders/FloorStaticBody" index="1" unique_id=2047904965 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.375, -0.5, -4.6875)
+shape = SubResource("BoxShape3D_7c5kd")
+
+[node name="RectCollider3" parent="Colliders/FloorStaticBody" index="2" unique_id=1367164518 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -0.5, -4.7)
+shape = SubResource("BoxShape3D_72ics")
+
+[node name="RectCollider4" parent="Colliders/FloorStaticBody" index="3" unique_id=1867321307 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.125, -0.5, -2.3749998)
+shape = SubResource("BoxShape3D_7j7r0")
+
+[node name="RectCollider5" parent="Colliders/FloorStaticBody" index="4" unique_id=271571800 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, -0.5, 2.75)
+shape = SubResource("BoxShape3D_sxixa")
+
+[node name="FloorStaticBody2" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="1" unique_id=348467718 instance=ExtResource("4_oypdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="RectCollider" parent="Colliders/FloorStaticBody2" index="0" unique_id=1226858575 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, -0.5, -0.25)
+shape = SubResource("BoxShape3D_nr42e")
+
+[node name="RectCollider3" parent="Colliders/FloorStaticBody2" index="1" unique_id=1722626479 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02500005, -0.75, 0.875)
+shape = SubResource("BoxShape3D_41yy0")
+
+[node name="RectCollider4" parent="Colliders/FloorStaticBody2" index="2" unique_id=1859540396 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -1, 0)
+shape = SubResource("BoxShape3D_yadfl")
+
+[node name="RectCollider5" parent="Colliders/FloorStaticBody2" index="3" unique_id=1202124204 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0874999, -1.25, 0)
+shape = SubResource("BoxShape3D_p4gsc")
+
+[node name="RectCollider2" parent="Colliders/FloorStaticBody2" index="4" unique_id=2020554272 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -0.5, 1.8750005)
+shape = SubResource("BoxShape3D_meofr")
+
+[node name="FloorStaticBody3" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="2" unique_id=2082555298 instance=ExtResource("4_oypdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, -0.25, 6.5)
+
+[node name="RectCollider" parent="Colliders/FloorStaticBody3" index="0" unique_id=629454953 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.5, 0)
+shape = SubResource("BoxShape3D_v2qli")
+
+[node name="RectCollider4" parent="Colliders/FloorStaticBody3" index="1" unique_id=1077888953 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.625, 0.5, 0.5)
+shape = SubResource("BoxShape3D_t07ur")
+
+[node name="RectCollider3" parent="Colliders/FloorStaticBody3" index="2" unique_id=1306950047 instance=ExtResource("5_frf5n")]
+transform = Transform3D(0.98914176, 0.14696456, 0, -0.14696456, 0.98914176, 0, 0, 0, 1, -6.033801, 0.0021655709, 0.625)
+shape = SubResource("BoxShape3D_fadit")
+
+[node name="RectCollider2" parent="Colliders/FloorStaticBody3" index="3" unique_id=1291320152 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, -0.5, 0.875)
+shape = SubResource("BoxShape3D_jdv68")
+
+[node name="FloorStaticBody4" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="3" unique_id=1879330593 instance=ExtResource("4_oypdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, -5)
+
+[node name="RectCollider" parent="Colliders/FloorStaticBody4" index="0" unique_id=417881118 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.25)
+shape = SubResource("BoxShape3D_7ck3i")
+
+[node name="RectCollider2" parent="Colliders/FloorStaticBody4" index="1" unique_id=749554236 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 0.9301034, -0.3672977, 0, 0.3672977, 0.9301034, 0.125, -1.5062264, 3.6500416)
+shape = SubResource("BoxShape3D_5arnv")
+
+[node name="FloorStaticBody5" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="4" unique_id=1719959414 instance=ExtResource("4_oypdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 2.25, -7.25)
+
+[node name="RectCollider" parent="Colliders/FloorStaticBody5" index="0" unique_id=95346385 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, -0.125, -0.375)
+shape = SubResource("BoxShape3D_n11wi")
+
+[node name="RectCollider2" parent="Colliders/FloorStaticBody5" index="1" unique_id=482530238 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, -0.125, 0.375)
+shape = SubResource("BoxShape3D_w6vm4")
+
+[node name="FloorStaticBody6" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="5" unique_id=148789381 instance=ExtResource("4_oypdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, -1, 0)
+
+[node name="RectCollider" parent="Colliders/FloorStaticBody6" index="0" unique_id=1671635007 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, -0.5, 0.5)
+shape = SubResource("BoxShape3D_vjb7n")
+
+[node name="RectCollider3" parent="Colliders/FloorStaticBody6" index="1" unique_id=1442342070 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -0.5, -4.25)
+shape = SubResource("BoxShape3D_oqvqh")
+
+[node name="RectCollider2" parent="Colliders/FloorStaticBody6" index="2" unique_id=1356408740 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.375, -0.5, 3)
+shape = SubResource("BoxShape3D_5xx0e")
+
+[node name="CeilingStaticBody" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="6" unique_id=1707928833 instance=ExtResource("6_ewe2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+
+[node name="RectCollider" parent="Colliders/CeilingStaticBody" index="0" unique_id=1131413647 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.625, 0, -0.375)
+shape = SubResource("BoxShape3D_u48w0")
+
+[node name="RectCollider2" parent="Colliders/CeilingStaticBody" index="1" unique_id=216824436 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.375, -1.5, 5.375)
+shape = SubResource("BoxShape3D_vqpp7")
+
+[node name="RectCollider3" parent="Colliders/CeilingStaticBody" index="2" unique_id=1834986480 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.125, -1.75, -0.75)
+shape = SubResource("BoxShape3D_72w35")
+
+[node name="RectCollider4" parent="Colliders/CeilingStaticBody" index="3" unique_id=1859257252 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.625, -1.75, 2.5)
+shape = SubResource("BoxShape3D_1creq")
+
+[node name="CeilingStaticBody2" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="7" unique_id=1342752798 instance=ExtResource("6_ewe2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75, -7.25)
+
+[node name="RectCollider" parent="Colliders/CeilingStaticBody2" index="0" unique_id=1409807052 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -0.25)
+shape = SubResource("BoxShape3D_xxjwv")
+
+[node name="RectCollider2" parent="Colliders/CeilingStaticBody2" index="1" unique_id=1590859861 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, -2.5, 2)
+shape = SubResource("BoxShape3D_3vgti")
+
+[node name="CeilingStaticBody3" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="8" unique_id=1493878261 instance=ExtResource("6_ewe2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 3.45, 6.75)
+
+[node name="RectCollider" parent="Colliders/CeilingStaticBody3" index="0" unique_id=147716679 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.375)
+shape = SubResource("BoxShape3D_8wqqw")
+
+[node name="RectCollider3" parent="Colliders/CeilingStaticBody3" index="1" unique_id=902202089 instance=ExtResource("5_frf5n")]
+transform = Transform3D(0.9889867, -0.14800417, 0, 0.14800417, 0.9889867, 0, 0, 0, 1, -5.055005, -1.202203, 0.375)
+shape = SubResource("BoxShape3D_wwnwy")
+
+[node name="RectCollider4" parent="Colliders/CeilingStaticBody3" index="2" unique_id=193365399 instance=ExtResource("5_frf5n")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -7.625, -1.7, 0.25)
+shape = SubResource("BoxShape3D_7fixv")
+
+[node name="RectCollider2" parent="Colliders/CeilingStaticBody3" index="3" unique_id=808608466 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.375, 0, 0.625)
+shape = SubResource("BoxShape3D_w00fw")
+
+[node name="CeilingStaticBody4" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="9" unique_id=1634801471 instance=ExtResource("6_ewe2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 2.5, -4.75)
+
+[node name="RectCollider" parent="Colliders/CeilingStaticBody4" index="0" unique_id=1339638223 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+shape = SubResource("BoxShape3D_tfte0")
+
+[node name="RectCollider3" parent="Colliders/CeilingStaticBody4" index="1" unique_id=1048937772 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.25)
+shape = SubResource("BoxShape3D_etaev")
+
+[node name="RectCollider4" parent="Colliders/CeilingStaticBody4" index="2" unique_id=891287147 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, -2)
+shape = SubResource("BoxShape3D_7q1xg")
+
+[node name="RectCollider2" parent="Colliders/CeilingStaticBody4" index="3" unique_id=362308177 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
+shape = SubResource("BoxShape3D_6b161")
+
+[node name="WallStaticBody" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="10" unique_id=237774776 instance=ExtResource("7_3i2ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0.75)
+
+[node name="RectCollider" parent="Colliders/WallStaticBody" index="0" unique_id=212030660 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.099999905, 2.5, -0.07500005)
+shape = SubResource("BoxShape3D_pk7nl")
+
+[node name="RectCollider2" parent="Colliders/WallStaticBody" index="1" unique_id=1603387507 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5500002, 4.5, -0.07500005)
+shape = SubResource("BoxShape3D_x3k7h")
+
+[node name="WallStaticBody2" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="11" unique_id=577225089 instance=ExtResource("7_3i2ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, -0.25, 1.5)
+
+[node name="RectCollider" parent="Colliders/WallStaticBody2" index="0" unique_id=1241806476 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, -0.28977048, 0.42796636)
+shape = SubResource("BoxShape3D_alb6q")
+
+[node name="RectCollider5" parent="Colliders/WallStaticBody2" index="1" unique_id=1259563232 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.625, -0.5206665, 2.7559323)
+shape = SubResource("BoxShape3D_3ew2h")
+
+[node name="RectCollider2" parent="Colliders/WallStaticBody2" index="2" unique_id=1871034691 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -0.5, -2.25)
+shape = SubResource("BoxShape3D_fwal5")
+
+[node name="RectCollider3" parent="Colliders/WallStaticBody2" index="3" unique_id=1378077156 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, -0.5, -4.75)
+shape = SubResource("BoxShape3D_rxjhk")
+
+[node name="RectCollider4" parent="Colliders/WallStaticBody2" index="4" unique_id=861340073 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -0.5, -6.25)
+shape = SubResource("BoxShape3D_7ktx5")
+
+[node name="WallStaticBody3" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="12" unique_id=1247399034 instance=ExtResource("7_3i2ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, -7.75)
+
+[node name="RectCollider" parent="Colliders/WallStaticBody3" index="0" unique_id=585470243 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.5, 0.5)
+shape = SubResource("BoxShape3D_e677y")
+
+[node name="RectCollider2" parent="Colliders/WallStaticBody3" index="1" unique_id=792246108 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 0.5, 0.25)
+shape = SubResource("BoxShape3D_iypau")
+
+[node name="RectCollider3" parent="Colliders/WallStaticBody3" index="2" unique_id=547795777 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 2, 4)
+shape = SubResource("BoxShape3D_ufpxv")
+
+[node name="RectCollider4" parent="Colliders/WallStaticBody3" index="3" unique_id=861899470 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 0.5, 7.25)
+shape = SubResource("BoxShape3D_s3d2r")
+
+[node name="RectCollider5" parent="Colliders/WallStaticBody3" index="4" unique_id=539955529 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0.5, 7.5)
+shape = SubResource("BoxShape3D_emqvp")
+
+[node name="WallStaticBody4" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="13" unique_id=138728441 instance=ExtResource("7_3i2ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 4.5, 0)
+
+[node name="RectCollider" parent="Colliders/WallStaticBody4" index="0" unique_id=334146661 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+shape = SubResource("BoxShape3D_dgrka")
+
+[node name="RectCollider2" parent="Colliders/WallStaticBody4" index="1" unique_id=91691213 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, -1.5, -2.75)
+shape = SubResource("BoxShape3D_tei06")
+
+[node name="RectCollider3" parent="Colliders/WallStaticBody4" index="2" unique_id=51756710 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.375, 0, 4.875)
+shape = SubResource("BoxShape3D_8i7fl")
+
+[node name="WallStaticBody5" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="14" unique_id=981996137 instance=ExtResource("7_3i2ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0.75, -6)
+
+[node name="RectCollider" parent="Colliders/WallStaticBody5" index="0" unique_id=1867114327 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.125, -0.25)
+shape = SubResource("BoxShape3D_5r8oh")
+
+[node name="RectCollider2" parent="Colliders/WallStaticBody5" index="1" unique_id=780924621 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.125, -0.25)
+shape = SubResource("BoxShape3D_eoflc")
+
+[node name="RectCollider3" parent="Colliders/WallStaticBody5" index="2" unique_id=529956275 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.875, 1.5, -0.125)
+shape = SubResource("BoxShape3D_lyv0a")
+
+[node name="RectCollider4" parent="Colliders/WallStaticBody5" index="3" unique_id=1320398502 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3.125, -0.125)
+shape = SubResource("BoxShape3D_x7c71")
+
+[node name="RectCollider6" parent="Colliders/WallStaticBody5" index="4" unique_id=421581610 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 5.125, -0.25)
+shape = SubResource("BoxShape3D_60nov")
+
+[node name="RectCollider5" parent="Colliders/WallStaticBody5" index="5" unique_id=979144391 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 3.75, -0.125)
+shape = SubResource("BoxShape3D_1py35")
+
+[node name="WallStaticBody6" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="15" unique_id=2037706694 instance=ExtResource("7_3i2ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 3.25, -8.5)
+
+[node name="RectCollider" parent="Colliders/WallStaticBody6" index="0" unique_id=244084735 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.625, -0.25)
+shape = SubResource("BoxShape3D_phicu")
+
+[node name="RectCollider4" parent="Colliders/WallStaticBody6" index="1" unique_id=1614632237 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.125, -0.25)
+shape = SubResource("BoxShape3D_1j22n")
+
+[node name="RectCollider5" parent="Colliders/WallStaticBody6" index="2" unique_id=630141552 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.125, 1.125)
+shape = SubResource("BoxShape3D_y451f")
+
+[node name="RectCollider2" parent="Colliders/WallStaticBody6" index="3" unique_id=256066052 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.625, 1)
+shape = SubResource("BoxShape3D_p56ch")
+
+[node name="RectCollider3" parent="Colliders/WallStaticBody6" index="4" unique_id=811718543 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 1)
+shape = SubResource("BoxShape3D_ua5dk")
+
+[node name="WallStaticBody7" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="16" unique_id=1501190916 instance=ExtResource("7_3i2ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 0.5, -3.75)
+
+[node name="RectCollider" parent="Colliders/WallStaticBody7" index="0" unique_id=150987082 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 2, -0.125)
+shape = SubResource("BoxShape3D_h3l7q")
+
+[node name="RectCollider2" parent="Colliders/WallStaticBody7" index="1" unique_id=446864463 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3.25, -1.5)
+shape = SubResource("BoxShape3D_47ycl")
+
+[node name="RectCollider3" parent="Colliders/WallStaticBody7" index="2" unique_id=1033232104 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0.5, 0.375)
+shape = SubResource("BoxShape3D_vhofw")
+
+[node name="RectCollider4" parent="Colliders/WallStaticBody7" index="3" unique_id=734407197 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 3.375, -1)
+shape = SubResource("BoxShape3D_28qpq")
+
+[node name="RectCollider5" parent="Colliders/WallStaticBody7" index="4" unique_id=1567503066 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.375, 3.625)
+shape = SubResource("BoxShape3D_w3vxt")
+
+[node name="RectCollider6" parent="Colliders/WallStaticBody7" index="5" unique_id=438417276 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.125, 2.375)
+shape = SubResource("BoxShape3D_wwhyi")
+
+[node name="RectCollider7" parent="Colliders/WallStaticBody7" index="6" unique_id=508653708 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.125, 1)
+shape = SubResource("BoxShape3D_4mhwe")
+
+[node name="WallStaticBody8" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="17" unique_id=1434271450 instance=ExtResource("7_3i2ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+
+[node name="RectCollider" parent="Colliders/WallStaticBody8" index="0" unique_id=1110318636 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 2.5, 0.5)
+shape = SubResource("BoxShape3D_d8jnh")
+
+[node name="RectCollider4" parent="Colliders/WallStaticBody8" index="1" unique_id=973037961 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 4.25, 3.5)
+shape = SubResource("BoxShape3D_g850g")
+
+[node name="RectCollider5" parent="Colliders/WallStaticBody8" index="2" unique_id=633372964 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.75, 6)
+shape = SubResource("BoxShape3D_7vds5")
+
+[node name="RectCollider2" parent="Colliders/WallStaticBody8" index="3" unique_id=235573986 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 3.125, -2.625)
+shape = SubResource("BoxShape3D_ydcyn")
+
+[node name="RectCollider3" parent="Colliders/WallStaticBody8" index="4" unique_id=1966365388 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 3.875, -4.75)
+shape = SubResource("BoxShape3D_2gq1x")
+
+[node name="WallStaticBody9" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="18" unique_id=511538558 instance=ExtResource("7_3i2ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="RectCollider" parent="Colliders/WallStaticBody9" index="0" unique_id=840323148 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 1.625, 0.25)
+shape = SubResource("BoxShape3D_pkg62")
+
+[node name="RectCollider2" parent="Colliders/WallStaticBody9" index="1" unique_id=1386152863 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.375, 1.375)
+shape = SubResource("BoxShape3D_ry5fd")
+
+[node name="RectCollider3" parent="Colliders/WallStaticBody9" index="2" unique_id=2053937307 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.375, 2.625)
+shape = SubResource("BoxShape3D_1evap")
+
+[node name="RectCollider4" parent="Colliders/WallStaticBody9" index="3" unique_id=1773056715 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.875, 2.625)
+shape = SubResource("BoxShape3D_3osng")
+
+[node name="RectCollider5" parent="Colliders/WallStaticBody9" index="4" unique_id=560963003 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.125, 1.375, 2.625)
+shape = SubResource("BoxShape3D_86dc1")
+
+[node name="RectCollider6" parent="Colliders/WallStaticBody9" index="5" unique_id=1125326381 instance=ExtResource("5_frf5n")]
+transform = Transform3D(0.9883907, 0, -0.15193379, 0, 1, 0, 0.15193379, 0, 0.9883907, -11.805517, 1.1062698, 2.1234837)
+shape = SubResource("BoxShape3D_m3wwq")
+
+[node name="RectCollider7" parent="Colliders/WallStaticBody9" index="6" unique_id=263440675 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.375, 1, 1.75)
+shape = SubResource("BoxShape3D_fw27o")
+
+[node name="WallStaticBody10" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="19" unique_id=804722153 instance=ExtResource("7_3i2ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 2.5)
+
+[node name="RectCollider" parent="Colliders/WallStaticBody10" index="0" unique_id=1084163094 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.875, 1, 3.75)
+shape = SubResource("BoxShape3D_p1twa")
+
+[node name="RectCollider2" parent="Colliders/WallStaticBody10" index="1" unique_id=1617292484 instance=ExtResource("5_frf5n")]
+transform = Transform3D(0.99514425, 0, 0.09842718, 0, 1, 0, -0.09842718, 0, 0.99514425, -3.27454, 1.1062698, 3.5022655)
+shape = SubResource("BoxShape3D_6r085")
+
+[node name="RectCollider3" parent="Colliders/WallStaticBody10" index="2" unique_id=2056819916 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 2.375)
+shape = SubResource("BoxShape3D_pdloh")
+
+[node name="RectCollider5" parent="Colliders/WallStaticBody10" index="3" unique_id=1562473749 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.75, -0.625)
+shape = SubResource("BoxShape3D_q6w4e")
+
+[node name="RectCollider6" parent="Colliders/WallStaticBody10" index="4" unique_id=2036987331 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.5, 1.625)
+shape = SubResource("BoxShape3D_rfk6w")
+
+[node name="RectCollider4" parent="Colliders/WallStaticBody10" index="5" unique_id=194393373 instance=ExtResource("5_frf5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.875, 4.625)
+shape = SubResource("BoxShape3D_owrbv")
+
+[node name="GeneratedOccluder" type="OccluderInstance3D" parent="Occluders" parent_id_path=PackedInt32Array(2028419292) index="0" unique_id=509307122]
+occluder = ExtResource("8_dt5gy")
+bake_mask = 4293918734
+bake_simplification_distance = 1.0
+
+[node name="hand-placed" type="Node3D" parent="Occluders" parent_id_path=PackedInt32Array(2028419292) index="1" unique_id=1834151807]
+process_mode = 4
+visible = false
+
+[node name="CeilingOccluderPlane" parent="Occluders/hand-placed" index="0" unique_id=755082067 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.5, 6.25, 0.75)
+occluder = SubResource("QuadOccluder3D_sjwx4")
+
+[node name="CeilingOccluderPlane2" parent="Occluders/hand-placed" index="1" unique_id=400662716 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.25, 6.25, 1.25)
+occluder = SubResource("QuadOccluder3D_hko8w")
+
+[node name="CeilingOccluderPlane3" parent="Occluders/hand-placed" index="2" unique_id=179310882 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -6.75, 3.75, 1.75)
+occluder = SubResource("QuadOccluder3D_yb3yd")
+
+[node name="CeilingOccluderPlane4" parent="Occluders/hand-placed" index="3" unique_id=199734458 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(0.9848077, 7.590403e-09, -0.17364818, 0.17364818, -4.304731e-08, 0.9848077, 0, -1, -4.371139e-08, -10.25, 2.4, 7)
+occluder = SubResource("QuadOccluder3D_sbjyk")
+
+[node name="CeilingOccluderPlane5" parent="Occluders/hand-placed" index="4" unique_id=1511386468 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1, 6.5, -7.25)
+occluder = SubResource("QuadOccluder3D_sacj3")
+
+[node name="FloorOccluderPlane" parent="Occluders/hand-placed" index="5" unique_id=155690634 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.75, -2, 4)
+occluder = SubResource("QuadOccluder3D_jxwas")
+
+[node name="FloorOccluderPlane2" parent="Occluders/hand-placed" index="6" unique_id=154096766 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.5, -2, 4)
+occluder = SubResource("QuadOccluder3D_xdqlc")
+
+[node name="FloorOccluderPlane3" parent="Occluders/hand-placed" index="7" unique_id=1448188368 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5, -2, 1)
+occluder = SubResource("QuadOccluder3D_oc1ps")
+
+[node name="FloorOccluderPlane4" parent="Occluders/hand-placed" index="8" unique_id=786371106 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -7.25, -2, -4.5)
+occluder = SubResource("QuadOccluder3D_4gux1")
+
+[node name="FloorOccluderPlane5" parent="Occluders/hand-placed" index="9" unique_id=103213625 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.75, -2, -3.5)
+occluder = SubResource("QuadOccluder3D_11t1p")
+
+[node name="FloorOccluderPlane6" parent="Occluders/hand-placed" index="10" unique_id=916516359 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.75, -0.5, -4.75)
+occluder = SubResource("QuadOccluder3D_lhi88")
+
+[node name="FloorOccluderPlane7" parent="Occluders/hand-placed" index="11" unique_id=225009782 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.5, 2, -7.5)
+occluder = SubResource("QuadOccluder3D_a8nbv")
+
+[node name="FloorOccluderPlane8" parent="Occluders/hand-placed" index="12" unique_id=1190041322 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.25, 2, -7)
+occluder = SubResource("QuadOccluder3D_2nt8c")
+
+[node name="FloorOccluderPlane9" parent="Occluders/hand-placed" index="13" unique_id=970044128 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(0.98480785, -7.590403e-09, 0.17364821, -0.17364821, -4.304732e-08, 0.98480785, 0, -1, -4.371139e-08, -10, -0.5, 7)
+occluder = SubResource("QuadOccluder3D_qdlxt")
+
+[node name="WallOccluderPlane" parent="Occluders/hand-placed" index="14" unique_id=2087888751 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.25, 2, -1.25)
+occluder = SubResource("QuadOccluder3D_isv8l")
+
+[node name="WallOccluderPlane2" parent="Occluders/hand-placed" index="15" unique_id=1508891990 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4.25, 0, -4.25)
+occluder = SubResource("QuadOccluder3D_6b2a2")
+
+[node name="WallOccluderPlane3" parent="Occluders/hand-placed" index="16" unique_id=1366177003 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.25, 4.25, -4.25)
+occluder = SubResource("QuadOccluder3D_40mfe")
+
+[node name="WallOccluderPlane4" parent="Occluders/hand-placed" index="17" unique_id=742891099 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.25, 4.5, -6.5)
+occluder = SubResource("QuadOccluder3D_yr7iq")
+
+[node name="WallOccluderPlane5" parent="Occluders/hand-placed" index="18" unique_id=1254356514 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.25, 4.5, -8.75)
+occluder = SubResource("QuadOccluder3D_ksra3")
+
+[node name="WallOccluderPlane6" parent="Occluders/hand-placed" index="19" unique_id=1557601610 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 4.5, -7.5)
+occluder = SubResource("QuadOccluder3D_7xprp")
+
+[node name="WallOccluderPlane7" parent="Occluders/hand-placed" index="20" unique_id=440927193 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3, 2.5, -6.25)
+occluder = SubResource("QuadOccluder3D_fnh0p")
+
+[node name="WallOccluderPlane8" parent="Occluders/hand-placed" index="21" unique_id=728059954 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 5, 1.25)
+occluder = SubResource("QuadOccluder3D_up6na")
+
+[node name="WallOccluderPlane9" parent="Occluders/hand-placed" index="22" unique_id=446985991 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.5, 0.5, -7.25)
+occluder = SubResource("QuadOccluder3D_bdu8q")
+
+[node name="WallOccluderPlane10" parent="Occluders/hand-placed" index="23" unique_id=1071281042 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.75, 2.75, -3.75)
+occluder = SubResource("QuadOccluder3D_k0pqn")
+
+[node name="WallOccluderPlane11" parent="Occluders/hand-placed" index="24" unique_id=1172767573 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.75, 0.75, -7.5)
+occluder = SubResource("QuadOccluder3D_sjpkq")
+
+[node name="WallOccluderPlane12" parent="Occluders/hand-placed" index="25" unique_id=1401772655 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.75, -1.5, -3.75)
+occluder = SubResource("QuadOccluder3D_wsh2m")
+
+[node name="WallOccluderPlane13" parent="Occluders/hand-placed" index="26" unique_id=1123700373 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.75, 1, 2.5)
+occluder = SubResource("QuadOccluder3D_je2f4")
+
+[node name="WallOccluderPlane14" parent="Occluders/hand-placed" index="27" unique_id=666797394 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-0.9848077, 0, -0.1736481, 0, 1, 0, 0.1736481, 0, -0.9848077, -10, 1.25, 5.75)
+occluder = SubResource("QuadOccluder3D_edcun")
+
+[node name="WallOccluderPlane15" parent="Occluders/hand-placed" index="28" unique_id=1251651886 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-0.98480767, 0, 0.17364825, 0, 1, 0, -0.17364825, 0, -0.98480767, -10, 1.25, 8.25)
+occluder = SubResource("QuadOccluder3D_sjor8")
+
+[node name="WallOccluderPlane16" parent="Occluders/hand-placed" index="29" unique_id=1517442525 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 5.25, 5.75, -4.25)
+occluder = SubResource("QuadOccluder3D_up3yw")
+
+[node name="WallOccluderPlane17" parent="Occluders/hand-placed" index="30" unique_id=49787887 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.5, 0, -6.25)
+occluder = SubResource("QuadOccluder3D_5fi7f")
+
+[node name="WallOccluderPlane18" parent="Occluders/hand-placed" index="31" unique_id=1641469093 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.25, 4.75, 4.25)
+occluder = SubResource("QuadOccluder3D_o0lld")
+
+[node name="WallOccluderPlane19" parent="Occluders/hand-placed" index="32" unique_id=1233510744 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.25, 0.5, 6)
+occluder = SubResource("QuadOccluder3D_v2cwc")
+
+[node name="WallOccluderPlane20" parent="Occluders/hand-placed" index="33" unique_id=196615978 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.25, -1.25, 3.75)
+occluder = SubResource("QuadOccluder3D_4535u")
+
+[node name="WallOccluderPlane21" parent="Occluders/hand-placed" index="34" unique_id=1137185365 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4.5, 2, 6.5)
+occluder = SubResource("QuadOccluder3D_pkc27")
+
+[node name="WallOccluderPlane22" parent="Occluders/hand-placed" index="35" unique_id=560483492 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.75, 2, 7.5)
+occluder = SubResource("QuadOccluder3D_nf4pn")
+
+[node name="WallOccluderPlane23" parent="Occluders/hand-placed" index="36" unique_id=598749932 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 2, 8.75)
+occluder = SubResource("QuadOccluder3D_nko1m")
+
+[node name="WallOccluderPlane24" parent="Occluders/hand-placed" index="37" unique_id=15222718 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 4.5, 8.75)
+occluder = SubResource("QuadOccluder3D_rlf47")
+
+[node name="WallOccluderPlane25" parent="Occluders/hand-placed" index="38" unique_id=248720220 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, 8.75)
+occluder = SubResource("QuadOccluder3D_3rvgx")
+
+[node name="WallOccluderPlane26" parent="Occluders/hand-placed" index="39" unique_id=374520211 instance=ExtResource("9_dn2u4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.75, 1, 8.75)
+occluder = SubResource("QuadOccluder3D_cde4j")
+
+[node name="CeilingLightSquare" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="0" unique_id=1957474247 instance=ExtResource("10_ctldr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.275, 3.5, 2.15)
+
+[node name="Bounce" parent="Lights/CeilingLightSquare" index="2" unique_id=2129061489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6267376, -0.884835, 0.09964371)
+omni_range = 2.5
+omni_attenuation = 0.0
+
+[node name="CeilingLightSquare2" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="1" unique_id=389572962 instance=ExtResource("10_ctldr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.275, 3.5, -3.85)
+bounceEnabled = false
+
+[node name="CeilingLightSquare3" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="2" unique_id=1056155991 instance=ExtResource("10_ctldr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.275, 3.5, -0.8499999)
+primaryEnabled = false
+
+[node name="Primary" parent="Lights/CeilingLightSquare3" index="1" unique_id=1907237583]
+visible = false
+
+[node name="Bounce" parent="Lights/CeilingLightSquare3" index="2" unique_id=2129061489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1.925, -1)
+light_energy = 1.0
+omni_range = 8.0
+
+[node name="CeilingLightSquare4" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="3" unique_id=1496130358 instance=ExtResource("10_ctldr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.525, 2.95, 6.15)
+onMaterial = SubResource("StandardMaterial3D_oc1ps")
+primaryEnabled = false
+
+[node name="Mesh" parent="Lights/CeilingLightSquare4" index="0" unique_id=666675144]
+material_override = SubResource("StandardMaterial3D_oc1ps")
+
+[node name="Primary" parent="Lights/CeilingLightSquare4" index="1" unique_id=1907237583]
+visible = false
+
+[node name="Bounce" parent="Lights/CeilingLightSquare4" index="2" unique_id=2129061489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -1.1000001, 0.25)
+light_energy = 0.35
+omni_range = 5.5
+omni_attenuation = 0.85
+
+[node name="CeilingLightSquare5" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="4" unique_id=1377485401 instance=ExtResource("10_ctldr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 5, -1.175)
+
+[node name="CeilingLightSquare6" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="5" unique_id=2080904149 instance=ExtResource("10_ctldr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.475, 3.5, 4.875)
+
+[node name="Primary" parent="Lights/CeilingLightSquare6" index="1" unique_id=1907237583]
+light_energy = 3.0
+
+[node name="Bounce" parent="Lights/CeilingLightSquare6" index="2" unique_id=2129061489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1.8499999, 0)
+omni_range = 6.75
+omni_attenuation = 0.746
+
+[node name="CeilingLightSquareOff" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="6" unique_id=544446277 instance=ExtResource("10_ctldr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5249996, 2.95, 7.175)
+primaryEnabled = false
+bounceEnabled = false
+lightOn = false
+
+[node name="CeilingLightSquareOff1" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="7" unique_id=1024725319 instance=ExtResource("10_ctldr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5999999, 5, -1.175)
+primaryEnabled = false
+bounceEnabled = false
+lightOn = false
+
+[node name="CeilingLightSquareOff2" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="8" unique_id=432982894 instance=ExtResource("10_ctldr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5999999, 5, -4.175)
+primaryEnabled = false
+bounceEnabled = false
+lightOn = false
+
+[node name="CeilingLightSquareOff3" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="9" unique_id=1565331664 instance=ExtResource("10_ctldr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 5, 1.8249998)
+primaryEnabled = false
+bounceEnabled = false
+lightOn = false
+
+[node name="CeilingLightSquareOff4" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="10" unique_id=811859719 instance=ExtResource("10_ctldr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5999999, 5, 1.8249998)
+primaryEnabled = false
+bounceEnabled = false
+lightOn = false
+
+[node name="CeilingConnector" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="0" unique_id=407118955 instance=ExtResource("16_48r0w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 4, -6.5)
+voxelWidth = 4
+voxelHeight = 4
+voxelDepth = 4.0
+voxelDistanceToFloor = 6.0
+edgeGenCollision = true
+innerEdgeWestMaterial = ExtResource("17_uyf8l")
+innerEdgeNorthMaterial = ExtResource("17_uyf8l")
+innerEdgeEastMaterial = ExtResource("17_uyf8l")
+innerEdgeSouthMaterial = ExtResource("17_uyf8l")
+definition = SubResource("Resource_qv53x")
+
+[node name="RectCollider" parent="Connectors/CeilingConnector/Adjacent" parent_id_path=PackedInt32Array(407118955, 1101334803) index="0" unique_id=415124710]
+shape = SubResource("BoxShape3D_f2s3s")
+
+[node name="RectCollider" parent="Connectors/CeilingConnector/Collider" parent_id_path=PackedInt32Array(407118955, 1707928833) index="0" unique_id=350048483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_w8ytv")
+
+[node name="Mesh" parent="Connectors/CeilingConnector" index="2" unique_id=103419973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+material_override = ExtResource("19_taakv")
+mesh = SubResource("PlaneMesh_etnph")
+
+[node name="CeilingConnector2" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="1" unique_id=699981742 instance=ExtResource("16_48r0w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7.5, -7.5)
+voxelWidth = 2
+voxelHeight = 4
+voxelDepth = 3.5
+voxelDistanceToFloor = 7.0
+edgeGenCollision = true
+innerEdgeWestMaterial = ExtResource("17_uyf8l")
+innerEdgeNorthMaterial = ExtResource("17_uyf8l")
+innerEdgeEastMaterial = ExtResource("17_uyf8l")
+innerEdgeSouthMaterial = ExtResource("17_uyf8l")
+definition = SubResource("Resource_fpt8s")
+
+[node name="RectCollider" parent="Connectors/CeilingConnector2/Adjacent" parent_id_path=PackedInt32Array(699981742, 1101334803) index="0" unique_id=415124710]
+shape = SubResource("BoxShape3D_swqjy")
+
+[node name="RectCollider" parent="Connectors/CeilingConnector2/Collider" parent_id_path=PackedInt32Array(699981742, 1707928833) index="0" unique_id=350048483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875, 0)
+shape = SubResource("BoxShape3D_v87tg")
+
+[node name="Mesh" parent="Connectors/CeilingConnector2" index="2" unique_id=103419973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75, 0)
+material_override = ExtResource("20_u5vwu")
+mesh = SubResource("PlaneMesh_n4r6v")
+
+[node name="FloorConnector" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="2" unique_id=674166013 instance=ExtResource("21_00ig2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, -3, -2)
+voxelWidth = 3
+voxelHeight = 4
+voxelDepth = 6.0
+edgeGenCollision = true
+farEdgeWestMaterial = ExtResource("22_x54vx")
+farEdgeNorthMaterial = ExtResource("22_x54vx")
+farEdgeEastMaterial = ExtResource("22_x54vx")
+farEdgeSouthMaterial = ExtResource("22_x54vx")
+definition = SubResource("Resource_8jovn")
+
+[node name="RectCollider" parent="Connectors/FloorConnector/Adjacent" parent_id_path=PackedInt32Array(674166013, 1418678597) index="0" unique_id=415124710]
+shape = SubResource("BoxShape3D_ccrkg")
+
+[node name="RectCollider" parent="Connectors/FloorConnector/Collider" parent_id_path=PackedInt32Array(674166013, 446596967) index="0" unique_id=813981425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_2e0xm")
+
+[node name="Mesh" parent="Connectors/FloorConnector" index="2" unique_id=240402684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("PlaneMesh_ng50m")
+
+[node name="FloorConnector2" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="3" unique_id=1157495582 instance=ExtResource("21_00ig2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -8)
+voxelWidth = 2
+voxelHeight = 2
+edgeGenCollision = true
+farEdgeWestMaterial = ExtResource("22_x54vx")
+farEdgeSouthMaterial = ExtResource("22_x54vx")
+definition = SubResource("Resource_3iqsw")
+
+[node name="RectCollider" parent="Connectors/FloorConnector2/Adjacent" parent_id_path=PackedInt32Array(1157495582, 1418678597) index="0" unique_id=415124710]
+shape = SubResource("BoxShape3D_at6xp")
+
+[node name="RectCollider" parent="Connectors/FloorConnector2/Collider" parent_id_path=PackedInt32Array(1157495582, 446596967) index="0" unique_id=813981425]
+shape = SubResource("BoxShape3D_kcblh")
+
+[node name="Mesh" parent="Connectors/FloorConnector2" index="2" unique_id=240402684]
+mesh = SubResource("PlaneMesh_nmcoe")
+
+[node name="WallConnector" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="4" unique_id=1632024163 instance=ExtResource("23_dc4p7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.5, 1, 7)
+voxelWidth = 2
+voxelHeight = 2
+voxelDepth = 0.0
+edgeGenWest = false
+edgeGenNorth = false
+edgeGenEast = false
+edgeGenSouth = false
+innerEdgeWestMaterial = null
+innerEdgeNorthMaterial = null
+innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = null
+farEdgeWestMaterial = null
+farEdgeNorthMaterial = null
+farEdgeEastMaterial = null
+farEdgeSouthMaterial = null
+definition = SubResource("Resource_rw6p2")
+
+[node name="RectCollider" parent="Connectors/WallConnector/Adjacent" parent_id_path=PackedInt32Array(1632024163, 786542423) index="0" unique_id=415124710]
+shape = SubResource("BoxShape3D_c0ryh")
+
+[node name="RectCollider" parent="Connectors/WallConnector/Collider" parent_id_path=PackedInt32Array(1632024163, 237774776) index="0" unique_id=1692528920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_g2wx4")
+
+[node name="Mesh" parent="Connectors/WallConnector" index="2" unique_id=1345220754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ouc2f")
+
+[node name="WallConnector2" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="5" unique_id=1453344296 instance=ExtResource("23_dc4p7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 0.5, -8.5)
+voxelWidth = 5
+voxelDepth = 1.0
+edgeGenWest = false
+edgeGenNorth = false
+edgeGenEast = false
+edgeGenSouth = false
+innerEdgeWestMaterial = null
+innerEdgeNorthMaterial = null
+innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = null
+farEdgeWestMaterial = null
+farEdgeNorthMaterial = null
+farEdgeEastMaterial = null
+farEdgeSouthMaterial = null
+definition = SubResource("Resource_6wyk7")
+
+[node name="RectCollider" parent="Connectors/WallConnector2/Adjacent" parent_id_path=PackedInt32Array(1453344296, 786542423) index="0" unique_id=415124710]
+shape = SubResource("BoxShape3D_vfc0w")
+
+[node name="RectCollider" parent="Connectors/WallConnector2/Collider" parent_id_path=PackedInt32Array(1453344296, 237774776) index="0" unique_id=1692528920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+shape = SubResource("BoxShape3D_htxyj")
+
+[node name="Mesh" parent="Connectors/WallConnector2" index="2" unique_id=1345220754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("PlaneMesh_whqex")
+
+[node name="WallConnector3" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="6" unique_id=279738985 instance=ExtResource("23_dc4p7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9, 0.25, -3.75)
+voxelWidth = 11
+voxelHeight = 5
+voxelDepth = 1.0
+edgeGenWest = false
+edgeGenNorth = false
+edgeGenEast = false
+edgeGenSouth = false
+innerEdgeWestMaterial = null
+innerEdgeNorthMaterial = null
+innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = null
+farEdgeWestMaterial = null
+farEdgeNorthMaterial = ExtResource("17_uyf8l")
+farEdgeEastMaterial = null
+farEdgeSouthMaterial = null
+definition = SubResource("Resource_0dj38")
+
+[node name="RectCollider" parent="Connectors/WallConnector3/Adjacent" parent_id_path=PackedInt32Array(279738985, 786542423) index="0" unique_id=415124710]
+shape = SubResource("BoxShape3D_yrpgf")
+
+[node name="RectCollider" parent="Connectors/WallConnector3/Collider" parent_id_path=PackedInt32Array(279738985, 237774776) index="0" unique_id=1692528920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+shape = SubResource("BoxShape3D_41hs3")
+
+[node name="Mesh" parent="Connectors/WallConnector3" index="2" unique_id=1345220754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("PlaneMesh_o10hx")
+
+[node name="WallConnector4" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="7" unique_id=921872525 instance=ExtResource("23_dc4p7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2, 1.25, 9)
+voxelWidth = 10
+voxelHeight = 5
+voxelDepth = 1.5
+edgeGenWest = false
+edgeGenNorth = false
+edgeGenEast = false
+edgeGenSouth = false
+innerEdgeWestMaterial = null
+innerEdgeNorthMaterial = null
+innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = null
+farEdgeWestMaterial = null
+farEdgeNorthMaterial = ExtResource("17_uyf8l")
+farEdgeEastMaterial = null
+farEdgeSouthMaterial = null
+definition = SubResource("Resource_gqu2c")
+
+[node name="RectCollider" parent="Connectors/WallConnector4/Adjacent" parent_id_path=PackedInt32Array(921872525, 786542423) index="0" unique_id=415124710]
+shape = SubResource("BoxShape3D_6cujj")
+
+[node name="RectCollider" parent="Connectors/WallConnector4/Collider" parent_id_path=PackedInt32Array(921872525, 237774776) index="0" unique_id=1692528920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.375)
+shape = SubResource("BoxShape3D_acq7e")
+
+[node name="Mesh" parent="Connectors/WallConnector4" index="2" unique_id=1345220754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.75)
+mesh = SubResource("PlaneMesh_rqxqr")
+
+[node name="WallConnector5" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="8" unique_id=431172117 instance=ExtResource("23_dc4p7")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.5, 1.5, 3.75)
+voxelWidth = 7
+voxelDepth = 1.0
+edgeGenWest = false
+edgeGenNorth = false
+edgeGenEast = false
+edgeGenSouth = false
+innerEdgeWestMaterial = null
+innerEdgeNorthMaterial = null
+innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = null
+farEdgeWestMaterial = null
+farEdgeNorthMaterial = ExtResource("17_uyf8l")
+farEdgeEastMaterial = null
+farEdgeSouthMaterial = null
+definition = SubResource("Resource_adi0u")
+
+[node name="RectCollider" parent="Connectors/WallConnector5/Adjacent" parent_id_path=PackedInt32Array(431172117, 786542423) index="0" unique_id=415124710]
+shape = SubResource("BoxShape3D_hlmo1")
+
+[node name="RectCollider" parent="Connectors/WallConnector5/Collider" parent_id_path=PackedInt32Array(431172117, 237774776) index="0" unique_id=1692528920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+shape = SubResource("BoxShape3D_k4rx6")
+
+[node name="Mesh" parent="Connectors/WallConnector5" index="2" unique_id=1345220754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("PlaneMesh_sud2p")
+
+[node name="WallConnector6" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="9" unique_id=854416398 instance=ExtResource("23_dc4p7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.75, -6)
+voxelWidth = 4
+voxelHeight = 5
+voxelDepth = 1.5
+edgeGenWest = false
+edgeGenNorth = false
+edgeGenEast = false
+edgeGenSouth = false
+innerEdgeWestMaterial = null
+innerEdgeNorthMaterial = null
+innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = null
+farEdgeWestMaterial = null
+farEdgeNorthMaterial = null
+farEdgeEastMaterial = null
+farEdgeSouthMaterial = null
+definition = SubResource("Resource_c3rqn")
+
+[node name="RectCollider" parent="Connectors/WallConnector6/Adjacent" parent_id_path=PackedInt32Array(854416398, 786542423) index="0" unique_id=415124710]
+shape = SubResource("BoxShape3D_3fevb")
+
+[node name="RectCollider" parent="Connectors/WallConnector6/Collider" parent_id_path=PackedInt32Array(854416398, 237774776) index="0" unique_id=1692528920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.375)
+shape = SubResource("BoxShape3D_o42j8")
+
+[node name="Mesh" parent="Connectors/WallConnector6" index="2" unique_id=1345220754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.75)
+mesh = SubResource("PlaneMesh_ty3am")
+
+[node name="WallConnector7" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="10" unique_id=1889273619 instance=ExtResource("23_dc4p7")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.5, 1, -5.25)
+voxelWidth = 3
+voxelHeight = 4
+voxelDepth = 3.0
+edgeGenWest = false
+edgeGenNorth = false
+edgeGenEast = false
+edgeGenSouth = false
+innerEdgeWestMaterial = null
+innerEdgeNorthMaterial = null
+innerEdgeEastMaterial = null
+innerEdgeSouthMaterial = null
+farEdgeWestMaterial = null
+farEdgeNorthMaterial = null
+farEdgeEastMaterial = null
+farEdgeSouthMaterial = null
+definition = SubResource("Resource_4s5h6")
+
+[node name="RectCollider" parent="Connectors/WallConnector7/Adjacent" parent_id_path=PackedInt32Array(1889273619, 786542423) index="0" unique_id=415124710]
+shape = SubResource("BoxShape3D_3whri")
+
+[node name="RectCollider" parent="Connectors/WallConnector7/Collider" parent_id_path=PackedInt32Array(1889273619, 237774776) index="0" unique_id=1692528920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.75)
+shape = SubResource("BoxShape3D_an2aw")
+
+[node name="Mesh" parent="Connectors/WallConnector7" index="2" unique_id=1345220754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+mesh = SubResource("PlaneMesh_yid5x")
+
+[node name="BoundsAABB" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="0" unique_id=415124710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 0.5, 0.25)
+shape = SubResource("BoxShape3D_8pn3i")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="1" unique_id=766206392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.75, 1, 7.125)
+shape = SubResource("BoxShape3D_6anhs")
+debug_color = Color(0, 0.6365585, 0.40732598, 0.41960785)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="2" unique_id=776211067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.25, 1.25)
+shape = SubResource("BoxShape3D_he4up")
+debug_color = Color(0, 0.6365585, 0.40732598, 0.41960785)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="3" unique_id=1773816029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.75, 1)
+shape = SubResource("BoxShape3D_ylg3j")
+debug_color = Color(0, 0.6365585, 0.40732598, 0.41960785)
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="4" unique_id=497019311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.25, -5.25)
+shape = SubResource("BoxShape3D_4w23o")
+debug_color = Color(0, 0.6365585, 0.40732598, 0.41960785)
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="5" unique_id=1610203445]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 4.75, -7.75)
+shape = SubResource("BoxShape3D_7dg61")
+debug_color = Color(0, 0.6365585, 0.40732598, 0.41960785)
+
+[node name="LevelMeshes" parent="." index="6" unique_id=938641233 instance=ExtResource("24_vxp7b")]
+
+[editable path="Lights/CeilingLightSquare"]
+[editable path="Lights/CeilingLightSquare3"]
+[editable path="Lights/CeilingLightSquare4"]
+[editable path="Lights/CeilingLightSquare6"]
+[editable path="Connectors/CeilingConnector"]
+[editable path="Connectors/CeilingConnector2"]
+[editable path="Connectors/FloorConnector"]
+[editable path="Connectors/FloorConnector2"]
+[editable path="Connectors/WallConnector"]
+[editable path="Connectors/WallConnector2"]
+[editable path="Connectors/WallConnector3"]
+[editable path="Connectors/WallConnector4"]
+[editable path="Connectors/WallConnector5"]
+[editable path="Connectors/WallConnector6"]
+[editable path="Connectors/WallConnector7"]

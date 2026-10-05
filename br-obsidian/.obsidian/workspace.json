@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Decoration/Deco Ideas.md",
+                "file": "Design Pillars.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Deco Ideas"
+              "title": "Design Pillars"
             }
           }
         ]
@@ -190,9 +190,11 @@
   },
   "active": "46516998497d2586",
   "lastOpenFiles": [
-    "Today.md",
-    "Decoration/Deco Ideas.md",
+    "Name Ideas.md",
+    "Design Pillars.md",
     "Mechanics/Mechanic Brainstorm.md",
+    "Decoration/Deco Ideas.md",
+    "Today.md",
     "Mechanics/Puzzles/The Fungus.md",
     "What Not To Do.md",
     "Technical/Generation Constraints.md",
@@ -216,8 +218,6 @@
     "Mechanics/Player Pools/Untitled.md",
     "Mechanics/Resources",
     "Mechanics/Resources/Sanity.md",
-    "Mechanics/Puzzles/Heavy Obstacle.md",
-    "Mechanics/Puzzles/Locked Door.md",
     "Mechanics/Tools",
     "Mechanics/Puzzles",
     "Technical",

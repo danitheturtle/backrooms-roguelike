@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c6mejo3tm40gg"
-path="res://.godot/imported/room_nook_with_ramp.blend-de59f60b8828da3fe618c9fc6324d28c.scn"
+path="res://.godot/imported/room_L0_nook_with_ramp.blend-c08d95a73a53f434b7733e9c8ea2fff0.scn"
 
 [deps]
 
-source_file="res://rooms/level_0/room_nook_with_ramp/res/room_nook_with_ramp.blend"
-dest_files=["res://.godot/imported/room_nook_with_ramp.blend-de59f60b8828da3fe618c9fc6324d28c.scn"]
+source_file="res://rooms/level_0/nook_with_ramp/res/room_L0_nook_with_ramp.blend"
+dest_files=["res://.godot/imported/room_L0_nook_with_ramp.blend-c08d95a73a53f434b7733e9c8ea2fff0.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c40x1my7bs4q0"
-path="res://.godot/imported/room_four_way.blend-f1020adc6a91051a8cb3edcedda6466f.scn"
+path="res://.godot/imported/room_L0_four_way.blend-a011b226cbcb4e6e0575a21127a99682.scn"
 
 [deps]
 
-source_file="res://rooms/level_0/room_four_way/res/room_four_way.blend"
-dest_files=["res://.godot/imported/room_four_way.blend-f1020adc6a91051a8cb3edcedda6466f.scn"]
+source_file="res://rooms/level_0/four_way/res/room_L0_four_way.blend"
+dest_files=["res://.godot/imported/room_L0_four_way.blend-a011b226cbcb4e6e0575a21127a99682.scn"]
 
 [params]
 

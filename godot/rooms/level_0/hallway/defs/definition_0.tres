@@ -16,8 +16,8 @@ aabb = AABB(-1.25, 0, -2, 0.49999988, 3, 4)
 
 [resource]
 script = ExtResource("2_8ggx2")
-sceneName = &"hallway"
-scenePath = "res://rooms/level_0/room_hallway/room_hallway.tscn"
+sceneName = &"L0_hallway"
+scenePath = "res://rooms/level_0/hallway/room_L0_hallway.tscn"
 biomes = Dictionary[int, bool]({
 0: true
 })
