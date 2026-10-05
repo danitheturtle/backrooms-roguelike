@@ -91,6 +91,7 @@ func build_geometry_for_hole(hole: Rect2, centerOffset: Vector3) -> void:
             new_collider(Vector3(holeCenter.x + halfHoleWidth + Const.QUARTER_VOXEL, holeCenter.y, halfDepth),
                          Vector3(Const.HALF_VOXEL, hole.size.y, globalDepth))
     var atSouthEdge = Utils.equalsf(hole.end.y, globalHeight)
+    print(atSouthEdge)
     if edgeGenSouth || !atSouthEdge:
         new_mesh(Vector3(holeCenter.x, holeCenter.y - halfHoleHeight, halfDepth),
                  Vector2(hole.size.x, globalDepth),

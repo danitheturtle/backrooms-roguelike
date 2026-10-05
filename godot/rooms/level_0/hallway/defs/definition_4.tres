@@ -27,6 +27,7 @@ aabb = AABB(-9.25, 0, -2, 0.5, 3, 4)
 
 [resource]
 script = ExtResource("2_w7mwl")
+spawnWeight = 0.1
 sceneName = &"L0_hallway"
 scenePath = "res://rooms/level_0/hallway/room_L0_hallway.tscn"
 indexInScene = 4

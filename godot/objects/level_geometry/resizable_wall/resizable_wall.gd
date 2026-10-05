@@ -32,7 +32,6 @@ var occluderXY: OccluderInstance3D
 var occluderZY: OccluderInstance3D
 var occluderXZ: OccluderInstance3D
 
-# need refs before ready() so they can be adjusted before adding to scene
 func grab_refs() -> void:
     super.grab_refs()
     meshXNeg = get_node("MeshXNeg")

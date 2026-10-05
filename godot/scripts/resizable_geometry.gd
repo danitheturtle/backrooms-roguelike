@@ -47,9 +47,9 @@ func set_extend_collision_z(val: bool):
 
 var collider: CollisionShape3D
 
+# refs to resize before node enters tree
 func _notification(what: int):
-    if what == Node.NOTIFICATION_SCENE_INSTANTIATED:
-        grab_refs()
+    if what == Node.NOTIFICATION_SCENE_INSTANTIATED: grab_refs()
 
 func grab_refs() -> void:
     collider = get_node("CollisionShape3D")

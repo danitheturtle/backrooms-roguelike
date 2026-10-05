@@ -25,7 +25,6 @@ func grab_refs() -> void:
 func set_voxel_length(val: int) -> void:
     voxelLength = val
     if !is_instance_valid(resizableFloor): return
-    print("new length", val)
     resizableFloor.voxelWidth = val
     resizableCeiling.voxelWidth = val
     resizableWallZPos.voxelWidth = val
@@ -39,3 +38,6 @@ func get_dynamics_for_index(index: int) -> Dictionary[StringName, Variant]:
     return {
         &"voxelLength": 4 + ((index*2) * index)
     }
+
+#func shuffle() -> void:
+    # TODO spawn lights
