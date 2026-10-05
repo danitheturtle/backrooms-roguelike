@@ -20,6 +20,9 @@ func get_lockable() -> bool:
 @export var layer: int = 1
 # Connectors are in a biome. A room is a transition room when it has connectors in different biomes
 @export var biome: Const.BiomeType = Const.BiomeType.LEVEL_0
+# Selection weight defines how often this connector should be selected for generation relative to 
+# other connections in the same room. /w value of 0.0 only select as last resort
+@export var selectionWeight: float = 1.0
 
 ###
 ### Baked

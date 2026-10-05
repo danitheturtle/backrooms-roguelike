@@ -44,6 +44,7 @@ func get_generated_instance() -> GeneratedRoom:
 # A single AABB that fits all smaller bounding boxes inside it. Useful for very fast checks
 @export var approximateBounds: AABB = AABB(Vector3.ZERO,Vector3.ZERO)
 # AABB ordered array in room-local space of room extents. Garunteed to be on voxel grid
+# if size() == 1 then approximateBounds is exact and identical to bounds[0]
 @export var bounds: Array[AABB] = []
 # Room connectors. Every connector is a surface on the face of a bounds AABB
 @export var connectors: Dictionary[NodePath, ConnectorDefinition] = {}
