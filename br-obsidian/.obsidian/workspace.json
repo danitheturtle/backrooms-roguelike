@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mechanics/Player Movement.md",
+                "file": "Todo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Player Movement"
+              "title": "Todo"
             }
           }
         ]
@@ -190,10 +190,11 @@
   },
   "active": "46516998497d2586",
   "lastOpenFiles": [
+    "Decoration/Deco Ideas.md",
+    "Mechanics/Player Movement.md",
     "Design Pillars.md",
     "Name Ideas.md",
     "Mechanics/Mechanic Brainstorm.md",
-    "Decoration/Deco Ideas.md",
     "Today.md",
     "Mechanics/Puzzles/The Fungus.md",
     "What Not To Do.md",
@@ -206,7 +207,6 @@
     "Mechanics/Tools/Film Canister.md",
     "Mechanics/Tools/Almond Water.md",
     "Mechanics/Pickups",
-    "Mechanics/Player Movement.md",
     "Mechanics/Tools/Skeleton Key.md",
     "Mechanics/Upgrades.md",
     "Mechanics/Resources/Energy.md",

@@ -17,20 +17,27 @@ func get_generated_instance() -> GeneratedRoom:
 ###
 ### ROOM EDITOR
 ###
-# room placed manually and is not part of level generation
+# pre-levelgen : room placed manually and is not part of level generation
 @export var excludeFromGeneration: bool = false
+
+# post-levelgen : before room spawns it has custom sub-generation to run
+@export var hasSubRandomization: bool = false
 
 # controls room rarity. range and representative values TBD
 @export var spawnWeight: float = 1.0
 
 # controls how late-game the room is. Mainly used for exits and big weenies.
 # Range and representative values TBD
-# After this iteration, levelgen should slowly ramp room spawn weight from 0 to its stored value.
-# playtest how quickly this happens
+# After this iteration, levelgen should slowly ramp room spawn weight from 0
+# to its stored value. playtest how quickly this happens
 @export var minSpawnIteration: int = 0
 
-# before room spawns it has custom sub-generation to run
-@export var hasSubRandomization: bool = false
+# if above 0, limits number of times this room can spawn in a given run
+@export var runInstanceLimit: int = 0
+
+# if above 0, only appears n times per savegame. probably only exits
+# when one of these is passed back by levelgen, room is removed from input list
+@export var saveInstanceLimit: int = 0
 
 # set of puzzle objects the level generator can force-spawn in this room to prevent puzzle lockouts
 # TODO add to bake system once object spawners can inform pipeline
