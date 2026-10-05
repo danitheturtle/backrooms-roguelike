@@ -1,8 +1,9 @@
 @tool
-class_name RoomHallway
+class_name RoomL0Hallway
 extends Room
 
-@export_range(4,32,1, "prefer_slider", "or_greater") var voxelLength: int = 4: set = set_voxel_length
+@export var voxelStartLength: int = 4
+@export_range(2,32,1, "prefer_slider", "or_greater") var voxelLength: int = voxelStartLength: set = set_voxel_length
 
 var wallConnectorXPos: WallConnector
 var wallConnectorXNeg: WallConnector
@@ -36,7 +37,7 @@ func set_voxel_length(val: int) -> void:
 
 func get_dynamics_for_index(index: int) -> Dictionary[StringName, Variant]:
     return {
-        &"voxelLength": 4 + ((index*2) * index)
+        &"voxelLength": voxelStartLength + ((index * 2) * index)
     }
 
 #func shuffle() -> void:

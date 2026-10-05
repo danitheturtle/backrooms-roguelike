@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://ba0xwj06dq2f7"]
+
+[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="1_fmv2v"]
+[ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_17wf7"]
+
+[sub_resource type="Resource" id="Resource_fmv2v"]
+script = ExtResource("1_fmv2v")
+pathInRoom = NodePath("Connectors/WallConnectorXPos")
+position = Vector3(5, 0, 0)
+normal = Vector3(1, 0, 4.371139e-08)
+size = Vector2(1, 1)
+cornerMin = Vector3(5, -0.5, -0.5)
+cornerMax = Vector3(5, 0.5, 0.5)
+aabb = AABB(4.75, -0.5, -0.5, 0.5, 1, 1)
+
+[sub_resource type="Resource" id="Resource_17wf7"]
+script = ExtResource("1_fmv2v")
+pathInRoom = NodePath("Connectors/WallConnectorXNeg")
+position = Vector3(-5, 0, 0)
+normal = Vector3(-1, 0, 4.371139e-08)
+size = Vector2(1, 1)
+cornerMin = Vector3(-5, -0.5, 0.5)
+cornerMax = Vector3(-5, 0.5, -0.5)
+aabb = AABB(-5.25, -0.5, -0.5, 0.5, 1, 1)
+
+[resource]
+script = ExtResource("2_17wf7")
+spawnWeight = 0.1
+sceneName = &"L0_crawlway"
+scenePath = "res://rooms/level_0/crawlway/room_L0_crawlway.tscn"
+indexInScene = 3
+biomes = Dictionary[int, bool]({
+0: true
+})
+approximateBounds = AABB(-5, -1, -1, 10, 2, 2)
+bounds = Array[AABB]([AABB(-5, -1, -1, 10, 2, 2)])
+connectors = Dictionary[NodePath, ExtResource("1_fmv2v")]({
+NodePath("Connectors/WallConnectorXPos"): SubResource("Resource_fmv2v"),
+NodePath("Connectors/WallConnectorXNeg"): SubResource("Resource_17wf7")
+})
+dynamicRoomData = Dictionary[StringName, Variant]({
+&"voxelLength": 20
+})

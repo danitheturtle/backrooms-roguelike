@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Design Pillars.md",
+                "file": "Mechanics/Player Movement.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Design Pillars"
+              "title": "Player Movement"
             }
           }
         ]
@@ -190,8 +190,8 @@
   },
   "active": "46516998497d2586",
   "lastOpenFiles": [
-    "Name Ideas.md",
     "Design Pillars.md",
+    "Name Ideas.md",
     "Mechanics/Mechanic Brainstorm.md",
     "Decoration/Deco Ideas.md",
     "Today.md",
