@@ -5,16 +5,16 @@ signal level_ready
 # TODO build dynamically at runtime from saved files in threaded resource loader
 const rooms: Dictionary[StringName, PackedScene] = {
     "tutorial": preload("res://rooms/room_tutorial/room_tutorial.tscn"),
-    "four_way": preload("res://rooms/room_four_way/room_four_way.tscn"),
-    "all_way": preload("res://rooms/room_all_way/room_all_way.tscn"),
-    "nook_with_ramp": preload("res://rooms/room_nook_with_ramp/room_nook_with_ramp.tscn"),
+    "four_way": preload("res://rooms/level_0/room_four_way/room_four_way.tscn"),
+    "all_way": preload("res://rooms/level_0/room_all_way/room_all_way.tscn"),
+    "nook_with_ramp": preload("res://rooms/level_0/room_nook_with_ramp/room_nook_with_ramp.tscn"),
     "test": preload("res://rooms/room_test/room_test.tscn")
 }
 # TODO build dynamically at runtime from saved files in threaded resource loader
 const allDefinitions: Array[RoomDefinition] = [
-    preload("res://rooms/room_all_way/defs/definition_0.tres"),
-    preload("res://rooms/room_four_way/defs/definition_0.tres"),
-    preload("res://rooms/room_nook_with_ramp/defs/definition_0.tres"),
+    preload("res://rooms/level_0/room_all_way/defs/definition_0.tres"),
+    preload("res://rooms/level_0/room_four_way/defs/definition_0.tres"),
+    preload("res://rooms/level_0/room_nook_with_ramp/defs/definition_0.tres"),
     preload("res://rooms/room_test/defs/definition_0.tres"),
     preload("res://rooms/room_tutorial/defs/definition_0.tres")
 ]

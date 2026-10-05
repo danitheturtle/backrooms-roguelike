@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bqkwwyequvbq3"]
 
-[ext_resource type="PackedScene" uid="uid://c40x1my7bs4q0" path="res://rooms/room_four_way/res/room_four_way.blend" id="1_x5u8r"]
+[ext_resource type="PackedScene" uid="uid://c40x1my7bs4q0" path="res://rooms/level_0/room_four_way/res/room_four_way.blend" id="1_x5u8r"]
 [ext_resource type="Material" uid="uid://b3ofgrdcrwlk7" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01.tres" id="2_qbqud"]
 [ext_resource type="Material" uid="uid://d1lrwgc8w1ni3" path="res://assets/materials/Carpet01/Carpet01.tres" id="3_2wjry"]
 

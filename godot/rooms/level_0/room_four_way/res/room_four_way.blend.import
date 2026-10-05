@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c6mejo3tm40gg"
-path="res://.godot/imported/room_nook_with_ramp.blend-cf469b053b9f02971cdd7e5cf72be57f.scn"
+uid="uid://c40x1my7bs4q0"
+path="res://.godot/imported/room_four_way.blend-f1020adc6a91051a8cb3edcedda6466f.scn"
 
 [deps]
 
-source_file="res://rooms/room_nook_with_ramp/res/room_nook_with_ramp.blend"
-dest_files=["res://.godot/imported/room_nook_with_ramp.blend-cf469b053b9f02971cdd7e5cf72be57f.scn"]
+source_file="res://rooms/level_0/room_four_way/res/room_four_way.blend"
+dest_files=["res://.godot/imported/room_four_way.blend-f1020adc6a91051a8cb3edcedda6466f.scn"]
 
 [params]
 
@@ -21,7 +21,7 @@ array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
-nodes/use_name_suffixes=true
+nodes/use_name_suffixes=false
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true

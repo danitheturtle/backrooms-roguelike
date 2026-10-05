@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dxun115m4alsw" path="res://rooms/room_base.tscn" id="1_xurkv"]
 [ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_gwgcl"]
-[ext_resource type="PackedScene" uid="uid://bx5044eu1cd6c" path="res://rooms/room_nook_with_ramp/room_nook_with_ramp.tscn" id="3_7r1wd"]
+[ext_resource type="PackedScene" uid="uid://bx5044eu1cd6c" path="res://rooms/level_0/room_nook_with_ramp/room_nook_with_ramp.tscn" id="3_7r1wd"]
 [ext_resource type="Resource" uid="uid://c2nq0em62x0p5" path="res://rooms/room_test/defs/definition_0.tres" id="4_1f6oh"]
-[ext_resource type="PackedScene" uid="uid://bkadirr1e44v7" path="res://rooms/room_all_way/room_all_way.tscn" id="5_7r1wd"]
+[ext_resource type="PackedScene" uid="uid://bkadirr1e44v7" path="res://rooms/level_0/room_all_way/room_all_way.tscn" id="5_7r1wd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7r1wd"]
 resource_local_to_scene = true

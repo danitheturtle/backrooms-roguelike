@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://cd03p1dfk37jp"]
+
+[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="1_lsene"]
+[ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_8ggx2"]
+
+[sub_resource type="Resource" id="Resource_splww"]
+script = ExtResource("1_lsene")
+pathInRoom = NodePath("Connectors/WallConnectorXNeg")
+position = Vector3(-1, 1.5, 0)
+depth = 0.75
+normal = Vector3(-1, 0, 4.371139e-08)
+size = Vector2(4, 3)
+cornerMin = Vector3(-0.99999994, 0, 2)
+cornerMax = Vector3(-1.0000001, 3, -2)
+aabb = AABB(-1.25, 0, -2, 0.49999988, 3, 4)
+
+[resource]
+script = ExtResource("2_8ggx2")
+sceneName = &"hallway"
+scenePath = "res://rooms/level_0/room_hallway/room_hallway.tscn"
+biomes = Dictionary[int, bool]({
+0: true
+})
+approximateBounds = AABB(-1, -2, -4, 2, 7, 8)
+bounds = Array[AABB]([AABB(-1, -2, -4, 2, 7, 8)])
+connectors = Dictionary[NodePath, ExtResource("1_lsene")]({
+NodePath("Connectors/WallConnectorXPos"): SubResource("Resource_splww"),
+NodePath("Connectors/WallConnectorXNeg"): SubResource("Resource_splww")
+})

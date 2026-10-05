@@ -3,9 +3,9 @@
 class_name ResizableGeometry
 extends StaticBody3D
 
-@export_range(0.25,16.0,0.25, "prefer_slider", "or_greater") var width: float = 1.0: set = set_width
-@export_range(0.25,16.0,0.25, "prefer_slider", "or_greater") var height: float = 1.0: set = set_height
-@export_range(0.25,16.0,0.25, "prefer_slider", "or_greater") var depth: float = 1.0: set = set_depth
+@export_range(0.5,24.0,0.5, "prefer_slider", "or_greater") var voxelWidth: float = 2.0: set = set_voxel_width
+@export_range(0.5,24.0,0.5, "prefer_slider", "or_greater") var voxelHeight: float = 2.0: set = set_voxel_height
+@export_range(0.5,24.0,0.5, "prefer_slider", "or_greater") var voxelDepth: float = 2.0: set = set_voxel_depth
 @export var defaultMaterial: BaseMaterial3D = null: set = set_default_material
 @export var selectableChildren: bool = false
 @export_group("Extend Collision", "extendCollision")
@@ -14,12 +14,22 @@ extends StaticBody3D
 @export var extendCollisionY: bool = false: set = set_extend_collision_y
 @export var extendCollisionZ: bool = false: set = set_extend_collision_z
 
-@onready var collider: CollisionShape3D = $CollisionShape3D
-
+var width: float = 1.0: set = set_width
+var height: float = 1.0: set = set_height
+var depth: float = 1.0: set = set_depth
 @abstract func set_width(val: float) -> void
 @abstract func set_height(val: float) -> void
 @abstract func set_depth(val: float) -> void
 @abstract func set_default_material(val: BaseMaterial3D) -> void
+func set_voxel_width(val: float):
+    voxelWidth = val
+    set_width(val * Const.VOXEL)
+func set_voxel_height(val: float):
+    voxelHeight = val
+    set_height(val * Const.VOXEL)
+func set_voxel_depth(val: float):
+    voxelDepth = val
+    set_depth(val * Const.VOXEL)
 func set_extend_collision_length(val: float):
     extendCollisionLength = val
     set_extend_collision_x(extendCollisionX)
@@ -34,6 +44,8 @@ func set_extend_collision_y(val: bool):
 func set_extend_collision_z(val: bool):
     extendCollisionZ = val
     set_depth(depth)
+
+@onready var collider: CollisionShape3D = $CollisionShape3D
 
 func _ready() -> void:
     if Engine.is_editor_hint():
