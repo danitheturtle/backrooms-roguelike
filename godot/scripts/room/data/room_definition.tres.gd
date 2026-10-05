@@ -19,12 +19,19 @@ func get_generated_instance() -> GeneratedRoom:
 ###
 # room placed manually and is not part of level generation
 @export var excludeFromGeneration: bool = false
+
 # controls room rarity. range and representative values TBD
 @export var spawnWeight: float = 1.0
-# controls how late-game the room is. Mainly used for exits. Range and representative values TBD
+
+# controls how late-game the room is. Mainly used for exits and big weenies.
+# Range and representative values TBD
+# After this iteration, levelgen should slowly ramp room spawn weight from 0 to its stored value.
+# playtest how quickly this happens
 @export var minSpawnIteration: int = 0
+
 # before room spawns it has custom sub-generation to run
 @export var hasSubRandomization: bool = false
+
 # set of puzzle objects the level generator can force-spawn in this room to prevent puzzle lockouts
 # TODO add to bake system once object spawners can inform pipeline
 @export var canSpawnGameplayProp: Dictionary[Const.GameplayPropType, bool] = {}
