@@ -45,7 +45,14 @@ func set_extend_collision_z(val: bool):
     extendCollisionZ = val
     set_depth(depth)
 
-@onready var collider: CollisionShape3D = $CollisionShape3D
+var collider: CollisionShape3D
+
+func _notification(what: int):
+    if what == Node.NOTIFICATION_SCENE_INSTANTIATED:
+        grab_refs()
+
+func grab_refs() -> void:
+    collider = get_node("CollisionShape3D")
 
 func _ready() -> void:
     if Engine.is_editor_hint():

@@ -5,24 +5,29 @@
 [ext_resource type="PackedScene" uid="uid://bx5044eu1cd6c" path="res://rooms/level_0/nook_with_ramp/room_L0_nook_with_ramp.tscn" id="3_7r1wd"]
 [ext_resource type="Resource" uid="uid://c2nq0em62x0p5" path="res://rooms/room_test/defs/definition_0.tres" id="4_1f6oh"]
 [ext_resource type="PackedScene" uid="uid://bkadirr1e44v7" path="res://rooms/level_0/all_way/room_L0_all_way.tscn" id="5_7r1wd"]
+[ext_resource type="PackedScene" uid="uid://bc7fghdybo5ei" path="res://rooms/level_0/hallway/room_L0_hallway.tscn" id="6_1f6oh"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7r1wd"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_1f6oh"]
 resource_local_to_scene = true
-size = Vector3(15.5, 15, 17.5)
+size = Vector3(33, 15, 19.75)
 
 [node name="RoomTest" unique_id=1900576414 instance=ExtResource("1_xurkv")]
 uniqueName = &"test"
 definitions = Array[ExtResource("2_gwgcl")]([ExtResource("4_1f6oh")])
 
 [node name="BoundsAABB" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="0" unique_id=415124710]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.25)
-shape = SubResource("BoxShape3D_7r1wd")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 0, 1.375)
+shape = SubResource("BoxShape3D_1f6oh")
 
-[node name="RoomNookWithRamp" parent="SubRooms" parent_id_path=PackedInt32Array(1023009072) index="0" unique_id=422732849 instance=ExtResource("3_7r1wd")]
+[node name="RoomL0NookWithRamp" parent="SubRooms" parent_id_path=PackedInt32Array(1023009072) index="0" unique_id=695879903 instance=ExtResource("3_7r1wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 0)
 
-[node name="RoomAllWay" parent="SubRooms" parent_id_path=PackedInt32Array(1023009072) index="1" unique_id=961857080 instance=ExtResource("5_7r1wd")]
+[node name="RoomL0AllWay" parent="SubRooms" parent_id_path=PackedInt32Array(1023009072) index="1" unique_id=587607806 instance=ExtResource("5_7r1wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, -7, 0)
+
+[node name="RoomL0Hallway" parent="SubRooms" parent_id_path=PackedInt32Array(1023009072) index="2" unique_id=2136295933 instance=ExtResource("6_1f6oh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.75, -1, 6.25)
+voxelLength = 28
 
 [node name="Marker3D" type="Marker3D" parent="." index="7" unique_id=832522875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25, 0, 2)

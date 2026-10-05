@@ -22,15 +22,28 @@ extends ResizableGeometry
 @export var occludeXZ: bool = false: set = set_occlude_xz
 
 # each axis shares a surface mesh, only need to change one to change size
-@onready var meshXNeg: MeshInstance3D = $MeshXNeg
-@onready var meshXPos: MeshInstance3D = $MeshXPos
-@onready var meshYNeg: MeshInstance3D = $MeshYNeg
-@onready var meshYPos: MeshInstance3D = $MeshYPos
-@onready var meshZNeg: MeshInstance3D = $MeshZNeg
-@onready var meshZPos: MeshInstance3D = $MeshZPos
-@onready var occluderXY: OccluderInstance3D = $OccluderXY
-@onready var occluderZY: OccluderInstance3D = $OccluderZY
-@onready var occluderXZ: OccluderInstance3D = $OccluderXZ
+var meshXNeg: MeshInstance3D
+var meshXPos: MeshInstance3D
+var meshYNeg: MeshInstance3D
+var meshYPos: MeshInstance3D
+var meshZNeg: MeshInstance3D
+var meshZPos: MeshInstance3D
+var occluderXY: OccluderInstance3D
+var occluderZY: OccluderInstance3D
+var occluderXZ: OccluderInstance3D
+
+# need refs before ready() so they can be adjusted before adding to scene
+func grab_refs() -> void:
+    super.grab_refs()
+    meshXNeg = get_node("MeshXNeg")
+    meshXPos = get_node("MeshXPos")
+    meshYNeg = get_node("MeshYNeg")
+    meshYPos = get_node("MeshYPos")
+    meshZNeg = get_node("MeshZNeg")
+    meshZPos = get_node("MeshZPos")
+    occluderXY = get_node("OccluderXY")
+    occluderZY = get_node("OccluderZY")
+    occluderXZ = get_node("OccluderXZ")
 
 func set_width(val: float):
     width = val

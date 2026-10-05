@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://daxkl3ttr5cya" path="res://objects/lights/ceiling_light_rectangle.tscn" id="9_ykwmv"]
 [ext_resource type="PackedScene" uid="uid://di65tcxw57kit" path="res://objects/connectors/wall/wall_connector.tscn" id="10_2vyil"]
 [ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="11_c7pk3"]
-[ext_resource type="PackedScene" uid="uid://bqkwwyequvbq3" path="res://rooms/level_0/four_way/res/level_meshes.tscn" id="12_ryoa4"]
+[ext_resource type="PackedScene" uid="uid://bv6tslmsb8hkf" path="res://rooms/level_0/four_way/res/level_meshes.tscn" id="12_ryoa4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_swrex"]
 resource_local_to_scene = true

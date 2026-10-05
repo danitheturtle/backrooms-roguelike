@@ -51,7 +51,7 @@ func load_tutorial() -> void:
     var tutorialInstance: GeneratedRoom = tutorialRoom.definitions[0].get_generated_instance()
     tutorialRoom.setup(tutorialInstance)
     await get_tree().process_frame
-    add_child(tutorialRoom)
+    root.add_child(tutorialRoom)
     # Player is disabled by default to prevent physics jank during setup
     State.player.process_mode = Node.PROCESS_MODE_PAUSABLE
     level_ready.emit()
@@ -62,7 +62,7 @@ func generate_initial_level() -> void:
     var testRoomInstance: GeneratedRoom = testRoom.definitions[0].get_generated_instance()
     testRoom.setup(testRoomInstance)
     await get_tree().process_frame
-    add_child(testRoom)
+    root.add_child(testRoom)
     # Player is disabled by default to prevent physics jank during setup
     State.player.process_mode = Node.PROCESS_MODE_PAUSABLE
     level_ready.emit()

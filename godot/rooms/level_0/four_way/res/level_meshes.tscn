@@ -1,15 +1,13 @@
-[gd_scene format=3 uid="uid://bqkwwyequvbq3"]
+[gd_scene format=3 uid="uid://bv6tslmsb8hkf"]
 
-[ext_resource type="PackedScene" path="res://rooms/level_0/room_L0_four_way/res/room_four_way.blend" id="1_x5u8r"]
+[ext_resource type="PackedScene" uid="uid://c40x1my7bs4q0" path="res://rooms/level_0/four_way/res/room_L0_four_way.blend" id="1_kbxxs"]
 [ext_resource type="Material" uid="uid://b3ofgrdcrwlk7" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01.tres" id="2_qbqud"]
 [ext_resource type="Material" uid="uid://d1lrwgc8w1ni3" path="res://assets/materials/Carpet01/Carpet01.tres" id="3_2wjry"]
 
-[node name="RoomMeshes" unique_id=1822211858 instance=ExtResource("1_x5u8r")]
+[node name="room_L0_four_way" unique_id=291833262 instance=ExtResource("1_kbxxs")]
 
-[node name="ceiling_000" parent="." index="0" unique_id=1314899826]
-layers = 2
+[node name="ceiling_000" parent="." index="0" unique_id=1264624854]
 material_override = ExtResource("2_qbqud")
 
-[node name="floor_000" parent="." index="1" unique_id=614408399]
-layers = 4
+[node name="floor_000" parent="." index="1" unique_id=1121498231]
 material_override = ExtResource("3_2wjry")

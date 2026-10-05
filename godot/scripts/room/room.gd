@@ -4,9 +4,17 @@ class_name Room
 
 var editorHelper: RoomEditorHelper = null
 
+# every room scene in the game has a unique name
 @export var uniqueName: StringName = ""
+# change environmental ambient based on number of active lights
 @export var affectsAmbient: bool = true
+# more than 1 definition requires custom room class inheriting this one
+@export var definitionCount: int = 1
+# should the first definition's non-baked props be copied to other definitions
+@export var copyFirstDefinitionProps: bool = true
+# every room definition levelgen can instantiate using this scene
 @export var definitions: Array[RoomDefinition] = []
+# manually bake without saving
 @export_tool_button("Bake Definitions") var bakeRoomDefinition = try_bake_definitions
 
 # node refs
@@ -83,16 +91,17 @@ func try_bake_definitions() -> void:
 func setup(_generatedRoom: GeneratedRoom) -> void:
     var chosenDefinition = definitions[_generatedRoom.indexInScene]
     LevelManager.roomInstances.set(_generatedRoom.roomInstanceId, self)
-    # setup sub-rooms first
+    apply_room_dynamics(chosenDefinition.dynamicRoomData)
+    # setup sub-rooms first. not sure if needed?
     # for nextSubRoom: Room in subRooms: nextSubRoom.setup(_generatedRoom)
     transform.origin = _generatedRoom.placedPosition
     transform.basis = Basis.looking_at(_generatedRoom.placedForwardNormal)
     for nextConnectorPath: NodePath in _generatedRoom.generatedConnectors.keys():
-        if !has_node(nextConnectorPath):
-            print("extra connector found in room definition, probably an error", str(nextConnectorPath))
+        var nextConnector = get_node(nextConnectorPath)
+        if nextConnector == null:
+            print("extra connector found in room definition, probably stale baked definition: ", str(nextConnectorPath))
             continue
         var nextGeneratedProps = _generatedRoom.generatedConnectors[nextConnectorPath]
-        var nextConnector = get_node(nextConnectorPath)
         nextConnector.generatedProps = nextGeneratedProps
         LevelManager.connectorInstances.set(nextGeneratedProps.connectorInstanceId, nextConnector)
     # TODO place props
@@ -107,6 +116,15 @@ func setup(_generatedRoom: GeneratedRoom) -> void:
             if nextLight.lightOn: calculatedAmbient += 0.05
         calculatedAmbient = min(calculatedAmbient, Const.AMBIENT_MAX)
 
+# get room dynamics for a given definition index. only used in dynamic rooms, intentionally blank
+# called definitionCount times; map index to full range of values for room
+func get_dynamics_for_index(_index: int) -> Dictionary[StringName, Variant]: return {}
+
+# called during setup to adjust room based on chosen definition. more complex dynamic rooms are
+# expected to override this
+func apply_room_dynamics(dynamics: Dictionary[StringName, Variant]):
+    for nextDynamicsKey in dynamics:
+        self[nextDynamicsKey] = dynamics[nextDynamicsKey]
+
 # called during setup to randomize stuff in the room and spawn props
-func shuffle() -> void:
-    pass
+func shuffle() -> void: pass

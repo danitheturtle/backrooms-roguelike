@@ -4,10 +4,15 @@ extends ResizableGeometry
 
 @export var shouldOcclude: bool = false: set = set_should_occlude
 
-@onready var visibleMesh: MeshInstance3D = $MeshInstance3D
-@onready var occluder: OccluderInstance3D = $OccluderInstance3D
-
 var expandDir: float = -1.0
+
+var visibleMesh: MeshInstance3D
+var occluder: OccluderInstance3D
+
+func grab_refs() -> void:
+    super.grab_refs()
+    visibleMesh = get_node("MeshInstance3D")
+    occluder = get_node("OccluderInstance3D")
 
 func set_width(val: float) -> void:
     width = val
