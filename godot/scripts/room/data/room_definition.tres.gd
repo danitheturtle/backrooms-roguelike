@@ -37,6 +37,7 @@ func get_generated_instance() -> GeneratedRoom:
 
 # if above 0, only appears n times per savegame. probably only exits
 # when one of these is passed back by levelgen, room is removed from input list
+# only triggers if player actually enters the room's bounds (can respawn if they don't find it)
 @export var saveInstanceLimit: int = 0
 
 # set of puzzle objects the level generator can force-spawn in this room to prevent puzzle lockouts

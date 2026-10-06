@@ -9,6 +9,10 @@ baggage carousel
 back of airport luggage conveyor
 giant pinball machine you can walk around inside
 tiles that randomly drop from the ceiling and make a loud clattering noise
+one of those gigantic wooden playgrounds
+that big plastic dinosaur at every playground
+plastic childrens slide
+
 
 video:
 - 90s commercials

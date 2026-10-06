@@ -9,6 +9,7 @@
 - save slot delete, rename, sort by save time
 - flashlight texture projection with 2 hard circles, one to simulate bounce light? hopefully it won't look shit
 - parent/child relationship for connections so only one of them generates the edges (and also doors when we get there)
+- navmesh + runtime generation for connections
 - tutorial updates
 	- Extend run tutorial hallway
 	- Move jump tutorial to after run tutorial
