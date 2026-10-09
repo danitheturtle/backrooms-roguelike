@@ -12,6 +12,8 @@ tiles that randomly drop from the ceiling and make a loud clattering noise
 one of those gigantic wooden playgrounds
 that big plastic dinosaur at every playground
 plastic childrens slide
+solo jazz design cups
+cool S https://en.wikipedia.org/wiki/Cool_S
 
 
 video:
