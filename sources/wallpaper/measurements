@@ -1,4 +1,30 @@
-13.75 cm pattern size.
+*Reference Measurements*
 
-1.875 chevron width = 558 pixels
-1.5625 stripe width = 466 pixels
+# pattern cm width directly measured with ruler, then measured reference image to get pixel values
+pattern repeat actual width = 3.43500 cm = 2058 px (ratio 599.126637555)
+# measured pixel values and extrapolated cm size
+small chevron repeat height = 5.14415 cm = 3082 px
+large chevron repeat height = 10.28330 cm = 6161 px
+
+
+reference to texture ratio: 3.0146484375
+
+* Texture *
+4096 px texture size = 20.61 cm squared
+repeats 6 times in texture
+horizontal repeat = 2x 682 px, 4x 683 px
+repeats 4 times in texture
+small chevron repeat = 4x 1024 px
+repeats 2 times in texture
+large chevron repeat = 2x 2048 px
+
+
+single thin stripe = 7 px = 4x
+thick stripe margin = 26 px = 4xFM
+single thick stripe = 43 px = 2x
+small chevron width = 90 px = 1x
+thick chevron width = 374 or 375 px = 1x
+
+
+single ruler segment = 0.0625
+half ruler segment = 0.03125

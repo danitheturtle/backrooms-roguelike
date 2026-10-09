@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c04sv85s22tbi"]
+
+[ext_resource type="PackedScene" uid="uid://resmx6fv6grp" path="res://rooms/level_0/hobbytown1/res/room_L0_hobbytown1.blend" id="1_2d5we"]
+[ext_resource type="Material" uid="uid://b3ofgrdcrwlk7" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01.tres" id="2_gjnqw"]
+[ext_resource type="Material" uid="uid://d1lrwgc8w1ni3" path="res://assets/materials/Carpet01/Carpet01.tres" id="3_gjnqw"]
+[ext_resource type="Material" uid="uid://n5y15ykfg13e" path="res://assets/materials/Wallpaper01/Wallpaper01.tres" id="4_dppag"]
+
+[node name="LevelMeshes" unique_id=2141482067 instance=ExtResource("1_2d5we")]
+
+[node name="ceiling_000" parent="." index="0" unique_id=621259602]
+material_override = ExtResource("2_gjnqw")
+
+[node name="ceiling_001" parent="." index="1" unique_id=1754880298]
+material_override = ExtResource("2_gjnqw")
+
+[node name="ceiling_002" parent="." index="2" unique_id=508534417]
+material_override = ExtResource("2_gjnqw")
+
+[node name="floor_000" parent="." index="3" unique_id=1146686447]
+material_override = ExtResource("3_gjnqw")
+
+[node name="floor_001" parent="." index="4" unique_id=761323170]
+material_override = ExtResource("3_gjnqw")
+
+[node name="floor_002" parent="." index="5" unique_id=1691400747]
+material_override = ExtResource("3_gjnqw")
+
+[node name="wall_000" parent="." index="6" unique_id=1509525347]
+material_override = ExtResource("4_dppag")
+
+[node name="wall_001" parent="." index="7" unique_id=1197332269]
+material_override = ExtResource("4_dppag")
+
+[node name="wall_002" parent="." index="8" unique_id=1560736297]
+material_override = ExtResource("4_dppag")
+
+[node name="wall_003" parent="." index="9" unique_id=1586615343]
+material_override = ExtResource("4_dppag")
+
+[node name="wall_004" parent="." index="10" unique_id=129237136]
+material_override = ExtResource("4_dppag")
+
+[node name="wall_005" parent="." index="11" unique_id=661333317]
+material_override = ExtResource("4_dppag")
+
+[node name="wall_006" parent="." index="12" unique_id=489458971]
+material_override = ExtResource("4_dppag")
+
+[node name="wall_007" parent="." index="13" unique_id=1892527481]
+material_override = ExtResource("4_dppag")
+
+[node name="wall_008" parent="." index="14" unique_id=128012188]
+material_override = ExtResource("4_dppag")
+
+[node name="wall_009" parent="." index="15" unique_id=693836345]
+material_override = ExtResource("4_dppag")
+
+[node name="wall_010" parent="." index="16" unique_id=1220932428]
+material_override = ExtResource("4_dppag")
+
+[node name="wall_011" parent="." index="17" unique_id=1071106142]
+material_override = ExtResource("4_dppag")
+
+[node name="wall_012" parent="." index="18" unique_id=127159310]
+material_override = ExtResource("4_dppag")
+
+[node name="wall_013" parent="." index="19" unique_id=993163123]
+material_override = ExtResource("4_dppag")
+
+[node name="wall_014" parent="." index="20" unique_id=1527919399]
+material_override = ExtResource("4_dppag")

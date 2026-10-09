@@ -1,0 +1,124 @@
+[gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://bmg1em7iclp8i"]
+
+[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="1_6udon"]
+[ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_q0853"]
+
+[sub_resource type="Resource" id="Resource_uv4qw"]
+script = ExtResource("1_6udon")
+pathInRoom = NodePath("Connectors/FloorConnector")
+position = Vector3(-4.5, -1, 3.25)
+depth = 1.0
+normal = Vector3(0, -1, 0)
+size = Vector2(3, 2.5)
+cornerMin = Vector3(-6, -1, 2)
+cornerMax = Vector3(-3, -1, 4.5)
+aabb = AABB(-6, -1.25, 2, 3, 0.5, 2.5)
+
+[sub_resource type="Resource" id="Resource_p2ve1"]
+script = ExtResource("1_6udon")
+pathInRoom = NodePath("Connectors/CeilingConnector")
+position = Vector3(3, 4, -1.5)
+depth = 1.0
+normal = Vector3(0, 1, 0)
+size = Vector2(3, 3)
+cornerMin = Vector3(1.5, 4, -3)
+cornerMax = Vector3(4.5, 4, 0)
+aabb = AABB(1.5, 3.75, -3, 3, 0.5, 3)
+
+[sub_resource type="Resource" id="Resource_e83xi"]
+script = ExtResource("1_6udon")
+pathInRoom = NodePath("Connectors/WallConnector")
+position = Vector3(4, 1.25, -16)
+depth = 1.0
+normal = Vector3(0, 0, -1)
+size = Vector2(2, 2.5)
+cornerMin = Vector3(3, 0, -16)
+cornerMax = Vector3(5, 2.5, -16)
+aabb = AABB(3, 0, -16.25, 2, 2.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_6mgwh"]
+script = ExtResource("1_6udon")
+pathInRoom = NodePath("Connectors/WallConnector2")
+position = Vector3(-6, 1, -13.5)
+depth = 1.0
+normal = Vector3(-1, 0, 4.371139e-08)
+size = Vector2(3, 2)
+cornerMin = Vector3(-6, 0, -12)
+cornerMax = Vector3(-6, 2, -15)
+aabb = AABB(-6.25, 0, -15, 0.5, 2, 3)
+
+[sub_resource type="Resource" id="Resource_l8r2x"]
+script = ExtResource("1_6udon")
+pathInRoom = NodePath("Connectors/WallConnector3")
+position = Vector3(7.5, 1.5, -11.5)
+depth = 1.0
+normal = Vector3(1, 0, 4.371139e-08)
+size = Vector2(7, 3)
+cornerMin = Vector3(7.5, 0, -15)
+cornerMax = Vector3(7.5, 3, -8)
+aabb = AABB(7.25, 0, -15, 0.5, 3, 7)
+
+[sub_resource type="Resource" id="Resource_qkxjr"]
+script = ExtResource("1_6udon")
+pathInRoom = NodePath("Connectors/WallConnector4")
+position = Vector3(-7.5, 1.25, 1.5)
+depth = 1.0
+normal = Vector3(-1, 0, 4.371139e-08)
+size = Vector2(6, 2.5)
+cornerMin = Vector3(-7.5, 0, 4.5)
+cornerMax = Vector3(-7.5, 2.5, -1.5)
+aabb = AABB(-7.75, 0, -1.5, 0.5, 2.5, 6)
+
+[sub_resource type="Resource" id="Resource_iq22n"]
+script = ExtResource("1_6udon")
+pathInRoom = NodePath("Connectors/WallConnector5")
+position = Vector3(1.25, 1, 10.5)
+depth = 1.0
+normal = Vector3(8.742278e-08, 0, 1)
+size = Vector2(2.5, 2)
+cornerMin = Vector3(2.5, 0, 10.5)
+cornerMax = Vector3(0, 2, 10.5)
+aabb = AABB(0, 0, 10.25, 2.5, 2, 0.5)
+
+[sub_resource type="Resource" id="Resource_v3cxx"]
+script = ExtResource("1_6udon")
+pathInRoom = NodePath("Connectors/WallConnector6")
+position = Vector3(-4, 1.5, 8.25)
+depth = 1.0
+normal = Vector3(-1, 0, 4.371139e-08)
+size = Vector2(2.5, 3)
+cornerMin = Vector3(-4, 0, 9.5)
+cornerMax = Vector3(-4, 3, 7)
+aabb = AABB(-4.25, 0, 7, 0.5, 3, 2.5)
+
+[sub_resource type="Resource" id="Resource_big07"]
+script = ExtResource("1_6udon")
+pathInRoom = NodePath("Connectors/WallConnector7")
+position = Vector3(7, 1.5, 7.25)
+depth = 1.0
+normal = Vector3(1, 0, 4.371139e-08)
+size = Vector2(3.5, 3)
+cornerMin = Vector3(7, 0, 5.5)
+cornerMax = Vector3(7, 3, 9)
+aabb = AABB(6.75, 0, 5.5, 0.5, 3, 3.5)
+
+[resource]
+script = ExtResource("2_q0853")
+sceneName = &"L0_hobbytown1"
+scenePath = "res://rooms/level_0/hobbytown1/room_L0_hobbytown_1.tscn"
+biomes = Dictionary[int, bool]({
+0: true
+})
+approximateBounds = AABB(-7.5, -1, -16, 15, 5, 26.5)
+bounds = Array[AABB]([AABB(-4, -1, 5, 11, 5, 5.5), AABB(-7.5, -1, -6, 14, 5, 12), AABB(-6, -1, -16, 13.5, 5, 10)])
+connectors = Dictionary[NodePath, ExtResource("1_6udon")]({
+NodePath("Connectors/FloorConnector"): SubResource("Resource_uv4qw"),
+NodePath("Connectors/CeilingConnector"): SubResource("Resource_p2ve1"),
+NodePath("Connectors/WallConnector"): SubResource("Resource_e83xi"),
+NodePath("Connectors/WallConnector2"): SubResource("Resource_6mgwh"),
+NodePath("Connectors/WallConnector3"): SubResource("Resource_l8r2x"),
+NodePath("Connectors/WallConnector4"): SubResource("Resource_qkxjr"),
+NodePath("Connectors/WallConnector5"): SubResource("Resource_iq22n"),
+NodePath("Connectors/WallConnector6"): SubResource("Resource_v3cxx"),
+NodePath("Connectors/WallConnector7"): SubResource("Resource_big07")
+})

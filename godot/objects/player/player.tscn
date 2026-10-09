@@ -81,7 +81,7 @@ script = ExtResource("1_3vyb7")
 [node name="Camera" type="Camera3D" parent="." unique_id=1892713137]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 current = true
-fov = 85.0
+fov = 45.0
 
 [node name="Flashlight" type="SpotLight3D" parent="Camera" unique_id=1664328846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.256, 0)
