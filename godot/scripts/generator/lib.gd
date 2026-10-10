@@ -11,11 +11,11 @@ const CHUNK_SIDE_LEN = 256
 # Reinitialize this level generator to a state where only one room is spawned in the level,
 # deleting all previously generated rooms. rngSeed will be used to seed this level generator's
 # internal RNG. The same level will be generated if startingRoom and rngSeed are the same and
-# all generate methods are called in the same order with the same parameters.
+# all generate methods are called in the same order on the same chunks.
 @abstract func reinit(startingRoom: RoomDefinition, rngSeed: int)
 
 # Generate all chunks within the cubic radius chunkRadius of chunkPos.
-#  The level generator will choose the ideal order in which to generate each chunks.
+# The level generator will choose the ideal order in which to generate each chunk.
 # This method relies on previously generated connections in nearby chunks.
 # If called on chunks too far away from previously generated chunks this will fail to generate rooms.
 @abstract func generate_in_radius(chunkPos: Vector3i, chunkRadius: int) -> Array[GeneratedRoom]
