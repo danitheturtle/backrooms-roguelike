@@ -50,7 +50,6 @@ aabb = AABB(1, 1.75, -8.5, 1, 0.5, 1)
 script = ExtResource("1_1bu2x")
 pathInRoom = NodePath("Connectors/WallConnector")
 position = Vector3(-12.5, 1, 7)
-depth = 0.0
 normal = Vector3(-1, 0, 4.371139e-08)
 size = Vector2(1, 1)
 cornerMin = Vector3(-12.5, 0.5, 7.5)

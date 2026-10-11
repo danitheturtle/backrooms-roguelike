@@ -8,6 +8,7 @@ class_name Light
 @export var primaryEnabled: bool = true: set = set_primary_enabled
 @export var bounceEnabled: bool = true: set = set_bounce_enabled
 @export var randomDynamics: bool = false: set = set_random_dynamics
+@export_color_no_alpha var lightColor: Color = Color(255,255,255): set = set_light_color
 
 @export var lightOn: bool = true: set = set_light_on
 
@@ -23,6 +24,7 @@ func _ready() -> void:
     set_primary_enabled(primaryEnabled)
     set_bounce_enabled(bounceEnabled)
     set_random_dynamics(randomDynamics)
+    set_light_color(lightColor)
     set_light_on(lightOn)
     if !Engine.is_editor_hint():
         if !primaryEnabled: primary.queue_free()
@@ -45,6 +47,13 @@ func set_light_on(newValue: bool) -> void:
             bounce.show()
         else:
             bounce.hide()
+
+func set_light_color(newValue: Color) -> void:
+    lightColor = newValue
+    if primaryEnabled && primary != null:
+        primary.light_color = newValue
+    if bounceEnabled && bounce != null:
+        bounce.light_color = newValue
 
 func set_primary_enabled(newValue: bool) -> void:
     if primary == null: 

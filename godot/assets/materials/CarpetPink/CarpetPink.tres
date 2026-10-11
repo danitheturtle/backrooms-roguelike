@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://sdmikmedam3e"]
+
+[ext_resource type="Texture2D" uid="uid://db1as5q6ys3rp" path="res://assets/materials/CarpetPink/CarpetPink_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bd2inbq16imyb" path="res://assets/materials/CarpetPink/CarpetPink_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dxbyv64hq8p3a" path="res://assets/materials/CarpetPink/CarpetPink_normal.png" id="3"]
+
+[resource]
+albedo_texture = ExtResource("1")
+roughness_texture = ExtResource("2")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3")
+uv1_triplanar = true

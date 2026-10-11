@@ -5,6 +5,7 @@
 * temporary basebuilding with found objects. saveable? new start location?
 * If you end a run with a photo of a unique room or setpiece, you can spend the photo to increase / decrease the chances of it appearing again
 * if you destroy a security camera, another one materializes behind you. Out of view but facing the player. Spooky!
+* forklift thats holding a bin in two positions, up or down, and can be toggled like endfield. Maybe the player can move the forklift
 
 Game is about finding unique "exits"
 

@@ -1,4 +1,5 @@
 - Infinite sprint (you've done a few runs and stamina has naturally improved)
+- Ascender - a handheld motorized devize that does the heavy lifting of climbing ropes, negating the stamina penalty and working much much faster
 - Digital camera
 	- Digital camera timer, which lets the player set the camera down so it goes off on a delay. Only available for digital camera, and is used to attract entities
 - Oxygen Mask

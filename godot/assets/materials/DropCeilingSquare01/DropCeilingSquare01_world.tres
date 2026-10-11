@@ -12,6 +12,6 @@ metallic_texture = ExtResource("2_864u4")
 roughness_texture = ExtResource("4_kot3n")
 normal_enabled = true
 normal_texture = ExtResource("3_m75k7")
-uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_scale = Vector3(0.665, 0.665, 0.665)
 uv1_triplanar = true
 uv1_world_triplanar = true

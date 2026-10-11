@@ -3,14 +3,19 @@
 [ext_resource type="Script" uid="uid://cggqolps4mgv7" path="res://objects/connectors/floor/floor_connector.gd" id="1_eu7cu"]
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="2_ipm7n"]
 [ext_resource type="PackedScene" uid="uid://b500l15l80jvq" path="res://objects/colliders/floor_static_body.tscn" id="3_182iv"]
-[ext_resource type="Material" uid="uid://d1infe3mw6u2" path="res://assets/materials/Wallpaper01/Wallpaper01_world.tres" id="3_s5omn"]
-[ext_resource type="Material" uid="uid://ft3l0gt1bi8u" path="res://assets/materials/Carpet01/Carpet01_world.tres" id="4_ipm7n"]
+[ext_resource type="Material" uid="uid://bfh71naccgicw" path="res://assets/materials/WallChevronYellow/WallChevronYellow_world.tres" id="3_p0o1b"]
+[ext_resource type="Material" uid="uid://ft3l0gt1bi8u" path="res://assets/materials/CarpetYellow/CarpetYellow_world.tres" id="4_ipm7n"]
+[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="4_w5vsk"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7nmr2"]
+[sub_resource type="Resource" id="Resource_rm63d"]
+script = ExtResource("4_w5vsk")
+pathInRoom = NodePath(".")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2o3h4"]
 resource_local_to_scene = true
 size = Vector3(3, 0.5, 3)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_p0o1b"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_yfijg"]
 resource_local_to_scene = true
 size = Vector3(3, 0.25, 3)
 
@@ -24,20 +29,21 @@ innerEdgeWestMaterial = ExtResource("4_ipm7n")
 innerEdgeNorthMaterial = ExtResource("4_ipm7n")
 innerEdgeEastMaterial = ExtResource("4_ipm7n")
 innerEdgeSouthMaterial = ExtResource("4_ipm7n")
-farEdgeNorthMaterial = ExtResource("3_s5omn")
-farEdgeSouthMaterial = ExtResource("3_s5omn")
+farEdgeNorthMaterial = ExtResource("3_p0o1b")
+farEdgeSouthMaterial = ExtResource("3_p0o1b")
+definition = SubResource("Resource_rm63d")
 
 [node name="Adjacent" type="Area3D" parent="." unique_id=1418678597]
 
 [node name="RectCollider" parent="Adjacent" unique_id=415124710 instance=ExtResource("2_ipm7n")]
-shape = SubResource("BoxShape3D_7nmr2")
+shape = SubResource("BoxShape3D_2o3h4")
 debug_color = Color(0.6799758, 0.5042543, 0, 0.72700006)
 
 [node name="Collider" parent="." unique_id=446596967 instance=ExtResource("3_182iv")]
 
 [node name="RectCollider" parent="Collider" unique_id=813981425 instance=ExtResource("2_ipm7n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
-shape = SubResource("BoxShape3D_p0o1b")
+shape = SubResource("BoxShape3D_yfijg")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=240402684]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)

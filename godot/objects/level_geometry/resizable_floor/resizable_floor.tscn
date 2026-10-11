@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b500l15l80jvq" path="res://objects/colliders/floor_static_body.tscn" id="1_v8bcu"]
 [ext_resource type="Script" uid="uid://bj00ikgcn8a0n" path="res://objects/level_geometry/resizable_floor/resizable_floor.gd" id="2_lcqnj"]
-[ext_resource type="Material" uid="uid://d1lrwgc8w1ni3" path="res://assets/materials/Carpet01/Carpet01.tres" id="3_an8xy"]
+[ext_resource type="Material" uid="uid://d1lrwgc8w1ni3" path="res://assets/materials/CarpetYellow/CarpetYellow.tres" id="3_an8xy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_71u5h"]
 resource_local_to_scene = true
