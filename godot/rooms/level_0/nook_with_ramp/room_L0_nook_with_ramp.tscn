@@ -20,7 +20,7 @@
 [ext_resource type="Material" uid="uid://b75agbyu011n4" path="res://assets/materials/DropCeilingSquare01/DropCeilingSquare01.tres" id="19_taakv"]
 [ext_resource type="Material" uid="uid://bfh71naccgicw" path="res://assets/materials/WallChevronYellow/WallChevronYellow_world.tres" id="20_vqwax"]
 [ext_resource type="PackedScene" uid="uid://cnapbejxxdkpf" path="res://objects/connectors/floor/floor_connector.tscn" id="21_00ig2"]
-[ext_resource type="Material" uid="uid://ft3l0gt1bi8u" path="res://assets/materials/CarpetYellow/CarpetYellow_world.tres" id="22_x54vx"]
+[ext_resource type="Material" uid="uid://d1lrwgc8w1ni3" path="res://assets/materials/Carpet01/CarpetYellow.tres" id="22_x54vx"]
 [ext_resource type="PackedScene" uid="uid://di65tcxw57kit" path="res://objects/connectors/wall/wall_connector.tscn" id="23_dc4p7"]
 [ext_resource type="PackedScene" uid="uid://cqoeu0j6sffu6" path="res://rooms/level_0/nook_with_ramp/res/level_meshes.tscn" id="24_vxp7b"]
 

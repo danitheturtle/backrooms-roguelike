@@ -19,6 +19,7 @@ mesh = SubResource("PlaneMesh_ddarv")
 
 [node name="Primary" parent="." index="1" unique_id=1907237583]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.75, -0.015, -0.375)
+spot_angle = 85.0
 
 [node name="Bounce" parent="." index="2" unique_id=2129061489]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, -1.1, -0.375)

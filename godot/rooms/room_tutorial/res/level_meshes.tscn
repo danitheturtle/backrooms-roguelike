@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bv2j44sulc7o4" path="res://rooms/room_tutorial/res/room_tutorial.blend" id="1_50gac"]
 [ext_resource type="Material" uid="uid://b3ofgrdcrwlk7" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01.tres" id="2_ddauh"]
-[ext_resource type="Material" uid="uid://d1lrwgc8w1ni3" path="res://assets/materials/CarpetYellow/CarpetYellow.tres" id="3_q3ye7"]
+[ext_resource type="Material" uid="uid://d1lrwgc8w1ni3" path="res://assets/materials/Carpet01/CarpetYellow.tres" id="3_q3ye7"]
 [ext_resource type="Material" uid="uid://cu02miedtfdlt" path="res://assets/materials/WallChevronYellow/WallChevronYellow.tres" id="4_05c5k"]
 
 [node name="LevelMeshes" unique_id=1646079298 instance=ExtResource("1_50gac")]

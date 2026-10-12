@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dkaflqjkli2wg"]
 
 [ext_resource type="Script" uid="uid://bhxc1wchak6o0" path="res://objects/connectors/ceiling/ceiling_connector.gd" id="1_21bm7"]
-[ext_resource type="Material" uid="uid://ft3l0gt1bi8u" path="res://assets/materials/CarpetYellow/CarpetYellow_world.tres" id="2_twjph"]
+[ext_resource type="Material" uid="uid://d1lrwgc8w1ni3" path="res://assets/materials/Carpet01/CarpetYellow.tres" id="2_qtfxj"]
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="2_wdkuk"]
 [ext_resource type="Material" uid="uid://bfh71naccgicw" path="res://assets/materials/WallChevronYellow/WallChevronYellow_world.tres" id="3_qtfxj"]
 [ext_resource type="PackedScene" uid="uid://dgwmutwf473uv" path="res://objects/colliders/ceiling_static_body.tscn" id="3_twjph"]
@@ -27,13 +27,14 @@ size = Vector2(3, 3)
 
 [node name="CeilingConnector" type="Node3D" unique_id=407118955]
 script = ExtResource("1_21bm7")
-innerEdgeWestMaterial = ExtResource("2_twjph")
-innerEdgeNorthMaterial = ExtResource("2_twjph")
-innerEdgeEastMaterial = ExtResource("2_twjph")
-innerEdgeSouthMaterial = ExtResource("2_twjph")
+innerEdgeWestMaterial = ExtResource("2_qtfxj")
+innerEdgeNorthMaterial = ExtResource("2_qtfxj")
+innerEdgeEastMaterial = ExtResource("2_qtfxj")
+innerEdgeSouthMaterial = ExtResource("2_qtfxj")
 farEdgeNorthMaterial = ExtResource("3_qtfxj")
 farEdgeSouthMaterial = ExtResource("3_qtfxj")
 definition = SubResource("Resource_5uq4n")
+selectableChildren = true
 
 [node name="Adjacent" type="Area3D" parent="." unique_id=1101334803]
 

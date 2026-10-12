@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd2inbq16imyb"
-path.s3tc="res://.godot/imported/CarpetPink_orm.png-5640dffcf47e080d04170ffb81f081f2.s3tc.ctex"
+uid="uid://lhbprbbujrgt"
+path.s3tc="res://.godot/imported/WallStripesOriginalUneven_albedo.png-fcf40ccdc1aedc35b196b5ede730e107.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/materials/CarpetPink/CarpetPink_orm.png"
-dest_files=["res://.godot/imported/CarpetPink_orm.png-5640dffcf47e080d04170ffb81f081f2.s3tc.ctex"]
+source_file="res://assets/materials/WallStripesOriginal/WallStripesOriginalUneven_albedo.png"
+dest_files=["res://.godot/imported/WallStripesOriginalUneven_albedo.png-fcf40ccdc1aedc35b196b5ede730e107.s3tc.ctex"]
 
 [params]
 

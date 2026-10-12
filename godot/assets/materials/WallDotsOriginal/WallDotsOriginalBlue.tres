@@ -1,8 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://c713gg8kfqoik"]
 
 [ext_resource type="Texture2D" uid="uid://cr5gx24qofo8f" path="res://assets/materials/WallDotsOriginal/WallDotsOriginalBlue_albedo.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://mlpcl40uhhmi" path="res://assets/materials/WallDotsOriginal/WallDotsOriginal_normal.png" id="2_ehp3i"]
-[ext_resource type="Texture2D" uid="uid://c0t71dw8fsj6w" path="res://assets/materials/WallDotsOriginal/WallDotsOriginal_orm.png" id="3_7j2c3"]
+[ext_resource type="Texture2D" uid="uid://dn4blgxvdyej2" path="res://assets/materials/WallDotsOriginal/WallDotsOriginal_normal.png" id="2_ehp3i"]
+[ext_resource type="Texture2D" uid="uid://rnsspcl50445" path="res://assets/materials/WallDotsOriginal/WallDotsOriginal_orm.png" id="3_7j2c3"]
 
 [resource]
 albedo_texture = ExtResource("1")

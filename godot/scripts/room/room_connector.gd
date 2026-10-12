@@ -3,9 +3,9 @@
 extends Node3D
 class_name RoomConnector
 
-const Wallpaper01WorldMaterial = preload("res://assets/materials/WallChevronYellow/WallChevronYellow_world.tres")
-const DropCeilingRectangle01WorldMaterial = preload("res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_world.tres")
-const Carpet01WorldMaterial = preload("res://assets/materials/CarpetYellow/CarpetYellow_world.tres")
+const Wallpaper01WorldMaterial = preload("res://assets/materials/WallChevronYellow/WallChevronYellow.tres")
+const DropCeilingRectangle01WorldMaterial = preload("res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01.tres")
+const Carpet01WorldMaterial = preload("res://assets/materials/Carpet01/CarpetYellow.tres")
 
 var editorHelper: ConnectorEditorHelper = null
 

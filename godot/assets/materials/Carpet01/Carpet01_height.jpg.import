@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de1en5u2xmh7s"
-path.s3tc="res://.godot/imported/CarpetYellow_Roughness.jpg-10a781a466fd823f243272598f4e0d06.s3tc.ctex"
+uid="uid://emlrnq1hcf6l"
+path.s3tc="res://.godot/imported/Carpet01_height.jpg-2157059df53a007d6d01acc8ce1dd2d4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/materials/CarpetYellow/CarpetYellow_Roughness.jpg"
-dest_files=["res://.godot/imported/CarpetYellow_Roughness.jpg-10a781a466fd823f243272598f4e0d06.s3tc.ctex"]
+source_file="res://assets/materials/Carpet01/Carpet01_height.jpg"
+dest_files=["res://.godot/imported/Carpet01_height.jpg-2157059df53a007d6d01acc8ce1dd2d4.s3tc.ctex"]
 
 [params]
 

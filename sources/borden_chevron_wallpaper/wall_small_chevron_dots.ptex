@@ -121,48 +121,6 @@
 			"to_port": 0
 		},
 		{
-			"from": "buffer_2",
-			"from_port": 0,
-			"to": "brightness_contrast",
-			"to_port": 0
-		},
-		{
-			"from": "brightness_contrast",
-			"from_port": 0,
-			"to": "blend2",
-			"to_port": 0
-		},
-		{
-			"from": "shape",
-			"from_port": 0,
-			"to": "colorize_2",
-			"to_port": 0
-		},
-		{
-			"from": "colorize_2",
-			"from_port": 0,
-			"to": "blend2_3",
-			"to_port": 0
-		},
-		{
-			"from": "pattern",
-			"from_port": 0,
-			"to": "colorize_3",
-			"to_port": 0
-		},
-		{
-			"from": "colorize_3",
-			"from_port": 0,
-			"to": "translate",
-			"to_port": 0
-		},
-		{
-			"from": "colorize_2",
-			"from_port": 0,
-			"to": "blend2_2",
-			"to_port": 0
-		},
-		{
 			"from": "graph_2",
 			"from_port": 1,
 			"to": "colorize_5",
@@ -178,18 +136,6 @@
 			"from": "graph_2",
 			"from_port": 3,
 			"to": "colorize_9",
-			"to_port": 0
-		},
-		{
-			"from": "shape",
-			"from_port": 0,
-			"to": "colorize_10",
-			"to_port": 0
-		},
-		{
-			"from": "colorize_10",
-			"from_port": 0,
-			"to": "blend2_5",
 			"to_port": 0
 		},
 		{
@@ -211,12 +157,6 @@
 			"to_port": 5
 		},
 		{
-			"from": "blend2_5",
-			"from_port": 0,
-			"to": "invert_2",
-			"to_port": 0
-		},
-		{
 			"from": "invert_2",
 			"from_port": 0,
 			"to": "colorize_4",
@@ -233,12 +173,6 @@
 			"from_port": 0,
 			"to": "buffer_2",
 			"to_port": 0
-		},
-		{
-			"from": "translate",
-			"from_port": 0,
-			"to": "blend2_3",
-			"to_port": 9
 		},
 		{
 			"from": "colorize_11",
@@ -271,12 +205,6 @@
 			"to_port": 0
 		},
 		{
-			"from": "translate",
-			"from_port": 0,
-			"to": "blend2_2",
-			"to_port": 9
-		},
-		{
 			"from": "colorize_15",
 			"from_port": 0,
 			"to": "blend2_2",
@@ -301,16 +229,76 @@
 			"to_port": 1
 		},
 		{
-			"from": "buffer_3",
+			"from": "uniform",
 			"from_port": 0,
-			"to": "brightness_contrast_2",
+			"to": "blend2_5",
 			"to_port": 0
 		},
 		{
-			"from": "brightness_contrast_2",
+			"from": "uniform_2",
+			"from_port": 0,
+			"to": "blend2_3",
+			"to_port": 0
+		},
+		{
+			"from": "uniform_2",
+			"from_port": 0,
+			"to": "blend2_2",
+			"to_port": 0
+		},
+		{
+			"from": "buffer_2",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 0
+		},
+		{
+			"from": "buffer_3",
 			"from_port": 0,
 			"to": "blend2",
 			"to_port": 1
+		},
+		{
+			"from": "blend2_5",
+			"from_port": 0,
+			"to": "invert_2",
+			"to_port": 0
+		},
+		{
+			"from": "pattern",
+			"from_port": 0,
+			"to": "translate",
+			"to_port": 0
+		},
+		{
+			"from": "translate",
+			"from_port": 0,
+			"to": "colorize_3",
+			"to_port": 0
+		},
+		{
+			"from": "colorize_3",
+			"from_port": 0,
+			"to": "blend2_3",
+			"to_port": 9
+		},
+		{
+			"from": "colorize_3",
+			"from_port": 0,
+			"to": "blend2_2",
+			"to_port": 9
+		},
+		{
+			"from": "translate",
+			"from_port": 0,
+			"to": "invert_3",
+			"to_port": 0
+		},
+		{
+			"from": "invert_3",
+			"from_port": 0,
+			"to": "blend2_5",
+			"to_port": 7
 		}
 	],
 	"label": "Graph",
@@ -523,17 +511,17 @@
 					"points": [
 						{
 							"a": 0.0,
-							"b": 0.780392169952393,
-							"g": 0.725490212440491,
+							"b": 0.666666686534882,
+							"g": 0.615686297416687,
 							"pos": 0.0,
-							"r": 0.627451002597809
+							"r": 0.517647087574005
 						},
 						{
 							"a": 1.0,
-							"b": 0.780392169952393,
-							"g": 0.725490212440491,
+							"b": 0.666666686534882,
+							"g": 0.615686297416687,
 							"pos": 1.0,
-							"r": 0.627451002597809
+							"r": 0.517647087574005
 						}
 					],
 					"type": "Gradient"
@@ -554,17 +542,17 @@
 					"points": [
 						{
 							"a": 0.0,
-							"b": 0.69803923368454,
-							"g": 0.721568644046783,
+							"b": 0.556862771511078,
+							"g": 0.584313750267029,
 							"pos": 0.0,
-							"r": 0.890196084976196
+							"r": 0.725490212440491
 						},
 						{
 							"a": 1.0,
-							"b": 0.69803923368454,
-							"g": 0.721568644046783,
-							"pos": 0.993329463114265,
-							"r": 0.890196084976196
+							"b": 0.556862771511078,
+							"g": 0.584313750267029,
+							"pos": 1.0,
+							"r": 0.725490212440491
 						}
 					],
 					"type": "Gradient"
@@ -585,48 +573,17 @@
 					"points": [
 						{
 							"a": 0.0,
-							"b": 0.854901969432831,
-							"g": 0.831372559070587,
+							"b": 0.745098054409027,
+							"g": 0.721568644046783,
 							"pos": 0.0,
-							"r": 0.733333349227905
+							"r": 0.627451002597809
 						},
 						{
 							"a": 1.0,
-							"b": 0.854901969432831,
-							"g": 0.831372559070587,
+							"b": 0.745098054409027,
+							"g": 0.721568644046783,
 							"pos": 0.999049994781727,
-							"r": 0.733333349227905
-						}
-					],
-					"type": "Gradient"
-				}
-			},
-			"seed_int": 0,
-			"type": "colorize"
-		},
-		{
-			"name": "colorize_2",
-			"node_position": {
-				"x": -1547.14855957031,
-				"y": -635.694458007812
-			},
-			"parameters": {
-				"gradient": {
-					"interpolation": 1,
-					"points": [
-						{
-							"a": 0.0,
-							"b": 0.858823537826538,
-							"g": 0.905882358551025,
-							"pos": 0.0,
-							"r": 0.968627452850342
-						},
-						{
-							"a": 1.0,
-							"b": 0.858823537826538,
-							"g": 0.905882358551025,
-							"pos": 1.0,
-							"r": 0.968627452850342
+							"r": 0.627451002597809
 						}
 					],
 					"type": "Gradient"
@@ -643,7 +600,7 @@
 				"y": -719.918334960938
 			},
 			"parameters": {
-				"amount1": 0.5,
+				"amount1": 1.0,
 				"amount2": 0.52,
 				"blend_type1": 0.0,
 				"blend_type2": 3.0
@@ -685,8 +642,8 @@
 		{
 			"name": "buffer_2",
 			"node_position": {
-				"x": -609.666015625,
-				"y": -644.0107421875
+				"x": -603.666015625,
+				"y": -696.0107421875
 			},
 			"parameters": {
 				"size": 12.0
@@ -698,8 +655,8 @@
 		{
 			"name": "buffer_3",
 			"node_position": {
-				"x": -602.120544433594,
-				"y": -516.919799804688
+				"x": -609.120544433594,
+				"y": -609.919799804688
 			},
 			"parameters": {
 				"size": 12.0
@@ -900,8 +857,8 @@
 		{
 			"name": "invert",
 			"node_position": {
-				"x": -135.392593383789,
-				"y": -461.732086181641
+				"x": -10.3925933837891,
+				"y": -572.732055664062
 			},
 			"parameters": {},
 			"seed_int": 0,
@@ -910,8 +867,8 @@
 		{
 			"name": "colorize",
 			"node_position": {
-				"x": 91.5817565917969,
-				"y": -548.706420898438
+				"x": 137.581756591797,
+				"y": -582.706420898438
 			},
 			"parameters": {
 				"gradient": {
@@ -966,34 +923,6 @@
 			"type": "rotate"
 		},
 		{
-			"name": "brightness_contrast",
-			"node_position": {
-				"x": -101.54288482666,
-				"y": -737.422912597656
-			},
-			"parameters": {
-				"brightness": -0.2,
-				"contrast": 1.0
-			},
-			"seed_int": 0,
-			"type": "brightness_contrast"
-		},
-		{
-			"name": "shape",
-			"node_position": {
-				"x": -1744.65051269531,
-				"y": -663.538696289062
-			},
-			"parameters": {
-				"edge": 0.0,
-				"radius": 1.0,
-				"shape": 1.0,
-				"sides": 4.0
-			},
-			"seed_int": 0,
-			"type": "shape"
-		},
-		{
 			"generic_size": 5,
 			"name": "blend2_3",
 			"node_position": {
@@ -1034,8 +963,8 @@
 		{
 			"name": "colorize_3",
 			"node_position": {
-				"x": -1764.78662109375,
-				"y": 25.4157943725586
+				"x": -1379.78662109375,
+				"y": -14.5842056274414
 			},
 			"parameters": {
 				"gradient": {
@@ -1043,17 +972,17 @@
 					"points": [
 						{
 							"a": 0.0,
-							"b": 0.858823537826538,
-							"g": 0.905882358551025,
+							"b": 0.686274528503418,
+							"g": 0.764705896377563,
 							"pos": 0.0,
-							"r": 0.968627452850342
+							"r": 0.823529422283173
 						},
 						{
 							"a": 1.0,
-							"b": 0.858823537826538,
-							"g": 0.905882358551025,
+							"b": 0.686274528503418,
+							"g": 0.764705896377563,
 							"pos": 1.0,
-							"r": 0.968627452850342
+							"r": 0.823529422283173
 						}
 					],
 					"type": "Gradient"
@@ -1192,7 +1121,7 @@
 			"type": "colorize"
 		},
 		{
-			"generic_size": 3,
+			"generic_size": 4,
 			"name": "blend2_5",
 			"node_position": {
 				"x": -1055.77368164062,
@@ -1202,43 +1131,14 @@
 				"amount1": 1.0,
 				"amount2": 1.0,
 				"amount3": 1.0,
+				"amount4": 1.0,
 				"blend_type1": 0.0,
 				"blend_type2": 0.0,
-				"blend_type3": 0.0
+				"blend_type3": 0.0,
+				"blend_type4": 2
 			},
 			"seed_int": 0,
 			"type": "blend2"
-		},
-		{
-			"name": "colorize_10",
-			"node_position": {
-				"x": -1434.75048828125,
-				"y": -1108.25988769531
-			},
-			"parameters": {
-				"gradient": {
-					"interpolation": 1,
-					"points": [
-						{
-							"a": 1.0,
-							"b": 0.0,
-							"g": 0.0,
-							"pos": 0.0,
-							"r": 0.0
-						},
-						{
-							"a": 1.0,
-							"b": 0.0,
-							"g": 0.0,
-							"pos": 1.0,
-							"r": 0.0
-						}
-					],
-					"type": "Gradient"
-				}
-			},
-			"seed_int": 0,
-			"type": "colorize"
 		},
 		{
 			"name": "invert_2",
@@ -1262,17 +1162,17 @@
 					"points": [
 						{
 							"a": 0.0,
-							"b": 0.960784316062927,
-							"g": 0.976470589637756,
-							"pos": 0.00190851342587071,
-							"r": 1.0
+							"b": 0.847058832645416,
+							"g": 0.866666674613953,
+							"pos": 0.0,
+							"r": 0.874509811401367
 						},
 						{
 							"a": 1.0,
-							"b": 0.960784316062927,
-							"g": 0.976470589637756,
-							"pos": 0.99236641221374,
-							"r": 1.0
+							"b": 0.847058832645416,
+							"g": 0.866666674613953,
+							"pos": 1.0,
+							"r": 0.874509811401367
 						}
 					],
 					"type": "Gradient"
@@ -1282,21 +1182,54 @@
 			"type": "colorize"
 		},
 		{
-			"name": "brightness_contrast_2",
+			"name": "uniform",
 			"node_position": {
-				"x": -237.406585693359,
-				"y": -623.419799804688
+				"x": -1273.90649414062,
+				"y": -1123.91979980469
 			},
 			"parameters": {
-				"brightness": -0.2,
-				"contrast": 1.0
+				"color": {
+					"a": 1.0,
+					"b": 0.0,
+					"g": 0.0,
+					"r": 0.0,
+					"type": "Color"
+				}
 			},
 			"seed_int": 0,
-			"type": "brightness_contrast"
+			"type": "uniform"
+		},
+		{
+			"name": "uniform_2",
+			"node_position": {
+				"x": -1711.90649414062,
+				"y": -613.919799804688
+			},
+			"parameters": {
+				"color": {
+					"a": 1.0,
+					"b": 0.686274528503418,
+					"g": 0.764705896377563,
+					"r": 0.823529422283173,
+					"type": "Color"
+				}
+			},
+			"seed_int": 0,
+			"type": "uniform"
+		},
+		{
+			"name": "invert_3",
+			"node_position": {
+				"x": -1307.76904296875,
+				"y": -798.581176757812
+			},
+			"parameters": {},
+			"seed_int": 0,
+			"type": "invert"
 		}
 	],
 	"parameters": {},
-	"project_thumbnail": "UklGRiYFAABXRUJQVlA4WAoAAAAQAAAALwAALwAAQUxQSJQCAAANoCNteyJJevXrV9HAMpNX7Q9UrMd4gGEea5ksZmYGi3n3AG12ZIzVFT0X4BmrrOXdqqiUUlooyNIJImICmFOsBzh//bn89tcvAK6K1C9SVmbLdb1uM1Y0ZXysX6yVaIx1aRmvObyDqe3OZd3edRt/+PQkGmqR5K945gZIFWIwJFLELu3cv/LMWWPifFry8D0QxFomGoxAjK2Dj374ZtIwjxtd9BN4dcwrksL6lzZvGzg/mxtu+gavDeo0msLNn+xZdX4WN7z2PXyHuo36S5fvP+L8NB1teo/QZoEuNIv7VzVMkvKibwgtFqqhubxnIHFC4id8mwWrv/STbYn/q38Y32Hhzt+8+U0NIOUV96BkqLz04VmJSHwa38jB+PWPPCtRymtuQMlSObhyUmx1GN/Iw/jOvk+tNzuwZGrZ+UPJFlI2kpY2rnEdVTZU9rqCHln3+nSRfITusfObmHwMl43XR7LuyLkVJh9Du0n2vzXbyWSTzGj8l3TIeRh/GV+WTDbJDOBYN0o2UY5Bv0fOfSius/lYCljbuBQlk2iP/YErf9hZ2Uwq+z2u4tN9nWSySA3/FVXUkysHg2YR9HO0JPLsI+uTySA1xq8QIerZD18KmkHQx9ASCObNzTd7tzDfKY4az/9N2vbJpUEXFNo/34lJE6IO9iw3gy4ktKo70JLJwa3eXzS9W4BvV9fhRkz37sj9y5d6NTWl0Pn5DtyQWb1b3fPJzXg1NaTQ0OJO3JDZvQ62bX5pPUFkjhidjh87io6YN0h688NHD7ZIFWIwJFLEWgmfv4wxJfNH9OwzK/t3LlkmGozAse+/BPWJWoPIyU9/2Hhdr3tZp81oODjWL/4AjSV1xyi2XCv6x8bSZBz5v6tKZgdWUDggbAIAADAPAJ0BKjAAMAA+kUCbSiWjoiGjjACwEglnAMOzf9/hZGFVO0tH6eP+X5ffo3/ge4L/Iv6P/uetT+wHsAfq0WU0nJrLDJ2Z1GTBp8E4ISGAp5T6OoCYEEcCZ3h/LV5kiLaB7NTn4kXNlQ4Mkn3iVmtecTvDsRGPxtZwqJRL+n4EdAAA/v3bRkgj8O9dW6RXkunOlNZKfwTxwctFuYvKnYm78ucZJ8W1IHIEnr7hoF/Gl7xn7o41jJjPMeKHfs6iOiBTdq7dWNKqv3m+En9JKVq3F8F6xn5MAngBKJ+ZOGhjVTWcUawDAAIVW4R48hWP/ain/doKMiw9uj8vBK/Bn6yJ2TnUsaWS9PJpQdxKll/IH9hGwW/NoosY3Hfsh7GoXf9Eg0Npd0kIoAJPNi1FcdHq7ihEd1BSnx6HR0XxrXibxSYn4Mv/F2qQWJno3Z/1q2PD6YIagaoc3p01B71eXj15ARcPZjlTMJsONKvXgO16ZJkErLMMl6a8anA/POvRUWhzToz5PiR6CZZOpmeyW0HX62H/iY/lQ7qMm8dd5O6oBeX1lFCj9pw0JWSzLRVfPLx7QqwxKXj/b/XKb+Z3X+GjMWz1RV1HTgvIKYq3jgJ9ZmAwxg4LUr5jjkH26ncfpSnYr61+ZGSb51OzofJTIqg+bGVA145MYURgWTni23ihpEqWmNP0mmVSADqWByV7B1Fj+HRvKKKvpKw7HslQoz5W8T4CKWqIyNQUUqToWXJeKLPPxZTlVeh0pulyltwijchivUvdvJC8w7lKW20MoOnPsY7PfLKrTrZ98WwBanctunBs2CPyukfGAgAA",
+	"project_thumbnail": "UklGRjYFAABXRUJQVlA4WAoAAAAQAAAALwAALwAAQUxQSJQCAAANoCNteyJJevXrV9HAMpNX7Q9UrMd4gGEea5ksZmYGi3n3AG12ZIzVFT0X4BmrrOXdqqiUUlooyNIJImICmFOsBzh//bn89tcvAK6K1C9SVmbLdb1uM1Y0ZXysX6yVaIx1aRmvObyDqe3OZd3edRt/+PQkGmqR5K945gZIFWIwJFLELu3cv/LMWWPifFry8D0QxFomGoxAjK2Dj374ZtIwjxtd9BN4dcwrksL6lzZvGzg/mxtu+gavDeo0msLNn+xZdX4WN7z2PXyHuo36S5fvP+L8NB1teo/QZoEuNIv7VzVMkvKibwgtFqqhubxnIHFC4id8mwWrv/STbYn/q38Y32Hhzt+8+U0NIOUV96BkqLz04VmJSHwa38jB+PWPPCtRymtuQMlSObhyUmx1GN/Iw/jOvk+tNzuwZGrZ+UPJFlI2kpY2rnEdVTZU9rqCHln3+nSRfITusfObmHwMl43XR7LuyLkVJh9Du0n2vzXbyWSTzGj8l3TIeRh/GV+WTDbJDOBYN0o2UY5Bv0fOfSius/lYCljbuBQlk2iP/YErf9hZ2Uwq+z2u4tN9nWSySA3/FVXUkysHg2YR9HO0JPLsI+uTySA1xq8QIerZD18KmkHQx9ASCObNzTd7tzDfKY4az/9N2vbJpUEXFNo/34lJE6IO9iw3gy4ktKo70JLJwa3eXzS9W4BvV9fhRkz37sj9y5d6NTWl0Pn5DtyQWb1b3fPJzXg1NaTQ0OJO3JDZvQ62bX5pPUFkjhidjh87io6YN0h688NHD7ZIFWIwJFLEWgmfv4wxJfNH9OwzK/t3LlkmGozAse+/BPWJWoPIyU9/2Hhdr3tZp81oODjWL/4AjSV1xyi2XCv6x8bSZBz5v6tKZgdWUDggfAIAADAPAJ0BKjAAMAA+kUCbSqWjoiGjjACwEglnAMTp/+XcLxboh3GZwo/UG/wvMx9Gf8P3Bv5F/SP931rf1u9gD9Wiymk5NZYZOzOoySb2zzzFBdSZ5ewr/2lsUF9lgiLNCYrd6lpA/I7GGSdNyCDBRkNu5hdRVPHXvF7UWl3poJrzcgAA/v3bQTmoNT16MiCqJ56Bq60efwT6cyNjf5fUyc0Q1Jo8v0cYGGPXHZgWKt+i/trwwB0uT04ugFe+356kgbjYgneJUKWJTR8SQ16xlKqtP52RufyYJdor7F/zJv/ELpSI4Tu3beFg6JMEerth/gakE623CZZR/vtd+Nj+x1ZTXdyzHZKw7QMA3VTGfkEFyetHbqeiklTtaF5f/Gy2c4zv+ko17U8Pa12JaHn7woFxb1HEvuTE8Z0kR0BzPxZdqenY12ni7x1zimX+vf1rHko3+kXzfs9N+uVpfUsK4YfN096FLD/Fg/IWtlRWOujw9S+gf8bWxnGnh7my8F4BV2nfQtUw9cmEpheGO3f2s9rb/xMfyol8pSNwSrX93vczQbutdliDG8bPeMp+2EGY0/dfN4Oaf/CrJ6i6v/GBcFU+lQLIArnc66MHRowpdWxyWZYxV3mP9E7QysFVnLym3vu3wRWpR+ahPipEu1LQ/yrA8U90mtrHZbcG3UJKAX7UG+8sBODYt0+etvHvD6eBL+T2wZPCBrGeFK6NdyDeLYtbycWLZ7T74wROFO4KqjiBIdIf7vPPZ8xZiS8jw6fL4qHyb1iQc6XMtY4Vgus143DUZARbBm68rpklCcJTtCAIaLAx4zoGn3ecm8O+ZgLNBjAkIu7qzcKGI2pEAA==",
 	"scroll_offset": {
 		"x": -2851.666015625,
 		"y": -1442.91979980469

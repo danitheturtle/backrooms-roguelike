@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwo42tf1vueo0"
-path.s3tc="res://.godot/imported/CarpetYellow_Albedo.jpg-eec752d64c21e8c65394c9e0d2fa35d4.s3tc.ctex"
+uid="uid://bd2inbq16imyb"
+path.s3tc="res://.godot/imported/Carpet01_orm.png-2b7219de175900098f7d152c955f075c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/materials/CarpetYellow/CarpetYellow_Albedo.jpg"
-dest_files=["res://.godot/imported/CarpetYellow_Albedo.jpg-eec752d64c21e8c65394c9e0d2fa35d4.s3tc.ctex"]
+source_file="res://assets/materials/Carpet01/Carpet01_orm.png"
+dest_files=["res://.godot/imported/Carpet01_orm.png-2b7219de175900098f7d152c955f075c.s3tc.ctex"]
 
 [params]
 
