@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjuu612kvhr6d"
-path.s3tc="res://.godot/imported/OakVeneer01_orm.png-11186cd4a5bc3ed6522479cb818fefea.s3tc.ctex"
+uid="uid://c1j0hbbupr8ov"
+path.s3tc="res://.godot/imported/ceiling_vent_01_03_Metallic-03_Roughness.webp-4f2c261f66a303723c048dec5bfd5473.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "f1cc0d39425953eaabfd8b40d4fa293a"
+}
 
 [deps]
 
-source_file="res://assets/materials/OakVeneer01/OakVeneer01_orm.png"
-dest_files=["res://.godot/imported/OakVeneer01_orm.png-11186cd4a5bc3ed6522479cb818fefea.s3tc.ctex"]
+source_file="res://assets/meshes/ceiling_vent_01/ceiling_vent_01_03_Metallic-03_Roughness.webp"
+dest_files=["res://.godot/imported/ceiling_vent_01_03_Metallic-03_Roughness.webp-4f2c261f66a303723c048dec5bfd5473.s3tc.ctex"]
 
 [params]
 

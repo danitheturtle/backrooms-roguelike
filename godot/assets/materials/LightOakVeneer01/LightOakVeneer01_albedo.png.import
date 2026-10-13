@@ -2,23 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmvdloqgdt3ki"
-path="res://.godot/imported/molding_Paint004_2K-PNG_Roughness.png-43de5815d0135a989b2f2c3269f74b4b.ctex"
+uid="uid://bn4cklvw1ra1o"
+path.s3tc="res://.godot/imported/LightOakVeneer01_albedo.png-8d862570c0a5e1b538a0d669536b54d3.s3tc.ctex"
 metadata={
-"vram_texture": false
-}
-generator_parameters={
-"md5": "15a2b24aba48ad6bd05caa0c0bde48cd"
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/meshes/molding_Paint004_2K-PNG_Roughness.png"
-dest_files=["res://.godot/imported/molding_Paint004_2K-PNG_Roughness.png-43de5815d0135a989b2f2c3269f74b4b.ctex"]
+source_file="res://assets/materials/LightOakVeneer01/LightOakVeneer01_albedo.png"
+dest_files=["res://.godot/imported/LightOakVeneer01_albedo.png-8d862570c0a5e1b538a0d669536b54d3.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +38,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

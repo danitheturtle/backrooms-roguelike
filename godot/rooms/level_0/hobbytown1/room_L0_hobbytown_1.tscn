@@ -650,6 +650,7 @@ shape = SubResource("BoxShape3D_554yr")
 debug_color = Color(0, 0.6365585, 0.40732598, 0.41960785)
 
 [node name="LevelMeshes" parent="." index="6" unique_id=533403400 instance=ExtResource("2_7ltbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00042295456, 0.00030761957, 0.00045681)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="8" unique_id=778186343]
 environment = SubResource("Environment_yubti")

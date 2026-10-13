@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn4cklvw1ra1o"
-path.s3tc="res://.godot/imported/OakVeneer01_albedo.png-fea89b312bbc9f3033457be331e73074.s3tc.ctex"
+uid="uid://8a7g7kku6wmq"
+path.s3tc="res://.godot/imported/ceiling_vent_01_03_BaseColor.webp-18934a495edfc1ecb7fd9a43c7b8c690.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "ce57f43be39ca6fb72e3a3839dbbdb82"
+}
 
 [deps]
 
-source_file="res://assets/materials/OakVeneer01/OakVeneer01_albedo.png"
-dest_files=["res://.godot/imported/OakVeneer01_albedo.png-fea89b312bbc9f3033457be331e73074.s3tc.ctex"]
+source_file="res://assets/meshes/ceiling_vent_01/ceiling_vent_01_03_BaseColor.webp"
+dest_files=["res://.godot/imported/ceiling_vent_01_03_BaseColor.webp-18934a495edfc1ecb7fd9a43c7b8c690.s3tc.ctex"]
 
 [params]
 

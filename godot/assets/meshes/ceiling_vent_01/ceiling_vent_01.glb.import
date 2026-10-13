@@ -3,13 +3,13 @@
 importer="ArrayMesh"
 importer_version=1
 type="ArrayMesh"
-uid="uid://0wb4hynwcx0f"
-path="res://.godot/imported/molding.glb-5e6c0a7bcf796c66f1b54b144f23f482.res"
+uid="uid://cs461thg58g46"
+path="res://.godot/imported/ceiling_vent_01.glb-0f9e8b31057ceb5cca4334ea7ab0695b.res"
 
 [deps]
 
-source_file="res://assets/meshes/molding.glb"
-dest_files=["res://.godot/imported/molding.glb-5e6c0a7bcf796c66f1b54b144f23f482.res"]
+source_file="res://assets/meshes/ceiling_vent_01/ceiling_vent_01.glb"
+dest_files=["res://.godot/imported/ceiling_vent_01.glb-0f9e8b31057ceb5cca4334ea7ab0695b.res"]
 
 [params]
 
@@ -36,9 +36,9 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-materials/extract=1
+materials/extract=0
 materials/extract_format=0
-materials/extract_path="res://assets/materials/Molding01"
+materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1

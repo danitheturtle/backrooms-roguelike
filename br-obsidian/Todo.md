@@ -1,3 +1,4 @@
+- connector definition list of connectors should be indexed array instead of dict
 - connectors need new props: surface material and texture offset (that connects to the center offset of the mesh)
 - ramp ambient light power depending on distance inside room boundary. Each room gets its own bespoke level calculated based on number of lights turned on.
 	- This lets us raise base light level while letting some areas be extra dark and some extra bright. Default should be midrange
