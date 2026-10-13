@@ -14,7 +14,11 @@ Asset sources:
 - Wall Fire Alarm Lever by Slinc - CC0 - https://polyhaven.com/a/fire_alarm
 - Wooden Ladder by Miroslav Turura - CC0 - https://polyhaven.com/a/wooden_ladder
 - Wood01 by yosoyfreeman - CC0 - https://www.materialmaker.org/material?id=771
+- Thick Paint by AmbientCG - CC0 - https://ambientcg.com/view?id=Paint004
+- Ceiling Vent 01 by Mehdi Shahsavan - CCA - https://skfb.ly/oZRwz
+- Wall Outlet 01 by Saandy - CCA - https://skfb.ly/oGwvY
 - Original wallpaper reference - RegularalyBlue - https://www.reddit.com/r/backrooms/comments/1knpsgp/i_found_a_roll_of_the_original_backrooms/
 - lowercase - song for OST by TheHugoCollective - using repo license
 - spookymallsong - song for OST by TheHugoCollective - using repo license
+- ambi-v3 (WIP title) - song for OST by Nola Drift - using repo license
 - Original assets (not listed here) - using repo license
