@@ -13,6 +13,7 @@ Asset sources:
 - Wooden Chair 01 by Jake Mobley - CC0 - https://polyhaven.com/a/WoodenChair_01
 - Wall Fire Alarm Lever by Slinc - CC0 - https://polyhaven.com/a/fire_alarm
 - Wooden Ladder by Miroslav Turura - CC0 - https://polyhaven.com/a/wooden_ladder
+- Wood01 by yosoyfreeman - CC0 - https://www.materialmaker.org/material?id=771
 - Original wallpaper reference - RegularalyBlue - https://www.reddit.com/r/backrooms/comments/1knpsgp/i_found_a_roll_of_the_original_backrooms/
 - lowercase - song for OST by TheHugoCollective - using repo license
 - spookymallsong - song for OST by TheHugoCollective - using repo license

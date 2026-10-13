@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://m7ggvmb2f6sk"]
+
+[ext_resource type="Texture2D" uid="uid://bn4cklvw1ra1o" path="res://assets/materials/OakVeneer01/OakVeneer01_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bjuu612kvhr6d" path="res://assets/materials/OakVeneer01/OakVeneer01_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://u44tvin7o8tp" path="res://assets/materials/OakVeneer01/OakVeneer01_normal.png" id="3"]
+
+[resource]
+albedo_texture = ExtResource("1")
+roughness_texture = ExtResource("2")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true
