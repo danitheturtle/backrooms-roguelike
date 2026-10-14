@@ -1,5 +1,7 @@
 class_name UnresolvedConnection
 
-var room_idx: int
-var connection_idx: int
 var generation: int
+
+var room_idx: int
+var connector_key: NodePath
+var room_abs_pos: Vector3i
