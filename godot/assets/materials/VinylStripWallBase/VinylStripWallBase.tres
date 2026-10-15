@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ctvwiler5t2f7"]
+
+[ext_resource type="Texture2D" uid="uid://u30dsh8678kc" path="res://assets/materials/VinylStripWallBase/VinylStripWallBase_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cu28lmxv7wt7s" path="res://assets/materials/VinylStripWallBase/VinylStripWallBase_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dmk3a32yyewhk" path="res://assets/materials/VinylStripWallBase/VinylStripWallBase_normal.png" id="3"]
+
+[resource]
+albedo_texture = ExtResource("1")
+roughness_texture = ExtResource("2")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3")
