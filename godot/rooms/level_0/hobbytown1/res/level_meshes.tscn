@@ -16,6 +16,7 @@
 [ext_resource type="Material" uid="uid://m7ggvmb2f6sk" path="res://assets/materials/LightOakVeneer01/LightOakVeneer01.tres" id="12_8oqgt"]
 [ext_resource type="Material" uid="uid://cd122dc5m611w" path="res://assets/materials/WallpaperVariants/WallpaperThickFadedStripes.tres" id="12_gbkse"]
 [ext_resource type="Material" uid="uid://cwur0ss2djxmn" path="res://assets/materials/Drywall/Drywall.tres" id="12_mbje3"]
+[ext_resource type="Material" uid="uid://cqyvolf0otaxa" path="res://assets/materials/Drywall/DrywallCream.tres" id="12_w0eh0"]
 [ext_resource type="ArrayMesh" uid="uid://c665du5dw3ttq" path="res://assets/meshes/wall_outlet_01/wall_outlet_01.glb" id="17_eds8v"]
 [ext_resource type="ArrayMesh" uid="uid://cs461thg58g46" path="res://assets/meshes/ceiling_vent_01/ceiling_vent_01.glb" id="18_mbje3"]
 
@@ -123,7 +124,7 @@ material_override = ExtResource("4_kl4jl")
 
 [node name="wall_004" parent="." index="29" unique_id=81598456]
 layers = 4
-material_override = ExtResource("12_mbje3")
+material_override = ExtResource("12_w0eh0")
 
 [node name="wall_005" parent="." index="30" unique_id=2087145956]
 layers = 4

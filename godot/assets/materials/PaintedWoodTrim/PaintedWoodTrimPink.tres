@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dgjhl3u3lenje" path="res://assets/materials/PaintedWoodTrim/PaintedWoodTrim_normal.png" id="3"]
 
 [resource]
-albedo_color = Color(0.5883608, 0.44794172, 0.42081285, 1)
+albedo_color = Color(0.6951092, 0.61412704, 0.5364086, 1)
 albedo_texture = ExtResource("1")
 roughness_texture = ExtResource("2")
 roughness_texture_channel = 1

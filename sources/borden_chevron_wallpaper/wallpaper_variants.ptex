@@ -2088,7 +2088,7 @@
 				"y": -1416.00207519531
 			},
 			"parameters": {
-				"amount1": 0.35,
+				"amount1": 0.2,
 				"blend_type1": 0.0
 			},
 			"seed_int": 0,
@@ -2807,8 +2807,8 @@
 				"y": 990.022277832031
 			},
 			"parameters": {
-				"format": 0,
-				"size": 12,
+				"format": 0.0,
+				"size": 12.0,
 				"suffix": "WallpaperStripesYellow_albedo"
 			},
 			"seed_int": 0,
@@ -3255,8 +3255,8 @@
 				"y": 854.597839355469
 			},
 			"parameters": {
-				"format": 0,
-				"size": 12,
+				"format": 0.0,
+				"size": 12.0,
 				"suffix": "WallpaperDotsYellow_albedo"
 			},
 			"seed_int": 0,
@@ -3269,8 +3269,8 @@
 				"y": 712.580200195312
 			},
 			"parameters": {
-				"format": 0,
-				"size": 12,
+				"format": 0.0,
+				"size": 12.0,
 				"suffix": "WallpaperZigzagYellow_albedo"
 			},
 			"seed_int": 0,
@@ -3283,8 +3283,8 @@
 				"y": 555.92138671875
 			},
 			"parameters": {
-				"format": 0,
-				"size": 12,
+				"format": 0.0,
+				"size": 12.0,
 				"suffix": "WallpaperThickStripesYellow_albedo"
 			},
 			"seed_int": 0,
@@ -3307,8 +3307,8 @@
 				"y": -513.510437011719
 			},
 			"parameters": {
-				"format": 0,
-				"size": 12,
+				"format": 0.0,
+				"size": 12.0,
 				"suffix": "WallpaperStripes_orm"
 			},
 			"seed_int": 0,
@@ -3321,8 +3321,8 @@
 				"y": -668.705078125
 			},
 			"parameters": {
-				"format": 0,
-				"size": 12,
+				"format": 0.0,
+				"size": 12.0,
 				"suffix": "WallpaperStripes_albedo"
 			},
 			"seed_int": 0,
@@ -3335,8 +3335,8 @@
 				"y": 393.406280517578
 			},
 			"parameters": {
-				"format": 0,
-				"size": 12,
+				"format": 0.0,
+				"size": 12.0,
 				"suffix": "WallpaperUnevenStripesYellow_albedo"
 			},
 			"seed_int": 0,

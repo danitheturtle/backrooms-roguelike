@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Todo.md",
+                "file": "Technical/Building a room.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Todo"
+              "title": "Building a room"
             }
           }
         ]
@@ -190,9 +190,9 @@
   },
   "active": "46516998497d2586",
   "lastOpenFiles": [
+    "Todo.md",
     "Decoration/Yellow Light Color.md",
     "Decoration/Deco Ideas.md",
-    "Todo.md",
     "Mechanics/Upgrades.md",
     "Mechanics/Mechanic Brainstorm.md",
     "Mechanics/Exits.md",

@@ -1,6 +1,7 @@
 @tool
 class_name ConnectorEditorHelper
 
+const DIMENSIONS_EPSILON = 0.001
 var room: Room
 var connector: RoomConnector
 var adjacentCollider: CollisionShape3D
@@ -62,13 +63,13 @@ func update_connector_width(newValue: int, axis: StringName):
     var newWidth: float = float(newValue) * Const.VOXEL
     collider.shape.size[axis] = newWidth
     adjacentCollider.shape.size[axis] = newWidth
-    mesh.mesh.size.x = newWidth
+    mesh.mesh.size.x = newWidth + DIMENSIONS_EPSILON
 
 func update_connector_height(newValue: int, axis: StringName):
     var newHeight: float = float(newValue) * Const.VOXEL
     collider.shape.size[axis] = newHeight
     adjacentCollider.shape.size[axis] = newHeight
-    mesh.mesh.size.y = newHeight
+    mesh.mesh.size.y = newHeight + DIMENSIONS_EPSILON
 
 func update_connector_depth(newValue: float, axis: StringName):
     var newDepth: float = float(newValue) * Const.VOXEL
