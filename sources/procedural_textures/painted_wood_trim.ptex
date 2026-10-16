@@ -1,0 +1,919 @@
+{
+	"connections": [
+		{
+			"from": "sdellipse",
+			"from_port": 0,
+			"to": "sdshow",
+			"to_port": 0
+		},
+		{
+			"from": "noise_anisotropic",
+			"from_port": 0,
+			"to": "math",
+			"to_port": 0
+		},
+		{
+			"from": "sdshow",
+			"from_port": 0,
+			"to": "math",
+			"to_port": 1
+		},
+		{
+			"from": "math",
+			"from_port": 0,
+			"to": "warp",
+			"to_port": 0
+		},
+		{
+			"from": "fbm4",
+			"from_port": 0,
+			"to": "warp",
+			"to_port": 1
+		},
+		{
+			"from": "warp",
+			"from_port": 0,
+			"to": "tiler",
+			"to_port": 0
+		},
+		{
+			"from": "fbm4_2",
+			"from_port": 0,
+			"to": "gaussian_blur",
+			"to_port": 0
+		},
+		{
+			"from": "gaussian_blur",
+			"from_port": 0,
+			"to": "tones_step",
+			"to_port": 0
+		},
+		{
+			"from": "dirt",
+			"from_port": 0,
+			"to": "fbm4_2",
+			"to_port": 0
+		},
+		{
+			"from": "normal_map2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 4
+		},
+		{
+			"from": "tiler",
+			"from_port": 0,
+			"to": "tones_step_2",
+			"to_port": 0
+		},
+		{
+			"from": "dirt_2",
+			"from_port": 0,
+			"to": "scale",
+			"to_port": 0
+		},
+		{
+			"from": "scale",
+			"from_port": 0,
+			"to": "make_tileable",
+			"to_port": 0
+		},
+		{
+			"from": "make_tileable",
+			"from_port": 0,
+			"to": "math_2",
+			"to_port": 0
+		},
+		{
+			"from": "gaussian_blur_3",
+			"from_port": 0,
+			"to": "math_2",
+			"to_port": 1
+		},
+		{
+			"from": "tones_step_2",
+			"from_port": 0,
+			"to": "gaussian_blur_3",
+			"to_port": 0
+		},
+		{
+			"from": "math_2",
+			"from_port": 0,
+			"to": "colorize",
+			"to_port": 0
+		},
+		{
+			"from": "tones_step",
+			"from_port": 0,
+			"to": "rotate",
+			"to_port": 0
+		},
+		{
+			"from": "colorize",
+			"from_port": 0,
+			"to": "gaussian_blur_4",
+			"to_port": 0
+		},
+		{
+			"from": "uniform_3",
+			"from_port": 0,
+			"to": "blend2_2",
+			"to_port": 0
+		},
+		{
+			"from": "gaussian_blur_2",
+			"from_port": 0,
+			"to": "blend2_2",
+			"to_port": 1
+		},
+		{
+			"from": "gaussian_blur_4",
+			"from_port": 0,
+			"to": "blend2_2",
+			"to_port": 3
+		},
+		{
+			"from": "tones_step_2",
+			"from_port": 0,
+			"to": "gaussian_blur_2",
+			"to_port": 0
+		},
+		{
+			"from": "rotate",
+			"from_port": 0,
+			"to": "math_3",
+			"to_port": 0
+		},
+		{
+			"from": "fbm4_3",
+			"from_port": 0,
+			"to": "math_3",
+			"to_port": 1
+		},
+		{
+			"from": "math_3",
+			"from_port": 0,
+			"to": "brightness_contrast",
+			"to_port": 0
+		},
+		{
+			"from": "brightness_contrast",
+			"from_port": 0,
+			"to": "blend2_2",
+			"to_port": 5
+		},
+		{
+			"from": "blend2_2",
+			"from_port": 0,
+			"to": "normal_map2",
+			"to_port": 0
+		},
+		{
+			"from": "tones_step_3",
+			"from_port": 0,
+			"to": "gaussian_blur_5",
+			"to_port": 0
+		},
+		{
+			"from": "make_tileable_2",
+			"from_port": 0,
+			"to": "tones_step_3",
+			"to_port": 0
+		},
+		{
+			"from": "gaussian_blur_5",
+			"from_port": 0,
+			"to": "blend2_2",
+			"to_port": 7
+		},
+		{
+			"from": "perlin",
+			"from_port": 0,
+			"to": "fbm4_4",
+			"to_port": 0
+		},
+		{
+			"from": "fbm4_4",
+			"from_port": 0,
+			"to": "warp_2",
+			"to_port": 0
+		},
+		{
+			"from": "perlin_2",
+			"from_port": 0,
+			"to": "warp_2",
+			"to_port": 1
+		},
+		{
+			"from": "warp_2",
+			"from_port": 0,
+			"to": "make_tileable_2",
+			"to_port": 0
+		},
+		{
+			"from": "fbm4_5",
+			"from_port": 0,
+			"to": "colorize_2",
+			"to_port": 0
+		},
+		{
+			"from": "uniform",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 0
+		},
+		{
+			"from": "fbm4_5",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 1
+		},
+		{
+			"from": "blend2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		},
+		{
+			"from": "colorize_2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 2
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "_Node_980",
+	"node_position": {
+		"x": 0.0,
+		"y": 0.0
+	},
+	"nodes": [
+		{
+			"export_last_target": "Godot/Godot 4 Standard",
+			"export_paths": {
+				"Godot/Godot 4 Standard": "/home/dani/projects/backrooms-roguelike/godot/assets/materials/PaintedWoodTrim/PaintedWoodTrimPink"
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 405.454528808594,
+				"y": -665.454528808594
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1.0,
+					"b": 0.631372570991516,
+					"g": 0.737254917621613,
+					"r": 0.737254917621613,
+					"type": "Color"
+				},
+				"ao": 1.0,
+				"depth_scale": 0.5,
+				"emission_energy": 1.0,
+				"flags_transparent": true,
+				"metallic": 0.0,
+				"normal": 1.0,
+				"roughness": 1.0,
+				"size": 12.0,
+				"sss": 1.0
+			},
+			"seed_int": 0,
+			"type": "material"
+		},
+		{
+			"name": "noise_anisotropic",
+			"node_position": {
+				"x": -2806.54174804688,
+				"y": -333.020782470703
+			},
+			"parameters": {
+				"interpolation": 1.0,
+				"scale_x": 1.0,
+				"scale_y": 386.0,
+				"smoothness": 1.0
+			},
+			"seed_int": 3116557568,
+			"type": "noise_anisotropic"
+		},
+		{
+			"name": "sdellipse",
+			"node_position": {
+				"x": -2946.02197265625,
+				"y": -169.404602050781
+			},
+			"parameters": {
+				"cx": 0.0,
+				"cy": 0.0,
+				"h": 0.3,
+				"w": 0.45
+			},
+			"seed_int": 0,
+			"type": "sdellipse"
+		},
+		{
+			"name": "sdshow",
+			"node_position": {
+				"x": -2723.52197265625,
+				"y": -173.004653930664
+			},
+			"parameters": {
+				"base": 0.0,
+				"bevel": 0.3
+			},
+			"seed_int": 0,
+			"type": "sdshow"
+		},
+		{
+			"name": "math",
+			"node_position": {
+				"x": -2481.92211914062,
+				"y": -310.204620361328
+			},
+			"parameters": {
+				"clamp": false,
+				"default_in1": 0.0,
+				"default_in2": 0.0,
+				"op": 2.0
+			},
+			"seed_int": 0,
+			"type": "math"
+		},
+		{
+			"generic_size": 1,
+			"name": "warp",
+			"node_position": {
+				"x": -2242.83129882812,
+				"y": -343.022766113281
+			},
+			"parameters": {
+				"amount": 0.05,
+				"eps": 0.1,
+				"mode": 1.0
+			},
+			"seed_int": 0,
+			"type": "warp"
+		},
+		{
+			"name": "fbm4",
+			"node_position": {
+				"x": -2526.92211914062,
+				"y": -149.204620361328
+			},
+			"parameters": {
+				"folds": 0.0,
+				"iterations": 2.0,
+				"lacunarity": 1.0,
+				"noise": 1.0,
+				"offset": 0.0,
+				"persistence": 0.74,
+				"scale_x": 4.0,
+				"scale_y": 4.0
+			},
+			"seed_int": 206836528,
+			"type": "fbm4"
+		},
+		{
+			"name": "tiler",
+			"node_position": {
+				"x": -2025.29919433594,
+				"y": -362.079254150391
+			},
+			"parameters": {
+				"fixed_offset": 0.0,
+				"inputs": 0.0,
+				"offset": 1.0,
+				"overlap": 2.0,
+				"rotate": 0.0,
+				"scale": 0.53,
+				"scale_x": 0.5,
+				"scale_y": 0.25,
+				"tx": 7.0,
+				"ty": 17.0,
+				"value": 0.0,
+				"variations": false
+			},
+			"seed_int": 827587648,
+			"type": "tiler"
+		},
+		{
+			"name": "fbm4_2",
+			"node_position": {
+				"x": -2091.01953125,
+				"y": 135.270889282227
+			},
+			"parameters": {
+				"folds": 1.0,
+				"iterations": 5.0,
+				"lacunarity": 4.0,
+				"noise": 12.0,
+				"offset": 0.0,
+				"persistence": 1.0,
+				"scale_x": 32.0,
+				"scale_y": 16.0
+			},
+			"seed_int": 0,
+			"type": "fbm4"
+		},
+		{
+			"name": "dirt",
+			"node_position": {
+				"x": -2366.3505859375,
+				"y": 256.960876464844
+			},
+			"parameters": {
+				"d_scale": 1.0,
+				"param0": 0.0,
+				"param1": 10.0
+			},
+			"seed_int": 0,
+			"type": "dirt"
+		},
+		{
+			"name": "gaussian_blur",
+			"node_position": {
+				"x": -1815.56726074219,
+				"y": 128.555236816406
+			},
+			"parameters": {
+				"param0": 12.0,
+				"param1": 2.0,
+				"param2": 0.0,
+				"param3": false
+			},
+			"seed_int": 0,
+			"type": "gaussian_blur"
+		},
+		{
+			"name": "tones_step",
+			"node_position": {
+				"x": -1546.89855957031,
+				"y": 150.997894287109
+			},
+			"parameters": {
+				"invert": false,
+				"value": 0.56,
+				"width": 0.47
+			},
+			"seed_int": 0,
+			"type": "tones_step"
+		},
+		{
+			"name": "normal_map2",
+			"node_position": {
+				"x": 58.2955093383789,
+				"y": -483.332611083984
+			},
+			"parameters": {
+				"buffer": 1.0,
+				"param2": 0.0,
+				"size": 12.0,
+				"strength": 0.01
+			},
+			"seed_int": 0,
+			"type": "normal_map2"
+		},
+		{
+			"name": "tones_step_2",
+			"node_position": {
+				"x": -1788.59973144531,
+				"y": -375.662811279297
+			},
+			"parameters": {
+				"invert": false,
+				"value": 0.54,
+				"width": 0.17
+			},
+			"seed_int": 0,
+			"type": "tones_step"
+		},
+		{
+			"name": "gaussian_blur_2",
+			"node_position": {
+				"x": -1561.35217285156,
+				"y": -382.337554931641
+			},
+			"parameters": {
+				"param0": 12.0,
+				"param1": 3.0,
+				"param2": 0.0,
+				"param3": false
+			},
+			"seed_int": 0,
+			"type": "gaussian_blur"
+		},
+		{
+			"name": "dirt_2",
+			"node_position": {
+				"x": -1898.47119140625,
+				"y": -817.340087890625
+			},
+			"parameters": {
+				"d_scale": 3.0,
+				"param0": 0.0,
+				"param1": 11.0
+			},
+			"seed_int": 3065686016,
+			"type": "dirt"
+		},
+		{
+			"generic_size": 1,
+			"name": "scale",
+			"node_position": {
+				"x": -1715.50671386719,
+				"y": -815.904113769531
+			},
+			"parameters": {
+				"cx": 0.0,
+				"cy": 0.0,
+				"scale_x": 2.0,
+				"scale_y": 0.75
+			},
+			"seed_int": 0,
+			"type": "scale"
+		},
+		{
+			"name": "make_tileable",
+			"node_position": {
+				"x": -1514.51501464844,
+				"y": -822.102416992188
+			},
+			"parameters": {
+				"w": 0.2
+			},
+			"seed_int": 0,
+			"type": "make_tileable"
+		},
+		{
+			"name": "math_2",
+			"node_position": {
+				"x": -1268.75769042969,
+				"y": -780.040588378906
+			},
+			"parameters": {
+				"clamp": false,
+				"default_in1": 0.0,
+				"default_in2": 0.0,
+				"op": 2.0
+			},
+			"seed_int": 0,
+			"type": "math"
+		},
+		{
+			"name": "gaussian_blur_3",
+			"node_position": {
+				"x": -1582.84521484375,
+				"y": -583.249145507812
+			},
+			"parameters": {
+				"param0": 11.0,
+				"param1": 11.0,
+				"param2": 0.0,
+				"param3": false
+			},
+			"seed_int": 0,
+			"type": "gaussian_blur"
+		},
+		{
+			"name": "colorize",
+			"node_position": {
+				"x": -1060.20886230469,
+				"y": -782.885559082031
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 2,
+					"points": [
+						{
+							"a": 1.0,
+							"b": 0.0,
+							"g": 0.0,
+							"pos": 0.0,
+							"r": 0.0
+						},
+						{
+							"a": 1.0,
+							"b": 1.0,
+							"g": 1.0,
+							"pos": 0.159103527403714,
+							"r": 1.0
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed_int": 0,
+			"type": "colorize"
+		},
+		{
+			"generic_size": 1,
+			"name": "rotate",
+			"node_position": {
+				"x": -1349.50939941406,
+				"y": 147.839553833008
+			},
+			"parameters": {
+				"cx": 0.0,
+				"cy": 0.0,
+				"rotate": 90.0
+			},
+			"seed_int": 0,
+			"type": "rotate"
+		},
+		{
+			"name": "gaussian_blur_4",
+			"node_position": {
+				"x": -837.412658691406,
+				"y": -695.158203125
+			},
+			"parameters": {
+				"param0": 12.0,
+				"param1": 3.0,
+				"param2": 0.0,
+				"param3": false
+			},
+			"seed_int": 0,
+			"type": "gaussian_blur"
+		},
+		{
+			"name": "uniform_3",
+			"node_position": {
+				"x": -852.867065429688,
+				"y": -496.976409912109
+			},
+			"parameters": {
+				"color": {
+					"a": 1.0,
+					"b": 0.0,
+					"g": 0.0,
+					"r": 0.0,
+					"type": "Color"
+				}
+			},
+			"seed_int": 0,
+			"type": "uniform"
+		},
+		{
+			"generic_size": 4,
+			"name": "blend2_2",
+			"node_position": {
+				"x": -218.69709777832,
+				"y": -484.217376708984
+			},
+			"parameters": {
+				"amount1": 0.53,
+				"amount2": 0.55,
+				"amount3": 0.6,
+				"amount4": 0.48,
+				"blend_type1": 9.0,
+				"blend_type2": 9.0,
+				"blend_type3": 0.0,
+				"blend_type4": 9.0
+			},
+			"seed_int": 0,
+			"type": "blend2"
+		},
+		{
+			"name": "fbm4_3",
+			"node_position": {
+				"x": -1378.32165527344,
+				"y": -116.067337036133
+			},
+			"parameters": {
+				"folds": 0.0,
+				"iterations": 5.0,
+				"lacunarity": 2.0,
+				"noise": 1.0,
+				"offset": 0.0,
+				"persistence": 0.5,
+				"scale_x": 4.0,
+				"scale_y": 4.0
+			},
+			"seed_int": 0,
+			"type": "fbm4"
+		},
+		{
+			"name": "math_3",
+			"node_position": {
+				"x": -962.867065429688,
+				"y": -76.9764251708984
+			},
+			"parameters": {
+				"clamp": false,
+				"default_in1": 0.0,
+				"default_in2": 0.0,
+				"op": 0.0
+			},
+			"seed_int": 0,
+			"type": "math"
+		},
+		{
+			"name": "brightness_contrast",
+			"node_position": {
+				"x": -799.230712890625,
+				"y": -136.976425170898
+			},
+			"parameters": {
+				"brightness": -0.12,
+				"contrast": 0.59
+			},
+			"seed_int": 0,
+			"type": "brightness_contrast"
+		},
+		{
+			"name": "tones_step_3",
+			"node_position": {
+				"x": -835.878173828125,
+				"y": 261.643310546875
+			},
+			"parameters": {
+				"invert": false,
+				"value": 0.8,
+				"width": 0.15
+			},
+			"seed_int": 0,
+			"type": "tones_step"
+		},
+		{
+			"name": "fbm4_4",
+			"node_position": {
+				"x": -1645.3681640625,
+				"y": 317.303314208984
+			},
+			"parameters": {
+				"folds": 1.0,
+				"iterations": 6.0,
+				"lacunarity": 2.0,
+				"noise": 4.0,
+				"offset": 0.0,
+				"persistence": 0.6,
+				"scale_x": 3.0,
+				"scale_y": 16.5
+			},
+			"seed_int": 2343676416,
+			"type": "fbm4"
+		},
+		{
+			"name": "gaussian_blur_5",
+			"node_position": {
+				"x": -625.338134765625,
+				"y": 190.253311157227
+			},
+			"parameters": {
+				"param0": 12.0,
+				"param1": 2.5,
+				"param2": 0.0,
+				"param3": false
+			},
+			"seed_int": 0,
+			"type": "gaussian_blur"
+		},
+		{
+			"name": "perlin",
+			"node_position": {
+				"x": -1905.51818847656,
+				"y": 386.273315429688
+			},
+			"parameters": {
+				"iterations": 8.0,
+				"persistence": 0.65,
+				"scale_x": 8.0,
+				"scale_y": 8.0
+			},
+			"seed_int": 3857999872,
+			"type": "perlin"
+		},
+		{
+			"name": "make_tileable_2",
+			"node_position": {
+				"x": -1058.51806640625,
+				"y": 307.623291015625
+			},
+			"parameters": {
+				"w": 0.1
+			},
+			"seed_int": 0,
+			"type": "make_tileable"
+		},
+		{
+			"generic_size": 1,
+			"name": "warp_2",
+			"node_position": {
+				"x": -1270.26818847656,
+				"y": 319.723297119141
+			},
+			"parameters": {
+				"amount": 0.1,
+				"eps": 0.1,
+				"mode": 1.0
+			},
+			"seed_int": 0,
+			"type": "warp"
+		},
+		{
+			"name": "perlin_2",
+			"node_position": {
+				"x": -1607.85815429688,
+				"y": 587.13330078125
+			},
+			"parameters": {
+				"iterations": 3.0,
+				"persistence": 0.5,
+				"scale_x": 4.0,
+				"scale_y": 4.0
+			},
+			"seed_int": 2682414592,
+			"type": "perlin"
+		},
+		{
+			"name": "fbm4_5",
+			"node_position": {
+				"x": -260.7138671875,
+				"y": -827.0087890625
+			},
+			"parameters": {
+				"folds": 0.0,
+				"iterations": 2.0,
+				"lacunarity": 2.0,
+				"noise": 2.0,
+				"offset": 0.0,
+				"persistence": 0.39,
+				"scale_x": 2.0,
+				"scale_y": 2.0
+			},
+			"seed_int": 3725747968,
+			"type": "fbm4"
+		},
+		{
+			"name": "colorize_2",
+			"node_position": {
+				"x": 42.2388496398926,
+				"y": -758.698059082031
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 1.0,
+							"b": 0.339293986558914,
+							"g": 0.339293986558914,
+							"pos": 0.0,
+							"r": 0.339294016361237
+						},
+						{
+							"a": 1.0,
+							"b": 0.39719370007515,
+							"g": 0.39719370007515,
+							"pos": 1.0,
+							"r": 0.397193670272827
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed_int": 0,
+			"type": "colorize"
+		},
+		{
+			"name": "uniform",
+			"node_position": {
+				"x": -253.876678466797,
+				"y": -979.008850097656
+			},
+			"parameters": {
+				"color": {
+					"a": 1.0,
+					"b": 1.0,
+					"g": 1.0,
+					"r": 1.0,
+					"type": "Color"
+				}
+			},
+			"seed_int": 0,
+			"type": "uniform"
+		},
+		{
+			"generic_size": 1,
+			"name": "blend2",
+			"node_position": {
+				"x": 58.6729698181152,
+				"y": -921.626098632812
+			},
+			"parameters": {
+				"amount1": 0.02,
+				"blend_type1": 2
+			},
+			"seed_int": 0,
+			"type": "blend2"
+		}
+	],
+	"parameters": {},
+	"project_thumbnail": "UklGRtQEAABXRUJQVlA4WAoAAAAQAAAALwAALwAAQUxQSJQCAAANoCNteyJJevXrV9HAMpNX7Q9UrMd4gGEea5ksZmYGi3n3AG12ZIzVFT0X4BmrrOXdqqiUUlooyNIJImICmFOsBzh//bn89tcvAK6K1C9SVmbLdb1uM1Y0ZXysX6yVaIx1aRmvObyDqe3OZd3edRt/+PQkGmqR5K945gZIFWIwJFLELu3cv/LMWWPifFry8D0QxFomGoxAjK2Dj374ZtIwjxtd9BN4dcwrksL6lzZvGzg/mxtu+gavDeo0msLNn+xZdX4WN7z2PXyHuo36S5fvP+L8NB1teo/QZoEuNIv7VzVMkvKibwgtFqqhubxnIHFC4id8mwWrv/STbYn/q38Y32Hhzt+8+U0NIOUV96BkqLz04VmJSHwa38jB+PWPPCtRymtuQMlSObhyUmx1GN/Iw/jOvk+tNzuwZGrZ+UPJFlI2kpY2rnEdVTZU9rqCHln3+nSRfITusfObmHwMl43XR7LuyLkVJh9Du0n2vzXbyWSTzGj8l3TIeRh/GV+WTDbJDOBYN0o2UY5Bv0fOfSius/lYCljbuBQlk2iP/YErf9hZ2Uwq+z2u4tN9nWSySA3/FVXUkysHg2YR9HO0JPLsI+uTySA1xq8QIerZD18KmkHQx9ASCObNzTd7tzDfKY4az/9N2vbJpUEXFNo/34lJE6IO9iw3gy4ktKo70JLJwa3eXzS9W4BvV9fhRkz37sj9y5d6NTWl0Pn5DtyQWb1b3fPJzXg1NaTQ0OJO3JDZvQ62bX5pPUFkjhidjh87io6YN0h688NHD7ZIFWIwJFLEWgmfv4wxJfNH9OwzK/t3LlkmGozAse+/BPWJWoPIyU9/2Hhdr3tZp81oODjWL/4AjSV1xyi2XCv6x8bSZBz5v6tKZgdWUDggGgIAAHAPAJ0BKjAAMAA+kTyWR6WjoiEuNA5gsBIJZwDJmf/t3pVgSoJCO9Hb/F8n30F/0/cF/kH9P/4XWp/YD2AP1wJIvbrJbOznRRQCtjeXp0YWOUVuqng/b76pZaufbi7tLniHkSdclHrdAD59jh57GNRXq4SvOhJ8Ck75mFM73V4k0GOfAAD+/VPz7iemYXLBVhBfyAJd49/MhC4GIxm93IabmUzljnzSmxkqebmWINFD5h/tH8HSU6E+YzNpjWec0JMyCUo0pfyr+CRyXxzOmC/03+0AiBqcQFUh3YeiIE0q2AOuclX8P/ebAWDwWi01Ab68B8moH4sore0xbK/Wa6VQXWf2blEvLnOQW6+s7mdy59IR5zqHxSJd56x+QLkxujp1ITZnUv6SLrLwv5Ir+cHmfzrRPRSBPG37kKsAQObH344SnrYHmbNZWfrrvE0EZPHTtT/wZvr7W3/g1/kOd+6EJO6Ij9yKbybQgPVjj6H5HBkOHuOSzU7dP2qhbCA0apepZOhRJVEDB2hicjREQ0T1TT9fAmbHd7fd23AyUejbPD5TwlNehvvt/ZhZH5wdo+u6iefrZkvXkbj9gdVFGS2WhAXg9rb9DPR93AVm/zzmODHZCHVswzE3p3pIHC2JTFmw88/iguqc6B82G28SL73xV7ZVOYsX0ijGNywzkI0FnnoLnBP1gmnu+iEdG7FfHa9sRQux1aM4AAA=",
+	"scroll_offset": {
+		"x": -2168.57250976562,
+		"y": -1427.89819335938
+	},
+	"seed_int": 0,
+	"shortdesc": "",
+	"type": "graph"
+}

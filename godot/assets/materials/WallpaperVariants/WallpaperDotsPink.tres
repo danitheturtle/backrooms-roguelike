@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://skj5l8r1p1w8"]
+
+[ext_resource type="Texture2D" uid="uid://ck6mxqii46xwe" path="res://assets/materials/WallpaperVariants/res/WallpaperDotsPink_albedo.png" id="1_mlwmu"]
+[ext_resource type="Texture2D" uid="uid://c5nkm3t72oeq7" path="res://assets/materials/WallpaperVariants/res/Wallpaper_normal.png" id="2_6yyul"]
+[ext_resource type="Texture2D" uid="uid://ytn6vr0xbaxq" path="res://assets/materials/WallpaperVariants/res/WallpaperDots_orm.png" id="3_pudnw"]
+
+[resource]
+albedo_texture = ExtResource("1_mlwmu")
+roughness_texture = ExtResource("3_pudnw")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_6yyul")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true

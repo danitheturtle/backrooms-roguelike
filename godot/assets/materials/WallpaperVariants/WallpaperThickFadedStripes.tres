@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cd122dc5m611w"]
+
+[ext_resource type="Texture2D" uid="uid://dsp6q3p85t4r1" path="res://assets/materials/WallpaperVariants/res/WallpaperThickFadedStripes_albedo.png" id="1_tyakh"]
+[ext_resource type="Texture2D" uid="uid://c5nkm3t72oeq7" path="res://assets/materials/WallpaperVariants/res/Wallpaper_normal.png" id="2_v8gsd"]
+[ext_resource type="Texture2D" uid="uid://btyerfng8iy4p" path="res://assets/materials/WallpaperVariants/res/WallpaperThickStripes_orm.png" id="3_w5qh3"]
+
+[resource]
+albedo_texture = ExtResource("1_tyakh")
+roughness_texture = ExtResource("3_w5qh3")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_v8gsd")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true

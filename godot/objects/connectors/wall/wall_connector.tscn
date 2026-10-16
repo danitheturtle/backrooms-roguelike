@@ -2,19 +2,20 @@
 
 [ext_resource type="Script" uid="uid://cp3makgqqe3a0" path="res://objects/connectors/wall/wall_connector.gd" id="1_y6l5e"]
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="2_1h1xp"]
+[ext_resource type="Material" uid="uid://b3ofgrdcrwlk7" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01.tres" id="2_8n76r"]
 [ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="3_8n76r"]
 [ext_resource type="PackedScene" uid="uid://d0ywucxig7gvo" path="res://objects/colliders/wall_static_body.tscn" id="3_mrkkk"]
-[ext_resource type="Material" uid="uid://bfh71naccgicw" path="res://assets/materials/WallChevronYellow/WallChevronYellow_world.tres" id="6_ab103"]
+[ext_resource type="Material" uid="uid://cnjdmo62lxpvu" path="res://assets/materials/WallpaperChevron/WallpaperChevronYellow.tres" id="6_ab103"]
 
 [sub_resource type="Resource" id="Resource_j3pao"]
 script = ExtResource("3_8n76r")
 pathInRoom = NodePath(".")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_16rvm"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_8n76r"]
 resource_local_to_scene = true
 size = Vector3(3, 3, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8n76r"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ab103"]
 resource_local_to_scene = true
 size = Vector3(3, 3, 0.25)
 
@@ -25,6 +26,7 @@ orientation = 2
 
 [node name="WallConnector" type="Node3D" unique_id=1632024163]
 script = ExtResource("1_y6l5e")
+farEdgeNorthMaterial = ExtResource("2_8n76r")
 definition = SubResource("Resource_j3pao")
 
 [node name="Adjacent" type="Area3D" parent="." unique_id=786542423]
@@ -32,14 +34,14 @@ collision_layer = 256
 collision_mask = 256
 
 [node name="RectCollider" parent="Adjacent" unique_id=415124710 instance=ExtResource("2_1h1xp")]
-shape = SubResource("BoxShape3D_16rvm")
+shape = SubResource("BoxShape3D_8n76r")
 debug_color = Color(0.6799758, 0.5042543, 0, 0.72700006)
 
 [node name="Collider" parent="." unique_id=237774776 instance=ExtResource("3_mrkkk")]
 
 [node name="RectCollider" parent="Collider" unique_id=1692528920 instance=ExtResource("2_1h1xp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
-shape = SubResource("BoxShape3D_8n76r")
+shape = SubResource("BoxShape3D_ab103")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1345220754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
