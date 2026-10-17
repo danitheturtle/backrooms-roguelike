@@ -10,3 +10,4 @@ roughness_texture = ExtResource("3_byxx0")
 roughness_texture_channel = 1
 normal_enabled = true
 normal_texture = ExtResource("2_x0vv2")
+uv1_scale = Vector3(10, 10, 10)

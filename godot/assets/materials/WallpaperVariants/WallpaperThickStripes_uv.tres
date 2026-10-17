@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cujuvcw68stol"]
+
+[ext_resource type="Texture2D" uid="uid://tjigagqw438g" path="res://assets/materials/WallpaperVariants/res/WallpaperThickStripes_albedo.png" id="1_21k3w"]
+[ext_resource type="Texture2D" uid="uid://c5nkm3t72oeq7" path="res://assets/materials/WallpaperVariants/res/Wallpaper_normal.png" id="2_xyvl6"]
+[ext_resource type="Texture2D" uid="uid://btyerfng8iy4p" path="res://assets/materials/WallpaperVariants/res/WallpaperThickStripes_orm.png" id="3_2q41j"]
+
+[resource]
+albedo_texture = ExtResource("1_21k3w")
+roughness_texture = ExtResource("3_2q41j")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_xyvl6")
+uv1_scale = Vector3(10, 10, 10)

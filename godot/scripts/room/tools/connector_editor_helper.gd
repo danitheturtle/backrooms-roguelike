@@ -1,7 +1,7 @@
 @tool
 class_name ConnectorEditorHelper
 
-const DIMENSIONS_EPSILON = 0.001
+const DIMENSIONS_EPSILON = 0.002
 var room: Room
 var connector: RoomConnector
 var adjacentCollider: CollisionShape3D
@@ -76,6 +76,14 @@ func update_connector_depth(newValue: float, axis: StringName):
     mesh.position[axis] = newDepth
     collider.shape.size[axis] = abs(newDepth)
     collider.position[axis] = newDepth / 2.0
+
+func update_connector_material_offset(newOffset: Vector2, normalAxis: StringName):
+    if normalAxis == "z":
+        mesh.position = Vector3(newOffset.x, newOffset.y, mesh.position.z)
+        mesh.mesh.center_offset = Vector3(-newOffset.x, -newOffset.y, 0.0)
+    else:
+        mesh.position = Vector3(newOffset.x, mesh.position.y, newOffset.y)
+        mesh.mesh.center_offset = Vector3(-newOffset.x, 0.0, -newOffset.y)
 
 func bake_connector_definition() -> ConnectorDefinition:
     var definition: ConnectorDefinition = connector.definition

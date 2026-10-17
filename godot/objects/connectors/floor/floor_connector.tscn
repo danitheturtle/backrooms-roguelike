@@ -21,10 +21,11 @@ size = Vector3(3, 0.25, 3)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5q0ne"]
 resource_local_to_scene = true
-size = Vector2(3, 3)
+size = Vector2(3.001, 3.001)
 
 [node name="FloorConnector" type="Node3D" unique_id=674166013]
 script = ExtResource("1_eu7cu")
+primaryMaterial = ExtResource("6_p0o1b")
 innerEdgeWestMaterial = ExtResource("6_p0o1b")
 innerEdgeNorthMaterial = ExtResource("6_p0o1b")
 innerEdgeEastMaterial = ExtResource("6_p0o1b")

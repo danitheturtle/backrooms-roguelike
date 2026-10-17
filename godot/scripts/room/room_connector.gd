@@ -35,6 +35,13 @@ func set_connector_width(newWidth: int) -> void: #only one that's the same for a
 @export var edgeGenSouth: bool = true
 # edge collision usually exists, false by default. Only generates collison for enabled edges
 @export var edgeGenCollision: bool = false
+# material for main face
+@export var primaryMaterial: StandardMaterial3D = DefaultWallMaterial: set = set_primary_material
+func set_primary_material(newMaterial: StandardMaterial3D) -> void:
+    primaryMaterial = newMaterial
+    if newMaterial != null && mesh != null: mesh.material_override = newMaterial
+@export var primaryMaterialOffset: Vector2 = Vector2.ZERO: set = set_primary_material_offset
+@abstract func set_primary_material_offset(newOffset: Vector2) -> void
 # materials for hole edges generated in the middle of the surface
 @export_group('Inner Edge Materials', 'innerEdge')
 @export var innerEdgeWestMaterial: StandardMaterial3D = DefaultWallMaterial

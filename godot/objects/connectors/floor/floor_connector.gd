@@ -12,6 +12,10 @@ func set_connector_depth(newDepth: float) -> void:
     if editorHelper != null: editorHelper.update_connector_depth(depthDirection * newDepth, "y")
     voxelDepth = newDepth
 
+func set_primary_material_offset(newOffset: Vector2) -> void:
+    if editorHelper != null: editorHelper.update_connector_material_offset(newOffset, "y")
+    primaryMaterialOffset = newOffset
+
 func on_other_connector_entered(body: Area3D):
     var otherConnector = body.get_parent()
     if not otherConnector is CeilingConnector: return

@@ -23,10 +23,11 @@ size = Vector3(3, 0.25, 3)
 [sub_resource type="PlaneMesh" id="PlaneMesh_5q0ne"]
 resource_local_to_scene = true
 flip_faces = true
-size = Vector2(3, 3)
+size = Vector2(3.001, 3.001)
 
 [node name="CeilingConnector" type="Node3D" unique_id=407118955]
 script = ExtResource("1_21bm7")
+primaryMaterial = ExtResource("7_sfcsh")
 innerEdgeWestMaterial = ExtResource("2_qtfxj")
 innerEdgeNorthMaterial = ExtResource("2_qtfxj")
 innerEdgeEastMaterial = ExtResource("2_qtfxj")
@@ -34,7 +35,6 @@ innerEdgeSouthMaterial = ExtResource("2_qtfxj")
 farEdgeNorthMaterial = ExtResource("3_qtfxj")
 farEdgeSouthMaterial = ExtResource("3_qtfxj")
 definition = SubResource("Resource_5uq4n")
-selectableChildren = true
 
 [node name="Adjacent" type="Area3D" parent="." unique_id=1101334803]
 
