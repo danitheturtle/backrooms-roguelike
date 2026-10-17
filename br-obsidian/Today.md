@@ -1,1 +1,0 @@
-Dynamic room that generates multiple defs
