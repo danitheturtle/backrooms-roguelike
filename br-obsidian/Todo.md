@@ -5,30 +5,29 @@
 - refactor player behaviors into own scripts
 - rope climbing
 - color grade textures and lighting
-- sprint toggle 
 - dial in climbup min/max height
 - save slot delete, rename, sort by save time
 - flashlight texture projection with 2 hard circles, one to simulate bounce light? hopefully it won't look shit
 - parent/child relationship for connections so only one of them generates the edges (and also doors when we get there)
 - navmesh + runtime generation for connections
 - tutorial updates
-	- Extend run tutorial hallway
-	- Move jump tutorial to after run tutorial
-	- Add crouch tutorial after new jump tutorial
-	- Add ledge section to squeeze tutorial before the crawl tutorial; extend the whole hallway to give camera tutorial room to breathe
-	- Make climbup space in ladder section bigger so player doesn't hit the ceiling on imprecice placement of ladder
 	- can't jump while climbing anymore
 	- can still vault while climbing (bad)
 	- disable flashlight when performing two-handed actions
-	- if held prop is stuck, player remains in holding state. use drop distance or something
+	- if held prop is stuck, player remains in holding state. use drop distance check
 	- you can move ladder with held prop while climbing it
 	- you can walk into drag objects
 	- you can drag things you're standing on
 	- dragged objects don't fall and aren't affected by gravity
 	- dragged objects move at expected player velocity, not final velocity. lets player shove stuff weird
 
+Tutorial Layout Updates:
+- Add object placement puzzle to final room
+- make final room less boxy
+
 Controls changes:
 - Put Crouch/Stand is on toggle, hold to dip into crawl
+- sprint toggle. stopping movement toggles off
 - Use raycast for target instead of the shapecast. ensure pickup is responsive by updating mouse inupts
 - pick up on mousedown. if held, rotate immediately. stop rotate on mouseup
 - if rotation delta > n, don't drop even if timer expired

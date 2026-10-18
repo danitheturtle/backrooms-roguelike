@@ -1,0 +1,1 @@
+Possible Light Colors Constants. Lights start by using LUT instead of being white
