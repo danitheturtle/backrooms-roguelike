@@ -15,6 +15,8 @@ plastic childrens slide
 solo jazz design cups
 cool S https://en.wikipedia.org/wiki/Cool_S
 Aglamesis Bros soda fountain decor
+pink yard flamingo
+indoor skatepark
 
 video:
 - 90s commercials

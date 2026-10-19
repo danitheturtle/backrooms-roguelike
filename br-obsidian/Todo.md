@@ -26,7 +26,7 @@ Tutorial Layout Updates:
 - make final room less boxy
 
 Controls changes:
-- Put Crouch/Stand is on toggle, hold to dip into crawl
+- Put Crouch/Stand on toggle, hold to dip into crawl
 - sprint toggle. stopping movement toggles off
 - Use raycast for target instead of the shapecast. ensure pickup is responsive by updating mouse inupts
 - pick up on mousedown. if held, rotate immediately. stop rotate on mouseup
