@@ -22,7 +22,7 @@ func _ready() -> void:
     State.reinit()
     LevelManager.reinit()
     # debug
-    mainMenu.on_new_game_pressed.call_deferred()
+    mainMenu.on_tutorial_pressed.call_deferred()
 
 func create_level_root() -> void:
     LevelManager.root = LevelRootScene.instantiate()
