@@ -28,10 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://c26bvdsf5dkty" path="res://ui/popups/area_for_popup.tscn" id="25_7xnmx"]
 [ext_resource type="PackedScene" uid="uid://bm41jmwi0xr2p" path="res://ui/popups/popup_for_area.tscn" id="25_m6f5b"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7xnmx"]
-resource_local_to_scene = true
-size = Vector3(9.75, 1, 1.25)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_o8cjy"]
 resource_local_to_scene = true
 size = Vector3(9.75, 1, 1.25)
@@ -42,43 +38,43 @@ size = Vector3(9.75, 1, 1.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e7o7i"]
 resource_local_to_scene = true
-size = Vector3(11.25, 1, 4.25)
+size = Vector3(9.75, 1, 1.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lu4sa"]
 resource_local_to_scene = true
-size = Vector3(7.25, 1, 2.5)
+size = Vector3(11.25, 1, 4.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ta4gn"]
 resource_local_to_scene = true
-size = Vector3(2, 1, 1.5)
+size = Vector3(7.25, 1, 2.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yk7cw"]
 resource_local_to_scene = true
-size = Vector3(3.75, 1, 4)
+size = Vector3(2, 1, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xdc3e"]
 resource_local_to_scene = true
-size = Vector3(3.75, 1, 9.618652)
+size = Vector3(3.75, 1, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wh8lo"]
 resource_local_to_scene = true
-size = Vector3(2.5, 1, 6.75)
+size = Vector3(3.75, 1, 9.618652)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eqvrw"]
 resource_local_to_scene = true
-size = Vector3(2.75, 1, 3)
+size = Vector3(2.5, 1, 6.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cewbs"]
 resource_local_to_scene = true
-size = Vector3(8.5, 1, 2.5)
+size = Vector3(2.75, 1, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6dq1m"]
 resource_local_to_scene = true
-size = Vector3(4.5, 1, 10.122803)
+size = Vector3(8.5, 1, 2.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xqmaq"]
 resource_local_to_scene = true
-size = Vector3(4.5, 1.0029297, 0.5)
+size = Vector3(4.5, 1, 10.122803)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pdy51"]
 resource_local_to_scene = true
@@ -86,235 +82,235 @@ size = Vector3(4.5, 1.0029297, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uhi40"]
 resource_local_to_scene = true
-size = Vector3(4.5, 1.0029297, 0.75)
+size = Vector3(4.5, 1.0029297, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_57qiv"]
 resource_local_to_scene = true
-size = Vector3(4.5, 1.0029297, 1.25)
+size = Vector3(4.5, 1.0029297, 0.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qcrg5"]
 resource_local_to_scene = true
-size = Vector3(4.5, 1.0029297, 4)
+size = Vector3(4.5, 1.0029297, 1.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_he8x5"]
 resource_local_to_scene = true
-size = Vector3(4.25, 1, 6.25)
+size = Vector3(4.5, 1.0029297, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7tigg"]
 resource_local_to_scene = true
-size = Vector3(4, 1, 1.5)
+size = Vector3(4.25, 1, 6.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_afm0d"]
 resource_local_to_scene = true
-size = Vector3(4, 0.9863281, 0.75006104)
+size = Vector3(4, 1, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3sgj0"]
 resource_local_to_scene = true
-size = Vector3(4, 0.9868164, 0.85461426)
+size = Vector3(4, 0.9863281, 0.75006104)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_67bb5"]
 resource_local_to_scene = true
-size = Vector3(4, 0.75, 1.2385025)
+size = Vector3(4, 0.9868164, 0.85461426)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_weimb"]
 resource_local_to_scene = true
-size = Vector3(4, 0.8441162, 2)
+size = Vector3(4, 0.75, 1.2385025)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5dee5"]
 resource_local_to_scene = true
-size = Vector3(4, 0.75, 0.54345703)
+size = Vector3(4, 0.8441162, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pbbjs"]
 resource_local_to_scene = true
-size = Vector3(4, 1, 3.5)
+size = Vector3(4, 0.75, 0.54345703)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h1bse"]
 resource_local_to_scene = true
-size = Vector3(8.25, 1, 3)
+size = Vector3(4, 1, 3.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ufgk6"]
 resource_local_to_scene = true
-size = Vector3(6.75, 1, 3)
+size = Vector3(8.25, 1, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eaho7"]
 resource_local_to_scene = true
-size = Vector3(2.5, 1, 6.25)
+size = Vector3(6.75, 1, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2otc0"]
 resource_local_to_scene = true
-size = Vector3(1.75, 1, 2.5)
+size = Vector3(2.5, 1, 6.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yshcd"]
 resource_local_to_scene = true
-size = Vector3(10.5, 1, 5.75)
+size = Vector3(1.75, 1, 2.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w20b5"]
 resource_local_to_scene = true
-size = Vector3(6, 1, 1.5)
+size = Vector3(10.5, 1, 5.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gjodb"]
 resource_local_to_scene = true
-size = Vector3(7, 1, 4.25)
+size = Vector3(6, 1, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d3n5d"]
 resource_local_to_scene = true
-size = Vector3(7.5, 1, 16.25)
+size = Vector3(7, 1, 4.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g82sc"]
 resource_local_to_scene = true
-size = Vector3(1, 1, 10.25)
+size = Vector3(7.5, 1, 16.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2twd"]
 resource_local_to_scene = true
-size = Vector3(4.75, 1, 2.5)
+size = Vector3(1, 1, 10.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fv33g"]
 resource_local_to_scene = true
-size = Vector3(3, 1, 3.5)
+size = Vector3(4.75, 1, 2.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g1ljw"]
 resource_local_to_scene = true
-size = Vector3(7, 1, 10.25)
+size = Vector3(3, 1, 3.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ykvx"]
 resource_local_to_scene = true
-size = Vector3(2.25, 1, 1.5)
+size = Vector3(7, 1, 10.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_72dfx"]
 resource_local_to_scene = true
-size = Vector3(7.25, 1, 6)
+size = Vector3(2.25, 1, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nu4mm"]
 resource_local_to_scene = true
-size = Vector3(4.5, 1, 8.25)
+size = Vector3(7.25, 1, 6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_apaj2"]
 resource_local_to_scene = true
-size = Vector3(5.5, 1, 5.75)
+size = Vector3(4.5, 1, 8.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cpel3"]
 resource_local_to_scene = true
-size = Vector3(4.75, 1, 8)
+size = Vector3(5.5, 1, 5.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6lgie"]
 resource_local_to_scene = true
-size = Vector3(3, 1, 8)
+size = Vector3(4.75, 1, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fi7ti"]
 resource_local_to_scene = true
-size = Vector3(7.5, 1, 13)
+size = Vector3(3, 1, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eol5g"]
 resource_local_to_scene = true
-size = Vector3(14.75, 1, 12)
+size = Vector3(7.5, 1, 13)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_inij4"]
 resource_local_to_scene = true
-size = Vector3(12.5, 1, 4.25)
+size = Vector3(14.75, 1, 12)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jqgd6"]
 resource_local_to_scene = true
-size = Vector3(7.75, 1, 4.75)
+size = Vector3(12.5, 1, 4.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sbhc1"]
 resource_local_to_scene = true
-size = Vector3(5.25, 1, 4.25)
+size = Vector3(7.75, 1, 4.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_48l42"]
 resource_local_to_scene = true
-size = Vector3(5.25, 1, 8.25)
+size = Vector3(5.25, 1, 4.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e24gm"]
 resource_local_to_scene = true
-size = Vector3(7.75, 1, 2.25)
+size = Vector3(5.25, 1, 8.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q3dyo"]
 resource_local_to_scene = true
-size = Vector3(2, 0.5, 7)
+size = Vector3(7.75, 1, 2.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kj5v3"]
 resource_local_to_scene = true
-size = Vector3(16, 1, 7)
+size = Vector3(2, 0.5, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ueoxo"]
 resource_local_to_scene = true
-size = Vector3(8, 1, 1)
+size = Vector3(16, 1, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b16ep"]
 resource_local_to_scene = true
-size = Vector3(5.25, 1, 2)
+size = Vector3(8, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k7ul2"]
 resource_local_to_scene = true
-size = Vector3(2.25, 1, 2)
+size = Vector3(5.25, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a3h6u"]
 resource_local_to_scene = true
-size = Vector3(8.5, 1, 5.75)
+size = Vector3(2.25, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q67vm"]
 resource_local_to_scene = true
-size = Vector3(8.25, 1, 6.75)
+size = Vector3(8.5, 1, 5.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6jxxa"]
 resource_local_to_scene = true
-size = Vector3(25.25, 1, 18.25)
+size = Vector3(8.25, 1, 6.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ox74f"]
 resource_local_to_scene = true
-size = Vector3(9.75, 1, 4.75)
+size = Vector3(25.25, 1, 18.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6lsmw"]
 resource_local_to_scene = true
-size = Vector3(12.25, 1, 5)
+size = Vector3(9.75, 1, 4.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fq3pc"]
 resource_local_to_scene = true
-size = Vector3(7, 1, 3)
+size = Vector3(12.25, 1, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ry4k4"]
 resource_local_to_scene = true
-size = Vector3(3.75, 1, 3.5)
+size = Vector3(7, 1, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hgbmd"]
 resource_local_to_scene = true
-size = Vector3(3.75, 0.975, 0.575)
+size = Vector3(3.75, 1, 3.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_60s4i"]
 resource_local_to_scene = true
-size = Vector3(3.75, 1, 8.75)
+size = Vector3(3.75, 0.975, 0.575)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hhpka"]
 resource_local_to_scene = true
-size = Vector3(11, 1, 6)
+size = Vector3(3.75, 1, 8.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_njh3y"]
 resource_local_to_scene = true
-size = Vector3(7, 1, 2.75)
+size = Vector3(11, 1, 6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_og0pw"]
 resource_local_to_scene = true
-size = Vector3(4.25, 1, 19.5)
+size = Vector3(7, 1, 2.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ty5lt"]
 resource_local_to_scene = true
-size = Vector3(4, 1, 6.75)
+size = Vector3(4.25, 1, 19.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_52757"]
 resource_local_to_scene = true
-size = Vector3(2.5, 1, 3)
+size = Vector3(4, 1, 6.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sf5ma"]
 resource_local_to_scene = true
-size = Vector3(3.5, 1, 1.75)
+size = Vector3(2.5, 1, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_by2dm"]
 resource_local_to_scene = true
-size = Vector3(1, 1, 5.25)
+size = Vector3(3.5, 0.9790039, 1.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kg431"]
 resource_local_to_scene = true
-size = Vector3(4.25, 1, 1.25)
+size = Vector3(1, 1, 5.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yk5ys"]
 resource_local_to_scene = true
@@ -416,158 +412,246 @@ size = Vector3(5.75, 1, 4.75)
 resource_local_to_scene = true
 size = Vector3(7, 1, 7.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_x3mbq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_410j8"]
 resource_local_to_scene = true
 size = Vector3(4.75, 4.75, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mlv06"]
+resource_local_to_scene = true
+size = Vector3(1, 6, 13)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3mbq"]
+resource_local_to_scene = true
+size = Vector3(1, 6, 13)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_2kt8p"]
-resource_local_to_scene = true
-size = Vector3(1, 6, 13)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_j37k0"]
-resource_local_to_scene = true
-size = Vector3(1, 6, 13)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ocguu"]
 resource_local_to_scene = true
 size = Vector3(1, 4.5, 1.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_drydu"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_j37k0"]
 resource_local_to_scene = true
 size = Vector3(2.3807006, 5.5, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3sgmf"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ocguu"]
 resource_local_to_scene = true
 size = Vector3(4.75, 1.5, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ilo7l"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_drydu"]
 resource_local_to_scene = true
 size = Vector3(2.5, 1.5, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kvij7"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3sgmf"]
 resource_local_to_scene = true
 size = Vector3(2.5, 1.5, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_l5wg3"]
-resource_local_to_scene = true
-size = Vector3(4.199707, 1.5332642, 0.40234375)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ir5jd"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_gww66"]
 resource_local_to_scene = true
 size = Vector3(1, 4.75, 6.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_i5t0a"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ilo7l"]
 resource_local_to_scene = true
 size = Vector3(3, 4.75, 0.9067383)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vujt0"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_kvij7"]
 resource_local_to_scene = true
 size = Vector3(1, 4.75, 2.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_p1ine"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_b1i1h"]
 resource_local_to_scene = true
 size = Vector3(3.25, 4.75, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_n50hn"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdoc1"]
 resource_local_to_scene = true
 size = Vector3(3.25, 4.75, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bey1j"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_tqu7q"]
+resource_local_to_scene = true
+size = Vector3(1.5, 2.149414, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_spqvx"]
+resource_local_to_scene = true
+size = Vector3(0.18847656, 4.75, 0.94311523)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_43g0m"]
+resource_local_to_scene = true
+size = Vector3(0.18847656, 4.75, 0.94311523)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iqsi3"]
 resource_local_to_scene = true
 size = Vector3(1, 4.75, 2.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gm0a4"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3g38q"]
 resource_local_to_scene = true
 size = Vector3(2.75, 4.75, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_410j8"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_bbmg4"]
+resource_local_to_scene = true
+size = Vector3(4.199707, 1.5332642, 0.40234375)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bkudh"]
+resource_local_to_scene = true
+size = Vector3(1, 6.5, 12.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1hk1v"]
+resource_local_to_scene = true
+size = Vector3(1, 5.25, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g5o2q"]
+resource_local_to_scene = true
+size = Vector3(5.25, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l5wg3"]
+resource_local_to_scene = true
+size = Vector3(5.25, 1.75, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ir5jd"]
+resource_local_to_scene = true
+size = Vector3(1, 6.75, 20.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i5t0a"]
+resource_local_to_scene = true
+size = Vector3(1, 2.1689453, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n50hn"]
+resource_local_to_scene = true
+size = Vector3(1.5, 6.75, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bey1j"]
+resource_local_to_scene = true
+size = Vector3(1, 6.75, 15.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gm0a4"]
+resource_local_to_scene = true
+size = Vector3(3, 5.25, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_odkyl"]
+resource_local_to_scene = true
+size = Vector3(1.75, 2, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wduws"]
+resource_local_to_scene = true
+size = Vector3(0.5, 2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2yqly"]
+resource_local_to_scene = true
+size = Vector3(1, 5.5, 4.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_08woo"]
+resource_local_to_scene = true
+size = Vector3(1, 6.5, 4.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_asai4"]
+resource_local_to_scene = true
+size = Vector3(1, 5, 3.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uy5nl"]
+resource_local_to_scene = true
+size = Vector3(3.75, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pexe6"]
+resource_local_to_scene = true
+size = Vector3(2, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_42s6p"]
+resource_local_to_scene = true
+size = Vector3(3.5, 2.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_slols"]
+resource_local_to_scene = true
+size = Vector3(9.25, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yleuw"]
+resource_local_to_scene = true
+size = Vector3(1, 5, 6.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vujt0"]
 resource_local_to_scene = true
 size = Vector3(8, 3.5, 8)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mlv06"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_p1ine"]
 resource_local_to_scene = true
 size = Vector3(1, 4.75, 9.5)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_x3mbq"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_n50hn"]
 resource_local_to_scene = true
 size = Vector2(9.5, 4.75)
 orientation = 0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_2kt8p"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_bey1j"]
 resource_local_to_scene = true
 size = Vector2(1, 9.5)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_j37k0"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_gm0a4"]
 resource_local_to_scene = true
 size = Vector2(1, 4.75)
 orientation = 2
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_ocguu"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_odkyl"]
 resource_local_to_scene = true
 size = Vector2(0.95, 4.5125)
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_drydu"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_wduws"]
 resource_local_to_scene = true
 size = Vector2(9.025, 4.5125)
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_3sgmf"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_2yqly"]
 resource_local_to_scene = true
 size = Vector2(0.95, 9.025)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gww66"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_unafc"]
 resource_local_to_scene = true
 size = Vector3(7.5, 1, 9)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ilo7l"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_08woo"]
 resource_local_to_scene = true
 flip_faces = true
 size = Vector2(7.5, 9)
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_kvij7"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_asai4"]
 resource_local_to_scene = true
 size = Vector2(7.125, 8.55)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_b1i1h"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_duvh2"]
 resource_local_to_scene = true
 size = Vector3(4, 2.25, 5.75)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qdoc1"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_sx14g"]
 resource_local_to_scene = true
 size = Vector3(2.5, 3, 3.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tqu7q"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_vme0v"]
 resource_local_to_scene = true
 size = Vector3(8.5, 4.25, 2.75)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_spqvx"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_sx18v"]
 resource_local_to_scene = true
 size = Vector3(3.75, 3.25, 4.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_43g0m"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_d0dqe"]
 resource_local_to_scene = true
 size = Vector3(3.25, 4, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_iqsi3"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_skmyr"]
 resource_local_to_scene = true
 size = Vector3(5.75, 2.75, 2.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3g38q"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_yrb4h"]
 resource_local_to_scene = true
 size = Vector3(7, 4, 3)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bbmg4"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_8a2w4"]
 resource_local_to_scene = true
 size = Vector3(1.25, 3.75, 1.75)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bkudh"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_utxeb"]
 resource_local_to_scene = true
 size = Vector3(3.25, 3.75, 4)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1hk1v"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_jnfen"]
 resource_local_to_scene = true
 size = Vector3(3.25, 2.25, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_g5o2q"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_s680s"]
 resource_local_to_scene = true
 size = Vector3(5.25, 4, 4.75)
 
@@ -583,338 +667,334 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, -1, 11.5)
 
 [node name="RectCollider" parent="Colliders/FloorStaticBody" index="0" unique_id=415124710 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125)
-shape = SubResource("BoxShape3D_7xnmx")
+shape = SubResource("BoxShape3D_o8cjy")
 
 [node name="RectCollider2" parent="Colliders/FloorStaticBody" index="1" unique_id=863188924 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0.625)
-shape = SubResource("BoxShape3D_o8cjy")
+shape = SubResource("BoxShape3D_iii1t")
 
 [node name="RectCollider3" parent="Colliders/FloorStaticBody" index="2" unique_id=850682353 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.0250001)
-shape = SubResource("BoxShape3D_iii1t")
+shape = SubResource("BoxShape3D_e7o7i")
 
 [node name="RectCollider4" parent="Colliders/FloorStaticBody" index="3" unique_id=503213543 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.75, 2.855877)
-shape = SubResource("BoxShape3D_e7o7i")
+shape = SubResource("BoxShape3D_lu4sa")
 
 [node name="RectCollider6" parent="Colliders/FloorStaticBody" index="4" unique_id=832375689 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.75, 5.730877)
-shape = SubResource("BoxShape3D_lu4sa")
+shape = SubResource("BoxShape3D_ta4gn")
 
 [node name="RectCollider5" parent="Colliders/FloorStaticBody" index="5" unique_id=1460445529 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.375, 0.75, 0.51945066)
-shape = SubResource("BoxShape3D_ta4gn")
+shape = SubResource("BoxShape3D_yk7cw")
 
 [node name="FloorStaticBody2" parent="Colliders" index="1" unique_id=1022904968 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, -1.75, -10)
 
 [node name="RectCollider" parent="Colliders/FloorStaticBody2" index="0" unique_id=828148248 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0, 0.5)
-shape = SubResource("BoxShape3D_yk7cw")
+shape = SubResource("BoxShape3D_xdc3e")
 
 [node name="RectCollider2" parent="Colliders/FloorStaticBody2" index="1" unique_id=1482257555 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 0.99057, 0.13700747, 0, -0.13700747, 0.99057, 0.375, 0.59523225, 6.3158393)
-shape = SubResource("BoxShape3D_xdc3e")
+shape = SubResource("BoxShape3D_wh8lo")
 
 [node name="FloorStaticBody3" parent="Colliders" index="2" unique_id=1983695200 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.25, -0.25, 18.75)
 
 [node name="RectCollider" parent="Colliders/FloorStaticBody3" index="0" unique_id=15333106 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.625)
-shape = SubResource("BoxShape3D_wh8lo")
+shape = SubResource("BoxShape3D_eqvrw")
 
 [node name="RectCollider2" parent="Colliders/FloorStaticBody3" index="1" unique_id=1890543531 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.125, 0, 4.5)
-shape = SubResource("BoxShape3D_eqvrw")
+shape = SubResource("BoxShape3D_cewbs")
 
 [node name="RectCollider3" parent="Colliders/FloorStaticBody3" index="2" unique_id=2147019908 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 4.75)
-shape = SubResource("BoxShape3D_cewbs")
+shape = SubResource("BoxShape3D_6dq1m")
 
 [node name="FloorStaticBody4" parent="Colliders" index="3" unique_id=1722590635 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 23)
 
 [node name="RectCollider" parent="Colliders/FloorStaticBody4" index="0" unique_id=2021073908 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, -2.3114014)
-shape = SubResource("BoxShape3D_6dq1m")
+shape = SubResource("BoxShape3D_xqmaq")
 
 [node name="RectCollider2" parent="Colliders/FloorStaticBody4" index="1" unique_id=1605593357 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -0.24853516, -7.3728027)
-shape = SubResource("BoxShape3D_xqmaq")
+shape = SubResource("BoxShape3D_pdy51")
 
 [node name="RectCollider3" parent="Colliders/FloorStaticBody4" index="2" unique_id=168677378 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -0.49853516, -7.6228027)
-shape = SubResource("BoxShape3D_pdy51")
+shape = SubResource("BoxShape3D_uhi40")
 
 [node name="RectCollider4" parent="Colliders/FloorStaticBody4" index="3" unique_id=254419104 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -0.74853516, -7.9978027)
-shape = SubResource("BoxShape3D_uhi40")
+shape = SubResource("BoxShape3D_57qiv")
 
 [node name="RectCollider5" parent="Colliders/FloorStaticBody4" index="4" unique_id=19129139 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -0.99853516, -8.6311035)
-shape = SubResource("BoxShape3D_57qiv")
+shape = SubResource("BoxShape3D_qcrg5")
 
 [node name="RectCollider6" parent="Colliders/FloorStaticBody4" index="5" unique_id=265551069 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -1.2485352, -11.0061035)
-shape = SubResource("BoxShape3D_qcrg5")
+shape = SubResource("BoxShape3D_he8x5")
 
 [node name="FloorStaticBody5" parent="Colliders" index="4" unique_id=693635815 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6855254, 6.5)
 
 [node name="RectCollider" parent="Colliders/FloorStaticBody5" index="0" unique_id=485342 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.875)
-shape = SubResource("BoxShape3D_he8x5")
+shape = SubResource("BoxShape3D_7tigg")
 
 [node name="RectCollider2" parent="Colliders/FloorStaticBody5" index="1" unique_id=2119018533 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.19999999, -2.75)
-shape = SubResource("BoxShape3D_7tigg")
+shape = SubResource("BoxShape3D_afm0d")
 
 [node name="RectCollider3" parent="Colliders/FloorStaticBody5" index="2" unique_id=1130080047 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.44316405, -3.6249695)
-shape = SubResource("BoxShape3D_afm0d")
+shape = SubResource("BoxShape3D_3sgj0")
 
 [node name="RectCollider4" parent="Colliders/FloorStaticBody5" index="3" unique_id=1159332985 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.6934082, -4.072693)
-shape = SubResource("BoxShape3D_3sgj0")
+shape = SubResource("BoxShape3D_67bb5")
 
 [node name="RectCollider5" parent="Colliders/FloorStaticBody5" index="4" unique_id=1135459394 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.9191162, -4.926426)
-shape = SubResource("BoxShape3D_67bb5")
+shape = SubResource("BoxShape3D_weimb")
 
 [node name="RectCollider6" parent="Colliders/FloorStaticBody5" index="5" unique_id=413858784 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.1220582, -6.37039)
-shape = SubResource("BoxShape3D_weimb")
+shape = SubResource("BoxShape3D_5dee5")
 
 [node name="RectCollider7" parent="Colliders/FloorStaticBody5" index="6" unique_id=749287623 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.3875, -7.3486614)
-shape = SubResource("BoxShape3D_5dee5")
+shape = SubResource("BoxShape3D_pbbjs")
 
 [node name="RectCollider8" parent="Colliders/FloorStaticBody5" index="7" unique_id=1760046302 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.45, -9.15)
-shape = SubResource("BoxShape3D_pbbjs")
+shape = SubResource("BoxShape3D_h1bse")
 
 [node name="FloorStaticBody6" parent="Colliders" index="5" unique_id=831326203 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0.75, -4.5)
 
 [node name="RectCollider" parent="Colliders/FloorStaticBody6" index="0" unique_id=1590857114 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.125, 0, -1)
-shape = SubResource("BoxShape3D_h1bse")
+shape = SubResource("BoxShape3D_ufgk6")
 
 [node name="RectCollider2" parent="Colliders/FloorStaticBody6" index="1" unique_id=1816326910 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.875, 0, 1.5)
-shape = SubResource("BoxShape3D_ufgk6")
+shape = SubResource("BoxShape3D_eaho7")
 
 [node name="RectCollider3" parent="Colliders/FloorStaticBody6" index="2" unique_id=977189517 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5.625)
-shape = SubResource("BoxShape3D_eaho7")
+shape = SubResource("BoxShape3D_2otc0")
 
 [node name="FloorStaticBody7" parent="Colliders" index="6" unique_id=335877982 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.75, 2.75)
 
 [node name="RectCollider" parent="Colliders/FloorStaticBody7" index="0" unique_id=448693940 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0, 0.25)
-shape = SubResource("BoxShape3D_2otc0")
+shape = SubResource("BoxShape3D_yshcd")
 
 [node name="RectCollider2" parent="Colliders/FloorStaticBody7" index="1" unique_id=1798422601 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 0.125)
-shape = SubResource("BoxShape3D_yshcd")
+shape = SubResource("BoxShape3D_w20b5")
 
 [node name="RectCollider3" parent="Colliders/FloorStaticBody7" index="2" unique_id=1751968698 instance=ExtResource("6_py2y4")]
 transform = Transform3D(0.9750941, -0.22179191, 0, 0.22179191, 0.9750941, 0, 0, 0, 1, 12.939529, 0.6004822, 0.75)
-shape = SubResource("BoxShape3D_w20b5")
+shape = SubResource("BoxShape3D_gjodb")
 
 [node name="FloorStaticBody8" parent="Colliders" index="7" unique_id=406476641 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.25, 0, 0)
 
 [node name="RectCollider" parent="Colliders/FloorStaticBody8" index="0" unique_id=1036420143 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 4.375)
-shape = SubResource("BoxShape3D_gjodb")
+shape = SubResource("BoxShape3D_d3n5d")
 
 [node name="RectCollider4" parent="Colliders/FloorStaticBody8" index="1" unique_id=32938629 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 2, 23.875)
-shape = SubResource("BoxShape3D_d3n5d")
+shape = SubResource("BoxShape3D_g82sc")
 
 [node name="RectCollider3" parent="Colliders/FloorStaticBody8" index="2" unique_id=482598346 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, 11.125)
-shape = SubResource("BoxShape3D_g82sc")
+shape = SubResource("BoxShape3D_b2twd")
 
 [node name="RectCollider2" parent="Colliders/FloorStaticBody8" index="3" unique_id=601751014 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 2, 1.5)
-shape = SubResource("BoxShape3D_b2twd")
+shape = SubResource("BoxShape3D_fv33g")
 
 [node name="FloorStaticBody9" parent="Colliders" index="8" unique_id=158809348 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.25, -0.5, 9)
 
 [node name="RectCollider" parent="Colliders/FloorStaticBody9" index="0" unique_id=565908547 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1.25)
-shape = SubResource("BoxShape3D_fv33g")
+shape = SubResource("BoxShape3D_g1ljw")
 
 [node name="RectCollider3" parent="Colliders/FloorStaticBody9" index="1" unique_id=392915663 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, 2.125)
-shape = SubResource("BoxShape3D_g1ljw")
+shape = SubResource("BoxShape3D_8ykvx")
 
 [node name="RectCollider2" parent="Colliders/FloorStaticBody9" index="2" unique_id=1606421610 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.375, 1, -2.25)
-shape = SubResource("BoxShape3D_8ykvx")
+shape = SubResource("BoxShape3D_72dfx")
 
 [node name="FloorStaticBody10" parent="Colliders" index="9" unique_id=811272521 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 3, 35.25)
 
 [node name="RectCollider" parent="Colliders/FloorStaticBody10" index="0" unique_id=1141626643 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 0, -1.25)
-shape = SubResource("BoxShape3D_72dfx")
+shape = SubResource("BoxShape3D_nu4mm")
 
 [node name="RectCollider3" parent="Colliders/FloorStaticBody10" index="1" unique_id=1713089348 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, -0.125)
-shape = SubResource("BoxShape3D_nu4mm")
+shape = SubResource("BoxShape3D_apaj2")
 
 [node name="RectCollider4" parent="Colliders/FloorStaticBody10" index="2" unique_id=596708369 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6.375)
-shape = SubResource("BoxShape3D_apaj2")
+shape = SubResource("BoxShape3D_cpel3")
 
 [node name="RectCollider5" parent="Colliders/FloorStaticBody10" index="3" unique_id=1642432587 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0, 5.25)
-shape = SubResource("BoxShape3D_cpel3")
+shape = SubResource("BoxShape3D_6lgie")
 
 [node name="RectCollider6" parent="Colliders/FloorStaticBody10" index="4" unique_id=1113496656 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 5.25)
-shape = SubResource("BoxShape3D_6lgie")
+shape = SubResource("BoxShape3D_fi7ti")
 
 [node name="RectCollider2" parent="Colliders/FloorStaticBody10" index="5" unique_id=1912624873 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2.75)
-shape = SubResource("BoxShape3D_fi7ti")
+shape = SubResource("BoxShape3D_eol5g")
 
 [node name="FloorStaticBody11" parent="Colliders" index="10" unique_id=950772268 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -8, 34.75)
 
 [node name="RectCollider" parent="Colliders/FloorStaticBody11" index="0" unique_id=161698173 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.125, 0, -2.5)
-shape = SubResource("BoxShape3D_eol5g")
+shape = SubResource("BoxShape3D_inij4")
 
 [node name="RectCollider2" parent="Colliders/FloorStaticBody11" index="1" unique_id=1566682762 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5.125)
-shape = SubResource("BoxShape3D_inij4")
+shape = SubResource("BoxShape3D_jqgd6")
 
 [node name="RectCollider3" parent="Colliders/FloorStaticBody11" index="2" unique_id=931779009 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.375, 0, 9.125)
-shape = SubResource("BoxShape3D_jqgd6")
+shape = SubResource("BoxShape3D_sbhc1")
 
 [node name="RectCollider4" parent="Colliders/FloorStaticBody11" index="3" unique_id=358246260 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.625, 1.25, 9.375)
-shape = SubResource("BoxShape3D_sbhc1")
+shape = SubResource("BoxShape3D_48l42")
 
 [node name="FloorStaticBody12" parent="Colliders" index="11" unique_id=21530864 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, -8, 30.5)
 
 [node name="RectCollider" parent="Colliders/FloorStaticBody12" index="0" unique_id=677532698 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0, -0.125)
-shape = SubResource("BoxShape3D_48l42")
+shape = SubResource("BoxShape3D_e24gm")
 
 [node name="RectCollider2" parent="Colliders/FloorStaticBody12" index="1" unique_id=860727955 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.625, 0, 0.375)
-shape = SubResource("BoxShape3D_e24gm")
+shape = SubResource("BoxShape3D_q3dyo")
 
 [node name="FloorStaticBody13" parent="Colliders" index="12" unique_id=1038184222 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.75, -1.5, 49)
 
 [node name="RectCollider" parent="Colliders/FloorStaticBody13" index="0" unique_id=1886944982 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0.25)
-shape = SubResource("BoxShape3D_q3dyo")
+shape = SubResource("BoxShape3D_kj5v3")
 
 [node name="RectCollider2" parent="Colliders/FloorStaticBody13" index="1" unique_id=503121737 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 3, -1.25)
-shape = SubResource("BoxShape3D_kj5v3")
+shape = SubResource("BoxShape3D_ueoxo")
 
 [node name="RectCollider3" parent="Colliders/FloorStaticBody13" index="2" unique_id=1207329543 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25, 3, 2.25)
-shape = SubResource("BoxShape3D_ueoxo")
+shape = SubResource("BoxShape3D_b16ep")
 
 [node name="RectCollider4" parent="Colliders/FloorStaticBody13" index="3" unique_id=1473418654 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.125, 3, 2.75)
-shape = SubResource("BoxShape3D_b16ep")
+shape = SubResource("BoxShape3D_k7ul2")
 
 [node name="RectCollider5" parent="Colliders/FloorStaticBody13" index="4" unique_id=458627313 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.625, 3, 2.75)
-shape = SubResource("BoxShape3D_k7ul2")
+shape = SubResource("BoxShape3D_a3h6u")
 
 [node name="RectCollider6" parent="Colliders/FloorStaticBody13" index="5" unique_id=1964231817 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3, 6.125)
-shape = SubResource("BoxShape3D_a3h6u")
+shape = SubResource("BoxShape3D_q67vm")
 
 [node name="FloorStaticBody14" parent="Colliders" index="13" unique_id=1176625689 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 1.25, 54.5)
 
 [node name="RectCollider" parent="Colliders/FloorStaticBody14" index="0" unique_id=1293591767 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, 0, 0.125)
-shape = SubResource("BoxShape3D_q67vm")
+shape = SubResource("BoxShape3D_6jxxa")
 
 [node name="RectCollider2" parent="Colliders/FloorStaticBody14" index="1" unique_id=1680563935 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.375, 0.25, 12.125)
-shape = SubResource("BoxShape3D_6jxxa")
+shape = SubResource("BoxShape3D_ox74f")
 
 [node name="RectCollider3" parent="Colliders/FloorStaticBody14" index="2" unique_id=198182210 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.125, 0.25, 1.125)
-shape = SubResource("BoxShape3D_ox74f")
+shape = SubResource("BoxShape3D_6lsmw")
 
 [node name="RectCollider4" parent="Colliders/FloorStaticBody14" index="3" unique_id=340426700 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.125, 0.25, 23.25)
-shape = SubResource("BoxShape3D_6lsmw")
+shape = SubResource("BoxShape3D_fq3pc")
 
 [node name="RectCollider5" parent="Colliders/FloorStaticBody14" index="4" unique_id=1286443353 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.25, 26.75)
-shape = SubResource("BoxShape3D_fq3pc")
+shape = SubResource("BoxShape3D_ry4k4")
 
 [node name="CeilingStaticBody" parent="Colliders" index="14" unique_id=1707928833 instance=ExtResource("6_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3, -10)
 
 [node name="RectCollider" parent="Colliders/CeilingStaticBody" index="0" unique_id=396624573 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0, 0.25)
-shape = SubResource("BoxShape3D_ry4k4")
+shape = SubResource("BoxShape3D_hgbmd")
 
 [node name="RectCollider3" parent="Colliders/CeilingStaticBody" index="1" unique_id=1572125416 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 1.0124998, 10.7125)
-shape = SubResource("BoxShape3D_hgbmd")
+shape = SubResource("BoxShape3D_60s4i")
 
 [node name="RectCollider2" parent="Colliders/CeilingStaticBody" index="2" unique_id=1516603118 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 0.99057, 0.13700747, 0, -0.13700747, 0.99057, 0.375, 0.58623457, 6.250785)
-shape = SubResource("BoxShape3D_60s4i")
+shape = SubResource("BoxShape3D_hhpka")
 
 [node name="CeilingStaticBody2" parent="Colliders" index="15" unique_id=274999318 instance=ExtResource("6_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.5, 13.5)
 
 [node name="RectCollider" parent="Colliders/CeilingStaticBody2" index="0" unique_id=1544737570 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
-shape = SubResource("BoxShape3D_hhpka")
+shape = SubResource("BoxShape3D_njh3y")
 
 [node name="RectCollider2" parent="Colliders/CeilingStaticBody2" index="1" unique_id=628633527 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 3.625)
-shape = SubResource("BoxShape3D_njh3y")
+shape = SubResource("BoxShape3D_og0pw")
 
 [node name="CeilingStaticBody3" parent="Colliders" index="16" unique_id=1471300003 instance=ExtResource("6_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 4, 18.5)
 
 [node name="RectCollider" parent="Colliders/CeilingStaticBody3" index="0" unique_id=140367680 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0, -3.25)
-shape = SubResource("BoxShape3D_og0pw")
+shape = SubResource("BoxShape3D_ty5lt")
 
 [node name="RectCollider3" parent="Colliders/CeilingStaticBody3" index="1" unique_id=2057643382 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.125)
-shape = SubResource("BoxShape3D_ty5lt")
+shape = SubResource("BoxShape3D_52757")
 
 [node name="RectCollider4" parent="Colliders/CeilingStaticBody3" index="2" unique_id=449566876 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, -21.5)
-shape = SubResource("BoxShape3D_52757")
+shape = SubResource("BoxShape3D_sf5ma")
 
 [node name="RectCollider5" parent="Colliders/CeilingStaticBody3" index="3" unique_id=2109418056 instance=ExtResource("6_py2y4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -1, -13.375)
-shape = SubResource("BoxShape3D_sf5ma")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.98950195, -13.375)
+shape = SubResource("BoxShape3D_by2dm")
 
 [node name="RectCollider6" parent="Colliders/CeilingStaticBody3" index="4" unique_id=280765405 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1, -10.375)
-shape = SubResource("BoxShape3D_by2dm")
-
-[node name="RectCollider2" parent="Colliders/CeilingStaticBody3" index="5" unique_id=1233755925 instance=ExtResource("6_py2y4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, -1.25, 6.625)
 shape = SubResource("BoxShape3D_kg431")
 
 [node name="CeilingStaticBody4" parent="Colliders" index="17" unique_id=876408875 instance=ExtResource("6_7xnmx")]
@@ -1049,75 +1129,172 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.25, 0, -11.5)
 
 [node name="RectCollider" parent="Colliders/WallStaticBody" index="0" unique_id=408997261 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.625, 0)
-shape = SubResource("BoxShape3D_x3mbq")
+shape = SubResource("BoxShape3D_410j8")
 
 [node name="RectCollider2" parent="Colliders/WallStaticBody" index="1" unique_id=288819282 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.25, 6)
-shape = SubResource("BoxShape3D_2kt8p")
+shape = SubResource("BoxShape3D_mlv06")
 
 [node name="RectCollider3" parent="Colliders/WallStaticBody" index="2" unique_id=565843659 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 1.25, 6)
-shape = SubResource("BoxShape3D_j37k0")
+shape = SubResource("BoxShape3D_x3mbq")
 
 [node name="WallStaticBody2" parent="Colliders" index="27" unique_id=770879375 instance=ExtResource("7_o8cjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.75, 0, 10.5)
 
 [node name="RectCollider" parent="Colliders/WallStaticBody2" index="0" unique_id=179858249 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0.125)
-shape = SubResource("BoxShape3D_ocguu")
+shape = SubResource("BoxShape3D_2kt8p")
 
 [node name="RectCollider2" parent="Colliders/WallStaticBody2" index="1" unique_id=475703533 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69035006, 1.75, 0.7750015)
-shape = SubResource("BoxShape3D_drydu")
+shape = SubResource("BoxShape3D_j37k0")
 
 [node name="RectCollider3" parent="Colliders/WallStaticBody2" index="2" unique_id=62273739 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.875, 3.75, 0.2923355)
-shape = SubResource("BoxShape3D_3sgmf")
+shape = SubResource("BoxShape3D_ocguu")
 
 [node name="RectCollider4" parent="Colliders/WallStaticBody2" index="3" unique_id=2015110667 instance=ExtResource("6_py2y4")]
 transform = Transform3D(0.9987868, 0.049244147, 0, -0.049244147, 0.9987868, 0, 0, 0, 1, 7.2555356, 3.684803, 0.2923355)
-shape = SubResource("BoxShape3D_ilo7l")
+shape = SubResource("BoxShape3D_drydu")
 
 [node name="RectCollider5" parent="Colliders/WallStaticBody2" index="4" unique_id=648917879 instance=ExtResource("6_py2y4")]
 transform = Transform3D(0.99240375, 0.12302366, 0, -0.12302366, 0.99240375, 0, 0, 0, 1, 9.671076, 3.4713445, 0.2923355)
-shape = SubResource("BoxShape3D_kvij7")
+shape = SubResource("BoxShape3D_3sgmf")
 
 [node name="WallStaticBody3" parent="Colliders" index="28" unique_id=1826086879 instance=ExtResource("7_o8cjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 13.25)
 
-[node name="RectCollider" parent="Colliders/WallStaticBody3" index="0" unique_id=1133771075 instance=ExtResource("6_py2y4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8498535, 0.5166321, 0.20117188)
-shape = SubResource("BoxShape3D_l5wg3")
-
-[node name="RectCollider2" parent="Colliders/WallStaticBody3" index="1" unique_id=571781036 instance=ExtResource("6_py2y4")]
+[node name="RectCollider2" parent="Colliders/WallStaticBody3" index="0" unique_id=571781036 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.75, 2.125, 1.0273438)
-shape = SubResource("BoxShape3D_ir5jd")
+shape = SubResource("BoxShape3D_gww66")
 
-[node name="RectCollider3" parent="Colliders/WallStaticBody3" index="2" unique_id=256336808 instance=ExtResource("6_py2y4")]
+[node name="RectCollider3" parent="Colliders/WallStaticBody3" index="1" unique_id=256336808 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 2.125, 3.6989746)
-shape = SubResource("BoxShape3D_i5t0a")
+shape = SubResource("BoxShape3D_ilo7l")
 
-[node name="RectCollider4" parent="Colliders/WallStaticBody3" index="3" unique_id=944695696 instance=ExtResource("6_py2y4")]
+[node name="RectCollider4" parent="Colliders/WallStaticBody3" index="2" unique_id=944695696 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.75, 2.125, 4.4956055)
-shape = SubResource("BoxShape3D_vujt0")
+shape = SubResource("BoxShape3D_kvij7")
 
-[node name="RectCollider5" parent="Colliders/WallStaticBody3" index="4" unique_id=1560776896 instance=ExtResource("6_py2y4")]
+[node name="RectCollider5" parent="Colliders/WallStaticBody3" index="3" unique_id=1560776896 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.625, 2.125, 5.2456055)
-shape = SubResource("BoxShape3D_p1ine")
-
-[node name="RectCollider6" parent="Colliders/WallStaticBody3" index="5" unique_id=1321235473 instance=ExtResource("6_py2y4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.875, 2.125, 5.2456055)
-shape = SubResource("BoxShape3D_n50hn")
-
-[node name="RectCollider7" parent="Colliders/WallStaticBody3" index="6" unique_id=1975963328 instance=ExtResource("6_py2y4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 2.125, 4.4956055)
-shape = SubResource("BoxShape3D_bey1j")
-
-[node name="RectCollider8" parent="Colliders/WallStaticBody3" index="7" unique_id=1076177633 instance=ExtResource("6_py2y4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 2.125, 3.7456055)
-shape = SubResource("BoxShape3D_gm0a4")
+shape = SubResource("BoxShape3D_b1i1h")
 
 [node name="WallStaticBody4" parent="Colliders" index="29" unique_id=672207700 instance=ExtResource("7_o8cjy")]
+
+[node name="RectCollider6" parent="Colliders/WallStaticBody4" index="0" unique_id=1321235473 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.875, 2.125, 18.495605)
+shape = SubResource("BoxShape3D_qdoc1")
+
+[node name="RectCollider11" parent="Colliders/WallStaticBody4" index="1" unique_id=59676544 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.25, 3.425293, 18.495605)
+shape = SubResource("BoxShape3D_tqu7q")
+
+[node name="RectCollider9" parent="Colliders/WallStaticBody4" index="2" unique_id=532071513 instance=ExtResource("6_py2y4")]
+transform = Transform3D(0.99542826, 0, 0.09551185, 0, 1, 0, -0.09551185, 0, 0.99542826, -10.522792, 2.125, 18.47508)
+shape = SubResource("BoxShape3D_spqvx")
+
+[node name="RectCollider10" parent="Colliders/WallStaticBody4" index="3" unique_id=1440534669 instance=ExtResource("6_py2y4")]
+transform = Transform3D(0.99517596, 0, -0.09810577, 0, 1, 0, 0.09810577, 0, 0.99517596, -11.9626465, 2.125, 18.47508)
+shape = SubResource("BoxShape3D_43g0m")
+
+[node name="RectCollider7" parent="Colliders/WallStaticBody4" index="4" unique_id=1975963328 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75, 2.125, 17.745605)
+shape = SubResource("BoxShape3D_iqsi3")
+
+[node name="RectCollider8" parent="Colliders/WallStaticBody4" index="5" unique_id=1076177633 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.875, 2.125, 16.995605)
+shape = SubResource("BoxShape3D_3g38q")
+
+[node name="RectCollider" parent="Colliders/WallStaticBody4" index="6" unique_id=1133771075 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8498535, 0.5166321, 13.451172)
+shape = SubResource("BoxShape3D_bbmg4")
+
+[node name="WallStaticBody5" parent="Colliders" index="30" unique_id=1358589397 instance=ExtResource("7_o8cjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.25, 22.25)
+
+[node name="RectCollider" parent="Colliders/WallStaticBody5" index="0" unique_id=1745165075 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5.625)
+shape = SubResource("BoxShape3D_bkudh")
+
+[node name="RectCollider3" parent="Colliders/WallStaticBody5" index="1" unique_id=804355482 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.625, 3)
+shape = SubResource("BoxShape3D_1hk1v")
+
+[node name="RectCollider4" parent="Colliders/WallStaticBody5" index="2" unique_id=1266332 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.125, 1, 3.5)
+shape = SubResource("BoxShape3D_g5o2q")
+
+[node name="RectCollider6" parent="Colliders/WallStaticBody5" index="3" unique_id=64841955 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.125, 2.875, 2.75)
+shape = SubResource("BoxShape3D_l5wg3")
+
+[node name="RectCollider5" parent="Colliders/WallStaticBody5" index="4" unique_id=729327647 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, 0.875, -6.375)
+shape = SubResource("BoxShape3D_ir5jd")
+
+[node name="RectCollider2" parent="Colliders/WallStaticBody5" index="5" unique_id=583023060 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1655273, 1.25)
+shape = SubResource("BoxShape3D_i5t0a")
+
+[node name="WallStaticBody6" parent="Colliders" index="31" unique_id=1300066173 instance=ExtResource("7_o8cjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.5, 10.75)
+
+[node name="RectCollider" parent="Colliders/WallStaticBody6" index="0" unique_id=1579894517 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.625, -0.125)
+shape = SubResource("BoxShape3D_n50hn")
+
+[node name="RectCollider2" parent="Colliders/WallStaticBody6" index="1" unique_id=2000267573 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.625, -7.875)
+shape = SubResource("BoxShape3D_bey1j")
+
+[node name="RectCollider3" parent="Colliders/WallStaticBody6" index="2" unique_id=951930554 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2.375, -15.25)
+shape = SubResource("BoxShape3D_gm0a4")
+
+[node name="RectCollider4" parent="Colliders/WallStaticBody6" index="3" unique_id=423841876 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.625, 0.75, -15)
+shape = SubResource("BoxShape3D_odkyl")
+
+[node name="RectCollider5" parent="Colliders/WallStaticBody6" index="4" unique_id=1855921557 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 0.75, -13.75)
+shape = SubResource("BoxShape3D_wduws")
+
+[node name="RectCollider6" parent="Colliders/WallStaticBody6" index="5" unique_id=628806880 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2, -10.625)
+shape = SubResource("BoxShape3D_2yqly")
+
+[node name="RectCollider7" parent="Colliders/WallStaticBody6" index="6" unique_id=437978522 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, -6.875)
+shape = SubResource("BoxShape3D_08woo")
+
+[node name="WallStaticBody7" parent="Colliders" index="32" unique_id=1085777101 instance=ExtResource("7_o8cjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.75, -4.5)
+
+[node name="RectCollider" parent="Colliders/WallStaticBody7" index="0" unique_id=1892334995 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1.25)
+shape = SubResource("BoxShape3D_asai4")
+
+[node name="RectCollider4" parent="Colliders/WallStaticBody7" index="1" unique_id=625810725 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.375, 2, 3)
+shape = SubResource("BoxShape3D_uy5nl")
+
+[node name="RectCollider5" parent="Colliders/WallStaticBody7" index="2" unique_id=1719477973 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, 2, 3)
+shape = SubResource("BoxShape3D_pexe6")
+
+[node name="RectCollider6" parent="Colliders/WallStaticBody7" index="3" unique_id=636047079 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.25, 3)
+shape = SubResource("BoxShape3D_42s6p")
+
+[node name="RectCollider2" parent="Colliders/WallStaticBody7" index="4" unique_id=601221127 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.125, 2, -2.5)
+shape = SubResource("BoxShape3D_slols")
+
+[node name="RectCollider3" parent="Colliders/WallStaticBody7" index="5" unique_id=1204825314 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25, 2, 0.25)
+shape = SubResource("BoxShape3D_yleuw")
 
 [node name="Occluders" parent="." index="1" unique_id=2028419292]
 visible = false
@@ -1221,7 +1398,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)
 visible = false
 
 [node name="BoundsAABB" parent="Bounds" index="0" unique_id=415124710]
-shape = SubResource("BoxShape3D_410j8")
+shape = SubResource("BoxShape3D_vujt0")
 
 [node name="LevelMeshes" parent="." index="6" unique_id=1646079298 instance=ExtResource("24_m6f5b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.75, 3.5, 38)
@@ -1236,50 +1413,50 @@ voxelDepth = 19.0
 defaultMaterial = ExtResource("21_jyo2m")
 
 [node name="CollisionShape3D" parent="LevelMeshes/ResizeableWall" index="0" unique_id=1479096797]
-shape = SubResource("BoxShape3D_mlv06")
+shape = SubResource("BoxShape3D_p1ine")
 
 [node name="MeshXNeg" parent="LevelMeshes/ResizeableWall" index="1" unique_id=1554681253]
 process_mode = 4
 visible = false
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_x3mbq")
+mesh = SubResource("PlaneMesh_n50hn")
 
 [node name="MeshXPos" parent="LevelMeshes/ResizeableWall" index="2" unique_id=1811081783]
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_x3mbq")
+mesh = SubResource("PlaneMesh_n50hn")
 
 [node name="MeshYNeg" parent="LevelMeshes/ResizeableWall" index="3" unique_id=1238171000]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -2.375, 0)
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_2kt8p")
+mesh = SubResource("PlaneMesh_bey1j")
 
 [node name="MeshYPos" parent="LevelMeshes/ResizeableWall" index="4" unique_id=1955971628]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.375, 0)
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_2kt8p")
+mesh = SubResource("PlaneMesh_bey1j")
 
 [node name="MeshZNeg" parent="LevelMeshes/ResizeableWall" index="5" unique_id=1109840084]
 process_mode = 4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -4.75)
 visible = false
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_j37k0")
+mesh = SubResource("PlaneMesh_gm0a4")
 
 [node name="MeshZPos" parent="LevelMeshes/ResizeableWall" index="6" unique_id=764429269]
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
 visible = false
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_j37k0")
+mesh = SubResource("PlaneMesh_gm0a4")
 
 [node name="OccluderXY" parent="LevelMeshes/ResizeableWall" index="7" unique_id=1522577169]
-occluder = SubResource("QuadOccluder3D_ocguu")
+occluder = SubResource("QuadOccluder3D_odkyl")
 
 [node name="OccluderZY" parent="LevelMeshes/ResizeableWall" index="8" unique_id=867313267]
-occluder = SubResource("QuadOccluder3D_drydu")
+occluder = SubResource("QuadOccluder3D_wduws")
 
 [node name="OccluderXZ" parent="LevelMeshes/ResizeableWall" index="9" unique_id=1263472784]
-occluder = SubResource("QuadOccluder3D_3sgmf")
+occluder = SubResource("QuadOccluder3D_2yqly")
 
 [node name="ResizableCeiling" parent="LevelMeshes" index="153" unique_id=1895728227 instance=ExtResource("23_o8cjy")]
 transform = Transform3D(1, 0, 0, 0, 0.95956486, 0.2814875, 0, -0.2814875, 0.95956486, 8.75, 4.7420797, -0.3125801)
@@ -1288,14 +1465,14 @@ voxelDepth = 18.0
 defaultMaterial = ExtResource("24_iii1t")
 
 [node name="CollisionShape3D" parent="LevelMeshes/ResizableCeiling" index="0" unique_id=2009969633]
-shape = SubResource("BoxShape3D_gww66")
+shape = SubResource("BoxShape3D_unafc")
 
 [node name="MeshInstance3D" parent="LevelMeshes/ResizableCeiling" index="1" unique_id=416331250]
 material_override = ExtResource("24_iii1t")
-mesh = SubResource("PlaneMesh_ilo7l")
+mesh = SubResource("PlaneMesh_08woo")
 
 [node name="OccluderInstance3D" parent="LevelMeshes/ResizableCeiling" index="2" unique_id=1014570430]
-occluder = SubResource("QuadOccluder3D_kvij7")
+occluder = SubResource("QuadOccluder3D_asai4")
 
 [node name="Tutorials" type="Node3D" parent="." index="7" unique_id=1888722781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1, 10)
@@ -1306,7 +1483,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.25, -1, -13.75)
 
 [node name="RectCollider" parent="Tutorials/DragTutorialArea" index="0" unique_id=1017813292 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.125, -0.375)
-shape = SubResource("BoxShape3D_b1i1h")
+shape = SubResource("BoxShape3D_duvh2")
 
 [node name="PopupForArea" parent="Tutorials/DragTutorialArea" index="1" unique_id=405273844 instance=ExtResource("25_m6f5b")]
 popupText = "Welcome to the Async Investigations Prototype! Imagine you just saw some really cool high effort animation of walking into the backrooms lmao. For now the goal is just linear progression and testing gamefeel. The exit is marked by a red sphere.
@@ -1318,7 +1495,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.25, -1, -10.75)
 
 [node name="RectCollider" parent="Tutorials/ActionFlashlightTutorialArea" index="0" unique_id=1482887759 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1.25)
-shape = SubResource("BoxShape3D_qdoc1")
+shape = SubResource("BoxShape3D_sx14g")
 
 [node name="PopupForArea" parent="Tutorials/ActionFlashlightTutorialArea" index="1" unique_id=2117522302 instance=ExtResource("25_m6f5b")]
 popupText = "This place gets dark. Your Action key is 'F'. By default this toggles your flashlight."
@@ -1328,7 +1505,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, -2, -1.25)
 
 [node name="RectCollider" parent="Tutorials/RunTutorialArea" index="0" unique_id=499811336 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 2.125, -0.125)
-shape = SubResource("BoxShape3D_tqu7q")
+shape = SubResource("BoxShape3D_vme0v")
 
 [node name="PopupForArea" parent="Tutorials/RunTutorialArea" index="1" unique_id=282030534 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Shift' to run and stop performing certain actions."
@@ -1338,7 +1515,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.2500002, -7.75)
 
 [node name="RectCollider" parent="Tutorials/PickUpTutorialArea" index="0" unique_id=1542412958 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 1.125, -0.625)
-shape = SubResource("BoxShape3D_spqvx")
+shape = SubResource("BoxShape3D_sx18v")
 
 [node name="PopupForArea" parent="Tutorials/PickUpTutorialArea" index="1" unique_id=398090632 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Mouse Button' to pick up smaller objects. Hold and drag to rotate. Press again to drop.
@@ -1350,7 +1527,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2500001, -12.75)
 
 [node name="RectCollider" parent="Tutorials/SqueezeTutorialArea" index="0" unique_id=1773988015 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 1.5, 0)
-shape = SubResource("BoxShape3D_43g0m")
+shape = SubResource("BoxShape3D_d0dqe")
 
 [node name="PopupForArea" parent="Tutorials/SqueezeTutorialArea" index="1" unique_id=1273100879 instance=ExtResource("25_m6f5b")]
 popupText = "Hold 'E' to squeeze through tight spaces or shimmy along narrow ledges"
@@ -1360,7 +1537,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.383949, 0, -4.1287465)
 
 [node name="RectCollider" parent="Tutorials/CrouchCrawlTutorialArea" index="0" unique_id=929287383 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.375, -0.75)
-shape = SubResource("BoxShape3D_iqsi3")
+shape = SubResource("BoxShape3D_skmyr")
 
 [node name="PopupForArea" parent="Tutorials/CrouchCrawlTutorialArea" index="1" unique_id=589731623 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Ctrl' to crouch. Press again to crawl."
@@ -1370,7 +1547,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3.25)
 
 [node name="RectCollider" parent="Tutorials/JumpTutorialArea" index="0" unique_id=1477332365 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.75, -1)
-shape = SubResource("BoxShape3D_3g38q")
+shape = SubResource("BoxShape3D_yrb4h")
 
 [node name="PopupForArea" parent="Tutorials/JumpTutorialArea" index="1" unique_id=1612662540 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Space' to jump, climb up onto small ledges, or stop performing certain actions."
@@ -1380,7 +1557,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 1, 16.25)
 
 [node name="RectCollider" parent="Tutorials/TooNarrowTutorialArea" index="0" unique_id=1378385993 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.875, 0.125)
-shape = SubResource("BoxShape3D_bbmg4")
+shape = SubResource("BoxShape3D_8a2w4")
 
 [node name="PopupForArea" parent="Tutorials/TooNarrowTutorialArea" index="1" unique_id=589094466 instance=ExtResource("25_m6f5b")]
 popupText = "Some gaps are too narrow for you to fit. Usually you can find the other side via other means."
@@ -1390,7 +1567,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, -9, 3.75)
 
 [node name="RectCollider" parent="Tutorials/LadderTutorialArea" index="0" unique_id=1019370618 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 1.875, 0)
-shape = SubResource("BoxShape3D_bkudh")
+shape = SubResource("BoxShape3D_utxeb")
 
 [node name="PopupForArea" parent="Tutorials/LadderTutorialArea" index="1" unique_id=1812749223 instance=ExtResource("25_m6f5b")]
 popupText = "You found a ladder! Move it to aid exploration.
@@ -1402,7 +1579,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, -3, 17.75)
 
 [node name="RectCollider" parent="Tutorials/VaultTutorialArea" index="0" unique_id=1745721293 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.375, -0.5)
-shape = SubResource("BoxShape3D_1hk1v")
+shape = SubResource("BoxShape3D_jnfen")
 
 [node name="PopupForArea" parent="Tutorials/VaultTutorialArea" index="1" unique_id=2112005554 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Space' while facing a ledge to climb up onto it. This even works in the air!"
@@ -1412,7 +1589,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 0, 51.25)
 
 [node name="RectCollider" parent="Tutorials/FinishTutorialArea" index="0" unique_id=1264953497 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.625, 1.5, 1.125)
-shape = SubResource("BoxShape3D_g5o2q")
+shape = SubResource("BoxShape3D_s680s")
 
 [node name="PopupForArea" parent="Tutorials/FinishTutorialArea" index="1" unique_id=889054482 instance=ExtResource("25_m6f5b")]
 popupText = "That's it! Thanks for playing and be honest with your feedback :)"
