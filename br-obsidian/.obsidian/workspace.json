@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Decoration/Deco Ideas.md",
+                "file": "Todo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Deco Ideas"
+              "title": "Todo"
             }
           }
         ]
@@ -190,6 +190,7 @@
   },
   "active": "46516998497d2586",
   "lastOpenFiles": [
+    "Decoration/Deco Ideas.md",
     "Todo.md",
     "Mechanics/Camera Scoring.md",
     "Today.md",
@@ -197,7 +198,6 @@
     "Technical/Room Definition API Docs.md",
     "Technical/Building a room.md",
     "Decoration/Yellow Light Color.md",
-    "Decoration/Deco Ideas.md",
     "Mechanics/Upgrades.md",
     "Mechanics/Mechanic Brainstorm.md",
     "Mechanics/Exits.md",

@@ -6,576 +6,635 @@
 [ext_resource type="Material" uid="uid://cnjdmo62lxpvu" path="res://assets/materials/WallpaperChevron/WallpaperChevronYellow.tres" id="4_05c5k"]
 [ext_resource type="Material" uid="uid://sdmikmedam3e" path="res://assets/materials/Carpet01/Carpet01Pink.tres" id="6_w15wg"]
 [ext_resource type="Material" uid="uid://c8xi01tir8jqe" path="res://assets/materials/Carpet01/Carpet01Pink_uv.tres" id="7_dyvop"]
-[ext_resource type="Material" uid="uid://bi2hdc0i0gloh" path="res://assets/materials/WallpaperChevron/WallpaperChevronYellow_uv.tres" id="7_w15wg"]
 [ext_resource type="Material" uid="uid://cjr3g3extn1fy" path="res://assets/materials/WallpaperChevron/WallpaperChevron.tres" id="8_fwkoa"]
 [ext_resource type="Material" uid="uid://b68dmlxoefao5" path="res://assets/materials/WallpaperChevron/WallpaperChevron_uv.tres" id="8_veqol"]
 
 [node name="LevelMeshes" unique_id=1646079298 instance=ExtResource("1_50gac")]
 
-[node name="ceiling_000" parent="." index="0" unique_id=490491577]
+[node name="ceiling_000" parent="." index="0" unique_id=1960516166]
 layers = 2
 material_override = ExtResource("2_ddauh")
 
-[node name="ceiling_001" parent="." index="1" unique_id=2013117492]
+[node name="ceiling_001" parent="." index="1" unique_id=584642563]
 layers = 2
 material_override = ExtResource("2_ddauh")
 
-[node name="ceiling_002" parent="." index="2" unique_id=1315174216]
+[node name="ceiling_002" parent="." index="2" unique_id=1153595475]
 layers = 2
 material_override = ExtResource("2_ddauh")
 
-[node name="ceiling_003" parent="." index="3" unique_id=2130718303]
+[node name="ceiling_003" parent="." index="3" unique_id=2111274849]
 layers = 2
 material_override = ExtResource("2_ddauh")
 
-[node name="ceiling_004" parent="." index="4" unique_id=149267091]
+[node name="ceiling_004" parent="." index="4" unique_id=1825303107]
 layers = 2
 material_override = ExtResource("2_ddauh")
 
-[node name="ceiling_005" parent="." index="5" unique_id=1722128960]
+[node name="ceiling_005" parent="." index="5" unique_id=610856390]
 layers = 2
 material_override = ExtResource("2_ddauh")
 
-[node name="ceiling_006" parent="." index="6" unique_id=593109891]
+[node name="ceiling_006" parent="." index="6" unique_id=1765529041]
 layers = 2
 material_override = ExtResource("2_ddauh")
 
-[node name="ceiling_007" parent="." index="7" unique_id=696909159]
+[node name="ceiling_007" parent="." index="7" unique_id=1592511512]
 layers = 2
 material_override = ExtResource("2_ddauh")
 
-[node name="ceiling_008" parent="." index="8" unique_id=1723683423]
+[node name="ceiling_008" parent="." index="8" unique_id=174952858]
 layers = 2
 material_override = ExtResource("2_ddauh")
 
-[node name="ceiling_009" parent="." index="9" unique_id=1754797003]
+[node name="ceiling_009" parent="." index="9" unique_id=716046586]
 layers = 2
 material_override = ExtResource("2_ddauh")
 
-[node name="ceiling_010" parent="." index="10" unique_id=1443948374]
+[node name="ceiling_010" parent="." index="10" unique_id=600271663]
 layers = 2
 material_override = ExtResource("2_ddauh")
 
-[node name="ceiling_011" parent="." index="11" unique_id=1114377656]
+[node name="ceiling_011" parent="." index="11" unique_id=1373372579]
 layers = 2
 material_override = ExtResource("2_ddauh")
 
-[node name="ceiling_012" parent="." index="12" unique_id=1239079807]
+[node name="ceiling_012" parent="." index="12" unique_id=1974435477]
 layers = 2
 material_override = ExtResource("2_ddauh")
 
-[node name="ceiling_013" parent="." index="13" unique_id=1140539445]
+[node name="ceiling_013" parent="." index="13" unique_id=204837314]
 layers = 2
 material_override = ExtResource("2_ddauh")
 
-[node name="ceiling_014" parent="." index="14" unique_id=1143282100]
+[node name="ceiling_014" parent="." index="14" unique_id=1781109548]
+layers = 2
 material_override = ExtResource("2_ddauh")
 
-[node name="ceiling_015" parent="." index="15" unique_id=1851572559]
+[node name="ceiling_015" parent="." index="15" unique_id=1807259431]
+layers = 2
+material_override = ExtResource("8_fwkoa")
+
+[node name="ceiling_016" parent="." index="16" unique_id=8799281]
+layers = 2
 material_override = ExtResource("4_05c5k")
 
-[node name="ceiling_016" parent="." index="16" unique_id=1195294757]
-material_override = ExtResource("4_05c5k")
-
-[node name="ceiling_uv_000" parent="." index="17" unique_id=121813688]
+[node name="ceiling_uv_000" parent="." index="17" unique_id=1140312601]
+layers = 2
 material_override = ExtResource("3_lfa3e")
 
-[node name="StaticBody3D" parent="ceiling_uv_000" index="0" unique_id=913859450]
+[node name="StaticBody3D" parent="ceiling_uv_000" index="0" unique_id=1914178706]
 collision_layer = 2
 collision_mask = 177
 
-[node name="ceiling_uv_001" parent="." index="18" unique_id=383528943]
-material_override = ExtResource("7_w15wg")
+[node name="ceiling_uv_001" parent="." index="18" unique_id=1443696852]
+layers = 2
+material_override = ExtResource("8_veqol")
 
-[node name="ceiling_uv_002" parent="." index="19" unique_id=378395875]
+[node name="ceiling_uv_002" parent="." index="19" unique_id=1250555970]
+layers = 2
 material_override = ExtResource("3_lfa3e")
 
-[node name="floor_000" parent="." index="20" unique_id=177651284]
+[node name="floor_000" parent="." index="20" unique_id=2092240784]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_001" parent="." index="21" unique_id=803566511]
+[node name="floor_001" parent="." index="21" unique_id=4451879]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_002" parent="." index="22" unique_id=1988685579]
+[node name="floor_002" parent="." index="22" unique_id=1618125426]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_003" parent="." index="23" unique_id=730422760]
+[node name="floor_003" parent="." index="23" unique_id=1472379696]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_004" parent="." index="24" unique_id=1033396799]
+[node name="floor_004" parent="." index="24" unique_id=938124789]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_005" parent="." index="25" unique_id=667842220]
+[node name="floor_005" parent="." index="25" unique_id=919042062]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_006" parent="." index="26" unique_id=2114052667]
+[node name="floor_006" parent="." index="26" unique_id=518646410]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_007" parent="." index="27" unique_id=1720069397]
+[node name="floor_007" parent="." index="27" unique_id=988547283]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_008" parent="." index="28" unique_id=485749673]
+[node name="floor_008" parent="." index="28" unique_id=1158630887]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_009" parent="." index="29" unique_id=1549571401]
+[node name="floor_009" parent="." index="29" unique_id=892244222]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_010" parent="." index="30" unique_id=482722133]
+[node name="floor_010" parent="." index="30" unique_id=862377985]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_011" parent="." index="31" unique_id=1456179606]
+[node name="floor_011" parent="." index="31" unique_id=449348783]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_012" parent="." index="32" unique_id=1666079164]
+[node name="floor_012" parent="." index="32" unique_id=1580390287]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_013" parent="." index="33" unique_id=2137576986]
+[node name="floor_013" parent="." index="33" unique_id=1249750101]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_014" parent="." index="34" unique_id=1228336316]
+[node name="floor_014" parent="." index="34" unique_id=169303986]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_015" parent="." index="35" unique_id=741824197]
+[node name="floor_015" parent="." index="35" unique_id=449395510]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_016" parent="." index="36" unique_id=1290216181]
+[node name="floor_016" parent="." index="36" unique_id=42525628]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_017" parent="." index="37" unique_id=1920608832]
+[node name="floor_017" parent="." index="37" unique_id=1333589522]
 layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_018" parent="." index="38" unique_id=2011415352]
+[node name="floor_018" parent="." index="38" unique_id=713747832]
+layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_019" parent="." index="39" unique_id=1187617063]
+[node name="floor_019" parent="." index="39" unique_id=1724180446]
+layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_020" parent="." index="40" unique_id=367316505]
+[node name="floor_020" parent="." index="40" unique_id=1053264090]
+layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_021" parent="." index="41" unique_id=1460098388]
+[node name="floor_021" parent="." index="41" unique_id=1068004675]
+layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_022" parent="." index="42" unique_id=274285852]
+[node name="floor_022" parent="." index="42" unique_id=1785086501]
+layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_023" parent="." index="43" unique_id=2035721344]
+[node name="floor_023" parent="." index="43" unique_id=1197384194]
+layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_024" parent="." index="44" unique_id=179125209]
+[node name="floor_024" parent="." index="44" unique_id=1957342171]
+layers = 8
 material_override = ExtResource("6_w15wg")
 
-[node name="floor_uv_000" parent="." index="45" unique_id=1215420789]
+[node name="floor_uv_000" parent="." index="45" unique_id=1943730104]
+layers = 8
 material_override = ExtResource("7_dyvop")
 
-[node name="StaticBody3D" parent="floor_uv_000" index="0" unique_id=487712937]
+[node name="StaticBody3D" parent="floor_uv_000" index="0" unique_id=1556391960]
 collision_layer = 8
 collision_mask = 177
 
-[node name="floor_uv_001" parent="." index="46" unique_id=1631186811]
+[node name="floor_uv_001" parent="." index="46" unique_id=1338548527]
+layers = 8
 material_override = ExtResource("7_dyvop")
 
-[node name="floor_uv_002" parent="." index="47" unique_id=671979681]
+[node name="floor_uv_002" parent="." index="47" unique_id=1593830912]
+layers = 8
 material_override = ExtResource("7_dyvop")
 
-[node name="floor_uv_003" parent="." index="48" unique_id=1410483785]
+[node name="floor_uv_003" parent="." index="48" unique_id=612559127]
+layers = 8
 material_override = ExtResource("7_dyvop")
 
-[node name="floor_uv_004" parent="." index="49" unique_id=686438518]
+[node name="floor_uv_004" parent="." index="49" unique_id=224239700]
+layers = 8
 material_override = ExtResource("7_dyvop")
 
-[node name="floor_uv_005" parent="." index="50" unique_id=1171193369]
+[node name="floor_uv_005" parent="." index="50" unique_id=1337553209]
+layers = 8
 material_override = ExtResource("7_dyvop")
 
-[node name="wall_000" parent="." index="51" unique_id=1369108164]
+[node name="wall_000" parent="." index="51" unique_id=1492198531]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_001" parent="." index="52" unique_id=1972563192]
+[node name="wall_001" parent="." index="52" unique_id=1245696714]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_002" parent="." index="53" unique_id=53502013]
+[node name="wall_002" parent="." index="53" unique_id=948367648]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_003" parent="." index="54" unique_id=1821715627]
+[node name="wall_003" parent="." index="54" unique_id=1937436361]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_004" parent="." index="55" unique_id=1909477444]
+[node name="wall_004" parent="." index="55" unique_id=1690443603]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_005" parent="." index="56" unique_id=557584067]
+[node name="wall_005" parent="." index="56" unique_id=294953906]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_006" parent="." index="57" unique_id=1887789430]
+[node name="wall_006" parent="." index="57" unique_id=1121451455]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_007" parent="." index="58" unique_id=2131713217]
+[node name="wall_007" parent="." index="58" unique_id=1131344357]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_008" parent="." index="59" unique_id=1535375270]
+[node name="wall_008" parent="." index="59" unique_id=1593678175]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_009" parent="." index="60" unique_id=973032265]
+[node name="wall_009" parent="." index="60" unique_id=2065485069]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_010" parent="." index="61" unique_id=1473389869]
+[node name="wall_010" parent="." index="61" unique_id=526842679]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_011" parent="." index="62" unique_id=566100091]
+[node name="wall_011" parent="." index="62" unique_id=713988547]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_012" parent="." index="63" unique_id=1490852029]
+[node name="wall_012" parent="." index="63" unique_id=258101562]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_013" parent="." index="64" unique_id=1654190194]
+[node name="wall_013" parent="." index="64" unique_id=767842111]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_014" parent="." index="65" unique_id=1587208236]
+[node name="wall_014" parent="." index="65" unique_id=121005527]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_015" parent="." index="66" unique_id=1199572356]
+[node name="wall_015" parent="." index="66" unique_id=1034706526]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_016" parent="." index="67" unique_id=667236710]
+[node name="wall_016" parent="." index="67" unique_id=1858035629]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_017" parent="." index="68" unique_id=692743630]
+[node name="wall_017" parent="." index="68" unique_id=146289169]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_018" parent="." index="69" unique_id=1442229934]
+[node name="wall_018" parent="." index="69" unique_id=517801262]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_019" parent="." index="70" unique_id=513258065]
+[node name="wall_019" parent="." index="70" unique_id=63918169]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_020" parent="." index="71" unique_id=321560318]
+[node name="wall_020" parent="." index="71" unique_id=1198442080]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_021" parent="." index="72" unique_id=1428805489]
+[node name="wall_021" parent="." index="72" unique_id=1725157162]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_022" parent="." index="73" unique_id=1602357161]
+[node name="wall_022" parent="." index="73" unique_id=2080876855]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_023" parent="." index="74" unique_id=1397234004]
+[node name="wall_023" parent="." index="74" unique_id=1833327487]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_024" parent="." index="75" unique_id=2123080412]
+[node name="wall_024" parent="." index="75" unique_id=1784922466]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_025" parent="." index="76" unique_id=1612223258]
+[node name="wall_025" parent="." index="76" unique_id=907083539]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_026" parent="." index="77" unique_id=708658409]
+[node name="wall_026" parent="." index="77" unique_id=2052790709]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_027" parent="." index="78" unique_id=112808019]
+[node name="wall_027" parent="." index="78" unique_id=1670499514]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_028" parent="." index="79" unique_id=228396861]
+[node name="wall_028" parent="." index="79" unique_id=2116692750]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_029" parent="." index="80" unique_id=1211797566]
+[node name="wall_029" parent="." index="80" unique_id=1034105090]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_030" parent="." index="81" unique_id=3543781]
+[node name="wall_030" parent="." index="81" unique_id=1571668060]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_031" parent="." index="82" unique_id=228322099]
+[node name="wall_031" parent="." index="82" unique_id=1876035449]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_032" parent="." index="83" unique_id=757436703]
+[node name="wall_032" parent="." index="83" unique_id=1791233262]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_033" parent="." index="84" unique_id=460092551]
+[node name="wall_033" parent="." index="84" unique_id=1834667078]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_034" parent="." index="85" unique_id=1674978490]
+[node name="wall_034" parent="." index="85" unique_id=1484171419]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_035" parent="." index="86" unique_id=1067494327]
+[node name="wall_035" parent="." index="86" unique_id=1180839722]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_036" parent="." index="87" unique_id=1320395438]
+[node name="wall_036" parent="." index="87" unique_id=234331369]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_037" parent="." index="88" unique_id=1273815880]
+[node name="wall_037" parent="." index="88" unique_id=2087463023]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_038" parent="." index="89" unique_id=683082129]
+[node name="wall_038" parent="." index="89" unique_id=1755958489]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_039" parent="." index="90" unique_id=2119549570]
+[node name="wall_039" parent="." index="90" unique_id=102015835]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_040" parent="." index="91" unique_id=858622306]
+[node name="wall_040" parent="." index="91" unique_id=1052591173]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_041" parent="." index="92" unique_id=832802571]
+[node name="wall_041" parent="." index="92" unique_id=610359539]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_042" parent="." index="93" unique_id=1603093952]
+[node name="wall_042" parent="." index="93" unique_id=1822305577]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_043" parent="." index="94" unique_id=612145916]
+[node name="wall_043" parent="." index="94" unique_id=1700518173]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_044" parent="." index="95" unique_id=1864515165]
+[node name="wall_044" parent="." index="95" unique_id=353585299]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_045" parent="." index="96" unique_id=1506420052]
+[node name="wall_045" parent="." index="96" unique_id=916468085]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_046" parent="." index="97" unique_id=144606015]
+[node name="wall_046" parent="." index="97" unique_id=1253032697]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_047" parent="." index="98" unique_id=1710913178]
+[node name="wall_047" parent="." index="98" unique_id=249543922]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_048" parent="." index="99" unique_id=23920760]
+[node name="wall_048" parent="." index="99" unique_id=2027756808]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_049" parent="." index="100" unique_id=657071443]
+[node name="wall_049" parent="." index="100" unique_id=1358321281]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_050" parent="." index="101" unique_id=42388908]
+[node name="wall_050" parent="." index="101" unique_id=3655308]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_051" parent="." index="102" unique_id=1854887185]
+[node name="wall_051" parent="." index="102" unique_id=549877682]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_052" parent="." index="103" unique_id=1108138070]
+[node name="wall_052" parent="." index="103" unique_id=447840735]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_053" parent="." index="104" unique_id=332272369]
+[node name="wall_053" parent="." index="104" unique_id=1665256850]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_054" parent="." index="105" unique_id=1310646247]
+[node name="wall_054" parent="." index="105" unique_id=1519243004]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_055" parent="." index="106" unique_id=1509357701]
+[node name="wall_055" parent="." index="106" unique_id=797814945]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_056" parent="." index="107" unique_id=220868759]
+[node name="wall_056" parent="." index="107" unique_id=1469337648]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_057" parent="." index="108" unique_id=675861126]
+[node name="wall_057" parent="." index="108" unique_id=1657430989]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_058" parent="." index="109" unique_id=1902348872]
+[node name="wall_058" parent="." index="109" unique_id=1530271134]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_059" parent="." index="110" unique_id=1685116497]
+[node name="wall_059" parent="." index="110" unique_id=1757618640]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_060" parent="." index="111" unique_id=918062285]
+[node name="wall_060" parent="." index="111" unique_id=530081348]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_061" parent="." index="112" unique_id=537881222]
+[node name="wall_061" parent="." index="112" unique_id=1590736783]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_062" parent="." index="113" unique_id=1096526082]
+[node name="wall_062" parent="." index="113" unique_id=445430049]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_063" parent="." index="114" unique_id=167950323]
+[node name="wall_063" parent="." index="114" unique_id=1020111082]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_064" parent="." index="115" unique_id=751600842]
+[node name="wall_064" parent="." index="115" unique_id=247876943]
 layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_065" parent="." index="116" unique_id=1313881619]
+[node name="wall_065" parent="." index="116" unique_id=1550768802]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_066" parent="." index="117" unique_id=1647845053]
+[node name="wall_066" parent="." index="117" unique_id=841542175]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_067" parent="." index="118" unique_id=189601651]
+[node name="wall_067" parent="." index="118" unique_id=576408110]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_068" parent="." index="119" unique_id=1116642559]
+[node name="wall_068" parent="." index="119" unique_id=975552439]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_069" parent="." index="120" unique_id=1377124192]
+[node name="wall_069" parent="." index="120" unique_id=284055813]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_070" parent="." index="121" unique_id=1562138582]
+[node name="wall_070" parent="." index="121" unique_id=1753191028]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_071" parent="." index="122" unique_id=1028287474]
+[node name="wall_071" parent="." index="122" unique_id=1807704622]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_072" parent="." index="123" unique_id=1859677317]
+[node name="wall_072" parent="." index="123" unique_id=1883507160]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_073" parent="." index="124" unique_id=440170689]
+[node name="wall_073" parent="." index="124" unique_id=1549642502]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_074" parent="." index="125" unique_id=941280491]
+[node name="wall_074" parent="." index="125" unique_id=937823135]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_075" parent="." index="126" unique_id=1390463613]
+[node name="wall_075" parent="." index="126" unique_id=1009615031]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_076" parent="." index="127" unique_id=1593536238]
+[node name="wall_076" parent="." index="127" unique_id=1919086319]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_077" parent="." index="128" unique_id=384523897]
+[node name="wall_077" parent="." index="128" unique_id=1147137944]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_078" parent="." index="129" unique_id=1741808301]
+[node name="wall_078" parent="." index="129" unique_id=986802278]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_079" parent="." index="130" unique_id=318419604]
+[node name="wall_079" parent="." index="130" unique_id=1033529827]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_080" parent="." index="131" unique_id=1593374551]
+[node name="wall_080" parent="." index="131" unique_id=847143924]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_081" parent="." index="132" unique_id=1295780573]
+[node name="wall_081" parent="." index="132" unique_id=1458405482]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_082" parent="." index="133" unique_id=370797725]
+[node name="wall_082" parent="." index="133" unique_id=1327361999]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_083" parent="." index="134" unique_id=1197555337]
+[node name="wall_083" parent="." index="134" unique_id=1566450223]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_084" parent="." index="135" unique_id=1752954061]
+[node name="wall_084" parent="." index="135" unique_id=1657243284]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_085" parent="." index="136" unique_id=1972001553]
+[node name="wall_085" parent="." index="136" unique_id=1518497533]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_086" parent="." index="137" unique_id=1575881935]
+[node name="wall_086" parent="." index="137" unique_id=42587484]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_087" parent="." index="138" unique_id=1974598409]
+[node name="wall_087" parent="." index="138" unique_id=539008453]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_088" parent="." index="139" unique_id=1854351283]
+[node name="wall_088" parent="." index="139" unique_id=91644979]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_089" parent="." index="140" unique_id=1837773647]
+[node name="wall_089" parent="." index="140" unique_id=1907508202]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_090" parent="." index="141" unique_id=1367120353]
+[node name="wall_090" parent="." index="141" unique_id=1845059785]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_091" parent="." index="142" unique_id=519830920]
+[node name="wall_091" parent="." index="142" unique_id=1664636792]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_092" parent="." index="143" unique_id=218803081]
+[node name="wall_092" parent="." index="143" unique_id=976441828]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_093" parent="." index="144" unique_id=2095501824]
+[node name="wall_093" parent="." index="144" unique_id=2058712145]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_094" parent="." index="145" unique_id=98414541]
+[node name="wall_094" parent="." index="145" unique_id=1193566450]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_095" parent="." index="146" unique_id=1305789032]
+[node name="wall_095" parent="." index="146" unique_id=1070543320]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_096" parent="." index="147" unique_id=1415825691]
+[node name="wall_096" parent="." index="147" unique_id=8352984]
+layers = 4
 material_override = ExtResource("8_fwkoa")
 
-[node name="wall_uv_000" parent="." index="148" unique_id=405603212]
+[node name="wall_uv_000" parent="." index="148" unique_id=973675238]
+layers = 4
 material_override = ExtResource("8_veqol")
 
-[node name="StaticBody3D" parent="wall_uv_000" index="0" unique_id=586070081]
+[node name="StaticBody3D" parent="wall_uv_000" index="0" unique_id=2004291281]
 collision_layer = 4
 collision_mask = 177
 
-[node name="wall_uv_001" parent="." index="149" unique_id=1723426162]
+[node name="wall_uv_001" parent="." index="149" unique_id=360468379]
+layers = 4
 material_override = ExtResource("8_veqol")
 
-[node name="StaticBody3D" parent="wall_uv_001" index="0" unique_id=614657826]
+[node name="StaticBody3D" parent="wall_uv_001" index="0" unique_id=786510297]
 collision_layer = 4
 collision_mask = 177
 
-[node name="wall_uv_002" parent="." index="150" unique_id=920182445]
+[node name="wall_uv_002" parent="." index="150" unique_id=860671197]
+layers = 4
 material_override = ExtResource("8_veqol")
 
-[node name="wall_uv_003" parent="." index="151" unique_id=1581071515]
+[node name="StaticBody3D" parent="wall_uv_002" index="0" unique_id=1156676232]
+collision_layer = 4
+collision_mask = 177
+
+[node name="wall_uv_003" parent="." index="151" unique_id=1492111734]
+layers = 4
 material_override = ExtResource("8_veqol")
