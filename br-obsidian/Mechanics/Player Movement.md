@@ -23,4 +23,6 @@ Voxel sizes given in terms of (width, depth, height)
 - Max jump is 3 voxels
 - Max ledge climbup is 5 voxels
 - Max slope angle 40 deg
+- Minimum floor width to not fall is 0.15 (0.3 voxels)
+- If squeezing, can use ledges from 0.08 to 0.15
 - Cannot carry props while running, crouched, crawling, or squeezing
