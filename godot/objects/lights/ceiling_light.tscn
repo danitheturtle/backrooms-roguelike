@@ -13,6 +13,8 @@ center_offset = Vector3(0.375, -0.005, -0.375)
 script = ExtResource("1_baok3")
 onMaterial = ExtResource("2_baok3")
 offMaterial = ExtResource("3_idj2a")
+lightColor = Color(0.9453619, 0.9384548, 0.48985362, 1)
+bounceColor = Color(0.9659261, 0.9285818, 0.51557493, 1)
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=666675144]
 material_override = ExtResource("2_baok3")
@@ -20,6 +22,7 @@ mesh = SubResource("PlaneMesh_ji2ch")
 
 [node name="Primary" type="SpotLight3D" parent="." unique_id=1907237583]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.375, -0.01, -0.375)
+light_color = Color(0.9453619, 0.9384548, 0.48985362, 1)
 light_energy = 4.0
 light_size = 0.25
 light_cull_mask = 4293918733
@@ -34,6 +37,7 @@ spot_angle = 80.0
 
 [node name="Bounce" type="OmniLight3D" parent="." unique_id=2129061489]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -1.1, -0.375)
+light_color = Color(0.9659261, 0.9285818, 0.51557493, 1)
 light_energy = 0.5
 light_specular = 0.0
 light_cull_mask = 4293918735

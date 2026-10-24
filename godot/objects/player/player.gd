@@ -119,7 +119,7 @@ func reinit() -> void:
     rotating = false
     dragging = false
     global_position = Vector3(0,0,0)
-    global_rotation = Vector3(0,0,0)
+    global_rotation = Vector3(0,deg_to_rad(180),0)
     flashlight.visible = false
     playerShape.height = standingHeight
     playerShape.radius = standingRadius

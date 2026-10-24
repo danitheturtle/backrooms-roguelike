@@ -39,3 +39,9 @@ enum GameplayPropType {
     WHITE_ALMOND_WATER,
     RED_ALMOND_WATER
 }
+
+# Yellow Light Color LUT
+const YellowLightColor = {
+    default = { main = Color(241,239,125,1), bounce = Color() },
+    
+}
