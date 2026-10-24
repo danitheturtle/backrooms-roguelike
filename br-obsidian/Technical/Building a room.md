@@ -2,4 +2,5 @@
 - as few co-planar pieces of level geometry as possible. things shouldn't line up like real architecture
 - If no connections, leave large space between rooms to avoid light bleed. Build this into its defined voxel shape
 - default wall collider size should be 0.5, not 0.25. Helps with glitches. Can obviously still have thin walls, maybe even impossibly thin ones
-- do not make materials unique. To change material offset, change mesh offset and then transform to same effect. If mesh is defined in blender, change its origin. This keeps materials in one place and easy to change
+- do not make materials unique. use UV offset instead
+- All level geometry mesh origins are set to 0 in blender by default. Adjusting the mesh origin changes the uv coordinates of the shared texture

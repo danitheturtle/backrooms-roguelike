@@ -14,12 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://eksubm8tj0xy" path="res://objects/furniture/sofa_03/sofa_03.tscn" id="15_an542"]
 [ext_resource type="PackedScene" uid="uid://cloyecis01rjc" path="res://objects/furniture/wood_chair_01/wood_chair_01_physics.tscn" id="16_ycp4c"]
 [ext_resource type="PackedScene" uid="uid://bdau0coem5bjx" path="res://objects/furniture/wood_chair_01/wood_chair_01.tscn" id="17_mjs67"]
-[ext_resource type="PackedScene" uid="uid://b3txy1m8ovq0n" path="res://objects/furniture/green_chair/green_chair_physics.tscn" id="19_pa5nj"]
 [ext_resource type="PackedScene" uid="uid://gluxbvhkfuna" path="res://objects/furniture/rocking_chair/rocking_chair_physics.tscn" id="20_5k76s"]
 [ext_resource type="PackedScene" uid="uid://e7fg2javspiw" path="res://objects/furniture/rocking_chair/rocking_chair.tscn" id="21_31wma"]
 [ext_resource type="Material" uid="uid://cjr3g3extn1fy" path="res://assets/materials/WallpaperChevron/WallpaperChevron.tres" id="21_jyo2m"]
 [ext_resource type="PackedScene" uid="uid://b8dgwpoftvv36" path="res://objects/level_geometry/resizable_wall/resizable_wall.tscn" id="22_30s20"]
-[ext_resource type="PackedScene" uid="uid://b1fed526asuor" path="res://objects/furniture/vintage_cabinet/vintage_cabinet.tscn" id="23_k0hq8"]
 [ext_resource type="PackedScene" uid="uid://v73vqq1gq568" path="res://objects/level_geometry/resizable_ceiling/resizable_ceiling.tscn" id="23_o8cjy"]
 [ext_resource type="Material" uid="uid://b3ofgrdcrwlk7" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01.tres" id="24_iii1t"]
 [ext_resource type="PackedScene" uid="uid://3vqs4y4bh5cc" path="res://rooms/room_tutorial/res/level_meshes.tscn" id="24_m6f5b"]
@@ -978,6 +976,10 @@ size = Vector3(6.75, 2.25, 3.5)
 resource_local_to_scene = true
 size = Vector3(3.75, 3.25, 6)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rllb5"]
+resource_local_to_scene = true
+size = Vector3(3.25, 4, 4.25)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_cyirl"]
 resource_local_to_scene = true
 size = Vector3(3.75, 3.25, 4.25)
@@ -989,10 +991,6 @@ size = Vector3(3.25, 4, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_nsepa"]
 resource_local_to_scene = true
 size = Vector3(5.75, 2.75, 2.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rllb5"]
-resource_local_to_scene = true
-size = Vector3(7, 4, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_50i4j"]
 resource_local_to_scene = true
@@ -2037,6 +2035,13 @@ transform = Transform3D(1, 0, 0, 0, 0.99016124, 0.1399321, 0, -0.1399321, 0.9901
 intensity = 2.0
 lightRange = null
 
+[node name="CeilingLightRectangle5" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="4" unique_id=1851149953 instance=ExtResource("8_iii1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.951076, 4.5, 10.9320755)
+
+[node name="CeilingLightRectangle6" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="5" unique_id=2037071118 instance=ExtResource("8_iii1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.951076, 4.5, 17.697525)
+intensity = 2.0
+
 [node name="WoodenLadder" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="0" unique_id=1062347463 instance=ExtResource("9_3reo8")]
 transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 26.75, -6.4919295, 43)
 
@@ -2129,17 +2134,11 @@ transform = Transform3D(-0.24147743, 0, 0.44352418, 0, 0.505, 0, -0.44352418, 0,
 [node name="RockingChair2" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="18" unique_id=1491901777 instance=ExtResource("21_31wma")]
 transform = Transform3D(-0.36700764, -0.2969544, 2.1129005, -0.05081959, 2.144538, 0.29257357, -2.1330605, 0, -0.37050942, 29.788914, 3.0691333, 58.610416)
 
-[node name="VintageCabinet" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="19" unique_id=345171845 instance=ExtResource("23_k0hq8")]
-transform = Transform3D(-1.89, 0, 2.8538207e-07, 0, 1.89, 0, -2.8538207e-07, 0, -1.89, 35.64074, 3, 85.291824)
-
-[node name="GreenChair" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="20" unique_id=185744849 instance=ExtResource("24_pa5nj")]
+[node name="GreenChair" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="19" unique_id=185744849 instance=ExtResource("24_pa5nj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.541508, 5.7371726, 42.27533)
 
-[node name="VintageCabinetPhysics2" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="21" unique_id=1664976243 instance=ExtResource("13_kn1d3")]
+[node name="VintageCabinetPhysics2" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="20" unique_id=1664976243 instance=ExtResource("13_kn1d3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.6749992, 2.013239, 27.5)
-
-[node name="GreenChairPhysics3" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="22" unique_id=1144435427 instance=ExtResource("19_pa5nj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0440655, 1.7126956, 22.022875)
 
 [node name="Bounds" parent="." index="5" unique_id=1272779199]
 visible = false
@@ -2264,7 +2263,17 @@ shape = SubResource("BoxShape3D_tln6i")
 [node name="PopupForArea" parent="Tutorials/RunTutorialArea" index="1" unique_id=282030534 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Shift' to run and stop performing certain actions."
 
-[node name="PickUpTutorialArea" parent="Tutorials" index="4" unique_id=850203257 instance=ExtResource("25_7xnmx")]
+[node name="JumpTutorialArea" parent="Tutorials" index="4" unique_id=957011598 instance=ExtResource("25_7xnmx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 1.75, 7)
+
+[node name="RectCollider" parent="Tutorials/JumpTutorialArea" index="0" unique_id=1477332365 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.625, 1.5, 0.125)
+shape = SubResource("BoxShape3D_rllb5")
+
+[node name="PopupForArea" parent="Tutorials/JumpTutorialArea" index="1" unique_id=1612662540 instance=ExtResource("25_m6f5b")]
+popupText = "Press 'Space' to jump or climb up onto small ledges."
+
+[node name="PickUpTutorialArea" parent="Tutorials" index="5" unique_id=850203257 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.2500002, -7.75)
 visible = false
 
@@ -2277,7 +2286,7 @@ popupText = "Press 'Mouse Button' to pick up smaller objects. Hold and drag to r
 
 For most nonconsumables, pressing Action ('F') while holding throws it."
 
-[node name="SqueezeTutorialArea" parent="Tutorials" index="5" unique_id=1338313990 instance=ExtResource("25_7xnmx")]
+[node name="SqueezeTutorialArea" parent="Tutorials" index="6" unique_id=1338313990 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2500001, -12.75)
 visible = false
 
@@ -2288,7 +2297,7 @@ shape = SubResource("BoxShape3D_p73ma")
 [node name="PopupForArea" parent="Tutorials/SqueezeTutorialArea" index="1" unique_id=1273100879 instance=ExtResource("25_m6f5b")]
 popupText = "Hold 'E' to squeeze through tight spaces or shimmy along narrow ledges"
 
-[node name="CrouchCrawlTutorialArea" parent="Tutorials" index="6" unique_id=1217829533 instance=ExtResource("25_7xnmx")]
+[node name="CrouchCrawlTutorialArea" parent="Tutorials" index="7" unique_id=1217829533 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.383949, 0, -4.1287465)
 visible = false
 
@@ -2298,17 +2307,6 @@ shape = SubResource("BoxShape3D_nsepa")
 
 [node name="PopupForArea" parent="Tutorials/CrouchCrawlTutorialArea" index="1" unique_id=589731623 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Ctrl' to crouch. Press again to crawl."
-
-[node name="JumpTutorialArea" parent="Tutorials" index="7" unique_id=957011598 instance=ExtResource("25_7xnmx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3.25)
-visible = false
-
-[node name="RectCollider" parent="Tutorials/JumpTutorialArea" index="0" unique_id=1477332365 instance=ExtResource("6_py2y4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.75, -1)
-shape = SubResource("BoxShape3D_rllb5")
-
-[node name="PopupForArea" parent="Tutorials/JumpTutorialArea" index="1" unique_id=1612662540 instance=ExtResource("25_m6f5b")]
-popupText = "Press 'Space' to jump, climb up onto small ledges, or stop performing certain actions."
 
 [node name="TooNarrowTutorialArea" parent="Tutorials" index="8" unique_id=590285840 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 1, 16.25)

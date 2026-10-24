@@ -4,6 +4,7 @@
 	- This lets us raise base light level while letting some areas be extra dark and some extra bright. Default should be midrange
 	- Sub-rooms shouldn't affect it. only parent room sets ambient level
 - refactor player behaviors into own scripts
+- player start location object. optional way to set player position and orientation on level start.
 - rope climbing
 - color grade textures and lighting
 - dial in climbup min/max height
