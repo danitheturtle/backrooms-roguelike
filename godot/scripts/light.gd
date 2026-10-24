@@ -7,10 +7,10 @@ class_name Light
 
 @export var primaryEnabled: bool = true: set = set_primary_enabled
 @export var bounceEnabled: bool = true: set = set_bounce_enabled
-@export var randomDynamics: bool = false: set = set_random_dynamics
-@export_color_no_alpha var lightColor: Color = Color.from_ok_hsl(0.3,0.89,0.92,1.0): set = set_light_color
-@export_color_no_alpha var bounceColor: Color = Color.from_ok_hsl(0.2889,0.89,0.92): set = set_bounce_color
+@export_color_no_alpha var lightColor: Color = Const.YELLOW_LIGHT_DEFAULT: set = set_light_color
+@export_color_no_alpha var bounceColor: Color = Const.YELLOW_LIGHT_DEFAULT_BOUNCE: set = set_bounce_color
 @export_range(0.1, 10.0, 0.1) var intensity: float = 4.0: set = set_intensity
+@export_range(3.0,20.0,0.5) var lightRange: float = 7.5: set = set_light_range
 @export var lightOn: bool = true: set = set_light_on
 
 @onready var lightMesh: MeshInstance3D = $Mesh
@@ -25,7 +25,6 @@ func _ready() -> void:
     if bounce == null: bounceEnabled = false
     set_primary_enabled(primaryEnabled)
     set_bounce_enabled(bounceEnabled)
-    set_random_dynamics(randomDynamics)
     set_light_color(lightColor)
     set_bounce_color(bounceColor)
     set_light_on(lightOn)
@@ -103,5 +102,5 @@ func set_intensity(newValue: float) -> void:
     else:
         lightMesh.material_override = onMaterial
 
-func set_random_dynamics(newValue: bool) -> void:
-    randomDynamics = newValue
+func set_light_range(newValue: float) -> void:
+    lightRange = newValue

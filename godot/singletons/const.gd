@@ -40,8 +40,15 @@ enum GameplayPropType {
     RED_ALMOND_WATER
 }
 
-# Yellow Light Color LUT
-const YellowLightColor = {
-    default = { main = Color(241,239,125,1), bounce = Color() },
-    
+# Yellow Light Color OKHSL value ranges
+const YellowLight = {
+    HUE_LOWER = 0.2889,
+    HUE_UPPER = 0.3083,
+    SATURATION_LOWER = 0.64,
+    SATURATION_UPPER = 0.93,
+    LIGHTNESS_LOWER = 0.74,
+    LIGHTNESS_UPPER = 0.96,
 }
+# const colors cannot be defined via OKHSL
+const YELLOW_LIGHT_DEFAULT = Color(0.945, 0.938, 0.49, 1.0)
+const YELLOW_LIGHT_DEFAULT_BOUNCE = Color(0.966, 0.929, 0.516, 1.0)
