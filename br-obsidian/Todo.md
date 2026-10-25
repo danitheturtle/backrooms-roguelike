@@ -3,15 +3,13 @@
 - ramp ambient light power depending on distance inside room boundary. Each room gets its own bespoke level calculated based on number of lights turned on.
 	- This lets us raise base light level while letting some areas be extra dark and some extra bright. Default should be midrange
 	- Sub-rooms shouldn't affect it. only parent room sets ambient level
-- refactor player behaviors into own scripts
 - player start location object. optional way to set player position and orientation on level start.
 - rope climbing
-- color grade textures and lighting
-- dial in climbup min/max height
 - save slot delete, rename, sort by save time
 - flashlight texture projection with 2 hard circles, one to simulate bounce light? hopefully it won't look shit
 - parent/child relationship for connections so only one of them generates the edges (and also doors when we get there)
 - navmesh + runtime generation for connections
+- throw rugs as cover for carpet seams
 - tutorial updates
 	- can't jump while climbing anymore
 	- can still vault while climbing (bad)
@@ -26,18 +24,3 @@
 Tutorial Layout Updates:
 - Add object placement puzzle to final room
 - make final room less boxy
-
-Controls changes:
-- Put Crouch/Stand on toggle, hold to dip into crawl
-- sprint toggle. stopping movement toggles off
-- when squeezing, prevent player from falling off ledge
-- Use raycast for target instead of the shapecast. ensure pickup is responsive by updating mouse inupts
-- pick up on mousedown. if held, rotate immediately. stop rotate on mouseup
-- if rotation delta > n, don't drop even if timer expired
-
-- vaulting is buggy
-- spring arm collider to big on some objects, makes precision placement odd. Maybe add full collision for the held object?
-- make highlight distance shorter than drag distance
-- ladder closes too quickly after releasing f
-- ladder path needs adjusted
-- throw rugs as cover for carpet seams

@@ -7,14 +7,28 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_5q0ne"]
 resource_local_to_scene = true
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_71u5h"]
+resource_local_to_scene = true
+size = Vector2(1, 1)
+orientation = 0
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_jj36u"]
 resource_local_to_scene = true
 size = Vector2(1, 1)
 orientation = 0
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_io7lg"]
+resource_local_to_scene = true
+size = Vector2(1, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_sexhm"]
 resource_local_to_scene = true
 size = Vector2(1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wscvv"]
+resource_local_to_scene = true
+size = Vector2(1, 1)
+orientation = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jnggj"]
 resource_local_to_scene = true
@@ -46,7 +60,7 @@ shape = SubResource("BoxShape3D_5q0ne")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.5, 0, 0)
 layers = 4
 material_override = ExtResource("3_71u5h")
-mesh = SubResource("PlaneMesh_jj36u")
+mesh = SubResource("PlaneMesh_71u5h")
 
 [node name="MeshXPos" type="MeshInstance3D" parent="." index="2" unique_id=1811081783]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
@@ -60,7 +74,7 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -
 visible = false
 layers = 4
 material_override = ExtResource("3_71u5h")
-mesh = SubResource("PlaneMesh_sexhm")
+mesh = SubResource("PlaneMesh_io7lg")
 
 [node name="MeshYPos" type="MeshInstance3D" parent="." index="4" unique_id=1955971628]
 process_mode = 4
@@ -74,7 +88,7 @@ mesh = SubResource("PlaneMesh_sexhm")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.5)
 layers = 4
 material_override = ExtResource("3_71u5h")
-mesh = SubResource("PlaneMesh_jnggj")
+mesh = SubResource("PlaneMesh_wscvv")
 
 [node name="MeshZPos" type="MeshInstance3D" parent="." index="6" unique_id=764429269]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)

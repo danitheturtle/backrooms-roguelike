@@ -11,6 +11,7 @@ class_name Light
 @export_color_no_alpha var bounceColor: Color = Const.YELLOW_LIGHT_DEFAULT_BOUNCE: set = set_bounce_color
 @export_range(0.1, 10.0, 0.1) var intensity: float = 4.0: set = set_intensity
 @export_range(3.0,20.0,0.5) var lightRange: float = 7.5: set = set_light_range
+@export_range(10.0,100.0,1.0) var fadeDistance: float = 25.0: set = set_fade_distance
 @export var lightOn: bool = true: set = set_light_on
 
 @onready var lightMesh: MeshInstance3D = $Mesh
@@ -27,8 +28,10 @@ func _ready() -> void:
     set_bounce_enabled(bounceEnabled)
     set_light_color(lightColor)
     set_bounce_color(bounceColor)
-    set_light_on(lightOn)
     set_intensity(intensity)
+    set_light_range(lightRange)
+    set_fade_distance(fadeDistance)
+    set_light_on(lightOn)
     if !Engine.is_editor_hint():
         if !primaryEnabled: primary.queue_free()
         if !bounceEnabled: bounce.queue_free()
@@ -104,3 +107,19 @@ func set_intensity(newValue: float) -> void:
 
 func set_light_range(newValue: float) -> void:
     lightRange = newValue
+    if primary == null: return
+    if bounce == null: return
+    if primary is SpotLight3D:
+        primary.spot_range = newValue
+    if bounce is OmniLight3D:
+        bounce.omni_range = newValue * 1.2
+
+func set_fade_distance(newValue: float) -> void:
+    fadeDistance = newValue
+    if primary == null: return
+    if bounce == null: return
+    primary.distance_fade_begin = newValue
+    primary.distance_fade_shadow = newValue
+    bounce.distance_fade_begin = newValue
+    bounce.distance_fade_shadow = newValue
+    

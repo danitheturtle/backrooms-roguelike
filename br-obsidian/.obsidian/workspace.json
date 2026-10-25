@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Technical/Building a room.md",
+                "file": "Decoration/Yellow Light Color.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Building a room"
+              "title": "Yellow Light Color"
             }
           }
         ]
@@ -190,17 +190,19 @@
   },
   "active": "46516998497d2586",
   "lastOpenFiles": [
+    "Today.md",
     "Todo.md",
+    "Decoration/Deco Ideas.md",
+    "Mechanics/Upgrades.md",
+    "Technical/Room Constraints.md",
+    "Technical/Building a room.md",
+    "Technical/Generation Constraints.md",
     "What Not To Do.md",
     "Decoration/Yellow Light Color.md",
     "Mechanics/Player Movement.md",
-    "Decoration/Deco Ideas.md",
     "Mechanics/Camera Scoring.md",
-    "Today.md",
     "Playtest Notes.md",
     "Technical/Room Definition API Docs.md",
-    "Technical/Building a room.md",
-    "Mechanics/Upgrades.md",
     "Mechanics/Mechanic Brainstorm.md",
     "Mechanics/Exits.md",
     "Decoration/Foot Clingers.md",
@@ -208,9 +210,7 @@
     "Design Pillars.md",
     "Name Ideas.md",
     "Mechanics/Puzzles/The Fungus.md",
-    "Technical/Generation Constraints.md",
     "Technical/Bugs.md",
-    "Technical/Room Constraints.md",
     "Mechanics/Tools/Oxygen Tank.md",
     "Mechanics/Puzzles Overview.md",
     "Mechanics/Tools/Oxygen Mask.md",

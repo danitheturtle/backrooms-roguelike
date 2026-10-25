@@ -4,3 +4,5 @@
 	- Digital camera timer, which lets the player set the camera down so it goes off on a delay. Only available for digital camera, and is used to attract entities
 - Oxygen Mask
 	- bigger tanks
+- EMF gun / shield
+	- prevents The Creator from consuming digital data in an area, or disperses hungry entities? very very late game
