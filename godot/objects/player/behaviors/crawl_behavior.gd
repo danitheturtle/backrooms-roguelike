@@ -19,4 +19,4 @@ func start_action() -> void:
     p.photographing = false
     active = true
 func process_action(_delta: float) -> void: pass
-func end_action() -> void: pass
+func stop_action() -> void: pass

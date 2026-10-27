@@ -35,4 +35,4 @@ func start_action() -> void:
     p.try_clear_hover_state()
     if tryStandAfterCrouching: p.call_deferred("try_stand")
 func process_action(_delta: float) -> void: pass
-func end_action() -> void: pass
+func stop_action() -> void: pass

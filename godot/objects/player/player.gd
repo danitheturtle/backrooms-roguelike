@@ -7,6 +7,7 @@ const CrouchBehaviorRes = preload("res://objects/player/behaviors/crouch_behavio
 const CrawlBehaviorRes = preload("res://objects/player/behaviors/crawl_behavior.gd")
 const SqueezeBehaviorRes = preload("res://objects/player/behaviors/squeeze_behavior.gd")
 const SprintBehaviorRes = preload("res://objects/player/behaviors/sprint_behavior.gd")
+const ClimbBehaviorRes = preload("res://objects/player/behaviors/climb_behavior.gd")
 
 var behaviors: BehaviorState = BehaviorState.new(self)
 var b: BehaviorState:
@@ -72,13 +73,9 @@ var throwHeldOnNextFrame: bool
 var draggedPoint: Vector3
 # some objects change player controls contextually based on adjacency, eg ladders
 var adjacentRef: Node3D
-# climbing uses path-following
-var climbPath: Path3D
-var climbCurve: Curve3D
 var slideVelocity: float
 
 #state machine
-var climbing: bool
 var photographing: bool
 var grabbing: bool
 var rotating: bool
@@ -105,10 +102,7 @@ func reinit() -> void:
     throwHeldOnNextFrame = false
     draggedPoint = Vector3.ZERO
     adjacentRef = null
-    climbPath = null
-    climbCurve = null
     slideVelocity = 0.0
-    climbing = false
     photographing = false
     grabbing = false
     rotating = false
@@ -152,7 +146,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
     var onFloorThisFrame = is_on_floor()
     if (onFloorThisFrame && !onFloorLastFrame):
-        b.jump.end_action()
+        b.jump.stop_action()
     onFloorLastFrame = onFloorThisFrame
     if (rotating && grabbing && heldObjectRef != null):
         # rotate held object
@@ -167,7 +161,7 @@ func _physics_process(_delta: float) -> void:
         if (mouseCaptured):
             cameraMoveDir = Vector2.ZERO
     if !b.vault.active:
-        if !climbing:
+        if !b.climb.active:
             #determine move speed based on state
             var movementSpeed = PLAYER_SPEED
             if (b.sprint.active):
@@ -183,7 +177,7 @@ func _physics_process(_delta: float) -> void:
             if slideVelocity > 0.0:
                 slideVelocity -= SLIDE_DECELERATION * _delta
         else:
-            process_climb(_delta)
+            b.climb.process_action(_delta)
     #handle jump / vault
     if behaviors.jump.justJumped:
         behaviors.jump.justJumped = false
@@ -192,10 +186,12 @@ func _physics_process(_delta: float) -> void:
             if vaultRayCast.get_collider() is not RigidBody3D:
                 b.vault.ledgePoint = vaultRayCast.get_collision_point()
                 b.vault.start_action()
-        if !b.vault.active && onFloorLastFrame:
+        if !b.vault.active && (onFloorLastFrame || b.climb.active):
+            if b.climb.active:
+                b.climb.stop_action()
             b.jump.start_action()
     # some behaviors only happen when not climbing, like gravity and shoving
-    if !climbing && !b.vault.active:
+    if !b.climb.active && !b.vault.active:
         #apply gravity acceleration. apply more strongly if falling
         if (velocity.y >= STRONGER_DOWNWARD_GRAVITY_THRESHOLD):
             velocity += GRAVITY*_delta * GRAVITY_VECTOR
@@ -300,7 +296,7 @@ func handle_stand():
 ### Grabbing / Dragging
 ###
 func can_hold(maxMass: float = 20.0):
-    if (!dragging && !grabbing && !b.jump.active && !b.vault.active && !b.crouch.active && !b.crawl.active && !b.squeeze.active && !b.sprint.active && !climbing && !photographing && onFloorLastFrame):
+    if (!dragging && !grabbing && !b.jump.active && !b.vault.active && !b.crouch.active && !b.crawl.active && !b.squeeze.active && !b.sprint.active && !b.climb.active && !photographing && onFloorLastFrame):
         if (objectInReachRef != null && objectInReachRef.mass > maxMass):
             return false
         else:
@@ -338,34 +334,6 @@ func try_clear_hover_state():
     if objectInReachRef != null:
         objectInReachRef.clear_hover_material()
         objectInReachRef = null
-###
-### CLIMBING
-###
-func can_climb():
-    if (adjacentRef != null && adjacentRef != heldObjectRef && !climbing && !photographing && !dragging && !b.squeeze.active && !b.vault.active):
-        if b.crouch.active: return can_shape_change()
-        return true
-    return false
-func handle_climb():
-    climbPath = adjacentRef.get_node_or_null("ClimbPath")
-    if climbPath != null:
-        climbCurve = climbPath.curve
-        climbing = true
-func process_climb(_delta: float):
-    # climbing behavior based velocity
-    if climbCurve != null && climbPath != null:
-        var playerPosInLocalCurveSpace = climbPath.to_local(global_position)
-        var closestOffset = climbCurve.get_closest_offset(playerPosInLocalCurveSpace)
-        # adjust offset based on direction clamped to up/down
-        closestOffset -= moveDir.y * CLIMB_SPEED
-        # I don't know why the z axis needs reversed and at this point I'm too afraid to ask
-        var nearestPoint = climbPath.global_position + climbCurve.sample_baked(closestOffset) * Basis(climbPath.global_basis.x, climbPath.global_basis.y, -climbPath.global_basis.z)
-        # get required velocity to keep player at new location
-        velocity = nearestPoint - global_position
-func stop_climb():
-    climbing = false
-    climbPath = null
-    climbCurve = null
 
 ###
 ### THROWING
@@ -428,8 +396,8 @@ func handle_key_input(event: InputEvent ) -> void:
             b.crouch.start_action()
         elif (b.crouch.active && can_stand()):
             handle_stand()
-        elif (can_climb() && !Input.is_action_pressed("sprint")):
-            handle_climb()
+        elif (!b.climb.active && b.climb.can_act() && !Input.is_action_pressed("sprint")):
+            b.climb.start_action()
         elif (b.jump.can_act() || b.vault.can_act()):
             b.jump.justJumped = true
         eventHandled = true
@@ -476,8 +444,8 @@ func handle_key_input(event: InputEvent ) -> void:
             heldObjectRef.on_rotate_stop()
         interactTimerFinished = false
     elif (event.is_action_pressed("sprint")):
-        if (climbing):
-            stop_climb()
+        if (b.climb.active):
+            b.climb.stop_action()
         if (!b.sprint.active && b.sprint.can_act()):
             handle_stand()
             b.sprint.start_action()
@@ -572,6 +540,7 @@ class BehaviorState:
     var crawl: CrawlBehavior
     var squeeze: SqueezeBehavior
     var sprint: SprintBehavior
+    var climb: ClimbBehavior
     func _init(_player: Player) -> void:
         jump = JumpBehaviorRes.new(_player)
         vault = VaultBehaviorRes.new(_player)
@@ -579,5 +548,6 @@ class BehaviorState:
         crawl = CrawlBehaviorRes.new(_player)
         squeeze = SqueezeBehaviorRes.new(_player)
         sprint = SprintBehaviorRes.new(_player)
+        climb = ClimbBehaviorRes.new(_player)
     func all() -> Array[PlayerBehavior]:
-        return [jump, vault, crouch, crawl, squeeze, sprint]
+        return [jump, vault, crouch, crawl, squeeze, sprint, climb]

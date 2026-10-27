@@ -10,7 +10,7 @@ func reinit() -> void:
     ledgePoint = Vector3.ZERO
 
 func can_act() -> bool:
-    return !active && !p.b.crouch.active && !p.b.crawl.active && !p.climbing && !p.b.squeeze.active && !p.photographing && !p.grabbing && !p.dragging
+    return !active && !p.b.crouch.active && !p.b.crawl.active && !p.b.climb.active && !p.b.squeeze.active && !p.photographing && !p.grabbing && !p.dragging
 func start_action():
     if ledgePoint == Vector3.ZERO: return
     var spaceState = p.get_world_3d().direct_space_state
@@ -46,9 +46,9 @@ func start_action():
     tween.set_ease(Tween.EASE_IN_OUT)
     tween.set_trans(Tween.TRANS_SINE)
     tween.tween_method(bezier_move.bind(start, mid, destination + Vector3(0.0, 0.05, 0.0)), 0.0, 1.0, p.VAULT_DURATION)
-    tween.tween_callback(end_action)
+    tween.tween_callback(stop_action)
 func process_action(_delta: float) -> void: pass
-func end_action() -> void:
+func stop_action() -> void:
     active = false
     p.b.jump.active = false
 

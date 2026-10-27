@@ -16,7 +16,7 @@ func reinit() -> void:
 @abstract func can_act() -> bool
 @abstract func start_action() -> void
 @abstract func process_action(_delta: float) -> void
-@abstract func end_action() -> void
+@abstract func stop_action() -> void
 
 #class_name CrouchBehavior
 #extends PlayerBehavior
@@ -24,4 +24,4 @@ func reinit() -> void:
 #func can_act() -> bool: return true
 #func start_action() -> void: pass
 #func process_action(_delta: float) -> void: pass
-#func end_action() -> void: pass
+#func stop_action() -> void: pass

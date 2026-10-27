@@ -2,7 +2,7 @@ class_name SprintBehavior
 extends PlayerBehavior
 
 func can_act() -> bool:
-    if (p.b.squeeze.active || p.b.crawl.active || p.climbing):
+    if (p.b.squeeze.active || p.b.crawl.active || p.b.climb.active):
         return false
     elif (p.b.crouch.active):
         return p.can_stand()
@@ -16,4 +16,4 @@ func start_action() -> void:
         # stop photographing
         p.handle_drop()
 func process_action(_delta: float) -> void: pass
-func end_action() -> void: pass
+func stop_action() -> void: pass
