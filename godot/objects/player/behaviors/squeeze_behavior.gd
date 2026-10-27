@@ -13,7 +13,7 @@ func start_action() -> void:
     p.try_clear_hover_state()
     p.playerShape.radius = p.SQUEEZE_RADIUS
     p.flashlight.position.x = 0
-    p.sprinting = false
+    p.b.sprint.active = false
     active = true
 func process_action(_delta: float) -> void: pass
 func end_action() -> void: pass

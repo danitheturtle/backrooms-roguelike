@@ -36,7 +36,7 @@ func start_action():
         else:
             p.b.crouch.tryStandAfterCrouching = false
             p.b.crouch.start_action()
-    p.sprinting = false
+    p.b.sprint.active = false
     active = true
     p.velocity = Vector3.ZERO
     var destination = ledgePoint - p.global_transform.basis.z * 0.1

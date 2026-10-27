@@ -26,10 +26,10 @@ func start_action() -> void:
     p.roomForStateChangeCollider.position.y = p.standingHeight / 2.0
     p.camera.position.y = p.CROUCH_HEIGHT - p.cameraTopOffset
     p.flashlight.position.y = p.flashlightOffset.y
-    if (p.sprinting):
+    if (p.b.sprint.active):
         # apply slide impulse in direction of sprint
         p.slideVelocity = p.SLIDE_IMPULSE
-        p.sprinting = false
+        p.b.sprint.active = false
     p.b.crawl.active = false
     active = true
     p.try_clear_hover_state()
