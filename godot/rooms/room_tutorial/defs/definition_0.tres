@@ -7,5 +7,5 @@
 script = ExtResource("2_hh7no")
 sceneName = &"tutorial"
 scenePath = "res://rooms/room_tutorial/room_tutorial.tscn"
-approximateBounds = AABB(-4, -1.75, -4, 8, 3.5, 8)
-bounds = Array[AABB]([AABB(-4, -1.75, -4, 8, 3.5, 8)])
+approximateBounds = AABB(-8.25, -8, -5.25, 62.25, 20.25, 99.5)
+bounds = Array[AABB]([AABB(-8.25, -8, -5.25, 62.25, 20.25, 99.5)])
