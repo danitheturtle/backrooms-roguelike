@@ -1,6 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
+const StandBehaviorRes = preload("res://objects/player/behaviors/stand_behavior.gd")
 const JumpBehaviorRes = preload("res://objects/player/behaviors/jump_behavior.gd")
 const VaultBehaviorRes = preload("res://objects/player/behaviors/vault_behavior.gd")
 const CrouchBehaviorRes = preload("res://objects/player/behaviors/crouch_behavior.gd")
@@ -247,34 +248,6 @@ func can_shape_change():
     return detectedCollisions.size() == 0
 
 ###
-### STANDING
-###
-func can_stand():
-    return can_shape_change()
-func try_stand():
-    await get_tree().process_frame
-    await get_tree().process_frame
-    if can_stand(): handle_stand()
-# reset to base collision state
-func handle_stand():
-    if (playerShape.height != standingHeight):
-        playerShape.height = standingHeight
-        playerCollider.position.y = standingHeight / 2.0
-        camera.position.y = standingHeight - cameraTopOffset
-        b.crouch.active = false
-    if (playerShape.radius != standingRadius):
-        playerShape.radius = standingRadius
-        flashlight.position.x = flashlightOffset.x
-        b.squeeze.active = false
-    b.sprint.active = false
-    # find first rigidbody touching anchor, if it exists, and apply hover material
-    for nextBody in grabAnchor.get_overlapping_bodies():
-        if nextBody is RigidBody3D:
-            on_grab_anchor_entered(nextBody)
-            break
-
-
-###
 ### Grabbing / Dragging
 ###
 func can_hold(maxMass: float = 20.0):
@@ -310,7 +283,7 @@ func handle_drop():
     dragging = false
     grabArm.spring_length = grabArmLength
     grabArm.shape.radius = grabArmShapeRadius
-    handle_stand()
+    b.stand.start_action()
 
 func try_clear_hover_state():
     if objectInReachRef != null:
@@ -328,8 +301,8 @@ func handle_throw():
 
 func on_room_for_state_change_body_exited(_body: Node3D):
     if (b.squeeze.active && !Input.is_action_pressed("squeeze")):
-        if (can_stand()):
-            handle_stand()
+        if (b.stand.can_act()):
+            b.stand.start_action()
             if (Input.is_action_pressed("sprint")):
                 b.sprint.start_action()
 
@@ -376,8 +349,8 @@ func handle_key_input(event: InputEvent ) -> void:
         if (b.crawl.active && b.crouch.can_act()):
             b.crouch.tryStandAfterCrouching = true
             b.crouch.start_action()
-        elif (b.crouch.active && can_stand()):
-            handle_stand()
+        elif (b.crouch.active && b.stand.can_act()):
+            b.stand.start_action()
         elif (!b.climb.active && b.climb.can_act() && !Input.is_action_pressed("sprint")):
             b.climb.start_action()
         elif (b.jump.can_act() || b.vault.can_act()):
@@ -394,7 +367,7 @@ func handle_key_input(event: InputEvent ) -> void:
         if (!b.squeeze.active && b.squeeze.can_act()):
             b.squeeze.start_action()
     elif (event.is_action_released("squeeze")):
-        if (b.squeeze.active): try_stand()
+        if (b.squeeze.active): b.stand.try_action()
     elif (event.is_action_pressed("action")):
         actionTimer.start()
         if ((grabbing || dragging) && heldObjectRef != null):
@@ -429,11 +402,11 @@ func handle_key_input(event: InputEvent ) -> void:
         if (b.climb.active):
             b.climb.stop_action()
         if (!b.sprint.active && b.sprint.can_act()):
-            handle_stand()
+            b.stand.start_action()
             b.sprint.start_action()
     elif (event.is_action_released("sprint")):
         if (b.sprint.active):
-            handle_stand()
+            b.stand.start_action()
     elif (event.is_action_pressed("forward")):
         moveDir = Vector2(moveDir.x, -1)
         eventHandled = true
@@ -516,6 +489,7 @@ func capture_mouse() -> void:
     mouseCaptured = true
 
 class BehaviorState:
+    var stand: StandBehavior
     var jump: JumpBehavior
     var vault: VaultBehavior
     var crouch: CrouchBehavior
@@ -525,6 +499,7 @@ class BehaviorState:
     var climb: ClimbBehavior
     var stairstep: StairstepBehavior
     func _init(_player: Player) -> void:
+        stand = StandBehaviorRes.new(_player)
         jump = JumpBehaviorRes.new(_player)
         vault = VaultBehaviorRes.new(_player)
         crouch = CrouchBehaviorRes.new(_player)
@@ -534,4 +509,4 @@ class BehaviorState:
         climb = ClimbBehaviorRes.new(_player)
         stairstep = StairstepBehaviorRes.new(_player)
     func all() -> Array[PlayerBehavior]:
-        return [jump, vault, crouch, crawl, squeeze, sprint, climb, stairstep]
+        return [stand, jump, vault, crouch, crawl, squeeze, sprint, climb, stairstep]
