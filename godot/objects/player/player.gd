@@ -5,6 +5,7 @@ const JumpBehaviorRes = preload("res://objects/player/behaviors/jump_behavior.gd
 const VaultBehaviorRes = preload("res://objects/player/behaviors/vault_behavior.gd")
 const CrouchBehaviorRes = preload("res://objects/player/behaviors/crouch_behavior.gd")
 const CrawlBehaviorRes = preload("res://objects/player/behaviors/crawl_behavior.gd")
+const SqueezeBehaviorRes = preload("res://objects/player/behaviors/squeeze_behavior.gd")
 
 
 var behaviors: BehaviorState = BehaviorState.new(self)
@@ -79,7 +80,6 @@ var slideVelocity: float
 #state machine
 var sprinting: bool
 var climbing: bool
-var squeezing: bool
 var photographing: bool
 var grabbing: bool
 var rotating: bool
@@ -111,7 +111,6 @@ func reinit() -> void:
     slideVelocity = 0.0
     sprinting = false
     climbing = false
-    squeezing = false
     photographing = false
     grabbing = false
     rotating = false
@@ -175,7 +174,7 @@ func _physics_process(_delta: float) -> void:
             var movementSpeed = PLAYER_SPEED
             if (sprinting):
                 movementSpeed = SPRINT_SPEED
-            elif (b.crouch.active || photographing || squeezing || dragging):
+            elif (b.crouch.active || photographing || b.squeeze.active || dragging):
                 movementSpeed = SLOWED_SPEED
             elif (grabbing):
                 movementSpeed = GRAB_SPEED
@@ -248,11 +247,15 @@ func _unhandled_input(event: InputEvent) -> void:
     else:
         handle_key_input(event)
 
+func can_shape_change():
+    var detectedCollisions: Array[Node3D] = roomForStateChangeArea.get_overlapping_bodies()
+    return detectedCollisions.size() == 0
+
 ###
 ### STAIR STEPPING
 ###
 func process_stairs(_delta: float):
-    if !b.vault.active && !b.jump.active && !b.crawl.active && !squeezing && velocity.y <= 0 && velocity.length_squared() > 0.05:
+    if !b.vault.active && !b.jump.active && !b.crawl.active && !b.squeeze.active && velocity.y <= 0 && velocity.length_squared() > 0.05:
         stairSolver.rotation.y = atan2(-moveDir.x, -moveDir.y)
         var expectedPositionDelta = velocity * (0.4 if !b.crouch.active else 0.6) * _delta
         var collisionCastVector = Vector3(0,MAX_STEP_HEIGHT*1.5, 0)
@@ -267,34 +270,11 @@ func process_stairs(_delta: float):
                     if stairRayCast.get_collision_normal().dot(Vector3.UP) < 0.1:
                         global_position = nextPosCollisionCastStart.origin + collisionResult.get_travel() + Vector3(0,0.02,0)
 
-func can_shape_change():
-    var detectedCollisions: Array[Node3D] = roomForStateChangeArea.get_overlapping_bodies()
-    return detectedCollisions.size() == 0
-
-
-###
-### SQUEEZING
-###
-func can_squeeze():
-    if (!b.crawl.active && !b.vault.active && !b.crouch.active && !climbing && !dragging && !grabbing):
-        return onFloorLastFrame
-    elif (b.crouch.active):
-        return can_stand()
-    else:
-        return false
-func handle_squeeze():
-    handle_stand()
-    try_clear_hover_state()
-    playerShape.radius = SQUEEZE_RADIUS
-    flashlight.position.x = 0
-    sprinting = false
-    squeezing = true
-
 ###
 ### sprinting
 ###
 func can_sprint():
-    if (squeezing || b.crawl.active || climbing):
+    if (b.squeeze.active || b.crawl.active || climbing):
         return false
     elif (b.crouch.active):
         return can_stand()
@@ -327,7 +307,7 @@ func handle_stand():
     if (playerShape.radius != standingRadius):
         playerShape.radius = standingRadius
         flashlight.position.x = flashlightOffset.x
-        squeezing = false
+        b.squeeze.active = false
     sprinting = false
     # find first rigidbody touching anchor, if it exists, and apply hover material
     for nextBody in grabAnchor.get_overlapping_bodies():
@@ -340,7 +320,7 @@ func handle_stand():
 ### Grabbing / Dragging
 ###
 func can_hold(maxMass: float = 20.0):
-    if (!dragging && !grabbing && !b.jump.active && !b.vault.active && !b.crouch.active && !b.crawl.active && !squeezing && !sprinting && !climbing && !photographing && onFloorLastFrame):
+    if (!dragging && !grabbing && !b.jump.active && !b.vault.active && !b.crouch.active && !b.crawl.active && !b.squeeze.active && !sprinting && !climbing && !photographing && onFloorLastFrame):
         if (objectInReachRef != null && objectInReachRef.mass > maxMass):
             return false
         else:
@@ -382,7 +362,7 @@ func try_clear_hover_state():
 ### CLIMBING
 ###
 func can_climb():
-    if (adjacentRef != null && adjacentRef != heldObjectRef && !climbing && !photographing && !dragging && !squeezing && !b.vault.active):
+    if (adjacentRef != null && adjacentRef != heldObjectRef && !climbing && !photographing && !dragging && !b.squeeze.active && !b.vault.active):
         if b.crouch.active: return can_shape_change()
         return true
     return false
@@ -417,7 +397,7 @@ func handle_throw():
     handle_drop()
 
 func on_room_for_state_change_body_exited(_body: Node3D):
-    if (squeezing && !Input.is_action_pressed("squeeze")):
+    if (b.squeeze.active && !Input.is_action_pressed("squeeze")):
         if (can_stand()):
             handle_stand()
             if (Input.is_action_pressed("sprint")):
@@ -481,10 +461,10 @@ func handle_key_input(event: InputEvent ) -> void:
             b.crawl.start_action()
         eventHandled = true
     elif (event.is_action_pressed("squeeze")):
-        if (!squeezing && can_squeeze()):
-            handle_squeeze()
+        if (!b.squeeze.active && b.squeeze.can_act()):
+            b.squeeze.start_action()
     elif (event.is_action_released("squeeze")):
-        if (squeezing): try_stand()
+        if (b.squeeze.active): try_stand()
     elif (event.is_action_pressed("action")):
         actionTimer.start()
         if ((grabbing || dragging) && heldObjectRef != null):
@@ -610,10 +590,12 @@ class BehaviorState:
     var vault: VaultBehavior
     var crouch: CrouchBehavior
     var crawl: CrawlBehavior
+    var squeeze: SqueezeBehavior
     func _init(_player: Player) -> void:
         jump = JumpBehaviorRes.new(_player)
         vault = VaultBehaviorRes.new(_player)
         crouch = CrouchBehaviorRes.new(_player)
         crawl = CrawlBehaviorRes.new(_player)
+        squeeze = SqueezeBehaviorRes.new(_player)
     func all() -> Array[PlayerBehavior]:
-        return [jump, vault, crouch, crawl]
+        return [jump, vault, crouch, crawl, squeeze]

@@ -9,7 +9,7 @@ func reinit() -> void:
 
 func can_act() -> bool:
     if (!p.b.crawl.active):
-        return !p.squeezing
+        return !p.b.squeeze.active
     else:
         return p.can_shape_change()
 func start_action() -> void:

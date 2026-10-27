@@ -8,7 +8,7 @@ func reinit() -> void:
     justJumped = false
 
 func can_act() -> bool:
-    return !active && !p.b.vault.active && !p.b.crouch.active && !p.b.crawl.active && !p.squeezing && !p.photographing && (p.onFloorLastFrame || p.climbing)
+    return !active && !p.b.vault.active && !p.b.crouch.active && !p.b.crawl.active && !p.b.squeeze.active && !p.photographing && (p.onFloorLastFrame || p.climbing)
 func start_action() -> void:
     p.try_clear_hover_state()
     p.velocity += Vector3(0,p.JUMP_IMPULSE,0)

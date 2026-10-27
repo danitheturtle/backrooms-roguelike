@@ -10,7 +10,7 @@ func reinit() -> void:
     ledgePoint = Vector3.ZERO
 
 func can_act() -> bool:
-    return !active && !p.b.crouch.active && !p.b.crawl.active && !p.climbing && !p.squeezing && !p.photographing && !p.grabbing && !p.dragging
+    return !active && !p.b.crouch.active && !p.b.crawl.active && !p.climbing && !p.b.squeeze.active && !p.photographing && !p.grabbing && !p.dragging
 func start_action():
     if ledgePoint == Vector3.ZERO: return
     var spaceState = p.get_world_3d().direct_space_state
