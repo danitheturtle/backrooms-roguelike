@@ -10,7 +10,7 @@ func reinit() -> void:
     ledgePoint = Vector3.ZERO
 
 func can_act() -> bool:
-    return !active && !player.crouching && !player.crawling && !player.climbing && !player.squeezing && !player.photographing && !player.grabbing && !player.dragging
+    return !active && !player.b.crouch.active && !player.crawling && !player.climbing && !player.squeezing && !player.photographing && !player.grabbing && !player.dragging
 func start_action():
     if ledgePoint == Vector3.ZERO: return
     var spaceState = player.get_world_3d().direct_space_state
@@ -34,7 +34,8 @@ func start_action():
         if !canCrouchAtDestination.is_empty():
             return
         else:
-            player.handle_crouch()
+            player.b.crouch.tryStandAfterCrouching = false
+            player.b.crouch.start_action()
     player.sprinting = false
     active = true
     player.velocity = Vector3.ZERO

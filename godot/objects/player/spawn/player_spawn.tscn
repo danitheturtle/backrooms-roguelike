@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cc52ng036ju65"]
 
-[ext_resource type="Script" uid="uid://bu8gl33lj7ou7" path="res://objects/player/player_spawn.gd" id="1_hmxb1"]
+[ext_resource type="Script" uid="uid://bu8gl33lj7ou7" path="res://objects/player/spawn/player_spawn.gd" id="1_hmxb1"]
 
 [node name="PlayerSpawn" type="Marker3D" unique_id=1091142161]
 gizmo_extents = 0.5

@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://c0yvxi1qvu685" path="res://objects/furniture/green_chair/green_chair.tscn" id="24_pa5nj"]
 [ext_resource type="PackedScene" uid="uid://c26bvdsf5dkty" path="res://ui/popups/area_for_popup.tscn" id="25_7xnmx"]
 [ext_resource type="PackedScene" uid="uid://bm41jmwi0xr2p" path="res://ui/popups/popup_for_area.tscn" id="25_m6f5b"]
-[ext_resource type="PackedScene" uid="uid://cc52ng036ju65" path="res://objects/player/player_spawn.tscn" id="25_o8cjy"]
+[ext_resource type="PackedScene" uid="uid://cc52ng036ju65" path="res://objects/player/spawn/player_spawn.tscn" id="25_o8cjy"]
 [ext_resource type="PackedScene" uid="uid://b3txy1m8ovq0n" path="res://objects/furniture/green_chair/green_chair_physics.tscn" id="26_iii1t"]
 [ext_resource type="PackedScene" uid="uid://b4wu7kqyskjug" path="res://objects/furniture/sofa_01/sofa_01_physics.tscn" id="27_e7o7i"]
 
