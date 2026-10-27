@@ -13,9 +13,10 @@ func can_act() -> bool:
     else:
         return p.can_shape_change()
 func start_action() -> void:
-    if (p.grabbing || p.dragging || p.photographing):
+    if (p.b.grab.active || p.b.drag.active || p.photographing):
         # stop photographing
-        p.handle_drop()
+        p.b.drag.stop_action()
+        p.b.grab.stop_action()
     # move camera down and set player height to crouched
     p.playerShape.height = p.CROUCH_HEIGHT
     p.playerShape.radius = p.standingRadius

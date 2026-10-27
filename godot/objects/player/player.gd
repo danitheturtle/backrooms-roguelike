@@ -10,6 +10,8 @@ const SqueezeBehaviorRes = preload("res://objects/player/behaviors/squeeze_behav
 const SprintBehaviorRes = preload("res://objects/player/behaviors/sprint_behavior.gd")
 const ClimbBehaviorRes = preload("res://objects/player/behaviors/climb_behavior.gd")
 const StairstepBehaviorRes = preload("res://objects/player/behaviors/stairstep_behavior.gd")
+const DragBehaviorRes = preload("res://objects/player/behaviors/drag_behavior.gd")
+const GrabBehaviorRes = preload("res://objects/player/behaviors/grab_behavior.gd")
 
 var behaviors: BehaviorState = BehaviorState.new(self)
 var b: BehaviorState:
@@ -79,9 +81,7 @@ var slideVelocity: float
 
 #state machine
 var photographing: bool
-var grabbing: bool
 var rotating: bool
-var dragging: bool
 
 # defaults stored at runtime
 var standingHeight: float
@@ -106,9 +106,7 @@ func reinit() -> void:
     adjacentRef = null
     slideVelocity = 0.0
     photographing = false
-    grabbing = false
     rotating = false
-    dragging = false
     global_position = Vector3(0,0,0)
     global_rotation = Vector3(0,0,0)
     flashlight.visible = false
@@ -150,12 +148,12 @@ func _physics_process(_delta: float) -> void:
     if (onFloorThisFrame && !onFloorLastFrame):
         b.jump.stop_action()
     onFloorLastFrame = onFloorThisFrame
-    if (rotating && grabbing && heldObjectRef != null):
+    if (rotating && b.grab.active && heldObjectRef != null):
         # rotate held object
         heldObjectRef.angular_velocity = (-camera.global_basis.y*cameraMoveDir.x + camera.global_basis.x * cameraMoveDir.y) * GameSettings.CameraSensitivity * 100.0
     else:
         var cameraVelocity = -GameSettings.CameraSensitivity
-        if (grabbing || dragging):
+        if (b.grab.active || b.drag.active):
             cameraVelocity *= SLOWED_CAMERA_DAMPING
         if (cameraMoveDir.y < 0 && camera.rotation_degrees.x < 85) || (cameraMoveDir.y > 0 && camera.rotation_degrees.x > -85):
             camera.rotate_x(cameraMoveDir.y * cameraVelocity)
@@ -168,11 +166,11 @@ func _physics_process(_delta: float) -> void:
             var movementSpeed = PLAYER_SPEED
             if (b.sprint.active):
                 movementSpeed = SPRINT_SPEED
-            elif (b.crouch.active || photographing || b.squeeze.active || dragging):
+            elif (b.crouch.active || photographing || b.squeeze.active || b.drag.active):
                 movementSpeed = SLOWED_SPEED
-            elif (grabbing):
+            elif (b.grab.active):
                 movementSpeed = GRAB_SPEED
-            elif (b.crawl.active || dragging):
+            elif (b.crawl.active || b.drag.active):
                 movementSpeed = EXTRA_SLOW_SPEED
             #multiply basis vectors by input direction. preserve vertical velocity
             velocity = Vector3(0,velocity.y,0) + Vector3(basis.x * moveDir.x + basis.z * moveDir.y).limit_length() * (movementSpeed + slideVelocity)
@@ -215,7 +213,7 @@ func _physics_process(_delta: float) -> void:
                 collider.apply_impulse(oppositeCollisionDir * velocityInShoveDir * shoveForce, collision.get_position() - collider.global_position)
     #handle held object
     if heldObjectRef != null:
-        if grabbing:
+        if b.grab.active:
             if throwHeldOnNextFrame:
                 handle_throw()
             else:
@@ -225,9 +223,9 @@ func _physics_process(_delta: float) -> void:
                 var toPos = grabAnchor.global_position
                 heldObjectRef.linear_velocity = (toPos - fromPos) / _delta + velocity
                 heldObjectRef.angular_velocity *= 0.1
-        elif dragging:
+        elif b.drag.active:
             if (global_position - (heldObjectRef.global_position + draggedPoint)).length_squared() > 12.0:
-                handle_drop()
+                b.drag.stop_action()
             else:
                 heldObjectRef.linear_velocity = Vector3(velocity.x, 0.0, velocity.z)
     # climb stairs
@@ -247,44 +245,6 @@ func can_shape_change():
     var detectedCollisions: Array[Node3D] = roomForStateChangeArea.get_overlapping_bodies()
     return detectedCollisions.size() == 0
 
-###
-### Grabbing / Dragging
-###
-func can_hold(maxMass: float = 20.0):
-    if (!dragging && !grabbing && !b.jump.active && !b.vault.active && !b.crouch.active && !b.crawl.active && !b.squeeze.active && !b.sprint.active && !b.climb.active && !photographing && onFloorLastFrame):
-        if (objectInReachRef != null && objectInReachRef.mass > maxMass):
-            return false
-        else:
-            return true
-    else:
-        return false
-func handle_grab():
-    objectInReachRef.on_hold()
-    grabArm.spring_length = objectInReachRef.heldDistance
-    grabArm.shape.radius = objectInReachRef.heldCollisionRadius
-    # causes visual bug as arm rapidly shifts if we don't defer
-    call_deferred("_handle_grab_deferred")
-func _handle_grab_deferred():
-    grabbing = true
-    heldObjectRef = objectInReachRef
-    heldObjectRef.clear_hover_material()
-
-func handle_drag():
-    objectInReachRef.on_hold()
-    draggedPoint = objectInReachRef.to_local(grabAnchor.global_position)
-    heldObjectRef = objectInReachRef
-    heldObjectRef.clear_hover_material()
-    dragging = true
-
-func handle_drop():
-    heldObjectRef.on_drop()
-    heldObjectRef = null
-    grabbing = false
-    dragging = false
-    grabArm.spring_length = grabArmLength
-    grabArm.shape.radius = grabArmShapeRadius
-    b.stand.start_action()
-
 func try_clear_hover_state():
     if objectInReachRef != null:
         objectInReachRef.clear_hover_material()
@@ -297,7 +257,7 @@ func handle_throw():
     heldObjectRef.linear_velocity = (-camera.global_basis.z * heldObjectRef.throwImpulse) + Vector3(0.0, heldObjectRef.throwLobFactor, 0.0)
     heldObjectRef.on_throw()
     throwHeldOnNextFrame = false
-    handle_drop()
+    b.grab.stop_action()
 
 func on_room_for_state_change_body_exited(_body: Node3D):
     if (b.squeeze.active && !Input.is_action_pressed("squeeze")):
@@ -307,7 +267,7 @@ func on_room_for_state_change_body_exited(_body: Node3D):
                 b.sprint.start_action()
 
 func on_grab_anchor_entered(body: Node3D):
-    if (body is Holdable && objectInReachRef != body && can_hold(150.0)):
+    if (body is Holdable && objectInReachRef != body && (b.grab.can_act() || b.drag.can_act())):
         objectInReachRef = body
         objectInReachRef.apply_hover_material()
 
@@ -370,30 +330,31 @@ func handle_key_input(event: InputEvent ) -> void:
         if (b.squeeze.active): b.stand.try_action()
     elif (event.is_action_pressed("action")):
         actionTimer.start()
-        if ((grabbing || dragging) && heldObjectRef != null):
+        if ((b.grab.active || b.drag.active) && heldObjectRef != null):
             heldObjectRef.start_action()
     elif (event.is_action_released("action")):
         actionTimer.stop()
-        if ((grabbing || dragging) && heldObjectRef != null):
+        if ((b.grab.active || b.drag.active) && heldObjectRef != null):
             var playerActionResult = heldObjectRef.finish_action(actionTimerFinished)
-            if !playerActionResult && grabbing:
+            if !playerActionResult && b.grab.active:
                 throwHeldOnNextFrame = true
         elif (!actionTimerFinished):
             flashlight.visible = !flashlight.visible
         actionTimerFinished = false
     elif (event.is_action_pressed("interact")):
         interactTimer.start()
-        if grabbing && heldObjectRef != null:
+        if b.grab.active && heldObjectRef != null:
             rotating = true
             heldObjectRef.on_rotate_start()
     elif (event.is_action_released("interact")):
         interactTimer.stop()
-        if ((grabbing || dragging) && !interactTimerFinished):
-            handle_drop()
-        elif (can_hold(15.0) && objectInReachRef != null):
-            handle_grab()
-        elif (can_hold(150.0) && objectInReachRef != null):
-            handle_drag()
+        if ((b.grab.active || b.drag.active) && !interactTimerFinished):
+            b.drag.stop_action()
+            b.grab.stop_action()
+        elif (b.grab.can_act() && objectInReachRef != null):
+            b.grab.start_action()
+        elif (b.drag.can_act() && objectInReachRef != null):
+            b.drag.start_action()
         rotating = false
         if heldObjectRef != null:
             heldObjectRef.on_rotate_stop()
@@ -498,6 +459,8 @@ class BehaviorState:
     var sprint: SprintBehavior
     var climb: ClimbBehavior
     var stairstep: StairstepBehavior
+    var drag: DragBehavior
+    var grab: GrabBehavior
     func _init(_player: Player) -> void:
         stand = StandBehaviorRes.new(_player)
         jump = JumpBehaviorRes.new(_player)
@@ -508,5 +471,7 @@ class BehaviorState:
         sprint = SprintBehaviorRes.new(_player)
         climb = ClimbBehaviorRes.new(_player)
         stairstep = StairstepBehaviorRes.new(_player)
+        drag = DragBehaviorRes.new(_player)
+        grab = GrabBehaviorRes.new(_player)
     func all() -> Array[PlayerBehavior]:
-        return [stand, jump, vault, crouch, crawl, squeeze, sprint, climb, stairstep]
+        return [stand, jump, vault, crouch, crawl, squeeze, sprint, climb, stairstep, drag]

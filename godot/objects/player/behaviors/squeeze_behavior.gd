@@ -2,7 +2,7 @@ class_name SqueezeBehavior
 extends PlayerBehavior
 
 func can_act() -> bool:
-    if (!p.b.crawl.active && !p.b.vault.active && !p.b.crouch.active && !p.b.climb.active && !p.dragging && !p.grabbing):
+    if (!p.b.crawl.active && !p.b.vault.active && !p.b.crouch.active && !p.b.climb.active && !p.b.drag.active && !p.b.grab.active):
         return p.onFloorLastFrame
     elif (p.b.crouch.active):
         return p.b.stand.can_act()

@@ -11,7 +11,7 @@ func reinit() -> void:
     climbCurve = null
 
 func can_act() -> bool:
-    if (p.adjacentRef != null && p.adjacentRef != p.heldObjectRef && !active && !p.photographing && !p.dragging && !p.b.squeeze.active && !p.b.vault.active):
+    if (p.adjacentRef != null && p.adjacentRef != p.heldObjectRef && !active && !p.photographing && !p.b.drag.active && !p.b.squeeze.active && !p.b.vault.active):
         if p.b.crouch.active: return p.can_shape_change()
         return true
     return false

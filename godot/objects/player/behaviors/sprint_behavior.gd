@@ -12,8 +12,9 @@ func can_act() -> bool:
 func start_action() -> void:
     active = true
     p.try_clear_hover_state()
-    if (p.grabbing || p.dragging || p.photographing):
+    if (p.b.grab.active || p.b.drag.active || p.photographing):
         # stop photographing
+        p.b.drag.stop_action()
         p.handle_drop()
 func process_action(_delta: float) -> void: pass
 func stop_action() -> void: pass
