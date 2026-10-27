@@ -2,6 +2,9 @@
 class_name PlayerBehavior
 
 var player: Player
+var p: Player:
+    get: return player
+
 var active: bool
 
 func _init(_player: Player) -> void:

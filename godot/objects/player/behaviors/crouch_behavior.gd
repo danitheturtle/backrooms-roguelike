@@ -8,31 +8,31 @@ func reinit() -> void:
     tryStandAfterCrouching = false
 
 func can_act() -> bool:
-    if (!player.crawling):
-        return !player.squeezing
+    if (!p.b.crawl.active):
+        return !p.squeezing
     else:
-        return player.can_shape_change()
+        return p.can_shape_change()
 func start_action() -> void:
-    if (player.grabbing || player.dragging || player.photographing):
+    if (p.grabbing || p.dragging || p.photographing):
         # stop photographing
-        player.handle_drop()
+        p.handle_drop()
     # move camera down and set player height to crouched
-    player.playerShape.height = player.CROUCH_HEIGHT
-    player.playerShape.radius = player.standingRadius
-    player.playerCollider.position.y = player.CROUCH_HEIGHT / 2.0
-    player.playerCollider.rotation.z = 0.0
-    player.roomForStateChangeShape.height = player.standingHeight
-    player.roomForStateChangeShape.radius = player.standingRadius
-    player.roomForStateChangeCollider.position.y = player.standingHeight / 2.0
-    player.camera.position.y = player.CROUCH_HEIGHT - player.cameraTopOffset
-    player.flashlight.position.y = player.flashlightOffset.y
-    if (player.sprinting):
+    p.playerShape.height = p.CROUCH_HEIGHT
+    p.playerShape.radius = p.standingRadius
+    p.playerCollider.position.y = p.CROUCH_HEIGHT / 2.0
+    p.playerCollider.rotation.z = 0.0
+    p.roomForStateChangeShape.height = p.standingHeight
+    p.roomForStateChangeShape.radius = p.standingRadius
+    p.roomForStateChangeCollider.position.y = p.standingHeight / 2.0
+    p.camera.position.y = p.CROUCH_HEIGHT - p.cameraTopOffset
+    p.flashlight.position.y = p.flashlightOffset.y
+    if (p.sprinting):
         # apply slide impulse in direction of sprint
-        player.slideVelocity = player.SLIDE_IMPULSE
-        player.sprinting = false
-    player.crawling = false
+        p.slideVelocity = p.SLIDE_IMPULSE
+        p.sprinting = false
+    p.b.crawl.active = false
     active = true
-    player.try_clear_hover_state()
-    if tryStandAfterCrouching: player.call_deferred("try_stand")
+    p.try_clear_hover_state()
+    if tryStandAfterCrouching: p.call_deferred("try_stand")
 func process_action(_delta: float) -> void: pass
 func end_action() -> void: pass

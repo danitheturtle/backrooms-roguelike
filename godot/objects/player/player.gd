@@ -4,9 +4,12 @@ class_name Player
 const JumpBehaviorRes = preload("res://objects/player/behaviors/jump_behavior.gd")
 const VaultBehaviorRes = preload("res://objects/player/behaviors/vault_behavior.gd")
 const CrouchBehaviorRes = preload("res://objects/player/behaviors/crouch_behavior.gd")
+const CrawlBehaviorRes = preload("res://objects/player/behaviors/crawl_behavior.gd")
+
 
 var behaviors: BehaviorState = BehaviorState.new(self)
-var b: BehaviorState = behaviors
+var b: BehaviorState:
+    get: return behaviors
 
 # global constants
 var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -74,7 +77,6 @@ var climbCurve: Curve3D
 var slideVelocity: float
 
 #state machine
-var crawling: bool
 var sprinting: bool
 var climbing: bool
 var squeezing: bool
@@ -107,7 +109,6 @@ func reinit() -> void:
     climbPath = null
     climbCurve = null
     slideVelocity = 0.0
-    crawling = false
     sprinting = false
     climbing = false
     squeezing = false
@@ -178,7 +179,7 @@ func _physics_process(_delta: float) -> void:
                 movementSpeed = SLOWED_SPEED
             elif (grabbing):
                 movementSpeed = GRAB_SPEED
-            elif (crawling || dragging):
+            elif (b.crawl.active || dragging):
                 movementSpeed = EXTRA_SLOW_SPEED
             #multiply basis vectors by input direction. preserve vertical velocity
             velocity = Vector3(0,velocity.y,0) + Vector3(basis.x * moveDir.x + basis.z * moveDir.y).limit_length() * (movementSpeed + slideVelocity)
@@ -251,7 +252,7 @@ func _unhandled_input(event: InputEvent) -> void:
 ### STAIR STEPPING
 ###
 func process_stairs(_delta: float):
-    if !b.vault.active && !b.jump.active && !crawling && !squeezing && velocity.y <= 0 && velocity.length_squared() > 0.05:
+    if !b.vault.active && !b.jump.active && !b.crawl.active && !squeezing && velocity.y <= 0 && velocity.length_squared() > 0.05:
         stairSolver.rotation.y = atan2(-moveDir.x, -moveDir.y)
         var expectedPositionDelta = velocity * (0.4 if !b.crouch.active else 0.6) * _delta
         var collisionCastVector = Vector3(0,MAX_STEP_HEIGHT*1.5, 0)
@@ -270,32 +271,12 @@ func can_shape_change():
     var detectedCollisions: Array[Node3D] = roomForStateChangeArea.get_overlapping_bodies()
     return detectedCollisions.size() == 0
 
-###
-### CRAWLING
-###
-func can_crawl():
-    return b.crouch.active && onFloorLastFrame
-func handle_crawl():
-    # capsule collider can't be shorter than it is wide; rotate on camera axis so its sideways, 
-    # thus maintaining player "width"
-    playerShape.height = standingRadius * 2.0
-    playerShape.radius = CRAWL_HEIGHT / 2.0
-    playerCollider.position.y = CRAWL_HEIGHT / 2.0
-    playerCollider.rotation.z = deg_to_rad(90.0)
-    roomForStateChangeShape.height = CROUCH_HEIGHT
-    roomForStateChangeShape.radius = CRAWL_HEIGHT / 2.0
-    roomForStateChangeCollider.position.y = CROUCH_HEIGHT / 2.0
-    camera.position.y = CRAWL_HEIGHT - cameraTopOffset
-    flashlight.position.y = flashlightOffset.y / 3.0
-    b.crouch.active = false
-    photographing = false
-    crawling = true
 
 ###
 ### SQUEEZING
 ###
 func can_squeeze():
-    if (!crawling && !b.vault.active && !b.crouch.active && !climbing && !dragging && !grabbing):
+    if (!b.crawl.active && !b.vault.active && !b.crouch.active && !climbing && !dragging && !grabbing):
         return onFloorLastFrame
     elif (b.crouch.active):
         return can_stand()
@@ -313,7 +294,7 @@ func handle_squeeze():
 ### sprinting
 ###
 func can_sprint():
-    if (squeezing || crawling || climbing):
+    if (squeezing || b.crawl.active || climbing):
         return false
     elif (b.crouch.active):
         return can_stand()
@@ -359,7 +340,7 @@ func handle_stand():
 ### Grabbing / Dragging
 ###
 func can_hold(maxMass: float = 20.0):
-    if (!dragging && !grabbing && !b.jump.active && !b.vault.active && !b.crouch.active && !crawling && !squeezing && !sprinting && !climbing && !photographing && onFloorLastFrame):
+    if (!dragging && !grabbing && !b.jump.active && !b.vault.active && !b.crouch.active && !b.crawl.active && !squeezing && !sprinting && !climbing && !photographing && onFloorLastFrame):
         if (objectInReachRef != null && objectInReachRef.mass > maxMass):
             return false
         else:
@@ -482,7 +463,7 @@ func handle_mouse_input(event: InputEventMouseMotion) -> void:
 func handle_key_input(event: InputEvent ) -> void:
     var eventHandled: bool = false
     if (event.is_action_pressed("jump")):
-        if (crawling && b.crouch.can_act()):
+        if (b.crawl.active && b.crouch.can_act()):
             b.crouch.tryStandAfterCrouching = true
             b.crouch.start_action()
         elif (b.crouch.active && can_stand()):
@@ -496,8 +477,8 @@ func handle_key_input(event: InputEvent ) -> void:
         if (!b.crouch.active && b.crouch.can_act()):
             b.crouch.tryStandAfterCrouching = false
             b.crouch.start_action()
-        elif (b.crouch.active && can_crawl()):
-            handle_crawl()
+        elif (b.crouch.active && b.crawl.can_act()):
+            b.crawl.start_action()
         eventHandled = true
     elif (event.is_action_pressed("squeeze")):
         if (!squeezing && can_squeeze()):
@@ -568,7 +549,7 @@ func handle_key_input(event: InputEvent ) -> void:
         moveDir = Vector2(-1.0 if Input.is_action_pressed("left") else 0.0, moveDir.y)
         eventHandled = true
     moveDir = moveDir.normalized()
-    if crawling: moveDir.x = moveDir.x * 0.1
+    if b.crawl.active: moveDir.x = moveDir.x * 0.1
     
     # cursor capture. lets player get mouse back to interact with UI
     if (event.is_action_pressed("capture_cursor") && !mouseCaptured):
@@ -628,9 +609,11 @@ class BehaviorState:
     var jump: JumpBehavior
     var vault: VaultBehavior
     var crouch: CrouchBehavior
+    var crawl: CrawlBehavior
     func _init(_player: Player) -> void:
         jump = JumpBehaviorRes.new(_player)
         vault = VaultBehaviorRes.new(_player)
         crouch = CrouchBehaviorRes.new(_player)
+        crawl = CrawlBehaviorRes.new(_player)
     func all() -> Array[PlayerBehavior]:
-        return [jump, vault, crouch]
+        return [jump, vault, crouch, crawl]

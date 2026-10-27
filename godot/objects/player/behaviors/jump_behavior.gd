@@ -8,14 +8,14 @@ func reinit() -> void:
     justJumped = false
 
 func can_act() -> bool:
-    return !active && !player.b.vault.active && !player.b.crouch.active && !player.crawling && !player.squeezing && !player.photographing && (player.onFloorLastFrame || player.climbing)
+    return !active && !p.b.vault.active && !p.b.crouch.active && !p.b.crawl.active && !p.squeezing && !p.photographing && (p.onFloorLastFrame || p.climbing)
 func start_action() -> void:
-    player.try_clear_hover_state()
-    player.velocity += Vector3(0,player.JUMP_IMPULSE,0)
+    p.try_clear_hover_state()
+    p.velocity += Vector3(0,p.JUMP_IMPULSE,0)
     active = true
-    if player.dragging: player.handle_drop()
-    if player.climbing: player.stop_climb()
+    if p.dragging: p.handle_drop()
+    if p.climbing: p.stop_climb()
 func process_action(_delta: float) -> void: pass
 func end_action() -> void:
     active = false
-    player.b.vault.active = false
+    p.b.vault.active = false
