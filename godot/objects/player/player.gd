@@ -8,6 +8,7 @@ const CrawlBehaviorRes = preload("res://objects/player/behaviors/crawl_behavior.
 const SqueezeBehaviorRes = preload("res://objects/player/behaviors/squeeze_behavior.gd")
 const SprintBehaviorRes = preload("res://objects/player/behaviors/sprint_behavior.gd")
 const ClimbBehaviorRes = preload("res://objects/player/behaviors/climb_behavior.gd")
+const StairstepBehaviorRes = preload("res://objects/player/behaviors/stairstep_behavior.gd")
 
 var behaviors: BehaviorState = BehaviorState.new(self)
 var b: BehaviorState:
@@ -229,7 +230,7 @@ func _physics_process(_delta: float) -> void:
             else:
                 heldObjectRef.linear_velocity = Vector3(velocity.x, 0.0, velocity.z)
     # climb stairs
-    process_stairs(_delta)
+    b.stairstep.process_action(_delta)
     # finally, move and slide
     move_and_slide()
 
@@ -244,25 +245,6 @@ func _unhandled_input(event: InputEvent) -> void:
 func can_shape_change():
     var detectedCollisions: Array[Node3D] = roomForStateChangeArea.get_overlapping_bodies()
     return detectedCollisions.size() == 0
-
-###
-### STAIR STEPPING
-###
-func process_stairs(_delta: float):
-    if !b.vault.active && !b.jump.active && !b.crawl.active && !b.squeeze.active && velocity.y <= 0 && velocity.length_squared() > 0.05:
-        stairSolver.rotation.y = atan2(-moveDir.x, -moveDir.y)
-        var expectedPositionDelta = velocity * (0.4 if !b.crouch.active else 0.6) * _delta
-        var collisionCastVector = Vector3(0,MAX_STEP_HEIGHT*1.5, 0)
-        var nextPosCollisionCastStart = global_transform.translated(expectedPositionDelta + collisionCastVector)
-        var collisionResult = KinematicCollision3D.new()
-        if test_move(nextPosCollisionCastStart, -collisionCastVector, collisionResult):
-            var foundCollider = collisionResult.get_collider()
-            if ((foundCollider is CollisionObject3D || foundCollider is CSGShape3D) \
-                && (foundCollider.get_collision_layer_value(3) || foundCollider.get_collision_layer_value(4))):
-                var castHeightTravelled = ((nextPosCollisionCastStart.origin + collisionResult.get_travel()) - global_position).y
-                if (castHeightTravelled > 0.01 && castHeightTravelled <= MAX_STEP_HEIGHT && (collisionResult.get_position() - global_position).y <= MAX_STEP_HEIGHT):
-                    if stairRayCast.get_collision_normal().dot(Vector3.UP) < 0.1:
-                        global_position = nextPosCollisionCastStart.origin + collisionResult.get_travel() + Vector3(0,0.02,0)
 
 ###
 ### STANDING
@@ -541,6 +523,7 @@ class BehaviorState:
     var squeeze: SqueezeBehavior
     var sprint: SprintBehavior
     var climb: ClimbBehavior
+    var stairstep: StairstepBehavior
     func _init(_player: Player) -> void:
         jump = JumpBehaviorRes.new(_player)
         vault = VaultBehaviorRes.new(_player)
@@ -549,5 +532,6 @@ class BehaviorState:
         squeeze = SqueezeBehaviorRes.new(_player)
         sprint = SprintBehaviorRes.new(_player)
         climb = ClimbBehaviorRes.new(_player)
+        stairstep = StairstepBehaviorRes.new(_player)
     func all() -> Array[PlayerBehavior]:
-        return [jump, vault, crouch, crawl, squeeze, sprint, climb]
+        return [jump, vault, crouch, crawl, squeeze, sprint, climb, stairstep]
