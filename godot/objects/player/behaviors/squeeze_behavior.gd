@@ -5,11 +5,11 @@ func can_act() -> bool:
     if (!p.b.crawl.active && !p.b.vault.active && !p.b.crouch.active && !p.b.climb.active && !p.dragging && !p.grabbing):
         return p.onFloorLastFrame
     elif (p.b.crouch.active):
-        return p.can_stand()
+        return p.b.stand.can_act()
     else:
         return false
 func start_action() -> void:
-    p.handle_stand()
+    p.b.stand.start_action()
     p.try_clear_hover_state()
     p.playerShape.radius = p.SQUEEZE_RADIUS
     p.flashlight.position.x = 0

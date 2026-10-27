@@ -33,6 +33,6 @@ func start_action() -> void:
     p.b.crawl.active = false
     active = true
     p.try_clear_hover_state()
-    if tryStandAfterCrouching: p.call_deferred("try_stand")
+    if tryStandAfterCrouching: p.b.stand.call_deferred("try_action")
 func process_action(_delta: float) -> void: pass
 func stop_action() -> void: pass

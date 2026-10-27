@@ -5,7 +5,7 @@ func can_act() -> bool:
     if (p.b.squeeze.active || p.b.crawl.active || p.b.climb.active):
         return false
     elif (p.b.crouch.active):
-        return p.can_stand()
+        return p.b.stand.can_act()
     elif (!p.b.vault.active):
         return p.onFloorLastFrame
     return false
