@@ -22,6 +22,13 @@ func start_action() -> void:
     p.heldObjectRef = p.objectInReachRef
     p.heldObjectRef.clear_hover_material()
 
+func process_action(_delta: float) -> void:
+    if !active: return
+    if (p.global_position - (p.heldObjectRef.global_position + p.draggedPoint)).length_squared() > 12.0:
+        stop_action()
+    else:
+        p.heldObjectRef.linear_velocity = Vector3(p.velocity.x, 0.0, p.velocity.z)
+
 func stop_action() -> void:
     if !active: return
     active = false

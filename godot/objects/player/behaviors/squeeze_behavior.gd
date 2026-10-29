@@ -13,8 +13,8 @@ func can_act() -> bool:
 
 func start_action() -> void:
     if active: return
-    active = true
     pb.stand.start_action()
+    active = true
     pb.sprint.stop_action()
     p.try_clear_hover_state()
     p.playerShape.radius = p.SQUEEZE_RADIUS

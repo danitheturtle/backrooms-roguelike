@@ -198,17 +198,9 @@ func _physics_process(_delta: float) -> void:
             if throwHeldOnNextFrame:
                 b.throw.start_action()
             else:
-                # account for objects not moved from their default origin
-                var heldObjectOrigin = heldObjectRef.get_node_or_null("GrabOrigin")
-                var fromPos = heldObjectRef.global_position if heldObjectOrigin == null else heldObjectOrigin.global_position
-                var toPos = grabAnchor.global_position
-                heldObjectRef.linear_velocity = (toPos - fromPos) / _delta + velocity
-                heldObjectRef.angular_velocity *= 0.1
+                b.grab.process_action(_delta)
         elif b.drag.active:
-            if (global_position - (heldObjectRef.global_position + draggedPoint)).length_squared() > 12.0:
-                b.drag.stop_action()
-            else:
-                heldObjectRef.linear_velocity = Vector3(velocity.x, 0.0, velocity.z)
+            b.drag.process_action(_delta)
     # climb stairs
     b.stairstep.process_action(_delta)
     # finally, move and slide

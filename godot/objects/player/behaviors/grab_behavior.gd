@@ -25,6 +25,14 @@ func _handle_start_deferred():
     p.heldObjectRef = p.objectInReachRef
     p.heldObjectRef.clear_hover_material()
 
+func process_action(_delta: float) -> void:
+    # account for objects not moved from their default origin
+    var heldObjectOrigin = p.heldObjectRef.get_node_or_null("GrabOrigin")
+    var fromPos = p.heldObjectRef.global_position if heldObjectOrigin == null else p.heldObjectOrigin.global_position
+    var toPos = p.grabAnchor.global_position
+    p.heldObjectRef.linear_velocity = (toPos - fromPos) / _delta + p.velocity
+    p.heldObjectRef.angular_velocity *= 0.1
+
 func stop_action() -> void:
     if !active: return
     active = false
