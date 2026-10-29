@@ -18,4 +18,4 @@ func start_action() -> void:
     pb.sprint.stop_action()
     p.try_clear_hover_state()
     p.playerShape.radius = p.SQUEEZE_RADIUS
-    p.flashlight.position.x = 0
+    pb.flashlight.light.position.x = 0

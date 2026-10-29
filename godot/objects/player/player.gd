@@ -16,6 +16,7 @@ const RotateBehaviorRes = preload("res://objects/player/behaviors/rotate_behavio
 const ThrowBehaviorRes = preload("res://objects/player/behaviors/throw_behavior.gd")
 const FilmCameraBehaviorRes = preload("res://objects/player/behaviors/film_camera_behavior.gd")
 const FlashlightBehaviorRes = preload("res://objects/player/behaviors/flashlight_behavior.gd")
+const ShoveBehaviorRes = preload("res://objects/player/behaviors/shove_behavior.gd")
 
 var behaviors: BehaviorState = BehaviorState.new(self)
 var b: BehaviorState:
@@ -50,7 +51,6 @@ var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vec
 @onready var camera: Camera3D = $Camera
 @onready var playerCollider: CollisionShape3D = $PlayerCollisionShape3D
 @onready var playerShape: CapsuleShape3D = $PlayerCollisionShape3D.shape
-@onready var flashlight: SpotLight3D = $Camera/Flashlight
 @onready var grabArm: SpringArm3D = $Camera/GrabArm
 @onready var grabAnchor: Area3D = $Camera/GrabArm/Anchor
 @onready var roomForStateChangeArea: Area3D = $RoomForStateChangeDetector
@@ -87,7 +87,6 @@ var slideVelocity: float
 var standingHeight: float
 var standingRadius: float
 var cameraTopOffset: float
-var flashlightOffset: Vector3
 var grabArmLength: float
 var grabArmShapeRadius: float
 
@@ -107,11 +106,9 @@ func reinit() -> void:
     slideVelocity = 0.0
     global_position = Vector3(0,0,0)
     global_rotation = Vector3(0,0,0)
-    flashlight.visible = false
     playerShape.height = standingHeight
     playerShape.radius = standingRadius
     camera.position.y = standingHeight - cameraTopOffset
-    flashlight.position = flashlightOffset
     grabArm.spring_length = grabArmLength
     grabArm.shape.radius = grabArmShapeRadius
     actionTimer.stop()
@@ -125,7 +122,6 @@ func _ready() -> void:
     standingHeight = playerShape.height
     standingRadius = playerShape.radius
     cameraTopOffset = playerShape.height - camera.position.y
-    flashlightOffset = flashlight.position
     grabArmLength = grabArm.spring_length
     grabArmShapeRadius = grabArm.shape.radius
     roomForStateChangeArea.body_exited.connect(on_room_for_state_change_body_exited)
@@ -139,8 +135,8 @@ func _ready() -> void:
     interactTimer.wait_time = HELD_INPUT_TIMEOUT
     actionTimer.timeout.connect(on_action_timer_ended)
     interactTimer.timeout.connect(on_interact_timer_ended)
-    reinit()
     for nextBehavior: PlayerBehavior in b.all(): nextBehavior.player_ready()
+    reinit()
 
 func _physics_process(_delta: float) -> void:
     var onFloorThisFrame = is_on_floor()
@@ -195,25 +191,12 @@ func _physics_process(_delta: float) -> void:
             velocity += GRAVITY*_delta * GRAVITY_VECTOR
         else:
             velocity += GRAVITY*STRONGER_GRAVITY_MULTIPLIER*_delta * GRAVITY_VECTOR
-        # shove any rigidbodies
-        for i in get_slide_collision_count():
-            var collision = get_slide_collision(i)
-            var collider = collision.get_collider()
-            if collider is RigidBody3D:
-                var oppositeCollisionDir = -collision.get_normal()
-                oppositeCollisionDir.y = 0
-                var velocityInShoveDir = max(
-                    velocity.dot(oppositeCollisionDir) - collider.linear_velocity.dot(oppositeCollisionDir),
-                    0.0
-                )
-                var massRatio = min(1.0, PLAYER_MASS / collider.mass)
-                var shoveForce = SHOVING_FORCE * massRatio
-                collider.apply_impulse(oppositeCollisionDir * velocityInShoveDir * shoveForce, collision.get_position() - collider.global_position)
+        b.shove.process_action(_delta)
     #handle held object
     if heldObjectRef != null:
         if b.grab.active:
             if throwHeldOnNextFrame:
-                handle_throw()
+                b.throw.start_action()
             else:
                 # account for objects not moved from their default origin
                 var heldObjectOrigin = heldObjectRef.get_node_or_null("GrabOrigin")
@@ -247,15 +230,6 @@ func try_clear_hover_state():
     if objectInReachRef != null:
         objectInReachRef.clear_hover_material()
         objectInReachRef = null
-
-###
-### THROWING
-###
-func handle_throw():
-    heldObjectRef.linear_velocity = (-camera.global_basis.z * heldObjectRef.throwImpulse) + Vector3(0.0, heldObjectRef.throwLobFactor, 0.0)
-    heldObjectRef.on_throw()
-    throwHeldOnNextFrame = false
-    b.grab.stop_action()
 
 func on_room_for_state_change_body_exited(_body: Node3D):
     if (b.squeeze.active && !Input.is_action_pressed("squeeze")):
@@ -337,7 +311,10 @@ func handle_key_input(event: InputEvent ) -> void:
             if !playerActionResult && b.grab.active:
                 throwHeldOnNextFrame = true
         elif (!actionTimerFinished):
-            flashlight.visible = !flashlight.visible
+            if !b.flashlight.active:
+                b.flashlight.start_action()
+            else:
+                b.flashlight.stop_action()
         actionTimerFinished = false
     elif (event.is_action_pressed("interact")):
         interactTimer.start()
@@ -391,7 +368,6 @@ func handle_key_input(event: InputEvent ) -> void:
         eventHandled = true
     moveDir = moveDir.normalized()
     if b.crawl.active: moveDir.x = moveDir.x * 0.1
-    
     # cursor capture. lets player get mouse back to interact with UI
     if (event.is_action_pressed("capture_cursor") && !mouseCaptured):
         capture_mouse()
@@ -460,6 +436,7 @@ class BehaviorState:
     var grab: GrabBehavior
     var rotate: RotateBehavior
     var throw: ThrowBehavior
+    var shove: ShoveBehavior
     var film_camera: FilmCameraBehavior
     var flashlight: FlashlightBehavior
     func _init(_player: Player) -> void:
@@ -476,10 +453,11 @@ class BehaviorState:
         grab = GrabBehaviorRes.new(_player)
         rotate = RotateBehaviorRes.new(_player)
         throw = ThrowBehaviorRes.new(_player)
+        shove = ShoveBehaviorRes.new(_player)
         film_camera = FilmCameraBehaviorRes.new(_player)
         flashlight = FlashlightBehaviorRes.new(_player)
     func all() -> Array[PlayerBehavior]:
-        return [stand, jump, vault, crouch, crawl, squeeze, sprint, climb, stairstep, drag, rotate, throw, film_camera]
+        return [stand, jump, vault, crouch, crawl, squeeze, sprint, climb, stairstep, drag, rotate, throw, shove, film_camera, flashlight]
     func subset(_subset: Array[StringName]) -> Array[PlayerBehavior]:
         if _subset.size() == 0: return all()
         var resultArray: Array[PlayerBehavior] = []

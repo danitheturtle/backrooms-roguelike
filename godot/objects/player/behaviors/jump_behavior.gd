@@ -6,7 +6,7 @@ const mutuallyExclusiveWith: Array[StringName] = [&"drag", &"climb"]
 var justJumped: bool = false
 
 func reinit() -> void:
-    super.reinit()
+    active = false
     justJumped = false
 
 func can_act() -> bool:

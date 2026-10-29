@@ -11,6 +11,7 @@ func can_act() -> bool:
     return p.can_shape_change()
 
 func start_action() -> void:
+    #if active: return
     active = true
     if (p.playerShape.height != p.standingHeight):
         p.playerShape.height = p.standingHeight
@@ -18,7 +19,7 @@ func start_action() -> void:
         p.camera.position.y = p.standingHeight - p.cameraTopOffset
     if (p.playerShape.radius != p.standingRadius):
         p.playerShape.radius = p.standingRadius
-        p.flashlight.position.x = p.flashlightOffset.x
+        pb.flashlight.light.position.x = pb.flashlight.offset.x
     pb.stop(mutuallyExclusiveWith)
     # find first rigidbody touching anchor, if it exists, and apply hover material
     for nextBody in p.grabAnchor.get_overlapping_bodies():

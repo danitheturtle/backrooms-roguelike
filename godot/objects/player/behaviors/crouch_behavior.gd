@@ -28,7 +28,7 @@ func start_action() -> void:
     p.roomForStateChangeShape.radius = p.standingRadius
     p.roomForStateChangeCollider.position.y = p.standingHeight / 2.0
     p.camera.position.y = p.CROUCH_HEIGHT - p.cameraTopOffset
-    p.flashlight.position.y = p.flashlightOffset.y
+    pb.flashlight.light.position.y = pb.flashlight.offset.y
     if (pb.sprint.active):
         # apply slide impulse in direction of sprint
         p.slideVelocity = p.SLIDE_IMPULSE

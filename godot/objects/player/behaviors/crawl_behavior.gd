@@ -17,6 +17,6 @@ func start_action() -> void:
     p.roomForStateChangeShape.radius = p.CRAWL_HEIGHT / 2.0
     p.roomForStateChangeCollider.position.y = p.CROUCH_HEIGHT / 2.0
     p.camera.position.y = p.CRAWL_HEIGHT - p.cameraTopOffset
-    p.flashlight.position.y = p.flashlightOffset.y / 3.0
+    pb.flashlight.light.position.y = pb.flashlight.offset.y / 3.0
     pb.crouch.stop_action()
     pb.film_camera.stop_action()

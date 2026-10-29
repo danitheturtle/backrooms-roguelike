@@ -3,7 +3,7 @@ class_name PlayerBehavior
 
 var player: Player
 var active: bool
-# shorthand props because the state gets checked a lot and is annoying to type
+
 var p: Player:
     get: return player
 var pb: Player.BehaviorState:
@@ -12,8 +12,8 @@ var pb: Player.BehaviorState:
 func _init(_player: Player) -> void:
     player = _player
     active = false
-func reinit() -> void: active = false
 func player_ready() -> void: pass
+func reinit() -> void: active = false
 func can_act() -> bool: return true
 func start_action() -> void:
     if active: return
