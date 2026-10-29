@@ -12,6 +12,7 @@ const ClimbBehaviorRes = preload("res://objects/player/behaviors/climb_behavior.
 const StairstepBehaviorRes = preload("res://objects/player/behaviors/stairstep_behavior.gd")
 const DragBehaviorRes = preload("res://objects/player/behaviors/drag_behavior.gd")
 const GrabBehaviorRes = preload("res://objects/player/behaviors/grab_behavior.gd")
+const RotateBehaviorRes = preload("res://objects/player/behaviors/rotate_behavior.gd")
 
 var behaviors: BehaviorState = BehaviorState.new(self)
 var b: BehaviorState:
@@ -81,7 +82,6 @@ var slideVelocity: float
 
 #state machine
 var photographing: bool
-var rotating: bool
 
 # defaults stored at runtime
 var standingHeight: float
@@ -106,7 +106,6 @@ func reinit() -> void:
     adjacentRef = null
     slideVelocity = 0.0
     photographing = false
-    rotating = false
     global_position = Vector3(0,0,0)
     global_rotation = Vector3(0,0,0)
     flashlight.visible = false
@@ -148,9 +147,8 @@ func _physics_process(_delta: float) -> void:
     if (onFloorThisFrame && !onFloorLastFrame):
         b.jump.stop_action()
     onFloorLastFrame = onFloorThisFrame
-    if (rotating && b.grab.active && heldObjectRef != null):
-        # rotate held object
-        heldObjectRef.angular_velocity = (-camera.global_basis.y*cameraMoveDir.x + camera.global_basis.x * cameraMoveDir.y) * GameSettings.CameraSensitivity * 100.0
+    if (b.rotate.active && b.grab.active && heldObjectRef != null):
+        b.rotate.process_action(_delta)
     else:
         var cameraVelocity = -GameSettings.CameraSensitivity
         if (b.grab.active || b.drag.active):
@@ -343,9 +341,8 @@ func handle_key_input(event: InputEvent ) -> void:
         actionTimerFinished = false
     elif (event.is_action_pressed("interact")):
         interactTimer.start()
-        if b.grab.active && heldObjectRef != null:
-            rotating = true
-            heldObjectRef.on_rotate_start()
+        if b.rotate.can_act():
+            b.rotate.start_action()
     elif (event.is_action_released("interact")):
         interactTimer.stop()
         if ((b.grab.active || b.drag.active) && !interactTimerFinished):
@@ -355,7 +352,7 @@ func handle_key_input(event: InputEvent ) -> void:
             b.grab.start_action()
         elif (b.drag.can_act() && objectInReachRef != null):
             b.drag.start_action()
-        rotating = false
+        b.rotate.stop_action()
         if heldObjectRef != null:
             heldObjectRef.on_rotate_stop()
         interactTimerFinished = false
@@ -461,6 +458,7 @@ class BehaviorState:
     var stairstep: StairstepBehavior
     var drag: DragBehavior
     var grab: GrabBehavior
+    var rotate: RotateBehavior
     func _init(_player: Player) -> void:
         stand = StandBehaviorRes.new(_player)
         jump = JumpBehaviorRes.new(_player)
@@ -473,5 +471,6 @@ class BehaviorState:
         stairstep = StairstepBehaviorRes.new(_player)
         drag = DragBehaviorRes.new(_player)
         grab = GrabBehaviorRes.new(_player)
+        rotate = RotateBehaviorRes.new(_player)
     func all() -> Array[PlayerBehavior]:
-        return [stand, jump, vault, crouch, crawl, squeeze, sprint, climb, stairstep, drag]
+        return [stand, jump, vault, crouch, crawl, squeeze, sprint, climb, stairstep, drag, rotate]
