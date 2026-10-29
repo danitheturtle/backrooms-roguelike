@@ -1,22 +1,24 @@
 class_name CrouchBehavior
 extends PlayerBehavior
 
+const mutuallyExclusiveWith: Array[StringName] = [&"grab", &"drag", &"film_camera"]
+
 var tryStandAfterCrouching: bool
 
 func reinit() -> void:
-    super.reinit()
+    active = false
     tryStandAfterCrouching = false
 
 func can_act() -> bool:
-    if (!p.b.crawl.active):
-        return !p.b.squeeze.active
+    if (!pb.crawl.active):
+        return !pb.squeeze.active
     else:
         return p.can_shape_change()
+
 func start_action() -> void:
-    if (p.b.grab.active || p.b.drag.active || p.photographing):
-        # stop photographing
-        p.b.drag.stop_action()
-        p.b.grab.stop_action()
+    if active: return
+    active = true
+    pb.stop(mutuallyExclusiveWith)
     # move camera down and set player height to crouched
     p.playerShape.height = p.CROUCH_HEIGHT
     p.playerShape.radius = p.standingRadius
@@ -27,13 +29,10 @@ func start_action() -> void:
     p.roomForStateChangeCollider.position.y = p.standingHeight / 2.0
     p.camera.position.y = p.CROUCH_HEIGHT - p.cameraTopOffset
     p.flashlight.position.y = p.flashlightOffset.y
-    if (p.b.sprint.active):
+    if (pb.sprint.active):
         # apply slide impulse in direction of sprint
         p.slideVelocity = p.SLIDE_IMPULSE
-        p.b.sprint.active = false
-    p.b.crawl.active = false
-    active = true
+        pb.sprint.stop_action()
+    pb.crawl.stop_action()
     p.try_clear_hover_state()
-    if tryStandAfterCrouching: p.b.stand.call_deferred("try_action")
-func process_action(_delta: float) -> void: pass
-func stop_action() -> void: pass
+    if tryStandAfterCrouching: pb.stand.call_deferred("try_action")

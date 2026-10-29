@@ -13,6 +13,9 @@ const StairstepBehaviorRes = preload("res://objects/player/behaviors/stairstep_b
 const DragBehaviorRes = preload("res://objects/player/behaviors/drag_behavior.gd")
 const GrabBehaviorRes = preload("res://objects/player/behaviors/grab_behavior.gd")
 const RotateBehaviorRes = preload("res://objects/player/behaviors/rotate_behavior.gd")
+const ThrowBehaviorRes = preload("res://objects/player/behaviors/throw_behavior.gd")
+const FilmCameraBehaviorRes = preload("res://objects/player/behaviors/film_camera_behavior.gd")
+const FlashlightBehaviorRes = preload("res://objects/player/behaviors/flashlight_behavior.gd")
 
 var behaviors: BehaviorState = BehaviorState.new(self)
 var b: BehaviorState:
@@ -80,9 +83,6 @@ var draggedPoint: Vector3
 var adjacentRef: Node3D
 var slideVelocity: float
 
-#state machine
-var photographing: bool
-
 # defaults stored at runtime
 var standingHeight: float
 var standingRadius: float
@@ -105,7 +105,6 @@ func reinit() -> void:
     draggedPoint = Vector3.ZERO
     adjacentRef = null
     slideVelocity = 0.0
-    photographing = false
     global_position = Vector3(0,0,0)
     global_rotation = Vector3(0,0,0)
     flashlight.visible = false
@@ -141,6 +140,7 @@ func _ready() -> void:
     actionTimer.timeout.connect(on_action_timer_ended)
     interactTimer.timeout.connect(on_interact_timer_ended)
     reinit()
+    for nextBehavior: PlayerBehavior in b.all(): nextBehavior.player_ready()
 
 func _physics_process(_delta: float) -> void:
     var onFloorThisFrame = is_on_floor()
@@ -164,7 +164,7 @@ func _physics_process(_delta: float) -> void:
             var movementSpeed = PLAYER_SPEED
             if (b.sprint.active):
                 movementSpeed = SPRINT_SPEED
-            elif (b.crouch.active || photographing || b.squeeze.active || b.drag.active):
+            elif (b.crouch.active || b.film_camera.active || b.squeeze.active || b.drag.active):
                 movementSpeed = SLOWED_SPEED
             elif (b.grab.active):
                 movementSpeed = GRAB_SPEED
@@ -459,6 +459,9 @@ class BehaviorState:
     var drag: DragBehavior
     var grab: GrabBehavior
     var rotate: RotateBehavior
+    var throw: ThrowBehavior
+    var film_camera: FilmCameraBehavior
+    var flashlight: FlashlightBehavior
     func _init(_player: Player) -> void:
         stand = StandBehaviorRes.new(_player)
         jump = JumpBehaviorRes.new(_player)
@@ -472,5 +475,34 @@ class BehaviorState:
         drag = DragBehaviorRes.new(_player)
         grab = GrabBehaviorRes.new(_player)
         rotate = RotateBehaviorRes.new(_player)
+        throw = ThrowBehaviorRes.new(_player)
+        film_camera = FilmCameraBehaviorRes.new(_player)
+        flashlight = FlashlightBehaviorRes.new(_player)
     func all() -> Array[PlayerBehavior]:
-        return [stand, jump, vault, crouch, crawl, squeeze, sprint, climb, stairstep, drag, rotate]
+        return [stand, jump, vault, crouch, crawl, squeeze, sprint, climb, stairstep, drag, rotate, throw, film_camera]
+    func subset(_subset: Array[StringName]) -> Array[PlayerBehavior]:
+        if _subset.size() == 0: return all()
+        var resultArray: Array[PlayerBehavior] = []
+        for nextBehaviorKey: StringName in _subset: resultArray.append(self[nextBehaviorKey])
+        return resultArray
+    func some(_subset: Array[StringName] = []) -> bool:
+        for nextBehavior: PlayerBehavior in subset(_subset):
+            if nextBehavior.active: return true
+        return false
+    func none(_subset: Array[StringName] = []) -> bool:
+        for nextBehavior: PlayerBehavior in subset(_subset):
+            if nextBehavior.active: return false
+        return true
+    func every(_subset: Array[StringName] = []) -> bool:
+        var everyActive = true
+        for nextBehavior: PlayerBehavior in subset(_subset):
+            everyActive = everyActive && nextBehavior.active
+        return everyActive
+    func stop(_subset: Array[StringName] = []) -> void:
+        for nextBehavior: PlayerBehavior in subset(_subset):
+            nextBehavior.stop_action()
+        if _subset.size() == 0: self.stand.start_action()
+    func start(_subset: Array[StringName] = []) -> void:
+        if _subset.size() == 0: return
+        for nextBehavior: PlayerBehavior in subset(_subset):
+            nextBehavior.start_action()

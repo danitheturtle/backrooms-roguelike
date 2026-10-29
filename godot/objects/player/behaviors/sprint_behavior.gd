@@ -1,20 +1,20 @@
 class_name SprintBehavior
 extends PlayerBehavior
 
+const cannotTransitionFrom: Array[StringName] = [&"squeeze", &"crawl", &"climb"]
+const mutuallyExclusiveWith: Array[StringName] = [&"grab", &"drag", &"film_camera"]
+
 func can_act() -> bool:
-    if (p.b.squeeze.active || p.b.crawl.active || p.b.climb.active):
+    if (pb.some(cannotTransitionFrom)):
         return false
-    elif (p.b.crouch.active):
-        return p.b.stand.can_act()
-    elif (!p.b.vault.active):
+    elif (pb.crouch.active):
+        return pb.stand.can_act()
+    elif (!pb.vault.active):
         return p.onFloorLastFrame
     return false
+
 func start_action() -> void:
+    if active: return
     active = true
     p.try_clear_hover_state()
-    if (p.b.grab.active || p.b.drag.active || p.photographing):
-        # stop photographing
-        p.b.drag.stop_action()
-        p.handle_drop()
-func process_action(_delta: float) -> void: pass
-func stop_action() -> void: pass
+    pb.stop(mutuallyExclusiveWith)

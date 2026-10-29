@@ -2,26 +2,23 @@
 class_name PlayerBehavior
 
 var player: Player
+var active: bool
+# shorthand props because the state gets checked a lot and is annoying to type
 var p: Player:
     get: return player
-
-var active: bool
+var pb: Player.BehaviorState:
+    get: return player.behaviors
 
 func _init(_player: Player) -> void:
     player = _player
     active = false
-
-func reinit() -> void:
+func reinit() -> void: active = false
+func player_ready() -> void: pass
+func can_act() -> bool: return true
+func start_action() -> void:
+    if active: return
+    active = true
+func process_action(_delta: float) -> void: pass
+func stop_action() -> void:
+    if !active: return
     active = false
-@abstract func can_act() -> bool
-@abstract func start_action() -> void
-@abstract func process_action(_delta: float) -> void
-@abstract func stop_action() -> void
-
-#class_name CrouchBehavior
-#extends PlayerBehavior
-#
-#func can_act() -> bool: return true
-#func start_action() -> void: pass
-#func process_action(_delta: float) -> void: pass
-#func stop_action() -> void: pass

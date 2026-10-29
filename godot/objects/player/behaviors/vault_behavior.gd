@@ -1,17 +1,21 @@
 class_name VaultBehavior
 extends PlayerBehavior
 
+const cannotTransitionFrom: Array[StringName] = [&"crouch", &"crawl", &"climb", &"squeeze", &"film_camera", &"grab", &"drag"]
+
 var ledgePoint: Vector3
 var justVaulted: bool
 
 func reinit() -> void:
-    super.reinit()
+    active = false
     justVaulted = false
     ledgePoint = Vector3.ZERO
 
 func can_act() -> bool:
-    return !active && !p.b.crouch.active && !p.b.crawl.active && !p.b.climb.active && !p.b.squeeze.active && !p.photographing && !p.b.grab.active && !p.b.drag.active
+    return !active && pb.none(cannotTransitionFrom)
+
 func start_action():
+    if active: return
     if ledgePoint == Vector3.ZERO: return
     var spaceState = p.get_world_3d().direct_space_state
     var standingQuery = PhysicsRayQueryParameters3D.create(
@@ -21,7 +25,6 @@ func start_action():
     )
     standingQuery.exclude = [self]
     var canStandAtDestination = spaceState.intersect_ray(standingQuery)
-    
     var canCrouchAtDestination = false
     if !canStandAtDestination.is_empty():
         var crouchingQuery = PhysicsRayQueryParameters3D.create(
@@ -34,10 +37,10 @@ func start_action():
         if !canCrouchAtDestination.is_empty():
             return
         else:
-            p.b.crouch.tryStandAfterCrouching = false
-            p.b.crouch.start_action()
-    p.b.sprint.active = false
+            pb.crouch.tryStandAfterCrouching = false
+            pb.crouch.start_action()
     active = true
+    pb.sprint.stop_action()
     p.velocity = Vector3.ZERO
     var destination = ledgePoint - p.global_transform.basis.z * 0.1
     var start = p.global_position
@@ -47,10 +50,11 @@ func start_action():
     tween.set_trans(Tween.TRANS_SINE)
     tween.tween_method(bezier_move.bind(start, mid, destination + Vector3(0.0, 0.05, 0.0)), 0.0, 1.0, p.VAULT_DURATION)
     tween.tween_callback(stop_action)
-func process_action(_delta: float) -> void: pass
+
 func stop_action() -> void:
+    if !active: return
     active = false
-    p.b.jump.active = false
+    pb.jump.stop_action()
 
 func bezier_move(t: float, start: Vector3, mid: Vector3, end: Vector3):
     var pA = start.lerp(mid, t)
