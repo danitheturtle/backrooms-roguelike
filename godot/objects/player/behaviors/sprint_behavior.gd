@@ -6,6 +6,7 @@ const cannotTransitionFrom: Array[StringName] = [&"climb", &"vault"]
 const mutuallyExclusiveWith: Array[StringName] = [&"grab", &"drag", &"film_camera"]
 
 func can_act() -> bool:
+    if active: return false
     if (pb.some(cannotTransitionFrom)):
         return false
     elif (pb.some(maybeTransitionFrom)):

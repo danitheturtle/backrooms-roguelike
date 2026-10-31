@@ -38,9 +38,11 @@ func start_action():
 
 func process_action(_delta: float) -> void:
     if !active && unhandledInput:
-        unhandledInput = false
         var testResult: VaultMovementQueryResult = vault_movement_query()
         if testResult == VaultMovementQueryResult.INVALID: return
+        # only consume input if vault is going to happen
+        unhandledInput = false
+        pb.jump.unhandledInput = false
         if testResult == VaultMovementQueryResult.CROUCH:
             pb.crouch.tryStandAfterCrouching = false
             pb.crouch.start_action()

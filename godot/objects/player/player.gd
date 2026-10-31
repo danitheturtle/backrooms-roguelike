@@ -44,7 +44,7 @@ var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vec
 @onready var adjacentDetectorArea: Area3D = $AdjacentDetector
 @onready var actionTimer: Timer = $ActionTimer
 @onready var interactTimer: Timer = $InteractTimer
-@onready var crouchTimer: Timer = $CrouchTimer
+@onready var crawlTimer: Timer = $CrawlTimer
 
 # local state
 var moveDir: Vector2
@@ -53,7 +53,7 @@ var movePriority: Dictionary[StringName, bool]
 var mouseCaptured: bool
 var actionTimerFinished: bool
 var interactTimerFinished: bool
-var crouchTimerFinished: bool
+var crawlTimerFinished: bool
 # tracked via roomForStateChangeArea
 var nearbyBodies: Dictionary[Node3D, bool] = {}
 # holdable object targeted by spring arm (but not picked up)
@@ -79,7 +79,7 @@ func reinit() -> void:
     mouseCaptured = false
     actionTimerFinished = false
     interactTimerFinished = false
-    crouchTimerFinished = false
+    crawlTimerFinished = false
     objectInReachRef = null
     heldObjectRef = null
     throwHeldOnNextFrame = false
@@ -91,7 +91,7 @@ func reinit() -> void:
     grabArm.shape.radius = grabArmShapeRadius
     actionTimer.stop()
     interactTimer.stop()
-    crouchTimer.stop()
+    crawlTimer.stop()
     set_default_positions()
     for nextBehavior: PlayerBehavior in b.all(): nextBehavior.reinit()
     # disable until level_ready
@@ -115,10 +115,10 @@ func _ready() -> void:
     grabAnchor.body_exited.connect(on_grab_anchor_exited)
     actionTimer.wait_time = HELD_INPUT_TIMEOUT
     interactTimer.wait_time = HELD_INPUT_TIMEOUT
-    crouchTimer.wait_time = HELD_INPUT_TIMEOUT
+    crawlTimer.wait_time = HELD_INPUT_TIMEOUT
     actionTimer.timeout.connect(on_action_timer_ended)
     interactTimer.timeout.connect(on_interact_timer_ended)
-    crouchTimer.timeout.connect(on_crouch_crawl_timer_ended)
+    crawlTimer.timeout.connect(on_crawl_timer_ended)
     for nextBehavior: PlayerBehavior in b.all(): nextBehavior.player_ready()
     reinit()
 
@@ -249,7 +249,11 @@ func on_action_timer_ended(): actionTimerFinished = true
 
 func on_interact_timer_ended(): interactTimerFinished = true
 
-func on_crouch_crawl_timer_ended(): crouchTimerFinished = true
+func on_crawl_timer_ended():
+    crawlTimerFinished = true
+    # on long keypress, crawl immediately
+    if b.crawl.can_act():
+        b.crawl.start_action()
 
 func handle_mouse_input(event: InputEventMouseMotion) -> void:
     if mouseCaptured:
@@ -272,30 +276,30 @@ func handle_key_input(event: InputEvent ) -> void:
             b.climb.start_action()
         # vault/jump if possible. one of these actions will happen next; synced to physics
         else:
+            # seperate unhandledInputs because can_act() conditions diverge
             if b.vault.can_act(): b.vault.unhandledInput = true
             if b.jump.can_act(): b.jump.unhandledInput = true
         eventHandled = true
     elif (event.is_action_pressed("crouch")):
-        crouchTimerFinished = false
-        crouchTimer.start()
-        if !b.crawl.active && b.crouch.can_act():
+        crawlTimerFinished = false
+        crawlTimer.start()
+        # always crouch immediately on key press; track previous behavior
+        if b.crouch.can_act():
             b.crouch.tryStandAfterCrouching = false
+            if b.crawl.active:
+                b.crouch.previousBehavior = &"crawl"
+            else:
+                b.crouch.previousBehavior = &"stand"
             b.crouch.start_action()
-            b.crouch.justCrouched = true
         eventHandled = true
     elif (event.is_action_released("crouch")):
-        crouchTimer.stop()
-        if !crouchTimerFinished:
-            if !b.crouch.justCrouched && b.crouch.active && b.stand.can_act():
-                b.stand.start_action()
-        else:
-            if b.crawl.can_act():
-                b.crawl.start_action()
-            elif b.crawl.active && b.crouch.can_act():
-                b.crouch.tryStandAfterCrouching = false
-                b.crouch.start_action()
-        if b.crouch.justCrouched:
-            b.crouch.justCrouched = false
+        crawlTimer.stop()
+        # do nothing if action was captured on pressed
+        if !b.crouch.previousBehavior.is_empty():
+            b.crouch.previousBehavior = &""
+        # stand from crouch if crawl timer did not finish
+        elif !crawlTimerFinished && b.crouch.active && b.stand.can_act():
+            b.stand.start_action()
         eventHandled = true
     elif (event.is_action_pressed("squeeze")):
         if (b.squeeze.can_act()): b.squeeze.start_action()
@@ -339,6 +343,8 @@ func handle_key_input(event: InputEvent ) -> void:
             b.climb.stop_action()
         if (b.sprint.can_act()):
             b.sprint.start_action()
+        elif b.sprint.active:
+            b.sprint.stop_action()
     elif (event.is_action_pressed("forward")):
         moveDir = Vector2(moveDir.x, -1)
         eventHandled = true

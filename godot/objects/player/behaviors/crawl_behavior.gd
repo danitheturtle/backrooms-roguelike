@@ -5,7 +5,8 @@ const cannotTransitionFrom: Array[StringName] = [&"jump", &"vault", &"squeeze", 
 const mutuallyExclusiveWith: Array[StringName] = [&"stand", &"grab", &"drag", &"crouch", &"film_camera"]
 
 func can_act() -> bool:
-    return !active && pb.none(cannotTransitionFrom) && pb.jump.onFloorLastFrame
+    # don't crawl again if crawl just ended in crouching
+    return !active && pb.crouch.active && pb.crouch.previousBehavior != &"crawl" && pb.none(cannotTransitionFrom) && pb.jump.onFloorLastFrame
 
 func start_action() -> void:
     if active: return

@@ -3,13 +3,13 @@ extends PlayerBehavior
 
 const mutuallyExclusiveWith: Array[StringName] = [&"stand", &"squeeze", &"crawl", &"drag", &"film_camera"]
 
-var justCrouched: bool
+var previousBehavior: StringName
 var tryStandAfterCrouching: bool
 var slideVelocity: float
 
 func reinit() -> void:
     active = false
-    justCrouched = false
+    previousBehavior = &""
     tryStandAfterCrouching = false
     slideVelocity = 0.0
 

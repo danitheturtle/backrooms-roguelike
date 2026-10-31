@@ -32,4 +32,11 @@ func process_action(_delta: float) -> void:
     # jump starting is synced to physics instead of called directly
     if unhandledInput && !active && !pb.vault.active && (onFloorLastFrame || pb.climb.active):
         unhandledInput = false
+        pb.vault.unhandledInput = false
         start_action()
+
+func stop_action() -> void:
+    if !active: return
+    active = false
+    unhandledInput = false
+    pb.vault.unhandledInput = false
