@@ -1,24 +1,9 @@
 extends CharacterBody3D
 class_name Player
 
-const StandBehaviorRes = preload("res://objects/player/behaviors/stand_behavior.gd")
-const JumpBehaviorRes = preload("res://objects/player/behaviors/jump_behavior.gd")
-const VaultBehaviorRes = preload("res://objects/player/behaviors/vault_behavior.gd")
-const CrouchBehaviorRes = preload("res://objects/player/behaviors/crouch_behavior.gd")
-const CrawlBehaviorRes = preload("res://objects/player/behaviors/crawl_behavior.gd")
-const SqueezeBehaviorRes = preload("res://objects/player/behaviors/squeeze_behavior.gd")
-const SprintBehaviorRes = preload("res://objects/player/behaviors/sprint_behavior.gd")
-const ClimbBehaviorRes = preload("res://objects/player/behaviors/climb_behavior.gd")
-const StairstepBehaviorRes = preload("res://objects/player/behaviors/stairstep_behavior.gd")
-const DragBehaviorRes = preload("res://objects/player/behaviors/drag_behavior.gd")
-const GrabBehaviorRes = preload("res://objects/player/behaviors/grab_behavior.gd")
-const RotateBehaviorRes = preload("res://objects/player/behaviors/rotate_behavior.gd")
-const ThrowBehaviorRes = preload("res://objects/player/behaviors/throw_behavior.gd")
-const FilmCameraBehaviorRes = preload("res://objects/player/behaviors/film_camera_behavior.gd")
-const FlashlightBehaviorRes = preload("res://objects/player/behaviors/flashlight_behavior.gd")
-const ShoveBehaviorRes = preload("res://objects/player/behaviors/shove_behavior.gd")
+const BehaviorStateRes = preload("res://objects/player/behavior_state.gd")
 
-var behaviors: BehaviorState = BehaviorState.new(self)
+var behaviors: BehaviorState = BehaviorStateRes.new(self)
 var b: BehaviorState:
     get: return behaviors
 
@@ -50,29 +35,27 @@ var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vec
 # child nodes
 @onready var camera: Camera3D = $Camera
 @onready var playerCollider: CollisionShape3D = $PlayerCollisionShape3D
-@onready var playerShape: CapsuleShape3D = $PlayerCollisionShape3D.shape
+@onready var playerShape: Shape3D = playerCollider.shape
 @onready var grabArm: SpringArm3D = $Camera/GrabArm
 @onready var grabAnchor: Area3D = $Camera/GrabArm/Anchor
 @onready var roomForStateChangeArea: Area3D = $RoomForStateChangeDetector
 @onready var roomForStateChangeCollider: CollisionShape3D = $RoomForStateChangeDetector/StateChangeCollisionShape3D
 @onready var roomForStateChangeShape: CapsuleShape3D = roomForStateChangeCollider.shape
-@onready var adjacentArea: Area3D = $AdjacentDetector
-@onready var adjacentCollider: CollisionShape3D = $AdjacentDetector/CollisionShape3D
-@onready var adjacentShape: BoxShape3D = adjacentCollider.shape
+@onready var adjacentDetectorArea: Area3D = $AdjacentDetector
 @onready var actionTimer: Timer = $ActionTimer
 @onready var interactTimer: Timer = $InteractTimer
-@onready var stairSolver: Node3D = $StairSolver
-@onready var stairRayCast: RayCast3D = $StairSolver/DontStepUpSlopesRayCast
-@onready var vaultRayCast: RayCast3D = $VaultSolverRayCast
+@onready var crouchTimer: Timer = $CrouchTimer
 
 # local state
 var moveDir: Vector2
 var cameraMoveDir: Vector2
 var movePriority: Dictionary[StringName, bool]
 var mouseCaptured: bool
-var onFloorLastFrame: bool
 var actionTimerFinished: bool
 var interactTimerFinished: bool
+var crouchTimerFinished: bool
+# tracked via roomForStateChangeArea
+var nearbyBodies: Dictionary[Node3D, bool] = {}
 # holdable object targeted by spring arm (but not picked up)
 var objectInReachRef: Holdable
 # grabbed or dragged
@@ -81,7 +64,6 @@ var throwHeldOnNextFrame: bool
 var draggedPoint: Vector3
 # some objects change player controls contextually based on adjacency, eg ladders
 var adjacentRef: Node3D
-var slideVelocity: float
 
 # defaults stored at runtime
 var standingHeight: float
@@ -95,24 +77,22 @@ func reinit() -> void:
     cameraMoveDir = Vector2(0.0,0.0)
     movePriority = { left = false, right = false, forward = false, backward = false }
     mouseCaptured = false
-    onFloorLastFrame = false
     actionTimerFinished = false
     interactTimerFinished = false
+    crouchTimerFinished = false
     objectInReachRef = null
     heldObjectRef = null
     throwHeldOnNextFrame = false
     draggedPoint = Vector3.ZERO
     adjacentRef = null
-    slideVelocity = 0.0
     global_position = Vector3(0,0,0)
     global_rotation = Vector3(0,0,0)
-    playerShape.height = standingHeight
-    playerShape.radius = standingRadius
-    camera.position.y = standingHeight - cameraTopOffset
     grabArm.spring_length = grabArmLength
     grabArm.shape.radius = grabArmShapeRadius
     actionTimer.stop()
     interactTimer.stop()
+    crouchTimer.stop()
+    set_default_positions()
     for nextBehavior: PlayerBehavior in b.all(): nextBehavior.reinit()
     # disable until level_ready
     process_mode = Node.PROCESS_MODE_DISABLED
@@ -124,28 +104,33 @@ func _ready() -> void:
     cameraTopOffset = playerShape.height - camera.position.y
     grabArmLength = grabArm.spring_length
     grabArmShapeRadius = grabArm.shape.radius
+    # wire up signals
+    roomForStateChangeArea.body_entered.connect(on_room_for_state_change_body_entered)
     roomForStateChangeArea.body_exited.connect(on_room_for_state_change_body_exited)
-    adjacentArea.body_entered.connect(on_adjacent_entered)
-    adjacentArea.body_exited.connect(on_adjacent_exited)
-    adjacentArea.area_entered.connect(on_adjacent_area_entered)
-    adjacentArea.area_exited.connect(on_adjacent_area_exited)
+    adjacentDetectorArea.body_entered.connect(on_adjacent_entered)
+    adjacentDetectorArea.body_exited.connect(on_adjacent_exited)
+    adjacentDetectorArea.area_entered.connect(on_adjacent_area_entered)
+    adjacentDetectorArea.area_exited.connect(on_adjacent_area_exited)
     grabAnchor.body_entered.connect(on_grab_anchor_entered)
     grabAnchor.body_exited.connect(on_grab_anchor_exited)
     actionTimer.wait_time = HELD_INPUT_TIMEOUT
     interactTimer.wait_time = HELD_INPUT_TIMEOUT
+    crouchTimer.wait_time = HELD_INPUT_TIMEOUT
     actionTimer.timeout.connect(on_action_timer_ended)
     interactTimer.timeout.connect(on_interact_timer_ended)
+    crouchTimer.timeout.connect(on_crouch_crawl_timer_ended)
     for nextBehavior: PlayerBehavior in b.all(): nextBehavior.player_ready()
     reinit()
 
 func _physics_process(_delta: float) -> void:
-    var onFloorThisFrame = is_on_floor()
-    if (onFloorThisFrame && !onFloorLastFrame):
-        b.jump.stop_action()
-    onFloorLastFrame = onFloorThisFrame
-    if (b.rotate.active && b.grab.active && heldObjectRef != null):
-        b.rotate.process_action(_delta)
-    else:
+    # vault -> jump process is call order dependant since successful vault prevents jump
+    b.vault.process_action(_delta)
+    b.jump.process_action(_delta)
+    b.rotate.process_action(_delta)
+    b.climb.process_action(_delta)
+    b.crouch.process_action(_delta)
+    # handle camera rotation. skip if input is being used for object rotation
+    if (!b.rotate.active):
         var cameraVelocity = -GameSettings.CameraSensitivity
         if (b.grab.active || b.drag.active):
             cameraVelocity *= SLOWED_CAMERA_DAMPING
@@ -154,45 +139,21 @@ func _physics_process(_delta: float) -> void:
         rotate_y(cameraMoveDir.x * cameraVelocity)
         if (mouseCaptured):
             cameraMoveDir = Vector2.ZERO
-    if !b.vault.active:
-        if !b.climb.active:
-            #determine move speed based on state
-            var movementSpeed = PLAYER_SPEED
-            if (b.sprint.active):
-                movementSpeed = SPRINT_SPEED
-            elif (b.crouch.active || b.film_camera.active || b.squeeze.active || b.drag.active):
-                movementSpeed = SLOWED_SPEED
-            elif (b.grab.active):
-                movementSpeed = GRAB_SPEED
-            elif (b.crawl.active || b.drag.active):
-                movementSpeed = EXTRA_SLOW_SPEED
-            #multiply basis vectors by input direction. preserve vertical velocity
-            velocity = Vector3(0,velocity.y,0) + Vector3(basis.x * moveDir.x + basis.z * moveDir.y).limit_length() * (movementSpeed + slideVelocity)
-            if slideVelocity > 0.0:
-                slideVelocity -= SLIDE_DECELERATION * _delta
-        else:
-            b.climb.process_action(_delta)
-    #handle jump / vault
-    if behaviors.jump.justJumped:
-        behaviors.jump.justJumped = false
-        vaultRayCast.force_raycast_update()
-        if vaultRayCast.is_colliding():
-            if vaultRayCast.get_collider() is not RigidBody3D:
-                b.vault.ledgePoint = vaultRayCast.get_collision_point()
-                b.vault.start_action()
-        if !b.vault.active && (onFloorLastFrame || b.climb.active):
-            if b.climb.active:
-                b.climb.stop_action()
-            b.jump.start_action()
-    # some behaviors only happen when not climbing, like gravity and shoving
-    if !b.climb.active && !b.vault.active:
+    # apply gravity and movement, skipping for behaviors that directly manipulate position
+    if b.none([&"climb", &"vault"]):
+        var movementSpeed: float = get_current_move_speed() + b.crouch.slideVelocity
+        # dampen side-to-side movement when crawling
+        var moveDirXComponent  = moveDir.x if !b.crawl.active else moveDir.x * 0.1
+        #multiply basis vectors by input direction. preserve vertical velocity
+        velocity = Vector3(0,velocity.y,0) + Vector3(basis.x * moveDirXComponent + basis.z * moveDir.y).limit_length() * movementSpeed
         #apply gravity acceleration. apply more strongly if falling
         if (velocity.y >= STRONGER_DOWNWARD_GRAVITY_THRESHOLD):
             velocity += GRAVITY*_delta * GRAVITY_VECTOR
         else:
             velocity += GRAVITY*STRONGER_GRAVITY_MULTIPLIER*_delta * GRAVITY_VECTOR
-        b.shove.process_action(_delta)
-    #handle held object
+    # process behaviors that inherit player movement
+    b.shove.process_action(_delta)
+    b.stairstep.process_action(_delta)
     if heldObjectRef != null:
         if b.grab.active:
             if throwHeldOnNextFrame:
@@ -201,8 +162,6 @@ func _physics_process(_delta: float) -> void:
                 b.grab.process_action(_delta)
         elif b.drag.active:
             b.drag.process_action(_delta)
-    # climb stairs
-    b.stairstep.process_action(_delta)
     # finally, move and slide
     move_and_slide()
 
@@ -214,8 +173,20 @@ func _unhandled_input(event: InputEvent) -> void:
     else:
         handle_key_input(event)
 
+func set_default_positions() -> void:
+    playerShape.height = standingHeight
+    playerShape.radius = standingRadius
+    playerCollider.position.y = standingHeight / 2.0
+    playerCollider.rotation.z = 0.0
+    roomForStateChangeShape.height = standingHeight
+    roomForStateChangeShape.radius = standingRadius
+    roomForStateChangeCollider.position.y = standingHeight / 2.0
+    camera.position.y = standingHeight - cameraTopOffset
+    b.flashlight.light.position.x = b.flashlight.offset.x
+    b.flashlight.light.position.y = b.flashlight.offset.y
+
 func can_shape_change():
-    var detectedCollisions: Array[Node3D] = roomForStateChangeArea.get_overlapping_bodies()
+    var detectedCollisions: Array[Node3D] = nearbyBodies.keys()
     return detectedCollisions.size() == 0
 
 func try_clear_hover_state():
@@ -223,7 +194,23 @@ func try_clear_hover_state():
         objectInReachRef.clear_hover_material()
         objectInReachRef = null
 
+func get_current_move_speed() -> float:
+    if b.sprint.active:
+        return SPRINT_SPEED
+    elif b.some([&"crouch", &"squeeze", &"drag", &"film_camera"]):
+        return SLOWED_SPEED
+    elif b.grab.active:
+        return GRAB_SPEED
+    elif b.crawl.active:
+        return EXTRA_SLOW_SPEED
+    else:
+        return PLAYER_SPEED
+
+func on_room_for_state_change_body_entered(_body: Node3D):
+    nearbyBodies[_body] = true
+
 func on_room_for_state_change_body_exited(_body: Node3D):
+    nearbyBodies.erase(_body)
     if (b.squeeze.active && !Input.is_action_pressed("squeeze")):
         if (b.stand.can_act()):
             b.stand.start_action()
@@ -262,37 +249,60 @@ func on_action_timer_ended(): actionTimerFinished = true
 
 func on_interact_timer_ended(): interactTimerFinished = true
 
+func on_crouch_crawl_timer_ended(): crouchTimerFinished = true
+
 func handle_mouse_input(event: InputEventMouseMotion) -> void:
     if mouseCaptured:
         cameraMoveDir = event.screen_relative / 100.0
         get_tree().root.set_input_as_handled()
 
+# one action trickles to one function call, where various side effects happen
 func handle_key_input(event: InputEvent ) -> void:
     var eventHandled: bool = false
     if (event.is_action_pressed("jump")):
+        # try standing from crawling
         if (b.crawl.active && b.crouch.can_act()):
             b.crouch.tryStandAfterCrouching = true
             b.crouch.start_action()
+        # stand from crouching
         elif (b.crouch.active && b.stand.can_act()):
             b.stand.start_action()
-        elif (!b.climb.active && b.climb.can_act() && !Input.is_action_pressed("sprint")):
+        # climb if possible
+        elif (b.climb.can_act() && !Input.is_action_pressed("sprint")):
             b.climb.start_action()
-        elif (b.jump.can_act() || b.vault.can_act()):
-            b.jump.justJumped = true
+        # vault/jump if possible. one of these actions will happen next; synced to physics
+        else:
+            if b.vault.can_act(): b.vault.unhandledInput = true
+            if b.jump.can_act(): b.jump.unhandledInput = true
         eventHandled = true
     elif (event.is_action_pressed("crouch")):
-        if (!b.crouch.active && b.crouch.can_act()):
+        crouchTimerFinished = false
+        crouchTimer.start()
+        if !b.crawl.active && b.crouch.can_act():
             b.crouch.tryStandAfterCrouching = false
             b.crouch.start_action()
-        elif (b.crouch.active && b.crawl.can_act()):
-            b.crawl.start_action()
+            b.crouch.justCrouched = true
+        eventHandled = true
+    elif (event.is_action_released("crouch")):
+        crouchTimer.stop()
+        if !crouchTimerFinished:
+            if !b.crouch.justCrouched && b.crouch.active && b.stand.can_act():
+                b.stand.start_action()
+        else:
+            if b.crawl.can_act():
+                b.crawl.start_action()
+            elif b.crawl.active && b.crouch.can_act():
+                b.crouch.tryStandAfterCrouching = false
+                b.crouch.start_action()
+        if b.crouch.justCrouched:
+            b.crouch.justCrouched = false
         eventHandled = true
     elif (event.is_action_pressed("squeeze")):
-        if (!b.squeeze.active && b.squeeze.can_act()):
-            b.squeeze.start_action()
+        if (b.squeeze.can_act()): b.squeeze.start_action()
     elif (event.is_action_released("squeeze")):
-        if (b.squeeze.active): b.stand.try_action()
+        if (b.squeeze.active && b.stand.can_act()): b.stand.start_action()
     elif (event.is_action_pressed("action")):
+        actionTimerFinished = false
         actionTimer.start()
         if ((b.grab.active || b.drag.active) && heldObjectRef != null):
             heldObjectRef.start_action()
@@ -307,8 +317,8 @@ func handle_key_input(event: InputEvent ) -> void:
                 b.flashlight.start_action()
             else:
                 b.flashlight.stop_action()
-        actionTimerFinished = false
     elif (event.is_action_pressed("interact")):
+        interactTimerFinished = false
         interactTimer.start()
         if b.rotate.can_act():
             b.rotate.start_action()
@@ -324,16 +334,11 @@ func handle_key_input(event: InputEvent ) -> void:
         b.rotate.stop_action()
         if heldObjectRef != null:
             heldObjectRef.on_rotate_stop()
-        interactTimerFinished = false
     elif (event.is_action_pressed("sprint")):
         if (b.climb.active):
             b.climb.stop_action()
-        if (!b.sprint.active && b.sprint.can_act()):
-            b.stand.start_action()
+        if (b.sprint.can_act()):
             b.sprint.start_action()
-    elif (event.is_action_released("sprint")):
-        if (b.sprint.active):
-            b.stand.start_action()
     elif (event.is_action_pressed("forward")):
         moveDir = Vector2(moveDir.x, -1)
         eventHandled = true
@@ -359,7 +364,6 @@ func handle_key_input(event: InputEvent ) -> void:
         moveDir = Vector2(-1.0 if Input.is_action_pressed("left") else 0.0, moveDir.y)
         eventHandled = true
     moveDir = moveDir.normalized()
-    if b.crawl.active: moveDir.x = moveDir.x * 0.1
     # cursor capture. lets player get mouse back to interact with UI
     if (event.is_action_pressed("capture_cursor") && !mouseCaptured):
         capture_mouse()
@@ -369,6 +373,7 @@ func handle_key_input(event: InputEvent ) -> void:
             release_mouse()
         else:
             capture_mouse()
+        eventHandled = true
     # handle pause game
     if (event.is_action_pressed("pause_game")):
         if (mouseCaptured):
@@ -413,66 +418,3 @@ func release_mouse() -> void:
 func capture_mouse() -> void:
     Input.set_mouse_mode(Input.MouseMode.MOUSE_MODE_CAPTURED)
     mouseCaptured = true
-
-class BehaviorState:
-    var stand: StandBehavior
-    var jump: JumpBehavior
-    var vault: VaultBehavior
-    var crouch: CrouchBehavior
-    var crawl: CrawlBehavior
-    var squeeze: SqueezeBehavior
-    var sprint: SprintBehavior
-    var climb: ClimbBehavior
-    var stairstep: StairstepBehavior
-    var drag: DragBehavior
-    var grab: GrabBehavior
-    var rotate: RotateBehavior
-    var throw: ThrowBehavior
-    var shove: ShoveBehavior
-    var film_camera: FilmCameraBehavior
-    var flashlight: FlashlightBehavior
-    func _init(_player: Player) -> void:
-        stand = StandBehaviorRes.new(_player)
-        jump = JumpBehaviorRes.new(_player)
-        vault = VaultBehaviorRes.new(_player)
-        crouch = CrouchBehaviorRes.new(_player)
-        crawl = CrawlBehaviorRes.new(_player)
-        squeeze = SqueezeBehaviorRes.new(_player)
-        sprint = SprintBehaviorRes.new(_player)
-        climb = ClimbBehaviorRes.new(_player)
-        stairstep = StairstepBehaviorRes.new(_player)
-        drag = DragBehaviorRes.new(_player)
-        grab = GrabBehaviorRes.new(_player)
-        rotate = RotateBehaviorRes.new(_player)
-        throw = ThrowBehaviorRes.new(_player)
-        shove = ShoveBehaviorRes.new(_player)
-        film_camera = FilmCameraBehaviorRes.new(_player)
-        flashlight = FlashlightBehaviorRes.new(_player)
-    func all() -> Array[PlayerBehavior]:
-        return [stand, jump, vault, crouch, crawl, squeeze, sprint, climb, stairstep, drag, rotate, throw, shove, film_camera, flashlight]
-    func subset(_subset: Array[StringName]) -> Array[PlayerBehavior]:
-        if _subset.size() == 0: return all()
-        var resultArray: Array[PlayerBehavior] = []
-        for nextBehaviorKey: StringName in _subset: resultArray.append(self[nextBehaviorKey])
-        return resultArray
-    func some(_subset: Array[StringName] = []) -> bool:
-        for nextBehavior: PlayerBehavior in subset(_subset):
-            if nextBehavior.active: return true
-        return false
-    func none(_subset: Array[StringName] = []) -> bool:
-        for nextBehavior: PlayerBehavior in subset(_subset):
-            if nextBehavior.active: return false
-        return true
-    func every(_subset: Array[StringName] = []) -> bool:
-        var everyActive = true
-        for nextBehavior: PlayerBehavior in subset(_subset):
-            everyActive = everyActive && nextBehavior.active
-        return everyActive
-    func stop(_subset: Array[StringName] = []) -> void:
-        for nextBehavior: PlayerBehavior in subset(_subset):
-            nextBehavior.stop_action()
-        if _subset.size() == 0: self.stand.start_action()
-    func start(_subset: Array[StringName] = []) -> void:
-        if _subset.size() == 0: return
-        for nextBehavior: PlayerBehavior in subset(_subset):
-            nextBehavior.start_action()

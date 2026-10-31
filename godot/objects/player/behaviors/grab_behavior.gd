@@ -5,7 +5,7 @@ const MAX_GRAB_MASS: float = 15.0
 const cannotTransitionFrom: Array[StringName] = [&"drag", &"jump", &"vault", &"crouch", &"crawl", &"squeeze", &"sprint", &"climb", &"film_camera"]
 
 func can_act() -> bool:
-    if (!active && pb.none(cannotTransitionFrom) && p.onFloorLastFrame):
+    if (!active && pb.none(cannotTransitionFrom) && pb.jump.onFloorLastFrame):
         if (p.objectInReachRef != null && p.objectInReachRef.mass > MAX_GRAB_MASS):
             return false
         else:
@@ -40,4 +40,4 @@ func stop_action() -> void:
     p.heldObjectRef = null
     p.grabArm.spring_length = p.grabArmLength
     p.grabArm.shape.radius = p.grabArmShapeRadius
-    pb.stand.start_action()
+    pb.rotate.stop_action()

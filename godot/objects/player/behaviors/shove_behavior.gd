@@ -1,7 +1,13 @@
 class_name ShoveBehavior
 extends PlayerBehavior
 
+const cannotTransitionFrom: Array[StringName] = [&"climb", &"vault"]
+
+func can_act() -> bool:
+    return pb.none(cannotTransitionFrom)
+
 func process_action(_delta: float) -> void:
+    if !can_act(): return
     # shove any rigidbodies
     for i in p.get_slide_collision_count():
         var collision = p.get_slide_collision(i)

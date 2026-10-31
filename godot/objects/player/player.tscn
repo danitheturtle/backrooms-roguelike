@@ -136,7 +136,7 @@ shape = SubResource("BoxShape3D_5q0ne")
 
 [node name="StairSolver" type="Node3D" parent="." unique_id=356122944]
 
-[node name="DontStepUpSlopesRayCast" type="RayCast3D" parent="StairSolver" unique_id=876749670]
+[node name="StairRayCast" type="RayCast3D" parent="StairSolver" unique_id=876749670]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -0.4)
 target_position = Vector3(0, 0, -0.4)
 collision_mask = 12
@@ -152,6 +152,11 @@ wait_time = 0.5
 one_shot = true
 
 [node name="InteractTimer" type="Timer" parent="." unique_id=1549516792]
+process_callback = 0
+wait_time = 0.5
+one_shot = true
+
+[node name="CrouchTimer" type="Timer" parent="." unique_id=1961489363]
 process_callback = 0
 wait_time = 0.5
 one_shot = true

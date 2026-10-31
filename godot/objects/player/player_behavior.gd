@@ -6,7 +6,7 @@ var active: bool
 
 var p: Player:
     get: return player
-var pb: Player.BehaviorState:
+var pb: BehaviorState:
     get: return player.behaviors
 
 func _init(_player: Player) -> void:
