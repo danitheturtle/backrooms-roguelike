@@ -45,6 +45,7 @@ var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vec
 @onready var actionTimer: Timer = $ActionTimer
 @onready var interactTimer: Timer = $InteractTimer
 @onready var crawlTimer: Timer = $CrawlTimer
+@onready var sprintTimer: Timer = $SprintTimer
 
 # local state
 var moveDir: Vector2
@@ -54,6 +55,7 @@ var mouseCaptured: bool
 var actionTimerFinished: bool
 var interactTimerFinished: bool
 var crawlTimerFinished: bool
+var sprintTimerFinished: bool
 # tracked via roomForStateChangeArea
 var nearbyBodies: Dictionary[Node3D, bool] = {}
 # holdable object targeted by spring arm (but not picked up)
@@ -80,6 +82,7 @@ func reinit() -> void:
     actionTimerFinished = false
     interactTimerFinished = false
     crawlTimerFinished = false
+    sprintTimerFinished = false
     objectInReachRef = null
     heldObjectRef = null
     throwHeldOnNextFrame = false
@@ -92,6 +95,7 @@ func reinit() -> void:
     actionTimer.stop()
     interactTimer.stop()
     crawlTimer.stop()
+    sprintTimer.stop()
     set_default_positions()
     for nextBehavior: PlayerBehavior in b.all(): nextBehavior.reinit()
     # disable until level_ready
@@ -116,9 +120,11 @@ func _ready() -> void:
     actionTimer.wait_time = HELD_INPUT_TIMEOUT
     interactTimer.wait_time = HELD_INPUT_TIMEOUT
     crawlTimer.wait_time = HELD_INPUT_TIMEOUT
+    sprintTimer.wait_time = HELD_INPUT_TIMEOUT
     actionTimer.timeout.connect(on_action_timer_ended)
     interactTimer.timeout.connect(on_interact_timer_ended)
     crawlTimer.timeout.connect(on_crawl_timer_ended)
+    sprintTimer.timeout.connect(on_sprint_timer_ended)
     for nextBehavior: PlayerBehavior in b.all(): nextBehavior.player_ready()
     reinit()
 
@@ -129,6 +135,7 @@ func _physics_process(_delta: float) -> void:
     b.rotate.process_action(_delta)
     b.climb.process_action(_delta)
     b.crouch.process_action(_delta)
+    b.sprint.process_action(_delta)
     # handle camera rotation. skip if input is being used for object rotation
     if (!b.rotate.active):
         var cameraVelocity = -GameSettings.CameraSensitivity
@@ -255,6 +262,9 @@ func on_crawl_timer_ended():
     if b.crawl.can_act():
         b.crawl.start_action()
 
+func on_sprint_timer_ended():
+    sprintTimerFinished = true
+
 func handle_mouse_input(event: InputEventMouseMotion) -> void:
     if mouseCaptured:
         cameraMoveDir = event.screen_relative / 100.0
@@ -303,13 +313,16 @@ func handle_key_input(event: InputEvent ) -> void:
         eventHandled = true
     elif (event.is_action_pressed("squeeze")):
         if (b.squeeze.can_act()): b.squeeze.start_action()
+        eventHandled = true
     elif (event.is_action_released("squeeze")):
         if (b.squeeze.active && b.stand.can_act()): b.stand.start_action()
+        eventHandled = true
     elif (event.is_action_pressed("action")):
         actionTimerFinished = false
         actionTimer.start()
         if ((b.grab.active || b.drag.active) && heldObjectRef != null):
             heldObjectRef.start_action()
+        eventHandled = true
     elif (event.is_action_released("action")):
         actionTimer.stop()
         if ((b.grab.active || b.drag.active) && heldObjectRef != null):
@@ -321,11 +334,13 @@ func handle_key_input(event: InputEvent ) -> void:
                 b.flashlight.start_action()
             else:
                 b.flashlight.stop_action()
+        eventHandled = true
     elif (event.is_action_pressed("interact")):
         interactTimerFinished = false
         interactTimer.start()
         if b.rotate.can_act():
             b.rotate.start_action()
+        eventHandled = true
     elif (event.is_action_released("interact")):
         interactTimer.stop()
         if ((b.grab.active || b.drag.active) && !interactTimerFinished):
@@ -338,13 +353,25 @@ func handle_key_input(event: InputEvent ) -> void:
         b.rotate.stop_action()
         if heldObjectRef != null:
             heldObjectRef.on_rotate_stop()
+        eventHandled = true
     elif (event.is_action_pressed("sprint")):
+        sprintTimerFinished = false
+        sprintTimer.start()
         if (b.climb.active):
             b.climb.stop_action()
+        # TODO standing up this quickly is jarring. fix with tweens 
+        if b.crawl.active && b.crouch.can_act():
+            b.crouch.start_action()
         if (b.sprint.can_act()):
             b.sprint.start_action()
         elif b.sprint.active:
             b.sprint.stop_action()
+        eventHandled = true
+    elif (event.is_action_released("sprint")):
+        sprintTimer.stop()
+        if sprintTimerFinished:
+            b.sprint.stop_action()
+        eventHandled = true
     elif (event.is_action_pressed("forward")):
         moveDir = Vector2(moveDir.x, -1)
         eventHandled = true
