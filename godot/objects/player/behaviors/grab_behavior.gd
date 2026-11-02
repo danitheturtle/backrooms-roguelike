@@ -3,14 +3,23 @@ extends PlayerBehavior
 
 const cannotTransitionFrom: Array[StringName] = [&"drag", &"jump", &"vault", &"crouch", &"crawl", &"squeeze", &"sprint", &"climb", &"film_camera"]
 
+var grabArm: SpringArm3D
+var grabAnchor: Marker3D
 var grabbedRef: Holdable
 var justGrabbed: bool
+var grabArmShapeRadius: float
 
 func get_active() -> bool: return grabbedRef != null
 
 func set_active(_nextVal: bool) -> void: pass
 
+func player_ready() -> void:
+    grabArm = p.get_node("Camera/GrabArm")
+    grabAnchor = p.get_node("Camera/GrabArm/GrabAnchor")
+    grabArmShapeRadius = grabArm.shape.radius
+
 func reinit() -> void:
+    justGrabbed = false
     if active:
         grabbedRef.on_drop()
         grabbedRef = null
@@ -24,8 +33,8 @@ func can_act() -> bool:
 func start_action() -> void:
     if active: return
     pb.target.ref.on_hold()
-    p.grabArm.spring_length = pb.target.ref.heldDistance
-    p.grabArm.shape.radius = pb.target.ref.heldCollisionRadius
+    grabArm.spring_length = pb.target.ref.heldDistance
+    grabArm.shape.radius = pb.target.ref.heldCollisionRadius
     # causes visual bug as spring arm rapidly shifts if we don't wait a frame
     await p.get_tree().process_frame
     grabbedRef = pb.target.ref
@@ -39,7 +48,7 @@ func process_action(_delta: float) -> void:
     # account for objects not moved from their default origin
     var grabbedObjectOrigin = grabbedRef.get_node_or_null("GrabOrigin")
     var fromPos = grabbedRef.global_position if grabbedObjectOrigin == null else grabbedObjectOrigin.global_position
-    var toPos = p.grabAnchor.global_position
+    var toPos = grabAnchor.global_position
     grabbedRef.linear_velocity = (toPos - fromPos) / _delta + p.velocity
     grabbedRef.angular_velocity *= 0.1
 
@@ -47,5 +56,5 @@ func stop_action() -> void:
     if !active: return
     pb.rotate.stop_action()
     reinit()
-    p.grabArm.spring_length = p.TARGETING_DISTANCE
-    p.grabArm.shape.radius = p.grabArmShapeRadius
+    grabArm.spring_length = p.TARGETING_DISTANCE
+    grabArm.shape.radius = grabArmShapeRadius

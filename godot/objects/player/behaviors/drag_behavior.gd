@@ -4,6 +4,7 @@ extends PlayerBehavior
 const cannotTransitionFrom: Array[StringName] = [&"grab", &"jump", &"vault", &"crouch", &"crawl", &"squeeze", &"sprint", &"climb", &"film_camera"]
 
 var draggedRef: Holdable
+var justDragged: bool
 var draggedPoint: Vector3
 
 func get_active() -> bool: return draggedRef != null
@@ -12,6 +13,7 @@ func set_active(_nextVal: bool) -> void: pass
 
 func reinit() -> void:
     draggedPoint = Vector3.ZERO
+    justDragged = false
     if active:
         draggedRef.on_drop()
         draggedRef = null
@@ -26,6 +28,7 @@ func start_action() -> void:
     if active: return
     pb.target.ref.on_hold()
     draggedRef = pb.target.ref
+    justDragged = true
     draggedPoint = draggedRef.to_local(pb.target.targetedPoint)
     pb.target.stop_action()
 
@@ -39,6 +42,4 @@ func process_action(_delta: float) -> void:
 func stop_action() -> void:
     if !active: return
     reinit()
-    p.grabArm.spring_length = p.TARGETING_DISTANCE
-    p.grabArm.shape.radius = p.grabArmShapeRadius
     pb.stand.start_action()

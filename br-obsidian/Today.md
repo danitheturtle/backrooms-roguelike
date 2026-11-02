@@ -1,5 +1,4 @@
 Controls changes:
-- 1 - spring arm collider to big on some objects, makes precision placement odd. Optional custom grabCollisionShape similar to grabAnchor
 - 1 - ladder path needs adjusted
 - 3 - scroll to change grab distance
 - 3 - ladder closes too quickly after releasing f

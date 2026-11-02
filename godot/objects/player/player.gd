@@ -37,8 +37,6 @@ var b: BehaviorState:
 @onready var camera: Camera3D = $Camera
 @onready var playerCollider: CollisionShape3D = $PlayerCollisionShape3D
 @onready var playerShape: Shape3D = playerCollider.shape
-@onready var grabArm: SpringArm3D = $Camera/GrabArm
-@onready var grabAnchor: Marker3D = $Camera/GrabArm/Anchor
 @onready var roomForStateChangeArea: Area3D = $RoomForStateChangeDetector
 @onready var roomForStateChangeCollider: CollisionShape3D = $RoomForStateChangeDetector/StateChangeCollisionShape3D
 @onready var roomForStateChangeShape: CapsuleShape3D = roomForStateChangeCollider.shape
@@ -80,8 +78,6 @@ func reinit() -> void:
     adjacentRef = null
     global_position = Vector3(0,0,0)
     global_rotation = Vector3(0,0,0)
-    grabArm.spring_length = TARGETING_DISTANCE
-    grabArm.shape.radius = grabArmShapeRadius
     actionTimer.stop()
     interactTimer.stop()
     crawlTimer.stop()
@@ -96,7 +92,6 @@ func _ready() -> void:
     standingHeight = playerShape.height
     standingRadius = playerShape.radius
     cameraTopOffset = playerShape.height - camera.position.y
-    grabArmShapeRadius = grabArm.shape.radius
     # wire up signals
     roomForStateChangeArea.body_entered.connect(on_room_for_state_change_body_entered)
     roomForStateChangeArea.body_exited.connect(on_room_for_state_change_body_exited)
@@ -280,9 +275,12 @@ func handle_key_input(event: InputEvent ) -> void:
     elif (event.is_action_released("interact")):
         interactTimer.stop()
         b.rotate.stop_action()
-        if b.drag.active && !interactTimerFinished: b.drag.stop_action()
-        if b.grab.justGrabbed: 
+        if b.drag.justDragged:
+            b.drag.justDragged = false
+        elif b.grab.justGrabbed:
             b.grab.justGrabbed = false
+        elif b.drag.active && !interactTimerFinished:
+            b.drag.stop_action()
         elif (b.grab.active && !interactTimerFinished && b.rotate.rotationDelta < 100.0):
             b.grab.stop_action()
         eventHandled = true

@@ -99,7 +99,7 @@ collision_mask = 143
 shape = SubResource("SphereShape3D_5q0ne")
 spring_length = 2.25
 
-[node name="Anchor" type="Marker3D" parent="Camera/GrabArm" unique_id=126144447]
+[node name="GrabAnchor" type="Marker3D" parent="Camera/GrabArm" unique_id=126144447]
 
 [node name="PlayerCollisionShape3D" type="CollisionShape3D" parent="." unique_id=1019509889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825, 0)

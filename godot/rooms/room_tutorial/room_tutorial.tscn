@@ -2507,7 +2507,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 45.4
 transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 25.5, 2.75, 14)
 
 [node name="PlayerSpawn" parent="." index="9" unique_id=1091142161 instance=ExtResource("25_o8cjy")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.14815408, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.17048955, -0.18707192, -1.490467e-08)
 
 [editable path="Props/WoodChair01"]
 [editable path="LevelMeshes/ResizeableWall"]

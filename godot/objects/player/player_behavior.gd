@@ -7,11 +7,11 @@ var active: bool: get = get_active, set = set_active
 func get_active() -> bool: return active
 func set_active(nextVal: bool) -> void: active = nextVal
 
-var p: Player: get = get_player
-func get_player() -> Player: return player
+var p: Player:
+    get: return player
 
-var pb: BehaviorState: get = get_player_behaviors
-func get_player_behaviors() -> BehaviorState: return player.behaviors
+var pb: BehaviorState:
+    get: return player.behaviors
 
 func _init(_player: Player) -> void:
     player = _player
