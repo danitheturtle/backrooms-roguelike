@@ -36,8 +36,9 @@ var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vec
 @onready var camera: Camera3D = $Camera
 @onready var playerCollider: CollisionShape3D = $PlayerCollisionShape3D
 @onready var playerShape: Shape3D = playerCollider.shape
+@onready var targetRayCast: RayCast3D = $Camera/TargetRayCast
 @onready var grabArm: SpringArm3D = $Camera/GrabArm
-@onready var grabAnchor: Area3D = $Camera/GrabArm/Anchor
+@onready var grabAnchor: Marker3D = $Camera/GrabArm/Anchor
 @onready var roomForStateChangeArea: Area3D = $RoomForStateChangeDetector
 @onready var roomForStateChangeCollider: CollisionShape3D = $RoomForStateChangeDetector/StateChangeCollisionShape3D
 @onready var roomForStateChangeShape: CapsuleShape3D = roomForStateChangeCollider.shape
@@ -58,19 +59,18 @@ var crawlTimerFinished: bool
 var sprintTimerFinished: bool
 # tracked via roomForStateChangeArea
 var nearbyBodies: Dictionary[Node3D, bool] = {}
-# holdable object targeted by spring arm (but not picked up)
-var objectInReachRef: Holdable
+# some objects change player controls contextually based on adjacency, eg ladders
+var adjacentRef: Node3D
 # grabbed or dragged
 var heldObjectRef: Holdable
 var throwHeldOnNextFrame: bool
 var draggedPoint: Vector3
-# some objects change player controls contextually based on adjacency, eg ladders
-var adjacentRef: Node3D
 
 # defaults stored at runtime
 var standingHeight: float
 var standingRadius: float
 var cameraTopOffset: float
+var targetingLength: float
 var grabArmLength: float
 var grabArmShapeRadius: float
 
@@ -83,13 +83,13 @@ func reinit() -> void:
     interactTimerFinished = false
     crawlTimerFinished = false
     sprintTimerFinished = false
-    objectInReachRef = null
     heldObjectRef = null
     throwHeldOnNextFrame = false
     draggedPoint = Vector3.ZERO
     adjacentRef = null
     global_position = Vector3(0,0,0)
     global_rotation = Vector3(0,0,0)
+    targetRayCast.target_position.z = -targetingLength
     grabArm.spring_length = grabArmLength
     grabArm.shape.radius = grabArmShapeRadius
     actionTimer.stop()
@@ -106,6 +106,7 @@ func _ready() -> void:
     standingHeight = playerShape.height
     standingRadius = playerShape.radius
     cameraTopOffset = playerShape.height - camera.position.y
+    targetingLength = -targetRayCast.target_position.z
     grabArmLength = grabArm.spring_length
     grabArmShapeRadius = grabArm.shape.radius
     # wire up signals
@@ -115,8 +116,6 @@ func _ready() -> void:
     adjacentDetectorArea.body_exited.connect(on_adjacent_exited)
     adjacentDetectorArea.area_entered.connect(on_adjacent_area_entered)
     adjacentDetectorArea.area_exited.connect(on_adjacent_area_exited)
-    grabAnchor.body_entered.connect(on_grab_anchor_entered)
-    grabAnchor.body_exited.connect(on_grab_anchor_exited)
     actionTimer.wait_time = HELD_INPUT_TIMEOUT
     interactTimer.wait_time = HELD_INPUT_TIMEOUT
     crawlTimer.wait_time = HELD_INPUT_TIMEOUT
@@ -161,6 +160,7 @@ func _physics_process(_delta: float) -> void:
     # process behaviors that inherit player movement
     b.shove.process_action(_delta)
     b.stairstep.process_action(_delta)
+    b.target.process_action(_delta)
     if heldObjectRef != null:
         if b.grab.active:
             if throwHeldOnNextFrame:
@@ -196,11 +196,6 @@ func can_shape_change():
     var detectedCollisions: Array[Node3D] = nearbyBodies.keys()
     return detectedCollisions.size() == 0
 
-func try_clear_hover_state():
-    if objectInReachRef != null:
-        objectInReachRef.clear_hover_material()
-        objectInReachRef = null
-
 func get_current_move_speed() -> float:
     if b.sprint.active:
         return SPRINT_SPEED
@@ -223,14 +218,6 @@ func on_room_for_state_change_body_exited(_body: Node3D):
             b.stand.start_action()
             if (Input.is_action_pressed("sprint")):
                 b.sprint.start_action()
-
-func on_grab_anchor_entered(body: Node3D):
-    if (body is Holdable && objectInReachRef != body && (b.grab.can_act() || b.drag.can_act())):
-        objectInReachRef = body
-        objectInReachRef.apply_hover_material()
-
-func on_grab_anchor_exited(body: Node3D):
-    if (body == objectInReachRef): try_clear_hover_state()
 
 func on_adjacent_entered(body: Node3D):
     # only used for climbing right now
@@ -270,7 +257,8 @@ func handle_mouse_input(event: InputEventMouseMotion) -> void:
         cameraMoveDir = event.screen_relative / 100.0
         get_tree().root.set_input_as_handled()
 
-# one action trickles to one function call, where various side effects happen
+## This is where the gamefeel secret sauce is cooked
+## one action trickles to one function call, where various side effects can happen
 func handle_key_input(event: InputEvent ) -> void:
     var eventHandled: bool = false
     if (event.is_action_pressed("jump")):
@@ -346,13 +334,11 @@ func handle_key_input(event: InputEvent ) -> void:
         if ((b.grab.active || b.drag.active) && !interactTimerFinished):
             b.drag.stop_action()
             b.grab.stop_action()
-        elif (b.grab.can_act() && objectInReachRef != null):
+        elif (b.grab.can_act() && b.target.active):
             b.grab.start_action()
-        elif (b.drag.can_act() && objectInReachRef != null):
+        elif (b.drag.can_act() && b.target.active):
             b.drag.start_action()
         b.rotate.stop_action()
-        if heldObjectRef != null:
-            heldObjectRef.on_rotate_stop()
         eventHandled = true
     elif (event.is_action_pressed("sprint")):
         sprintTimerFinished = false

@@ -26,8 +26,9 @@ func start_action() -> void:
         # apply slide impulse in direction of sprint
         slideVelocity = p.SLIDE_IMPULSE
         pb.sprint.stop_action()
-    p.try_clear_hover_state()
+    pb.target.stop_if_target_is_holdable()
     if tryStandAfterCrouching:
+        await p.get_tree().process_frame
         await p.get_tree().process_frame
         if pb.stand.can_act():
             pb.stand.start_action()

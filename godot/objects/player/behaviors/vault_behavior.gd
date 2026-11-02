@@ -53,7 +53,8 @@ func process_action(_delta: float) -> void:
 func vault_movement_query() -> VaultMovementQueryResult:
     vaultRayCast.force_raycast_update()
     if !vaultRayCast.is_colliding(): return VaultMovementQueryResult.INVALID
-    if vaultRayCast.get_collider() is RigidBody3D: return VaultMovementQueryResult.INVALID
+    var raycastCollidedWith = vaultRayCast.get_collider()
+    if raycastCollidedWith is RigidBody3D: return VaultMovementQueryResult.INVALID
     ledgePoint = vaultRayCast.get_collision_point()
     var spaceState = p.get_world_3d().direct_space_state
     var standingQuery = PhysicsRayQueryParameters3D.create(

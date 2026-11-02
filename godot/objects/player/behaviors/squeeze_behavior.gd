@@ -17,7 +17,7 @@ func start_action() -> void:
     if active: return
     active = true
     pb.stop(mutuallyExclusiveWith)
-    p.try_clear_hover_state()
+    pb.target.stop_if_target_is_holdable()
     set_positions()
 
 func set_positions() -> void:

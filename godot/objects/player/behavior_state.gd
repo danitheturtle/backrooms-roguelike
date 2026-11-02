@@ -13,15 +13,16 @@ var sprint: SprintBehavior
 var climb: ClimbBehavior
 var stairstep: StairstepBehavior
 
-## Prop interaction behaviors
-var drag: DragBehavior
-var grab: GrabBehavior
+## interaction behaviors
+var drag: DragBehavior # holdable
+var grab: GrabBehavior # holdable
 var rotate: RotateBehavior
 var throw: ThrowBehavior
 ## TODO activate behavior
 var shove: ShoveBehavior
 
 ## Non-physical gameplay behaviors
+var target: TargetBehavior
 var film_camera: FilmCameraBehavior
 var flashlight: FlashlightBehavior
 
@@ -40,11 +41,12 @@ func _init(_player: Player) -> void:
     rotate = RotateBehavior.new(_player)
     throw = ThrowBehavior.new(_player)
     shove = ShoveBehavior.new(_player)
+    target = TargetBehavior.new(_player)
     film_camera = FilmCameraBehavior.new(_player)
     flashlight = FlashlightBehavior.new(_player)
 
 func all() -> Array[PlayerBehavior]:
-    return [stand, crouch, crawl, squeeze, vault, jump, sprint, climb, stairstep, drag, rotate, throw, shove, film_camera, flashlight]
+    return [stand, crouch, crawl, squeeze, vault, jump, sprint, climb, stairstep, drag, rotate, throw, shove, target, film_camera, flashlight]
 
 func subset(_subset: Array[StringName]) -> Array[PlayerBehavior]:
     if _subset.size() == 0: return all()

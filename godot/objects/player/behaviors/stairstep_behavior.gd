@@ -6,7 +6,6 @@ const cannotTransitionFrom: Array[StringName] = [&"vault", &"jump", &"crawl", &"
 var stairSolver: Node3D
 var stairRayCast: RayCast3D
 
-
 func player_ready() -> void:
     stairSolver = p.get_node("StairSolver")
     stairRayCast = p.get_node("StairSolver/StairRayCast")

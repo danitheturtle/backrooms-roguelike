@@ -7,7 +7,7 @@ const cannotTransitionFrom: Array[StringName] = [&"grab", &"jump", &"vault", &"c
 
 func can_act() -> bool:
     if (!active && pb.none(cannotTransitionFrom) && pb.jump.onFloorLastFrame):
-        if (p.objectInReachRef != null && p.objectInReachRef.mass > MAX_DRAG_MASS):
+        if (pb.target.ref != null && pb.target.ref.mass > MAX_DRAG_MASS):
             return false
         else:
             return true
@@ -17,9 +17,9 @@ func can_act() -> bool:
 func start_action() -> void:
     if active: return
     active = true
-    p.objectInReachRef.on_hold()
-    p.draggedPoint = p.objectInReachRef.to_local(p.grabAnchor.global_position)
-    p.heldObjectRef = p.objectInReachRef
+    pb.target.ref.on_hold()
+    p.draggedPoint = pb.target.ref.to_local(p.grabAnchor.global_position)
+    p.heldObjectRef = pb.target.ref
     p.heldObjectRef.clear_hover_material()
 
 func process_action(_delta: float) -> void:

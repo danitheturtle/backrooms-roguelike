@@ -15,8 +15,3 @@ func start_action() -> void:
     active = true
     pb.stop(mutuallyExclusiveWith)
     p.set_default_positions()
-    # find first rigidbody touching anchor, if it exists, and apply hover material
-    for nextBody in p.grabAnchor.get_overlapping_bodies():
-        if nextBody is RigidBody3D:
-            p.on_grab_anchor_entered(nextBody)
-            break
