@@ -24,7 +24,6 @@ var rotate: RotateBehavior
 var drag: DragBehavior # holdable
 
 ## Non-physics behaviors
-## TODO activate behavior
 var film_camera: FilmCameraBehavior
 var flashlight: FlashlightBehavior
 

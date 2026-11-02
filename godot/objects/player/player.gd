@@ -269,19 +269,22 @@ func handle_key_input(event: InputEvent ) -> void:
     elif (event.is_action_pressed("interact")):
         interactTimerFinished = false
         interactTimer.start()
-        if b.rotate.can_act():
+        if b.target.active:
+            if b.grab.can_act():
+                b.grab.start_action()
+            elif b.drag.can_act():
+                b.drag.start_action()
+        elif b.grab.active:
             b.rotate.start_action()
         eventHandled = true
     elif (event.is_action_released("interact")):
         interactTimer.stop()
-        if ((b.grab.active || b.drag.active) && !interactTimerFinished):
-            b.drag.stop_action()
-            b.grab.stop_action()
-        elif (b.grab.can_act() && b.target.active):
-            b.grab.start_action()
-        elif (b.drag.can_act() && b.target.active):
-            b.drag.start_action()
         b.rotate.stop_action()
+        if b.drag.active && !interactTimerFinished: b.drag.stop_action()
+        if b.grab.justGrabbed: 
+            b.grab.justGrabbed = false
+        elif (b.grab.active && !interactTimerFinished && b.rotate.rotationDelta < 100.0):
+            b.grab.stop_action()
         eventHandled = true
     elif (event.is_action_pressed("sprint")):
         sprintTimerFinished = false

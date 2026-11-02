@@ -4,6 +4,7 @@ extends PlayerBehavior
 const cannotTransitionFrom: Array[StringName] = [&"drag", &"jump", &"vault", &"crouch", &"crawl", &"squeeze", &"sprint", &"climb", &"film_camera"]
 
 var grabbedRef: Holdable
+var justGrabbed: bool
 
 func get_active() -> bool: return grabbedRef != null
 
@@ -28,7 +29,10 @@ func start_action() -> void:
     # causes visual bug as spring arm rapidly shifts if we don't wait a frame
     await p.get_tree().process_frame
     grabbedRef = pb.target.ref
+    justGrabbed = true
     pb.target.stop_action()
+    # always rotate on pickup
+    pb.rotate.start_action()
 
 func process_action(_delta: float) -> void:
     if !active || pb.throw.unhandledInput: return

@@ -1,10 +1,6 @@
 Controls changes:
-- 1 - if rotation delta > n, don't drop even if timer not expired
 - 1 - spring arm collider to big on some objects, makes precision placement odd. Optional custom grabCollisionShape similar to grabAnchor
-- 1 - behavior for activating props
 - 1 - ladder path needs adjusted
-- 1 - dial in vault min/max height
-- 1 - pick up on mousedown. if held, rotate immediately. stop rotate on mouseup
 - 3 - scroll to change grab distance
 - 3 - ladder closes too quickly after releasing f
 - 3 - wait to drop held object until player isn't colliding

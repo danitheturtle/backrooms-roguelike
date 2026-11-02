@@ -2278,9 +2278,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.541508, 5.7371726, 42.2753
 [node name="VintageCabinetPhysics2" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="20" unique_id=1664976243 instance=ExtResource("13_kn1d3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.6749992, 2.013239, 27.5)
 
-[node name="LadderFreestanding" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="21" unique_id=570477241 instance=ExtResource("9_3reo8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.2580705, 24.5)
-
 [node name="BoundsAABB" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="0" unique_id=415124710]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.875, 2.125, 44.5)
 shape = SubResource("BoxShape3D_h0ojv")
@@ -2510,7 +2507,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 45.4
 transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 25.5, 2.75, 14)
 
 [node name="PlayerSpawn" parent="." index="9" unique_id=1091142161 instance=ExtResource("25_o8cjy")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 24.750002, 2.351846, 11.499998)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.14815408, 0)
 
 [editable path="Props/WoodChair01"]
 [editable path="LevelMeshes/ResizeableWall"]
