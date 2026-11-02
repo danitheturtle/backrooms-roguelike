@@ -6,23 +6,25 @@ var crouch: CrouchBehavior
 var crawl: CrawlBehavior
 var squeeze: SqueezeBehavior
 
-## Behaviors that modify velocity
+## velocity-modifying behaviors. vault and jump are call order dependant
 var vault: VaultBehavior
 var jump: JumpBehavior
-var sprint: SprintBehavior
 var climb: ClimbBehavior
+var sprint: SprintBehavior
+var look: LookBehavior
+var move: MoveBehavior
 var stairstep: StairstepBehavior
 
-## interaction behaviors
-var drag: DragBehavior # holdable
+## velocity-inheriting behaviors
+var shove: ShoveBehavior
+var target: TargetBehavior
+var throw: ThrowBehavior
 var grab: GrabBehavior # holdable
 var rotate: RotateBehavior
-var throw: ThrowBehavior
-## TODO activate behavior
-var shove: ShoveBehavior
+var drag: DragBehavior # holdable
 
-## Non-physical gameplay behaviors
-var target: TargetBehavior
+## Non-physics behaviors
+## TODO activate behavior
 var film_camera: FilmCameraBehavior
 var flashlight: FlashlightBehavior
 
@@ -33,20 +35,29 @@ func _init(_player: Player) -> void:
     squeeze = SqueezeBehavior.new(_player)
     vault = VaultBehavior.new(_player)
     jump = JumpBehavior.new(_player)
-    sprint = SprintBehavior.new(_player)
     climb = ClimbBehavior.new(_player)
+    sprint = SprintBehavior.new(_player)
+    look = LookBehavior.new(_player)
+    move = MoveBehavior.new(_player)
     stairstep = StairstepBehavior.new(_player)
-    drag = DragBehavior.new(_player)
-    grab = GrabBehavior.new(_player)
-    rotate = RotateBehavior.new(_player)
-    throw = ThrowBehavior.new(_player)
     shove = ShoveBehavior.new(_player)
     target = TargetBehavior.new(_player)
+    throw = ThrowBehavior.new(_player)
+    grab = GrabBehavior.new(_player)
+    rotate = RotateBehavior.new(_player)
+    drag = DragBehavior.new(_player)
     film_camera = FilmCameraBehavior.new(_player)
     flashlight = FlashlightBehavior.new(_player)
 
+## all behaviors in update order
 func all() -> Array[PlayerBehavior]:
-    return [stand, crouch, crawl, squeeze, vault, jump, sprint, climb, stairstep, drag, rotate, throw, shove, target, film_camera, flashlight]
+    return [
+        stand, crouch, crawl, squeeze, # mutually-exclusive player size and collision changers
+        vault, jump, # call order dependant; vaulting prevents jump
+        climb, sprint, look, move, stairstep, # velocity modifying behaviors
+        shove, target, throw, grab, rotate, drag, # velocity inheriting behaviors
+        film_camera, flashlight # non-physics behaviors
+    ]
 
 func subset(_subset: Array[StringName]) -> Array[PlayerBehavior]:
     if _subset.size() == 0: return all()

@@ -19,9 +19,11 @@ func _init(_player: Player) -> void:
 
 func player_ready() -> void: pass
 
-func reinit() -> void: active = false
+func reinit() -> void:
+    active = false
 
-func can_act() -> bool: return true
+func can_act() -> bool:
+    return true
 
 func start_action() -> void:
     if active: return

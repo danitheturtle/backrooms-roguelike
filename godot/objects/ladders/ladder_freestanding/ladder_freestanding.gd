@@ -19,12 +19,12 @@ func _physics_process(_delta: float) -> void:
     stairsPlatform.transform = transform
     supportPlatform.transform = support.transform
 
-func start_action():
-    super.start_action()
+func activate():
+    super.activate()
     hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, -initialMotorVelocity)
 
-func finish_action(actionTimerFinished: bool) -> bool:
-    super.finish_action(actionTimerFinished)
+func deactivate(actionTimerFinished: bool) -> bool:
+    super.deactivate(actionTimerFinished)
     hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, initialMotorVelocity)
     return true
 

@@ -1,14 +1,14 @@
 Controls changes:
-- 1 - if rotation delta > n, don't drop even if timer expired
-- 1 - spring arm collider to big on some objects, makes precision placement odd. Maybe add full collision for the held object?
-- 1 - make highlight distance shorter than drag distance
+- 1 - if rotation delta > n, don't drop even if timer not expired
+- 1 - spring arm collider to big on some objects, makes precision placement odd. Optional custom grabCollisionShape similar to grabAnchor
 - 1 - behavior for activating props
 - 1 - ladder path needs adjusted
 - 1 - dial in vault min/max height
 - 1 - pick up on mousedown. if held, rotate immediately. stop rotate on mouseup
-- 3 - scroll to change held distance
+- 3 - scroll to change grab distance
 - 3 - ladder closes too quickly after releasing f
+- 3 - wait to drop held object until player isn't colliding
 - 3 - fix stairstepping up small ramps
-- 3 - when squeezing, prevent player from falling off ledge
-- 3 - Use raycast for target instead of the shapecast. ensure pickup is responsive by updating mouse inupts
+- 5 - when squeezing, prevent player from falling off ledge
+- 5 - scroll to change drag distance
 - 5 - vaulting is buggy

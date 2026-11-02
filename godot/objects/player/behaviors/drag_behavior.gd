@@ -1,39 +1,44 @@
 class_name DragBehavior
 extends PlayerBehavior
 
-const MAX_DRAG_MASS: float = 150.0
-
 const cannotTransitionFrom: Array[StringName] = [&"grab", &"jump", &"vault", &"crouch", &"crawl", &"squeeze", &"sprint", &"climb", &"film_camera"]
+
+var draggedRef: Holdable
+var draggedPoint: Vector3
+
+func get_active() -> bool: return draggedRef != null
+
+func set_active(_nextVal: bool) -> void: pass
+
+func reinit() -> void:
+    draggedPoint = Vector3.ZERO
+    if active:
+        draggedRef.on_drop()
+        draggedRef = null
 
 func can_act() -> bool:
     if (!active && pb.none(cannotTransitionFrom) && pb.jump.onFloorLastFrame):
-        if (pb.target.ref != null && pb.target.ref.mass > MAX_DRAG_MASS):
-            return false
-        else:
-            return true
+        return not (pb.target.ref is Holdable && (pb.target.ref.mass > p.MAX_DRAG_MASS || pb.target.ref.mass <= p.MAX_GRAB_MASS))
     else:
         return false
 
 func start_action() -> void:
     if active: return
-    active = true
     pb.target.ref.on_hold()
-    p.draggedPoint = pb.target.ref.to_local(p.grabAnchor.global_position)
-    p.heldObjectRef = pb.target.ref
-    p.heldObjectRef.clear_hover_material()
+    draggedRef = pb.target.ref
+    draggedPoint = draggedRef.to_local(pb.target.targetedPoint)
+    pb.target.stop_action()
 
 func process_action(_delta: float) -> void:
     if !active: return
-    if (p.global_position - (p.heldObjectRef.global_position + p.draggedPoint)).length_squared() > 12.0:
+    if (p.global_position - (draggedRef.global_position + draggedPoint)).length_squared() > draggedRef.heldDistance * draggedRef.heldDistance:
         stop_action()
     else:
-        p.heldObjectRef.linear_velocity = Vector3(p.velocity.x, 0.0, p.velocity.z)
+        draggedRef.linear_velocity = Vector3(p.velocity.x, 0.0, p.velocity.z)
 
 func stop_action() -> void:
     if !active: return
-    active = false
-    p.heldObjectRef.on_drop()
-    p.heldObjectRef = null
-    p.grabArm.spring_length = p.grabArmLength
+    reinit()
+    p.grabArm.spring_length = p.TARGETING_DISTANCE
     p.grabArm.shape.radius = p.grabArmShapeRadius
     pb.stand.start_action()

@@ -7,36 +7,36 @@ var behaviors: BehaviorState = BehaviorStateRes.new(self)
 var b: BehaviorState:
     get: return behaviors
 
-# global constants
-var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
-var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
-
-@export var PLAYER_SPEED = 4.0
-@export var PLAYER_MASS = 40.0
-@export var SPRINT_SPEED = 7.0
-@export var SLOWED_SPEED = 1.5
-@export var EXTRA_SLOW_SPEED = 0.5
-@export var CLIMB_SPEED = 2.0
-@export var GRAB_SPEED = 2.5
-@export var SHOVING_FORCE = 2.0
-@export var STRONGER_DOWNWARD_GRAVITY_THRESHOLD = 5.0
-@export var STRONGER_GRAVITY_MULTIPLIER = 2.0
-@export var JUMP_IMPULSE = 6.5
-@export var CROUCH_HEIGHT = 0.95
-@export var CRAWL_HEIGHT = 0.45
-@export var SQUEEZE_RADIUS = 0.2
-@export var SLOWED_CAMERA_DAMPING = 0.4
-@export var HELD_INPUT_TIMEOUT = 0.5
-@export var SLIDE_IMPULSE = 7.5
-@export var SLIDE_DECELERATION = 20.0
-@export var MAX_STEP_HEIGHT = 0.3
-@export var VAULT_DURATION = 0.4
+@export var PLAYER_SPEED: float = 4.0
+@export var PLAYER_MASS: float = 40.0
+@export var SPRINT_SPEED: float = 7.0
+@export var SLOWED_SPEED: float = 1.5
+@export var EXTRA_SLOW_SPEED: float = 0.5
+@export var CLIMB_SPEED: float = 2.0
+@export var GRAB_SPEED: float = 2.5
+@export var SHOVING_FORCE: float = 2.0
+@export var STRONGER_DOWNWARD_GRAVITY_THRESHOLD: float = 5.0
+@export var STRONGER_GRAVITY_MULTIPLIER: float = 2.0
+@export var JUMP_IMPULSE: float = 6.5
+@export var CROUCH_HEIGHT: float = 0.95
+@export var CRAWL_HEIGHT: float = 0.45
+@export var SQUEEZE_RADIUS: float = 0.2
+@export var SLOWED_CAMERA_DAMPING: float = 0.4
+@export var HELD_INPUT_TIMEOUT: float = 0.5
+@export var SLIDE_IMPULSE: float = 7.5
+@export var SLIDE_DECELERATION: float = 20.0
+@export var CRAWL_STRAFE_DAMPING: float = 0.1
+@export var MAX_STEP_HEIGHT: float = 0.3
+@export var VAULT_DURATION: float = 0.4
+@export var ROTATION_SENSITIVITY_MULTIPLIER: float = 10.0
+@export var TARGETING_DISTANCE: float = 2.25
+@export var MAX_GRAB_MASS: float = 15.0
+@export var MAX_DRAG_MASS: float = 150.0
 
 # child nodes
 @onready var camera: Camera3D = $Camera
 @onready var playerCollider: CollisionShape3D = $PlayerCollisionShape3D
 @onready var playerShape: Shape3D = playerCollider.shape
-@onready var targetRayCast: RayCast3D = $Camera/TargetRayCast
 @onready var grabArm: SpringArm3D = $Camera/GrabArm
 @onready var grabAnchor: Marker3D = $Camera/GrabArm/Anchor
 @onready var roomForStateChangeArea: Area3D = $RoomForStateChangeDetector
@@ -50,7 +50,7 @@ var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vec
 
 # local state
 var moveDir: Vector2
-var cameraMoveDir: Vector2
+var lookDir: Vector2
 var movePriority: Dictionary[StringName, bool]
 var mouseCaptured: bool
 var actionTimerFinished: bool
@@ -61,36 +61,26 @@ var sprintTimerFinished: bool
 var nearbyBodies: Dictionary[Node3D, bool] = {}
 # some objects change player controls contextually based on adjacency, eg ladders
 var adjacentRef: Node3D
-# grabbed or dragged
-var heldObjectRef: Holdable
-var throwHeldOnNextFrame: bool
-var draggedPoint: Vector3
 
 # defaults stored at runtime
 var standingHeight: float
 var standingRadius: float
 var cameraTopOffset: float
-var targetingLength: float
-var grabArmLength: float
 var grabArmShapeRadius: float
 
 func reinit() -> void:
     moveDir = Vector2(0.0,0.0)
-    cameraMoveDir = Vector2(0.0,0.0)
+    lookDir = Vector2(0.0,0.0)
     movePriority = { left = false, right = false, forward = false, backward = false }
     mouseCaptured = false
     actionTimerFinished = false
     interactTimerFinished = false
     crawlTimerFinished = false
     sprintTimerFinished = false
-    heldObjectRef = null
-    throwHeldOnNextFrame = false
-    draggedPoint = Vector3.ZERO
     adjacentRef = null
     global_position = Vector3(0,0,0)
     global_rotation = Vector3(0,0,0)
-    targetRayCast.target_position.z = -targetingLength
-    grabArm.spring_length = grabArmLength
+    grabArm.spring_length = TARGETING_DISTANCE
     grabArm.shape.radius = grabArmShapeRadius
     actionTimer.stop()
     interactTimer.stop()
@@ -106,8 +96,6 @@ func _ready() -> void:
     standingHeight = playerShape.height
     standingRadius = playerShape.radius
     cameraTopOffset = playerShape.height - camera.position.y
-    targetingLength = -targetRayCast.target_position.z
-    grabArmLength = grabArm.spring_length
     grabArmShapeRadius = grabArm.shape.radius
     # wire up signals
     roomForStateChangeArea.body_entered.connect(on_room_for_state_change_body_entered)
@@ -128,48 +116,8 @@ func _ready() -> void:
     reinit()
 
 func _physics_process(_delta: float) -> void:
-    # vault -> jump process is call order dependant since successful vault prevents jump
-    b.vault.process_action(_delta)
-    b.jump.process_action(_delta)
-    b.rotate.process_action(_delta)
-    b.climb.process_action(_delta)
-    b.crouch.process_action(_delta)
-    b.sprint.process_action(_delta)
-    # handle camera rotation. skip if input is being used for object rotation
-    if (!b.rotate.active):
-        var cameraVelocity = -GameSettings.CameraSensitivity
-        if (b.grab.active || b.drag.active):
-            cameraVelocity *= SLOWED_CAMERA_DAMPING
-        if (cameraMoveDir.y < 0 && camera.rotation_degrees.x < 85) || (cameraMoveDir.y > 0 && camera.rotation_degrees.x > -85):
-            camera.rotate_x(cameraMoveDir.y * cameraVelocity)
-        rotate_y(cameraMoveDir.x * cameraVelocity)
-        if (mouseCaptured):
-            cameraMoveDir = Vector2.ZERO
-    # apply gravity and movement, skipping for behaviors that directly manipulate position
-    if b.none([&"climb", &"vault"]):
-        var movementSpeed: float = get_current_move_speed() + b.crouch.slideVelocity
-        # dampen side-to-side movement when crawling
-        var moveDirXComponent  = moveDir.x if !b.crawl.active else moveDir.x * 0.1
-        #multiply basis vectors by input direction. preserve vertical velocity
-        velocity = Vector3(0,velocity.y,0) + Vector3(basis.x * moveDirXComponent + basis.z * moveDir.y).limit_length() * movementSpeed
-        #apply gravity acceleration. apply more strongly if falling
-        if (velocity.y >= STRONGER_DOWNWARD_GRAVITY_THRESHOLD):
-            velocity += GRAVITY*_delta * GRAVITY_VECTOR
-        else:
-            velocity += GRAVITY*STRONGER_GRAVITY_MULTIPLIER*_delta * GRAVITY_VECTOR
-    # process behaviors that inherit player movement
-    b.shove.process_action(_delta)
-    b.stairstep.process_action(_delta)
-    b.target.process_action(_delta)
-    if heldObjectRef != null:
-        if b.grab.active:
-            if throwHeldOnNextFrame:
-                b.throw.start_action()
-            else:
-                b.grab.process_action(_delta)
-        elif b.drag.active:
-            b.drag.process_action(_delta)
-    # finally, move and slide
+    for nextBehavior: PlayerBehavior in b.all():
+        nextBehavior.process_action(_delta)
     move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -195,18 +143,6 @@ func set_default_positions() -> void:
 func can_shape_change():
     var detectedCollisions: Array[Node3D] = nearbyBodies.keys()
     return detectedCollisions.size() == 0
-
-func get_current_move_speed() -> float:
-    if b.sprint.active:
-        return SPRINT_SPEED
-    elif b.some([&"crouch", &"squeeze", &"drag", &"film_camera"]):
-        return SLOWED_SPEED
-    elif b.grab.active:
-        return GRAB_SPEED
-    elif b.crawl.active:
-        return EXTRA_SLOW_SPEED
-    else:
-        return PLAYER_SPEED
 
 func on_room_for_state_change_body_entered(_body: Node3D):
     nearbyBodies[_body] = true
@@ -239,9 +175,11 @@ func on_adjacent_area_exited(area: Node3D):
     if (areaParent == adjacentRef):
         adjacentRef = null
 
-func on_action_timer_ended(): actionTimerFinished = true
+func on_action_timer_ended():
+    actionTimerFinished = true
 
-func on_interact_timer_ended(): interactTimerFinished = true
+func on_interact_timer_ended():
+    interactTimerFinished = true
 
 func on_crawl_timer_ended():
     crawlTimerFinished = true
@@ -254,7 +192,7 @@ func on_sprint_timer_ended():
 
 func handle_mouse_input(event: InputEventMouseMotion) -> void:
     if mouseCaptured:
-        cameraMoveDir = event.screen_relative / 100.0
+        lookDir = event.screen_relative / 100.0
         get_tree().root.set_input_as_handled()
 
 ## This is where the gamefeel secret sauce is cooked
@@ -300,28 +238,33 @@ func handle_key_input(event: InputEvent ) -> void:
             b.stand.start_action()
         eventHandled = true
     elif (event.is_action_pressed("squeeze")):
-        if (b.squeeze.can_act()): b.squeeze.start_action()
+        if (b.squeeze.can_act()):
+            b.squeeze.start_action()
         eventHandled = true
     elif (event.is_action_released("squeeze")):
-        if (b.squeeze.active && b.stand.can_act()): b.stand.start_action()
+        if (b.squeeze.active && b.stand.can_act()):
+            b.stand.start_action()
         eventHandled = true
     elif (event.is_action_pressed("action")):
         actionTimerFinished = false
         actionTimer.start()
-        if ((b.grab.active || b.drag.active) && heldObjectRef != null):
-            heldObjectRef.start_action()
+        if b.grab.active:
+            b.grab.grabbedRef.activate()
+        elif b.drag.active:
+            b.drag.draggedRef.activate()
         eventHandled = true
     elif (event.is_action_released("action")):
         actionTimer.stop()
-        if ((b.grab.active || b.drag.active) && heldObjectRef != null):
-            var playerActionResult = heldObjectRef.finish_action(actionTimerFinished)
-            if !playerActionResult && b.grab.active:
-                throwHeldOnNextFrame = true
+        if b.grab.active:
+            b.throw.unhandledInput = !b.grab.grabbedRef.deactivate(actionTimerFinished)
+        elif b.drag.active:
+            b.drag.draggedRef.deactivate(actionTimerFinished)
         elif (!actionTimerFinished):
             if !b.flashlight.active:
                 b.flashlight.start_action()
             else:
                 b.flashlight.stop_action()
+        ## TODO action wheel
         eventHandled = true
     elif (event.is_action_pressed("interact")):
         interactTimerFinished = false
@@ -416,16 +359,16 @@ func handle_axis_input(event: InputEventJoypadMotion) -> void:
         eventHandled = true
     #camera
     if (event.is_action("camera_down") || event.is_action("camera_up")):
-        cameraMoveDir = Vector2(cameraMoveDir.x, event.axis_value)
+        lookDir = Vector2(lookDir.x, event.axis_value)
         eventHandled = true
     if (event.is_action("camera_left") || event.is_action("camera_right")):
-        cameraMoveDir = Vector2(event.axis_value, cameraMoveDir.y)
+        lookDir = Vector2(event.axis_value, lookDir.y)
         eventHandled = true
     #If vectors are tiny, set to zero
     if (moveDir.length_squared() < 0.01):
         moveDir = Vector2(0.0,0.0)
-    if (cameraMoveDir.length_squared() < 0.01):
-        cameraMoveDir = Vector2(0.0,0.0)
+    if (lookDir.length_squared() < 0.01):
+        lookDir = Vector2(0.0,0.0)
     # tell game event was handled and stop propagating
     if (eventHandled):
         get_tree().root.set_input_as_handled()

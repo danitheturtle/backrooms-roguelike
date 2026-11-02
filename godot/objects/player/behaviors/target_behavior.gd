@@ -6,6 +6,7 @@ const cannotTransitionFrom: Array[StringName] = [&"film_camera"]
 # TODO other types of targetable objects
 var ref: Holdable
 var targetRayCast: RayCast3D
+var targetedPoint: Vector3
 
 ## target behavior uses ref to determine whether its active
 func get_active() -> bool: return ref != null
@@ -14,6 +15,8 @@ func set_active(_nextVal: bool) -> void: pass
 
 func player_ready() -> void:
     targetRayCast = p.get_node("Camera/TargetRayCast")
+    targetRayCast.target_position.z = -p.TARGETING_DISTANCE
+    targetedPoint = Vector3.ZERO
 
 func reinit() -> void: stop_action()
 
@@ -29,6 +32,7 @@ func process_action(_delta: float) -> void:
             stop_action()
             if (nextTargetRef is Holdable):
                 ref = nextTargetRef
+                targetedPoint = targetRayCast.get_collision_point()
                 ref.apply_hover_material()
 
 func stop_action() -> void:

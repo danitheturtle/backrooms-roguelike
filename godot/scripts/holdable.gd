@@ -34,10 +34,10 @@ func _ready() -> void:
     freezeTimeout.timeout.connect(on_frozen_timer_timeout)
     body_entered.connect(on_body_entered)
 
-func start_action():
-    pass
+func activate(): pass
 
-func finish_action(_actionTimerFinished: bool) -> bool:
+## return true to prevent throwing behavior
+func deactivate(_actionTimerFinished: bool) -> bool:
     return false
 
 func on_hold():
@@ -47,8 +47,7 @@ func on_hold():
 func on_drop():
     collision_layer = 0b00000000000000000001
 
-func on_throw():
-    pass
+func on_throw(): pass
 
 func on_rotate_start(): pass
 
