@@ -2,6 +2,7 @@ class_name ClimbBehavior
 extends PlayerBehavior
 
 const cannotTransitionFrom: Array[StringName] = [&"film_camera", &"drag", &"squeeze", &"vault"]
+const mutuallyExclusiveWith: Array[StringName] = [&"flashlight"]
 
 # climbing uses path-following
 var climbPath: Path3D
@@ -24,6 +25,7 @@ func start_action() -> void:
     if climbPath != null:
         climbCurve = climbPath.curve
         active = true
+        pb.stop(mutuallyExclusiveWith)
 
 func process_action(_delta: float) -> void:
     if !active: return

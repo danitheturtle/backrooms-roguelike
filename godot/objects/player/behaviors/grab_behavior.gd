@@ -8,6 +8,7 @@ var grabArm: SpringArm3D
 var grabAnchor: Marker3D
 var grabbedRef: Holdable
 var justGrabbed: bool
+var justDroppedRef: Holdable
 var grabArmShapeRadius: float
 
 func get_active() -> bool: return grabbedRef != null
@@ -23,6 +24,7 @@ func reinit() -> void:
     justGrabbed = false
     if active:
         grabbedRef.on_drop()
+        justDroppedRef = grabbedRef
         grabbedRef = null
 
 func can_act() -> bool:
@@ -33,7 +35,7 @@ func can_act() -> bool:
 
 func start_action() -> void:
     if active: return
-    pb.target.ref.on_hold()
+    pb.target.ref.on_hold(player)
     grabArm.spring_length = pb.target.ref.heldDistance
     grabArm.shape.radius = pb.target.ref.heldCollisionRadius
     # causes visual bug as spring arm rapidly shifts if we don't wait a frame
@@ -45,6 +47,7 @@ func start_action() -> void:
     pb.rotate.start_action()
 
 func process_action(_delta: float) -> void:
+    if justDroppedRef != null: freeze_till_player_exits()
     if !active || pb.throw.unhandledInput: return
     # account for objects not grabbed from their default origin
     var grabbedObjectOrigin = grabbedRef.get_node_or_null("GrabOrigin")
@@ -71,3 +74,6 @@ func increase_held_distance() -> void:
 
 func decrease_held_distance() -> void:
     grabArm.spring_length = max(grabbedRef.heldCollisionRadius * 1.5, grabArm.spring_length - grabbedRef.heldDistanceStep)
+
+func freeze_till_player_exits() -> void:
+    justDroppedRef = null

@@ -12,7 +12,7 @@ func process_action(_delta: float) -> void:
     for i in p.get_slide_collision_count():
         var collision = p.get_slide_collision(i)
         var collider = collision.get_collider()
-        if collider is RigidBody3D:
+        if collider is RigidBody3D && collider != pb.drag.draggedRef:
             var oppositeCollisionDir = -collision.get_normal()
             oppositeCollisionDir.y = 0
             var velocityInShoveDir = max(

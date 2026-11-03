@@ -2,10 +2,14 @@
 
 [ext_resource type="Script" uid="uid://edobctxmw14j" path="res://scripts/holdable.gd" id="1_m67d0"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qqfqq"]
+resource_local_to_scene = true
+
 [node name="DraggableProp" type="RigidBody3D" unique_id=1565635138]
 collision_mask = 191
 input_ray_pickable = false
 mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_qqfqq")
 center_of_mass_mode = 1
 lock_rotation = true
 contact_monitor = true

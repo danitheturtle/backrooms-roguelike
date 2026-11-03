@@ -67,8 +67,8 @@ var cameraTopOffset: float
 var grabArmShapeRadius: float
 
 func reinit() -> void:
-    moveDir = Vector2(0.0,0.0)
-    lookDir = Vector2(0.0,0.0)
+    moveDir = Vector2.ZERO
+    lookDir = Vector2.ZERO
     movePriority = { left = false, right = false, forward = false, backward = false }
     mouseCaptured = false
     actionTimerFinished = false
@@ -76,8 +76,8 @@ func reinit() -> void:
     crawlTimerFinished = false
     sprintTimerFinished = false
     adjacentRef = null
-    global_position = Vector3(0,0,0)
-    global_rotation = Vector3(0,0,0)
+    global_position = Vector3.ZERO
+    global_rotation = Vector3.ZERO
     actionTimer.stop()
     interactTimer.stop()
     crawlTimer.stop()

@@ -27,10 +27,7 @@ func can_act() -> bool:
 
 func start_action() -> void:
     if active: return
-    var collidingBodies = p.nearbyBodies
-    # TODO don't drag if colliding with player
-    if collidingBodies.has(pb.target.ref): return
-    pb.target.ref.on_hold()
+    pb.target.ref.on_hold(player)
     draggedRef = pb.target.ref
     justDragged = true
     draggedPoint = draggedRef.to_local(pb.target.targetedPoint)
@@ -41,9 +38,25 @@ func process_action(_delta: float) -> void:
     if (p.global_position - (draggedRef.global_position + draggedPoint)).length_squared() > draggedRef.heldDistance * draggedRef.heldDistance:
         stop_action()
     else:
-        draggedRef.linear_velocity = Vector3(p.velocity.x, 0.0, p.velocity.z)
+        # if player is on top of and supported by dragged object, do nothing
+        if !on_top_of_dragged():
+            var targetVelocity = Vector3(p.velocity.x, 0.0, p.velocity.z)
+            var currentHorizontalVelocity = Vector3(draggedRef.linear_velocity.x, 0.0, draggedRef.linear_velocity.z)
+            var appliedForce = draggedRef.mass * (targetVelocity - currentHorizontalVelocity)
+            draggedRef.apply_central_force(appliedForce / _delta)
 
 func stop_action() -> void:
     if !active: return
     reinit()
     pb.stand.start_action()
+
+func on_top_of_dragged() -> bool:
+    var lastFrameCollisionCount = p.get_slide_collision_count()
+    for i: int in lastFrameCollisionCount:
+        var nextKinematicCollision: KinematicCollision3D = p.get_slide_collision(i)
+        var nextKinematicCollisionCount = nextKinematicCollision.get_collision_count()
+        for j: int in nextKinematicCollisionCount:
+            if nextKinematicCollision.get_collider(j) is Holdable:
+                if nextKinematicCollision.get_normal(j).dot(Vector3.UP) > 0.9:
+                    return true
+    return false

@@ -7,20 +7,17 @@
 - flashlight texture projection with 2 hard circles, one to simulate bounce light? hopefully it won't look shit
 - parent/child relationship for connections so only one of them generates the edges (and also doors when we get there)
 - navmesh + runtime generation for connections
+- move mouse capture out of player state and into global keybinds with fullscreen / screenshot
 - throw rugs as cover for carpet seams
-- tutorial updates
-	- disable flashlight when performing two-handed actions
-	- you can move ladder with held prop while climbing it
-	- you can walk into drag objects
-	- you can drag things you're standing on
-	- dragged objects don't fall and aren't affected by gravity
-	- dragged objects move at expected player velocity, not final velocity. lets player shove stuff weird
 
 Tutorial Layout Updates:
-- Add object placement puzzle to final room
+- Add object placement puzzle to final room that unlocks door
 - make final room less boxy
+- add rope climb, pickup, attach, descend section to final part of tutorial
 
-Controls changes:
+ tutorial updates:
+- 1 - disable flashlight when performing two-handed actions
+- 3 - you can move ladder with held prop while climbing it
 - 3 - wait to drop held object until player isn't colliding
 - 5 - when squeezing, prevent player from falling off ledge
 - 5 - vaulting is buggy

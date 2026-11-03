@@ -32,8 +32,8 @@ func deactivate(actionTimerFinished: bool) -> bool:
     isClosed = true
     return true
 
-func on_hold():
-    super.on_hold()
+func on_hold(_player: Player):
+    super.on_hold(_player)
     hinge.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, true)
     hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, initialMotorVelocity)
     collision_layer = 0b00000000000000100000
