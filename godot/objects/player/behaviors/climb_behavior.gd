@@ -4,12 +4,15 @@ extends PlayerBehavior
 const cannotTransitionFrom: Array[StringName] = [&"film_camera", &"drag", &"squeeze", &"vault"]
 const mutuallyExclusiveWith: Array[StringName] = [&"flashlight"]
 
+# garunteed to be in climbable group, a pseudo-interface with shared methods
+var climbedRef: Node3D
 # climbing uses path-following
 var climbPath: Path3D
 var climbCurve: Curve3D
 
 func reinit() -> void:
     active = false
+    climbedRef = null
     climbPath = null
     climbCurve = null
 
@@ -21,11 +24,15 @@ func can_act() -> bool:
 
 func start_action() -> void:
     if active: return
+    if !p.adjacentRef.is_in_group(&"climbable"): return
     climbPath = p.adjacentRef.get_node_or_null("ClimbPath")
     if climbPath != null:
+        climbedRef = p.adjacentRef
         climbCurve = climbPath.curve
         active = true
         pb.stop(mutuallyExclusiveWith)
+        if pb.grab.active:
+            climbedRef.add_collision_exception(pb.grab.grabbedRef)
 
 func process_action(_delta: float) -> void:
     if !active: return
@@ -42,6 +49,6 @@ func process_action(_delta: float) -> void:
 
 func stop_action() -> void:
     if !active: return
-    active = false
-    climbPath = null
-    climbCurve = null
+    if pb.grab.active:
+        climbedRef.del_collision_exception(pb.grab.grabbedRef)
+    reinit()

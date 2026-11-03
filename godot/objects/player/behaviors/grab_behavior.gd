@@ -66,6 +66,8 @@ func process_action(_delta: float) -> void:
 func stop_action() -> void:
     if !active: return
     pb.rotate.stop_action()
+    if pb.climb.active:
+        pb.climb.climbedRef.del_collision_exception(grabbedRef)
     reinit()
     grabArm.spring_length = p.TARGETING_DISTANCE
     grabArm.shape.radius = grabArmShapeRadius
@@ -78,9 +80,7 @@ func decrease_held_distance() -> void:
 
 func no_collision_till_player_exits() -> void:
     if p.nearbyBodies.has(justDroppedRef):
-        if !justDroppedRef.get_collision_exceptions().has(player):
-            justDroppedRef.add_collision_exception_with(player)
+        justDroppedRef.add_collision_exception(player)
     else:
-        if justDroppedRef.get_collision_exceptions().has(player):
-            justDroppedRef.remove_collision_exception_with(player)
+        justDroppedRef.del_collision_exception(player)
         justDroppedRef = null

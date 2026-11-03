@@ -61,6 +61,16 @@ func on_hold(_player: Player):
         if physics_material_override != null:
             physics_material_override.friction = 0.0
 
+func add_collision_exception(_body: Node3D) -> void:
+    var existingExceptions := get_collision_exceptions()
+    if !existingExceptions.has(_body):
+        add_collision_exception_with(_body)
+
+func del_collision_exception(_body: Node3D) -> void:
+    var existingExceptions := get_collision_exceptions()
+    if existingExceptions.has(_body):
+        remove_collision_exception_with(_body)
+
 func on_drop():
     holdingPlayer = null
     if collision_layer != initialCollisionLayer:
