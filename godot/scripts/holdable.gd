@@ -13,7 +13,6 @@ var hoveringMaterials: Array[Material] = []
 @export var propNonsenseLimit: float = 3
 @export var propNonsenseTimeout: float = 1.5
 
-
 @onready var meshInstance = Utils.get_child_of_type(self, MeshInstance3D)
 
 var grabOrigin: Vector3 = Vector3(0.0,0.0,0.0)

@@ -47,7 +47,8 @@ func start_action() -> void:
     pb.rotate.start_action()
 
 func process_action(_delta: float) -> void:
-    if justDroppedRef != null: freeze_till_player_exits()
+    if justDroppedRef != null:
+        no_collision_till_player_exits()
     if !active || pb.throw.unhandledInput: return
     # account for objects not grabbed from their default origin
     var grabbedObjectOrigin = grabbedRef.get_node_or_null("GrabOrigin")
@@ -75,5 +76,11 @@ func increase_held_distance() -> void:
 func decrease_held_distance() -> void:
     grabArm.spring_length = max(grabbedRef.heldCollisionRadius * 1.5, grabArm.spring_length - grabbedRef.heldDistanceStep)
 
-func freeze_till_player_exits() -> void:
-    justDroppedRef = null
+func no_collision_till_player_exits() -> void:
+    if p.nearbyBodies.has(justDroppedRef):
+        if !justDroppedRef.get_collision_exceptions().has(player):
+            justDroppedRef.add_collision_exception_with(player)
+    else:
+        if justDroppedRef.get_collision_exceptions().has(player):
+            justDroppedRef.remove_collision_exception_with(player)
+        justDroppedRef = null

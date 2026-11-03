@@ -16,10 +16,8 @@ Tutorial Layout Updates:
 - add rope climb, pickup, attach, descend section to final part of tutorial
 
  tutorial updates:
-- 1 - disable flashlight when performing two-handed actions
 - 3 - you can move ladder with held prop while climbing it
-- 3 - wait to drop held object until player isn't colliding
 - 5 - when squeezing, prevent player from falling off ledge
 - 5 - vaulting is buggy
-- 5 - scroll to change drag distance
-- 5 - dragged object rotation (remove axis lock)
+- 5 - scroll to impulse dragged object on camera z axis
+- 8 - dragged object rotation (remove axis lock)
