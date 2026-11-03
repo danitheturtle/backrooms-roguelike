@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="2_e7rdj"]
 [ext_resource type="PackedScene" uid="uid://b160k414l2773" path="res://objects/colliders/primitives/sphere_collider.tscn" id="3_8r43g"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kjdew"]
+resource_local_to_scene = true
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ssrdb"]
 resource_local_to_scene = true
 size = Vector3(0.7495158, 0.22395019, 0.70689696)
@@ -78,7 +81,7 @@ resource_local_to_scene = true
 radius = 0.06936573
 
 [node name="RockingChairPhysics" unique_id=883044359 instance=ExtResource("1_kjdew")]
-heldDistance = 1.5
+physics_material_override = SubResource("PhysicsMaterial_kjdew")
 
 [node name="GrabOrigin" type="Marker3D" parent="." index="0" unique_id=507677772]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08890538, -0.064279035)

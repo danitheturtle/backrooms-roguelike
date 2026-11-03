@@ -98,3 +98,15 @@ func read_first_line_json(filepath: String) -> Dictionary:
         print("JSON Parse Error: ", jsonParser.get_error_message(), " in ", unparsedString, " at line ", jsonParser.get_error_line())
         return {}
     return jsonParser.data
+
+func set_timeout(callback: Callable, timeoutMS: int) -> Timer:
+    var timeoutTimer = Timer.new()
+    timeoutTimer.wait_time = float(timeoutMS) / 1000.0
+    timeoutTimer.one_shot = true
+    timeoutTimer.autostart = true
+    var callbackWithCleanup := func callback_with_cleanup() -> void:
+        callback.call()
+        timeoutTimer.queue_free()
+    timeoutTimer.timeout.connect(callbackWithCleanup)
+    get_tree().root.add_child(timeoutTimer)
+    return timeoutTimer

@@ -5,6 +5,10 @@ const HALF_VOXEL: float = VOXEL / 2.0
 const QUARTER_VOXEL: float = VOXEL / 4.0
 const AMBIENT_MAX: float = 0.4
 
+# from project settings
+var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
+var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
+
 # global enums
 enum MenuType { MAIN, SETTINGS, SAVE_SELECT, PAUSE, HUD }
 enum PopupType { INFO, WARNING, ERROR }
