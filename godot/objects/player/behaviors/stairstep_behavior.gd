@@ -26,5 +26,6 @@ func process_action(_delta: float) -> void:
                 && (foundCollider.get_collision_layer_value(3) || foundCollider.get_collision_layer_value(4))):
                 var castHeightTravelled = ((nextPosCollisionCastStart.origin + collisionResult.get_travel()) - p.global_position).y
                 if (castHeightTravelled > 0.01 && castHeightTravelled <= p.MAX_STEP_HEIGHT && (collisionResult.get_position() - p.global_position).y <= p.MAX_STEP_HEIGHT):
-                    if stairRayCast.get_collision_normal().dot(Vector3.UP) < 0.1:
+                    var collisionNormal := stairRayCast.get_collision_normal()
+                    if collisionNormal.dot(Vector3.UP) > 0.95:
                         p.global_position = nextPosCollisionCastStart.origin + collisionResult.get_travel() + Vector3(0,0.02,0)

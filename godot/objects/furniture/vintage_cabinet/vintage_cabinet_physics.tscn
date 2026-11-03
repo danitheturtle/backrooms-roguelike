@@ -26,6 +26,8 @@ size = Vector3(0.35, 1.225, 0.5)
 
 [node name="VintageCabinetPhysics" unique_id=1565635138 instance=ExtResource("1_itn75")]
 heldDistance = 4.0
+maxHeldDistance = 5.0
+heldCollisionRadius = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0" unique_id=1772195223]
 transform = Transform3D(1.235, 0, 0, 0, 1.235, 0, 0, 0, 1.235, 0, -0.76323915, -0.37912464)

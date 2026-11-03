@@ -134,8 +134,8 @@ shape = SubResource("BoxShape3D_5q0ne")
 [node name="StairSolver" type="Node3D" parent="." unique_id=356122944]
 
 [node name="StairRayCast" type="RayCast3D" parent="StairSolver" unique_id=876749670]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -0.4)
-target_position = Vector3(0, 0, -0.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.5)
+target_position = Vector3(0, -0.25, 0)
 collision_mask = 12
 hit_back_faces = false
 

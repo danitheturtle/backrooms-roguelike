@@ -255,7 +255,7 @@ func handle_key_input(event: InputEvent ) -> void:
         elif b.drag.active:
             b.drag.draggedRef.deactivate(actionTimerFinished)
         elif (!actionTimerFinished):
-            if !b.flashlight.active:
+            if b.flashlight.can_act():
                 b.flashlight.start_action()
             else:
                 b.flashlight.stop_action()
@@ -283,6 +283,14 @@ func handle_key_input(event: InputEvent ) -> void:
             b.drag.stop_action()
         elif (b.grab.active && !interactTimerFinished && b.rotate.rotationDelta < 100.0):
             b.grab.stop_action()
+        eventHandled = true
+    elif (event.is_action_pressed("zoom_in")):
+        if b.grab.active:
+            b.grab.increase_held_distance()
+        eventHandled = true
+    elif (event.is_action_pressed("zoom_out")):
+        if b.grab.active:
+            b.grab.decrease_held_distance()
         eventHandled = true
     elif (event.is_action_pressed("sprint")):
         sprintTimerFinished = false

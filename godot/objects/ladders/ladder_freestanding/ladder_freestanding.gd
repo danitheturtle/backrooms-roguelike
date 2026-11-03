@@ -15,6 +15,8 @@ class_name LadderFreestanding
 @onready var stairsPlatform: AnimatableBody3D = $"../StairsPlatform"
 @onready var supportPlatform: AnimatableBody3D = $"../SupportPlatform"
 
+var dropTimer: Timer
+
 func _physics_process(_delta: float) -> void:
     stairsPlatform.transform = transform
     supportPlatform.transform = support.transform
@@ -22,15 +24,18 @@ func _physics_process(_delta: float) -> void:
 func activate():
     super.activate()
     hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, -initialMotorVelocity)
+    isClosed = false
 
 func deactivate(actionTimerFinished: bool) -> bool:
     super.deactivate(actionTimerFinished)
     hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, initialMotorVelocity)
+    isClosed = true
     return true
 
 func on_hold():
     super.on_hold()
     hinge.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, true)
+    hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, initialMotorVelocity)
     collision_layer = 0b00000000000000100000
     support.center_of_mass = Vector3(0.0,0.0,0.0)
     support.collision_layer = 0b00000000000000100000
@@ -39,7 +44,12 @@ func on_hold():
 
 func on_drop():
     super.on_drop()
-    hinge.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, false)
+    if dropTimer != null:
+        dropTimer.stop()
+        dropTimer.queue_free()
+    var hingeCallback := func ():
+        hinge.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, false)
+    Utils.set_timeout(hingeCallback, 1000)
     collision_layer = 0b00000000000010000000
     support.collision_layer = 0b00000000000010000000
     support.center_of_mass = Vector3(0.45, -1.05, 0.0)

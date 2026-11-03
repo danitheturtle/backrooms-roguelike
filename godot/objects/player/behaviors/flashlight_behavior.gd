@@ -1,6 +1,8 @@
 class_name FlashlightBehavior
 extends PlayerBehavior
 
+const cannotTransitionFrom: Array[StringName] = [&"drag", &"grab", &"vault", &"climb", &"film_camera"]
+
 var light: SpotLight3D
 var offset: Vector3 = Vector3.ZERO
 
@@ -13,6 +15,9 @@ func reinit() -> void:
     if light != null:
         light.visible = false
         light.position = offset
+
+func can_act() -> bool:
+    return !active && pb.none(cannotTransitionFrom)
 
 func start_action() -> void:
     if active: return

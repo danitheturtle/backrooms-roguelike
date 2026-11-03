@@ -2,7 +2,7 @@ class_name VaultBehavior
 extends PlayerBehavior
 
 const cannotTransitionFrom: Array[StringName] = [&"crouch", &"crawl", &"climb", &"squeeze", &"film_camera", &"grab", &"drag"]
-const mutuallyExclusiveWith: Array[StringName] = [&"sprint"]
+const mutuallyExclusiveWith: Array[StringName] = [&"sprint", &"flashlight"]
 
 enum VaultMovementQueryResult { VALID, CROUCH, INVALID }
 

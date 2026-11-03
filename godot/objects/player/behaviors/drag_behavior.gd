@@ -2,6 +2,7 @@ class_name DragBehavior
 extends PlayerBehavior
 
 const cannotTransitionFrom: Array[StringName] = [&"grab", &"jump", &"vault", &"crouch", &"crawl", &"squeeze", &"sprint", &"climb", &"film_camera"]
+const mutuallyExclusiveWith: Array[StringName] = [&"target", &"flashlight"]
 
 var draggedRef: Holdable
 var justDragged: bool
@@ -26,11 +27,14 @@ func can_act() -> bool:
 
 func start_action() -> void:
     if active: return
+    var collidingBodies = p.nearbyBodies
+    # TODO don't drag if colliding with player
+    if collidingBodies.has(pb.target.ref): return
     pb.target.ref.on_hold()
     draggedRef = pb.target.ref
     justDragged = true
     draggedPoint = draggedRef.to_local(pb.target.targetedPoint)
-    pb.target.stop_action()
+    pb.stop(mutuallyExclusiveWith)
 
 func process_action(_delta: float) -> void:
     if !active: return

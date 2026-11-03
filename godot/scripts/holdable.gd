@@ -3,12 +3,15 @@ class_name Holdable
 
 const hoverOverObjectMaterial = preload("res://assets/materials/HoverOverObject/HoverOverObject.tres")
 var hoveringMaterials: Array[Material] = []
-@export var heldDistance = 2.0
-@export var heldCollisionRadius = 0.5
-@export var throwImpulse = 5.0
-@export var throwLobFactor = 1.0
-@export var propNonsenseLimit = 3 #count collisions to prevent gmod style prop flying
-@export var propNonsenseTimeout = 1.5
+@export var heldDistance: float = 1.5
+@export var heldDistanceStep: float = 0.1
+@export var maxHeldDistance: float = 1.8
+@export var heldCollisionRadius: float = 0.5
+@export var throwImpulse: float = 5.0
+@export var throwLobFactor: float = 1.0
+#count collisions to prevent gmod style prop flying
+@export var propNonsenseLimit: float = 3
+@export var propNonsenseTimeout: float = 1.5
 
 @onready var meshInstance = Utils.get_child_of_type(self, MeshInstance3D)
 
@@ -64,7 +67,6 @@ func clear_hover_material():
         if surfaceMaterial == hoveringMaterials[surfaceIndex]:
             meshInstance.set_surface_override_material(surfaceIndex, null)
 
-var colliders: Array[PhysicsBody3D]
 func on_body_entered(body: PhysicsBody3D):
     # if held, do nothing
     if get_collision_layer_value(6): return
