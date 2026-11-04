@@ -9,9 +9,10 @@ extends Resource
 # Called by level generator to get a levelgen output object
 func get_generated_instance() -> GeneratedRoom:
     var newGeneratedRoom = GeneratedRoom.new(self)
-    for nextConnectorPath: NodePath in connectors.keys():
-        var newGeneratedConnector = connectors[nextConnectorPath].get_generated_instance(newGeneratedRoom.roomInstanceId)
-        newGeneratedRoom.generatedConnectors[nextConnectorPath] = newGeneratedConnector
+    for j in range(0, connectors.size()):
+        var nextConnector = connectors[j]
+        var newGeneratedConnector = nextConnector.get_generated_instance(newGeneratedRoom.roomInstanceId)
+        newGeneratedRoom.generatedConnectors[j] = newGeneratedConnector
     return newGeneratedRoom
 
 ###
@@ -62,9 +63,9 @@ func get_generated_instance() -> GeneratedRoom:
 # if size() == 1 then approximateBounds is exact and identical to bounds[0]
 @export var bounds: Array[AABB] = []
 # Room connectors. Every connector is a surface on the face of a bounds AABB
-@export var connectors: Dictionary[NodePath, ConnectorDefinition] = {}
-# Used to tell dynamic scenes how to spawn. A single scene defining multiple rooms will create 
-# multiple room definitions. At instantiation time, that scene creates a specific room based on 
+@export var connectors: Array[ConnectorDefinition] = []
+# Used to tell dynamic scenes how to spawn. A single scene defining multiple rooms will create
+# multiple room definitions. At instantiation time, that scene creates a specific room based on
 # what's stored here
 @export var dynamicRoomData: Dictionary[StringName, Variant] = {}
 

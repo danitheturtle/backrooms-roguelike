@@ -26,7 +26,7 @@ var placedForwardNormal: Vector3 = Vector3.FORWARD
 var placedAtIteration: int = -1
 # generatedConnectors tell the room how to change each connector from the default value
 # can delete keys that remain unchanged from room definition
-var generatedConnectors: Dictionary[NodePath, GeneratedConnector] = {}
+var generatedConnectors: Array[GeneratedConnector] = []
 # tells room what should *definitely* spawn
 var spawnGameplayProp: Dictionary[Const.GameplayPropType, bool] = {}
 # adjusted prop spawn weight for room sub-generator
@@ -37,6 +37,6 @@ var propDensity: float = 1.0
 var customPropWeights: Dictionary[StringName, float] = {}
 # optional parameter for wiring up puzzles. RoomInstanceId or ConnectorInstanceId
 # With this approach there's a limitation of one solution trigger per room but that's ok.
-# "solved" can be any activatable thing in the room from a puzzle to a button to 
+# "solved" can be any activatable thing in the room from a puzzle to a button to
 # powering up a generator. intentionally generic
 var onSolvedListenerIDs: Array[StringName] = []
