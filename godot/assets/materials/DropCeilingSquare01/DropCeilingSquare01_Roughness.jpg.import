@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://2pgm5i7g3idl"
 path.s3tc="res://.godot/imported/DropCeilingSquare01_Roughness.jpg-6afcae6932964ffccb5d0460c9becc83.s3tc.ctex"
+path.etc2="res://.godot/imported/DropCeilingSquare01_Roughness.jpg-6afcae6932964ffccb5d0460c9becc83.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/materials/DropCeilingSquare01/DropCeilingSquare01_Roughness.jpg"
-dest_files=["res://.godot/imported/DropCeilingSquare01_Roughness.jpg-6afcae6932964ffccb5d0460c9becc83.s3tc.ctex"]
+dest_files=["res://.godot/imported/DropCeilingSquare01_Roughness.jpg-6afcae6932964ffccb5d0460c9becc83.s3tc.ctex", "res://.godot/imported/DropCeilingSquare01_Roughness.jpg-6afcae6932964ffccb5d0460c9becc83.etc2.ctex"]
 
 [params]
 

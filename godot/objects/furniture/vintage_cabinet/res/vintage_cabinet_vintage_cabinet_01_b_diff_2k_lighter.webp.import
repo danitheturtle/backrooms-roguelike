@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://chnpy2b6wki6h"
 path.s3tc="res://.godot/imported/vintage_cabinet_vintage_cabinet_01_b_diff_2k_lighter.webp-75caf09b413d5d6830c0c78968841c06.s3tc.ctex"
+path.etc2="res://.godot/imported/vintage_cabinet_vintage_cabinet_01_b_diff_2k_lighter.webp-75caf09b413d5d6830c0c78968841c06.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://objects/furniture/vintage_cabinet/res/vintage_cabinet_vintage_cabinet_01_b_diff_2k_lighter.webp"
-dest_files=["res://.godot/imported/vintage_cabinet_vintage_cabinet_01_b_diff_2k_lighter.webp-75caf09b413d5d6830c0c78968841c06.s3tc.ctex"]
+dest_files=["res://.godot/imported/vintage_cabinet_vintage_cabinet_01_b_diff_2k_lighter.webp-75caf09b413d5d6830c0c78968841c06.s3tc.ctex", "res://.godot/imported/vintage_cabinet_vintage_cabinet_01_b_diff_2k_lighter.webp-75caf09b413d5d6830c0c78968841c06.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://drsh6arrjdrsj"
 path.s3tc="res://.godot/imported/WallpaperZigzag_orm.png-a76d4dc662c1ed3c8ddaff65e054035c.s3tc.ctex"
+path.etc2="res://.godot/imported/WallpaperZigzag_orm.png-a76d4dc662c1ed3c8ddaff65e054035c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/materials/WallpaperVariants/res/WallpaperZigzag_orm.png"
-dest_files=["res://.godot/imported/WallpaperZigzag_orm.png-a76d4dc662c1ed3c8ddaff65e054035c.s3tc.ctex"]
+dest_files=["res://.godot/imported/WallpaperZigzag_orm.png-a76d4dc662c1ed3c8ddaff65e054035c.s3tc.ctex", "res://.godot/imported/WallpaperZigzag_orm.png-a76d4dc662c1ed3c8ddaff65e054035c.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkgg8guo7tbkp"
 path.s3tc="res://.godot/imported/CeilingLightRectangle01_Emissive.jpg-5291ef13cbab1010e00ec061c4c39e78.s3tc.ctex"
+path.etc2="res://.godot/imported/CeilingLightRectangle01_Emissive.jpg-5291ef13cbab1010e00ec061c4c39e78.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/materials/CeilingLightRectangle01/CeilingLightRectangle01_Emissive.jpg"
-dest_files=["res://.godot/imported/CeilingLightRectangle01_Emissive.jpg-5291ef13cbab1010e00ec061c4c39e78.s3tc.ctex"]
+dest_files=["res://.godot/imported/CeilingLightRectangle01_Emissive.jpg-5291ef13cbab1010e00ec061c4c39e78.s3tc.ctex", "res://.godot/imported/CeilingLightRectangle01_Emissive.jpg-5291ef13cbab1010e00ec061c4c39e78.etc2.ctex"]
 
 [params]
 

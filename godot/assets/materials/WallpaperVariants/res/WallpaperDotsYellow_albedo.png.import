@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dyscfqrvpfdy8"
 path.s3tc="res://.godot/imported/WallpaperDotsYellow_albedo.png-48ebc0ddcb5cc9699f797d8bc55f93ca.s3tc.ctex"
+path.etc2="res://.godot/imported/WallpaperDotsYellow_albedo.png-48ebc0ddcb5cc9699f797d8bc55f93ca.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/materials/WallpaperVariants/res/WallpaperDotsYellow_albedo.png"
-dest_files=["res://.godot/imported/WallpaperDotsYellow_albedo.png-48ebc0ddcb5cc9699f797d8bc55f93ca.s3tc.ctex"]
+dest_files=["res://.godot/imported/WallpaperDotsYellow_albedo.png-48ebc0ddcb5cc9699f797d8bc55f93ca.s3tc.ctex", "res://.godot/imported/WallpaperDotsYellow_albedo.png-48ebc0ddcb5cc9699f797d8bc55f93ca.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://17m7rqc457c7"
 path.s3tc="res://.godot/imported/wall_outlet_01_wall_socket01_color.webp-a04e4877e0de3fc0e5dd9ff068af4595.s3tc.ctex"
+path.etc2="res://.godot/imported/wall_outlet_01_wall_socket01_color.webp-a04e4877e0de3fc0e5dd9ff068af4595.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/meshes/wall_outlet_01/wall_outlet_01_wall_socket01_color.webp"
-dest_files=["res://.godot/imported/wall_outlet_01_wall_socket01_color.webp-a04e4877e0de3fc0e5dd9ff068af4595.s3tc.ctex"]
+dest_files=["res://.godot/imported/wall_outlet_01_wall_socket01_color.webp-a04e4877e0de3fc0e5dd9ff068af4595.s3tc.ctex", "res://.godot/imported/wall_outlet_01_wall_socket01_color.webp-a04e4877e0de3fc0e5dd9ff068af4595.etc2.ctex"]
 
 [params]
 

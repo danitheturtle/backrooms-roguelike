@@ -1,6 +1,6 @@
 extends Node
 
-const oldestCompatibleSaveVersion = "0.0.2"
+const oldestCompatibleSaveVersion: Array[int] = [0,0,2]
 
 const savesRootPath = "user://saves"
 func slot_name(slotIndex: int) -> String:
@@ -48,7 +48,7 @@ func _init() -> void:
     if not DirAccess.dir_exists_absolute(savesRootPath):
         var error = DirAccess.make_dir_absolute(savesRootPath)
         if error != OK:
-            print("could not create save directory", error)
+            push_warning("could not create save directory", error)
             inMemoryMode = true
     load_stats_for_saves_on_disk()
 
@@ -79,7 +79,7 @@ func first_empty_slot_index() -> int:
     return emptySlotIndex
 
 func new_slot(slotIndex: int) -> void:
-    delete_slot(slotIndex)
+    erase_slot(slotIndex)
     reinit()
     activeSlot = slotIndex
     save_game()
@@ -90,12 +90,12 @@ func save_game() -> void:
     if not DirAccess.dir_exists_absolute(slot_folder_path(activeSlot)):
         var error = DirAccess.make_dir_absolute(slot_folder_path(activeSlot))
         if error != OK:
-            print("could not create save slot directory", error)
+            push_warning("could not create save slot directory", error)
             inMemoryMode = true
             return
     var savegameFile := FileAccess.open(slot_savegame_path(activeSlot), FileAccess.WRITE)
     if savegameFile == null:
-        print("could not save game", FileAccess.get_open_error())
+        push_warning("could not save game", FileAccess.get_open_error())
         inMemoryMode = true
     else:
         lastSavedTime = Time.get_unix_time_from_system()
@@ -109,7 +109,7 @@ func load_slot(slotIndex: int) -> void:
     activeSlot = slotIndex
     var savegameFile := FileAccess.open(slot_savegame_path(activeSlot), FileAccess.READ)
     if savegameFile == null:
-        print("could not load game", FileAccess.get_open_error())
+        push_warning("could not load game", FileAccess.get_open_error())
         inMemoryMode = true
     else:
         var saveData = Utils.read_first_line_json(slot_savegame_path(activeSlot))
@@ -119,14 +119,30 @@ func load_slot(slotIndex: int) -> void:
         # TODO load nodes from group save_to_disk
     SignalBus.new_run_started.emit()
 
-func delete_slot(slotIndex: int) -> void:
+func erase_slot(slotIndex: int) -> void:
     if inMemoryMode: return
     var slotAbsolutePath = slot_folder_path(slotIndex)
     if DirAccess.dir_exists_absolute(slotAbsolutePath):
-        var deleteResult = DirAccess.remove_absolute(slotAbsolutePath)
+        var deleteResult = Utils.remove_dir_recursive(slotAbsolutePath)
         if deleteResult != OK:
-            print("could not clear save slot", deleteResult)
+            push_warning("could not clear save slot", deleteResult)
             inMemoryMode = true
+
+func is_save_version_compatible(saveVersion: String) -> bool:
+    var saveVersionSplit := saveVersion.split(".", false)
+    if saveVersionSplit.size() == 0: return false
+    var saveVersionNumbers: Array[int] = []
+    for nextNum: String in saveVersionSplit:
+        saveVersionNumbers.append(int(nextNum))
+    if saveVersionNumbers[0] > oldestCompatibleSaveVersion[0]:
+        return true
+    elif saveVersionNumbers[0] == oldestCompatibleSaveVersion[0]:
+        if saveVersionNumbers[1] > oldestCompatibleSaveVersion[1]:
+            return true
+        elif saveVersionNumbers[1] == oldestCompatibleSaveVersion[1]:
+            if saveVersionNumbers[2] >= oldestCompatibleSaveVersion[2]:
+                return true
+    return false
 
 # should serialize the full game state
 func serialize() -> Dictionary:
@@ -145,8 +161,9 @@ func serialize() -> Dictionary:
     return dataDict
 
 func deserialize(dataDict: Dictionary) -> void:
-    if dataDict.gameVersion != currentGameVersion:
-        print("save file is not for this version of the game, expect issues")
+    if !is_save_version_compatible(dataDict.gameVersion):
+        push_error("this save is for an older version of the game")
+        return
     gameVersion = dataDict.gameVersion
     customName = dataDict.customName
     runs = []

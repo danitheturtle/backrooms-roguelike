@@ -91,6 +91,7 @@ func on_save_pressed():
         # apply camera sensitivity
         GameSettings.CameraSensitivity = cameraSensitivitySlider.value
         show_hide_camera_sensitivity_reset()
+    if GameSettings.LongPressDelay != longPressDelayHSlider.value:
         # apply long press delay
         GameSettings.LongPressDelay = longPressDelayHSlider.value
         if State.player != null:

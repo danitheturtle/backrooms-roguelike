@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://baavm2nw8jjop"
 path.s3tc="res://.godot/imported/sofa_01_Sofa_01_metallic-Sofa_01_roughness.webp-c801dd684851fc8af24b746491fb53a1.s3tc.ctex"
+path.etc2="res://.godot/imported/sofa_01_Sofa_01_metallic-Sofa_01_roughness.webp-c801dd684851fc8af24b746491fb53a1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://objects/furniture/sofa_01/res/sofa_01_Sofa_01_metallic-Sofa_01_roughness.webp"
-dest_files=["res://.godot/imported/sofa_01_Sofa_01_metallic-Sofa_01_roughness.webp-c801dd684851fc8af24b746491fb53a1.s3tc.ctex"]
+dest_files=["res://.godot/imported/sofa_01_Sofa_01_metallic-Sofa_01_roughness.webp-c801dd684851fc8af24b746491fb53a1.s3tc.ctex", "res://.godot/imported/sofa_01_Sofa_01_metallic-Sofa_01_roughness.webp-c801dd684851fc8af24b746491fb53a1.etc2.ctex"]
 
 [params]
 

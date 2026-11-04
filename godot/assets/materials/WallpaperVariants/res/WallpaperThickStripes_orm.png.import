@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://btyerfng8iy4p"
 path.s3tc="res://.godot/imported/WallpaperThickStripes_orm.png-64f42fece04699e58b5978b4bc3496e0.s3tc.ctex"
+path.etc2="res://.godot/imported/WallpaperThickStripes_orm.png-64f42fece04699e58b5978b4bc3496e0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/materials/WallpaperVariants/res/WallpaperThickStripes_orm.png"
-dest_files=["res://.godot/imported/WallpaperThickStripes_orm.png-64f42fece04699e58b5978b4bc3496e0.s3tc.ctex"]
+dest_files=["res://.godot/imported/WallpaperThickStripes_orm.png-64f42fece04699e58b5978b4bc3496e0.s3tc.ctex", "res://.godot/imported/WallpaperThickStripes_orm.png-64f42fece04699e58b5978b4bc3496e0.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bye4u7b7krjye"
 path.s3tc="res://.godot/imported/DropCeilingSquare01_Normal.jpg-e7c95b1078cb0cbd02da3cee9b2e069b.s3tc.ctex"
+path.etc2="res://.godot/imported/DropCeilingSquare01_Normal.jpg-e7c95b1078cb0cbd02da3cee9b2e069b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/materials/DropCeilingSquare01/DropCeilingSquare01_Normal.jpg"
-dest_files=["res://.godot/imported/DropCeilingSquare01_Normal.jpg-e7c95b1078cb0cbd02da3cee9b2e069b.s3tc.ctex"]
+dest_files=["res://.godot/imported/DropCeilingSquare01_Normal.jpg-e7c95b1078cb0cbd02da3cee9b2e069b.s3tc.ctex", "res://.godot/imported/DropCeilingSquare01_Normal.jpg-e7c95b1078cb0cbd02da3cee9b2e069b.etc2.ctex"]
 
 [params]
 

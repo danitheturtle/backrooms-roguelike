@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnt32rxwht721"
 path.s3tc="res://.godot/imported/rocking_chair_Rockingchair_01_metallic-Rockingchair_01_roughness.webp-ce0cf7ae808d54a9d039010eee9b2554.s3tc.ctex"
+path.etc2="res://.godot/imported/rocking_chair_Rockingchair_01_metallic-Rockingchair_01_roughness.webp-ce0cf7ae808d54a9d039010eee9b2554.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://objects/furniture/rocking_chair/res/rocking_chair_Rockingchair_01_metallic-Rockingchair_01_roughness.webp"
-dest_files=["res://.godot/imported/rocking_chair_Rockingchair_01_metallic-Rockingchair_01_roughness.webp-ce0cf7ae808d54a9d039010eee9b2554.s3tc.ctex"]
+dest_files=["res://.godot/imported/rocking_chair_Rockingchair_01_metallic-Rockingchair_01_roughness.webp-ce0cf7ae808d54a9d039010eee9b2554.s3tc.ctex", "res://.godot/imported/rocking_chair_Rockingchair_01_metallic-Rockingchair_01_roughness.webp-ce0cf7ae808d54a9d039010eee9b2554.etc2.ctex"]
 
 [params]
 

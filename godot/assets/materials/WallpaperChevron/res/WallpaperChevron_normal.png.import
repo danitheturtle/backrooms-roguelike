@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c84qrbuu8chgs"
 path.s3tc="res://.godot/imported/WallpaperChevron_normal.png-48354911686da8d2c20c380104304f3f.s3tc.ctex"
+path.etc2="res://.godot/imported/WallpaperChevron_normal.png-48354911686da8d2c20c380104304f3f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/materials/WallpaperChevron/res/WallpaperChevron_normal.png"
-dest_files=["res://.godot/imported/WallpaperChevron_normal.png-48354911686da8d2c20c380104304f3f.s3tc.ctex"]
+dest_files=["res://.godot/imported/WallpaperChevron_normal.png-48354911686da8d2c20c380104304f3f.s3tc.ctex", "res://.godot/imported/WallpaperChevron_normal.png-48354911686da8d2c20c380104304f3f.etc2.ctex"]
 
 [params]
 

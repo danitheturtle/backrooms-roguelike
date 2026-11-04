@@ -95,7 +95,7 @@ func read_first_line_json(filepath: String) -> Dictionary:
     var jsonParser = JSON.new()
     var parseResult = jsonParser.parse(unparsedString)
     if parseResult != OK:
-        print("JSON Parse Error: ", jsonParser.get_error_message(), " in ", unparsedString, " at line ", jsonParser.get_error_line())
+        push_error("JSON Parse Error: ", jsonParser.get_error_message(), " in ", unparsedString, " at line ", jsonParser.get_error_line())
         return {}
     return jsonParser.data
 
@@ -110,3 +110,25 @@ func set_timeout(callback: Callable, timeoutMS: int) -> Timer:
     timeoutTimer.timeout.connect(callbackWithCleanup)
     get_tree().root.add_child(timeoutTimer)
     return timeoutTimer
+
+func remove_dir_recursive(dirPath: String) -> Error:
+    var filesInDir := DirAccess.get_files_at(dirPath)
+    var dirsInDir := DirAccess.get_directories_at(dirPath)
+    for nextDirName in dirsInDir:
+        var nextDirPath = dirPath + "/" + nextDirName
+        print(nextDirPath)
+        var recursiveCallResult = remove_dir_recursive(nextDirPath)
+        if recursiveCallResult != Error.OK:
+            push_warning("Error recursively deleting directory ", nextDirPath, " ", recursiveCallResult)
+            return recursiveCallResult
+    for nextFileName in filesInDir:
+        var nextFilePath = dirPath + "/" + nextFileName
+        print(nextFilePath)
+        var removeFileResult = DirAccess.remove_absolute(nextFilePath)
+        if removeFileResult != Error.OK:
+            push_warning("Error recursively deleting directory ", nextFilePath, " ", removeFileResult)
+            return removeFileResult
+    var dirRemoveResult = DirAccess.remove_absolute(dirPath)
+    if dirRemoveResult != Error.OK:
+        push_warning("Error recursively deleting directory ", dirPath, " ", dirRemoveResult)
+    return dirRemoveResult

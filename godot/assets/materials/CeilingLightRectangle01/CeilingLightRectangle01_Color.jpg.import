@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cybbngargjdgv"
 path.s3tc="res://.godot/imported/CeilingLightRectangle01_Color.jpg-46f8010019f8d5c8493a8701693d4d19.s3tc.ctex"
+path.etc2="res://.godot/imported/CeilingLightRectangle01_Color.jpg-46f8010019f8d5c8493a8701693d4d19.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/materials/CeilingLightRectangle01/CeilingLightRectangle01_Color.jpg"
-dest_files=["res://.godot/imported/CeilingLightRectangle01_Color.jpg-46f8010019f8d5c8493a8701693d4d19.s3tc.ctex"]
+dest_files=["res://.godot/imported/CeilingLightRectangle01_Color.jpg-46f8010019f8d5c8493a8701693d4d19.s3tc.ctex", "res://.godot/imported/CeilingLightRectangle01_Color.jpg-46f8010019f8d5c8493a8701693d4d19.etc2.ctex"]
 
 [params]
 

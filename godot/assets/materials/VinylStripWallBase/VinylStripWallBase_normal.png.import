@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmk3a32yyewhk"
 path.s3tc="res://.godot/imported/VinylStripWallBase_normal.png-ed3cbd8b316ea809ae5c3c0d93d03671.s3tc.ctex"
+path.etc2="res://.godot/imported/VinylStripWallBase_normal.png-ed3cbd8b316ea809ae5c3c0d93d03671.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/materials/VinylStripWallBase/VinylStripWallBase_normal.png"
-dest_files=["res://.godot/imported/VinylStripWallBase_normal.png-ed3cbd8b316ea809ae5c3c0d93d03671.s3tc.ctex"]
+dest_files=["res://.godot/imported/VinylStripWallBase_normal.png-ed3cbd8b316ea809ae5c3c0d93d03671.s3tc.ctex", "res://.godot/imported/VinylStripWallBase_normal.png-ed3cbd8b316ea809ae5c3c0d93d03671.etc2.ctex"]
 
 [params]
 

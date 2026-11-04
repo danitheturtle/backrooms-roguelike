@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctfti03bn4wej"
 path.s3tc="res://.godot/imported/WallpaperSmallChevronDotsYellow_albedo.png-54be7c61f11477b76efac29f378de327.s3tc.ctex"
+path.etc2="res://.godot/imported/WallpaperSmallChevronDotsYellow_albedo.png-54be7c61f11477b76efac29f378de327.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/materials/WallpaperChevron/res/WallpaperSmallChevronDotsYellow_albedo.png"
-dest_files=["res://.godot/imported/WallpaperSmallChevronDotsYellow_albedo.png-54be7c61f11477b76efac29f378de327.s3tc.ctex"]
+dest_files=["res://.godot/imported/WallpaperSmallChevronDotsYellow_albedo.png-54be7c61f11477b76efac29f378de327.s3tc.ctex", "res://.godot/imported/WallpaperSmallChevronDotsYellow_albedo.png-54be7c61f11477b76efac29f378de327.etc2.ctex"]
 
 [params]
 

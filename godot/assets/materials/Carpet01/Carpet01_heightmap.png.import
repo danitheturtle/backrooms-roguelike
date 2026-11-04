@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cr45tqwp6daym"
 path.s3tc="res://.godot/imported/Carpet01_heightmap.png-2fbb3d139d46d2f7a2cb158816d0c411.s3tc.ctex"
+path.etc2="res://.godot/imported/Carpet01_heightmap.png-2fbb3d139d46d2f7a2cb158816d0c411.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/materials/Carpet01/Carpet01_heightmap.png"
-dest_files=["res://.godot/imported/Carpet01_heightmap.png-2fbb3d139d46d2f7a2cb158816d0c411.s3tc.ctex"]
+dest_files=["res://.godot/imported/Carpet01_heightmap.png-2fbb3d139d46d2f7a2cb158816d0c411.s3tc.ctex", "res://.godot/imported/Carpet01_heightmap.png-2fbb3d139d46d2f7a2cb158816d0c411.etc2.ctex"]
 
 [params]
 

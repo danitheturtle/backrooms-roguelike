@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bn4cklvw1ra1o"
 path.s3tc="res://.godot/imported/LightOakVeneer01_albedo.png-8d862570c0a5e1b538a0d669536b54d3.s3tc.ctex"
+path.etc2="res://.godot/imported/LightOakVeneer01_albedo.png-8d862570c0a5e1b538a0d669536b54d3.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/materials/LightOakVeneer01/LightOakVeneer01_albedo.png"
-dest_files=["res://.godot/imported/LightOakVeneer01_albedo.png-8d862570c0a5e1b538a0d669536b54d3.s3tc.ctex"]
+dest_files=["res://.godot/imported/LightOakVeneer01_albedo.png-8d862570c0a5e1b538a0d669536b54d3.s3tc.ctex", "res://.godot/imported/LightOakVeneer01_albedo.png-8d862570c0a5e1b538a0d669536b54d3.etc2.ctex"]
 
 [params]
 

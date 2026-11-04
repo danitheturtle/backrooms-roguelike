@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwtt37wye3q7v"
 path.s3tc="res://.godot/imported/wall_outlet_01_wall_socket01_metal-wall_socket01_rough.webp-9187ea56c5227d25ccbb8cb3432837b0.s3tc.ctex"
+path.etc2="res://.godot/imported/wall_outlet_01_wall_socket01_metal-wall_socket01_rough.webp-9187ea56c5227d25ccbb8cb3432837b0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/meshes/wall_outlet_01/wall_outlet_01_wall_socket01_metal-wall_socket01_rough.webp"
-dest_files=["res://.godot/imported/wall_outlet_01_wall_socket01_metal-wall_socket01_rough.webp-9187ea56c5227d25ccbb8cb3432837b0.s3tc.ctex"]
+dest_files=["res://.godot/imported/wall_outlet_01_wall_socket01_metal-wall_socket01_rough.webp-9187ea56c5227d25ccbb8cb3432837b0.s3tc.ctex", "res://.godot/imported/wall_outlet_01_wall_socket01_metal-wall_socket01_rough.webp-9187ea56c5227d25ccbb8cb3432837b0.etc2.ctex"]
 
 [params]
 

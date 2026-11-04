@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bi4f2j3scxwt7"
 path.s3tc="res://.godot/imported/CeilingLightSquare01_Emissive.jpg-1e14a9b2d6cde777e4ffbfb702e8f16b.s3tc.ctex"
+path.etc2="res://.godot/imported/CeilingLightSquare01_Emissive.jpg-1e14a9b2d6cde777e4ffbfb702e8f16b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/materials/CeilingLightSquare01/CeilingLightSquare01_Emissive.jpg"
-dest_files=["res://.godot/imported/CeilingLightSquare01_Emissive.jpg-1e14a9b2d6cde777e4ffbfb702e8f16b.s3tc.ctex"]
+dest_files=["res://.godot/imported/CeilingLightSquare01_Emissive.jpg-1e14a9b2d6cde777e4ffbfb702e8f16b.s3tc.ctex", "res://.godot/imported/CeilingLightSquare01_Emissive.jpg-1e14a9b2d6cde777e4ffbfb702e8f16b.etc2.ctex"]
 
 [params]
 
