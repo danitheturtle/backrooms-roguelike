@@ -2408,9 +2408,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.75, 3.125)
 shape = SubResource("BoxShape3D_2gmu2")
 
 [node name="PopupForArea" parent="Tutorials/MovementTutorialArea" index="1" unique_id=405273844 instance=ExtResource("25_m6f5b")]
-popupText = "Welcome to the Async Investigations Tutorial!
-
-'WASD' to move. F11 to fullscreen. "
+popupText = "'WASD' to move. F11 to fullscreen."
 
 [node name="DragTutorialArea" parent="Tutorials" index="1" unique_id=1862979523 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 1.2499998, 26.25)
@@ -2420,7 +2418,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 1.8750002, -1.625)
 shape = SubResource("BoxShape3D_s14sb")
 
 [node name="PopupForArea" parent="Tutorials/DragTutorialArea" index="1" unique_id=78886590 instance=ExtResource("25_m6f5b")]
-popupText = "Press 'Mouse Button' on large objects to start dragging them. Press again to stop."
+popupText = "Press Interact ('Mouse Button') to toggle dragging large objects."
 
 [node name="ActionFlashlightTutorialArea" parent="Tutorials" index="2" unique_id=1791378614 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.2499999, 31.75)
@@ -2430,7 +2428,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.125, 1.1250001, 1.25)
 shape = SubResource("BoxShape3D_qog73")
 
 [node name="PopupForArea" parent="Tutorials/ActionFlashlightTutorialArea" index="1" unique_id=2117522302 instance=ExtResource("25_m6f5b")]
-popupText = "This place gets dark. Your Action key is 'F'. By default this toggles your flashlight."
+popupText = "Press Action ('F') to toggle your flashlight."
 
 [node name="RunTutorialArea" parent="Tutorials" index="3" unique_id=1476239177 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1.2500001, 28)
@@ -2440,7 +2438,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, 1.6249999, 1.5)
 shape = SubResource("BoxShape3D_7s0g0")
 
 [node name="PopupForArea" parent="Tutorials/RunTutorialArea" index="1" unique_id=282030534 instance=ExtResource("25_m6f5b")]
-popupText = "Press 'Shift' to run and stop performing certain actions."
+popupText = "Press 'Shift' to sprint. Quickly release to toggle or hold to end sprint on release."
 
 [node name="JumpTutorialArea" parent="Tutorials" index="4" unique_id=957011598 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 1.75, 7)
@@ -2450,7 +2448,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 1.5, 0.125)
 shape = SubResource("BoxShape3D_aib01")
 
 [node name="PopupForArea" parent="Tutorials/JumpTutorialArea" index="1" unique_id=1612662540 instance=ExtResource("25_m6f5b")]
-popupText = "Press 'Space' to jump or climb up onto small ledges."
+popupText = "Press 'Space' to jump or climb onto ledges."
 
 [node name="CrouchTutorialArea" parent="Tutorials" index="5" unique_id=1217829533 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.38395, 3.625, 7.1212535)
@@ -2460,7 +2458,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.625, 0, 0.25)
 shape = SubResource("BoxShape3D_l631b")
 
 [node name="PopupForArea" parent="Tutorials/CrouchTutorialArea" index="1" unique_id=589731623 instance=ExtResource("25_m6f5b")]
-popupText = "Press 'Ctrl' to crouch"
+popupText = "Press 'Ctrl' to toggle crouching."
 
 [node name="PickUpTutorialArea" parent="Tutorials" index="6" unique_id=850203257 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 2.25, 12.75)
@@ -2470,9 +2468,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, 1.625, 0.125)
 shape = SubResource("BoxShape3D_13pvn")
 
 [node name="PopupForArea" parent="Tutorials/PickUpTutorialArea" index="1" unique_id=398090632 instance=ExtResource("25_m6f5b")]
-popupText = "Press 'Mouse Button' to pick up smaller objects. Hold and drag to rotate. Press again to drop.
+popupText = "Press Interact ('Mouse Button') to pick up smaller objects. Hold and drag to rotate. Press again to drop.
 
-For most nonconsumables, pressing Action ('F') while holding throws it."
+Press Action ('F') while holding to throw."
 
 [node name="SqueezeTutorialArea" parent="Tutorials" index="7" unique_id=1338313990 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.25, 2, 13.5)
@@ -2482,7 +2480,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, 2.125, -0.25)
 shape = SubResource("BoxShape3D_wyccp")
 
 [node name="PopupForArea" parent="Tutorials/SqueezeTutorialArea" index="1" unique_id=1273100879 instance=ExtResource("25_m6f5b")]
-popupText = "Hold 'E' to squeeze through tight spaces or shimmy along narrow ledges"
+popupText = "Hold 'E' to squeeze through tight spaces or shimmy along narrow ledges."
 
 [node name="CrawlTutorialArea" parent="Tutorials" index="8" unique_id=1336706286 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 3.75, 29.5)
@@ -2492,7 +2490,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 1)
 shape = SubResource("BoxShape3D_lswjw")
 
 [node name="PopupForArea" parent="Tutorials/CrawlTutorialArea" index="1" unique_id=1167007454 instance=ExtResource("25_m6f5b")]
-popupText = "Hold 'Ctrl' to crawl"
+popupText = "Long press 'Ctrl' to crawl."
 
 [node name="TooNarrowTutorialArea" parent="Tutorials" index="9" unique_id=590285840 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 3.75, 54.25)
@@ -2512,9 +2510,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.625, 1.875, 0.625)
 shape = SubResource("BoxShape3D_lhwer")
 
 [node name="PopupForArea" parent="Tutorials/LadderTutorialArea" index="1" unique_id=1812749223 instance=ExtResource("25_m6f5b")]
-popupText = "You found a ladder! Move it to aid exploration.
+popupText = "Ladders are important tools. Hold Action ('F') while carrying to open the supports.
 
-Press Action ('F') while holding to open the supports. After placing it, press 'Space' to begin climbing. 'Shift' dismounts. 'Space' jumps off."
+Once placed, press 'Space' to begin climbing. 'Shift' dismounts. 'Space' jumps off."
 
 [node name="VaultTutorialArea" parent="Tutorials" index="11" unique_id=1524581605 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.25, 0, 55)
@@ -2524,10 +2522,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.125, -0.625)
 shape = SubResource("BoxShape3D_5kbb8")
 
 [node name="PopupForArea" parent="Tutorials/VaultTutorialArea" index="1" unique_id=2112005554 instance=ExtResource("25_m6f5b")]
-popupText = "Press 'Space' while facing a ledge to climb up onto it. This even works in the air!"
+popupText = "Press 'Space' to climb onto a ledge even while airborne. You can queue this action."
 
 [node name="PlayerSpawn" parent="." index="9" unique_id=1091142161 instance=ExtResource("25_o8cjy")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 28.500004, -5.7288947, 38.999996)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.23082, 0)
 
 [editable path="Props/WoodChair01"]
 [editable path="LevelMeshes/ResizeableWall"]

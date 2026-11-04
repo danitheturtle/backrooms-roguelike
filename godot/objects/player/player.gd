@@ -22,7 +22,6 @@ var b: BehaviorState:
 @export var CRAWL_HEIGHT: float = 0.45
 @export var SQUEEZE_RADIUS: float = 0.2
 @export var SLOWED_CAMERA_DAMPING: float = 0.4
-@export var HELD_INPUT_TIMEOUT: float = 0.5
 @export var SLIDE_IMPULSE: float = 7.5
 @export var SLIDE_DECELERATION: float = 20.0
 @export var CRAWL_STRAFE_DAMPING: float = 0.1
@@ -99,10 +98,7 @@ func _ready() -> void:
     adjacentDetectorArea.body_exited.connect(on_adjacent_exited)
     adjacentDetectorArea.area_entered.connect(on_adjacent_area_entered)
     adjacentDetectorArea.area_exited.connect(on_adjacent_area_exited)
-    actionTimer.wait_time = HELD_INPUT_TIMEOUT
-    interactTimer.wait_time = HELD_INPUT_TIMEOUT
-    crawlTimer.wait_time = HELD_INPUT_TIMEOUT
-    sprintTimer.wait_time = HELD_INPUT_TIMEOUT
+    set_long_press_delay(GameSettings.LongPressDelay)
     actionTimer.timeout.connect(on_action_timer_ended)
     interactTimer.timeout.connect(on_interact_timer_ended)
     crawlTimer.timeout.connect(on_crawl_timer_ended)
@@ -134,6 +130,12 @@ func set_default_positions() -> void:
     camera.position.y = standingHeight - cameraTopOffset
     b.flashlight.light.position.x = b.flashlight.offset.x
     b.flashlight.light.position.y = b.flashlight.offset.y
+
+func set_long_press_delay(_newDelay: float) -> void:
+    actionTimer.wait_time = _newDelay
+    interactTimer.wait_time = _newDelay
+    crawlTimer.wait_time = _newDelay
+    sprintTimer.wait_time = _newDelay
 
 func can_shape_change():
     var detectedCollisions: Array[Node3D] = nearbyBodies.keys()

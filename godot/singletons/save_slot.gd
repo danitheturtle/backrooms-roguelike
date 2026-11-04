@@ -1,5 +1,7 @@
 extends Node
 
+const oldestCompatibleSaveVersion = "0.0.2"
+
 const savesRootPath = "user://saves"
 func slot_name(slotIndex: int) -> String:
     return "slot" + str(slotIndex)
@@ -39,7 +41,7 @@ var sortedSaves: Array[SaveSlotStats]:
         return sortedArray
 
 func _init() -> void:
-    inMemoryMode = true
+    inMemoryMode = false
     reinit()
     if inMemoryMode: return
     # ensure saves folder exists

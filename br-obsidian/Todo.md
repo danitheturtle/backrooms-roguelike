@@ -16,7 +16,6 @@ Tutorial Layout Updates:
 - add rope climb, pickup, attach, descend section to final part of tutorial
 
  tutorial updates:
-- 3 - you can move ladder with held prop while climbing it
 - 5 - when squeezing, prevent player from falling off ledge
 - 5 - vaulting is buggy
 - 5 - scroll to impulse dragged object on camera z axis
