@@ -1,3 +1,3 @@
-class_name RoomMetadata
+class_name RoomGeneratorMetadata
 
 var connectorSampler: PackedFloat32Array
