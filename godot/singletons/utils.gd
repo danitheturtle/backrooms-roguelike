@@ -116,14 +116,12 @@ func remove_dir_recursive(dirPath: String) -> Error:
     var dirsInDir := DirAccess.get_directories_at(dirPath)
     for nextDirName in dirsInDir:
         var nextDirPath = dirPath + "/" + nextDirName
-        print(nextDirPath)
         var recursiveCallResult = remove_dir_recursive(nextDirPath)
         if recursiveCallResult != Error.OK:
             push_warning("Error recursively deleting directory ", nextDirPath, " ", recursiveCallResult)
             return recursiveCallResult
     for nextFileName in filesInDir:
         var nextFilePath = dirPath + "/" + nextFileName
-        print(nextFilePath)
         var removeFileResult = DirAccess.remove_absolute(nextFilePath)
         if removeFileResult != Error.OK:
             push_warning("Error recursively deleting directory ", nextFilePath, " ", removeFileResult)

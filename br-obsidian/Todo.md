@@ -4,6 +4,7 @@
 - vaulting is buggy
 - scroll to impulse dragged object on camera z axis
 - dragged object rotation (remove axis lock)
+- save slot rename, sort by save time
 - ramp ambient light power depending on distance inside room boundary. Each room gets its own bespoke level calculated based on number of lights turned on.
 	- This lets us raise base light level while letting some areas be extra dark and some extra bright. Default should be midrange
 	- Sub-rooms shouldn't affect it. only parent room sets ambient level

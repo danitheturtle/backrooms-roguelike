@@ -4,10 +4,27 @@
 [ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_gwgcl"]
 [ext_resource type="Resource" uid="uid://dclwrefsscctj" path="res://rooms/room_test/defs/definition_0.tres" id="4_1f6oh"]
 [ext_resource type="PackedScene" uid="uid://bo8cc1njenbbh" path="res://rooms/level_0/hobbytown1/room_L0_hobbytown_1.tscn" id="4_gwgcl"]
+[ext_resource type="PackedScene" uid="uid://ch6oue2dlb35s" path="res://objects/furniture/sofa_03/sofa_03_physics.tscn" id="5_1f6oh"]
+[ext_resource type="PackedScene" uid="uid://b4wu7kqyskjug" path="res://objects/furniture/sofa_01/sofa_01_physics.tscn" id="6_pq6pd"]
+[ext_resource type="PackedScene" uid="uid://d0ykk16hgjceh" path="res://objects/ladders/ladder_freestanding/ladder_freestanding_closed.tscn" id="7_pq6pd"]
+[ext_resource type="PackedScene" uid="uid://gluxbvhkfuna" path="res://objects/furniture/rocking_chair/rocking_chair_physics.tscn" id="8_npgoo"]
+[ext_resource type="PackedScene" uid="uid://b3txy1m8ovq0n" path="res://objects/furniture/green_chair/green_chair_physics.tscn" id="9_dmwjx"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gwgcl"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7rq7y"]
 resource_local_to_scene = true
 size = Vector3(49.5, 15, 19.75)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_npgoo"]
+resource_local_to_scene = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dmwjx"]
+resource_local_to_scene = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ai5ap"]
+resource_local_to_scene = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4735r"]
+resource_local_to_scene = true
 
 [node name="RoomTest" unique_id=1900576414 instance=ExtResource("1_xurkv")]
 uniqueName = &"test"
@@ -15,10 +32,29 @@ definitions = Array[ExtResource("2_gwgcl")]([ExtResource("4_1f6oh")])
 
 [node name="BoundsAABB" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="0" unique_id=415124710]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 1.375)
-shape = SubResource("BoxShape3D_gwgcl")
+shape = SubResource("BoxShape3D_7rq7y")
 
 [node name="RoomL0Hobbytown1" parent="SubRooms" parent_id_path=PackedInt32Array(1023009072) index="0" unique_id=1477789953 instance=ExtResource("4_gwgcl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, -7.5)
 
 [node name="Marker3D" type="Marker3D" parent="." index="7" unique_id=832522875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25, 0, 2)
+
+[node name="Sofa03Physics" parent="." index="8" unique_id=1565635138 instance=ExtResource("5_1f6oh")]
+transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -3.7081645, 0.35200208, -16.25)
+physics_material_override = SubResource("PhysicsMaterial_npgoo")
+
+[node name="Sofa01Physics" parent="." index="9" unique_id=1033021464 instance=ExtResource("6_pq6pd")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -3.75, 0.25, -18.75)
+physics_material_override = SubResource("PhysicsMaterial_dmwjx")
+
+[node name="LadderFreestandingClosed" parent="." index="10" unique_id=1062347463 instance=ExtResource("7_pq6pd")]
+transform = Transform3D(0.7947019, 0.21293972, 0.56842387, -0.25881904, 0.9659259, 0, -0.54905534, -0.14711893, 0.82273585, 2.4370606, 0.025905848, -10.1306925)
+
+[node name="RockingChairPhysics" parent="." index="11" unique_id=883044359 instance=ExtResource("8_npgoo")]
+transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 2.15, 0.5, -4.35)
+physics_material_override = SubResource("PhysicsMaterial_ai5ap")
+
+[node name="GreenChairPhysics" parent="." index="12" unique_id=528130968 instance=ExtResource("9_dmwjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.675, 0.5, -6.45)
+physics_material_override = SubResource("PhysicsMaterial_4735r")

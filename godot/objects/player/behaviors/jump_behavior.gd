@@ -1,7 +1,7 @@
 class_name JumpBehavior
 extends PlayerBehavior
 
-const cannotTransitionFrom: Array[StringName] = [&"vault", &"crouch", &"crawl", &"squeeze", &"film_camera", &"squeeze", &"climb"]
+const cannotTransitionFrom: Array[StringName] = [&"vault", &"crouch", &"crawl", &"squeeze", &"film_camera", &"squeeze"]
 const mutuallyExclusiveWith: Array[StringName] = [&"drag", &"climb"]
 
 var unhandledInput: bool
