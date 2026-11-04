@@ -1,40 +1,21 @@
+- Ropes
+- connector definition list of connectors should be indexed array instead of dict
+- when squeezing, prevent player from falling off ledge
+- vaulting is buggy
+- scroll to impulse dragged object on camera z axis
+- dragged object rotation (remove axis lock)
 - ramp ambient light power depending on distance inside room boundary. Each room gets its own bespoke level calculated based on number of lights turned on.
 	- This lets us raise base light level while letting some areas be extra dark and some extra bright. Default should be midrange
 	- Sub-rooms shouldn't affect it. only parent room sets ambient level
-- refactor player behaviors into own scripts
-- rope climbing
-- color grade textures and lighting
-- sprint toggle 
-- dial in climbup min/max height
-- save slot delete, rename, sort by save time
 - flashlight texture projection with 2 hard circles, one to simulate bounce light? hopefully it won't look shit
 - parent/child relationship for connections so only one of them generates the edges (and also doors when we get there)
 - navmesh + runtime generation for connections
-- tutorial updates
-	- Extend run tutorial hallway
-	- Move jump tutorial to after run tutorial
-	- Add crouch tutorial after new jump tutorial
-	- Add ledge section to squeeze tutorial before the crawl tutorial; extend the whole hallway to give camera tutorial room to breathe
-	- Make climbup space in ladder section bigger so player doesn't hit the ceiling on imprecice placement of ladder
-	- can't jump while climbing anymore
-	- can still vault while climbing (bad)
-	- disable flashlight when performing two-handed actions
-	- if held prop is stuck, player remains in holding state. use drop distance or something
-	- you can move ladder with held prop while climbing it
-	- you can walk into drag objects
-	- you can drag things you're standing on
-	- dragged objects don't fall and aren't affected by gravity
-	- dragged objects move at expected player velocity, not final velocity. lets player shove stuff weird
-
-Controls changes:
-- Put Crouch/Stand is on toggle, hold to dip into crawl
-- Use raycast for target instead of the shapecast. ensure pickup is responsive by updating mouse inupts
-- pick up on mousedown. if held, rotate immediately. stop rotate on mouseup
-- if rotation delta > n, don't drop even if timer expired
-
-- vaulting is buggy
-- spring arm collider to big on some objects, makes precision placement odd. Maybe add full collision for the held object?
-- make highlight distance shorter than drag distance
-- ladder closes too quickly after releasing f
-- ladder path needs adjusted
+- move mouse capture out of player state and into global keybinds with fullscreen / screenshot
 - throw rugs as cover for carpet seams
+
+Tutorial Layout Updates:
+- Add object placement puzzle to final room that unlocks door
+- make final room less boxy
+- add rope climb, pickup, attach, descend section to final part of tutorial
+
+ tutorial updates:

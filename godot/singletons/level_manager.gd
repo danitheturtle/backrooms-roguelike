@@ -52,9 +52,8 @@ func load_tutorial() -> void:
     tutorialRoom.setup(tutorialInstance)
     await get_tree().process_frame
     root.add_child(tutorialRoom)
-    # Player is disabled by default to prevent physics jank during setup
-    State.player.process_mode = Node.PROCESS_MODE_PAUSABLE
-    level_ready.emit()
+    tutorialRoom.owner = root
+    on_level_ready()
 
 # called at the start of a run
 func generate_initial_level() -> void:
@@ -63,6 +62,15 @@ func generate_initial_level() -> void:
     testRoom.setup(testRoomInstance)
     await get_tree().process_frame
     root.add_child(testRoom)
+    testRoom.owner = root
+    on_level_ready()
+
+func on_level_ready() -> void:
+    await get_tree().process_frame
+    await get_tree().process_frame
+    var playerSpawn = Utils.get_child_of_type(root, PlayerSpawn, true)
     # Player is disabled by default to prevent physics jank during setup
+    if playerSpawn != null && playerSpawn is PlayerSpawn:
+        State.player.global_transform = playerSpawn.global_transform
     State.player.process_mode = Node.PROCESS_MODE_PAUSABLE
     level_ready.emit()

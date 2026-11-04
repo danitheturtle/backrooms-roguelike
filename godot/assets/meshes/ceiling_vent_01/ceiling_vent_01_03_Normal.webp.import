@@ -1,0 +1,45 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://d0rvnnq0o4kjn"
+path.s3tc="res://.godot/imported/ceiling_vent_01_03_Normal.webp-ee9d943b69d69dd15deffa69af21f8d8.s3tc.ctex"
+path.etc2="res://.godot/imported/ceiling_vent_01_03_Normal.webp-ee9d943b69d69dd15deffa69af21f8d8.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "f1387a0f2b84b9ad8f1fe721a82b95df"
+}
+
+[deps]
+
+source_file="res://assets/meshes/ceiling_vent_01/ceiling_vent_01_03_Normal.webp"
+dest_files=["res://.godot/imported/ceiling_vent_01_03_Normal.webp-ee9d943b69d69dd15deffa69af21f8d8.s3tc.ctex", "res://.godot/imported/ceiling_vent_01_03_Normal.webp-ee9d943b69d69dd15deffa69af21f8d8.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://assets/meshes/ceiling_vent_01_03_Normal.webp"
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

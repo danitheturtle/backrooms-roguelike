@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbm1ko2chlv5v"
 path.s3tc="res://.godot/imported/school_chair_SchoolChair_01_diff_2k.webp-aa2fd029629b36c59857d4858a434315.s3tc.ctex"
+path.etc2="res://.godot/imported/school_chair_SchoolChair_01_diff_2k.webp-aa2fd029629b36c59857d4858a434315.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://objects/furniture/school_chair/res/school_chair_SchoolChair_01_diff_2k.webp"
-dest_files=["res://.godot/imported/school_chair_SchoolChair_01_diff_2k.webp-aa2fd029629b36c59857d4858a434315.s3tc.ctex"]
+dest_files=["res://.godot/imported/school_chair_SchoolChair_01_diff_2k.webp-aa2fd029629b36c59857d4858a434315.s3tc.ctex", "res://.godot/imported/school_chair_SchoolChair_01_diff_2k.webp-aa2fd029629b36c59857d4858a434315.etc2.ctex"]
 
 [params]
 

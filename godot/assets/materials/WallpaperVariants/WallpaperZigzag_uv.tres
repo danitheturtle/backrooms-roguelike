@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://oxi1a1xelpa7"]
+
+[ext_resource type="Texture2D" uid="uid://cmx1svcu8eoxg" path="res://assets/materials/WallpaperVariants/res/WallpaperZigzag_albedo.png" id="1_jsti5"]
+[ext_resource type="Texture2D" uid="uid://c5nkm3t72oeq7" path="res://assets/materials/WallpaperVariants/res/Wallpaper_normal.png" id="2_c7ubc"]
+[ext_resource type="Texture2D" uid="uid://drsh6arrjdrsj" path="res://assets/materials/WallpaperVariants/res/WallpaperZigzag_orm.png" id="3_hudwq"]
+
+[resource]
+albedo_texture = ExtResource("1_jsti5")
+roughness_texture = ExtResource("3_hudwq")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_c7ubc")
+uv1_scale = Vector3(10, 10, 10)

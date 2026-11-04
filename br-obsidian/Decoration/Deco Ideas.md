@@ -14,7 +14,10 @@ that big plastic dinosaur at every playground
 plastic childrens slide
 solo jazz design cups
 cool S https://en.wikipedia.org/wiki/Cool_S
-
+Aglamesis Bros soda fountain decor
+pink yard flamingo
+indoor skatepark
+quarter-driven horse ride from YOTH https://youtu.be/-tvM7Uak5m0
 
 video:
 - 90s commercials

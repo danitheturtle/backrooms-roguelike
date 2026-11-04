@@ -26,4 +26,3 @@ environment = SubResource("Environment_5q0ne")
 
 [node name="Player" parent="." unique_id=66642413 instance=ExtResource("2_eonen")]
 process_mode = 1
-transform = Transform3D(0.8744119, 0, 0.48518443, 0, 1, 0, -0.48518443, 0, 0.8744119, 0, 0, 0)

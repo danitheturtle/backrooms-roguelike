@@ -19,6 +19,7 @@ func _ready() -> void:
     on_goto_main_menu()
 
 func on_goto_main_menu() -> void:
+    SaveSlot.load_stats_for_saves_on_disk()
     if SaveSlot.savesOnDisk.keys().size() > 0:
         continueButton.show()
         loadGameButton.show()

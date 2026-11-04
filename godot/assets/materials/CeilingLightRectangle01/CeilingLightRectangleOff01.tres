@@ -14,6 +14,5 @@ roughness_texture = ExtResource("5_8drvk")
 emission_texture = ExtResource("2_cnayg")
 normal_enabled = true
 normal_texture = ExtResource("4_wi1e7")
-uv1_scale = Vector3(0.5, 0.5, 0.5)
-uv1_offset = Vector3(0.5, 0.25, 0)
+uv1_scale = Vector3(0.665, 0.665, 0.665)
 uv1_triplanar = true

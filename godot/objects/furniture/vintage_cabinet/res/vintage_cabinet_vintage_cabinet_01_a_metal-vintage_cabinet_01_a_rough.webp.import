@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bq8e5ltbgyofd"
 path.s3tc="res://.godot/imported/vintage_cabinet_vintage_cabinet_01_a_metal-vintage_cabinet_01_a_rough.webp-09fea1d2737ab875b25c86846177c487.s3tc.ctex"
+path.etc2="res://.godot/imported/vintage_cabinet_vintage_cabinet_01_a_metal-vintage_cabinet_01_a_rough.webp-09fea1d2737ab875b25c86846177c487.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://objects/furniture/vintage_cabinet/res/vintage_cabinet_vintage_cabinet_01_a_metal-vintage_cabinet_01_a_rough.webp"
-dest_files=["res://.godot/imported/vintage_cabinet_vintage_cabinet_01_a_metal-vintage_cabinet_01_a_rough.webp-09fea1d2737ab875b25c86846177c487.s3tc.ctex"]
+dest_files=["res://.godot/imported/vintage_cabinet_vintage_cabinet_01_a_metal-vintage_cabinet_01_a_rough.webp-09fea1d2737ab875b25c86846177c487.s3tc.ctex", "res://.godot/imported/vintage_cabinet_vintage_cabinet_01_a_metal-vintage_cabinet_01_a_rough.webp-09fea1d2737ab875b25c86846177c487.etc2.ctex"]
 
 [params]
 

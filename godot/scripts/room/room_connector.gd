@@ -3,9 +3,9 @@
 extends Node3D
 class_name RoomConnector
 
-const Wallpaper01WorldMaterial = preload("res://assets/materials/Wallpaper01/Wallpaper01_world.tres")
-const DropCeilingRectangle01WorldMaterial = preload("res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01_world.tres")
-const Carpet01WorldMaterial = preload("res://assets/materials/Carpet01/Carpet01_world.tres")
+const DefaultWallMaterial = preload("res://assets/materials/WallpaperChevron/WallpaperChevronYellow.tres")
+const DefaultCeilingMaterial = preload("res://assets/materials/DropCeilingSquare01/DropCeilingSquare01.tres")
+const DefaultCarpetMaterial = preload("res://assets/materials/Carpet01/Carpet01Yellow.tres")
 
 var editorHelper: ConnectorEditorHelper = null
 
@@ -35,18 +35,25 @@ func set_connector_width(newWidth: int) -> void: #only one that's the same for a
 @export var edgeGenSouth: bool = true
 # edge collision usually exists, false by default. Only generates collison for enabled edges
 @export var edgeGenCollision: bool = false
+# material for main face
+@export var primaryMaterial: StandardMaterial3D = DefaultWallMaterial: set = set_primary_material
+func set_primary_material(newMaterial: StandardMaterial3D) -> void:
+    primaryMaterial = newMaterial
+    if newMaterial != null && mesh != null: mesh.material_override = newMaterial
+@export var primaryMaterialOffset: Vector2 = Vector2.ZERO: set = set_primary_material_offset
+@abstract func set_primary_material_offset(newOffset: Vector2) -> void
 # materials for hole edges generated in the middle of the surface
 @export_group('Inner Edge Materials', 'innerEdge')
-@export var innerEdgeWestMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
-@export var innerEdgeNorthMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
-@export var innerEdgeEastMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
-@export var innerEdgeSouthMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
+@export var innerEdgeWestMaterial: StandardMaterial3D = DefaultWallMaterial
+@export var innerEdgeNorthMaterial: StandardMaterial3D = DefaultWallMaterial
+@export var innerEdgeEastMaterial: StandardMaterial3D = DefaultWallMaterial
+@export var innerEdgeSouthMaterial: StandardMaterial3D = DefaultWallMaterial
 # materials for hole edges generated at the outer edge of the surface
 @export_group('Far Edge Materials', 'farEdge')
-@export var farEdgeWestMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
-@export var farEdgeNorthMaterial: StandardMaterial3D = DropCeilingRectangle01WorldMaterial
-@export var farEdgeEastMaterial: StandardMaterial3D = Wallpaper01WorldMaterial
-@export var farEdgeSouthMaterial: StandardMaterial3D = Carpet01WorldMaterial
+@export var farEdgeWestMaterial: StandardMaterial3D = DefaultWallMaterial
+@export var farEdgeNorthMaterial: StandardMaterial3D = DefaultCeilingMaterial
+@export var farEdgeEastMaterial: StandardMaterial3D = DefaultWallMaterial
+@export var farEdgeSouthMaterial: StandardMaterial3D = DefaultCarpetMaterial
 # definition passed to levelgen
 @export var definition: ConnectorDefinition = null
 # toggle to make children selectable. by default clicking a child selects the connector

@@ -75,6 +75,38 @@ texture_normal = ExtResource("2_kvsec")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="LongPressDelayLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=889026034]
+layout_mode = 2
+text = "Long Press Delay (seconds)"
+
+[node name="LongPressDelayHBox" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=21546495]
+layout_mode = 2
+alignment = 2
+
+[node name="LongPressDelayValue" type="Label" parent="CenterContainer/VBoxContainer/LongPressDelayHBox" unique_id=116788435]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "0.5"
+
+[node name="LongPressDelayHSlider" type="HSlider" parent="CenterContainer/VBoxContainer/LongPressDelayHBox" unique_id=770811898]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.1
+max_value = 3.0
+step = 0.1
+value = 0.6
+
+[node name="LongPressDelayButton" type="TextureButton" parent="CenterContainer/VBoxContainer/LongPressDelayHBox" unique_id=92659944]
+visible = false
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+tooltip_text = "Reset to default"
+texture_normal = ExtResource("2_kvsec")
+ignore_texture_size = true
+stretch_mode = 0
+
 [node name="Spacer32" type="Control" parent="CenterContainer/VBoxContainer" unique_id=318847889]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2

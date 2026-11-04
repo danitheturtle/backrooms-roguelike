@@ -5,6 +5,10 @@ const HALF_VOXEL: float = VOXEL / 2.0
 const QUARTER_VOXEL: float = VOXEL / 4.0
 const AMBIENT_MAX: float = 0.4
 
+# from project settings
+var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
+var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
+
 # global enums
 enum MenuType { MAIN, SETTINGS, SAVE_SELECT, PAUSE, HUD }
 enum PopupType { INFO, WARNING, ERROR }
@@ -39,3 +43,16 @@ enum GameplayPropType {
     WHITE_ALMOND_WATER,
     RED_ALMOND_WATER
 }
+
+# Yellow Light Color OKHSL value ranges
+const YellowLight = {
+    HUE_LOWER = 0.2889,
+    HUE_UPPER = 0.3083,
+    SATURATION_LOWER = 0.64,
+    SATURATION_UPPER = 0.93,
+    LIGHTNESS_LOWER = 0.74,
+    LIGHTNESS_UPPER = 0.96,
+}
+# const colors cannot be defined via OKHSL
+const YELLOW_LIGHT_DEFAULT = Color(0.945, 0.938, 0.49, 1.0)
+const YELLOW_LIGHT_DEFAULT_BOUNCE = Color(0.966, 0.929, 0.516, 1.0)

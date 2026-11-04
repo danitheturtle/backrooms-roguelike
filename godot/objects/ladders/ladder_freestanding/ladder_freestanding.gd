@@ -19,18 +19,21 @@ func _physics_process(_delta: float) -> void:
     stairsPlatform.transform = transform
     supportPlatform.transform = support.transform
 
-func start_action():
-    super.start_action()
+func activate():
+    super.activate()
     hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, -initialMotorVelocity)
+    isClosed = false
 
-func finish_action(actionTimerFinished: bool) -> bool:
-    super.finish_action(actionTimerFinished)
+func deactivate(actionTimerFinished: bool) -> bool:
+    super.deactivate(actionTimerFinished)
     hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, initialMotorVelocity)
+    isClosed = true
     return true
 
-func on_hold():
-    super.on_hold()
+func on_hold(_player: Player):
+    super.on_hold(_player)
     hinge.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, true)
+    hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, initialMotorVelocity)
     collision_layer = 0b00000000000000100000
     support.center_of_mass = Vector3(0.0,0.0,0.0)
     support.collision_layer = 0b00000000000000100000
@@ -39,9 +42,23 @@ func on_hold():
 
 func on_drop():
     super.on_drop()
-    hinge.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, false)
+    var hingeCallback := func ():
+        hinge.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, false)
+    Utils.set_timeout(hingeCallback, 750)
     collision_layer = 0b00000000000010000000
     support.collision_layer = 0b00000000000010000000
     support.center_of_mass = Vector3(0.45, -1.05, 0.0)
     stairsPlatform.collision_layer = 0b00000000000001000000
     supportPlatform.collision_layer = 0b00000000000001000000
+
+func add_collision_exception(_body: Node3D) -> void:
+    super.add_collision_exception(_body)
+    var existingSupportExceptions := support.get_collision_exceptions()
+    if !existingSupportExceptions.has(_body):
+        support.add_collision_exception_with(_body)
+
+func del_collision_exception(_body: Node3D) -> void:
+    super.del_collision_exception(_body)
+    var existingSupportExceptions := support.get_collision_exceptions()
+    if existingSupportExceptions.has(_body):
+        support.remove_collision_exception_with(_body)

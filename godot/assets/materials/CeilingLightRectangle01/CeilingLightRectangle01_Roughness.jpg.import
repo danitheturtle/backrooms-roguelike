@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cdqsktfg2hjec"
 path.s3tc="res://.godot/imported/CeilingLightRectangle01_Roughness.jpg-7fc0ac8b3e13c6843c0ff1799f25bc07.s3tc.ctex"
+path.etc2="res://.godot/imported/CeilingLightRectangle01_Roughness.jpg-7fc0ac8b3e13c6843c0ff1799f25bc07.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/materials/CeilingLightRectangle01/CeilingLightRectangle01_Roughness.jpg"
-dest_files=["res://.godot/imported/CeilingLightRectangle01_Roughness.jpg-7fc0ac8b3e13c6843c0ff1799f25bc07.s3tc.ctex"]
+dest_files=["res://.godot/imported/CeilingLightRectangle01_Roughness.jpg-7fc0ac8b3e13c6843c0ff1799f25bc07.s3tc.ctex", "res://.godot/imported/CeilingLightRectangle01_Roughness.jpg-7fc0ac8b3e13c6843c0ff1799f25bc07.etc2.ctex"]
 
 [params]
 

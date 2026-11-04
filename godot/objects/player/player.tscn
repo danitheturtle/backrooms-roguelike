@@ -5,9 +5,6 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_5q0ne"]
 radius = 0.1
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_gn8jm"]
-radius = 0.12
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
 radius = 0.4
 height = 1.65
@@ -81,7 +78,6 @@ script = ExtResource("1_3vyb7")
 [node name="Camera" type="Camera3D" parent="." unique_id=1892713137]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 current = true
-fov = 45.0
 
 [node name="Flashlight" type="SpotLight3D" parent="Camera" unique_id=1664328846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.256, 0)
@@ -92,18 +88,18 @@ shadow_caster_mask = 4293918735
 spot_range = 20.0
 spot_angle = 40.0
 
+[node name="TargetRayCast" type="RayCast3D" parent="Camera" unique_id=1762356518]
+target_position = Vector3(0, 0, -2)
+collision_mask = 129
+hit_back_faces = false
+
 [node name="GrabArm" type="SpringArm3D" parent="Camera" unique_id=1434044525]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 collision_mask = 143
 shape = SubResource("SphereShape3D_5q0ne")
-spring_length = 2.25
+spring_length = 2.0
 
-[node name="Anchor" type="Area3D" parent="Camera/GrabArm" unique_id=1246998598]
-collision_layer = 0
-collision_mask = 129
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera/GrabArm/Anchor" unique_id=1516774872]
-shape = SubResource("SphereShape3D_gn8jm")
+[node name="GrabAnchor" type="Marker3D" parent="Camera/GrabArm" unique_id=126144447]
 
 [node name="PlayerCollisionShape3D" type="CollisionShape3D" parent="." unique_id=1019509889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825, 0)
@@ -120,7 +116,7 @@ libraries/fps_camera = SubResource("AnimationLibrary_gnkmh")
 
 [node name="RoomForStateChangeDetector" type="Area3D" parent="." unique_id=1767535878]
 collision_layer = 0
-collision_mask = 7
+collision_mask = 39
 monitorable = false
 
 [node name="StateChangeCollisionShape3D" type="CollisionShape3D" parent="RoomForStateChangeDetector" unique_id=1099717571]
@@ -137,15 +133,17 @@ shape = SubResource("BoxShape3D_5q0ne")
 
 [node name="StairSolver" type="Node3D" parent="." unique_id=356122944]
 
-[node name="DontStepUpSlopesRayCast" type="RayCast3D" parent="StairSolver" unique_id=876749670]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -0.4)
-target_position = Vector3(0, 0, -0.4)
+[node name="StairRayCast" type="RayCast3D" parent="StairSolver" unique_id=876749670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.5)
+target_position = Vector3(0, -0.25, 0)
 collision_mask = 12
 hit_back_faces = false
 
 [node name="VaultSolverRayCast" type="RayCast3D" parent="." unique_id=565288757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.65)
+target_position = Vector3(0, -0.45, 0)
 collision_mask = 13
+hit_back_faces = false
 
 [node name="ActionTimer" type="Timer" parent="." unique_id=946343371]
 process_callback = 0
@@ -153,6 +151,16 @@ wait_time = 0.5
 one_shot = true
 
 [node name="InteractTimer" type="Timer" parent="." unique_id=1549516792]
+process_callback = 0
+wait_time = 0.5
+one_shot = true
+
+[node name="CrawlTimer" type="Timer" parent="." unique_id=1961489363]
+process_callback = 0
+wait_time = 0.5
+one_shot = true
+
+[node name="SprintTimer" type="Timer" parent="." unique_id=23606960]
 process_callback = 0
 wait_time = 0.5
 one_shot = true

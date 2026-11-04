@@ -16,6 +16,13 @@ extends ResizableGeometry
 @export var materialYPos: BaseMaterial3D = null: set = set_material_y_pos
 @export var materialZNeg: BaseMaterial3D = null: set = set_material_z_neg
 @export var materialZPos: BaseMaterial3D = null: set = set_material_z_pos
+@export_group("UV Offset", "offset")
+@export var offsetXNeg: Vector2 = Vector2.ZERO: set = set_offset_x_neg
+@export var offsetXPos: Vector2 = Vector2.ZERO: set = set_offset_x_pos
+@export var offsetYNeg: Vector2 = Vector2.ZERO: set = set_offset_y_neg
+@export var offsetYPos: Vector2 = Vector2.ZERO: set = set_offset_y_pos
+@export var offsetZNeg: Vector2 = Vector2.ZERO: set = set_offset_z_neg
+@export var offsetZPos: Vector2 = Vector2.ZERO: set = set_offset_z_pos
 @export_group("Occlusion Planes", "occlude")
 @export var occludeXY: bool = false: set = set_occlude_xy
 @export var occludeZY: bool = false: set = set_occlude_zy
@@ -103,21 +110,45 @@ func set_default_material(val: BaseMaterial3D):
 func set_material_x_neg(val: BaseMaterial3D):
     materialXNeg = val
     update_material_for_side(meshXNeg, val)
+func set_offset_x_neg(val: Vector2):
+    offsetXNeg = val
+    meshXNeg.position = Vector3(meshXNeg.position.x, -val.y, val.x)
+    meshXNeg.mesh.center_offset = Vector3(0.0, val.y, val.x)
 func set_material_x_pos(val: BaseMaterial3D):
     materialXPos = val
     update_material_for_side(meshXPos, val)
+func set_offset_x_pos(val: Vector2):
+    offsetXPos = val
+    meshXPos.position = Vector3(meshXPos.position.x, -val.y, val.x)
+    meshXPos.mesh.center_offset = Vector3(0.0, val.y, -val.x)
 func set_material_y_neg(val: BaseMaterial3D):
     materialYNeg = val
     update_material_for_side(meshYNeg, val)
+func set_offset_y_neg(val: Vector2):
+    offsetYNeg = val
+    meshYNeg.position = Vector3(val.x, meshYNeg.position.y, val.y)
+    meshYNeg.mesh.center_offset = Vector3(-val.x, 0.0, val.y)
 func set_material_y_pos(val: BaseMaterial3D):
     materialYPos = val
     update_material_for_side(meshYPos, val)
+func set_offset_y_pos(val: Vector2):
+    offsetYPos = val
+    meshYPos.position = Vector3(val.x, meshYPos.position.y, val.y)
+    meshYPos.mesh.center_offset = Vector3(-val.x, 0.0, -val.y)
 func set_material_z_neg(val: BaseMaterial3D):
     materialZNeg = val
     update_material_for_side(meshZNeg, val)
+func set_offset_z_neg(val: Vector2):
+    offsetZNeg = val
+    meshZNeg.position = Vector3(val.x, -val.y, meshZNeg.position.z)
+    meshZNeg.mesh.center_offset = Vector3(val.x, val.y, 0.0)
 func set_material_z_pos(val: BaseMaterial3D):
     materialZPos = val
     update_material_for_side(meshZPos, val)
+func set_offset_z_pos(val: Vector2):
+    offsetZPos = val
+    meshZPos.position = Vector3(val.x, -val.y, meshZPos.position.z)
+    meshZPos.mesh.center_offset = Vector3(-val.x, val.y, 0.0)
 func set_occlude_xy(val: bool):
     occludeXY = val
     show_hide_child(occluderXY, val)

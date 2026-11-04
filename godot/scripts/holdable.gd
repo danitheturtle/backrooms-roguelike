@@ -3,21 +3,31 @@ class_name Holdable
 
 const hoverOverObjectMaterial = preload("res://assets/materials/HoverOverObject/HoverOverObject.tres")
 var hoveringMaterials: Array[Material] = []
-@export var heldDistance = 2.0
-@export var heldCollisionRadius = 0.5
-@export var throwImpulse = 5.0
-@export var throwLobFactor = 1.0
-@export var propNonsenseLimit = 3 #count collisions to prevent gmod style prop flying
-@export var propNonsenseTimeout = 1.5
+@export var heldDistance: float = 1.5
+@export var heldDistanceStep: float = 0.1
+@export var maxHeldDistance: float = 1.8
+@export var heldCollisionRadius: float = 0.5
+@export var throwImpulse: float = 5.0
+@export var throwLobFactor: float = 1.0
+#count collisions to prevent gmod style prop flying
+@export var propNonsenseLimit: float = 3
+@export var propNonsenseTimeout: float = 1.5
 
 @onready var meshInstance = Utils.get_child_of_type(self, MeshInstance3D)
 
 var grabOrigin: Vector3 = Vector3(0.0,0.0,0.0)
-
+var initialCollisionLayer: int = 0b00000000000000000001
+var initialFriction: float = 1.0
 var cancelFreezeTimeout: bool = false
 var repeatCollider: PhysicsBody3D = null
 var repeatCollisions: int = 0
 var freezeTimeout: Timer = null
+var holdingPlayer: Player = null
+
+var grabbed: bool:
+    get: return mass <= holdingPlayer.MAX_GRAB_MASS
+var dragged: bool:
+    get: return mass > holdingPlayer.MAX_GRAB_MASS
 
 func _ready() -> void:
     for nextMaterial in Utils.get_materials_on_mesh(meshInstance):
@@ -27,6 +37,8 @@ func _ready() -> void:
     var grabOriginNode = get_node_or_null("GrabOrigin")
     if (grabOriginNode != null):
         grabOrigin = grabOriginNode.global_position
+    initialCollisionLayer = collision_layer
+    initialFriction = 1.0 if physics_material_override == null else physics_material_override.friction
     freezeTimeout = Timer.new()
     add_child(freezeTimeout)
     freezeTimeout.one_shot = true
@@ -34,21 +46,39 @@ func _ready() -> void:
     freezeTimeout.timeout.connect(on_frozen_timer_timeout)
     body_entered.connect(on_body_entered)
 
-func start_action():
-    pass
+func activate(): pass
 
-func finish_action(_actionTimerFinished: bool) -> bool:
+## return true to prevent throwing behavior
+func deactivate(_actionTimerFinished: bool) -> bool:
     return false
 
-func on_hold():
-    # move to held layer to avoid collision with player and wierd skyrim-style bullshit
-    collision_layer = 0b00000000000000100000
+func on_hold(_player: Player):
+    holdingPlayer = _player
+    # if grabbing, move to grabbed layer to avoid collision with player and wierd skyrim-style bullshit
+    if grabbed:
+        collision_layer = 0b00000000000000100000
+    elif dragged:
+        if physics_material_override != null:
+            physics_material_override.friction = 0.0
+
+func add_collision_exception(_body: Node3D) -> void:
+    var existingExceptions := get_collision_exceptions()
+    if !existingExceptions.has(_body):
+        add_collision_exception_with(_body)
+
+func del_collision_exception(_body: Node3D) -> void:
+    var existingExceptions := get_collision_exceptions()
+    if existingExceptions.has(_body):
+        remove_collision_exception_with(_body)
 
 func on_drop():
-    collision_layer = 0b00000000000000000001
+    holdingPlayer = null
+    if collision_layer != initialCollisionLayer:
+        collision_layer = initialCollisionLayer
+    if physics_material_override != null && physics_material_override.friction != initialFriction:
+        physics_material_override.friction = initialFriction
 
-func on_throw():
-    pass
+func on_throw(): pass
 
 func on_rotate_start(): pass
 
@@ -65,7 +95,6 @@ func clear_hover_material():
         if surfaceMaterial == hoveringMaterials[surfaceIndex]:
             meshInstance.set_surface_override_material(surfaceIndex, null)
 
-var colliders: Array[PhysicsBody3D]
 func on_body_entered(body: PhysicsBody3D):
     # if held, do nothing
     if get_collision_layer_value(6): return

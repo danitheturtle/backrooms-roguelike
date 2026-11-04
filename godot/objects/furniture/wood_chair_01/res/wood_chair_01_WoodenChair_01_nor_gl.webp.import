@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cykrtimtddo4r"
 path.s3tc="res://.godot/imported/wood_chair_01_WoodenChair_01_nor_gl.webp-cae8713052a70019ce882ca37b0abac4.s3tc.ctex"
+path.etc2="res://.godot/imported/wood_chair_01_WoodenChair_01_nor_gl.webp-cae8713052a70019ce882ca37b0abac4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://objects/furniture/wood_chair_01/res/wood_chair_01_WoodenChair_01_nor_gl.webp"
-dest_files=["res://.godot/imported/wood_chair_01_WoodenChair_01_nor_gl.webp-cae8713052a70019ce882ca37b0abac4.s3tc.ctex"]
+dest_files=["res://.godot/imported/wood_chair_01_WoodenChair_01_nor_gl.webp-cae8713052a70019ce882ca37b0abac4.s3tc.ctex", "res://.godot/imported/wood_chair_01_WoodenChair_01_nor_gl.webp-cae8713052a70019ce882ca37b0abac4.etc2.ctex"]
 
 [params]
 

@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://v73vqq1gq568" path="res://objects/level_geometry/resizable_ceiling/resizable_ceiling.tscn" id="8_gug3b"]
 [ext_resource type="Resource" uid="uid://dl6uwjcxv0nh1" path="res://rooms/level_0/hallway/defs/definition_5.tres" id="9_gug3b"]
 [ext_resource type="PackedScene" uid="uid://b8dgwpoftvv36" path="res://objects/level_geometry/resizable_wall/resizable_wall.tscn" id="9_iu5pl"]
+[ext_resource type="Material" uid="uid://b3ofgrdcrwlk7" path="res://assets/materials/DropCeilingRectangle01/DropCeilingRectangle01.tres" id="14_yq5kl"]
 
 [sub_resource type="Resource" id="Resource_splww"]
 script = ExtResource("6_8bbvc")
@@ -220,11 +221,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 shouldOcclude = true
 voxelWidth = 4.0
 voxelDepth = 12.0
+defaultMaterial = ExtResource("14_yq5kl")
 
 [node name="CollisionShape3D" parent="LevelMeshes/ResizableCeiling" index="0" unique_id=2009969633]
 shape = SubResource("BoxShape3D_r6b2x")
 
 [node name="MeshInstance3D" parent="LevelMeshes/ResizableCeiling" index="1" unique_id=416331250]
+material_override = ExtResource("14_yq5kl")
 mesh = SubResource("PlaneMesh_3awg3")
 
 [node name="OccluderInstance3D" parent="LevelMeshes/ResizableCeiling" index="2" unique_id=1014570430]

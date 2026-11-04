@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bkhscnv41wb2m"]
+
+[ext_resource type="Texture2D" uid="uid://bfj7ctbfbl7yo" path="res://assets/materials/WallpaperVariants/res/WallpaperUnevenStripesYellow_albedo.png" id="1_4kggq"]
+[ext_resource type="Texture2D" uid="uid://c5nkm3t72oeq7" path="res://assets/materials/WallpaperVariants/res/Wallpaper_normal.png" id="2_ilcjh"]
+[ext_resource type="Texture2D" uid="uid://cfred8ucl7wy0" path="res://assets/materials/WallpaperVariants/res/WallpaperUnevenStripes_orm.png" id="3_c05ee"]
+
+[resource]
+albedo_texture = ExtResource("1_4kggq")
+roughness_texture = ExtResource("3_c05ee")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_ilcjh")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true

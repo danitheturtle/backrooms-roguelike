@@ -5,8 +5,8 @@
 [ext_resource type="Resource" uid="uid://cwdpx44gsaa6j" path="res://rooms/level_0/crawlway/defs/definition_0.tres" id="4_j8735"]
 [ext_resource type="Resource" uid="uid://13xjgyeinggo" path="res://rooms/level_0/crawlway/defs/definition_1.tres" id="4_rogug"]
 [ext_resource type="Resource" uid="uid://ctg7bthgadqfr" path="res://rooms/level_0/crawlway/defs/definition_2.tres" id="5_hncys"]
-[ext_resource type="Material" uid="uid://n5y15ykfg13e" path="res://assets/materials/Wallpaper01/Wallpaper01.tres" id="5_nm7ab"]
 [ext_resource type="Resource" uid="uid://ba0xwj06dq2f7" path="res://rooms/level_0/crawlway/defs/definition_3.tres" id="6_c0a7a"]
+[ext_resource type="Material" uid="uid://cnjdmo62lxpvu" path="res://assets/materials/WallpaperChevron/WallpaperChevronYellow.tres" id="7_rogug"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rogug"]
 resource_local_to_scene = true
@@ -173,7 +173,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 voxelWidth = 2.0
 voxelHeight = 1.0
 voxelDepth = 2.0
-defaultMaterial = ExtResource("5_nm7ab")
+defaultMaterial = ExtResource("7_rogug")
 extendCollisionZ = true
 
 [node name="CollisionShape3D" parent="LevelMeshes/ResizableFloor" index="0" unique_id=1960740315]
@@ -181,7 +181,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("BoxShape3D_yve0q")
 
 [node name="MeshInstance3D" parent="LevelMeshes/ResizableFloor" index="1" unique_id=2112293603]
-material_override = ExtResource("5_nm7ab")
+material_override = ExtResource("7_rogug")
 mesh = SubResource("PlaneMesh_55wcx")
 
 [node name="OccluderInstance3D" parent="LevelMeshes/ResizableFloor" index="2" unique_id=1666973]
@@ -192,7 +192,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 voxelWidth = 2.0
 voxelHeight = 1.0
 voxelDepth = 2.0
-defaultMaterial = ExtResource("5_nm7ab")
+defaultMaterial = ExtResource("7_rogug")
 extendCollisionZ = true
 
 [node name="CollisionShape3D" parent="LevelMeshes/ResizableCeiling" index="0" unique_id=2009969633]
@@ -200,7 +200,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("BoxShape3D_wmyfr")
 
 [node name="MeshInstance3D" parent="LevelMeshes/ResizableCeiling" index="1" unique_id=416331250]
-material_override = ExtResource("5_nm7ab")
+material_override = ExtResource("7_rogug")
 mesh = SubResource("PlaneMesh_my76c")
 
 [node name="OccluderInstance3D" parent="LevelMeshes/ResizableCeiling" index="2" unique_id=1014570430]

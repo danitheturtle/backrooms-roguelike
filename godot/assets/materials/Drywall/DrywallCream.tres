@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cqyvolf0otaxa"]
+
+[ext_resource type="Texture2D" uid="uid://ccf0wiywnc5dm" path="res://assets/materials/Drywall/Drywall_normal.png" id="1_dm3ix"]
+[ext_resource type="Texture2D" uid="uid://c410v24cp4457" path="res://assets/materials/Drywall/Drywall_orm.png" id="2_uycjh"]
+
+[resource]
+albedo_color = Color(0.8462319, 0.8030387, 0.6256225, 1)
+roughness_texture = ExtResource("2_uycjh")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("1_dm3ix")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true

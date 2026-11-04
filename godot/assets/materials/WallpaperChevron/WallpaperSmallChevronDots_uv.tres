@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://mnenan25d148"]
+
+[ext_resource type="Texture2D" uid="uid://bo5rnsubkd4s7" path="res://assets/materials/WallpaperChevron/res/WallpaperSmallChevronDots_albedo.png" id="1_yny3s"]
+[ext_resource type="Texture2D" uid="uid://c84qrbuu8chgs" path="res://assets/materials/WallpaperChevron/res/WallpaperChevron_normal.png" id="2_m121b"]
+[ext_resource type="Texture2D" uid="uid://b5io3sr3dv76o" path="res://assets/materials/WallpaperChevron/res/WallpaperSmallChevronDots_orm.png" id="3_0v7bf"]
+
+[resource]
+albedo_texture = ExtResource("1_yny3s")
+roughness_texture = ExtResource("3_0v7bf")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_m121b")
+uv1_scale = Vector3(10, 10, 10)

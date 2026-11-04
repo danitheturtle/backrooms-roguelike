@@ -33,7 +33,7 @@ Connections
 	* LOCKED_DOOR is a locked door that requires some action to open
 	* NULL_ZONE is a hidden door. a wall you can noclip through
 	* NULL_ZONE_ONE_WAY is a null zone that can only be clipped through in one direction
-		* forcing a connector to become a null zone is a way to make any biome transition. Useful if the level generator can't quite find the right transition piece.+
+		* forcing a connector to become a null zone is a way to make any biome transition. Useful if the level generator can't quite find the right transition piece.
 * normal
 * size (vec2)
 * corner1, corner2

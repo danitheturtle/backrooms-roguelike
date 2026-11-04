@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dxun115m4alsw" path="res://rooms/room_base.tscn" id="1_xurkv"]
 [ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_gwgcl"]
-[ext_resource type="Resource" uid="uid://c2nq0em62x0p5" path="res://rooms/room_test/defs/definition_0.tres" id="4_1f6oh"]
+[ext_resource type="Resource" uid="uid://dclwrefsscctj" path="res://rooms/room_test/defs/definition_0.tres" id="4_1f6oh"]
 [ext_resource type="PackedScene" uid="uid://bo8cc1njenbbh" path="res://rooms/level_0/hobbytown1/room_L0_hobbytown_1.tscn" id="4_gwgcl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gwgcl"]
@@ -17,8 +17,8 @@ definitions = Array[ExtResource("2_gwgcl")]([ExtResource("4_1f6oh")])
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 1.375)
 shape = SubResource("BoxShape3D_gwgcl")
 
-[node name="RoomL0Hobbytown1" parent="SubRooms" parent_id_path=PackedInt32Array(1023009072) index="0" unique_id=1847380351 instance=ExtResource("4_gwgcl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.5)
+[node name="RoomL0Hobbytown1" parent="SubRooms" parent_id_path=PackedInt32Array(1023009072) index="0" unique_id=1477789953 instance=ExtResource("4_gwgcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, -7.5)
 
 [node name="Marker3D" type="Marker3D" parent="." index="7" unique_id=832522875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25, 0, 2)

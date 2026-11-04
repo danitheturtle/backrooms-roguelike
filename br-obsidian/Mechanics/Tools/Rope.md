@@ -1,3 +1,5 @@
+- Only the very end of the rope is physics simmed and only if the player isn't attached. pulled-tight connections around level geometry don't get physics, and the rope just makes straight lines from the anchor to the player.
+- The player can swing back and forth on the rope - the last section should work like a pivot
 - The player starts the game with a certain length of consumable rope, and can find more.
 - Rope can be attached to a static or heavy prop anchor point. This starts the length counter as the player moves away.
 - The rope does not pull on its anchor - treats it as static

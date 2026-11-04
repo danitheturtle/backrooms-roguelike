@@ -4,7 +4,8 @@ const defaults = {
     "General": {
         "Initialized": false,
         "CameraSensitivity": 0.1,
-        "UIScale": 16
+        "UIScale": 16,
+        "LongPressDelay": 0.5
     }
 }
 
@@ -22,6 +23,12 @@ var UIScale: int:
     get:
         return settings.get_value("General", "UIScale", defaults.General.UIScale)
 
+var LongPressDelay: float:
+    set(newDelay):
+        settings.set_value("General", "LongPressDelay", newDelay)
+    get:
+        return settings.get_value("General", "LongPressDelay", defaults.General.LongPressDelay)
+
 func _init() -> void:
     # load config or create it if it doesn't exist
     var loadError = Utils.load_or_create_config(settings, "user://game_settings.ini")
@@ -34,6 +41,7 @@ func _init() -> void:
 func write_default_settings() -> void:
     settings.set_value("General", "CameraSensitivity", defaults.General.CameraSensitivity)
     settings.set_value("General", "UIScale", defaults.General.UIScale)
+    settings.set_value("General", "LongPressDelay", defaults.General.LongPressDelay)
     settings.set_value("General", "Initialized", defaults.General.Initialized)
 
 func load_from_disk() -> void:

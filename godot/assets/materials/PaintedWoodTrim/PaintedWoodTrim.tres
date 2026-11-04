@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bswbupe4tdac1"]
+
+[ext_resource type="Texture2D" uid="uid://ce8xpri1hcupv" path="res://assets/materials/PaintedWoodTrim/PaintedWoodTrim_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://s5ras7hmpvms" path="res://assets/materials/PaintedWoodTrim/PaintedWoodTrim_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dgjhl3u3lenje" path="res://assets/materials/PaintedWoodTrim/PaintedWoodTrim_normal.png" id="3"]
+
+[resource]
+albedo_color = Color(0.75686276, 0.7529412, 0.6431373, 1)
+albedo_texture = ExtResource("1")
+roughness_texture = ExtResource("2")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3")
+uv1_scale = Vector3(10, 10, 10)

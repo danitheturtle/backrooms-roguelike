@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://daonysuv543rd"
 path.s3tc="res://.godot/imported/ladder_freestanding_wooden_ladder_diff_2k.webp-6edf313270f8aa2d71c141ee01b424b3.s3tc.ctex"
+path.etc2="res://.godot/imported/ladder_freestanding_wooden_ladder_diff_2k.webp-6edf313270f8aa2d71c141ee01b424b3.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://objects/ladders/ladder_freestanding/res/ladder_freestanding_wooden_ladder_diff_2k.webp"
-dest_files=["res://.godot/imported/ladder_freestanding_wooden_ladder_diff_2k.webp-6edf313270f8aa2d71c141ee01b424b3.s3tc.ctex"]
+dest_files=["res://.godot/imported/ladder_freestanding_wooden_ladder_diff_2k.webp-6edf313270f8aa2d71c141ee01b424b3.s3tc.ctex", "res://.godot/imported/ladder_freestanding_wooden_ladder_diff_2k.webp-6edf313270f8aa2d71c141ee01b424b3.etc2.ctex"]
 
 [params]
 

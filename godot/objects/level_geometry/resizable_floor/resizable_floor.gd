@@ -2,12 +2,18 @@
 class_name ResizableFloor
 extends ResizableGeometry
 
+@export var materialOffset: Vector2 = Vector2.ZERO: set = set_material_offset
 @export var shouldOcclude: bool = false: set = set_should_occlude
 
 var expandDir: float = -1.0
 
 var visibleMesh: MeshInstance3D
 var occluder: OccluderInstance3D
+
+func set_material_offset(newOffset: Vector2) -> void:
+    materialOffset = newOffset
+    visibleMesh.position = Vector3(newOffset.x, visibleMesh.position.y, newOffset.y)
+    visibleMesh.mesh.center_offset = Vector3(-newOffset.x, 0.0, -newOffset.y)
 
 func grab_refs() -> void:
     super.grab_refs()

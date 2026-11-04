@@ -4,6 +4,9 @@
 [ext_resource type="ArrayMesh" uid="uid://dggbumjrdc4kg" path="res://objects/furniture/school_chair/res/school_chair.glb" id="1_ibn34"]
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="2_wwsge"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4k46u"]
+resource_local_to_scene = true
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_f6r1e"]
 resource_local_to_scene = true
 size = Vector3(0.5671997, 0.08251953, 0.6179199)
@@ -29,8 +32,9 @@ resource_local_to_scene = true
 size = Vector3(0.05, 0.6054659, 0.05)
 
 [node name="SchoolChairPhysics" unique_id=883044359 instance=ExtResource("1_4k46u")]
+physics_material_override = SubResource("PhysicsMaterial_4k46u")
 heldDistance = 1.25
-heldCollisionRadius = 0.4
+heldCollisionRadius = 0.25
 
 [node name="SchoolChairMesh" type="MeshInstance3D" parent="." index="0" unique_id=598960587]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5224795, 0.023646712)
