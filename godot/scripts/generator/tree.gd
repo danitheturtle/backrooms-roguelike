@@ -1,48 +1,67 @@
 class_name TreeLevelGenerator extends AbstractLevelGenerator
 
-const MAX_REJECTIONS: int = 8
+const MAX_ROOM_REJECTIONS: int = 16
+const MAX_CONNECTOR_REJECTIONS: int = 8
 
 var roomDefinitions: Array[RoomDefinition]
-var roomMetadata: Array[RoomMetadata]
+var roomMetadata: Array[RoomGeneratorMetadata]
 var roomSampler: PackedFloat32Array
 
-var rngSeed: int
+var rngSeed: int = 0
 
-var connection_generation: int
-
-var generated_rooms: Array[GeneratedRoom]
-
-# A generational array of unresolved connections. These are connections in rooms that have been
-# generated that are under consideration for being the connection to new rooms.
-# Each element of a generational array contains a "generation" number, which is a monotonically increasing counter.
-# Generation numbers allow "pointers" (indices paired with a generation number) into this array to be lazily invalidated.
-var unresolved_connections: Array[UnresolvedConnection]
+var generatedRooms: Array[GeneratedRoom] = []
 
 # When an entry is an empty array, the player/generator has directly visited (generated all chunks within a radius) the corresponding chunk.
 # When an entry is an array of size 1 (containing only 0), the corresponding chunk is fully generated but has not been directly visited by a player.
 # In all other cases the array contains indices for unresolved generated connections existing in the
 # corresponding chunk (except for index 0 which will contain value 0).
-# These are generational indices into the `unresolved_connections` array.
-var chunkTracker: Dictionary[Vector3i, PackedInt64Array]
-
-var definitions: Array[RoomDefinition] = LevelManager.allDefinitions
+var chunkTracker: Dictionary[Vector3i, ChunkTracker] = {}
 
 func update_definitions(roomDefs: Array[RoomDefinition]):
     roomDefinitions = roomDefs
     roomSampler = PackedFloat32Array()
     roomMetadata = []
     for room in roomDefinitions:
-        var metadata = RoomMetadata.new()
+        var metadata := RoomGeneratorMetadata.new()
         metadata.connectorSampler.resize(room.connectors.size())
         for j in range(0, room.connectors.size()):
-            var connector = room.connectors[j]
+            var connector := room.connectors[j]
             metadata.connectorSampler.set(j, connector.selectionWeight)
+
+            metadata.cardinal_connector_indices[connector.normal].append(j)
+            metadata.cardinal_connector_samplers[connector.normal].append(connector.selectionWeight)
 
         roomMetadata.append(metadata)
         roomSampler.append(room.spawnWeight)
 
-func reinit(_room_def: RoomDefinition, s: int):
+func reinit(startingRoomIdx: int, s: int) -> GeneratedRoom:
+    var roomDef := roomDefinitions[startingRoomIdx]
+
     rngSeed = s
+    generatedRooms = []
+    chunkTracker = {}
+
+    var ret := GeneratedRoom.new(roomDef)
+    ret.roomDefIdx = startingRoomIdx
+    # Currently the starting room can be generated with default values
+    var retIdx = generatedRooms.size()
+    generatedRooms.append(ret)
+
+    for i in range(0, roomDef.connectors.size()):
+        var connector := roomDef.connectors[i]
+        var cur_chunk := Utils.world_to_chunk(connector.position)
+
+        var new_tracker := chunkTracker[cur_chunk]
+        if new_tracker == null:
+            new_tracker = ChunkTracker.new()
+            chunkTracker[cur_chunk] = new_tracker
+
+        var new_unresolved := UnresolvedConnection.new()
+        new_unresolved.generatedRoomIdx = retIdx
+        new_unresolved.roomConnectorIdx = i
+        new_tracker.unresolved.append(new_unresolved)
+
+    return ret
 
 func stable_sort_chunks(array: Array[Vector3i], center: Vector3i):
     # Unless the radius gets very big insertion sort will be most efficient
@@ -61,22 +80,21 @@ func generate_in_radius(chunk_pos: Vector3i, chunk_radius: int) -> Array[Generat
     # Find all connections in ungenerated chunks
     # Resolve all found connections with randomly generated rooms
 
-    var connections = chunkTracker[chunk_pos]
+    var tracker := chunkTracker[chunk_pos]
     # If the player/generator has already visited this chunk, early exit this call.
-    if connections != null and connections.is_empty():
+    if tracker != null and tracker.isVisited:
         return []
 
     var toGenerate: Array[Vector3i] = []
     for x in range(chunk_pos.x - chunk_radius, chunk_pos.x + chunk_radius):
         for z in range(chunk_pos.z - chunk_radius, chunk_pos.z + chunk_radius):
             for y in range(chunk_pos.y - chunk_radius, chunk_pos.y + chunk_radius):
-                var cur_chunk = Vector3i(x, y, z)
-                var cur_connections = chunkTracker[cur_chunk]
-                if cur_connections != null and cur_connections.size() > 1:
+                var cur_chunk := Vector3i(x, y, z)
+                var cur_tracker := chunkTracker[cur_chunk]
+                if cur_tracker != null and !cur_tracker.unresolved.is_empty():
                     toGenerate.append(cur_chunk)
     if toGenerate.is_empty():
-        # Mark this chunk as visited
-        connections.clear()
+        tracker.isVisited = true
         return []
 
     # We want to generate from the center going outwards
@@ -86,73 +104,65 @@ func generate_in_radius(chunk_pos: Vector3i, chunk_radius: int) -> Array[Generat
     for chunk in toGenerate:
         ret.append_array(generate_chunk_unchecked(chunk, chunkTracker[chunk]))
 
-    # Mark this chunk as visited
-    connections.clear()
+    tracker.isVisited = true
     return ret
 
-func generate_chunk(chunk: Vector3i) -> Array[GeneratedRoom]:
-    var connections = chunkTracker[chunk]
-
-    if connections != null and connections.size() > 1:
-        return generate_chunk_unchecked(chunk, connections)
+func generate_chunk(chunk_pos: Vector3i) -> Array[GeneratedRoom]:
+    var tracker := chunkTracker[chunk_pos]
+    if tracker != null and !tracker.unresolved.is_empty():
+        return generate_chunk_unchecked(chunk_pos, tracker)
     else:
         # Since no chunks were generated in a radius around `chunk` we do not try to mark it as visited
         return []
 
 # This function expects to be passed the array of connections from `chunkTracker` associated with the given chunk
-func generate_chunk_unchecked(chunk: Vector3i, connections: PackedInt64Array) -> Array[GeneratedRoom]:
+func generate_chunk_unchecked(chunk_pos: Vector3i, tracker: ChunkTracker) -> Array[GeneratedRoom]:
+    var all_unresolved := tracker.unresolved
+
     # Collect all possible connections along with their weights
-    var connectionSampler = PackedFloat32Array()
-    connectionSampler.resize(connections.size())
-    var i = 0
-    while i < connections.size():
+    var connectionSampler := PackedFloat32Array()
+    connectionSampler.resize(all_unresolved.size())
+    for i in range(0, all_unresolved.size()):
         # Skip index 0 which is always 0
-        var genIdx = connections[i + 1]
-        var generation = genIdx >> 32
-        var connection = unresolved_connections[genIdx & 0xFFFFFFFF]
-        # Incorrect generation indicates this connection was deleted previously
-        if connection.generation == generation:
-            connectionSampler.set(i, connection.weight)
-            i += 1
-        else:
-            # swap remove the outdated connection
-            var newSize = connections.size() - 1
-            connections.set(i + 1, connections[newSize])
-            connections.resize(newSize)
-        continue
+        var unresolved := all_unresolved[i]
+        var roomDef := roomDefinitions[unresolved.generatedRoomIdx]
+        var connector := roomDef.connectors[unresolved.roomConnectorIdx]
+        connectionSampler.set(i, connector.selectionWeight)
 
     # We seed this rng call for increased level gen determinism
-    var rng = RandomNumberGenerator.new()
-    var chunk_seed = hash(Vector4i(rngSeed, chunk.x, chunk.y, chunk.z))
+    var rng := RandomNumberGenerator.new()
+    var chunk_seed := hash(Vector4i(rngSeed, chunk_pos.x, chunk_pos.y, chunk_pos.z))
     rng.seed = chunk_seed
 
     var ret = []
 
     # Resolve all connections in this chunk
-    while connections.size() > 1:
-        i = rng.rand_weighted(connectionSampler)
-        var genIdx = connections[i + 1]
-        var connection = unresolved_connections[genIdx & 0xFFFFFFFF]
+    while !all_unresolved.is_empty():
+        var i := rng.rand_weighted(connectionSampler)
+        var cur_unresolved := all_unresolved[i]
 
         # Swap remove the selected connection from the sampler (sample without replacement)
-        var newSize = connections.size() - 1
-        connections.set(i + 1, connections[newSize])
-        connections.resize(newSize)
+        var newSize := all_unresolved.size() - 1
+        all_unresolved.set(i, all_unresolved[newSize])
+        all_unresolved.resize(newSize)
         connectionSampler.set(i, connectionSampler[newSize])
         connectionSampler.resize(newSize)
 
-        var preRoomDef = roomDefinitions[connection.room_idx]
-        var preConnectorDef = preRoomDef.connectors[connection.connector_key]
+        var curRoom := generatedRooms[cur_unresolved.generatedRoomIdx]
+        var curRoomDef := roomDefinitions[curRoom.roomDefIdx]
+        var curConnectorDef := curRoomDef.connectors[cur_unresolved.roomConnectorIdx]
 
         # Rejection sample a room to generate connected to the selected connection
-        for j in range(0, MAX_REJECTIONS):
-            var newRoomIdx = rng.rand_weighted(roomSampler)
-            var newRoomDef = roomDefinitions[newRoomIdx]
-            var newRoomMetadata = roomMetadata[newRoomIdx]
+        for j in range(0, MAX_ROOM_REJECTIONS):
+            var newRoomDefIdx := rng.rand_weighted(roomSampler)
+            var newRoomDef := roomDefinitions[newRoomDefIdx]
+            var newRoomMetadata := roomMetadata[newRoomDefIdx]
             # Rejection sample a connector in the selected room to be mated with the selected connector
-            for k in range(0, MAX_REJECTIONS):
-                var newConnectorIdx = rng.rand_weighted(newRoomMetadata.connectorSampler)
-                var newConnector = newRoomDef.connectors[newConnectorIdx]
+            for k in range(0, MAX_CONNECTOR_REJECTIONS):
+                var newConnectorIdx := rng.rand_weighted(newRoomMetadata.connectorSampler)
+                var newConnector := newRoomDef.connectors[newConnectorIdx]
+
+                newConnector.cornerMax
 
 
 

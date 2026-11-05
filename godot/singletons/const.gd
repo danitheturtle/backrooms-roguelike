@@ -5,6 +5,10 @@ const HALF_VOXEL: float = VOXEL / 2.0
 const QUARTER_VOXEL: float = VOXEL / 4.0
 const AMBIENT_MAX: float = 0.4
 
+# generator constants
+const CHUNK_VOXEL_SIDE_LEN = 256
+const CHUNK_WORLD_SIDE_LEN = CHUNK_VOXEL_SIDE_LEN * Const.VOXEL
+
 # from project settings
 var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
 var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
@@ -57,11 +61,11 @@ const YellowLight = {
 const YELLOW_LIGHT_DEFAULT = Color(0.945, 0.938, 0.49, 1.0)
 const YELLOW_LIGHT_DEFAULT_BOUNCE = Color(0.966, 0.929, 0.516, 1.0)
 
-enum CardinalDirections {
-    XNeg = 0,
-    XPos = 1,
-    YNeg = 2,
-    YPos = 3,
-    ZNeg = 4,
-    ZPos = 5,
+enum CardinalDirection {
+    XNEG = 0,
+    XPOS = 1,
+    YNEG = 2,
+    YPOS = 3,
+    ZNEG = 4,
+    ZPOS = 5,
 }

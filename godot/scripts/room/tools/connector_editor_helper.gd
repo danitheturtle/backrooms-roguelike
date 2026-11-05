@@ -33,7 +33,7 @@ func _init(_connector: RoomConnector) -> void:
             mesh = nextChild
         elif nextChild is Area3D:
             adjacentCollider = nextChild.get_child(0)
-    # detect 
+    # detect
     room = Utils.get_parent_of_type(connector, Room)
     var editedRoot = EditorInterface.get_edited_scene_root()
     isInSubRoom = room != editedRoot
@@ -102,20 +102,39 @@ func bake_connector_definition() -> ConnectorDefinition:
     definition.depth = connector.globalDepth
     var localCornerMin: Vector3
     var localCornerMax: Vector3
+    var normal_vec: Vector3
     if connector is WallConnector:
         definition.size = Vector2(adjacentCollider.shape.size.x, adjacentCollider.shape.size.y)
-        definition.normal = -connectorRelativeTransform.basis.z
+        match connectorRelativeTransform.basis.z:
+            Vector3.LEFT:
+                definition.normal = Const.CardinalDirection.XNEG
+            Vector3.RIGHT:
+                definition.normal = Const.CardinalDirection.XPOS
+            Vector3.FORWARD:
+                definition.normal = Const.CardinalDirection.ZNEG
+            Vector3.BACK:
+                definition.normal = Const.CardinalDirection.ZPOS
+            _:
+                # TODO(Monica): Handle this as an error case
+                assert(false, "connector has non-cardinal normal")
+        normal_vec = -connectorRelativeTransform.basis.z
         localCornerMin = -0.5 * Vector3(definition.size.x, definition.size.y, 0.0)
         localCornerMax = 0.5 * Vector3(definition.size.x, definition.size.y, 0.0)
     else:
         definition.size = Vector2(adjacentCollider.shape.size.x, adjacentCollider.shape.size.z)
-        definition.normal = Vector3.UP if connector is CeilingConnector else Vector3.DOWN
+        if connector is CeilingConnector:
+            definition.normal = Const.CardinalDirection.YPOS
+            normal_vec = Vector3.UP
+        else:
+            definition.normal = Const.CardinalDirection.YNEG
+            normal_vec = Vector3.DOWN
+
         localCornerMin = -0.5 * Vector3(definition.size.x, 0.0, definition.size.y)
         localCornerMax = 0.5 * Vector3(definition.size.x, 0.0, definition.size.y)
     definition.cornerMin = connectorRelativeTransform * localCornerMin
     definition.cornerMax = connectorRelativeTransform * localCornerMax
-    var aabbStart = definition.cornerMin + 0.25*definition.normal
-    var aabbEnd = definition.cornerMax - 0.25*definition.normal
+    var aabbStart = definition.cornerMin + 0.25*normal_vec
+    var aabbEnd = definition.cornerMax - 0.25*normal_vec
     definition.aabb = AABB(aabbStart, aabbEnd - aabbStart).abs()
     # TODO:
     definition.distFromFloor = 0.0

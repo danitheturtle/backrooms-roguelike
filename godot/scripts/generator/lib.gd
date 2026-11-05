@@ -1,7 +1,5 @@
 @abstract class_name AbstractLevelGenerator
 
-const CHUNK_SIDE_LEN = 256
-
 # Inform this level generator instance of a new set of room definitions to use for level generation.
 # This method must be called once before calling any generate methods (generate_in_radius, generate_chunk).
 # Only the room definitions past in the most recent call to this method will be used for level generation,
@@ -12,7 +10,8 @@ const CHUNK_SIDE_LEN = 256
 # deleting all previously generated rooms. rngSeed will be used to seed this level generator's
 # internal RNG. The same level will be generated if startingRoom and rngSeed are the same and
 # all generate methods are called in the same order on the same chunks.
-@abstract func reinit(startingRoom: RoomDefinition, rngSeed: int)
+# `startingRoomIdx` must be a valid index into the `roomDefs` array last passed to `update_definitions`.
+@abstract func reinit(startingRoomIdx: int, rngSeed: int) -> GeneratedRoom
 
 # Generate all chunks within the cubic radius chunkRadius of chunkPos.
 # The level generator will choose the ideal order in which to generate each chunk.

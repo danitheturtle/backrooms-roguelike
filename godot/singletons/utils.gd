@@ -27,6 +27,25 @@ func rect_intersectsf(rect1: Rect2, rect2: Rect2, epsilon: float = 0.001) -> boo
     var test4 = rect1.end.y - epsilon > rect2.position.y
     return test1 && test2 && test3 && test4
 
+func world_to_chunk(world_pos: Vector3) -> Vector3i:
+    return Vector3i((world_pos / Const.CHUNK_WORLD_SIDE_LEN))
+
+func world_to_voxel(world_pos: Vector3) -> Vector3i:
+    return Vector3i((world_pos / Const.VOXEL))
+
+func voxel_to_chunk(voxel_pos: Vector3i) -> Vector3i:
+    @warning_ignore("integer_division")
+    return voxel_pos / Const.CHUNK_VOXEL_SIDE_LEN
+
+func voxel_to_world(voxel_pos: Vector3i) -> Vector3:
+    return Vector3(voxel_pos * Const.VOXEL)
+
+func chunk_to_world(chunk_pos: Vector3i) -> Vector3:
+    return Vector3(chunk_pos * Const.CHUNK_WORLD_SIDE_LEN)
+
+func chunk_to_voxel(chunk_pos: Vector3i) -> Vector3i:
+    return chunk_pos * Const.CHUNK_VOXEL_SIDE_LEN
+
 # gets self or first found child of given type
 func get_self_or_child_of_type(selfNode: Node, type: Variant, recursive: bool = false):
     if is_instance_of(selfNode, type):
@@ -79,7 +98,7 @@ func get_materials_on_mesh(mesh: MeshInstance3D) -> Array[BaseMaterial3D]:
         var nextMaterial = mesh.get_active_material(surfaceIndex)
         if nextMaterial != null: activeMaterials.append(nextMaterial)
     return activeMaterials
-    
+
 func load_or_create_config(file: ConfigFile, filepath: String) -> Error:
     var loadError = file.load(filepath)
     if loadError != OK:

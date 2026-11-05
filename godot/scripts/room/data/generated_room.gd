@@ -18,10 +18,12 @@ func _init(_definition: RoomDefinition) -> void:
 ###
 ### Set by level generator
 ###
+# generator room def index
+var roomDefIdx: int = -1
 # global room position
-var placedPosition: Vector3 = Vector3.ZERO
+var placedPosition: Vector3i = Vector3i.ZERO
 # Forward normal vector for room orientation. All rooms are built with normal facing forward
-var placedForwardNormal: Vector3 = Vector3.FORWARD
+var placedForwardNormal: Const.CardinalDirection = Const.CardinalDirection.ZNEG
 # set by level generator and used by room sub-generator
 var placedAtIteration: int = -1
 # generatedConnectors tell the room how to change each connector from the default value
