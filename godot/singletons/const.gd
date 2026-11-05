@@ -56,3 +56,12 @@ const YellowLight = {
 # const colors cannot be defined via OKHSL
 const YELLOW_LIGHT_DEFAULT = Color(0.945, 0.938, 0.49, 1.0)
 const YELLOW_LIGHT_DEFAULT_BOUNCE = Color(0.966, 0.929, 0.516, 1.0)
+
+enum CardinalDirections {
+    XNeg = 0,
+    XPos = 1,
+    YNeg = 2,
+    YPos = 3,
+    ZNeg = 4,
+    ZPos = 5,
+}
