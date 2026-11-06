@@ -10,8 +10,8 @@ var hoveringMaterials: Array[Material] = []
 @export var throwImpulse: float = 5.0
 @export var throwLobFactor: float = 1.0
 #count collisions to prevent gmod style prop flying
-@export var propNonsenseLimit: float = 3
-@export var propNonsenseTimeout: float = 1.5
+@export var propNonsenseLimit: float = 4
+@export var propNonsenseTimeout: float = 1.25
 
 @onready var meshInstance = Utils.get_child_of_type(self, MeshInstance3D)
 
@@ -45,6 +45,13 @@ func _ready() -> void:
     freezeTimeout.wait_time = propNonsenseTimeout
     freezeTimeout.timeout.connect(on_frozen_timer_timeout)
     body_entered.connect(on_body_entered)
+
+func _physics_process(_delta: float) -> void:
+    # cap linear velocity for all holdable objects
+    if linear_velocity.length_squared() > 1024.0:
+        linear_velocity = linear_velocity.normalized() * 32.0
+    if angular_velocity.length_squared() > 1024.0:
+        angular_velocity = angular_velocity.normalized() * 32.0
 
 func activate(): pass
 

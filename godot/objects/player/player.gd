@@ -24,7 +24,7 @@ var b: BehaviorState:
 @export var SLOWED_CAMERA_DAMPING: float = 0.4
 @export var SLIDE_IMPULSE: float = 7.5
 @export var SLIDE_DECELERATION: float = 20.0
-@export var CRAWL_STRAFE_DAMPING: float = 0.1
+@export var CRAWL_STRAFE_DAMPING: float = 0.25
 @export var MAX_STEP_HEIGHT: float = 0.3
 @export var VAULT_DURATION: float = 0.4
 @export var ROTATION_SENSITIVITY_MULTIPLIER: float = 10.0

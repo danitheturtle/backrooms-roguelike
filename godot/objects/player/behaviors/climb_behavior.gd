@@ -18,8 +18,8 @@ func reinit() -> void:
 
 func can_act() -> bool:
     if (p.adjacentRef != null && p.adjacentRef != pb.grab.grabbedRef && !active && pb.none(cannotTransitionFrom)):
-        if pb.crouch.active: return p.can_shape_change()
-        return true
+        if pb.crouch.active && !p.can_shape_change(): return false
+        return p.adjacentRef.can_player_climb(p)
     return false
 
 func start_action() -> void:

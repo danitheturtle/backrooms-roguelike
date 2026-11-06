@@ -3,7 +3,7 @@ extends Node
 const defaults = {
     "General": {
         "Initialized": false,
-        "CameraSensitivity": 0.1,
+        "CameraSensitivity": 0.25,
         "UIScale": 16,
         "LongPressDelay": 0.5
     }

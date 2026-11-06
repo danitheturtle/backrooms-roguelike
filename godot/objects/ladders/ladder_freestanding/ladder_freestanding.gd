@@ -51,6 +51,9 @@ func on_drop():
     stairsPlatform.collision_layer = 0b00000000000001000000
     supportPlatform.collision_layer = 0b00000000000001000000
 
+func can_player_climb(_player: Player) -> bool:
+    return global_basis.y.dot(_player.global_basis.y) > 0.9
+
 func add_collision_exception(_body: Node3D) -> void:
     super.add_collision_exception(_body)
     var existingSupportExceptions := support.get_collision_exceptions()

@@ -68,6 +68,8 @@ func stop_action() -> void:
     pb.rotate.stop_action()
     if pb.climb.active:
         pb.climb.climbedRef.del_collision_exception(grabbedRef)
+    grabbedRef.linear_velocity = Vector3.ZERO
+    grabbedRef.angular_velocity = Vector3.ZERO
     reinit()
     grabArm.spring_length = p.TARGETING_DISTANCE
     grabArm.shape.radius = grabArmShapeRadius

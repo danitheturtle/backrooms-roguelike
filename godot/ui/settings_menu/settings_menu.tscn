@@ -61,10 +61,10 @@ custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-min_value = 0.1
-max_value = 1.5
+min_value = 0.05
+max_value = 3.0
 step = 0.05
-value = 0.1
+value = 0.25
 
 [node name="ResetCameraSensitivityButton" type="TextureButton" parent="CenterContainer/VBoxContainer/CameraSensitivityHBox" unique_id=1816377839]
 visible = false
