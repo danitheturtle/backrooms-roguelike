@@ -1,8 +1,7 @@
 Action Items:
-- use forces instead of directly setting linear and angular velocity for grabbed props
-- Keyboard shouldn't have long press actions; reserve that input style for controller and touch. Give keyboard alternate keybinds, with an option to enable the controller-style long press defaults.
+- 2 - use forces instead of directly setting linear and angular velocity for grabbed props
+- 3 - Keyboard shouldn't have long press actions; reserve that input style for controller and touch. Give keyboard alternate keybinds, with an option to enable the controller-style long press defaults.
 	-  z for crawl/prone
-* add bhopping and adjust how sprint/jump speeds work
 * add position tweening, and don't make it linear or ease_in_out. currently the lack of animation between states plus lack of inertia makes the game feel like a prototype
 * give the player a better way to yeet props very hard. maybe make throwing a charge-up so there's precision skill to it?
 - instead of preventing sprint while grabbing, slow down default walking speed while grabbing and let player sprint at normal walk speed
@@ -16,20 +15,21 @@ Action Items:
 - Add dedicated vault tutorial before combining mechanics with the ladder
 - loading screen, especially important for slower PCs and mobile
 - you can ledge grab up into a ceiling, especially by spamming space and positioning the raycast at an edge. definitely need shapecasting
+* 5 - add bhopping and adjust how sprint/jump speeds work
 
 Ladder updates:
 - hotkey to self-right the held prop so its y axis is up. helpful when you can't quite rotate the thing accurate
+
+Squeeze / Shimmy updates:
+* Hold key until in the state, then keep player suqeezing until  there's enough space for them to stand. Even up on ledges
+- When squeezing, constrain player camera 160 degrees along the axis of squeezing. For gaps where both sides are geometry, rotate towards player camera normal
+* if the player has room to unsqueeze but is against a wall they will stay squeezed, preventing other actions
 
 Object Placement puzzles:
 - snap held prop into puzzle solution while still grabbing it if its close and within 30 deg
 * freeze a solved object placement puzzle. make puzzle piece non-interactable
 - Object placement puzzle too precise. Make detection area larger and target smaller
 - Tell the player they almost have the solution and hint about orientation if they place the tutorial object placement prop in the right spot but wrong orientation
-
-Squeeze / Shimmy updates:
-* Hold key until in the state, then keep player suqeezing until  there's enough space for them to stand. Even up on ledges
-- When squeezing, constrain player camera 160 degrees along the axis of squeezing. For gaps where both sides are geometry, rotate towards player camera normal
-* if the player has room to unsqueeze but is against a wall they will stay squeezed, preventing other actions
 
 
 

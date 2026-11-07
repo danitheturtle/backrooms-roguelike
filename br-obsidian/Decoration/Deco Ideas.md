@@ -18,6 +18,7 @@ Aglamesis Bros soda fountain decor
 pink yard flamingo
 indoor skatepark
 quarter-driven horse ride from YOTH https://youtu.be/-tvM7Uak5m0
+throw rugs as cover for carpet seams
 
 video:
 - 90s commercials

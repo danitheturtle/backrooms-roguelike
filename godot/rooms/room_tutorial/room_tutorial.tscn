@@ -3027,7 +3027,7 @@ shape = SubResource("BoxShape3D_vl034")
 transform = Transform3D(-0.39754194, 0, 0.917584, 0, 1, 0, -0.917584, 0, -0.39754194, 0, 0, 0)
 
 [node name="PlayerSpawn" parent="." index="10" unique_id=1091142161 instance=ExtResource("25_o8cjy")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 38.92353, 4.5336323, 38.7803)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.22343293, 0)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." index="11" unique_id=934221278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 4.75, 65.25)
