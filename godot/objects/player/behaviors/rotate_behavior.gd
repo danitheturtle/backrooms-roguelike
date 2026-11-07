@@ -11,7 +11,7 @@ func can_act() -> bool:
     return !active && pb.grab.active
 
 func start_action() -> void:
-    if active: return
+    if active || !pb.grab.active: return
     active = true
     rotationDelta = 0.0
     pb.grab.grabbedRef.on_rotate_start()
@@ -25,7 +25,7 @@ func process_action(_delta: float) -> void:
         pb.grab.grabbedRef.angular_velocity = nextAngularVelocity
 
 func stop_action() -> void:
-    if !active: return
+    if !active || !pb.grab.active: return
     active = false
     p.lookDir = Vector2.ZERO
     pb.grab.grabbedRef.angular_velocity = Vector3.ZERO

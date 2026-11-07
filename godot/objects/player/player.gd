@@ -140,7 +140,12 @@ func set_long_press_delay(_newDelay: float) -> void:
 
 func can_shape_change():
     var detectedCollisions: Array[Node3D] = nearbyBodies.keys()
-    return detectedCollisions.size() == 0
+    if detectedCollisions.size() == 0: return true
+    var canShapeChangeResult := false
+    for nextNearbyBody: Node3D in nearbyBodies.keys():
+        if nextNearbyBody is Holdable && nextNearbyBody.mass <= MAX_GRAB_MASS:
+            canShapeChangeResult = true
+    return canShapeChangeResult
 
 func prevent_out_of_bounds():
     if global_position.y < KILL_FLOOR_Y:

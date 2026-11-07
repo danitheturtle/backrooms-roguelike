@@ -48,18 +48,19 @@ func stop_action() -> void:
 
 func apply_dragging_force(_targetVelocity: Vector3, _delta: float) -> void:
     # if player is on top of and supported by dragged object, do nothing
-    if !on_top_of_dragged():
+    if !on_top_of_or_below_dragged():
         var currentHorizontalVelocity = Vector3(draggedRef.linear_velocity.x, 0.0, draggedRef.linear_velocity.z)
         var appliedForce = draggedRef.mass * (_targetVelocity - currentHorizontalVelocity)
         draggedRef.apply_central_force(appliedForce / _delta)
 
-func on_top_of_dragged() -> bool:
+func on_top_of_or_below_dragged() -> bool:
     var lastFrameCollisionCount = p.get_slide_collision_count()
     for i: int in lastFrameCollisionCount:
         var nextKinematicCollision: KinematicCollision3D = p.get_slide_collision(i)
         var nextKinematicCollisionCount = nextKinematicCollision.get_collision_count()
         for j: int in nextKinematicCollisionCount:
             if nextKinematicCollision.get_collider(j) is Holdable:
-                if nextKinematicCollision.get_normal(j).dot(Vector3.UP) > 0.25:
+                var dotProduct = nextKinematicCollision.get_normal(j).dot(Vector3.UP)
+                if dotProduct > 0.25 || dotProduct < -0.25:
                     return true
     return false

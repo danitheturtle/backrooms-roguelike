@@ -8,9 +8,9 @@ func can_act() -> bool:
 
 func process_action(_delta: float) -> void:
     if !can_act(): return
-    # shove any rigidbodies
+    ## shove any rigidbodies
     for i in p.get_slide_collision_count():
-        var collision = p.get_slide_collision(i)
+        var collision: KinematicCollision3D = p.get_slide_collision(i)
         var collider = collision.get_collider()
         if collider is RigidBody3D && collider != pb.drag.draggedRef:
             var oppositeCollisionDir = -collision.get_normal()
