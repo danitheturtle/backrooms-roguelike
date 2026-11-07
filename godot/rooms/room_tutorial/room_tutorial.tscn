@@ -807,10 +807,6 @@ size = Vector3(1, 18, 21)
 resource_local_to_scene = true
 size = Vector3(1, 5.625, 4.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_08elj"]
-resource_local_to_scene = true
-size = Vector3(6.25, 5.625, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ng20"]
 resource_local_to_scene = true
 size = Vector3(1, 5.625, 9.25)
@@ -1182,7 +1178,7 @@ size = Vector3(3.5, 3.5, 4.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rrtem"]
 resource_local_to_scene = true
-size = Vector3(3.75, 3.75, 3)
+size = Vector3(10.988037, 3.75, 7.13797)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a2bxd"]
 resource_local_to_scene = true
@@ -2133,19 +2129,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.25, -7, 36.25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3125, 1.75)
 shape = SubResource("BoxShape3D_urb64")
 
-[node name="RectCollider2" parent="Colliders/WallStaticBody18" index="1" unique_id=1860325070 instance=ExtResource("6_py2y4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.625, 2.3125, 0)
-shape = SubResource("BoxShape3D_08elj")
-
-[node name="RectCollider3" parent="Colliders/WallStaticBody18" index="2" unique_id=2141033264 instance=ExtResource("6_py2y4")]
+[node name="RectCollider3" parent="Colliders/WallStaticBody18" index="1" unique_id=2141033264 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 2.3125, 4.125)
 shape = SubResource("BoxShape3D_8ng20")
 
-[node name="RectCollider4" parent="Colliders/WallStaticBody18" index="3" unique_id=596478119 instance=ExtResource("6_py2y4")]
+[node name="RectCollider4" parent="Colliders/WallStaticBody18" index="2" unique_id=596478119 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.625, 2.3125, 8.25)
 shape = SubResource("BoxShape3D_aumdd")
 
-[node name="RectCollider5" parent="Colliders/WallStaticBody18" index="4" unique_id=1460214217 instance=ExtResource("6_py2y4")]
+[node name="RectCollider5" parent="Colliders/WallStaticBody18" index="3" unique_id=1460214217 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3125, 7)
 shape = SubResource("BoxShape3D_0gqtv")
 
@@ -2858,8 +2850,6 @@ occluder = SubResource("QuadOccluder3D_k3gc2")
 occluder = SubResource("QuadOccluder3D_dxvks")
 
 [node name="Tutorials" type="Node3D" parent="." index="7" unique_id=1888722781]
-process_mode = 4
-visible = false
 
 [node name="MovementTutorialArea" parent="Tutorials" index="0" unique_id=1578869902 instance=ExtResource("25_7xnmx")]
 
@@ -2878,7 +2868,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 1.8750002, -1.625)
 shape = SubResource("BoxShape3D_4fujs")
 
 [node name="PopupForArea" parent="Tutorials/DragTutorialArea" index="1" unique_id=78886590 instance=ExtResource("25_m6f5b")]
-popupText = "Press Interact ('Mouse Button') to toggle dragging large objects."
+popupText = "Press Interact ('Mouse Button 1') to toggle dragging large objects."
 
 [node name="ActionFlashlightTutorialArea" parent="Tutorials" index="2" unique_id=1791378614 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.2499999, 31.75)
@@ -2928,7 +2918,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, 1.625, 0.125)
 shape = SubResource("BoxShape3D_2vhot")
 
 [node name="PopupForArea" parent="Tutorials/PickUpTutorialArea" index="1" unique_id=398090632 instance=ExtResource("25_m6f5b")]
-popupText = "Press Interact ('Mouse Button') to pick up smaller objects. Hold and drag to rotate. Press again to drop.
+popupText = "Press Interact ('Mouse Button 1') to pick up smaller objects. Hold and drag to rotate. Scroll for distance. Press again to drop.
 
 Press Action ('F') while holding to throw."
 
@@ -2936,7 +2926,7 @@ Press Action ('F') while holding to throw."
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.25, 2, 13.5)
 
 [node name="RectCollider" parent="Tutorials/SqueezeTutorialArea" index="0" unique_id=1773988015 instance=ExtResource("6_py2y4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, 2.125, -0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2440186, 2.125, 0.2264862)
 shape = SubResource("BoxShape3D_rrtem")
 
 [node name="PopupForArea" parent="Tutorials/SqueezeTutorialArea" index="1" unique_id=1273100879 instance=ExtResource("25_m6f5b")]
@@ -2982,7 +2972,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.125, -0.625)
 shape = SubResource("BoxShape3D_27py2")
 
 [node name="PopupForArea" parent="Tutorials/VaultTutorialArea" index="1" unique_id=2112005554 instance=ExtResource("25_m6f5b")]
-popupText = "Press 'Space' to climb onto a ledge even while airborne. You can queue this action."
+popupText = "Press 'Space' again after jumping to queue a ledge grab / vault."
 
 [node name="ObjectPlacementTutorialArea" parent="Tutorials" index="12" unique_id=1528830301 instance=ExtResource("25_7xnmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 3, 62)
@@ -3027,6 +3017,16 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 28.1
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." index="11" unique_id=934221278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 4.75, 65.25)
 material_override = SubResource("StandardMaterial3D_5q0ne")
+
+[node name="CeilingLight" parent="." index="12" unique_id=1041599650 instance=ExtResource("29_e7o7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.025, 1.6, 54.75)
+lightColor = Color(0.8668276, 0.85949457, 0.4256445, 1)
+bounceColor = Color(0.8887782, 0.8503176, 0.43175876, 1)
+intensity = 2.0
+lightRange = 5.5
+
+[node name="PlayerSpawn2" parent="." index="13" unique_id=310547235 instance=ExtResource("25_o8cjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.75, 4, 39.5)
 
 [editable path="Props/WoodChair01"]
 [editable path="LevelMeshes/ResizeableWall"]

@@ -11,7 +11,7 @@ const defaults = {
     },
     "Meta": {
         "Initialized": false,
-        # "GameVersion": ProjectSettings.get_setting("application/config/version"),
+        # "GameVersion": ProjectSettings.get_setting("application/config/version"), not const, so read from project settings at runtime
     }
 }
 

@@ -21,7 +21,7 @@ var b: BehaviorState:
 @export var CROUCH_HEIGHT: float = 0.95
 @export var CRAWL_HEIGHT: float = 0.45
 @export var SQUEEZE_RADIUS: float = 0.2
-@export var SLOWED_CAMERA_DAMPING: float = 0.4
+@export var SLOWED_CAMERA_DAMPING: float = 0.6
 @export var SLIDE_IMPULSE: float = 7.5
 @export var SLIDE_DECELERATION: float = 20.0
 @export var CRAWL_STRAFE_DAMPING: float = 0.25
@@ -30,6 +30,7 @@ var b: BehaviorState:
 @export var TARGETING_DISTANCE: float = 2.0
 @export var MAX_GRAB_MASS: float = 15.0
 @export var MAX_DRAG_MASS: float = 150.0
+@export var KILL_FLOOR_Y: float = -512.0
 
 # child nodes
 @onready var camera: Camera3D = $Camera
@@ -109,6 +110,7 @@ func _physics_process(_delta: float) -> void:
     for nextBehavior: PlayerBehavior in b.all():
         nextBehavior.process_action(_delta)
     move_and_slide()
+    prevent_out_of_bounds()
 
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:
@@ -139,6 +141,17 @@ func set_long_press_delay(_newDelay: float) -> void:
 func can_shape_change():
     var detectedCollisions: Array[Node3D] = nearbyBodies.keys()
     return detectedCollisions.size() == 0
+
+func prevent_out_of_bounds():
+    if global_position.y < KILL_FLOOR_Y:
+        velocity = Vector3.ZERO
+        b.stop()
+        b.stand.start_action()
+        var possibleSpawns: Array = Utils.get_children_of_type(LevelManager.root, PlayerSpawn, true)
+        # pick one randomly
+        var randomSpawnIndex: int = randi_range(0,possibleSpawns.size()-1)
+        if possibleSpawns[randomSpawnIndex] != null && possibleSpawns[randomSpawnIndex] is PlayerSpawn:
+            global_transform = possibleSpawns[randomSpawnIndex].global_transform
 
 func on_room_for_state_change_body_entered(_body: Node3D):
     nearbyBodies[_body] = true

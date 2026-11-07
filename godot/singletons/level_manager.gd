@@ -68,9 +68,11 @@ func generate_initial_level() -> void:
 func on_level_ready() -> void:
     await get_tree().process_frame
     await get_tree().process_frame
+    # this causes the player to always spawn at the first and highest PlayerSpawn in the tree
+    # the tree can have many player spawns but the first one found is used
     var playerSpawn = Utils.get_child_of_type(root, PlayerSpawn, true)
-    # Player is disabled by default to prevent physics jank during setup
     if playerSpawn != null && playerSpawn is PlayerSpawn:
         State.player.global_transform = playerSpawn.global_transform
+    # Player is disabled by default to prevent physics jank during setup
     State.player.process_mode = Node.PROCESS_MODE_PAUSABLE
     level_ready.emit()
