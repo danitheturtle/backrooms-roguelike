@@ -3,8 +3,9 @@ class_name LadderFreestanding
 
 @export var isClosed = false
 
-@onready var hinge: HingeJoint3D = $"../LadderHinge"
-@onready var support: RigidBody3D = $"../SupportRigidBody"
+@export var hinge: HingeJoint3D
+@export var support: LadderFreestandingSupport
+@export var supportCenterOfMass: Marker3D
 @onready var initialMotorVelocity = hinge.get_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY)
 
 # World collides with ladder rigidbody, player does not.
@@ -12,8 +13,8 @@ class_name LadderFreestanding
 # Using collision masking this means the player cannot apply ANY buggy shove force to a ladder, they
 # are only able to move it directly. To everything else in the world the ladder behaves normally, and 
 # can even be knocked over by other objects
-@onready var stairsPlatform: AnimatableBody3D = $"../StairsPlatform"
-@onready var supportPlatform: AnimatableBody3D = $"../SupportPlatform"
+@export var stairsPlatform: AnimatableBody3D
+@export var supportPlatform: AnimatableBody3D
 
 func _physics_process(_delta: float) -> void:
     stairsPlatform.transform = transform
@@ -21,33 +22,30 @@ func _physics_process(_delta: float) -> void:
 
 func activate():
     super.activate()
-    hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, -initialMotorVelocity)
-    isClosed = false
+    var currentMotorVelocity: float = hinge.get_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY)
+    hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, -currentMotorVelocity)
+    isClosed = currentMotorVelocity > 0.0
 
 func deactivate(actionTimerFinished: bool) -> bool:
     super.deactivate(actionTimerFinished)
-    hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, initialMotorVelocity)
-    isClosed = true
     return true
 
 func on_hold(_player: Player):
     super.on_hold(_player)
     hinge.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, true)
-    hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, initialMotorVelocity)
     collision_layer = 0b00000000000000100000
-    support.center_of_mass = Vector3(0.0,0.0,0.0)
+    support.center_of_mass = Vector3.ZERO
     support.collision_layer = 0b00000000000000100000
     stairsPlatform.collision_layer = 0b00000000000000000000
     supportPlatform.collision_layer = 0b00000000000000000000
+    return self
 
 func on_drop():
     super.on_drop()
-    var hingeCallback := func ():
-        hinge.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, false)
-    Utils.set_timeout(hingeCallback, 750)
+    hinge.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, false)
     collision_layer = 0b00000000000010000000
     support.collision_layer = 0b00000000000010000000
-    support.center_of_mass = Vector3(0.45, -1.05, 0.0)
+    support.center_of_mass = supportCenterOfMass.transform.origin
     stairsPlatform.collision_layer = 0b00000000000001000000
     supportPlatform.collision_layer = 0b00000000000001000000
 
@@ -65,3 +63,17 @@ func del_collision_exception(_body: Node3D) -> void:
     var existingSupportExceptions := support.get_collision_exceptions()
     if existingSupportExceptions.has(_body):
         support.remove_collision_exception_with(_body)
+
+func apply_hover_self_only():
+    super.apply_hover_material()
+
+func apply_hover_material():
+    apply_hover_self_only()
+    support.apply_hover_self_only()
+
+func clear_hover_self_only():
+    super.clear_hover_material()
+
+func clear_hover_material():
+    clear_hover_self_only()
+    support.clear_hover_self_only()

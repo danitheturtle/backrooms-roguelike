@@ -27,8 +27,7 @@ func can_act() -> bool:
 
 func start_action() -> void:
     if active: return
-    pb.target.ref.on_hold(player)
-    draggedRef = pb.target.ref
+    draggedRef = pb.target.ref.on_hold(player)
     justDragged = true
     draggedPoint = draggedRef.to_local(pb.target.targetedPoint)
     pb.stop(mutuallyExclusiveWith)

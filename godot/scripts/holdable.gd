@@ -2,6 +2,7 @@ extends RigidBody3D
 class_name Holdable
 
 const hoverOverObjectMaterial = preload("res://assets/materials/HoverOverObject/HoverOverObject.tres")
+var initialSurfaceMaterials: Array[Material] = [] #store the surface material override in the pre-hover state. usually null
 var hoveringMaterials: Array[Material] = []
 @export var heldDistance: float = 1.5
 @export var heldDistanceStep: float = 0.1
@@ -24,16 +25,20 @@ var repeatCollisions: int = 0
 var freezeTimeout: Timer = null
 var holdingPlayer: Player = null
 
-var grabbed: bool:
-    get: return mass <= holdingPlayer.MAX_GRAB_MASS
-var dragged: bool:
-    get: return mass > holdingPlayer.MAX_GRAB_MASS
+var grabbed: bool: get = get_grabbed
+func get_grabbed() -> bool: return mass <= holdingPlayer.MAX_GRAB_MASS
+var dragged: bool: get = get_dragged
+func get_dragged() -> bool: return mass > holdingPlayer.MAX_GRAB_MASS
 
 func _ready() -> void:
     for nextMaterial in Utils.get_materials_on_mesh(meshInstance):
         var dupedHoverMaterial = hoverOverObjectMaterial.duplicate()
         dupedHoverMaterial.next_pass = nextMaterial
         hoveringMaterials.append(dupedHoverMaterial)
+    # very occasionally props will already be using the surface override, which this script uses for hovering
+    # store previous value so it can be reset
+    for nextSurfaceIndex in meshInstance.mesh.get_surface_count():
+        initialSurfaceMaterials.append(meshInstance.get_surface_override_material(nextSurfaceIndex))
     var grabOriginNode = get_node_or_null("GrabOrigin")
     if (grabOriginNode != null):
         grabOrigin = grabOriginNode.global_position
@@ -59,7 +64,9 @@ func activate(): pass
 func deactivate(_actionTimerFinished: bool) -> bool:
     return false
 
-func on_hold(_player: Player):
+# occasionally a holdable is acting as a handle, with the primary holdable being another object.
+# return the holdable the interaction is intended for
+func on_hold(_player: Player) -> Holdable:
     holdingPlayer = _player
     # if grabbing, move to grabbed layer to avoid collision with player and wierd skyrim-style bullshit
     if grabbed:
@@ -67,6 +74,7 @@ func on_hold(_player: Player):
     elif dragged:
         if physics_material_override != null:
             physics_material_override.friction = 0.0
+    return self
 
 func add_collision_exception(_body: Node3D) -> void:
     var existingExceptions := get_collision_exceptions()
@@ -100,7 +108,7 @@ func clear_hover_material():
     for surfaceIndex in meshInstance.mesh.get_surface_count():
         var surfaceMaterial = meshInstance.get_surface_override_material(surfaceIndex)
         if surfaceMaterial == hoveringMaterials[surfaceIndex]:
-            meshInstance.set_surface_override_material(surfaceIndex, null)
+            meshInstance.set_surface_override_material(surfaceIndex, initialSurfaceMaterials[surfaceIndex])
 
 func on_body_entered(body: PhysicsBody3D):
     # if held, do nothing

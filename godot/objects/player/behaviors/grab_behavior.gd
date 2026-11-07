@@ -35,12 +35,11 @@ func can_act() -> bool:
 
 func start_action() -> void:
     if active: return
-    pb.target.ref.on_hold(player)
+    grabbedRef = pb.target.ref.on_hold(player)
     grabArm.spring_length = pb.target.ref.heldDistance
     grabArm.shape.radius = pb.target.ref.heldCollisionRadius
     # causes visual bug as spring arm rapidly shifts if we don't wait a frame
     await p.get_tree().process_frame
-    grabbedRef = pb.target.ref
     justGrabbed = true
     pb.stop(mutuallyExclusiveWith)
     # always rotate on pickup

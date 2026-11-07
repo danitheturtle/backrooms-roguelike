@@ -2480,7 +2480,7 @@ fadeDistance = 15.0
 
 [node name="CeilingLightRectangle19" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="19" unique_id=937767826 instance=ExtResource("8_iii1t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.777206, 9.5, 52.28558)
-lightRange = 11.0
+bounceEnabled = false
 fadeDistance = 20.0
 
 [node name="CeilingLightRectangle20" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="20" unique_id=1118015338 instance=ExtResource("8_iii1t")]
@@ -2593,7 +2593,7 @@ lightOn = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.025, 1.6, 54.75)
 lightColor = Color(0.8668276, 0.85949457, 0.4256445, 1)
 bounceColor = Color(0.8887782, 0.8503176, 0.43175876, 1)
-intensity = 2.0
+intensity = 3.5
 lightRange = 5.5
 
 [node name="Sofa02" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="0" unique_id=308446481 instance=ExtResource("15_an542")]

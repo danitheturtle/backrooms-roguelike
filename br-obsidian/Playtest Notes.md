@@ -22,7 +22,6 @@ Action Items:
 	- props glitched onto the wrong collision layer can be shoved when they are not supposed to be shoved
 
 Ladder updates:
-- put ladder hinge on a toggle. hinge timer still exists, enforcing the state the ladder was dropped in. maybe even wait until the velocity is zero
 - make ladder targetable from back as well. its very jank not being able to pick it up from the back
 - repeatedly jumping near a ladder breaks the ability to jump off until you stop climbing
 - hotkey to self-right the held prop so its y axis is up. helpful when you can't quite rotate the thing accurate
