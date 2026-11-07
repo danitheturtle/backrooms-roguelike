@@ -22,8 +22,7 @@ Action Items:
 	- props glitched onto the wrong collision layer can be shoved when they are not supposed to be shoved
 
 Ladder updates:
-- make ladder targetable from back as well. its very jank not being able to pick it up from the back
-- repeatedly jumping near a ladder breaks the ability to jump off until you stop climbing
+- jumping repeatedly lets you climb rapidly
 - hotkey to self-right the held prop so its y axis is up. helpful when you can't quite rotate the thing accurate
 
 Object Placement puzzles:

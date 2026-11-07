@@ -2,7 +2,7 @@ class_name ClimbBehavior
 extends PlayerBehavior
 
 const cannotTransitionFrom: Array[StringName] = [&"film_camera", &"drag", &"squeeze", &"vault"]
-const mutuallyExclusiveWith: Array[StringName] = [&"flashlight"]
+const mutuallyExclusiveWith: Array[StringName] = [&"flashlight", &"jump"]
 
 # garunteed to be in climbable group, a pseudo-interface with shared methods
 var climbedRef: Node3D
