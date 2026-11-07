@@ -807,6 +807,10 @@ size = Vector3(1, 18, 21)
 resource_local_to_scene = true
 size = Vector3(1, 5.625, 4.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_08elj"]
+resource_local_to_scene = true
+size = Vector3(6.25, 5.625, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ng20"]
 resource_local_to_scene = true
 size = Vector3(1, 5.625, 9.25)
@@ -2129,15 +2133,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.25, -7, 36.25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3125, 1.75)
 shape = SubResource("BoxShape3D_urb64")
 
-[node name="RectCollider3" parent="Colliders/WallStaticBody18" index="1" unique_id=2141033264 instance=ExtResource("6_py2y4")]
+[node name="RectCollider2" parent="Colliders/WallStaticBody18" index="1" unique_id=803593267 instance=ExtResource("6_py2y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.625, 2.3125, 0)
+shape = SubResource("BoxShape3D_08elj")
+
+[node name="RectCollider3" parent="Colliders/WallStaticBody18" index="2" unique_id=2141033264 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 2.3125, 4.125)
 shape = SubResource("BoxShape3D_8ng20")
 
-[node name="RectCollider4" parent="Colliders/WallStaticBody18" index="2" unique_id=596478119 instance=ExtResource("6_py2y4")]
+[node name="RectCollider4" parent="Colliders/WallStaticBody18" index="3" unique_id=596478119 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.625, 2.3125, 8.25)
 shape = SubResource("BoxShape3D_aumdd")
 
-[node name="RectCollider5" parent="Colliders/WallStaticBody18" index="3" unique_id=1460214217 instance=ExtResource("6_py2y4")]
+[node name="RectCollider5" parent="Colliders/WallStaticBody18" index="4" unique_id=1460214217 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3125, 7)
 shape = SubResource("BoxShape3D_0gqtv")
 
@@ -2581,6 +2589,13 @@ primaryEnabled = false
 bounceEnabled = false
 lightOn = false
 
+[node name="CeilingLight5" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="40" unique_id=1041599650 instance=ExtResource("29_e7o7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.025, 1.6, 54.75)
+lightColor = Color(0.8668276, 0.85949457, 0.4256445, 1)
+bounceColor = Color(0.8887782, 0.8503176, 0.43175876, 1)
+intensity = 2.0
+lightRange = 5.5
+
 [node name="Sofa02" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="0" unique_id=308446481 instance=ExtResource("15_an542")]
 transform = Transform3D(-0.3125, 0.08373415, 1.2074072, -0.32352388, -1.2074072, -4.1750012e-09, 1.1662658, -0.31250012, 0.32352373, 38.25, -1.175, 47)
 
@@ -3017,16 +3032,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 28.1
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." index="11" unique_id=934221278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 4.75, 65.25)
 material_override = SubResource("StandardMaterial3D_5q0ne")
-
-[node name="CeilingLight" parent="." index="12" unique_id=1041599650 instance=ExtResource("29_e7o7i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.025, 1.6, 54.75)
-lightColor = Color(0.8668276, 0.85949457, 0.4256445, 1)
-bounceColor = Color(0.8887782, 0.8503176, 0.43175876, 1)
-intensity = 2.0
-lightRange = 5.5
-
-[node name="PlayerSpawn2" parent="." index="13" unique_id=310547235 instance=ExtResource("25_o8cjy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.75, 4, 39.5)
 
 [editable path="Props/WoodChair01"]
 [editable path="LevelMeshes/ResizeableWall"]
