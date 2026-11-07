@@ -18,7 +18,7 @@ func start_action() -> void:
 
 func process_action(_delta: float) -> void:
     if (active && pb.grab.active):
-        var nextAngularVelocity: Vector3 = (-p.camera.global_basis.y*p.lookDir.x + p.camera.global_basis.x * p.lookDir.y) * GameSettings.CameraSensitivity * p.ROTATION_SENSITIVITY_MULTIPLIER
+        var nextAngularVelocity: Vector3 = (-p.camera.global_basis.y*p.lookDir.x + p.camera.global_basis.x * p.lookDir.y) * GameSettings.PropRotationSpeed
         rotationDelta += nextAngularVelocity.length_squared()
         #grows fast, we only care about the first full rotation at ~50k
         if rotationDelta > 100000.0: rotationDelta = 50000.0

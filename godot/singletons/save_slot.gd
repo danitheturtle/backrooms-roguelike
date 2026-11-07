@@ -128,22 +128,6 @@ func erase_slot(slotIndex: int) -> void:
             push_warning("could not clear save slot", deleteResult)
             inMemoryMode = true
 
-func is_save_version_compatible(saveVersion: String) -> bool:
-    var saveVersionSplit := saveVersion.split(".", false)
-    if saveVersionSplit.size() == 0: return false
-    var saveVersionNumbers: Array[int] = []
-    for nextNum: String in saveVersionSplit:
-        saveVersionNumbers.append(int(nextNum))
-    if saveVersionNumbers[0] > oldestCompatibleSaveVersion[0]:
-        return true
-    elif saveVersionNumbers[0] == oldestCompatibleSaveVersion[0]:
-        if saveVersionNumbers[1] > oldestCompatibleSaveVersion[1]:
-            return true
-        elif saveVersionNumbers[1] == oldestCompatibleSaveVersion[1]:
-            if saveVersionNumbers[2] >= oldestCompatibleSaveVersion[2]:
-                return true
-    return false
-
 # should serialize the full game state
 func serialize() -> Dictionary:
     var dataDict = {
@@ -161,7 +145,7 @@ func serialize() -> Dictionary:
     return dataDict
 
 func deserialize(dataDict: Dictionary) -> void:
-    if !is_save_version_compatible(dataDict.gameVersion):
+    if !Utils.is_version_valid(oldestCompatibleSaveVersion, dataDict.gameVersion):
         push_error("this save is for an older version of the game")
         return
     gameVersion = dataDict.gameVersion

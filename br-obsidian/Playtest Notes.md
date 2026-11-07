@@ -1,5 +1,4 @@
 Action Items:
-- new setting for grabbed item rotation speed. separate from camera speed
 - tell player they can scroll to change position of grabbed item
 - Make squeeze tutorial bigger to cover the ledge section
 - interact can sometimes break a prop and put it on wrong collision layer if picking up and dropping repeatedly while moving the camera rapidly

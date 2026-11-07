@@ -3,9 +3,23 @@
 [ext_resource type="Script" uid="uid://sfmg1rx420wa" path="res://ui/settings_menu/settings_menu.gd" id="1_cobfr"]
 [ext_resource type="Texture2D" uid="uid://cvu8chq3s27a4" path="res://assets/ui/reset_icon.png" id="2_kvsec"]
 
-[node name="SettingsMenu" type="CanvasLayer" unique_id=835332129]
+[node name="SettingsMenu" type="CanvasLayer" unique_id=835332129 node_paths=PackedStringArray("cancelBackButton", "saveAndReturnButton", "cameraSensitivityValue", "cameraSensitivitySlider", "resetCameraSensitivityButton", "propRotationSpeedValue", "propRotationSpeedSlider", "resetPropRotationSpeedButton", "longPressDelayValue", "longPressDelaySlider", "resetLongPressDelayButton", "undoChangesButton", "loadDefaultsButton", "saveButton")]
 process_mode = 4
 script = ExtResource("1_cobfr")
+cancelBackButton = NodePath("CenterContainer/VBoxContainer/SettingsTopControlsHBox/CancelBackButton")
+saveAndReturnButton = NodePath("CenterContainer/VBoxContainer/SettingsTopControlsHBox/SaveAndReturnButton")
+cameraSensitivityValue = NodePath("CenterContainer/VBoxContainer/CameraSensitivityHBox/CameraSensitivityValue")
+cameraSensitivitySlider = NodePath("CenterContainer/VBoxContainer/CameraSensitivityHBox/CameraSensitivityHSlider")
+resetCameraSensitivityButton = NodePath("CenterContainer/VBoxContainer/CameraSensitivityHBox/ResetCameraSensitivityButton")
+propRotationSpeedValue = NodePath("CenterContainer/VBoxContainer/PropRotationSpeedHBox/PropRotationSpeedValue")
+propRotationSpeedSlider = NodePath("CenterContainer/VBoxContainer/PropRotationSpeedHBox/PropRotationSpeedHSlider")
+resetPropRotationSpeedButton = NodePath("CenterContainer/VBoxContainer/PropRotationSpeedHBox/ResetPropRotationSpeedButton")
+longPressDelayValue = NodePath("CenterContainer/VBoxContainer/LongPressDelayHBox/LongPressDelayValue")
+longPressDelaySlider = NodePath("CenterContainer/VBoxContainer/LongPressDelayHBox/LongPressDelayHSlider")
+resetLongPressDelayButton = NodePath("CenterContainer/VBoxContainer/LongPressDelayHBox/ResetLongPressDelayButton")
+undoChangesButton = NodePath("CenterContainer/VBoxContainer/SettingsBottomControlsHBox/UndoChangesButton")
+loadDefaultsButton = NodePath("CenterContainer/VBoxContainer/SettingsBottomControlsHBox/LoadDefaultsButton")
+saveButton = NodePath("CenterContainer/VBoxContainer/SettingsBottomControlsHBox/SaveButton")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=644928605]
 anchors_preset = 15
@@ -28,10 +42,10 @@ layout_mode = 2
 [node name="SettingsTopControlsHBox" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=60882606]
 layout_mode = 2
 
-[node name="CancelButton" type="Button" parent="CenterContainer/VBoxContainer/SettingsTopControlsHBox" unique_id=1393913290]
+[node name="CancelBackButton" type="Button" parent="CenterContainer/VBoxContainer/SettingsTopControlsHBox" unique_id=1393913290]
 layout_mode = 2
 size_flags_horizontal = 0
-text = " Cancel "
+text = "Back"
 
 [node name="SaveAndReturnButton" type="Button" parent="CenterContainer/VBoxContainer/SettingsTopControlsHBox" unique_id=1820712948]
 visible = false
@@ -54,7 +68,7 @@ alignment = 2
 [node name="CameraSensitivityValue" type="Label" parent="CenterContainer/VBoxContainer/CameraSensitivityHBox" unique_id=1139644586]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-text = "0.1"
+text = "0.25"
 
 [node name="CameraSensitivityHSlider" type="HSlider" parent="CenterContainer/VBoxContainer/CameraSensitivityHBox" unique_id=1351059571]
 custom_minimum_size = Vector2(0, 24)
@@ -67,6 +81,38 @@ step = 0.05
 value = 0.25
 
 [node name="ResetCameraSensitivityButton" type="TextureButton" parent="CenterContainer/VBoxContainer/CameraSensitivityHBox" unique_id=1816377839]
+visible = false
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+tooltip_text = "Reset to default"
+texture_normal = ExtResource("2_kvsec")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PropRotationSpeedLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=2118624637]
+layout_mode = 2
+text = "Held Object Rotation Speed"
+
+[node name="PropRotationSpeedHBox" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1701858460]
+layout_mode = 2
+alignment = 2
+
+[node name="PropRotationSpeedValue" type="Label" parent="CenterContainer/VBoxContainer/PropRotationSpeedHBox" unique_id=1247870254]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "3.0"
+
+[node name="PropRotationSpeedHSlider" type="HSlider" parent="CenterContainer/VBoxContainer/PropRotationSpeedHBox" unique_id=557239141]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.1
+max_value = 4.0
+step = 0.1
+value = 2.0
+
+[node name="ResetPropRotationSpeedButton" type="TextureButton" parent="CenterContainer/VBoxContainer/PropRotationSpeedHBox" unique_id=537757697]
 visible = false
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
@@ -98,7 +144,7 @@ max_value = 3.0
 step = 0.1
 value = 0.6
 
-[node name="LongPressDelayButton" type="TextureButton" parent="CenterContainer/VBoxContainer/LongPressDelayHBox" unique_id=92659944]
+[node name="ResetLongPressDelayButton" type="TextureButton" parent="CenterContainer/VBoxContainer/LongPressDelayHBox" unique_id=92659944]
 visible = false
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2

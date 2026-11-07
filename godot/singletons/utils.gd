@@ -130,3 +130,20 @@ func remove_dir_recursive(dirPath: String) -> Error:
     if dirRemoveResult != Error.OK:
         push_warning("Error recursively deleting directory ", dirPath, " ", dirRemoveResult)
     return dirRemoveResult
+
+## Checks if version is newer than an oldest compatible version
+func is_version_valid(_oldestCompatibleVersion: Array[int], _version: String) -> bool:
+    var versionSplit := _version.split(".", false)
+    if versionSplit.size() == 0: return false
+    var versionNumbers: Array[int] = []
+    for nextNum: String in versionSplit:
+        versionNumbers.append(int(nextNum))
+    if versionNumbers[0] > _oldestCompatibleVersion[0]:
+        return true
+    elif versionNumbers[0] == _oldestCompatibleVersion[0]:
+        if versionNumbers[1] > _oldestCompatibleVersion[1]:
+            return true
+        elif versionNumbers[1] == _oldestCompatibleVersion[1]:
+            if versionNumbers[2] >= _oldestCompatibleVersion[2]:
+                return true
+    return false

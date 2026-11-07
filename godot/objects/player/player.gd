@@ -27,7 +27,6 @@ var b: BehaviorState:
 @export var CRAWL_STRAFE_DAMPING: float = 0.25
 @export var MAX_STEP_HEIGHT: float = 0.3
 @export var VAULT_DURATION: float = 0.4
-@export var ROTATION_SENSITIVITY_MULTIPLIER: float = 10.0
 @export var TARGETING_DISTANCE: float = 2.0
 @export var MAX_GRAB_MASS: float = 15.0
 @export var MAX_DRAG_MASS: float = 150.0

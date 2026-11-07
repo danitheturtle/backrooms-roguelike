@@ -1,26 +1,31 @@
 extends CanvasLayer
 class_name SettingsMenu
 
-@onready var cancelButton: Button = $CenterContainer/VBoxContainer/SettingsTopControlsHBox/CancelButton
-@onready var saveAndReturnButton: Button = $CenterContainer/VBoxContainer/SettingsTopControlsHBox/SaveAndReturnButton
-@onready var cameraSensitivityValue: Label = $CenterContainer/VBoxContainer/CameraSensitivityHBox/CameraSensitivityValue
-@onready var cameraSensitivitySlider: HSlider = $CenterContainer/VBoxContainer/CameraSensitivityHBox/CameraSensitivityHSlider
-@onready var resetCameraSensitivityButton: TextureButton = $CenterContainer/VBoxContainer/CameraSensitivityHBox/ResetCameraSensitivityButton
-@onready var longPressDelayValue: Label = $CenterContainer/VBoxContainer/LongPressDelayHBox/LongPressDelayValue
-@onready var longPressDelayHSlider: HSlider = $CenterContainer/VBoxContainer/LongPressDelayHBox/LongPressDelayHSlider
-@onready var resetLongPressDelayButton: TextureButton = $CenterContainer/VBoxContainer/LongPressDelayHBox/LongPressDelayButton
-@onready var undoChangesButton: Button = $CenterContainer/VBoxContainer/SettingsBottomControlsHBox/UndoChangesButton
-@onready var loadDefaultsButton: Button = $CenterContainer/VBoxContainer/SettingsBottomControlsHBox/LoadDefaultsButton
-@onready var saveButton: Button = $CenterContainer/VBoxContainer/SettingsBottomControlsHBox/SaveButton
+@export var cancelBackButton: Button
+@export var saveAndReturnButton: Button
+@export var cameraSensitivityValue: Label
+@export var cameraSensitivitySlider: HSlider
+@export var resetCameraSensitivityButton: TextureButton
+@export var propRotationSpeedValue: Label
+@export var propRotationSpeedSlider: HSlider
+@export var resetPropRotationSpeedButton: TextureButton
+@export var longPressDelayValue: Label
+@export var longPressDelaySlider: HSlider
+@export var resetLongPressDelayButton: TextureButton
+@export var undoChangesButton: Button
+@export var loadDefaultsButton: Button
+@export var saveButton: Button
 
 var previousMenu: Const.MenuType
 
 func _ready() -> void:
-    cancelButton.button_up.connect(on_cancel_pressed)
+    cancelBackButton.button_up.connect(on_cancel_back_pressed)
     saveAndReturnButton.button_up.connect(on_save_and_return_pressed)
     cameraSensitivitySlider.value_changed.connect(on_camera_sensitivity_slider_changed)
     resetCameraSensitivityButton.button_up.connect(on_camera_sensitivity_reset_pressed)
-    longPressDelayHSlider.value_changed.connect(on_long_press_delay_slider_changed)
+    propRotationSpeedSlider.value_changed.connect(on_prop_rotation_speed_slider_changed)
+    resetPropRotationSpeedButton.button_up.connect(on_prop_rotation_speed_reset_pressed)
+    longPressDelaySlider.value_changed.connect(on_long_press_delay_slider_changed)
     resetLongPressDelayButton.button_up.connect(on_long_press_delay_reset_pressed)
     undoChangesButton.button_up.connect(on_undo_changes_pressed)
     loadDefaultsButton.button_up.connect(on_load_defaults_pressed)
@@ -30,10 +35,13 @@ func _ready() -> void:
 func load_settings_into_controls():
     cameraSensitivityValue.text = str(GameSettings.CameraSensitivity)
     cameraSensitivitySlider.value = GameSettings.CameraSensitivity
+    propRotationSpeedValue.text = str(GameSettings.PropRotationSpeed)
+    propRotationSpeedSlider.value = GameSettings.PropRotationSpeed
     longPressDelayValue.text = str(GameSettings.LongPressDelay)
-    longPressDelayHSlider.value = GameSettings.LongPressDelay
+    longPressDelaySlider.value = GameSettings.LongPressDelay
 
-func on_cancel_pressed():
+func on_cancel_back_pressed():
+    clear_pending_changes()
     SignalBus.goto_previous_menu.emit(previousMenu)
 
 func on_save_and_return_pressed():
@@ -58,15 +66,33 @@ func show_hide_camera_sensitivity_reset():
     else:
         resetCameraSensitivityButton.show()
 
+func on_prop_rotation_speed_slider_changed(valueChanged: bool):
+    if !valueChanged: return
+    propRotationSpeedValue.text = str(propRotationSpeedSlider.value)
+    show_hide_prop_rotation_speed_reset()
+    if propRotationSpeedSlider.value != GameSettings.PropRotationSpeed:
+        mark_pending_changes()
+
+func on_prop_rotation_speed_reset_pressed():
+    propRotationSpeedSlider.value = GameSettings.defaults.General.PropRotationSpeed
+    resetPropRotationSpeedButton.hide()
+    mark_pending_changes()
+
+func show_hide_prop_rotation_speed_reset():
+    if GameSettings.PropRotationSpeed == GameSettings.defaults.General.PropRotationSpeed:
+        resetPropRotationSpeedButton.hide()
+    else:
+        resetPropRotationSpeedButton.show()
+
 func on_long_press_delay_slider_changed(valueChanged: bool):
     if !valueChanged: return
-    longPressDelayValue.text = str(longPressDelayHSlider.value)
+    longPressDelayValue.text = str(longPressDelaySlider.value)
     show_hide_long_press_delay_reset()
-    if longPressDelayHSlider.value != GameSettings.LongPressDelay:
+    if longPressDelaySlider.value != GameSettings.LongPressDelay:
         mark_pending_changes()
 
 func on_long_press_delay_reset_pressed():
-    longPressDelayHSlider.value = GameSettings.defaults.General.LongPressDelay
+    longPressDelaySlider.value = GameSettings.defaults.General.LongPressDelay
     resetLongPressDelayButton.hide()
     mark_pending_changes()
 
@@ -87,13 +113,15 @@ func on_load_defaults_pressed():
     mark_pending_changes()
 
 func on_save_pressed():
+    #apply settings
     if GameSettings.CameraSensitivity != cameraSensitivitySlider.value:
-        # apply camera sensitivity
         GameSettings.CameraSensitivity = cameraSensitivitySlider.value
         show_hide_camera_sensitivity_reset()
-    if GameSettings.LongPressDelay != longPressDelayHSlider.value:
-        # apply long press delay
-        GameSettings.LongPressDelay = longPressDelayHSlider.value
+    if GameSettings.PropRotationSpeed != propRotationSpeedSlider.value:
+        GameSettings.PropRotationSpeed = propRotationSpeedSlider.value
+        show_hide_prop_rotation_speed_reset()
+    if GameSettings.LongPressDelay != longPressDelaySlider.value:
+        GameSettings.LongPressDelay = longPressDelaySlider.value
         if State.player != null:
             State.player.set_long_press_delay(GameSettings.LongPressDelay)
         show_hide_long_press_delay_reset()
@@ -101,12 +129,16 @@ func on_save_pressed():
     clear_pending_changes()
 
 func mark_pending_changes():
+    if cancelBackButton.text != "Cancel":
+        cancelBackButton.text = "Cancel"
     if saveButton.text != "Save*":
         saveButton.text = "Save*"
         saveAndReturnButton.show()
         saveButton.disabled = false
 
 func clear_pending_changes():
+    if cancelBackButton.text != "Back":
+        cancelBackButton.text = "Back"
     if saveButton.text != "Save":
         saveButton.text = "Save"
         saveAndReturnButton.hide()
@@ -115,7 +147,7 @@ func clear_pending_changes():
 func _unhandled_key_input(event: InputEvent) -> void:
     var eventHandled = false
     if (visible && event.is_action_pressed("ui_close_dialog")):
-        SignalBus.goto_previous_menu.emit(previousMenu)
+        on_cancel_back_pressed()
         eventHandled = true
     if (eventHandled):
         get_tree().root.set_input_as_handled()

@@ -1,11 +1,17 @@
 extends Node
 
+const oldestCompatibleConfigVersion: Array[int] = [0,0,2]
+
 const defaults = {
     "General": {
-        "Initialized": false,
         "CameraSensitivity": 0.25,
+        "PropRotationSpeed": 2.0,
         "UIScale": 16,
         "LongPressDelay": 0.5
+    },
+    "Meta": {
+        "Initialized": false,
+        # "GameVersion": ProjectSettings.get_setting("application/config/version"),
     }
 }
 
@@ -16,6 +22,12 @@ var CameraSensitivity: float:
         settings.set_value("General", "CameraSensitivity", newSensitivity)
     get:
         return settings.get_value("General", "CameraSensitivity", defaults.General.CameraSensitivity)
+
+var PropRotationSpeed: float:
+    set(newSpeed):
+        settings.set_value("General", "PropRotationSpeed", newSpeed)
+    get:
+        return settings.get_value("General", "PropRotationSpeed", defaults.General.PropRotationSpeed)
 
 var UIScale: int:
     set(newScale):
@@ -35,14 +47,38 @@ func _init() -> void:
     if loadError != OK:
         print("error creating or loading settings. likely no file acces. loading in-memory defaults", loadError)
         write_default_settings()
-    if settings.get_value("General", "initialized", false):
+    if !settings.get_value("Meta", "Initialized", false):
         write_default_settings()
+        save_to_disk()
+    var savedGameVersion: String = settings.get_value("Meta", "GameVersion", "0.0.1")
+    if !Utils.is_version_valid(oldestCompatibleConfigVersion, savedGameVersion):
+        migrate_settings()
 
 func write_default_settings() -> void:
-    settings.set_value("General", "CameraSensitivity", defaults.General.CameraSensitivity)
-    settings.set_value("General", "UIScale", defaults.General.UIScale)
-    settings.set_value("General", "LongPressDelay", defaults.General.LongPressDelay)
-    settings.set_value("General", "Initialized", defaults.General.Initialized)
+    CameraSensitivity = defaults.General.CameraSensitivity
+    PropRotationSpeed = defaults.General.PropRotationSpeed
+    UIScale = defaults.General.UIScale
+    LongPressDelay = defaults.General.LongPressDelay
+    settings.set_value("Meta", "Initialized", true)
+    settings.set_value("Meta", "GameVersion", ProjectSettings.get_setting("application/config/version"))
+
+func migrate_settings():
+    write_missing_settings_as_default()
+    settings.set_value("Meta", "GameVersion", ProjectSettings.get_setting("application/config/version"))
+    save_to_disk()
+
+func write_missing_settings_as_default() -> void:
+    # properties return default if setting is missing. use property assignment to ensure settings file is fully formed
+    if CameraSensitivity == defaults.General.CameraSensitivity:
+        CameraSensitivity = defaults.General.CameraSensitivity
+    if PropRotationSpeed == defaults.General.PropRotationSpeed:
+        PropRotationSpeed = defaults.General.PropRotationSpeed
+    if UIScale == defaults.General.UIScale:
+        UIScale = defaults.General.UIScale
+    if LongPressDelay == defaults.General.LongPressDelay:
+        LongPressDelay = defaults.General.LongPressDelay
+    if !settings.get_value("Meta", "Initialized", false):
+        settings.set_value("Meta", "Initialized", true)
 
 func load_from_disk() -> void:
     var loadFromDiskResult = settings.save("user://game_settings.ini")
