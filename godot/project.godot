@@ -21,9 +21,11 @@ config/icon="res://icon.svg"
 Const="*uid://duy2bpllqnea1"
 Utils="*uid://cu07gvumtv2o4"
 SignalBus="*uid://dk6y1qaopgk3s"
+Platform="*uid://biyxlevbuo3o8"
 GameSettings="*uid://canerbvvm7gom"
 State="*uid://cmkndey7ntami"
 SaveSlot="*uid://26t2jxqf74j8"
+InputManager="*uid://dnq3ufc8ue3gu"
 LevelManager="*uid://c6t0rnlliqoe7"
 
 [display]

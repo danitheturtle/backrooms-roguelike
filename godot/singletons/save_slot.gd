@@ -11,8 +11,7 @@ func slot_savegame_path(slotIndex: int) -> String:
     return slot_folder_path(slotIndex) + "/savegame.json"
 func slot_node_data_path(slotIndex: int) -> String:
     return slot_folder_path(slotIndex) + "/node_data.json"
-    
-var currentGameVersion = ProjectSettings.get_setting("application/config/version")
+
 var inMemoryMode: bool
 var savesOnDisk: Dictionary[int, SaveSlotStats]
 var activeSlot: int # -1 means no active slot
@@ -132,7 +131,7 @@ func erase_slot(slotIndex: int) -> void:
 func serialize() -> Dictionary:
     var dataDict = {
         "index": activeSlot,
-        "gameVersion": currentGameVersion,
+        "gameVersion": Const.GAME_VERSION,
         "customName": "slot" + str(activeSlot),
         "runs": [],
         "totalScore": totalScore,

@@ -49,7 +49,6 @@ var b: BehaviorState:
 var moveDir: Vector2
 var lookDir: Vector2
 var movePriority: Dictionary[StringName, bool]
-var mouseCaptured: bool
 var actionTimerFinished: bool
 var interactTimerFinished: bool
 var crawlTimerFinished: bool
@@ -69,7 +68,6 @@ func reinit() -> void:
     moveDir = Vector2.ZERO
     lookDir = Vector2.ZERO
     movePriority = { left = false, right = false, forward = false, backward = false }
-    mouseCaptured = false
     actionTimerFinished = false
     interactTimerFinished = false
     crawlTimerFinished = false
@@ -205,7 +203,7 @@ func on_sprint_timer_ended():
     sprintTimerFinished = true
 
 func handle_mouse_input(event: InputEventMouseMotion) -> void:
-    if mouseCaptured:
+    if InputManager.mouseCaptured:
         lookDir = event.screen_relative / 100.0
         get_tree().root.set_input_as_handled()
 
@@ -353,24 +351,12 @@ func handle_key_input(event: InputEvent ) -> void:
     elif (event.is_action_released("right")):
         moveDir = Vector2(-1.0 if Input.is_action_pressed("left") else 0.0, moveDir.y)
         eventHandled = true
-    moveDir = moveDir.normalized()
-    # cursor capture. lets player get mouse back to interact with UI
-    if (event.is_action_pressed("capture_cursor") && !mouseCaptured):
-        capture_mouse()
-        eventHandled = true
-    if (event.is_action_pressed("toggle_cursor")):
-        if (mouseCaptured):
-            release_mouse()
-        else:
-            capture_mouse()
-        eventHandled = true
     # handle pause game
-    if (event.is_action_pressed("pause_game")):
-        if (mouseCaptured):
-            release_mouse()
-        eventHandled = true
+    elif (event.is_action_pressed("pause_game")):
         SignalBus.game_paused.emit()
         SignalBus.goto_pause_menu.emit()
+        eventHandled = true
+    moveDir = moveDir.normalized()
     # tell game event was handled and stop propagating
     if (eventHandled):
         get_tree().root.set_input_as_handled()
@@ -400,11 +386,3 @@ func handle_axis_input(event: InputEventJoypadMotion) -> void:
     # tell game event was handled and stop propagating
     if (eventHandled):
         get_tree().root.set_input_as_handled()
-
-func release_mouse() -> void:
-    Input.set_mouse_mode(Input.MouseMode.MOUSE_MODE_VISIBLE)
-    mouseCaptured = false
-
-func capture_mouse() -> void:
-    Input.set_mouse_mode(Input.MouseMode.MOUSE_MODE_CAPTURED)
-    mouseCaptured = true

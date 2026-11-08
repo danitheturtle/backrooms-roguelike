@@ -11,7 +11,7 @@ const defaults = {
     },
     "Meta": {
         "Initialized": false,
-        # "GameVersion": ProjectSettings.get_setting("application/config/version"), not const, so read from project settings at runtime
+        # "GameVersion": Const.GAME_VERSION # not const; read from project settings at runtime
     }
 }
 
@@ -42,6 +42,7 @@ var LongPressDelay: float:
         return settings.get_value("General", "LongPressDelay", defaults.General.LongPressDelay)
 
 func _init() -> void:
+    process_mode = Node.PROCESS_MODE_ALWAYS
     # load config or create it if it doesn't exist
     var loadError = Utils.load_or_create_config(settings, "user://game_settings.ini")
     if loadError != OK:
@@ -60,11 +61,11 @@ func write_default_settings() -> void:
     UIScale = defaults.General.UIScale
     LongPressDelay = defaults.General.LongPressDelay
     settings.set_value("Meta", "Initialized", true)
-    settings.set_value("Meta", "GameVersion", ProjectSettings.get_setting("application/config/version"))
+    settings.set_value("Meta", "GameVersion", Const.GAME_VERSION)
 
 func migrate_settings():
     write_missing_settings_as_default()
-    settings.set_value("Meta", "GameVersion", ProjectSettings.get_setting("application/config/version"))
+    settings.set_value("Meta", "GameVersion", Const.GAME_VERSION)
     save_to_disk()
 
 func write_missing_settings_as_default() -> void:

@@ -1,17 +1,19 @@
 extends Node
+
 # global constants
 const VOXEL: float = 0.5
 const HALF_VOXEL: float = VOXEL / 2.0
 const QUARTER_VOXEL: float = VOXEL / 4.0
 const AMBIENT_MAX: float = 0.4
 
-# from project settings
+# constant project settings (treat as const at runtime)
+var GAME_VERSION = ProjectSettings.get_setting("application/config/version")
 var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
 var GRAVITY_VECTOR = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
 # global enums
-enum MenuType { MAIN, SETTINGS, SAVE_SELECT, PAUSE, HUD }
-enum PopupType { INFO, WARNING, ERROR }
+enum OperatingSystem { WINDOWS, LINUX, MAC, IOS, ANDROID }
+enum SupportedPlatform { ITCH, STEAM, GOOGLE_PLAY, F_DROID, APP_STORE, NATIVE }
 enum BiomeType { LEVEL_0 }
 enum ScoreEventType {PHOTO, PUZZLE, EXIT, ONE_WAY}
 enum ConnectorType {
@@ -43,6 +45,11 @@ enum GameplayPropType {
     WHITE_ALMOND_WATER,
     RED_ALMOND_WATER
 }
+
+# UI enums
+enum MenuType { MAIN, SETTINGS, SAVE_SELECT, PAUSE, HUD }
+enum PopupType { INFO, WARNING, ERROR }
+enum InputMode { MOUSE_AND_KEYBOARD, GAMEPAD, TOUCH }
 
 # Yellow Light Color OKHSL value ranges
 const YellowLight = {

@@ -15,5 +15,5 @@ func process_action(_delta: float) -> void:
         if (p.lookDir.y < 0 && p.camera.rotation_degrees.x < 85) || (p.lookDir.y > 0 && p.camera.rotation_degrees.x > -85):
             p.camera.rotate_x(p.lookDir.y * cameraVelocity)
         p.rotate_y(p.lookDir.x * cameraVelocity)
-        if (p.mouseCaptured):
+        if (InputManager.mouseCaptured):
             p.lookDir = Vector2.ZERO
