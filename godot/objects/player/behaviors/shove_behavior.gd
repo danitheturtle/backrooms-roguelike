@@ -9,16 +9,20 @@ func can_act() -> bool:
 func process_action(_delta: float) -> void:
     if !can_act(): return
     ## shove any rigidbodies
-    for i in p.get_slide_collision_count():
+    var collisionCount: int = p.get_slide_collision_count()
+    for i: int in collisionCount:
         var collision: KinematicCollision3D = p.get_slide_collision(i)
-        var collider = collision.get_collider()
-        if collider is RigidBody3D && collider != pb.drag.draggedRef:
-            var oppositeCollisionDir = -collision.get_normal()
-            oppositeCollisionDir.y = 0
-            var velocityInShoveDir = max(
-                p.velocity.dot(oppositeCollisionDir) - collider.linear_velocity.dot(oppositeCollisionDir),
-                0.0
-            )
-            var massRatio = min(1.0, p.PLAYER_MASS / collider.mass)
-            var shoveForce = p.SHOVING_FORCE * massRatio
-            collider.apply_impulse(oppositeCollisionDir * velocityInShoveDir * shoveForce, collision.get_position() - collider.global_position)
+        var subCollisionCount: int = collision.get_collision_count()
+        for j: int in subCollisionCount:
+            var collider = collision.get_collider(j)
+            if collider is RigidBody3D && collider != pb.drag.draggedRef:
+                var oppositeCollisionDir = -collision.get_normal(j)
+                oppositeCollisionDir.y = 0
+                var velocityInShoveDir = max(
+                    p.velocity.dot(oppositeCollisionDir) - collider.linear_velocity.dot(oppositeCollisionDir),
+                    0.0
+                )
+                # halve player mass for better gamefeel
+                var massRatio = min(1.0, p.PLAYER_MASS / 2.0 / collider.mass )
+                var shoveForce = p.SHOVING_FORCE * massRatio
+                collider.apply_impulse(oppositeCollisionDir * velocityInShoveDir * shoveForce, collision.get_position(j) - collider.global_position)

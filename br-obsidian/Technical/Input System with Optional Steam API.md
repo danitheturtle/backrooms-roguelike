@@ -17,4 +17,4 @@ apply user overrides from keybind settings to the input map
 
 keybinds are device-agnostic. every keybind listens to every device at all times.
 
-this all only aplies to controllers. keyboard input is done seperately
+this all only applies to controllers. keyboard input is done seperately

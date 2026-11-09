@@ -155,11 +155,6 @@ process_callback = 0
 wait_time = 0.5
 one_shot = true
 
-[node name="CrawlTimer" type="Timer" parent="." unique_id=1961489363]
-process_callback = 0
-wait_time = 0.5
-one_shot = true
-
 [node name="SprintTimer" type="Timer" parent="." unique_id=23606960]
 process_callback = 0
 wait_time = 0.5

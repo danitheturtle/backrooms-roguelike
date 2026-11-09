@@ -6,7 +6,7 @@ const mutuallyExclusiveWith: Array[StringName] = [&"stand", &"grab", &"drag", &"
 
 func can_act() -> bool:
     # don't crawl again if crawl just ended in crouching
-    return !active && pb.crouch.active && pb.crouch.previousBehavior != &"crawl" && pb.none(cannotTransitionFrom) && pb.jump.onFloorLastFrame
+    return !active && pb.crouch.previousBehavior != &"crawl" && pb.none(cannotTransitionFrom) && pb.jump.onFloorLastFrame
 
 func start_action() -> void:
     if active: return

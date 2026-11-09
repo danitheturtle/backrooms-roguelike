@@ -1210,7 +1210,7 @@ size = Vector3(11, 5.25, 6.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vl034"]
 resource_local_to_scene = true
-size = Vector3(1.25, 2.75, 1)
+size = Vector3(2.25, 2.5, 2.25)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5q0ne"]
 albedo_color = Color(0.8765005, 0, 0.06118556, 1)
@@ -2395,7 +2395,10 @@ shape = SubResource("BoxShape3D_62sv4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 1.75, 3.5)
 shape = SubResource("BoxShape3D_asiov")
 
-[node name="GeneratedOccluder" type="OccluderInstance3D" parent="Occluders" parent_id_path=PackedInt32Array(2028419292) index="0" unique_id=1408160546]
+[node name="Occluders" parent="." index="1" unique_id=2028419292]
+visible = false
+
+[node name="GeneratedOccluder" type="OccluderInstance3D" parent="Occluders" index="0" unique_id=1408160546]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.75, 3.5, 38)
 occluder = ExtResource("8_7xnmx")
 
@@ -2557,7 +2560,7 @@ lightOn = false
 [node name="CeilingLightRectangle34" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="33" unique_id=1496156465 instance=ExtResource("8_iii1t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.749184, 8.5, 62.810898)
 lightColor = Color(0.9373311, 0.934787, 0.5879782, 1)
-lightRange = 9.0
+lightRange = 11.5
 
 [node name="CeilingLightRectangle37" parent="Lights" parent_id_path=PackedInt32Array(1959239223) index="34" unique_id=1670797036 instance=ExtResource("8_iii1t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.749184, 8.5, 59.055237)
@@ -2638,86 +2641,89 @@ transform = Transform3D(0.9957105, 0, -0.09252585, 0, 1, 0, 0.09252585, 0, 0.995
 shape = SubResource("BoxShape3D_2jss3")
 
 [node name="RockingChair" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="2" unique_id=2049244917 instance=ExtResource("21_31wma")]
-transform = Transform3D(-0.21517791, 0, 0.3952195, 0, 0.45, 0, -0.3952195, 0, -0.21517791, 34.092155, 2.9934676, 69.637184)
+transform = Transform3D(-0.21610056, -0.102159955, 0.38126615, 0, 0.43466657, 0.116468556, -0.39471576, 0.05593094, -0.2087371, 33.834236, 2.9207816, 68.97783)
 
 [node name="RockingChair2" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="3" unique_id=1491901777 instance=ExtResource("21_31wma")]
-transform = Transform3D(-0.36700764, -0.2969544, 2.1129005, -0.05081959, 2.144538, 0.29257357, -2.1330605, 0, -0.37050942, 29.788914, 3.0691333, 58.610416)
+transform = Transform3D(-0.46121067, 0.72347635, 1.9877353, 0, 2.0344343, -0.74047357, -2.1153035, -0.15774332, -0.43339628, 29.761473, 2.991971, 55.9914)
 
-[node name="GreenChair" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="4" unique_id=185744849 instance=ExtResource("24_pa5nj")]
+[node name="RockingChair3" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="4" unique_id=466515664 instance=ExtResource("21_31wma")]
+transform = Transform3D(-0.26300988, 0.3316208, 1.2376256, 0, 1.263431, -0.33853528, -1.2812843, -0.06807197, -0.25404802, 31.469738, 2.996697, 61.267765)
+
+[node name="GreenChair" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="5" unique_id=185744849 instance=ExtResource("24_pa5nj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.541508, 5.7371726, 42.27533)
 
-[node name="WoodenLadder" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="5" unique_id=1062347463 instance=ExtResource("9_3reo8")]
+[node name="WoodenLadder" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="6" unique_id=1062347463 instance=ExtResource("9_3reo8")]
 transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 26.75, -6.4919295, 43)
 
-[node name="VintageCabinetPhysics" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="6" unique_id=1565635138 instance=ExtResource("13_kn1d3")]
+[node name="VintageCabinetPhysics" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="7" unique_id=1565635138 instance=ExtResource("13_kn1d3")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 37.987564, -5.736761, 40.75)
 physics_material_override = null
 
-[node name="VintageCabinetPhysics2" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="7" unique_id=1664976243 instance=ExtResource("13_kn1d3")]
+[node name="VintageCabinetPhysics2" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="8" unique_id=1664976243 instance=ExtResource("13_kn1d3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.6749992, 2.013239, 27.5)
 physics_material_override = null
 
-[node name="WoodChair01Physics" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="8" unique_id=1984358049 instance=ExtResource("16_ycp4c")]
+[node name="WoodChair01Physics" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="9" unique_id=1984358049 instance=ExtResource("16_ycp4c")]
 transform = Transform3D(-0.8660254, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.8660254, 40.787697, 5.001085, 49.75848)
 physics_material_override = null
 
-[node name="WoodChair01Physics3" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="9" unique_id=683669644 instance=ExtResource("16_ycp4c")]
+[node name="WoodChair01Physics3" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="10" unique_id=683669644 instance=ExtResource("16_ycp4c")]
 transform = Transform3D(-0.7009321, 0, 0.71322805, 0, 1, 0, -0.71322805, 0, -0.7009321, 36.02056, 5.001085, 49.359886)
 physics_material_override = null
 
-[node name="WoodChair01Physics2" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="10" unique_id=1429572631 instance=ExtResource("16_ycp4c")]
+[node name="WoodChair01Physics2" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="11" unique_id=1429572631 instance=ExtResource("16_ycp4c")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 32.5, 5.501085, 52.175)
 physics_material_override = null
 
-[node name="SchoolChairPhysics3" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="11" unique_id=1313957380 instance=ExtResource("14_iyjvp")]
+[node name="SchoolChairPhysics3" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="12" unique_id=1313957380 instance=ExtResource("14_iyjvp")]
 transform = Transform3D(0.9999347, 0, 0.011428735, 0, 1, 0, -0.011428735, 0, 0.9999347, 45.563282, -6, 39.684845)
 physics_material_override = null
 
-[node name="SchoolChairPhysics4" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="12" unique_id=2015737673 instance=ExtResource("14_iyjvp")]
+[node name="SchoolChairPhysics4" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="13" unique_id=2015737673 instance=ExtResource("14_iyjvp")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 46.73949, -6, 40.264572)
 physics_material_override = null
 
-[node name="SchoolChairPhysics5" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="13" unique_id=568779846 instance=ExtResource("14_iyjvp")]
+[node name="SchoolChairPhysics5" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="14" unique_id=568779846 instance=ExtResource("14_iyjvp")]
 transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, 44.25, -6, 40.5)
 physics_material_override = null
 
-[node name="SchoolChairPhysics6" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="14" unique_id=2145506110 instance=ExtResource("14_iyjvp")]
+[node name="SchoolChairPhysics6" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="15" unique_id=2145506110 instance=ExtResource("14_iyjvp")]
 transform = Transform3D(-0.25881904, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.25881904, 44.183117, -6, 41.956947)
 physics_material_override = null
 
-[node name="SchoolChairPhysics7" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="15" unique_id=1758078057 instance=ExtResource("14_iyjvp")]
+[node name="SchoolChairPhysics7" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="16" unique_id=1758078057 instance=ExtResource("14_iyjvp")]
 transform = Transform3D(-0.9933765, 0, 0.11490506, 0, 1, 0, -0.11490506, 0, -0.9933765, 45.373272, -5.9755564, 42.88758)
 physics_material_override = null
 
-[node name="SchoolChairPhysics8" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="16" unique_id=1604639383 instance=ExtResource("14_iyjvp")]
+[node name="SchoolChairPhysics8" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="17" unique_id=1604639383 instance=ExtResource("14_iyjvp")]
 transform = Transform3D(-0.09512306, -3.285541e-09, -0.9954655, 0.99033225, 0.10142177, -0.094632536, 0.100961864, -0.9948435, -0.009647548, 48.20138, -6.086687, 41.97145)
 physics_material_override = null
 
-[node name="SchoolChairPhysics9" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="17" unique_id=256804618 instance=ExtResource("14_iyjvp")]
+[node name="SchoolChairPhysics9" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="18" unique_id=256804618 instance=ExtResource("14_iyjvp")]
 transform = Transform3D(-0.6305499, 0.7729568, 0.0703201, 0.09511508, -0.012963931, 0.99538195, 0.77029884, 0.63432646, -0.06534542, 49.47089, -5.9755564, 43.96518)
 physics_material_override = null
 
-[node name="GreenChairPhysics" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="18" unique_id=1249830845 instance=ExtResource("26_iii1t")]
+[node name="GreenChairPhysics" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="19" unique_id=1249830845 instance=ExtResource("26_iii1t")]
 transform = Transform3D(-0.9659258, 0, -0.25881898, 0, 1, 0, 0.25881898, 0, -0.9659258, 47.935596, 5, 52.34026)
 physics_material_override = null
 
-[node name="GreenChairPhysics2" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="19" unique_id=980073463 instance=ExtResource("26_iii1t")]
+[node name="GreenChairPhysics2" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="20" unique_id=980073463 instance=ExtResource("26_iii1t")]
 transform = Transform3D(0.50000006, 0, -0.8660253, 0, 1, 0, 0.8660253, 0, 0.50000006, 46.616848, 5, 51.58966)
 physics_material_override = null
 
-[node name="GreenChairPhysics3" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="20" unique_id=1281370361 instance=ExtResource("26_iii1t")]
+[node name="GreenChairPhysics3" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="21" unique_id=1281370361 instance=ExtResource("26_iii1t")]
 transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, 43.18934, 5, 53)
 physics_material_override = null
 
-[node name="Sofa01Physics" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="21" unique_id=1689883482 instance=ExtResource("27_e7o7i")]
+[node name="Sofa01Physics" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="22" unique_id=1689883482 instance=ExtResource("27_e7o7i")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 45.425, 4.866669, 53.675)
 physics_material_override = null
 
-[node name="RockingChairPhysics" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="22" unique_id=900796032 instance=ExtResource("20_5k76s")]
+[node name="RockingChairPhysics" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="23" unique_id=900796032 instance=ExtResource("20_5k76s")]
 transform = Transform3D(-0.857615, 0.49676833, 0.13310874, 2.9802322e-08, -0.25881904, 0.9659258, 0.5142925, 0.8283924, 0.22196707, 47.231575, 3.6298075, 68.850044)
 physics_material_override = null
 
-[node name="RockingChairPhysics2" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="23" unique_id=1933500932 instance=ExtResource("20_5k76s")]
+[node name="RockingChairPhysics2" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="24" unique_id=1933500932 instance=ExtResource("20_5k76s")]
 transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 25.5, 2.75, 14)
 physics_material_override = null
 
@@ -3012,7 +3018,7 @@ popupText = "End of the tutorial! Please be brutally honest in your feedback, wi
 [node name="Puzzles" type="Node3D" parent="." index="8" unique_id=2029693519]
 
 [node name="DemoPlacementPuzzleArea" type="Area3D" parent="Puzzles" index="0" unique_id=1470910554 node_paths=PackedStringArray("trackingObject", "deleteOnSolved")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.921162, 2.75, 64.70035)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.68834, 2.75, 65.358635)
 collision_layer = 0
 monitorable = false
 script = ExtResource("29_lu4sa")
@@ -3020,14 +3026,14 @@ trackingObject = NodePath("../../Props/RockingChairPhysics")
 deleteOnSolved = NodePath("../../LevelMeshes/ResizeableWall2")
 
 [node name="RectCollider" parent="Puzzles/DemoPlacementPuzzleArea" index="0" unique_id=700303371 instance=ExtResource("6_py2y4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 1.375, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 1.25, -0.125)
 shape = SubResource("BoxShape3D_vl034")
 
 [node name="Alignment" type="Marker3D" parent="Puzzles/DemoPlacementPuzzleArea" index="1" unique_id=690410335]
-transform = Transform3D(-0.39754194, 0, 0.917584, 0, 1, 0, -0.917584, 0, -0.39754194, 0, 0, 0)
+transform = Transform3D(-0.22495115, 0, 0.9743702, 0, 1, 0, -0.9743702, 0, -0.22495115, 0, 0, 0)
 
 [node name="PlayerSpawn" parent="." index="10" unique_id=1091142161 instance=ExtResource("25_o8cjy")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.22343293, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 38.362373, 3.0000002, 62.840946)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." index="11" unique_id=934221278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 4.75, 65.25)

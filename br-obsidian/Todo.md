@@ -1,10 +1,3 @@
-
-- 5 - input singleton
-	- Keyboard shouldn't have long press actions; reserve that input style for controller and touch. Give keyboard alternate keybinds, with an option to enable the controller-style long press defaults.
-		-  z for crawl/prone
-	- forward inputs from steam API using a virtual device ID. ensure duplicate events don't trickle down by unbinding default controller buttons in the InputMap if steam api is detected
-* 3 - add another chair to the rocking chair puzzle and narrow the target area depression to make it more obvious
-- 3 - if player is in the air and not moving for a while, force all nearby rigidbodies that aren't level geometry out of collision with player.
 - 3 - hotkey to self-right the held prop so its y axis is up. Playtest also correcting its rotation around y axis. Helpful when you can't quite rotate the thing accurate
 - 3 - drag distance needs calculated from nearest point on object collider, probably with a static raycast from player to dragged object
 	* 1 - use drag distance raycast for line of sight break 

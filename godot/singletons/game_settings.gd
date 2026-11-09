@@ -7,7 +7,7 @@ const defaults = {
         "CameraSensitivity": 0.25,
         "PropRotationSpeed": 2.0,
         "UIScale": 16,
-        "KeyboardUsesLongPress": true,
+        "KeyboardUsesLongPress": false,
         "JoypadUsesLongPress": true,
         "LongPressDelay": 0.5
     },

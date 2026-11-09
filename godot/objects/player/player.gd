@@ -31,6 +31,7 @@ var b: BehaviorState:
 @export var MAX_GRAB_MASS: float = 15.0
 @export var MAX_DRAG_MASS: float = 150.0
 @export var KILL_FLOOR_Y: float = -512.0
+@export var MAX_UNMOVING_AIRTIME: float = 1.0
 
 # child nodes
 @onready var camera: Camera3D = $Camera
@@ -48,6 +49,9 @@ var b: BehaviorState:
 var moveDir: Vector2
 var lookDir: Vector2
 var movePriority: Dictionary[StringName, bool]
+var airtimeAtZeroVelocity: float
+var lastPosition: Vector3
+# timers
 var actionTimerFinished: bool
 var interactTimerFinished: bool
 var sprintTimerFinished: bool
@@ -66,6 +70,7 @@ func reinit() -> void:
     moveDir = Vector2.ZERO
     lookDir = Vector2.ZERO
     movePriority = { left = false, right = false, forward = false, backward = false }
+    airtimeAtZeroVelocity = 0.0
     actionTimerFinished = false
     interactTimerFinished = false
     sprintTimerFinished = false
@@ -100,10 +105,15 @@ func _ready() -> void:
     reinit()
 
 func _physics_process(_delta: float) -> void:
+    # all behaviors are called before move_and_slide. Behaviors that need processing after move_and_slide self-defer
     for nextBehavior: PlayerBehavior in b.all():
         nextBehavior.process_action(_delta)
     move_and_slide()
-    prevent_out_of_bounds()
+    # post-movement sanity checks
+    airtime_check(_delta)
+    prevent_out_of_bounds(_delta)
+    # store position at the end of the frame
+    lastPosition = global_transform.origin
 
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:
@@ -139,7 +149,16 @@ func can_shape_change():
             canShapeChangeResult = true
     return canShapeChangeResult
 
-func prevent_out_of_bounds():
+func airtime_check(_delta: float):
+    # if player is in the air for more than n seconds with very small velocity, stop colliding with game objects
+    if !b.unstuck.active && !b.jump.onFloorLastFrame && Utils.equalsf((lastPosition - global_transform.origin).length_squared(), 0.0, 0.00001):
+        airtimeAtZeroVelocity += _delta
+        if airtimeAtZeroVelocity > MAX_UNMOVING_AIRTIME:
+            b.unstuck.start_action()
+    elif !Utils.equalsf(airtimeAtZeroVelocity, 0.0):
+        airtimeAtZeroVelocity = 0.0
+
+func prevent_out_of_bounds(_delta: float):
     if global_position.y < KILL_FLOOR_Y:
         velocity = Vector3.ZERO
         b.stop()
@@ -149,6 +168,19 @@ func prevent_out_of_bounds():
         var randomSpawnIndex: int = randi_range(0,possibleSpawns.size()-1)
         if possibleSpawns[randomSpawnIndex] != null && possibleSpawns[randomSpawnIndex] is PlayerSpawn:
             global_transform = possibleSpawns[randomSpawnIndex].global_transform
+
+func get_colliding_bodies() -> Dictionary[CollisionObject3D, bool]:
+    var uniqueBodies: Dictionary[CollisionObject3D, bool] = {}
+    var colCount: int = get_slide_collision_count()
+    for i in colCount:
+        var nextCol: KinematicCollision3D = get_slide_collision(i)
+        # one kinematic collision can represent colliding with multiple bodies, especially while stuck
+        var subColCount: int = nextCol.get_collision_count()
+        for j in subColCount:
+            var nextSubCol: Object = nextCol.get_collider(j)
+            if nextSubCol is CollisionObject3D && nextSubCol.get_collision_layer_value(1):
+                uniqueBodies[nextSubCol as CollisionObject3D] = true
+    return uniqueBodies
 
 func on_room_for_state_change_body_entered(_body: Node3D):
     nearbyBodies[_body] = true
@@ -217,7 +249,6 @@ func handle_key_input(event: InputEvent ) -> void:
             if b.jump.can_act(): b.jump.unhandledInput = true
         eventHandled = true
     elif (event.is_action_pressed(&"crouch")):
-        print("crouch press")
         # always crouch immediately on key press; track previous behavior
         if b.crouch.can_act():
             b.crouch.tryStandAfterCrouching = false
@@ -238,9 +269,6 @@ func handle_key_input(event: InputEvent ) -> void:
     elif (event.is_action_pressed(&"crawl")):
         if b.crawl.can_act():
             b.crawl.start_action()
-        elif b.crouch.can_act():
-            b.crouch.tryStandAfterCrouching = false
-            b.crouch.start_action()
         eventHandled = true
     elif (event.is_action_pressed(&"squeeze")):
         if (b.squeeze.can_act()):

@@ -22,6 +22,7 @@ var throw: ThrowBehavior
 var grab: GrabBehavior # holdable
 var rotate: RotateBehavior
 var drag: DragBehavior # holdable
+var unstuck: UnstuckBehavior
 
 ## Non-physics behaviors
 var film_camera: FilmCameraBehavior
@@ -45,6 +46,7 @@ func _init(_player: Player) -> void:
     grab = GrabBehavior.new(_player)
     rotate = RotateBehavior.new(_player)
     drag = DragBehavior.new(_player)
+    unstuck = UnstuckBehavior.new(_player)
     film_camera = FilmCameraBehavior.new(_player)
     flashlight = FlashlightBehavior.new(_player)
 
@@ -54,7 +56,7 @@ func all() -> Array[PlayerBehavior]:
         stand, crouch, crawl, squeeze, # mutually-exclusive player size and collision changers
         vault, jump, # call order dependant; vaulting prevents jump
         climb, sprint, look, move, stairstep, # velocity modifying behaviors
-        shove, target, throw, grab, rotate, drag, # velocity inheriting behaviors
+        shove, target, throw, grab, rotate, drag, unstuck, # velocity inheriting behaviors
         film_camera, flashlight # non-physics behaviors
     ]
 
