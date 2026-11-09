@@ -22,6 +22,7 @@ const allDefinitions: Array[RoomDefinition] = [
 ]
 
 var root: LevelRoot = null
+var levelActive: bool = false
 var currentLevelSeed: int = 0
 var roomInstances: Dictionary[StringName, Room] = {}
 var connectorInstances: Dictionary[StringName, RoomConnector] = {}
@@ -33,6 +34,7 @@ func reinit(nextSeed: int = -1) -> void:
             nextLoadedRoom.free()
     roomInstances = {}
     connectorInstances = {}
+    levelActive = false
     # reinit player
     if State.player != null:
         State.player.reinit()
@@ -75,4 +77,5 @@ func on_level_ready() -> void:
         State.player.global_transform = playerSpawn.global_transform
     # Player is disabled by default to prevent physics jank during setup
     State.player.process_mode = Node.PROCESS_MODE_PAUSABLE
+    levelActive = true
     level_ready.emit()

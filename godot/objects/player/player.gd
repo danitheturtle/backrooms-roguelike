@@ -42,7 +42,6 @@ var b: BehaviorState:
 @onready var adjacentDetectorArea: Area3D = $AdjacentDetector
 @onready var actionTimer: Timer = $ActionTimer
 @onready var interactTimer: Timer = $InteractTimer
-@onready var crawlTimer: Timer = $CrawlTimer
 @onready var sprintTimer: Timer = $SprintTimer
 
 # local state
@@ -51,7 +50,6 @@ var lookDir: Vector2
 var movePriority: Dictionary[StringName, bool]
 var actionTimerFinished: bool
 var interactTimerFinished: bool
-var crawlTimerFinished: bool
 var sprintTimerFinished: bool
 # tracked via roomForStateChangeArea
 var nearbyBodies: Dictionary[Node3D, bool] = {}
@@ -70,14 +68,12 @@ func reinit() -> void:
     movePriority = { left = false, right = false, forward = false, backward = false }
     actionTimerFinished = false
     interactTimerFinished = false
-    crawlTimerFinished = false
     sprintTimerFinished = false
     adjacentRef = null
     global_position = Vector3.ZERO
     global_rotation = Vector3.ZERO
     actionTimer.stop()
     interactTimer.stop()
-    crawlTimer.stop()
     sprintTimer.stop()
     set_default_positions()
     for nextBehavior: PlayerBehavior in b.all(): nextBehavior.reinit()
@@ -99,7 +95,6 @@ func _ready() -> void:
     set_long_press_delay(GameSettings.LongPressDelay)
     actionTimer.timeout.connect(on_action_timer_ended)
     interactTimer.timeout.connect(on_interact_timer_ended)
-    crawlTimer.timeout.connect(on_crawl_timer_ended)
     sprintTimer.timeout.connect(on_sprint_timer_ended)
     for nextBehavior: PlayerBehavior in b.all(): nextBehavior.player_ready()
     reinit()
@@ -133,7 +128,6 @@ func set_default_positions() -> void:
 func set_long_press_delay(_newDelay: float) -> void:
     actionTimer.wait_time = _newDelay
     interactTimer.wait_time = _newDelay
-    crawlTimer.wait_time = _newDelay
     sprintTimer.wait_time = _newDelay
 
 func can_shape_change():
@@ -193,12 +187,6 @@ func on_action_timer_ended():
 func on_interact_timer_ended():
     interactTimerFinished = true
 
-func on_crawl_timer_ended():
-    crawlTimerFinished = true
-    # on long keypress, crawl immediately
-    if b.crawl.can_act():
-        b.crawl.start_action()
-
 func on_sprint_timer_ended():
     sprintTimerFinished = true
 
@@ -211,7 +199,7 @@ func handle_mouse_input(event: InputEventMouseMotion) -> void:
 ## one action trickles to one function call, where various side effects can happen
 func handle_key_input(event: InputEvent ) -> void:
     var eventHandled: bool = false
-    if (event.is_action_pressed("jump")):
+    if (event.is_action_pressed(&"jump")):
         # try standing from crawling
         if (b.crawl.active && b.crouch.can_act()):
             b.crouch.tryStandAfterCrouching = true
@@ -220,7 +208,7 @@ func handle_key_input(event: InputEvent ) -> void:
         elif (b.crouch.active && b.stand.can_act()):
             b.stand.start_action()
         # climb if possible
-        elif (b.climb.can_act() && !Input.is_action_pressed("sprint")):
+        elif (b.climb.can_act() && !Input.is_action_pressed(&"sprint")):
             b.climb.start_action()
         # vault/jump if possible. one of these actions will happen next; synced to physics
         else:
@@ -228,9 +216,8 @@ func handle_key_input(event: InputEvent ) -> void:
             if b.vault.can_act(): b.vault.unhandledInput = true
             if b.jump.can_act(): b.jump.unhandledInput = true
         eventHandled = true
-    elif (event.is_action_pressed("crouch")):
-        crawlTimerFinished = false
-        crawlTimer.start()
+    elif (event.is_action_pressed(&"crouch")):
+        print("crouch press")
         # always crouch immediately on key press; track previous behavior
         if b.crouch.can_act():
             b.crouch.tryStandAfterCrouching = false
@@ -240,24 +227,30 @@ func handle_key_input(event: InputEvent ) -> void:
                 b.crouch.previousBehavior = &"stand"
             b.crouch.start_action()
         eventHandled = true
-    elif (event.is_action_released("crouch")):
-        crawlTimer.stop()
+    elif (event.is_action_released(&"crouch")):
         # do nothing if action was captured on pressed
         if !b.crouch.previousBehavior.is_empty():
             b.crouch.previousBehavior = &""
-        # stand from crouch if crawl timer did not finish
-        elif !crawlTimerFinished && b.crouch.active && b.stand.can_act():
+        # stand from crouch
+        elif b.crouch.active && b.stand.can_act():
             b.stand.start_action()
         eventHandled = true
-    elif (event.is_action_pressed("squeeze")):
+    elif (event.is_action_pressed(&"crawl")):
+        if b.crawl.can_act():
+            b.crawl.start_action()
+        elif b.crouch.can_act():
+            b.crouch.tryStandAfterCrouching = false
+            b.crouch.start_action()
+        eventHandled = true
+    elif (event.is_action_pressed(&"squeeze")):
         if (b.squeeze.can_act()):
             b.squeeze.start_action()
         eventHandled = true
-    elif (event.is_action_released("squeeze")):
+    elif (event.is_action_released(&"squeeze")):
         if (b.squeeze.active && b.stand.can_act()):
             b.stand.start_action()
         eventHandled = true
-    elif (event.is_action_pressed("action")):
+    elif (event.is_action_pressed(&"action")):
         actionTimerFinished = false
         actionTimer.start()
         if b.grab.active:
@@ -265,7 +258,7 @@ func handle_key_input(event: InputEvent ) -> void:
         elif b.drag.active:
             b.drag.draggedRef.activate()
         eventHandled = true
-    elif (event.is_action_released("action")):
+    elif (event.is_action_released(&"action")):
         actionTimer.stop()
         if b.grab.active:
             b.throw.unhandledInput = !b.grab.grabbedRef.deactivate(actionTimerFinished)
@@ -278,7 +271,7 @@ func handle_key_input(event: InputEvent ) -> void:
                 b.flashlight.stop_action()
         ## TODO action wheel
         eventHandled = true
-    elif (event.is_action_pressed("interact")):
+    elif (event.is_action_pressed(&"interact")):
         interactTimerFinished = false
         interactTimer.start()
         if b.target.active:
@@ -289,7 +282,7 @@ func handle_key_input(event: InputEvent ) -> void:
         elif b.grab.active:
             b.rotate.start_action()
         eventHandled = true
-    elif (event.is_action_released("interact")):
+    elif (event.is_action_released(&"interact")):
         interactTimer.stop()
         b.rotate.stop_action()
         if b.drag.justDragged:
@@ -301,15 +294,15 @@ func handle_key_input(event: InputEvent ) -> void:
         elif (b.grab.active && !interactTimerFinished && b.rotate.rotationDelta < 100.0):
             b.grab.stop_action()
         eventHandled = true
-    elif (event.is_action_pressed("zoom_in")):
+    elif (event.is_action_pressed(&"zoom_in")):
         if b.grab.active:
             b.grab.increase_held_distance()
         eventHandled = true
-    elif (event.is_action_pressed("zoom_out")):
+    elif (event.is_action_pressed(&"zoom_out")):
         if b.grab.active:
             b.grab.decrease_held_distance()
         eventHandled = true
-    elif (event.is_action_pressed("sprint")):
+    elif (event.is_action_pressed(&"sprint")):
         sprintTimerFinished = false
         sprintTimer.start()
         if (b.climb.active):
@@ -322,37 +315,37 @@ func handle_key_input(event: InputEvent ) -> void:
         elif b.sprint.active:
             b.sprint.stop_action()
         eventHandled = true
-    elif (event.is_action_released("sprint")):
+    elif (event.is_action_released(&"sprint")):
         sprintTimer.stop()
         if sprintTimerFinished:
             b.sprint.stop_action()
         eventHandled = true
-    elif (event.is_action_pressed("forward")):
+    elif (event.is_action_pressed(&"forward")):
         moveDir = Vector2(moveDir.x, -1)
         eventHandled = true
-    elif (event.is_action_released("forward")):
-        moveDir = Vector2(moveDir.x, 1.0 if Input.is_action_pressed("backward") else 0.0)
+    elif (event.is_action_released(&"forward")):
+        moveDir = Vector2(moveDir.x, 1.0 if Input.is_action_pressed(&"backward") else 0.0)
         eventHandled = true
-    elif (event.is_action_pressed("backward")):
+    elif (event.is_action_pressed(&"backward")):
         moveDir = Vector2(moveDir.x, 1)
         eventHandled = true
-    elif (event.is_action_released("backward")):
-        moveDir = Vector2(moveDir.x, -1.0 if Input.is_action_pressed("forward") else 0.0)
+    elif (event.is_action_released(&"backward")):
+        moveDir = Vector2(moveDir.x, -1.0 if Input.is_action_pressed(&"forward") else 0.0)
         eventHandled = true
     elif (event.is_action_pressed("left")):
         moveDir = Vector2(-1.0, moveDir.y)
         eventHandled = true
-    elif (event.is_action_released("left")):
-        moveDir = Vector2(1.0 if Input.is_action_pressed("right") else 0.0, moveDir.y)
+    elif (event.is_action_released(&"left")):
+        moveDir = Vector2(1.0 if Input.is_action_pressed(&"right") else 0.0, moveDir.y)
         eventHandled = true
-    elif (event.is_action_pressed("right")):
+    elif (event.is_action_pressed(&"right")):
         moveDir = Vector2(1.0, moveDir.y)
         eventHandled = true
-    elif (event.is_action_released("right")):
-        moveDir = Vector2(-1.0 if Input.is_action_pressed("left") else 0.0, moveDir.y)
+    elif (event.is_action_released(&"right")):
+        moveDir = Vector2(-1.0 if Input.is_action_pressed(&"left") else 0.0, moveDir.y)
         eventHandled = true
     # handle pause game
-    elif (event.is_action_pressed("pause_game")):
+    elif (event.is_action_pressed(&"pause_game")):
         SignalBus.game_paused.emit()
         SignalBus.goto_pause_menu.emit()
         eventHandled = true
@@ -364,18 +357,18 @@ func handle_key_input(event: InputEvent ) -> void:
 func handle_axis_input(event: InputEventJoypadMotion) -> void:
     var eventHandled: bool = false
     #Vertical joystick movement
-    if (event.is_action("forward") || event.is_action("backward")):
+    if (event.is_action(&"forward") || event.is_action(&"backward")):
         moveDir = Vector2(moveDir.x, event.axis_value)
         eventHandled = true
     #Horizontal joystick movement
-    if (event.is_action("left") || event.is_action("right")):
+    if (event.is_action(&"left") || event.is_action(&"right")):
         moveDir = Vector2(event.axis_value, moveDir.y)
         eventHandled = true
     #camera
-    if (event.is_action("camera_down") || event.is_action("camera_up")):
+    if (event.is_action(&"camera_down") || event.is_action(&"camera_up")):
         lookDir = Vector2(lookDir.x, event.axis_value)
         eventHandled = true
-    if (event.is_action("camera_left") || event.is_action("camera_right")):
+    if (event.is_action(&"camera_left") || event.is_action(&"camera_right")):
         lookDir = Vector2(event.axis_value, lookDir.y)
         eventHandled = true
     #If vectors are tiny, set to zero

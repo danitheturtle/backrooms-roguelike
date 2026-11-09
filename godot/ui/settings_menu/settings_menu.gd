@@ -122,6 +122,7 @@ func on_save_pressed():
         show_hide_prop_rotation_speed_reset()
     if GameSettings.LongPressDelay != longPressDelaySlider.value:
         GameSettings.LongPressDelay = longPressDelaySlider.value
+        InputManager.set_long_press_delay(GameSettings.LongPressDelay)
         if State.player != null:
             State.player.set_long_press_delay(GameSettings.LongPressDelay)
         show_hide_long_press_delay_reset()

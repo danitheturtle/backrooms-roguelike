@@ -6,11 +6,9 @@ extends Node3D
 
 const LevelRootScene = preload("res://level_root.tscn")
 
-var menuManager: MenuManager
-
 func _ready() -> void:
     get_tree().paused = true
-    menuManager = MenuManager.new($MainMenu, $SettingsMenu, $SaveSelectMenu, $PauseMenu, $HUDMenu)
+    MenuManager.init_from_main($MainMenu, $SettingsMenu, $SaveSelectMenu, $PauseMenu, $HUDMenu)
     SignalBus.game_exited.connect(on_game_exited)
     SignalBus.game_paused.connect(on_game_paused)
     SignalBus.game_unpaused.connect(on_game_unpaused)
@@ -32,10 +30,10 @@ func create_level_root() -> void:
 ### Game State Transitions
 ###
 func on_new_run_started() -> void:
-    menuManager.mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
-    menuManager.saveSelectMenu.process_mode = Node.PROCESS_MODE_DISABLED
-    menuManager.mainMenu.hide()
-    menuManager.saveSelectMenu.hide()
+    MenuManager.mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
+    MenuManager.saveSelectMenu.process_mode = Node.PROCESS_MODE_DISABLED
+    MenuManager.mainMenu.hide()
+    MenuManager.saveSelectMenu.hide()
     create_level_root()
     LevelManager.reinit()
     get_tree().paused = false
@@ -43,7 +41,7 @@ func on_new_run_started() -> void:
     # TODO show loading screen here
     await LevelManager.level_ready
     # once ready, put player in game
-    menuManager.hudMenu.show()
+    MenuManager.hudMenu.show()
     InputManager.capture_mouse.call_deferred()
 
 func on_tutorial_started() -> void:
@@ -52,9 +50,9 @@ func on_tutorial_started() -> void:
     get_tree().paused = false
     LevelManager.load_tutorial()
     await LevelManager.level_ready
-    menuManager.mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
-    menuManager.mainMenu.hide()
-    menuManager.hudMenu.show()
+    MenuManager.mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
+    MenuManager.mainMenu.hide()
+    MenuManager.hudMenu.show()
     InputManager.capture_mouse.call_deferred()
 
 func on_game_exited() -> void:

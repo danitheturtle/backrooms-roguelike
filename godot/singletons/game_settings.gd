@@ -7,6 +7,8 @@ const defaults = {
         "CameraSensitivity": 0.25,
         "PropRotationSpeed": 2.0,
         "UIScale": 16,
+        "KeyboardUsesLongPress": true,
+        "JoypadUsesLongPress": true,
         "LongPressDelay": 0.5
     },
     "Meta": {
@@ -35,6 +37,19 @@ var UIScale: int:
     get:
         return settings.get_value("General", "UIScale", defaults.General.UIScale)
 
+## exposing this setting to the user is a stretch goal
+var KeyboardUsesLongPress: bool:
+    set(newValue):
+        settings.set_value("General", "KeyboardUsesLongPress", newValue)
+    get:
+        return settings.get_value("General", "KeyboardUsesLongPress", defaults.General.KeyboardUsesLongPress)
+
+var JoypadUsesLongPress: bool:
+    set(newValue):
+        settings.set_value("General", "JoypadUsesLongPress", newValue)
+    get:
+        return settings.get_value("General", "JoypadUsesLongPress", defaults.General.JoypadUsesLongPress)
+
 var LongPressDelay: float:
     set(newDelay):
         settings.set_value("General", "LongPressDelay", newDelay)
@@ -59,6 +74,8 @@ func write_default_settings() -> void:
     CameraSensitivity = defaults.General.CameraSensitivity
     PropRotationSpeed = defaults.General.PropRotationSpeed
     UIScale = defaults.General.UIScale
+    KeyboardUsesLongPress = defaults.General.KeyboardUsesLongPress
+    JoypadUsesLongPress = defaults.General.JoypadUsesLongPress
     LongPressDelay = defaults.General.LongPressDelay
     settings.set_value("Meta", "Initialized", true)
     settings.set_value("Meta", "GameVersion", Const.GAME_VERSION)
@@ -76,6 +93,10 @@ func write_missing_settings_as_default() -> void:
         PropRotationSpeed = defaults.General.PropRotationSpeed
     if UIScale == defaults.General.UIScale:
         UIScale = defaults.General.UIScale
+    if KeyboardUsesLongPress == defaults.General.KeyboardUsesLongPress:
+        KeyboardUsesLongPress = defaults.General.KeyboardUsesLongPress
+    if JoypadUsesLongPress == defaults.General.JoypadUsesLongPress:
+        JoypadUsesLongPress = defaults.General.JoypadUsesLongPress
     if LongPressDelay == defaults.General.LongPressDelay:
         LongPressDelay = defaults.General.LongPressDelay
     if !settings.get_value("Meta", "Initialized", false):

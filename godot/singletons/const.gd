@@ -49,7 +49,7 @@ enum GameplayPropType {
 # UI enums
 enum MenuType { MAIN, SETTINGS, SAVE_SELECT, PAUSE, HUD }
 enum PopupType { INFO, WARNING, ERROR }
-enum InputMode { MOUSE_AND_KEYBOARD, GAMEPAD, TOUCH }
+enum InputType { STEAM, MOUSE_AND_KEYBOARD, JOYPAD, TOUCH }
 
 # Yellow Light Color OKHSL value ranges
 const YellowLight = {

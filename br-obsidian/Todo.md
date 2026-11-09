@@ -1,5 +1,8 @@
-- 1 - move mouse capture out of player state and into global keybinds with fullscreen / screenshot
-- 1 - F11 fullsceen doesn't work for some reason
+
+- 5 - input singleton
+	- Keyboard shouldn't have long press actions; reserve that input style for controller and touch. Give keyboard alternate keybinds, with an option to enable the controller-style long press defaults.
+		-  z for crawl/prone
+	- forward inputs from steam API using a virtual device ID. ensure duplicate events don't trickle down by unbinding default controller buttons in the InputMap if steam api is detected
 * 3 - add another chair to the rocking chair puzzle and narrow the target area depression to make it more obvious
 - 3 - if player is in the air and not moving for a while, force all nearby rigidbodies that aren't level geometry out of collision with player.
 - 3 - hotkey to self-right the held prop so its y axis is up. Playtest also correcting its rotation around y axis. Helpful when you can't quite rotate the thing accurate
@@ -10,8 +13,6 @@
 - 3 - scroll to impulse dragged object on camera z axis
 - 3 - flashlight texture projection with 2 hard circles, one to simulate bounce light? hopefully it won't look shit
 - 3 - use forces instead of directly setting linear and angular velocity for grabbed props
-- 3 - Keyboard shouldn't have long press actions; reserve that input style for controller and touch. Give keyboard alternate keybinds, with an option to enable the controller-style long press defaults.
-	-  z for crawl/prone
 - 8 - Ropes
 - 5 - dragged object rotation (remove axis lock)
 - 5 - save slot rename, sort by save time
