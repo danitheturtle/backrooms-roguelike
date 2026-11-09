@@ -32,6 +32,8 @@ var b: BehaviorState:
 @export var MAX_DRAG_MASS: float = 150.0
 @export var KILL_FLOOR_Y: float = -512.0
 @export var MAX_UNMOVING_AIRTIME: float = 1.0
+@export var ROTATED_INERTIA: Vector3 = Vector3(0.25,0.25,0.25)
+@export var GRABBED_DAMP_FACTOR: float = 50.0
 
 # child nodes
 @onready var camera: Camera3D = $Camera

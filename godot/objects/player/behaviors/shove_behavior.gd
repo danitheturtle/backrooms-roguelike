@@ -22,7 +22,7 @@ func process_action(_delta: float) -> void:
                     p.velocity.dot(oppositeCollisionDir) - collider.linear_velocity.dot(oppositeCollisionDir),
                     0.0
                 )
-                # halve player mass for better gamefeel
-                var massRatio = min(1.0, p.PLAYER_MASS / 2.0 / collider.mass )
+                # spread player impulse force across every sub collision
+                var massRatio = min(1.0, p.PLAYER_MASS / subCollisionCount / collider.mass )
                 var shoveForce = p.SHOVING_FORCE * massRatio
                 collider.apply_impulse(oppositeCollisionDir * velocityInShoveDir * shoveForce, collision.get_position(j) - collider.global_position)

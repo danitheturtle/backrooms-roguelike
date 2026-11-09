@@ -34,7 +34,21 @@ func start_action() -> void:
 
 func process_action(_delta: float) -> void:
     if !active: return
-    if (p.global_position - (draggedRef.global_position + draggedPoint)).length_squared() > draggedRef.heldDistance * draggedRef.heldDistance:
+    # update dragged ref and use line of sight from raycast to break behavior if level geometry blocks
+    var spaceState = p.get_world_3d().direct_space_state
+    var dragPointQuery = PhysicsRayQueryParameters3D.create(
+        p.camera.global_position,
+        draggedRef.global_position,
+        p.collision_mask
+    )
+    dragPointQuery.exclude = [player]
+    var dragPointResult = spaceState.intersect_ray(dragPointQuery)
+    if !dragPointResult.is_empty() && dragPointResult.collider == draggedRef:
+        draggedPoint = dragPointResult.position
+    else:
+        stop_action()
+        return
+    if (p.global_position - draggedPoint).length_squared() > draggedRef.heldDistance * draggedRef.heldDistance:
         stop_action()
     else:
         var targetVelocity = Vector3(p.velocity.x, 0.0, p.velocity.z)
@@ -50,8 +64,8 @@ func apply_dragging_force(_targetVelocity: Vector3, _delta: float) -> void:
     # if player is on top of and supported by dragged object, do nothing
     if !on_top_of_or_below_dragged():
         var currentHorizontalVelocity = Vector3(draggedRef.linear_velocity.x, 0.0, draggedRef.linear_velocity.z)
-        var appliedForce = draggedRef.mass * (_targetVelocity - currentHorizontalVelocity)
-        draggedRef.apply_central_force(appliedForce / _delta)
+        var appliedForce = draggedRef.mass * (_targetVelocity - currentHorizontalVelocity) / _delta
+        draggedRef.apply_central_force(appliedForce)
 
 func on_top_of_or_below_dragged() -> bool:
     var lastFrameCollisionCount = p.get_slide_collision_count()

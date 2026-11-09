@@ -74,6 +74,7 @@ func on_prop_rotation_speed_slider_changed(valueChanged: bool):
         mark_pending_changes()
 
 func on_prop_rotation_speed_reset_pressed():
+    # displayed prop rotation speed is divided by 10 because value is large
     propRotationSpeedSlider.value = GameSettings.defaults.General.PropRotationSpeed
     resetPropRotationSpeedButton.hide()
     mark_pending_changes()

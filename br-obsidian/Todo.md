@@ -5,7 +5,6 @@
 - 3 - connector definition list of connectors should be indexed array instead of dict (will need updated when merging monica's code)
 - 3 - scroll to impulse dragged object on camera z axis
 - 3 - flashlight texture projection with 2 hard circles, one to simulate bounce light? hopefully it won't look shit
-- 3 - use forces instead of directly setting linear and angular velocity for grabbed props
 - 8 - Ropes
 - 5 - dragged object rotation (remove axis lock)
 - 5 - save slot rename, sort by save time

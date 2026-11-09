@@ -5,7 +5,7 @@ const oldestCompatibleConfigVersion: Array[int] = [0,0,2]
 const defaults = {
     "General": {
         "CameraSensitivity": 0.25,
-        "PropRotationSpeed": 2.0,
+        "PropRotationSpeed": 50.0,
         "UIScale": 16,
         "KeyboardUsesLongPress": false,
         "JoypadUsesLongPress": true,
