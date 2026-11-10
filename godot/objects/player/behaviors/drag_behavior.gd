@@ -7,6 +7,7 @@ const mutuallyExclusiveWith: Array[StringName] = [&"target", &"flashlight"]
 var draggedRef: Holdable
 var justDragged: bool
 var draggedPoint: Vector3
+var nextFrameDistanceAcceleration: Vector3
 
 func get_active() -> bool: return draggedRef != null
 
@@ -15,6 +16,7 @@ func set_active(_nextVal: bool) -> void: pass
 func reinit() -> void:
     draggedPoint = Vector3.ZERO
     justDragged = false
+    nextFrameDistanceAcceleration = Vector3.ZERO
     if active:
         draggedRef.on_drop()
         draggedRef = null
@@ -65,7 +67,18 @@ func apply_dragging_force(_targetVelocity: Vector3, _delta: float) -> void:
     if !on_top_of_or_below_dragged():
         var currentHorizontalVelocity = Vector3(draggedRef.linear_velocity.x, 0.0, draggedRef.linear_velocity.z)
         var appliedForce = draggedRef.mass * (_targetVelocity - currentHorizontalVelocity) / _delta
-        draggedRef.apply_central_force(appliedForce)
+        var zoomedForce = draggedRef.mass * nextFrameDistanceAcceleration / _delta
+        draggedRef.apply_central_force(zoomedForce + appliedForce)
+    nextFrameDistanceAcceleration = Vector3.ZERO
+
+func increase_held_distance() -> void:
+    nextFrameDistanceAcceleration += camera_forward_along_xz_plane()
+
+func decrease_held_distance() -> void:
+    nextFrameDistanceAcceleration -= camera_forward_along_xz_plane()
+
+func camera_forward_along_xz_plane() -> Vector3:
+    return Vector3.FORWARD * -p.camera.global_basis.z.dot(Vector3.FORWARD) + Vector3.LEFT * -p.camera.global_basis.z.dot(Vector3.LEFT)
 
 func on_top_of_or_below_dragged() -> bool:
     var lastFrameCollisionCount = p.get_slide_collision_count()

@@ -331,10 +331,14 @@ func handle_key_input(event: InputEvent ) -> void:
     elif (event.is_action_pressed(&"zoom_in")):
         if b.grab.active:
             b.grab.increase_held_distance()
+        elif b.drag.active:
+            b.drag.increase_held_distance()
         eventHandled = true
     elif (event.is_action_pressed(&"zoom_out")):
         if b.grab.active:
             b.grab.decrease_held_distance()
+        elif b.drag.active:
+            b.drag.decrease_held_distance()
         eventHandled = true
     elif (event.is_action_pressed(&"sprint")):
         sprintTimerFinished = false

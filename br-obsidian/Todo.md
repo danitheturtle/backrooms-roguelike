@@ -1,6 +1,5 @@
 - 3 - charge up throw over hold_time to let player determine how hard to throw object
 - 3 - connector definition list of connectors should be indexed array instead of dict (will need updated when merging monica's code)
-- 3 - scroll to impulse dragged object on camera z axis
 - 3 - flashlight texture projection with 2 hard circles, one to simulate bounce light? hopefully it won't look shit
 - 13 - Ropes
 - 5 - dragged object rotation (remove axis lock)
