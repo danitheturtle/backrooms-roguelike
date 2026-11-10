@@ -1,6 +1,8 @@
 class_name UnstuckBehavior
 extends PlayerBehavior
 
+const cannotTransitionFrom: Array[StringName] = [&"vault", &"climb"]
+
 var exceptedBodies: Dictionary[CollisionObject3D, bool]
 
 func reinit() -> void:
@@ -10,7 +12,6 @@ func reinit() -> void:
 func start_action() -> void:
     if active: return
     active = true
-    print("start")
     var collidingBodies: Dictionary[CollisionObject3D, bool] = p.get_colliding_bodies()
     for nextCollider: CollisionObject3D in collidingBodies.keys():
         if nextCollider.get_collision_layer_value(1):
@@ -18,7 +19,7 @@ func start_action() -> void:
             nextCollider.add_collision_exception_with(p)
 
 func process_action(_delta: float) -> void:
-    if !active: return
+    if !active || pb.some(cannotTransitionFrom): return
     var remainingColliders: Dictionary[CollisionObject3D, bool] = p.get_colliding_bodies()
     for nextException: CollisionObject3D in exceptedBodies.keys():
         if !remainingColliders.has(nextException):

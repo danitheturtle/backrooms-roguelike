@@ -31,7 +31,7 @@ var b: BehaviorState:
 @export var MAX_GRAB_MASS: float = 15.0
 @export var MAX_DRAG_MASS: float = 150.0
 @export var KILL_FLOOR_Y: float = -512.0
-@export var MAX_UNMOVING_AIRTIME: float = 1.0
+@export var MAX_UNMOVING_AIRTIME: float = 7.5
 @export var ROTATED_INERTIA: Vector3 = Vector3(0.25,0.25,0.25)
 @export var GRABBED_DAMP_FACTOR: float = 50.0
 
@@ -324,6 +324,10 @@ func handle_key_input(event: InputEvent ) -> void:
         elif (b.grab.active && !interactTimerFinished && b.rotate.rotationDelta < 100.0):
             b.grab.stop_action()
         eventHandled = true
+    elif (event.is_action_pressed(&"reorient")):
+        b.rotate.keepUpright = true
+    elif (event.is_action_released(&"reorient")):
+        b.rotate.keepUpright = false
     elif (event.is_action_pressed(&"zoom_in")):
         if b.grab.active:
             b.grab.increase_held_distance()
