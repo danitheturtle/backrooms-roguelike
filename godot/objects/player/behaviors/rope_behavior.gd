@@ -7,6 +7,7 @@ const mutuallyExclusiveWith: Array[StringName] = [&"flashlight", &"jump"]
 var ropeRef: Rope
 var ropePath: Path3D
 var ropeCurve: Curve3D
+var MAX_LENGTH: float = 3.0
 
 func get_active() -> bool:
     return ropeRef != null
@@ -29,12 +30,22 @@ func start_action() -> void:
     if ropeCurve.point_count < 2:
         ropeCurve.add_point(ropeRef.to_local(p.global_position))
     active = true
-    
     pb.stop(mutuallyExclusiveWith)
 
 func process_action(_delta: float) -> void:
     if !active: return
-    ropeCurve.set_point_position(ropeCurve.point_count-1, ropeRef.to_local(p.global_position))
+    var playerPos = ropeRef.to_local(p.global_position)
+    # update rope with last frame's player position
+    ropeCurve.set_point_position(ropeCurve.point_count-1, playerPos)
+    # constrain player velocity in direction of rope to the rope's length
+    var playerToAnchor = playerPos - ropeCurve.get_point_position(0)
+    var distanceToAnchor = playerToAnchor.length()
+    if distanceToAnchor < MAX_LENGTH: return
+    var ropeDir: Vector3 = playerToAnchor / distanceToAnchor
+    var speedInRopeDir: float = p.velocity.dot(ropeDir)
+    if distanceToAnchor + speedInRopeDir < MAX_LENGTH: return
+    # this frame's velocity will take the player past the end of the rope. Constrain
+    p.velocity -= ropeDir * (distanceToAnchor + speedInRopeDir - MAX_LENGTH)
 
 func stop_action() -> void:
     if !active: return
