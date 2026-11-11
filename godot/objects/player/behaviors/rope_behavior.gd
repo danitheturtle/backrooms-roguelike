@@ -5,6 +5,8 @@ const cannotTransitionFrom: Array[StringName] = [&"climb", &"film_camera", &"dra
 const mutuallyExclusiveWith: Array[StringName] = [&"flashlight", &"jump"]
 
 var ropeRef: Rope
+var ropePath: Path3D
+var ropeCurve: Curve3D
 
 func get_active() -> bool:
     return ropeRef != null
@@ -22,12 +24,17 @@ func can_act() -> bool:
 func start_action() -> void:
     if active: return
     ropeRef = p.adjacentRef
+    ropePath = Utils.get_child_of_type(ropeRef, Path3D)
+    ropeCurve = ropePath.curve
+    if ropeCurve.point_count < 2:
+        ropeCurve.add_point(ropeRef.to_local(p.global_position))
     active = true
-    print(ropeRef)
+    
     pb.stop(mutuallyExclusiveWith)
 
 func process_action(_delta: float) -> void:
     if !active: return
+    ropeCurve.set_point_position(ropeCurve.point_count-1, ropeRef.to_local(p.global_position))
 
 func stop_action() -> void:
     if !active: return

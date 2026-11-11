@@ -1060,156 +1060,169 @@ size = Vector3(0.22500001, 0.125, 1.225)
 resource_local_to_scene = true
 size = Vector3(0.22500001, 0.125, 1.225)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hppt7"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_hppt7"]
+resource_local_to_scene = true
+radius = 0.1
+
+[sub_resource type="Curve3D" id="Curve3D_fesih"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.76848984, -3.138532, -0.75),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bd0wn"]
 resource_local_to_scene = true
 size = Vector3(62.25, 20.25, 80.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fesih"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_v7lea"]
 resource_local_to_scene = true
 size = Vector3(1, 4.75, 9.5)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_bd0wn"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_dabt3"]
 resource_local_to_scene = true
 size = Vector2(9.5, 4.75)
 orientation = 0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_v7lea"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_iw8f3"]
 resource_local_to_scene = true
 size = Vector2(1, 9.5)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_dabt3"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_0yhca"]
 resource_local_to_scene = true
 size = Vector2(1, 4.75)
 orientation = 2
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_iw8f3"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_goke2"]
 resource_local_to_scene = true
 size = Vector2(0.95, 4.5125)
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_0yhca"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_fjnru"]
 resource_local_to_scene = true
 size = Vector2(9.025, 4.5125)
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_goke2"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_xgl0q"]
 resource_local_to_scene = true
 size = Vector2(0.95, 9.025)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fjnru"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_mliw7"]
 resource_local_to_scene = true
 size = Vector3(7.5, 1, 9.25)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_xgl0q"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_0jfwq"]
 resource_local_to_scene = true
 flip_faces = true
 size = Vector2(7.5, 9.25)
 center_offset = Vector3(-0.269, 0, 0.27)
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_mliw7"]
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_up7em"]
 resource_local_to_scene = true
 size = Vector2(7.125, 8.7875)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0jfwq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_er76h"]
 resource_local_to_scene = true
 size = Vector3(1, 4, 3.5)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_up7em"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_w61t6"]
 resource_local_to_scene = true
 size = Vector2(3.5, 4)
 orientation = 0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_er76h"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_gh1wf"]
 resource_local_to_scene = true
 size = Vector2(3.5, 4)
 center_offset = Vector3(0, -0.124, 0)
 orientation = 0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_w61t6"]
-resource_local_to_scene = true
-size = Vector2(1, 3.5)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_gh1wf"]
-resource_local_to_scene = true
-size = Vector2(1, 3.5)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_x6btp"]
 resource_local_to_scene = true
-size = Vector2(1, 4)
-orientation = 2
+size = Vector2(1, 3.5)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3rvay"]
 resource_local_to_scene = true
+size = Vector2(1, 3.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k3gc2"]
+resource_local_to_scene = true
 size = Vector2(1, 4)
 orientation = 2
 
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_k3gc2"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_dxvks"]
 resource_local_to_scene = true
-size = Vector2(0.95, 3.8)
-
-[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_dxvks"]
-resource_local_to_scene = true
-size = Vector2(3.325, 3.8)
+size = Vector2(1, 4)
+orientation = 2
 
 [sub_resource type="QuadOccluder3D" id="QuadOccluder3D_vtkhu"]
 resource_local_to_scene = true
+size = Vector2(0.95, 3.8)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_4fujs"]
+resource_local_to_scene = true
+size = Vector2(3.325, 3.8)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_x27y6"]
+resource_local_to_scene = true
 size = Vector2(0.95, 3.325)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4fujs"]
-resource_local_to_scene = true
-size = Vector3(3, 4, 8.25)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_x27y6"]
-resource_local_to_scene = true
-size = Vector3(4.75, 3.75, 5.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_leqjc"]
 resource_local_to_scene = true
-size = Vector3(6.75, 2.25, 3.5)
+size = Vector3(3, 4, 8.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mif8n"]
 resource_local_to_scene = true
-size = Vector3(3.75, 3.25, 6)
+size = Vector3(4.75, 3.75, 5.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qds30"]
 resource_local_to_scene = true
-size = Vector3(2.25, 4, 2.25)
+size = Vector3(6.75, 2.25, 3.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2vhot"]
 resource_local_to_scene = true
-size = Vector3(3.5, 2.75, 3)
+size = Vector3(3.75, 3.25, 6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rrtem"]
 resource_local_to_scene = true
-size = Vector3(3.5, 3.5, 4.5)
+size = Vector3(2.25, 4, 2.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a2bxd"]
 resource_local_to_scene = true
-size = Vector3(10.988037, 3.75, 7.13797)
+size = Vector3(3.5, 2.75, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1of1i"]
 resource_local_to_scene = true
-size = Vector3(5.5, 2, 3)
+size = Vector3(3.5, 3.5, 4.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0s46r"]
 resource_local_to_scene = true
-size = Vector3(1.25, 5.75, 1.75)
+size = Vector3(10.988037, 3.75, 7.13797)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_27py2"]
 resource_local_to_scene = true
-size = Vector3(4.25, 3.75, 3.75)
+size = Vector3(5.5, 2, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b25hn"]
 resource_local_to_scene = true
-size = Vector3(3.5, 3.25, 3.25)
+size = Vector3(1.25, 5.75, 1.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g7ls2"]
 resource_local_to_scene = true
-size = Vector3(7.75, 6, 11.5)
+size = Vector3(4.25, 3.75, 3.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vl034"]
 resource_local_to_scene = true
-size = Vector3(11, 5.25, 6.75)
+size = Vector3(3.5, 3.25, 3.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_71j2j"]
+resource_local_to_scene = true
+size = Vector3(7.75, 6, 11.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tiiiq"]
+resource_local_to_scene = true
+size = Vector3(11, 5.25, 6.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p7c5p"]
 resource_local_to_scene = true
 size = Vector3(2.25, 2.5, 2.25)
 
@@ -2731,9 +2744,15 @@ physics_material_override = null
 [node name="Rope" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="25" unique_id=597474514 instance=ExtResource("22_ta4gn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.25, 4.6729674, 45.75)
 
+[node name="SphereCollider" parent="Props/Rope/RopeAnchor" parent_id_path=PackedInt32Array(597474514, 1932684335) index="1" unique_id=653304792]
+shape = SubResource("SphereShape3D_hppt7")
+
+[node name="RopePath" parent="Props/Rope" index="2" unique_id=980612944]
+curve = SubResource("Curve3D_fesih")
+
 [node name="BoundsAABB" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="0" unique_id=415124710]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.875, 2.125, 34.875)
-shape = SubResource("BoxShape3D_hppt7")
+shape = SubResource("BoxShape3D_bd0wn")
 
 [node name="LevelMeshes" parent="." index="6" unique_id=1646079298 instance=ExtResource("24_m6f5b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.75, 3.5, 38)
@@ -2749,52 +2768,52 @@ voxelDepth = 19.0
 defaultMaterial = ExtResource("21_jyo2m")
 
 [node name="CollisionShape3D" parent="LevelMeshes/ResizeableWall" index="0" unique_id=1479096797]
-shape = SubResource("BoxShape3D_fesih")
+shape = SubResource("BoxShape3D_v7lea")
 
 [node name="MeshXNeg" parent="LevelMeshes/ResizeableWall" index="1" unique_id=1554681253]
 process_mode = 4
 visible = false
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_bd0wn")
+mesh = SubResource("PlaneMesh_dabt3")
 
 [node name="MeshXPos" parent="LevelMeshes/ResizeableWall" index="2" unique_id=1811081783]
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_bd0wn")
+mesh = SubResource("PlaneMesh_dabt3")
 
 [node name="MeshYNeg" parent="LevelMeshes/ResizeableWall" index="3" unique_id=1238171000]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -2.375, 0)
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_v7lea")
+mesh = SubResource("PlaneMesh_iw8f3")
 
 [node name="MeshYPos" parent="LevelMeshes/ResizeableWall" index="4" unique_id=1955971628]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.375, 0)
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_v7lea")
+mesh = SubResource("PlaneMesh_iw8f3")
 
 [node name="MeshZNeg" parent="LevelMeshes/ResizeableWall" index="5" unique_id=1109840084]
 process_mode = 4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -4.75)
 visible = false
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_dabt3")
+mesh = SubResource("PlaneMesh_0yhca")
 
 [node name="MeshZPos" parent="LevelMeshes/ResizeableWall" index="6" unique_id=764429269]
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
 visible = false
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_dabt3")
+mesh = SubResource("PlaneMesh_0yhca")
 
 [node name="OccluderXY" parent="LevelMeshes/ResizeableWall" index="7" unique_id=1522577169]
-occluder = SubResource("QuadOccluder3D_iw8f3")
+occluder = SubResource("QuadOccluder3D_goke2")
 
 [node name="OccluderZY" parent="LevelMeshes/ResizeableWall" index="8" unique_id=867313267]
 process_mode = 0
 visible = true
-occluder = SubResource("QuadOccluder3D_0yhca")
+occluder = SubResource("QuadOccluder3D_fjnru")
 
 [node name="OccluderXZ" parent="LevelMeshes/ResizeableWall" index="9" unique_id=1263472784]
-occluder = SubResource("QuadOccluder3D_goke2")
+occluder = SubResource("QuadOccluder3D_xgl0q")
 
 [node name="ResizableCeiling" parent="LevelMeshes" index="132" unique_id=1895728227 instance=ExtResource("23_o8cjy")]
 transform = Transform3D(1, 0, 0, 0, 0.95956486, 0.2814875, 0, -0.2814875, 0.95956486, 8.75, 4.7420797, -0.3125801)
@@ -2805,17 +2824,17 @@ voxelDepth = 18.5
 defaultMaterial = ExtResource("24_iii1t")
 
 [node name="CollisionShape3D" parent="LevelMeshes/ResizableCeiling" index="0" unique_id=2009969633]
-shape = SubResource("BoxShape3D_fjnru")
+shape = SubResource("BoxShape3D_mliw7")
 
 [node name="MeshInstance3D" parent="LevelMeshes/ResizableCeiling" index="1" unique_id=416331250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.269, 0, -0.27)
 material_override = ExtResource("24_iii1t")
-mesh = SubResource("PlaneMesh_xgl0q")
+mesh = SubResource("PlaneMesh_0jfwq")
 
 [node name="OccluderInstance3D" parent="LevelMeshes/ResizableCeiling" index="2" unique_id=1014570430]
 process_mode = 0
 visible = true
-occluder = SubResource("QuadOccluder3D_mliw7")
+occluder = SubResource("QuadOccluder3D_up7em")
 
 [node name="ResizeableWall2" parent="LevelMeshes" index="133" unique_id=213944709 instance=ExtResource("22_30s20")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 1.25, 27.25)
@@ -2828,51 +2847,51 @@ voxelDepth = 7.0
 defaultMaterial = ExtResource("21_jyo2m")
 
 [node name="CollisionShape3D" parent="LevelMeshes/ResizeableWall2" index="0" unique_id=1479096797]
-shape = SubResource("BoxShape3D_0jfwq")
+shape = SubResource("BoxShape3D_er76h")
 
 [node name="MeshXNeg" parent="LevelMeshes/ResizeableWall2" index="1" unique_id=1554681253]
 process_mode = 4
 visible = false
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_up7em")
+mesh = SubResource("PlaneMesh_w61t6")
 
 [node name="MeshXPos" parent="LevelMeshes/ResizeableWall2" index="2" unique_id=1811081783]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.124, 0)
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_er76h")
+mesh = SubResource("PlaneMesh_gh1wf")
 
 [node name="MeshYNeg" parent="LevelMeshes/ResizeableWall2" index="3" unique_id=1238171000]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -2, 0)
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_w61t6")
+mesh = SubResource("PlaneMesh_x6btp")
 
 [node name="MeshYPos" parent="LevelMeshes/ResizeableWall2" index="4" unique_id=1955971628]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_gh1wf")
+mesh = SubResource("PlaneMesh_3rvay")
 
 [node name="MeshZNeg" parent="LevelMeshes/ResizeableWall2" index="5" unique_id=1109840084]
 process_mode = 4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.75)
 visible = false
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_x6btp")
+mesh = SubResource("PlaneMesh_k3gc2")
 
 [node name="MeshZPos" parent="LevelMeshes/ResizeableWall2" index="6" unique_id=764429269]
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
 visible = false
 material_override = ExtResource("21_jyo2m")
-mesh = SubResource("PlaneMesh_3rvay")
+mesh = SubResource("PlaneMesh_dxvks")
 
 [node name="OccluderXY" parent="LevelMeshes/ResizeableWall2" index="7" unique_id=1522577169]
-occluder = SubResource("QuadOccluder3D_k3gc2")
+occluder = SubResource("QuadOccluder3D_vtkhu")
 
 [node name="OccluderZY" parent="LevelMeshes/ResizeableWall2" index="8" unique_id=867313267]
-occluder = SubResource("QuadOccluder3D_dxvks")
+occluder = SubResource("QuadOccluder3D_4fujs")
 
 [node name="OccluderXZ" parent="LevelMeshes/ResizeableWall2" index="9" unique_id=1263472784]
-occluder = SubResource("QuadOccluder3D_vtkhu")
+occluder = SubResource("QuadOccluder3D_x27y6")
 
 [node name="Tutorials" type="Node3D" parent="." index="7" unique_id=1888722781]
 
@@ -2880,7 +2899,7 @@ occluder = SubResource("QuadOccluder3D_vtkhu")
 
 [node name="RectCollider" parent="Tutorials/MovementTutorialArea" index="0" unique_id=434484169 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.75, 3.125)
-shape = SubResource("BoxShape3D_4fujs")
+shape = SubResource("BoxShape3D_leqjc")
 
 [node name="PopupForArea" parent="Tutorials/MovementTutorialArea" index="1" unique_id=405273844 instance=ExtResource("25_m6f5b")]
 popupText = "'WASD' to move. F11 to fullscreen."
@@ -2890,7 +2909,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 1.2499998, 26.25)
 
 [node name="RectCollider" parent="Tutorials/DragTutorialArea" index="0" unique_id=1017813292 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 1.8750002, -1.625)
-shape = SubResource("BoxShape3D_x27y6")
+shape = SubResource("BoxShape3D_mif8n")
 
 [node name="PopupForArea" parent="Tutorials/DragTutorialArea" index="1" unique_id=78886590 instance=ExtResource("25_m6f5b")]
 popupText = "Press Interact ('Mouse Button 1') to toggle dragging large objects."
@@ -2900,7 +2919,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.2499999, 31.75)
 
 [node name="RectCollider" parent="Tutorials/ActionFlashlightTutorialArea" index="0" unique_id=1482887759 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.125, 1.1250001, 1.25)
-shape = SubResource("BoxShape3D_leqjc")
+shape = SubResource("BoxShape3D_qds30")
 
 [node name="PopupForArea" parent="Tutorials/ActionFlashlightTutorialArea" index="1" unique_id=2117522302 instance=ExtResource("25_m6f5b")]
 popupText = "Press Action ('F') to toggle your flashlight."
@@ -2910,7 +2929,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1.2500001, 28)
 
 [node name="RectCollider" parent="Tutorials/RunTutorialArea" index="0" unique_id=499811336 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, 1.6249999, 1.5)
-shape = SubResource("BoxShape3D_mif8n")
+shape = SubResource("BoxShape3D_2vhot")
 
 [node name="PopupForArea" parent="Tutorials/RunTutorialArea" index="1" unique_id=282030534 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Shift' to sprint. Quickly release to toggle or hold to end sprint on release."
@@ -2920,7 +2939,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 1.75, 7)
 
 [node name="RectCollider" parent="Tutorials/JumpTutorialArea" index="0" unique_id=1477332365 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 1.5, 0.125)
-shape = SubResource("BoxShape3D_qds30")
+shape = SubResource("BoxShape3D_rrtem")
 
 [node name="PopupForArea" parent="Tutorials/JumpTutorialArea" index="1" unique_id=1612662540 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Space' to jump or climb onto ledges."
@@ -2930,7 +2949,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.38395, 3.625, 7.1212535)
 
 [node name="RectCollider" parent="Tutorials/CrouchTutorialArea" index="0" unique_id=929287383 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.625, 0, 0.25)
-shape = SubResource("BoxShape3D_2vhot")
+shape = SubResource("BoxShape3D_a2bxd")
 
 [node name="PopupForArea" parent="Tutorials/CrouchTutorialArea" index="1" unique_id=589731623 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Ctrl' to toggle crouching."
@@ -2940,7 +2959,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 2.25, 12.75)
 
 [node name="RectCollider" parent="Tutorials/PickUpTutorialArea" index="0" unique_id=1542412958 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, 1.625, 0.125)
-shape = SubResource("BoxShape3D_rrtem")
+shape = SubResource("BoxShape3D_1of1i")
 
 [node name="PopupForArea" parent="Tutorials/PickUpTutorialArea" index="1" unique_id=398090632 instance=ExtResource("25_m6f5b")]
 popupText = "Press Interact ('Mouse Button 1') to pick up smaller objects. Hold and drag to rotate. Scroll for distance. Press again to drop.
@@ -2952,7 +2971,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.25, 2, 13.5)
 
 [node name="RectCollider" parent="Tutorials/SqueezeTutorialArea" index="0" unique_id=1773988015 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2440186, 2.125, 0.2264862)
-shape = SubResource("BoxShape3D_a2bxd")
+shape = SubResource("BoxShape3D_0s46r")
 
 [node name="PopupForArea" parent="Tutorials/SqueezeTutorialArea" index="1" unique_id=1273100879 instance=ExtResource("25_m6f5b")]
 popupText = "Hold 'E' to squeeze through tight spaces or shimmy along narrow ledges."
@@ -2962,7 +2981,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 3.75, 29.5)
 
 [node name="RectCollider" parent="Tutorials/CrawlTutorialArea" index="0" unique_id=1140856166 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 1)
-shape = SubResource("BoxShape3D_1of1i")
+shape = SubResource("BoxShape3D_27py2")
 
 [node name="PopupForArea" parent="Tutorials/CrawlTutorialArea" index="1" unique_id=1167007454 instance=ExtResource("25_m6f5b")]
 popupText = "Long press 'Ctrl' to crawl."
@@ -2972,7 +2991,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 3.75, 54.25)
 
 [node name="RectCollider" parent="Tutorials/TooNarrowTutorialArea" index="0" unique_id=1378385993 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 1.875, 0.125)
-shape = SubResource("BoxShape3D_0s46r")
+shape = SubResource("BoxShape3D_b25hn")
 
 [node name="PopupForArea" parent="Tutorials/TooNarrowTutorialArea" index="1" unique_id=589094466 instance=ExtResource("25_m6f5b")]
 popupText = "Some gaps are too narrow for you to fit. Usually you can find the other room by following a different path."
@@ -2982,7 +3001,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.25, -6.5, 41.5)
 
 [node name="RectCollider" parent="Tutorials/LadderTutorialArea" index="0" unique_id=1019370618 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.625, 1.875, 0.625)
-shape = SubResource("BoxShape3D_27py2")
+shape = SubResource("BoxShape3D_g7ls2")
 
 [node name="PopupForArea" parent="Tutorials/LadderTutorialArea" index="1" unique_id=1812749223 instance=ExtResource("25_m6f5b")]
 popupText = "Ladders are important tools. Hold Action ('F') while carrying to open the supports.
@@ -2994,7 +3013,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.25, 0, 55)
 
 [node name="RectCollider" parent="Tutorials/VaultTutorialArea" index="0" unique_id=1745721293 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.125, -0.625)
-shape = SubResource("BoxShape3D_b25hn")
+shape = SubResource("BoxShape3D_vl034")
 
 [node name="PopupForArea" parent="Tutorials/VaultTutorialArea" index="1" unique_id=2112005554 instance=ExtResource("25_m6f5b")]
 popupText = "Press 'Space' again after jumping to queue a ledge grab / vault."
@@ -3004,7 +3023,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 3, 62)
 
 [node name="RectCollider" parent="Tutorials/ObjectPlacementTutorialArea" index="0" unique_id=613119408 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.625, 3, 2.5)
-shape = SubResource("BoxShape3D_g7ls2")
+shape = SubResource("BoxShape3D_71j2j")
 
 [node name="PopupForArea" parent="Tutorials/ObjectPlacementTutorialArea" index="1" unique_id=1643023139 instance=ExtResource("25_m6f5b")]
 popupText = "Complete patterns to solve puzzles and unlock new exploration paths. You may need to look around."
@@ -3014,7 +3033,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.25, 2.75, 65)
 
 [node name="RectCollider" parent="Tutorials/EndOfTutorialArea" index="0" unique_id=535543982 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 2.125, 0.125)
-shape = SubResource("BoxShape3D_vl034")
+shape = SubResource("BoxShape3D_tiiiq")
 
 [node name="PopupForArea" parent="Tutorials/EndOfTutorialArea" index="1" unique_id=1421270669 instance=ExtResource("25_m6f5b")]
 popupText = "End of the tutorial! Please be brutally honest in your feedback, with specific attention paid to gamefeel."
@@ -3031,7 +3050,7 @@ deleteOnSolved = NodePath("../../LevelMeshes/ResizeableWall2")
 
 [node name="RectCollider" parent="Puzzles/DemoPlacementPuzzleArea" index="0" unique_id=700303371 instance=ExtResource("6_py2y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 1.25, -0.125)
-shape = SubResource("BoxShape3D_71j2j")
+shape = SubResource("BoxShape3D_p7c5p")
 
 [node name="Alignment" type="Marker3D" parent="Puzzles/DemoPlacementPuzzleArea" index="1" unique_id=690410335]
 transform = Transform3D(-0.22495115, 0, 0.9743702, 0, 1, 0, -0.9743702, 0, -0.22495115, 0, 0, 0)
@@ -3044,6 +3063,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 4.75, 65.25)
 material_override = SubResource("StandardMaterial3D_5q0ne")
 
 [editable path="Props/WoodChair01"]
+[editable path="Props/Rope"]
 [editable path="LevelMeshes/ResizeableWall"]
 [editable path="LevelMeshes/ResizableCeiling"]
 [editable path="LevelMeshes/ResizeableWall2"]
