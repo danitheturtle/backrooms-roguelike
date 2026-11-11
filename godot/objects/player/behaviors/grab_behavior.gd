@@ -25,19 +25,19 @@ func reinit() -> void:
     justGrabbed = false
     grabbedInitialDamp = 0.0
     if active:
-        grabbedRef.on_drop()
+        grabbedRef.interact_stop()
         justDroppedRef = grabbedRef
         grabbedRef = null
 
 func can_act() -> bool:
-    if (!active && pb.none(cannotTransitionFrom) && pb.jump.onFloorLastFrame):
-        return not (pb.target.ref is Holdable && pb.target.ref.mass > p.MAX_GRAB_MASS)
+    if (!active && pb.target.ref is Holdable && pb.none(cannotTransitionFrom) && pb.jump.onFloorLastFrame):
+        return not (pb.target.ref.mass > p.MAX_GRAB_MASS)
     else:
         return false
 
 func start_action() -> void:
     if active: return
-    grabbedRef = pb.target.ref.on_hold(player)
+    grabbedRef = pb.target.ref.interact_start(player)
     grabbedInitialDamp = grabbedRef.angular_damp
     grabbedRef.angular_damp = p.GRABBED_DAMP_FACTOR
     grabArm.spring_length = pb.target.ref.heldDistance

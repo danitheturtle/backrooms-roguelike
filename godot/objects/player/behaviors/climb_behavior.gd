@@ -4,8 +4,8 @@ extends PlayerBehavior
 const cannotTransitionFrom: Array[StringName] = [&"film_camera", &"drag", &"squeeze", &"vault"]
 const mutuallyExclusiveWith: Array[StringName] = [&"flashlight", &"jump"]
 
-# garunteed to be in climbable group, a pseudo-interface with shared methods
-var climbedRef: Node3D
+# garunteed to be in climbable group, a pseudo-interface with shared methods. see obsidian docs
+var climbedRef: CollisionObject3D
 # climbing uses path-following
 var climbPath: Path3D
 var climbCurve: Curve3D
@@ -17,7 +17,7 @@ func reinit() -> void:
     climbCurve = null
 
 func can_act() -> bool:
-    if (p.adjacentRef != null && p.adjacentRef != pb.grab.grabbedRef && !active && pb.none(cannotTransitionFrom)):
+    if (!active && p.adjacentRef != null && p.adjacentRef.is_in_group(&"climbable") && p.adjacentRef != pb.grab.grabbedRef && pb.none(cannotTransitionFrom)):
         if pb.crouch.active && !p.can_shape_change(): return false
         return p.adjacentRef.can_player_climb(p)
     return false

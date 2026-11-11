@@ -62,7 +62,7 @@ angular_limit/lower = 0.0
 motor/target_velocity = 2.0943952
 motor/max_impulse = 10.0
 
-[node name="Ladder" type="RigidBody3D" parent="." unique_id=1432222003 node_paths=PackedStringArray("hinge", "support", "supportCenterOfMass", "stairsPlatform", "supportPlatform") groups=["climbable"]]
+[node name="Ladder" type="RigidBody3D" parent="." unique_id=1432222003 node_paths=PackedStringArray("hinge", "support", "supportCenterOfMass", "stairsPlatform", "supportPlatform") groups=["climbable", "targetable"]]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 128
 collision_mask = 47
@@ -109,7 +109,7 @@ monitoring = false
 transform = Transform3D(0.9387757, 0.34452894, 0, -0.34452894, 0.9387757, 0, 0, 0, 1, -0.772532, -0.53367734, 0.013153076)
 shape = SubResource("BoxShape3D_sdanf")
 
-[node name="SupportRigidBody" type="RigidBody3D" parent="." unique_id=1662395064 node_paths=PackedStringArray("ladder")]
+[node name="SupportRigidBody" type="RigidBody3D" parent="." unique_id=1662395064 node_paths=PackedStringArray("ladder") groups=["targetable"]]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 128
 collision_mask = 47

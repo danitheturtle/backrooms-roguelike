@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ch7posiacy2q3"]
+
+[ext_resource type="Script" uid="uid://dplshl886c0ml" path="res://objects/rope/rope.gd" id="1_vs5eh"]
+[ext_resource type="Script" uid="uid://bswfe7oy012dr" path="res://objects/rope/rope_anchor.gd" id="2_cyxff"]
+[ext_resource type="PackedScene" uid="uid://b160k414l2773" path="res://objects/colliders/primitives/sphere_collider.tscn" id="3_6tqy1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25any"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5q0ne"]
+material = SubResource("StandardMaterial3D_25any")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vs5eh"]
+resource_local_to_scene = true
+radius = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cyxff"]
+resource_local_to_scene = true
+radius = 0.1
+
+[node name="Rope" type="Area3D" unique_id=597474514]
+collision_mask = 0
+script = ExtResource("1_vs5eh")
+
+[node name="RopeAnchor" type="StaticBody3D" parent="." unique_id=1932684335 groups=["targetable"]]
+collision_mask = 0
+script = ExtResource("2_cyxff")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RopeAnchor" unique_id=699092843]
+mesh = SubResource("SphereMesh_5q0ne")
+
+[node name="SphereCollider" parent="RopeAnchor" unique_id=653304792 instance=ExtResource("3_6tqy1")]
+shape = SubResource("SphereShape3D_vs5eh")
+
+[node name="AnchorShape" parent="." unique_id=822846443 instance=ExtResource("3_6tqy1")]
+shape = SubResource("SphereShape3D_cyxff")

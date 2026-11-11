@@ -1,5 +1,7 @@
 extends Holdable
 class_name LadderFreestanding
+# implements Targetable
+# implements Climbable
 
 @export var isClosed = false
 
@@ -30,8 +32,8 @@ func deactivate(actionTimerFinished: bool) -> bool:
     super.deactivate(actionTimerFinished)
     return true
 
-func on_hold(_player: Player):
-    super.on_hold(_player)
+func interact_start(_player: Player) -> PhysicsBody3D:
+    super.interact_start(_player)
     hinge.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, true)
     collision_layer = 0b00000000000000100000
     support.center_of_mass = Vector3.ZERO
@@ -40,8 +42,8 @@ func on_hold(_player: Player):
     supportPlatform.collision_layer = 0b00000000000000000000
     return self
 
-func on_drop():
-    super.on_drop()
+func interact_stop() -> void:
+    super.interact_stop()
     hinge.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, false)
     collision_layer = 0b00000000000010000000
     support.collision_layer = 0b00000000000010000000

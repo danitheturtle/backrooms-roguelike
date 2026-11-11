@@ -184,10 +184,10 @@ func get_colliding_bodies() -> Dictionary[CollisionObject3D, bool]:
                 uniqueBodies[nextSubCol as CollisionObject3D] = true
     return uniqueBodies
 
-func on_room_for_state_change_body_entered(_body: Node3D):
+func on_room_for_state_change_body_entered(_body: Node3D) -> void:
     nearbyBodies[_body] = true
 
-func on_room_for_state_change_body_exited(_body: Node3D):
+func on_room_for_state_change_body_exited(_body: Node3D) -> void:
     nearbyBodies.erase(_body)
     if (b.squeeze.active && !Input.is_action_pressed("squeeze")):
         if (b.stand.can_act()):
@@ -195,24 +195,25 @@ func on_room_for_state_change_body_exited(_body: Node3D):
             if (Input.is_action_pressed("sprint")):
                 b.sprint.start_action()
 
-func on_adjacent_entered(body: Node3D):
-    # only used for climbing right now
-    # some climbable objects don't need an activation area
+func on_adjacent_entered(body: Node3D) -> void:
+    # some objects don't need an activation area, detect them directly
     if (body.is_in_group("climbable") && body.get_node_or_null("ActivationArea") == null):
         adjacentRef = body
 
-func on_adjacent_exited(body: Node3D):
+func on_adjacent_exited(body: Node3D) -> void:
     if (adjacentRef == body && body.get_node_or_null("ActivationArea") == null):
         adjacentRef = null
 
-func on_adjacent_area_entered(area: Node3D):
-    var areaParent = area.get_parent()
-    if (areaParent.is_in_group("climbable")):
+func on_adjacent_area_entered(_area: Node3D) -> void:
+    if _area is Rope || _area.is_in_group("climbable"):
+        adjacentRef = _area
+        return
+    var areaParent = _area.get_parent()
+    if (areaParent is Rope || areaParent.is_in_group("climbable")):
         adjacentRef = areaParent
 
-func on_adjacent_area_exited(area: Node3D):
-    var areaParent = area.get_parent()
-    if (areaParent == adjacentRef):
+func on_adjacent_area_exited(_area: Node3D) -> void:
+    if _area == adjacentRef || _area.get_parent() == adjacentRef:
         adjacentRef = null
 
 func on_action_timer_ended():
@@ -244,6 +245,9 @@ func handle_key_input(event: InputEvent ) -> void:
         # climb if possible
         elif (b.climb.can_act() && !Input.is_action_pressed(&"sprint")):
             b.climb.start_action()
+        # attach to rope if possible
+        elif (b.rope.can_act() && !Input.is_action_pressed(&"sprint")):
+            b.rope.start_action()
         # vault/jump if possible. one of these actions will happen next; synced to physics
         else:
             # seperate unhandledInputs because can_act() conditions diverge
@@ -309,6 +313,9 @@ func handle_key_input(event: InputEvent ) -> void:
                 b.grab.start_action()
             elif b.drag.can_act():
                 b.drag.start_action()
+            else:
+                b.target.justInteracted = true
+                b.target.ref.interact_start(self)
         elif b.grab.active:
             b.rotate.start_action()
         eventHandled = true
@@ -319,6 +326,9 @@ func handle_key_input(event: InputEvent ) -> void:
             b.drag.justDragged = false
         elif b.grab.justGrabbed:
             b.grab.justGrabbed = false
+        elif b.target.justInteracted:
+            b.target.justInteracted = false
+            b.target.ref.interact_stop()
         elif b.drag.active && !interactTimerFinished:
             b.drag.stop_action()
         elif (b.grab.active && !interactTimerFinished && b.rotate.rotationDelta < 100.0):

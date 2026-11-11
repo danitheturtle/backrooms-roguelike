@@ -18,18 +18,18 @@ func reinit() -> void:
     justDragged = false
     nextFrameDistanceAcceleration = Vector3.ZERO
     if active:
-        draggedRef.on_drop()
+        draggedRef.interact_stop()
         draggedRef = null
 
 func can_act() -> bool:
-    if (!active && pb.none(cannotTransitionFrom) && pb.jump.onFloorLastFrame):
-        return not (pb.target.ref is Holdable && (pb.target.ref.mass > p.MAX_DRAG_MASS || pb.target.ref.mass <= p.MAX_GRAB_MASS))
+    if (!active && pb.target.ref is Holdable && pb.none(cannotTransitionFrom) && pb.jump.onFloorLastFrame):
+        return not (pb.target.ref.mass > p.MAX_DRAG_MASS || pb.target.ref.mass <= p.MAX_GRAB_MASS)
     else:
         return false
 
 func start_action() -> void:
     if active: return
-    draggedRef = pb.target.ref.on_hold(player)
+    draggedRef = pb.target.ref.interact_start(player)
     justDragged = true
     draggedPoint = draggedRef.to_local(pb.target.targetedPoint)
     pb.stop(mutuallyExclusiveWith)
@@ -72,10 +72,10 @@ func apply_dragging_force(_targetVelocity: Vector3, _delta: float) -> void:
     nextFrameDistanceAcceleration = Vector3.ZERO
 
 func increase_held_distance() -> void:
-    nextFrameDistanceAcceleration += camera_forward_along_xz_plane()
+    nextFrameDistanceAcceleration += camera_forward_along_xz_plane() * 0.75
 
 func decrease_held_distance() -> void:
-    nextFrameDistanceAcceleration -= camera_forward_along_xz_plane()
+    nextFrameDistanceAcceleration -= camera_forward_along_xz_plane() * 0.75
 
 func camera_forward_along_xz_plane() -> Vector3:
     return Vector3.FORWARD * -p.camera.global_basis.z.dot(Vector3.FORWARD) + Vector3.LEFT * -p.camera.global_basis.z.dot(Vector3.LEFT)

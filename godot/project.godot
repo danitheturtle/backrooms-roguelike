@@ -42,6 +42,7 @@ enabled=PackedStringArray()
 
 climbable=""
 save_to_disk=""
+targetable=""
 
 [input]
 

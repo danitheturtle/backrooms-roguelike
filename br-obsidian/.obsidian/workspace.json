@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Todo.md",
+                "file": "Technical/Pseudo-interfaces/Targetable.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Todo"
+              "title": "Targetable"
             }
           }
         ]
@@ -190,13 +190,16 @@
   },
   "active": "46516998497d2586",
   "lastOpenFiles": [
+    "Technical/Pseudo-interfaces/Climbable.md",
+    "Technical/Pseudo-interfaces/Targetable.md",
+    "Technical/Rope iterative implementation.md",
+    "Technical/Pseudo-interfaces",
+    "Mechanics/Tools/Rope.md",
+    "Todo.md",
     "What Not To Do.md",
     "Today.md",
     "Mechanics/Upgrades.md",
     "Mechanics/Tools/Flashlight.md",
-    "Technical/Rope iterative implementation.md",
-    "Mechanics/Tools/Rope.md",
-    "Todo.md",
     "Decoration/Neocities backrooms marketing page.md",
     "Playtest Notes.md",
     "Technical/Input System with Optional Steam API.md",
@@ -214,8 +217,6 @@
     "Mechanics/Exits.md",
     "Decoration/Foot Clingers.md",
     "Decoration/Furniture Crabs.md",
-    "Name Ideas.md",
-    "Mechanics/Puzzles/The Fungus.md",
     "Mechanics/Pickups",
     "Mechanics/Resources",
     "Mechanics/Tools",

@@ -13,6 +13,7 @@ var climb: ClimbBehavior
 var sprint: SprintBehavior
 var look: LookBehavior
 var move: MoveBehavior
+var rope: RopeBehavior
 var stairstep: StairstepBehavior
 
 ## velocity-inheriting behaviors
@@ -39,6 +40,7 @@ func _init(_player: Player) -> void:
     sprint = SprintBehavior.new(_player)
     look = LookBehavior.new(_player)
     move = MoveBehavior.new(_player)
+    rope = RopeBehavior.new(_player)
     stairstep = StairstepBehavior.new(_player)
     shove = ShoveBehavior.new(_player)
     target = TargetBehavior.new(_player)
@@ -55,7 +57,7 @@ func all() -> Array[PlayerBehavior]:
     return [
         stand, crouch, crawl, squeeze, # mutually-exclusive player size and collision changers
         vault, jump, # call order dependant; vaulting prevents jump
-        climb, sprint, look, move, stairstep, # velocity modifying behaviors
+        climb, sprint, look, move, rope, stairstep, # velocity modifying behaviors
         shove, target, throw, grab, rotate, drag, unstuck, # velocity inheriting behaviors
         film_camera, flashlight # non-physics behaviors
     ]

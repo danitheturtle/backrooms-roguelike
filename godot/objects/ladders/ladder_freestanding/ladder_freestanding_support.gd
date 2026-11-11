@@ -1,20 +1,15 @@
 class_name LadderFreestandingSupport
 extends Holdable
+# implements Targetable
 
 ## Override all holdable functions to make this object defer to the parent ladder
 
 @export var ladder: LadderFreestanding
 
-func get_grabbed() -> bool: return ladder.mass <= holdingPlayer.MAX_GRAB_MASS
-func get_dragged() -> bool: return ladder.mass > holdingPlayer.MAX_GRAB_MASS
+func get_grabbed() -> bool: return ladder.mass <= player.MAX_GRAB_MASS
+func get_dragged() -> bool: return ladder.mass > player.MAX_GRAB_MASS
 
 func _ready() -> void:
-    for nextMaterial in Utils.get_materials_on_mesh(meshInstance):
-        var dupedHoverMaterial = hoverOverObjectMaterial.duplicate()
-        dupedHoverMaterial.next_pass = nextMaterial
-        hoveringMaterials.append(dupedHoverMaterial)
-    for nextSurfaceIndex in meshInstance.mesh.get_surface_count():
-        initialSurfaceMaterials.append(meshInstance.get_surface_override_material(nextSurfaceIndex))
     body_entered.connect(on_body_entered)
 
 func _physics_process(_delta: float) -> void:
@@ -30,9 +25,9 @@ func activate():
 func deactivate(_actionTimerFinished: bool) -> bool:
     return ladder.deactivate(_actionTimerFinished)
 
-func on_hold(_player: Player):
-    holdingPlayer = _player
-    ladder.on_hold(_player)
+func interact_start(_player: Player) -> PhysicsBody3D:
+    player = _player
+    ladder.interact_start(_player)
     return ladder
 
 func add_collision_exception(_body: Node3D) -> void:
@@ -41,9 +36,9 @@ func add_collision_exception(_body: Node3D) -> void:
 func del_collision_exception(_body: Node3D) -> void:
     ladder.del_collision_exception(_body)
 
-func on_drop():
-    holdingPlayer = null
-    ladder.on_drop()
+func interact_stop():
+    player = null
+    ladder.interact_stop()
 
 func on_throw(): pass
 

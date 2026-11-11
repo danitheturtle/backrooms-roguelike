@@ -1,12 +1,13 @@
+- 13 - Ropes
 - 3 - charge up throw over hold_time to let player determine how hard to throw object
 - 3 - connector definition list of connectors should be indexed array instead of dict (will need updated when merging monica's code)
 - 3 - flashlight texture projection with 2 hard circles, one to simulate bounce light? hopefully it won't look shit
-- 13 - Ropes
 - 5 - dragged object rotation (remove axis lock)
 - 5 - instead of preventing sprint while grabbing, slow down default walking speed while grabbing and let player sprint at normal walk speed
 * 5 - allow player to drag grabbable objects while crouched. when dipping into a crouch while grabbing an item, switch behavior modes
 - 5 - you can ledge grab up into a ceiling, especially by spamming space and positioning the raycast at an edge. definitely need shapecasting
 - 5 - save slot rename, sort by save time
+* 8 - film photography player behavior
 - 8 - ramp ambient light power depending on distance inside room boundary. Each room gets its own bespoke level calculated based on number of lights turned on.
 	- This lets us raise base light level while letting some areas be extra dark and some extra bright. Default should be midrange
 - 5 - parent/child relationship for connections so only one of them generates the edges (and also doors when we get there)
@@ -14,6 +15,8 @@
 - 8 - loading screen, especially important for slower PCs and mobile
 * 8 - add bhopping and adjust how sprint/jump speeds work https://adrianb.io/2015/02/14/bunnyhop.html
 - 13 - navmesh + runtime generation for connections
+- 13 - localization
+- 13 - final ui
 
 Squeeze / Shimmy updates:
 * 5 - Hold key until in the state, then keep player squeezing until  there's enough space for them to stand. Even up on ledges
