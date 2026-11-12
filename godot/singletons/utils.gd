@@ -179,3 +179,63 @@ func remove_dir_recursive(_dirPath: String) -> Error:
         push_warning("Error recursively deleting directory ", _dirPath, " ", dirRemoveResult)
     return dirRemoveResult
 #endregion
+
+#region Debug Drawing
+var drawnLines: Dictionary[StringName, MeshInstance3D] = {}
+func draw_line(_id: StringName, _start: Vector3, _end: Vector3, _color: Color) -> void:
+    if !OS.is_debug_build(): return
+    var startToEnd: Vector3 = _end - _start
+    var length: float = startToEnd.length()
+    if equalsf(length, 0.0):return
+    var dir = startToEnd / length
+    var middle = _start + startToEnd/2.0
+    if !drawnLines.has(_id):
+        var newLine = MeshInstance3D.new()
+        newLine.transform.origin = middle
+        newLine.transform.basis.y = dir
+        newLine.mesh = CapsuleMesh.new()
+        newLine.mesh.radial_segments = 8
+        newLine.mesh.radius = 0.01
+        newLine.mesh.height = length
+        newLine.material_override = StandardMaterial3D.new()
+        newLine.material_override.albedo_color = _color
+        drawnLines.set(_id, newLine)
+        get_tree().root.add_child(newLine)
+    else:
+        var modifiedLine: MeshInstance3D = drawnLines.get(_id)
+        if modifiedLine.transform.origin != middle:
+            modifiedLine.transform.origin = middle
+        if modifiedLine.mesh.height != length:
+            modifiedLine.mesh.height = length
+        if modifiedLine.transform.basis.y != dir:
+            modifiedLine.transform.basis.y = dir
+        if modifiedLine.material_override.albedo_color != _color:
+            modifiedLine.material_override.albedo_color = _color
+
+func draw_vector(_id: StringName, _pos: Vector3, _vector: Vector3, _color: Color) -> void:
+    if !OS.is_debug_build(): return
+    draw_line(_id, _pos, _pos + _vector, _color)
+
+var drawnPoints: Dictionary[StringName, MeshInstance3D] = {}
+func draw_point(_id: StringName, _pos: Vector3, _color: Color = Color.AQUA, _radius: float = 0.05) -> void:
+    if !OS.is_debug_build(): return
+    if !drawnPoints.has(_id):
+        var newPoint = MeshInstance3D.new()
+        newPoint.transform.origin = _pos
+        newPoint.mesh = SphereMesh.new()
+        newPoint.mesh.radius = _radius
+        newPoint.mesh.height = _radius * 2.0
+        newPoint.material_override = StandardMaterial3D.new()
+        newPoint.material_override.albedo_color = _color
+        drawnPoints.set(_id, newPoint)
+        get_tree().root.add_child(newPoint)
+    else:
+        var modifiedPoint: MeshInstance3D = drawnPoints.get(_id)
+        if modifiedPoint.transform.origin != _pos:
+            modifiedPoint.transform.origin = _pos
+        if modifiedPoint.mesh.radius != _radius:
+            modifiedPoint.mesh.radius = _radius
+            modifiedPoint.mesh.height = _radius * 2.0
+        if modifiedPoint.material_override.albedo_color != _color:
+            modifiedPoint.material_override.albedo_color = _color
+#endregion

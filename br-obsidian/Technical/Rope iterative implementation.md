@@ -4,8 +4,7 @@ Build iteratively and test manually at each stage
 
 Unique rope keybind for all rope interactions. Will become an action wheel action later.
 
-
-1- Static anchor point player can move a fixed distance from. restricts falling further than rope length. anchor manually placed in the world. keep gravity active while preserving movement tangent to the rope, then restrict movement to rope length. This lets the player swing effectively
+DONE - 1- Static anchor point player can move a fixed distance from. restricts falling further than rope length. anchor manually placed in the world. keep gravity active while preserving movement tangent to the rope, then restrict movement to rope length. This lets the player swing effectively
 
 2- Player-placed anchor point with rope ammo. Use up rope ammo as the player moves away from the rope they are attached to. Still no picking up said rope
 
