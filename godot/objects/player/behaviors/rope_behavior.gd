@@ -37,7 +37,7 @@ func process_action(_delta: float) -> void:
     var playerPos = ropeRef.to_local(p.global_position)
     # update rope with last frame's player position
     ropeCurve.set_point_position(ropeCurve.point_count-1, playerPos)
-    # get pendulum anchor and endpoint
+    # get pendulum anchor and endpoint. not a true pendulum because player does not have mass or inertia
     var playerToAnchor = playerPos - ropeCurve.get_point_position(0)
     var distanceToAnchor = playerToAnchor.length()
     # return if slack rope
@@ -46,14 +46,18 @@ func process_action(_delta: float) -> void:
     var ropeDir: Vector3 = playerToAnchor / distanceToAnchor
     var angleFromVertical = acos(ropeDir.dot(Const.GRAVITY_VECTOR))
     # get direction of pendulum center
-    var towardsRopeCenter: Vector3 = ropeDir.dot(Vector3.DOWN)*Vector3.DOWN - ropeDir
+    var ropeDirDotDown: float = ropeDir.dot(Vector3.DOWN)
+    var towardsRopeCenter: Vector3 = ropeDirDotDown*Vector3.DOWN - ropeDir
     var tangentDir = ropeDir.rotated(towardsRopeCenter.cross(ropeDir).normalized(), deg_to_rad(-90))
     var tangentGravity = Const.GRAVITY * sin(angleFromVertical) * tangentDir * _delta * p.ROPE_TANGENT_GRAVITY_MULTIPLIER
-    # apply tangent velocity that acts as a centering force
-    p.velocity += tangentGravity
+    # apply tangent velocity that acts as a centering force if the player is below the anchor
+    if ropeDirDotDown > 0.05:
+        p.velocity += tangentGravity
+    # get new speed in rope dir including the tangent acceleration
     var speedInRopeDir: float = p.velocity.dot(ropeDir)
     if distanceToAnchor + speedInRopeDir < MAX_LENGTH: return
-    # this frame's velocity will take the player past the end of the rope. Constrain by cancelling it
+    # this frame's velocity will take the player past the end of the rope.
+    # Constrain velocity in direction of the rope to only carry player to the end
     p.velocity -= ropeDir * (distanceToAnchor + speedInRopeDir - MAX_LENGTH)
 
 func stop_action() -> void:
