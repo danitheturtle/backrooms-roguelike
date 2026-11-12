@@ -37,19 +37,24 @@ func process_action(_delta: float) -> void:
     var playerPos = ropeRef.to_local(p.global_position)
     # update rope with last frame's player position
     ropeCurve.set_point_position(ropeCurve.point_count-1, playerPos)
-    # constrain player velocity in direction of rope to the rope's length
+    # get pendulum anchor and endpoint
     var playerToAnchor = playerPos - ropeCurve.get_point_position(0)
     var distanceToAnchor = playerToAnchor.length()
+    # return if slack rope
     if distanceToAnchor < MAX_LENGTH: return
+    # get direction of rope from anchor
     var ropeDir: Vector3 = playerToAnchor / distanceToAnchor
+    var angleFromVertical = acos(ropeDir.dot(Const.GRAVITY_VECTOR))
+    # get direction of pendulum center
+    var towardsRopeCenter: Vector3 = ropeDir.dot(Vector3.DOWN)*Vector3.DOWN - ropeDir
+    var tangentDir = ropeDir.rotated(towardsRopeCenter.cross(ropeDir).normalized(), deg_to_rad(-90))
+    var tangentGravity = Const.GRAVITY * sin(angleFromVertical) * tangentDir * _delta * p.ROPE_TANGENT_GRAVITY_MULTIPLIER
+    # apply tangent velocity that acts as a centering force
+    p.velocity += tangentGravity
     var speedInRopeDir: float = p.velocity.dot(ropeDir)
     if distanceToAnchor + speedInRopeDir < MAX_LENGTH: return
     # this frame's velocity will take the player past the end of the rope. Constrain by cancelling it
-    #p.velocity -= ropeDir * (distanceToAnchor + speedInRopeDir - MAX_LENGTH)
-    var angleFromVertical = acos(ropeDir.dot(-Const.GRAVITY_VECTOR))
-    var ropeTension = -Const.GRAVITY_VECTOR * Const.GRAVITY * cos(angleFromVertical)
-    var tangentGravity = Const.GRAVITY_VECTOR * Const.GRAVITY * sin(angleFromVertical)
-    # TODO ramp down desired movement velocity the further off-center the player is from the anchor
+    p.velocity -= ropeDir * (distanceToAnchor + speedInRopeDir - MAX_LENGTH)
 
 func stop_action() -> void:
     if !active: return

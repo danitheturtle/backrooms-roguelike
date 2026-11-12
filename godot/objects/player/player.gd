@@ -17,6 +17,7 @@ var b: BehaviorState:
 @export var SHOVING_FORCE: float = 2.0
 @export var STRONGER_DOWNWARD_GRAVITY_THRESHOLD: float = 5.0
 @export var STRONGER_GRAVITY_MULTIPLIER: float = 2.0
+@export var ROPE_TANGENT_GRAVITY_MULTIPLIER: float = 20.0
 @export var JUMP_IMPULSE: float = 6.5
 @export var CROUCH_HEIGHT: float = 0.95
 @export var CRAWL_HEIGHT: float = 0.45

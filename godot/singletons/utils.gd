@@ -180,62 +180,74 @@ func remove_dir_recursive(_dirPath: String) -> Error:
     return dirRemoveResult
 #endregion
 
-#region Debug Drawing
-var drawnLines: Dictionary[StringName, MeshInstance3D] = {}
+#region Debug Drawing - designed to be called every frame like Unity
+var drawn_lines: Dictionary[StringName, MeshInstance3D] = {}
+## Draws a debug line from start to end in worldspace using a capsule mesh
 func draw_line(_id: StringName, _start: Vector3, _end: Vector3, _color: Color) -> void:
     if !OS.is_debug_build(): return
-    var startToEnd: Vector3 = _end - _start
-    var length: float = startToEnd.length()
+    var start_to_end: Vector3 = _end - _start
+    var length: float = start_to_end.length()
     if equalsf(length, 0.0):return
-    var dir = startToEnd / length
-    var middle = _start + startToEnd/2.0
-    if !drawnLines.has(_id):
-        var newLine = MeshInstance3D.new()
-        newLine.transform.origin = middle
-        newLine.transform.basis.y = dir
-        newLine.mesh = CapsuleMesh.new()
-        newLine.mesh.radial_segments = 8
-        newLine.mesh.radius = 0.01
-        newLine.mesh.height = length
-        newLine.material_override = StandardMaterial3D.new()
-        newLine.material_override.albedo_color = _color
-        drawnLines.set(_id, newLine)
-        get_tree().root.add_child(newLine)
+    var dir: Vector3 = start_to_end / length
+    var middle: Vector3 = _start + start_to_end/2.0
+    if !drawn_lines.has(_id):
+        var new_line: MeshInstance3D = MeshInstance3D.new()
+        new_line.transform.origin = middle
+        new_line.transform.basis.y = dir
+        new_line.mesh = CapsuleMesh.new()
+        new_line.mesh.radial_segments = 8
+        new_line.mesh.radius = 0.01
+        new_line.mesh.height = length
+        new_line.material_override = StandardMaterial3D.new()
+        new_line.material_override.albedo_color = _color
+        drawn_lines.set(_id, new_line)
+        get_tree().root.add_child(new_line)
     else:
-        var modifiedLine: MeshInstance3D = drawnLines.get(_id)
-        if modifiedLine.transform.origin != middle:
-            modifiedLine.transform.origin = middle
-        if modifiedLine.mesh.height != length:
-            modifiedLine.mesh.height = length
-        if modifiedLine.transform.basis.y != dir:
-            modifiedLine.transform.basis.y = dir
-        if modifiedLine.material_override.albedo_color != _color:
-            modifiedLine.material_override.albedo_color = _color
+        var modified_line: MeshInstance3D = drawn_lines.get(_id)
+        if modified_line.transform.origin != middle:
+            modified_line.transform.origin = middle
+        if modified_line.mesh.height != length:
+            modified_line.mesh.height = length
+        if modified_line.transform.basis.y != dir:
+            modified_line.transform.basis.y = dir
+        if modified_line.material_override.albedo_color != _color:
+            modified_line.material_override.albedo_color = _color
 
-func draw_vector(_id: StringName, _pos: Vector3, _vector: Vector3, _color: Color) -> void:
+## Wrapper method for draw_line. Draws line from _pos to _pos + _vector
+func draw_vector(_id: StringName, _pos: Vector3, _vector: Vector3, _color: Color = Color.AQUA) -> void:
     if !OS.is_debug_build(): return
     draw_line(_id, _pos, _pos + _vector, _color)
 
-var drawnPoints: Dictionary[StringName, MeshInstance3D] = {}
+var drawn_points: Dictionary[StringName, MeshInstance3D] = {}
+## Render a sphere at a position
 func draw_point(_id: StringName, _pos: Vector3, _color: Color = Color.AQUA, _radius: float = 0.05) -> void:
     if !OS.is_debug_build(): return
-    if !drawnPoints.has(_id):
-        var newPoint = MeshInstance3D.new()
-        newPoint.transform.origin = _pos
-        newPoint.mesh = SphereMesh.new()
-        newPoint.mesh.radius = _radius
-        newPoint.mesh.height = _radius * 2.0
-        newPoint.material_override = StandardMaterial3D.new()
-        newPoint.material_override.albedo_color = _color
-        drawnPoints.set(_id, newPoint)
-        get_tree().root.add_child(newPoint)
+    if !drawn_points.has(_id):
+        var new_point: MeshInstance3D = MeshInstance3D.new()
+        new_point.transform.origin = _pos
+        new_point.mesh = SphereMesh.new()
+        new_point.mesh.radius = _radius
+        new_point.mesh.height = _radius * 2.0
+        new_point.material_override = StandardMaterial3D.new()
+        new_point.material_override.albedo_color = _color
+        drawn_points.set(_id, new_point)
+        get_tree().root.add_child(new_point)
     else:
-        var modifiedPoint: MeshInstance3D = drawnPoints.get(_id)
-        if modifiedPoint.transform.origin != _pos:
-            modifiedPoint.transform.origin = _pos
-        if modifiedPoint.mesh.radius != _radius:
-            modifiedPoint.mesh.radius = _radius
-            modifiedPoint.mesh.height = _radius * 2.0
-        if modifiedPoint.material_override.albedo_color != _color:
-            modifiedPoint.material_override.albedo_color = _color
+        var modified_point: MeshInstance3D = drawn_points.get(_id)
+        if modified_point.transform.origin != _pos:
+            modified_point.transform.origin = _pos
+        if modified_point.mesh.radius != _radius:
+            modified_point.mesh.radius = _radius
+            modified_point.mesh.height = _radius * 2.0
+        if modified_point.material_override.albedo_color != _color:
+            modified_point.material_override.albedo_color = _color
+
+## Call on exit to clean up debug draw meshes
+func cleanup_draws() -> void:
+    for next_line: MeshInstance3D in drawn_lines.values():
+        if is_instance_valid(next_line):
+            next_line.queue_free()
+    for next_point: MeshInstance3D in drawn_points.values():
+        if is_instance_valid(next_point):
+            next_point.queue_free()
 #endregion
