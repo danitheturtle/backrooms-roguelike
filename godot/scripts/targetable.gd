@@ -1,5 +1,5 @@
 class_name Targetable
-extends PhysicsBody3D
+extends CollisionObject3D
 
 ## targetable always has visible mesh
 @onready var meshInstance = Utils.get_child_of_type(self, MeshInstance3D)
@@ -17,7 +17,7 @@ func clear_hover_material() -> void:
     Utils.apply_surface_overrides(meshInstance, initialSurfaceMaterials)
 
 # target might be a handle, return object player is interacting with
-func interact_start(_player: Player) -> PhysicsBody3D:
+func interact_start(_player: Player) -> CollisionObject3D:
     player = _player
     return self
 

@@ -1,9 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-const BehaviorStateRes = preload("res://objects/player/behavior_state.gd")
-
-var behaviors: BehaviorState = BehaviorStateRes.new(self)
+var behaviors: BehaviorState = BehaviorState.new(self)
 var b: BehaviorState:
     get: return behaviors
 
@@ -35,6 +33,7 @@ var b: BehaviorState:
 @export var MAX_UNMOVING_AIRTIME: float = 7.5
 @export var ROTATED_INERTIA: Vector3 = Vector3(0.25,0.25,0.25)
 @export var GRABBED_DAMP_FACTOR: float = 50.0
+@export var STARTING_ROPE_AMMO: int = 5
 
 # child nodes
 @onready var camera: Camera3D = $Camera
@@ -306,6 +305,10 @@ func handle_key_input(event: InputEvent ) -> void:
                 b.flashlight.stop_action()
         ## TODO action wheel
         eventHandled = true
+    elif (event.is_action_released(&"rope_action")):
+        if b.rope.can_place_rope():
+            b.rope.place_new_rope(b.target.ref, b.target.ref.to_local(b.target.targetedPoint))
+        eventHandled = true
     elif (event.is_action_pressed(&"interact")):
         interactTimerFinished = false
         interactTimer.start()
@@ -381,7 +384,7 @@ func handle_key_input(event: InputEvent ) -> void:
     elif (event.is_action_released(&"backward")):
         moveDir = Vector2(moveDir.x, -1.0 if Input.is_action_pressed(&"forward") else 0.0)
         eventHandled = true
-    elif (event.is_action_pressed("left")):
+    elif (event.is_action_pressed(&"left")):
         moveDir = Vector2(-1.0, moveDir.y)
         eventHandled = true
     elif (event.is_action_released(&"left")):

@@ -27,9 +27,9 @@ var freezeTimeout: Timer = null
 var player: Player = null
 
 var grabbed: bool: get = get_grabbed
-func get_grabbed() -> bool: return mass <= player.MAX_GRAB_MASS
+func get_grabbed() -> bool: return player != null && mass <= player.MAX_GRAB_MASS
 var dragged: bool: get = get_dragged
-func get_dragged() -> bool: return mass > player.MAX_GRAB_MASS
+func get_dragged() -> bool: return player != null &&  mass > player.MAX_GRAB_MASS
 
 func _ready() -> void:
     var grabOriginNode = get_node_or_null("GrabOrigin")

@@ -6,9 +6,9 @@ Unique rope keybind for all rope interactions. Will become an action wheel actio
 
 DONE - 1- Static anchor point player can move a fixed distance from. restricts falling further than rope length. anchor manually placed in the world. keep gravity active while preserving movement tangent to the rope, then restrict movement to rope length. This lets the player swing effectively
 
-2- Player-placed anchor point with rope ammo. Use up rope ammo as the player moves away from the rope they are attached to. Still no picking up said rope
+DONE - 2 - make rope its own game object with a path and a series of verts. Single anchor point and a point at the player that updates its position to the player while the player is holding the rope
 
-3 - make rope its own game object with a path and a series of verts. Single anchor point and a point at the player that updates its position to the player while the player is holding the rope
+DONE - 3 - Player-placed anchor point with rope ammo. Use up rope ammo as the player moves away from the rope they are attached to. Still no picking up said rope
 
 4 - render the rope and only let the player attach while next to it
 
@@ -21,3 +21,8 @@ DONE - 1- Static anchor point player can move a fixed distance from. restricts f
 8 - when player moves rope, check the last 3 vertices to see if they can be unwrapped every other frame.
 
 9 - simulate the last vert while the player is not touching it. maybe even add a few extra rope segments with physics. Simplest implementation would be a constrained sphere collider attached to the end.
+
+
+design ideas after we're done:
+- pity rope. if the last rope you place has less than 5m, it can extend to 5m. it still only returns the limited ammo used to create it
+- 

@@ -35,8 +35,9 @@ script = ExtResource("1_vs5eh")
 anchor = NodePath("RopeAnchor")
 path = NodePath("RopePath")
 
-[node name="RopeAnchor" type="StaticBody3D" parent="." unique_id=1932684335 groups=["targetable"]]
+[node name="RopeAnchor" type="Area3D" parent="." unique_id=1304452007 groups=["targetable"]]
 collision_mask = 0
+monitoring = false
 script = ExtResource("2_cyxff")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RopeAnchor" unique_id=699092843]

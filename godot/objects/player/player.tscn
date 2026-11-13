@@ -92,6 +92,7 @@ spot_angle = 40.0
 target_position = Vector3(0, 0, -2)
 collision_mask = 143
 hit_back_faces = false
+collide_with_areas = true
 
 [node name="GrabArm" type="SpringArm3D" parent="Camera" unique_id=1434044525]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

@@ -40,14 +40,16 @@ func can_act() -> bool:
 func start_action() -> void: pass
 
 func process_action(_delta: float) -> void:
+    targetedPoint = targetRayCast.get_collision_point()
     if can_act():
         var nextTargetRef = targetRayCast.get_collider()
         if ref != nextTargetRef:
             stop_action()
             if (nextTargetRef != null && nextTargetRef.is_in_group("targetable")):
                 ref = nextTargetRef
-                targetedPoint = targetRayCast.get_collision_point()
                 ref.apply_hover_material()
+    if pb.rope.can_place_rope():
+        Utils.draw_point("ropePlacement", targetedPoint, Color.YELLOW)
 
 func stop_action() -> void:
     reinit()

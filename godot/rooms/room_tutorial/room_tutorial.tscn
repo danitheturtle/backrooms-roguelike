@@ -1060,19 +1060,6 @@ size = Vector3(0.22500001, 0.125, 1.225)
 resource_local_to_scene = true
 size = Vector3(0.22500001, 0.125, 1.225)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_hppt7"]
-resource_local_to_scene = true
-radius = 0.1
-
-[sub_resource type="Curve3D" id="Curve3D_fesih"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.76848984, -3.138532, -0.75),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-up_vector_enabled = false
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_bd0wn"]
 resource_local_to_scene = true
 size = Vector3(62.25, 20.25, 80.25)
@@ -2744,12 +2731,6 @@ physics_material_override = null
 [node name="Rope" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="25" unique_id=597474514 instance=ExtResource("22_ta4gn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.25, 4.6729674, 45.75)
 
-[node name="SphereCollider" parent="Props/Rope/RopeAnchor" parent_id_path=PackedInt32Array(597474514, 1932684335) index="1" unique_id=653304792]
-shape = SubResource("SphereShape3D_hppt7")
-
-[node name="RopePath" parent="Props/Rope" index="2" unique_id=980612944]
-curve = SubResource("Curve3D_fesih")
-
 [node name="BoundsAABB" parent="Bounds" parent_id_path=PackedInt32Array(1272779199) index="0" unique_id=415124710]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.875, 2.125, 34.875)
 shape = SubResource("BoxShape3D_bd0wn")
@@ -3063,7 +3044,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 4.75, 65.25)
 material_override = SubResource("StandardMaterial3D_5q0ne")
 
 [editable path="Props/WoodChair01"]
-[editable path="Props/Rope"]
 [editable path="LevelMeshes/ResizeableWall"]
 [editable path="LevelMeshes/ResizableCeiling"]
 [editable path="LevelMeshes/ResizeableWall2"]

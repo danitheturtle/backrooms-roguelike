@@ -1,13 +1,16 @@
 class_name RopeBehavior
 extends PlayerBehavior
 
+const RopeRes = preload("res://objects/rope/rope.tscn")
+const MIN_ROPE_LENGTH: int = 5
+
 const cannotTransitionFrom: Array[StringName] = [&"climb", &"film_camera", &"drag", &"squeeze", &"vault"]
 const mutuallyExclusiveWith: Array[StringName] = [&"flashlight", &"jump"]
 
 var ropeRef: Rope
-var ropePath: Path3D
-var ropeCurve: Curve3D
-var MAX_LENGTH: float = 3.0
+var ropePlacementActive: bool = true
+## player's carried rope ammo. unit is length in voxels
+var ammo: int = 10
 
 func get_active() -> bool:
     return ropeRef != null
@@ -15,6 +18,7 @@ func get_active() -> bool:
 func reinit() -> void:
     active = false
     ropeRef = null
+    ropePlacementActive = true
 
 func can_act() -> bool:
     if (p.adjacentRef is Rope && p.adjacentRef != ropeRef && !active && pb.none(cannotTransitionFrom)):
@@ -25,41 +29,42 @@ func can_act() -> bool:
 func start_action() -> void:
     if active: return
     ropeRef = p.adjacentRef
-    ropePath = Utils.get_child_of_type(ropeRef, Path3D)
-    ropeCurve = ropePath.curve
-    if ropeCurve.point_count < 2:
-        ropeCurve.add_point(ropeRef.to_local(p.global_position))
+    ropeRef.playerAmmoAtCreation = ammo
     active = true
     pb.stop(mutuallyExclusiveWith)
 
 func process_action(_delta: float) -> void:
     if !active: return
-    var playerPos = ropeRef.to_local(p.global_position)
-    # update rope with last frame's player position
-    ropeCurve.set_point_position(ropeCurve.point_count-1, playerPos)
-    # get pendulum anchor and endpoint. not a true pendulum because player does not have mass or inertia
-    var playerToAnchor = playerPos - ropeCurve.get_point_position(0)
+    var pointCount = ropeRef.path.curve.point_count
+    # last point = player pos, second to last point = pivot. stored in curve-local space
+    ropeRef.path.curve.set_point_position(pointCount-1, ropeRef.to_local(p.global_position))
+    var pivotPos: Vector3 = ropeRef.to_global(ropeRef.path.curve.get_point_position(pointCount-2))
+    if ropeRef.lengthVoxels < ammo: return
+    var playerToAnchor = p.global_position - pivotPos
     var distanceToAnchor = playerToAnchor.length()
     # return if slack rope
-    if distanceToAnchor < MAX_LENGTH: return
-    # get direction of rope from anchor
     var ropeDir: Vector3 = playerToAnchor / distanceToAnchor
-    var angleFromVertical = acos(ropeDir.dot(Const.GRAVITY_VECTOR))
-    # get direction of pendulum center
-    var ropeDirDotDown: float = ropeDir.dot(Vector3.DOWN)
-    var towardsRopeCenter: Vector3 = ropeDirDotDown*Vector3.DOWN - ropeDir
-    var tangentDir = ropeDir.rotated(towardsRopeCenter.cross(ropeDir).normalized(), deg_to_rad(-90))
-    var tangentGravity = Const.GRAVITY * sin(angleFromVertical) * tangentDir * _delta * p.ROPE_TANGENT_GRAVITY_MULTIPLIER
-    # apply tangent velocity that acts as a centering force if the player is below the anchor
-    if ropeDirDotDown > 0.05:
-        p.velocity += tangentGravity
-    # get new speed in rope dir including the tangent acceleration
     var speedInRopeDir: float = p.velocity.dot(ropeDir)
-    if distanceToAnchor + speedInRopeDir < MAX_LENGTH: return
-    # this frame's velocity will take the player past the end of the rope.
-    # Constrain velocity in direction of the rope to only carry player to the end
-    p.velocity -= ropeDir * (distanceToAnchor + speedInRopeDir - MAX_LENGTH)
+    # if this frame's velocity won't take player past rope end, do nothing
+    if ropeRef.length + speedInRopeDir < Const.VOXEL * ammo: return
+    # calculate pseudo-pendulum behavior
+    var angleFromVertical = acos(ropeDir.dot(Const.GRAVITY_VECTOR))
+    var tangentDir = ropeDir.rotated(Vector3.DOWN.cross(ropeDir).normalized(), deg_to_rad(-90))
+    var tangentGravity = tangentDir * Const.GRAVITY * sin(angleFromVertical) * _delta * p.ROPE_TANGENT_GRAVITY_MULTIPLIER
+    # Constrain velocity component that's in the direction of the rope to only carry player to the end and no further
+    p.velocity -= ropeDir * (ropeRef.length + speedInRopeDir - Const.VOXEL * ammo)
+    # apply tangent velocity that acts as a centering force if the player is below the anchor
+    if ropeDir.dot(Vector3.DOWN) > 0.05: p.velocity += tangentGravity
 
 func stop_action() -> void:
     if !active: return
     reinit()
+
+func can_place_rope() -> bool:
+    return ropePlacementActive && pb.target.active && pb.target.ref.is_in_group(&"anchorable")
+
+func place_new_rope(_anchorRef: PhysicsBody3D, _offset: Vector3) -> Rope:
+    var newRope: Rope = RopeRes.instantiate()
+    newRope.transform.origin = _offset
+    _anchorRef.add_child(newRope)
+    return newRope
