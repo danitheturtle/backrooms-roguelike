@@ -18,6 +18,7 @@ func clear_hover_material() -> void:
 
 # target might be a handle, return object player is interacting with
 func interact_start(_player: Player) -> CollisionObject3D:
+    print(_player)
     player = _player
     return self
 

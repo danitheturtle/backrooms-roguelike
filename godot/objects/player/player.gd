@@ -306,7 +306,9 @@ func handle_key_input(event: InputEvent ) -> void:
         ## TODO action wheel
         eventHandled = true
     elif (event.is_action_released(&"rope_action")):
-        if b.rope.can_place_rope():
+        if b.rope.active:
+            b.rope.toggle_extension_mode()
+        elif b.rope.can_place_rope():
             b.rope.place_new_rope(b.target.ref, b.target.ref.to_local(b.target.targetedPoint))
         eventHandled = true
     elif (event.is_action_pressed(&"interact")):

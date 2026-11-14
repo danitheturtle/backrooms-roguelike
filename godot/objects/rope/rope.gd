@@ -4,12 +4,11 @@ extends Area3D
 @export var anchor: RopeAnchor
 @export var path: Path3D
 
+var _cachedLengthToPivot: float = 0.0
+var lastSegment: Vector3 = Vector3.ZERO
+var lastSegmentLength: float = 0.0
 var length: float:
-    get: return path.curve.get_baked_length()
-var lengthVoxels: int:
-    get: return roundi(length / Const.VOXEL)
-
-var playerAmmoAtCreation: int = 0
+    get: return _cachedLengthToPivot + lastSegmentLength
 
 func _ready() -> void:
     # newly created curve has no points
@@ -20,5 +19,22 @@ func _ready() -> void:
     for nextSegmentIndex in path.curve.point_count-1:
         pass
 
-func _physics_process(_delta: float) -> void:
-    pass
+func update_last_segment_length() -> void:
+    lastSegment = path.to_global(path.curve.get_point_position(path.curve.point_count-1)) - path.to_global(path.curve.get_point_position(path.curve.point_count-2))
+    lastSegmentLength = lastSegment.length()
+
+func update_cached_length() -> void:
+    _cachedLengthToPivot = 0.0
+    for i: int in path.curve.point_count-2:
+        _cachedLengthToPivot += (path.to_global(path.curve.get_point_position(i)) - path.to_global(path.curve.get_point_position(i+1))).length()
+
+func get_nearest_control_point(_global_pos: Vector3) -> int:
+    var nearestDistSq: float = 999999.0
+    var nearestIndex: int = -1
+    for i: int in path.curve.point_count:
+        var nextPos = path.to_global(path.curve.get_point_position(i))
+        var nextDistSq = (_global_pos - nextPos).length_squared()
+        if nextDistSq < nearestDistSq:
+            nearestDistSq = nextDistSq
+            nearestIndex = i
+    return nearestIndex

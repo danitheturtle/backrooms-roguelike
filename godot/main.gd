@@ -42,6 +42,7 @@ func on_new_run_started() -> void:
     await LevelManager.level_ready
     # once ready, put player in game
     MenuManager.hudMenu.show()
+    MenuManager.hudMenu.process_mode = Node.PROCESS_MODE_PAUSABLE
     InputManager.capture_mouse.call_deferred()
 
 func on_tutorial_started() -> void:
@@ -53,6 +54,7 @@ func on_tutorial_started() -> void:
     MenuManager.mainMenu.process_mode = Node.PROCESS_MODE_DISABLED
     MenuManager.mainMenu.hide()
     MenuManager.hudMenu.show()
+    MenuManager.hudMenu.process_mode = Node.PROCESS_MODE_PAUSABLE
     InputManager.capture_mouse.call_deferred()
 
 func on_game_exited() -> void:

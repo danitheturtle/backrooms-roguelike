@@ -190,8 +190,9 @@
   },
   "active": "46516998497d2586",
   "lastOpenFiles": [
-    "Todo.md",
+    "Decoration/Wall Writing.md",
     "Technical/Rope iterative implementation.md",
+    "Todo.md",
     "Technical/Bugs.md",
     "Technical/Generation Constraints.md",
     "Technical/Pseudo-interfaces/Targetable.md",
@@ -216,7 +217,6 @@
     "Technical/Room Definition API Docs.md",
     "Mechanics/Exits.md",
     "Decoration/Foot Clingers.md",
-    "Decoration/Furniture Crabs.md",
     "Mechanics/Pickups",
     "Mechanics/Resources",
     "Mechanics/Tools",
