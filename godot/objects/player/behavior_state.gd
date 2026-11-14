@@ -6,15 +6,16 @@ var crouch: CrouchBehavior
 var crawl: CrawlBehavior
 var squeeze: SqueezeBehavior
 
-## velocity-modifying behaviors. vault and jump are call order dependant
+## velocity-modifying behaviors. vault and jump are call order dependant. rope always called last in group
 var vault: VaultBehavior
 var jump: JumpBehavior
 var climb: ClimbBehavior
 var sprint: SprintBehavior
 var look: LookBehavior
 var move: MoveBehavior
-var rope: RopeBehavior
+var gravity: GravityBehavior
 var stairstep: StairstepBehavior
+var rope: RopeBehavior
 
 ## velocity-inheriting behaviors
 var shove: ShoveBehavior
@@ -40,6 +41,7 @@ func _init(_player: Player) -> void:
     sprint = SprintBehavior.new(_player)
     look = LookBehavior.new(_player)
     move = MoveBehavior.new(_player)
+    gravity = GravityBehavior.new(_player)
     rope = RopeBehavior.new(_player)
     stairstep = StairstepBehavior.new(_player)
     shove = ShoveBehavior.new(_player)
@@ -57,7 +59,7 @@ func all() -> Array[PlayerBehavior]:
     return [
         stand, crouch, crawl, squeeze, # mutually-exclusive player size and collision changers
         vault, jump, # call order dependant; vaulting prevents jump
-        climb, sprint, look, move, rope, stairstep, # velocity modifying behaviors
+        climb, sprint, look, move, gravity, rope, stairstep, # velocity modifying behaviors
         shove, target, throw, grab, rotate, drag, unstuck, # velocity inheriting behaviors
         film_camera, flashlight # non-physics behaviors
     ]

@@ -7,6 +7,7 @@ extends Area3D
 var _cachedLengthToPivot: float = 0.0
 var lastSegment: Vector3 = Vector3.ZERO
 var lastSegmentLength: float = 0.0
+var lastSegmentDir: Vector3 = Vector3.ZERO
 var length: float:
     get: return _cachedLengthToPivot + lastSegmentLength
 
@@ -22,6 +23,7 @@ func _ready() -> void:
 func update_last_segment_length() -> void:
     lastSegment = path.to_global(path.curve.get_point_position(path.curve.point_count-1)) - path.to_global(path.curve.get_point_position(path.curve.point_count-2))
     lastSegmentLength = lastSegment.length()
+    lastSegmentDir = lastSegment / lastSegmentLength
 
 func update_cached_length() -> void:
     _cachedLengthToPivot = 0.0
