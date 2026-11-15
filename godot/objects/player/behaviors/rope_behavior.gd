@@ -55,8 +55,6 @@ func start_action() -> void:
 
 func process_action(_delta: float) -> void:
     if !active: return
-    var xzInputVelocity: Vector3 = Vector3.ZERO
-    var climbInputVelocity: Vector3 = Vector3.ZERO
     p.velocity = Vector3(0,p.velocity.y,0)
     if ropeExtensionLocked || !ropeRef.lastPointBelowPivot || pb.jump.onFloorLastFrame:
         # for now this is mostly a copy of default movement
@@ -64,25 +62,22 @@ func process_action(_delta: float) -> void:
         p.velocity += Vector3(p.basis.x * p.moveDir.x + p.basis.z * p.moveDir.y).limit_length() * p.CLIMB_SPEED
     elif !ropeExtensionLocked:
         #only move player up. gravity will carry them down
-        var cameraZDotDown: float = p.camera.basis.z.dot(Vector3.DOWN)
-        if cameraZDotDown > 0.0 && p.moveDir.y < 0.0 || cameraZDotDown <= 0.0 && p.moveDir.y > 0.0:
+        if p.moveDir.y < 0.0:
             p.velocity += -ropeRef.lastSegmentDir
         p.velocity += Vector3(p.basis.x * p.moveDir.x).limit_length()
-    #p.velocity = Vector3(0,p.velocity.y,0) + xzInputVelocity + climbInputVelocity
     # limit speed against rope axis to desired climb speed
     var scaledClimbSpeed: float = p.CLIMB_SPEED * abs(p.moveDir.y)
     var speedInPivotDirection: float = p.velocity.dot(-ropeRef.lastSegmentDir)
     if (ropeRef.lastPointBelowPivot && speedInPivotDirection > scaledClimbSpeed):
-        # subtract out all but climb speed in pivot dir
         p.velocity -= (speedInPivotDirection - scaledClimbSpeed) * -ropeRef.lastSegmentDir
-    # if !ropeExtensionLocked, only change max length on player input. don't let gravity change it
-    # if at end of currentMaxLength while ropeExtensionLocked, limit speedInRopeDir to climbing speed
-    # rope store's last frame's data before this is called, which is used to calculate this frame's input velocity
+    # update the rope's last point position. everything before this is using last frame's player position
     ropeRef.lastPoint = get_harness_position()
     ammo = ammoOnAttach - (ropeRef.length - lengthOnAttach)
-    if ropeRef.length < currentMaxLength || !ropeExtensionLocked:
+    # always shorten rope if player moved in a shortening direction last frame
+    if ropeRef.length < currentMaxLength:
         currentMaxLength = ropeRef.length
-    if ammo > 0.0 && !ropeExtensionLocked: return
+    if ammo > 0.0 && !ropeExtensionLocked && p.moveDir.y > 0.0:
+        currentMaxLength += p.moveDir.y * p.CLIMB_SPEED
     var speedInRopeDir: float = p.velocity.dot(ropeRef.lastSegmentDir)
     var nextLength: float =  ropeRef.length + speedInRopeDir
     # constrain movement to max length with pseudo-pendulum behavior
@@ -94,10 +89,7 @@ func process_action(_delta: float) -> void:
         if ropeRef.lastPointBelowPivot && !pb.jump.onFloorLastFrame:
             p.velocity += tangentAcceleration
         # Constrain velocity component that's in the direction of the rope to only carry player to the end and no further
-        if ropeExtensionLocked:
-            p.velocity -= ropeRef.lastSegmentDir * (nextLength - currentMaxLength)
-        elif nextLength > currentMaxLength + ammo:
-            p.velocity -= ropeRef.lastSegmentDir * (nextLength - (currentMaxLength + ammo))
+        p.velocity -= ropeRef.lastSegmentDir * (nextLength - currentMaxLength)
 
 func stop_action() -> void:
     if !active: return
