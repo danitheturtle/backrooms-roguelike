@@ -21,6 +21,9 @@ pink yard flamingo
 indoor skatepark
 quarter-driven horse ride from YOTH https://youtu.be/-tvM7Uak5m0
 throw rugs as cover for carpet seams
+airplane interior
+airplane intercom noises
+gordon freeman still life / gman still life (not a serious suggestion but maybe easter egg)
 
 video:
 - 90s commercials

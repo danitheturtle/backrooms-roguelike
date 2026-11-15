@@ -8,6 +8,23 @@ var _cachedLengthToPivot: float = 0.0
 var lastSegment: Vector3 = Vector3.ZERO
 var lastSegmentLength: float = 0.0
 var lastSegmentDir: Vector3 = Vector3.ZERO
+
+var pivotPoint: Vector3:
+    get: return path.to_global(path.curve.get_point_position(path.curve.point_count-2))
+    set(newPivot): path.curve.set_point_position(path.curve.point_count-2, path.to_local(newPivot))
+
+var lastPoint: Vector3:
+    get: return lastPoint
+    set(newPoint):
+        lastPoint = newPoint
+        path.curve.set_point_position(path.curve.point_count-1, path.to_local(newPoint))
+        lastSegment = newPoint - pivotPoint
+        lastSegmentLength = lastSegment.length()
+        lastSegmentDir = lastSegment / lastSegmentLength
+
+var lastPointBelowAnchor: bool:
+    get: return lastPoint.y < pivotPoint.y
+
 var length: float:
     get: return _cachedLengthToPivot + lastSegmentLength
 
@@ -19,11 +36,6 @@ func _ready() -> void:
     # build segment shapes for every segment on path
     for nextSegmentIndex in path.curve.point_count-1:
         pass
-
-func update_last_segment_length() -> void:
-    lastSegment = path.to_global(path.curve.get_point_position(path.curve.point_count-1)) - path.to_global(path.curve.get_point_position(path.curve.point_count-2))
-    lastSegmentLength = lastSegment.length()
-    lastSegmentDir = lastSegment / lastSegmentLength
 
 func update_cached_length() -> void:
     _cachedLengthToPivot = 0.0
