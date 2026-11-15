@@ -22,7 +22,7 @@ var lastPoint: Vector3:
         lastSegmentLength = lastSegment.length()
         lastSegmentDir = lastSegment / lastSegmentLength
 
-var lastPointBelowAnchor: bool:
+var lastPointBelowPivot: bool:
     get: return lastPoint.y < pivotPoint.y
 
 var length: float:
