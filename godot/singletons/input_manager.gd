@@ -73,6 +73,12 @@ func _input(event: InputEvent) -> void:
         else:
             capture_mouse()
         eventHandled = true
+    elif (event.is_action_pressed("debug_pause")):
+        if get_tree().paused:
+            get_tree().paused = false
+        else:
+            get_tree().paused = true
+        eventHandled = true
     if (eventHandled):
         get_tree().root.set_input_as_handled()
 

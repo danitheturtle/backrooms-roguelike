@@ -12,7 +12,7 @@ DONE - 3 - Player-placed anchor point with rope ammo. Use up rope ammo as the pl
 
 DONE - 4 - Add a target-able knot object for pick up and placement. No collision yet, just straight line logic. The rope should constrain player movement to its length even under gravity. Player should be able to swing back and forth
 
-5 - alternate locomotion when on rope. two modes: extending and swinging. When extending, movement past the end of the rope is clamped to a rope speed. That desired movement should exclude gravity when calculating.
+DONE - 5 - alternate locomotion when on rope. two modes: extending and swinging. When extending, movement past the end of the rope is clamped to a rope speed. That desired movement should exclude gravity when calculating.
 
 6 - render the rope and give it colliders along full length. only let the player attach while next to it. unattaching leaves the rope in place
 

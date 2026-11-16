@@ -182,7 +182,7 @@ func remove_dir_recursive(_dirPath: String) -> Error:
 #region Debug Drawing - designed to be called every frame
 var drawn_lines: Dictionary[StringName, MeshInstance3D] = {}
 ## Draws a debug line from start to end in worldspace using a capsule mesh
-func draw_line(_id: StringName, _start: Vector3, _end: Vector3, _color: Color) -> void:
+func draw_line(_id: StringName, _start: Vector3, _end: Vector3, _color: Color, _radius: float = 0.01) -> void:
     if !OS.is_debug_build(): return
     var start_to_end: Vector3 = _end - _start
     var length: float = start_to_end.length()
@@ -195,10 +195,12 @@ func draw_line(_id: StringName, _start: Vector3, _end: Vector3, _color: Color) -
         new_line.transform.basis.y = dir
         new_line.mesh = CapsuleMesh.new()
         new_line.mesh.radial_segments = 8
-        new_line.mesh.radius = 0.01
+        new_line.mesh.radius = _radius
         new_line.mesh.height = length
         new_line.material_override = StandardMaterial3D.new()
         new_line.material_override.albedo_color = _color
+        new_line.material_override.emission_enabled = true
+        new_line.material_override.emission = _color
         drawn_lines.set(_id, new_line)
         get_tree().root.add_child(new_line)
     else:
@@ -209,7 +211,7 @@ func draw_line(_id: StringName, _start: Vector3, _end: Vector3, _color: Color) -
         modified_line.material_override.albedo_color = _color
 
 ## Wrapper method for draw_line. Draws line from _pos to _pos + _vector
-func draw_vector(_id: StringName, _pos: Vector3, _vector: Vector3, _color: Color = Color.AQUA) -> void:
+func draw_vector(_id: StringName, _pos: Vector3, _vector: Vector3, _color: Color = Color.AQUA, _radius: float = 0.001) -> void:
     if !OS.is_debug_build(): return
     draw_line(_id, _pos, _pos + _vector, _color)
 
@@ -225,6 +227,8 @@ func draw_point(_id: StringName, _pos: Vector3, _color: Color = Color.AQUA, _rad
         new_point.mesh.height = _radius * 2.0
         new_point.material_override = StandardMaterial3D.new()
         new_point.material_override.albedo_color = _color
+        new_point.material_override.emission_enabled = true
+        new_point.material_override.emission = _color
         drawn_points.set(_id, new_point)
         get_tree().root.add_child(new_point)
     else:
