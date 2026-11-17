@@ -11,7 +11,7 @@ var ropeRef: Rope
 ## tracks whether this is the active action on the action wheel
 var ropeActionActive: bool = true
 ## player's carried rope ammo
-var ammo: float = 15.0
+var ammo: float = 5.0
 ## track the toggle state of adjusting rope length while climbing or just swinging
 var ropeExtensionLocked: bool = false
 
@@ -24,6 +24,7 @@ func get_active() -> bool:
 
 func reinit() -> void:
     ropeRef = null
+    ropeExtensionLocked = false
     ropeActionActive = true # TODO action wheel shit
 
 func can_act() -> bool:
@@ -53,6 +54,51 @@ func start_action() -> void:
     targetLength = lengthOnAttach
     ropeExtensionLocked = false
 
+# method 1. simpler but causes float drift. try to get working using lengthOnAttach
+#func process_action(_delta: float) -> void:
+    #if !active: return
+    #ropeRef.lastPoint = get_harness_position()
+    #ammo = ammoOnAttach - (ropeRef.length - lengthOnAttach)
+    #p.velocity = Vector3(0.0,p.velocity.y,0.0)
+    #
+    ## get velocity from player input
+    #var velocityFromInput: Vector3 = Vector3.ZERO
+    #if ropeExtensionLocked || !ropeRef.lastPointBelowPivot:
+        ## for now this is mostly a copy of default movement
+        ## TODO put default movement in move_behavior and create new swinging movement here when player is dangling
+        #velocityFromInput = Vector3(p.basis.x * p.moveDir.x + p.basis.z * p.moveDir.y).limit_length() * p.CLIMB_SPEED
+    #elif !ropeExtensionLocked:
+        ## because y velocity is preserved frame to frame, this accelerates very quickly. clamp velocity along rope dir
+        #if p.moveDir.y < 0.0:
+            #velocityFromInput += -ropeRef.lastSegmentDir
+        #elif p.moveDir.y > 0.0:
+            #velocityFromInput += ropeRef.lastSegmentDir
+        #velocityFromInput += Vector3(p.basis.x * p.moveDir.x).limit_length() * p.CLIMB_SPEED
+    #p.velocity += velocityFromInput
+    #
+    ## apply tangent velocity that acts as a centering force if the player is below the pivot
+    #var tangentAcceleration: Vector3 = Vector3.ZERO
+    #if ropeRef.lastPointBelowPivot && !pb.jump.onFloorLastFrame:
+        #var angleFromGravityVector = acos(ropeRef.lastSegmentDir.dot(Const.GRAVITY_VECTOR))
+        #var tangentDir = ropeRef.lastSegmentDir.rotated(Const.GRAVITY_VECTOR.cross(ropeRef.lastSegmentDir).normalized(), deg_to_rad(-90))
+        #tangentAcceleration = tangentDir * Const.GRAVITY * sin(angleFromGravityVector) * _delta * p.ROPE_TANGENT_GRAVITY_MULTIPLIER
+    #p.velocity += tangentAcceleration
+    #
+    #var scaledClimbSpeed: float = 0.0 if ropeExtensionLocked else p.CLIMB_SPEED * p.moveDir.y
+    #var speedOnRopeAxis: float = p.velocity.dot(ropeRef.lastSegmentDir)
+    #
+    ## limit length based on ammo
+    #var maxLength = lengthOnAttach + ammoOnAttach
+    #var nextLength = ropeRef.length + speedOnRopeAxis * _delta
+    #if nextLength > maxLength:
+        #speedOnRopeAxis = (nextLength - maxLength) / _delta
+    #elif nextLength < 0.0:
+        #speedOnRopeAxis = -ropeRef.length
+    #
+    #if ropeRef.lastPointBelowPivot && abs(speedOnRopeAxis) > abs(scaledClimbSpeed):
+        #p.velocity += -ropeRef.lastSegmentDir * (speedOnRopeAxis - scaledClimbSpeed)
+
+# method 2. dirty but consistent
 func process_action(_delta: float) -> void:
     if !active: return
     ropeRef.lastPoint = get_harness_position()
@@ -95,23 +141,23 @@ func process_action(_delta: float) -> void:
         # velocity doesn't use _delta so don't use here
         targetLength += scaledClimbSpeed
     
-    # clamp upwards velocity
-    var upwardsClamp: Vector3 = Vector3.ZERO
+    # clamp velocity towards rope. unlike moving away, player can always reel rope in
+    var towardsPivotClamp: Vector3 = Vector3.ZERO
     if ropeRef.lastPointBelowPivot && speedAgainstRopeAxis > scaledClimbSpeed:
-        upwardsClamp = (speedAgainstRopeAxis - scaledClimbSpeed) * ropeRef.lastSegmentDir
-    p.velocity += upwardsClamp
+        towardsPivotClamp = (speedAgainstRopeAxis - scaledClimbSpeed) * ropeRef.lastSegmentDir
+    p.velocity += towardsPivotClamp
     
     # if velocity would take player past the rope length, keep them at the end
-    var downwardsClamp: Vector3 = Vector3.ZERO
+    var awayFromPivotClamp: Vector3 = Vector3.ZERO
     var nextLength: float = ropeRef.length + speedOnRopeAxis
     if nextLength > targetLength:
-        downwardsClamp = -ropeRef.lastSegmentDir * (nextLength - targetLength)
-    p.velocity += downwardsClamp
+        awayFromPivotClamp = -ropeRef.lastSegmentDir * (nextLength - targetLength)
+    p.velocity += awayFromPivotClamp
     #Utils.draw_vector("targetLength", ropeRef.pivotPoint, ropeRef.lastSegmentDir * targetLength, Color.ORANGE, 0.0001)
     #Utils.draw_vector("inputVelocity", get_harness_position(), velocityFromInput, Color.BLUE, 0.001)
     #Utils.draw_vector("tangentAcceleration", get_harness_position(), tangentAcceleration, Color.YELLOW, 0.001)
-    #Utils.draw_vector("upwardsClamp", get_harness_position(), upwardsClamp, Color.RED, 0.0015)
-    #Utils.draw_vector("downwardsClamp", get_harness_position(), downwardsClamp, Color.GREEN, 0.0015)
+    #Utils.draw_vector("towardsPivotClamp", get_harness_position(), towardsPivotClamp, Color.RED, 0.0015)
+    #Utils.draw_vector("awayFromPivotClamp", get_harness_position(), awayFromPivotClamp, Color.GREEN, 0.0015)
     #Utils.draw_vector("playerVelocity", get_harness_position(), p.velocity, Color.HOT_PINK, 0.0005)
 
 func stop_action() -> void:
