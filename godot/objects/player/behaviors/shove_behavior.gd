@@ -1,7 +1,7 @@
 class_name ShoveBehavior
 extends PlayerBehavior
 
-const cannotTransitionFrom: Array[StringName] = [&"climb", &"vault"]
+const cannotTransitionFrom: Array[StringName] = [&"climb", &"rope", &"vault"]
 
 func can_act() -> bool:
     return pb.none(cannotTransitionFrom)

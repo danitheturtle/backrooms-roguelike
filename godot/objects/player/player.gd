@@ -361,7 +361,8 @@ func handle_key_input(event: InputEvent ) -> void:
         sprintTimer.start()
         if (b.climb.active):
             b.climb.stop_action()
-        # TODO standing up this quickly is jarring. fix with tweens 
+        if (b.rope.active):
+            b.rope.stop_action()
         if b.crawl.active && b.crouch.can_act():
             b.crouch.start_action()
         if (b.sprint.can_act()):

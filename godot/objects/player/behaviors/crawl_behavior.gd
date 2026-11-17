@@ -1,7 +1,7 @@
 class_name CrawlBehavior
 extends PlayerBehavior
 
-const cannotTransitionFrom: Array[StringName] = [&"jump", &"vault", &"squeeze", &"sprint", &"climb"]
+const cannotTransitionFrom: Array[StringName] = [&"jump", &"vault", &"squeeze", &"sprint", &"climb", &"rope"]
 const mutuallyExclusiveWith: Array[StringName] = [&"stand", &"grab", &"drag", &"crouch", &"film_camera"]
 
 func can_act() -> bool:

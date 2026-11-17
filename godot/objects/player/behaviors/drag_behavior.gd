@@ -1,7 +1,7 @@
 class_name DragBehavior
 extends PlayerBehavior
 
-const cannotTransitionFrom: Array[StringName] = [&"grab", &"jump", &"vault", &"crouch", &"crawl", &"squeeze", &"sprint", &"climb", &"film_camera"]
+const cannotTransitionFrom: Array[StringName] = [&"grab", &"jump", &"vault", &"crouch", &"crawl", &"squeeze", &"sprint", &"climb", &"rope", &"film_camera"]
 const mutuallyExclusiveWith: Array[StringName] = [&"target", &"flashlight"]
 
 var draggedRef: Holdable

@@ -1,7 +1,7 @@
 class_name UnstuckBehavior
 extends PlayerBehavior
 
-const cannotTransitionFrom: Array[StringName] = [&"vault", &"climb"]
+const cannotTransitionFrom: Array[StringName] = [&"vault", &"climb", &"rope"]
 
 var exceptedBodies: Dictionary[CollisionObject3D, bool]
 

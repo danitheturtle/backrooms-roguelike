@@ -2,7 +2,7 @@ class_name ClimbBehavior
 extends PlayerBehavior
 
 const cannotTransitionFrom: Array[StringName] = [&"film_camera", &"drag", &"squeeze", &"vault"]
-const mutuallyExclusiveWith: Array[StringName] = [&"flashlight", &"jump"]
+const mutuallyExclusiveWith: Array[StringName] = [&"flashlight", &"jump", &"rope"]
 
 # garunteed to be in climbable group, a pseudo-interface with shared methods. see obsidian docs
 var climbedRef: CollisionObject3D
@@ -39,14 +39,8 @@ func process_action(_delta: float) -> void:
     # climbing behavior based velocity
     if climbCurve != null && climbPath != null:
         var closestOffset = climbCurve.get_closest_offset(climbPath.to_local(p.global_position))
-        var offsetDelta: float = Const.QUARTER_VOXEL
-        # negative move dir should move player in direction they are looking
-        if !Utils.equalsf(p.moveDir.y, 0.0):
-            if p.camera.basis.z.dot(Vector3.DOWN) > -0.5:
-                if p.moveDir.y > 0.0: offsetDelta *= -1.0
-            else:
-                if p.moveDir.y < 0.0: offsetDelta *= -1.0
-        var nextPoint: Vector3 = climbPath.to_global(climbCurve.sample_baked(closestOffset + offsetDelta))
+        var offsetDelta: float = p.moveDir.y * Const.QUARTER_VOXEL
+        var nextPoint: Vector3 = climbPath.to_global(climbCurve.sample_baked(closestOffset - offsetDelta))
         var toNextPoint: Vector3 = nextPoint - p.global_position
         var distToNextPoint: float = toNextPoint.length()
         if Utils.equalsf(0.0, distToNextPoint, 0.02):

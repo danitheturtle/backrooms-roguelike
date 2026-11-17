@@ -14,7 +14,7 @@ DONE - 4 - Add a target-able knot object for pick up and placement. No collision
 
 DONE - 5 - alternate locomotion when on rope. two modes: extending and swinging. When extending, movement past the end of the rope is clamped to a rope speed. That desired movement should exclude gravity when calculating.
 
-WIP - 6 - render the rope and give it colliders along full length. only let the player attach while next to it. unattaching leaves the rope in place
+DONE - 6 - render the rope and give it colliders along full length. only let the player attach while next to it. unattaching leaves the rope in place
 
 7 - Shapecast between rope verts. If there's a collision, split the rope at the collision and offset the new vert in collision normal direction. Repeat until no collisions for rope wrapping. Safeguard against placing points too close together - minimum spacing, per-tick limits, max point count. 
 

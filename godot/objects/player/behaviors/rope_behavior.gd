@@ -59,8 +59,7 @@ func start_action() -> void:
 # method 1. simpler but causes float drift. try to get working using lengthOnAttach
 func process_action(_delta: float) -> void:
     if !active: return
-    var harnessPosition: Vector3 = get_harness_position()    
-    ropeRef.lastPoint = harnessPosition
+    ropeRef.lastPoint = get_harness_position()
     ammo = ammoOnAttach - (ropeRef.length - lengthOnAttach)
     p.velocity = Vector3(0.0,p.velocity.y,0.0)
     var velocityFromInput: Vector3 = get_velocity_from_input()
@@ -110,7 +109,7 @@ func get_harness_position() -> Vector3:
 ## get rope climb velocity from player input
 func get_velocity_from_input() -> Vector3:
     var velocityFromInput: Vector3 = Vector3.ZERO
-    if ropeExtensionLocked || !ropeRef.lastPointBelowPivot:
+    if ropeExtensionLocked || !pb.jump.onFloorLastFrame:
         # for now this is mostly a copy of default movement
         # TODO put default movement in move_behavior and create new swinging movement here when player is dangling
         velocityFromInput = Vector3(p.basis.x * p.moveDir.x + p.basis.z * p.moveDir.y).limit_length() * p.CLIMB_SPEED

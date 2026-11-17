@@ -1,7 +1,7 @@
 class_name SqueezeBehavior
 extends PlayerBehavior
 
-const cannotTransitionFrom: Array[StringName] = [&"crawl", &"vault", &"climb", &"drag", &"grab"]
+const cannotTransitionFrom: Array[StringName] = [&"crawl", &"vault", &"climb", &"rope", &"drag", &"grab"]
 const mutuallyExclusiveWith: Array[StringName] = [&"stand", &"sprint", &"crouch"]
 
 func can_act() -> bool:
