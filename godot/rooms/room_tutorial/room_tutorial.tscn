@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dxun115m4alsw" path="res://rooms/room_base.tscn" id="1_xl1nk"]
 [ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_jyo2m"]
-[ext_resource type="Resource" uid="uid://d044v76gh7awq" path="res://objects/rope/defs/definition_0.tres" id="3_ta4gn"]
+[ext_resource type="Resource" uid="uid://c7xsynwktxuye" path="res://rooms/room_tutorial/defs/definition_0.tres" id="3_30s20"]
 [ext_resource type="PackedScene" uid="uid://b500l15l80jvq" path="res://objects/colliders/floor_static_body.tscn" id="5_2vefq"]
 [ext_resource type="PackedScene" uid="uid://dgwmutwf473uv" path="res://objects/colliders/ceiling_static_body.tscn" id="6_7xnmx"]
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="6_py2y4"]
@@ -1060,19 +1060,6 @@ size = Vector3(0.22500001, 0.125, 1.225)
 resource_local_to_scene = true
 size = Vector3(0.22500001, 0.125, 1.225)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_yk7cw"]
-resource_local_to_scene = true
-radius = 0.1
-
-[sub_resource type="Curve3D" id="Curve3D_xdc3e"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
-"tilts": PackedFloat32Array(0)
-}
-point_count = 1
-up_vector_enabled = false
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_hppt7"]
 resource_local_to_scene = true
 size = Vector3(62.25, 20.25, 80.25)
@@ -1231,7 +1218,7 @@ albedo_color = Color(0.8765005, 0, 0.06118556, 1)
 
 [node name="RoomTutorial" unique_id=1900576414 instance=ExtResource("1_xl1nk")]
 uniqueName = &"tutorial"
-definitions = Array[ExtResource("2_jyo2m")]([ExtResource("3_ta4gn")])
+definitions = Array[ExtResource("2_jyo2m")]([ExtResource("3_30s20")])
 
 [node name="FloorStaticBody" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="0" unique_id=446596967 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 21.5)
@@ -2744,12 +2731,6 @@ physics_material_override = null
 [node name="Rope" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="25" unique_id=597474514 instance=ExtResource("22_ta4gn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.246113, 4.6729674, 45.75)
 
-[node name="SphereCollider" parent="Props/Rope/RopeAnchor" parent_id_path=PackedInt32Array(597474514, 1304452007) index="1" unique_id=653304792]
-shape = SubResource("SphereShape3D_yk7cw")
-
-[node name="RopePath" parent="Props/Rope" index="2" unique_id=980612944]
-curve = SubResource("Curve3D_xdc3e")
-
 [node name="LadderFreestanding" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="26" unique_id=500821418 instance=ExtResource("9_3reo8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.25, -6.5, 46)
 
@@ -3066,7 +3047,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 4.75, 65.25)
 material_override = SubResource("StandardMaterial3D_5q0ne")
 
 [editable path="Props/WoodChair01"]
-[editable path="Props/Rope"]
 [editable path="LevelMeshes/ResizeableWall"]
 [editable path="LevelMeshes/ResizableCeiling"]
 [editable path="LevelMeshes/ResizeableWall2"]

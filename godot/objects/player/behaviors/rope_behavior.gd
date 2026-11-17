@@ -66,13 +66,11 @@ func process_action(_delta: float) -> void:
     ropeRef.lastPoint = harnessPosition
     ammo = ammoOnAttach - (ropeRef.length - lengthOnAttach)
     p.velocity = Vector3(0.0,p.velocity.y,0.0)
-    
     var velocityFromInput: Vector3 = get_velocity_from_input()
     p.velocity += velocityFromInput
-    
     var tangentAcceleration: Vector3 = get_tangent_acceleration(_delta)
     p.velocity += tangentAcceleration
-    
+    # 
     var scaledClimbSpeed: float = 0.0
     if !ropeExtensionLocked:
         scaledClimbSpeed = p.CLIMB_SPEED * velocityFromInput.normalized().dot(ropeRef.pivotArmDir)
@@ -122,9 +120,9 @@ func get_velocity_from_input() -> Vector3:
     elif !ropeExtensionLocked:
         # because y velocity is preserved frame to frame, this accelerates very quickly. clamp velocity along rope dir
         if p.moveDir.y < 0.0:
-            velocityFromInput += -ropeRef.pivotArmDir * p.CLIMB_SPEED
+            velocityFromInput += -ropeRef.pivotArmDir * p.moveDir.y * p.CLIMB_SPEED
         elif p.moveDir.y > 0.0:
-            velocityFromInput += ropeRef.pivotArmDir * p.CLIMB_SPEED
+            velocityFromInput += ropeRef.pivotArmDir * p.moveDir.y * p.CLIMB_SPEED
         velocityFromInput += Vector3(p.basis.x * p.moveDir.x).limit_length() * p.CLIMB_SPEED
     return velocityFromInput
 
