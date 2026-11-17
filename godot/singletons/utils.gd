@@ -192,7 +192,7 @@ func draw_line(_id: StringName, _start: Vector3, _end: Vector3, _color: Color, _
     if !drawn_lines.has(_id):
         var new_line: MeshInstance3D = MeshInstance3D.new()
         new_line.transform.origin = middle
-        new_line.transform.basis.y = dir
+        new_line.quaternion = Quaternion(Vector3.UP, dir)
         new_line.mesh = CapsuleMesh.new()
         new_line.mesh.radial_segments = 8
         new_line.mesh.radius = _radius

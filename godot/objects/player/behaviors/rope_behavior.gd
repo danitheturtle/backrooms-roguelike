@@ -2,7 +2,7 @@ class_name RopeBehavior
 extends PlayerBehavior
 
 const RopeRes = preload("res://objects/rope/rope.tscn")
-const MAX_TARGET_DIST_FROM_PLAYER: float = Const.VOXEL
+const MAX_TARGET_DIST_FROM_PLAYER: float = Const.HALF_VOXEL
 
 const cannotTransitionFrom: Array[StringName] = [&"climb", &"crawl", &"film_camera", &"drag", &"squeeze", &"vault"]
 const mutuallyExclusiveWith: Array[StringName] = [&"flashlight", &"jump", &"crouch"]
@@ -43,12 +43,9 @@ func start_action() -> void:
     ropeRef = p.adjacentRef
     var ropeLengthBeforePickup: float = ropeRef.length
     var closestPointIndex: int = ropeRef.get_nearest_control_point(get_harness_position())
-    # never get the first point since its the anchor
-    if closestPointIndex == 0:
-        closestPointIndex = 1
     # cut rope at the control point closest to the player. refund ammo excess
     if ropeRef.path.curve.point_count-1 > closestPointIndex:
-        for i: int in range(ropeRef.path.curve.point_count, closestPointIndex + 1):
+        for i: int in range(ropeRef.path.curve.point_count-1, closestPointIndex + 1, -1):
             ropeRef.path.curve.remove_point(i)
     ropeRef.lastPoint = get_harness_position()
     ropeRef.update_cached_length()
@@ -119,9 +116,7 @@ func get_velocity_from_input() -> Vector3:
         velocityFromInput = Vector3(p.basis.x * p.moveDir.x + p.basis.z * p.moveDir.y).limit_length() * p.CLIMB_SPEED
     elif !ropeExtensionLocked:
         # because y velocity is preserved frame to frame, this accelerates very quickly. clamp velocity along rope dir
-        if p.moveDir.y < 0.0:
-            velocityFromInput += -ropeRef.pivotArmDir * p.moveDir.y * p.CLIMB_SPEED
-        elif p.moveDir.y > 0.0:
+        if p.moveDir.y != 0.0:
             velocityFromInput += ropeRef.pivotArmDir * p.moveDir.y * p.CLIMB_SPEED
         velocityFromInput += Vector3(p.basis.x * p.moveDir.x).limit_length() * p.CLIMB_SPEED
     return velocityFromInput
