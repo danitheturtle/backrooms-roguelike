@@ -56,17 +56,20 @@ func start_action() -> void:
     maxLength = lengthOnAttach + ammoOnAttach
     ropeExtensionLocked = false
 
-# method 1. simpler but causes float drift. try to get working using lengthOnAttach
 func process_action(_delta: float) -> void:
     if !active: return
+    if pb.jump.onFloorLastFrame:
+        ropeExtensionLocked = false
     ropeRef.lastPoint = get_harness_position()
     ammo = ammoOnAttach - (ropeRef.length - lengthOnAttach)
     p.velocity = Vector3(0.0,p.velocity.y,0.0)
+    
     var velocityFromInput: Vector3 = get_velocity_from_input()
     p.velocity += velocityFromInput
+    
     var tangentAcceleration: Vector3 = get_tangent_acceleration(_delta)
     p.velocity += tangentAcceleration
-    # 
+    
     var scaledClimbSpeed: float = 0.0
     if !ropeExtensionLocked:
         scaledClimbSpeed = p.CLIMB_SPEED * velocityFromInput.normalized().dot(ropeRef.pivotArmDir)
@@ -100,6 +103,7 @@ func place_new_rope(_anchorRef: PhysicsBody3D, _offset: Vector3) -> Rope:
     return newRope
 
 func toggle_extension_mode() -> void:
+    if pb.jump.onFloorLastFrame: return
     ropeExtensionLocked = !ropeExtensionLocked
 
 ## Harness is halfway up player collision shape
@@ -109,15 +113,21 @@ func get_harness_position() -> Vector3:
 ## get rope climb velocity from player input
 func get_velocity_from_input() -> Vector3:
     var velocityFromInput: Vector3 = Vector3.ZERO
-    if ropeExtensionLocked || !pb.jump.onFloorLastFrame:
-        # for now this is mostly a copy of default movement
+    if ropeExtensionLocked && !pb.jump.onFloorLastFrame:
+        # for now this is mostly a copy of default movement, but it should be swinging
         # TODO put default movement in move_behavior and create new swinging movement here when player is dangling
         velocityFromInput = Vector3(p.basis.x * p.moveDir.x + p.basis.z * p.moveDir.y).limit_length() * p.CLIMB_SPEED
-    elif !ropeExtensionLocked:
-        # because y velocity is preserved frame to frame, this accelerates very quickly. clamp velocity along rope dir
-        if p.moveDir.y != 0.0:
-            velocityFromInput += ropeRef.pivotArmDir * p.moveDir.y * p.CLIMB_SPEED
-        velocityFromInput += Vector3(p.basis.x * p.moveDir.x).limit_length() * p.CLIMB_SPEED
+    else:
+        var yMoveComponent: Vector3 = Vector3.ZERO
+        var xMoveComponent: Vector3 = Vector3(p.basis.x * p.moveDir.x).limit_length() * p.CLIMB_SPEED
+        var ropeDirMoveComponent: Vector3 = Vector3.ZERO
+        if !Utils.equalsf(p.moveDir.y, 0.0):
+            ropeDirMoveComponent = ropeRef.pivotArmDir * p.moveDir.y * p.CLIMB_SPEED
+            if pb.jump.onFloorLastFrame:
+                var zDotRopeDir = p.basis.z.dot(ropeRef.pivotArmDir)
+                ropeDirMoveComponent *= zDotRopeDir
+                yMoveComponent = Vector3(p.basis.z * p.moveDir.y) * p.CLIMB_SPEED * sin(acos(zDotRopeDir))
+        velocityFromInput += xMoveComponent + yMoveComponent + ropeDirMoveComponent
     return velocityFromInput
 
 ## Tangent acceleration that acts as a centering force while the player is below the pivot

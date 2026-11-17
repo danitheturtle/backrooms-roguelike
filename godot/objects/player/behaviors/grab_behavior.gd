@@ -1,7 +1,7 @@
 class_name GrabBehavior
 extends PlayerBehavior
 
-const cannotTransitionFrom: Array[StringName] = [&"drag", &"jump", &"vault", &"crouch", &"crawl", &"squeeze", &"sprint", &"climb", &"rope", &"film_camera"]
+const cannotTransitionFrom: Array[StringName] = [&"drag", &"jump", &"vault", &"crouch", &"crawl", &"squeeze", &"sprint", &"climb",&"film_camera"]
 const mutuallyExclusiveWith: Array[StringName] = [&"target", &"flashlight"]
 
 var grabArm: SpringArm3D
