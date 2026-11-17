@@ -5,9 +5,9 @@ extends Area3D
 @export var path: Path3D
 
 var _cachedLengthToPivot: float = 0.0
-var lastSegment: Vector3 = Vector3.ZERO
-var lastSegmentLength: float = 0.0
-var lastSegmentDir: Vector3 = Vector3.ZERO
+var pivotArm: Vector3 = Vector3.ZERO
+var pivotArmLength: float = 0.0
+var pivotArmDir: Vector3 = Vector3.ZERO
 
 var pivotPoint: Vector3:
     get: return path.to_global(path.curve.get_point_position(path.curve.point_count-2))
@@ -18,15 +18,15 @@ var lastPoint: Vector3:
     set(newPoint):
         lastPoint = newPoint
         path.curve.set_point_position(path.curve.point_count-1, path.to_local(newPoint))
-        lastSegment = newPoint - pivotPoint
-        lastSegmentLength = lastSegment.length()
-        lastSegmentDir = lastSegment / lastSegmentLength
+        pivotArm = newPoint - pivotPoint
+        pivotArmLength = pivotArm.length()
+        pivotArmDir = pivotArm / pivotArmLength
 
 var lastPointBelowPivot: bool:
     get: return lastPoint.y < pivotPoint.y
 
 var length: float:
-    get: return _cachedLengthToPivot + lastSegmentLength
+    get: return _cachedLengthToPivot + pivotArmLength
 
 func _ready() -> void:
     # newly created curve has no points

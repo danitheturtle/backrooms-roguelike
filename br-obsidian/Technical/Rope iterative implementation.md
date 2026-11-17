@@ -12,7 +12,7 @@ DONE - 3 - Player-placed anchor point with rope ammo. Use up rope ammo as the pl
 
 DONE - 4 - Add a target-able knot object for pick up and placement. No collision yet, just straight line logic. The rope should constrain player movement to its length even under gravity. Player should be able to swing back and forth
 
-DONE - 5 - alternate locomotion when on rope. two modes: extending and swinging. When extending, movement past the end of the rope is clamped to a rope speed. That desired movement should exclude gravity when calculating.
+WIP - 5 - alternate locomotion when on rope. two modes: extending and swinging. When extending, movement past the end of the rope is clamped to a rope speed. That desired movement should exclude gravity when calculating.
 
 6 - render the rope and give it colliders along full length. only let the player attach while next to it. unattaching leaves the rope in place
 
@@ -20,10 +20,9 @@ DONE - 5 - alternate locomotion when on rope. two modes: extending and swinging.
 
 8 - when player moves rope, check the last 3 vertices to see if they can be unwrapped every other frame.
 
-9 - simulate the last vert while the player is not touching it. maybe even add a few extra rope segments with physics. Simplest implementation would be a constrained sphere collider attached to the end.
-
 
 design ideas after we're done:
 - pity rope. if the last rope you place has less than 5m, it can extend to 5m. it still only returns the limited ammo used to create it
 - instead of picking up entire slack rope, insert new path control point close to player and shorten end of rope by amount player lengthens it at sub-section
+- simulate the last vert while the player is not touching it. maybe even add a few extra rope segments with physics. Simplest implementation would be a constrained sphere collider attached to the end.
 - give player inertia while on pendulum to give swinging better gamefeel
