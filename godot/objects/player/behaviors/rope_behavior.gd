@@ -11,7 +11,7 @@ var ropeRef: Rope
 ## tracks whether this is the active action on the action wheel
 var ropeActionActive: bool = true
 ## player's carried rope ammo
-var ammo: float = 12.0
+var ammo: float = 15.0
 ## track the toggle state of adjusting rope length while climbing or just swinging
 var ropeExtensionLocked: bool = false
 
@@ -63,9 +63,11 @@ func process_action(_delta: float) -> void:
     if pb.jump.onFloorLastFrame:
         ropeExtensionLocked = false
     ropeRef.lastPoint = get_harness_position()
-    var castResult: Dictionary = ropeRef.shapecast_last_segment()
+    var castResult: Dictionary = ropeRef.shapecast_segment(ropeRef.pivotIndex)
     if !castResult.is_empty():
         ropeRef.wrap_around_geometry(castResult, ropeRef.lastIndex)
+    else:
+        ropeRef.try_unwrap_point(ropeRef.pivotIndex)
     ammo = ammoOnAttach - (ropeRef.length - lengthOnAttach)
     p.velocity = Vector3(0.0,p.velocity.y,0.0)
     

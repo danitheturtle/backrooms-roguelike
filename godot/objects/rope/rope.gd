@@ -2,6 +2,7 @@ class_name Rope
 extends Area3D
 
 const MIN_CONTROL_POINT_GAP: float = 0.03
+const minControlPointGapSq: float = MIN_CONTROL_POINT_GAP * MIN_CONTROL_POINT_GAP
 
 @export var radius: float = 0.01
 @export_group("Refs")
@@ -16,6 +17,7 @@ var pivotArmLength: float = 0.0
 var pivotArmDir: Vector3 = Vector3.ZERO
 var segmentColliders: Array[CollisionShape3D] = []
 var segmentMeshes: Array[MeshInstance3D] = []
+var unwrapTestShape: Shape3D
 
 var diameter: float:
     get: return radius * 2.0
@@ -57,6 +59,9 @@ func _ready() -> void:
     firstSegmentCollider.shape.radius = radius
     firstSegmentMesh.mesh.height = diameter
     firstSegmentMesh.mesh.radius = radius
+    unwrapTestShape = CapsuleShape3D.new()
+    unwrapTestShape.height = diameter
+    unwrapTestShape.radius = radius
     update_all_segment_shapes()
 
 func _physics_process(delta: float) -> void:
@@ -100,8 +105,9 @@ func update_segment_shape(_index: int) -> void:
     var segmentPos2: Vector3 = path.curve.get_point_position(_index + 1)
     var segmentVector: Vector3 = segmentPos2 - segmentPos1
     var segmentOrigin = segmentPos1 + segmentVector / 2.0
-    var segmentLength: float = segmentVector.length()
-    if segmentLength <= 0.001: return
+    var segmentLengthSq: float = segmentVector.length_squared()
+    if segmentLengthSq < MIN_CONTROL_POINT_GAP * MIN_CONTROL_POINT_GAP: return
+    var segmentLength: float = sqrt(segmentLengthSq)
     var segmentQuaternion: Quaternion = Quaternion(Vector3.UP, segmentVector / segmentLength)
     segmentColliders[_index].transform.origin = segmentOrigin
     segmentMeshes[_index].transform.origin = segmentOrigin
@@ -124,15 +130,12 @@ func shapecast_segment(_index: int) -> Dictionary:
     var segmentQueryResult := spaceState.get_rest_info(segmentQuery)
     return segmentQueryResult
 
-func shapecast_last_segment() -> Dictionary:
-    return shapecast_segment(pivotIndex)
-
 func wrap_around_geometry(_collision: Dictionary, _insertBeforeIndex: int) -> void:
     var previousPoint = path.to_global(path.curve.get_point_position(_insertBeforeIndex-1))
     var nextPoint = path.to_global(path.curve.get_point_position(_insertBeforeIndex))
     var newControlPoint: Vector3 = path.to_local(_collision.point + _collision.normal * diameter)
-    var quarterVoxelSq: float = MIN_CONTROL_POINT_GAP * MIN_CONTROL_POINT_GAP
-    if (previousPoint - _collision.point).length_squared() < quarterVoxelSq || (nextPoint - _collision.point).length_squared() < quarterVoxelSq:
+    # don't insert new point if the segment would be too short
+    if (previousPoint - _collision.point).length_squared() < minControlPointGapSq || (nextPoint - _collision.point).length_squared() < minControlPointGapSq:
         return
     path.curve.add_point(newControlPoint, Vector3.ZERO, Vector3.ZERO, _insertBeforeIndex)
     ensure_shape_for_segment(_insertBeforeIndex - 1)
@@ -140,6 +143,54 @@ func wrap_around_geometry(_collision: Dictionary, _insertBeforeIndex: int) -> vo
     ensure_shape_for_segment(_insertBeforeIndex)
     update_segment_shape(_insertBeforeIndex)
     update_cached_length()
+
+## shapecasts between next and previous points. if no collision, removes control point from curve
+func try_unwrap_point(_pointIndex: int) -> void:
+    if _pointIndex > pivotIndex || _pointIndex < 1: return
+    # TODO if either length is too close to current point, treat it as the same control point and decrement again
+    var currentPoint: Vector3 =path.curve.get_point_position(_pointIndex)
+    
+    var lengthSqToPrevious: float = 0.0
+    var decrementBy: int = 1
+    var previousPoint: Vector3 = Vector3.INF
+    while lengthSqToPrevious < minControlPointGapSq && _pointIndex-decrementBy >= 0:
+        previousPoint = path.curve.get_point_position(_pointIndex-decrementBy)
+        lengthSqToPrevious = (currentPoint - previousPoint).length_squared()
+        decrementBy -= 1
+    previousPoint = path.to_global(previousPoint)
+    if previousPoint == Vector3.INF: return
+    
+    #var nextPoint: Vector3 = path.to_global(path.curve.get_point_position(_pointIndex+1))
+    
+    var lengthSqToNext: float = 0.0
+    var incrementBy: int = 1
+    var nextPoint: Vector3 = Vector3.INF
+    while lengthSqToNext < minControlPointGapSq && _pointIndex+incrementBy <= lastIndex:
+        nextPoint = path.curve.get_point_position(_pointIndex+incrementBy)
+        lengthSqToNext = (currentPoint - previousPoint).length_squared()
+        incrementBy += 1
+    nextPoint = path.to_global(nextPoint)
+    if nextPoint == Vector3.INF: return
+    
+    var unwrapVector: Vector3 = nextPoint - previousPoint
+    var unwrapLengthSq: float = unwrapVector.length_squared()
+    if unwrapLengthSq < MIN_CONTROL_POINT_GAP * MIN_CONTROL_POINT_GAP: return
+    var unwrapLength: float = sqrt(unwrapLengthSq)
+    var unwrapDir: Vector3 = unwrapVector / unwrapLength
+    var spaceState = get_world_3d().direct_space_state
+    var unwrapQuery: PhysicsShapeQueryParameters3D = PhysicsShapeQueryParameters3D.new()
+    unwrapQuery.collision_mask = 0b00000000000000001111
+    unwrapQuery.exclude = [anchor]
+    unwrapQuery.shape = unwrapTestShape
+    unwrapQuery.shape.mid_height = unwrapLength
+    unwrapQuery.transform = Transform3D(Basis(Quaternion(Vector3.UP, unwrapDir)), previousPoint + unwrapVector / 2.0)
+    var unwrapQueryResult := spaceState.collide_shape(unwrapQuery)
+    if unwrapQueryResult.is_empty():
+        path.curve.remove_point(_pointIndex)
+        for i: int in range(_pointIndex-1, lastIndex):
+            update_segment_shape(i)
+        remove_excess_shapes()
+        update_cached_length()
 
 func get_nearest_control_point(_global_pos: Vector3) -> int:
     var nearestDistSq: float = 999999.0
