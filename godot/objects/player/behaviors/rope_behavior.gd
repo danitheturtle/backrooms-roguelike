@@ -118,7 +118,7 @@ func get_harness_position() -> Vector3:
 ## get rope climb velocity from player input
 func get_velocity_from_input() -> Vector3:
     var velocityFromInput: Vector3 = Vector3.ZERO
-    if ropeExtensionLocked && !pb.jump.onFloorLastFrame:
+    if ropeExtensionLocked && !pb.jump.onFloorLastFrame || !ropeRef.lastPointBelowPivot:
         # for now this is mostly a copy of default movement, but it should be swinging
         # TODO put default movement in move_behavior and create new swinging movement here when player is dangling
         velocityFromInput = Vector3(p.basis.x * p.moveDir.x + p.basis.z * p.moveDir.y).limit_length() * p.CLIMB_SPEED

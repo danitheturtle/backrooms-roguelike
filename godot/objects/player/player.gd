@@ -319,7 +319,7 @@ func handle_key_input(event: InputEvent ) -> void:
                 b.grab.start_action()
             elif b.drag.can_act():
                 b.drag.start_action()
-            else:
+            elif not b.target.ref is Holdable:
                 b.target.justInteracted = true
                 b.target.ref.interact_start(self)
         elif b.grab.active:

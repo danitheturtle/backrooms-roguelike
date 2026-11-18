@@ -1,10 +1,9 @@
 class_name Rope
 extends Area3D
 
-@export var radius: float = 0.01
-var diameter: float:
-    get: return radius * 2.0
+const MIN_CONTROL_POINT_GAP: float = 0.03
 
+@export var radius: float = 0.01
 @export_group("Refs")
 @export var anchor: RopeAnchor
 @export var path: Path3D
@@ -15,9 +14,11 @@ var _cachedLengthToPivot: float = 0.0
 var pivotArm: Vector3 = Vector3.ZERO
 var pivotArmLength: float = 0.0
 var pivotArmDir: Vector3 = Vector3.ZERO
-
 var segmentColliders: Array[CollisionShape3D] = []
 var segmentMeshes: Array[MeshInstance3D] = []
+
+var diameter: float:
+    get: return radius * 2.0
 
 var pointCount: int:
     get: return 0 if path == null || path.curve == null else path.curve.point_count
@@ -50,7 +51,7 @@ var length: float:
 
 func _ready() -> void:
     # newly created curve has no points
-    while pivotIndex:
+    while pointCount < 2:
         path.curve.add_point(Vector3.ZERO)
     firstSegmentCollider.shape.height = diameter
     firstSegmentCollider.shape.radius = radius
@@ -76,20 +77,23 @@ func update_all_segment_shapes() -> void:
     if segmentMeshes.size() == 0:
         segmentMeshes.append(firstSegmentMesh)
     for i: int in lastIndex:
-        if segmentColliders.size() - 1 < i:
-            var newShape = firstSegmentCollider.shape.duplicate()
-            var newCollider = firstSegmentCollider.duplicate()
-            newCollider.shape = newShape
-            segmentColliders.append(newCollider)
-            add_child(newCollider)
-        if segmentMeshes.size() - 1 < i:
-            var newMesh = firstSegmentMesh.mesh.duplicate()
-            var newMeshInstance = firstSegmentMesh.duplicate()
-            newMeshInstance.mesh = newMesh
-            segmentMeshes.append(newMeshInstance)
-            add_child(newMeshInstance)
+        ensure_shape_for_segment(i)
         update_segment_shape(i)
     remove_excess_shapes()
+
+func ensure_shape_for_segment(_index: int) -> void:
+    if segmentColliders.size() - 1 < _index:
+        var newShape = firstSegmentCollider.shape.duplicate()
+        var newCollider = firstSegmentCollider.duplicate()
+        newCollider.shape = newShape
+        segmentColliders.append(newCollider)
+        add_child(newCollider)
+    if segmentMeshes.size() - 1 < _index:
+        var newMesh = firstSegmentMesh.mesh.duplicate()
+        var newMeshInstance = firstSegmentMesh.duplicate()
+        newMeshInstance.mesh = newMesh
+        segmentMeshes.append(newMeshInstance)
+        add_child(newMeshInstance)
 
 func update_segment_shape(_index: int) -> void:
     var segmentPos1: Vector3 = path.curve.get_point_position(_index)
@@ -118,19 +122,23 @@ func shapecast_segment(_index: int) -> Dictionary:
     segmentQuery.shape = colliderForCast.shape
     segmentQuery.transform = Transform3D(colliderForCast.transform.basis, path.to_global(colliderForCast.transform.origin))
     var segmentQueryResult := spaceState.get_rest_info(segmentQuery)
-    if !segmentQueryResult.is_empty():
-        Utils.draw_vector("collisionNormal", segmentQueryResult.point, segmentQueryResult.normal, Color.RED)
     return segmentQueryResult
 
 func shapecast_last_segment() -> Dictionary:
     return shapecast_segment(pivotIndex)
 
 func wrap_around_geometry(_collision: Dictionary, _insertBeforeIndex: int) -> void:
-    # just change the curve based on collision info,
-    # then call update segment for all changed segments
-    # finally, recalculate cached length
-    var newControlPoint: Vector3 = _collision.point + _collision.normal * diameter
+    var previousPoint = path.to_global(path.curve.get_point_position(_insertBeforeIndex-1))
+    var nextPoint = path.to_global(path.curve.get_point_position(_insertBeforeIndex))
+    var newControlPoint: Vector3 = path.to_local(_collision.point + _collision.normal * diameter)
+    var quarterVoxelSq: float = MIN_CONTROL_POINT_GAP * MIN_CONTROL_POINT_GAP
+    if (previousPoint - _collision.point).length_squared() < quarterVoxelSq || (nextPoint - _collision.point).length_squared() < quarterVoxelSq:
+        return
     path.curve.add_point(newControlPoint, Vector3.ZERO, Vector3.ZERO, _insertBeforeIndex)
+    ensure_shape_for_segment(_insertBeforeIndex - 1)
+    update_segment_shape(_insertBeforeIndex - 1)
+    ensure_shape_for_segment(_insertBeforeIndex)
+    update_segment_shape(_insertBeforeIndex)
     update_cached_length()
 
 func get_nearest_control_point(_global_pos: Vector3) -> int:
