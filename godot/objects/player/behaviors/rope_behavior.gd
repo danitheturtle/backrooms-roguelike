@@ -41,13 +41,15 @@ func start_action() -> void:
     if active: return
     pb.stop(mutuallyExclusiveWith)
     ropeRef = p.adjacentRef
+    var harnessPosition: Vector3 = get_harness_position()
     var ropeLengthBeforePickup: float = ropeRef.length
-    var closestPointIndex: int = ropeRef.get_nearest_control_point(get_harness_position())
+    var closestPointIndex: int = ropeRef.get_nearest_control_point(harnessPosition)
     # cut rope at the control point closest to the player. refund ammo excess
     if ropeRef.path.curve.point_count-1 > closestPointIndex:
         for i: int in range(ropeRef.path.curve.point_count-1, closestPointIndex + 1, -1):
             ropeRef.path.curve.remove_point(i)
-    ropeRef.lastPoint = get_harness_position()
+    ropeRef.remove_excess_shapes()
+    ropeRef.lastPoint = harnessPosition
     ropeRef.update_cached_length()
     lengthOnAttach = ropeRef.length
     ammo += ropeLengthBeforePickup - lengthOnAttach
@@ -61,6 +63,9 @@ func process_action(_delta: float) -> void:
     if pb.jump.onFloorLastFrame:
         ropeExtensionLocked = false
     ropeRef.lastPoint = get_harness_position()
+    var castResult: Dictionary = ropeRef.shapecast_last_segment()
+    if !castResult.is_empty():
+        ropeRef.wrap_around_geometry(castResult, ropeRef.lastIndex)
     ammo = ammoOnAttach - (ropeRef.length - lengthOnAttach)
     p.velocity = Vector3(0.0,p.velocity.y,0.0)
     
@@ -122,6 +127,7 @@ func get_velocity_from_input() -> Vector3:
         var xMoveComponent: Vector3 = Vector3(p.basis.x * p.moveDir.x).limit_length() * p.CLIMB_SPEED
         var ropeDirMoveComponent: Vector3 = Vector3.ZERO
         if !Utils.equalsf(p.moveDir.y, 0.0):
+            # split y movement between rope axis and camera direction if player is on floor
             ropeDirMoveComponent = ropeRef.pivotArmDir * p.moveDir.y * p.CLIMB_SPEED
             if pb.jump.onFloorLastFrame:
                 var zDotRopeDir = p.basis.z.dot(ropeRef.pivotArmDir)

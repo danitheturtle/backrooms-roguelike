@@ -22,8 +22,8 @@ DONE - 6 - render the rope and give it colliders along full length. only let the
 
 
 design ideas after we're done:
+* grab rope section closest to camera / target cast rather than closest to harness for better gamefeel
 - pity rope. if the last rope you place has less than 5m, it can extend to 5m. it still only returns the limited ammo used to create it
-- when at end of rope below pivot on floor and extending rope, turn extension velocity to be perpendicular to the floor
 - instead of picking up entire slack rope, insert new path control point close to player and shorten end of rope by amount player lengthens it at sub-section
 - simulate the last vert while the player is not touching it. maybe even add a few extra rope segments with physics. Simplest implementation would be a constrained sphere collider attached to the end.
 - give player inertia while on pendulum to give swinging better gamefeel
