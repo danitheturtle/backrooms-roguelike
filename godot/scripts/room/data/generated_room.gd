@@ -42,3 +42,9 @@ var customPropWeights: Dictionary[StringName, float] = {}
 # "solved" can be any activatable thing in the room from a puzzle to a button to
 # powering up a generator. intentionally generic
 var onSolvedListenerIDs: Array[StringName] = []
+
+# A copy of the approximate bounds on this room's room definition, but translated to this room's position.
+var approximateBounds: AABB = AABB(Vector3.ZERO,Vector3.ZERO)
+
+# A copy of the bounds on this room's room definition, but translated to this room's position.
+var bounds: Array[AABB] = []

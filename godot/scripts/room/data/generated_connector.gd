@@ -19,7 +19,7 @@ func _init(_definition: Resource, _parentRoomInstanceId: StringName) -> void:
 ###
 ### Set by level generator
 ###
-# ConnectorType defines what to place if the connector detects a match. Comparison using 
+# ConnectorType defines what to place if the connector detects a match. Comparison using
 # int-based enum to determine final type of matched connector. higher wins
 # If two locked doors or two one-way null zones match, one will be discarded
 var type: Const.ConnectorType = Const.ConnectorType.SIMPLE
