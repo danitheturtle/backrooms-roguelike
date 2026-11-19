@@ -68,10 +68,11 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
     wrapUnwrapCooldown = max(0, wrapUnwrapCooldown - 1)
+    # do not update a rope that is not near the player 
+    if (global_position - State.player.global_position).length_squared() - length * length > 1000.0: return
     # if this is not the active rope, check for updates along length every few frames
     # 3 casts per check frame, and a check frame happens every ~7-13 frames. prime number to minimize 
     # number of ropes updating on the same frame
-    # do not update a rope that is not near the player
 
 func update_cached_length() -> void:
     _cachedLengthToPivot = 0.0
@@ -116,18 +117,15 @@ func update_segment_shape(_index: int) -> void:
     if segmentLengthSq < MIN_CONTROL_POINT_GAP_SQ: return
     var updatedMesh: MeshInstance3D = segmentMeshes[_index]
     var updatedCollider: CollisionShape3D = segmentColliders[_index]
-    updatedMesh.hide()
     var segmentLength: float = sqrt(segmentLengthSq)
     var segmentQuaternion: Quaternion = Quaternion(Vector3.UP, segmentVector / segmentLength)
+    updatedCollider.quaternion = segmentQuaternion
+    updatedCollider.transform.origin = segmentOrigin
     updatedCollider.shape.mid_height = segmentLength
     updatedMesh.mesh.height = segmentLength + diameter
-    updatedCollider.transform.origin = segmentOrigin
-    updatedMesh.transform.origin = segmentOrigin
-    updatedCollider.quaternion = segmentQuaternion
+    updatedMesh.mesh.request_update()
     updatedMesh.quaternion = segmentQuaternion
-    await get_tree().process_frame
-    if is_instance_valid(updatedMesh):
-        updatedMesh.show()
+    updatedMesh.transform.origin = segmentOrigin
 
 ## assumes shapes are synced with curve already
 ## index must be 1 less than the max index of the path
@@ -154,17 +152,16 @@ func wrap_around_geometry(_collision: Dictionary, _insertBeforeIndex: int) -> vo
     var newToNext: Vector3 = newControlPoint - nextPoint
     if prevToNew.length_squared() < MIN_CONTROL_POINT_GAP_SQ || newToNext.length_squared() < MIN_CONTROL_POINT_GAP_SQ:
         return
-    #print(prevToNew.normalized().dot(newToNext.normalized()))
-    #if prevToNew.normalized().dot(newToNext.normalized()) > 0.999: return
     path.curve.add_point(newControlPointLocal, Vector3.ZERO, Vector3.ZERO, _insertBeforeIndex)
-    ensure_shape_for_segment(_insertBeforeIndex - 1)
-    update_segment_shape(_insertBeforeIndex - 1)
     ensure_shape_for_segment(_insertBeforeIndex)
     update_segment_shape(_insertBeforeIndex)
+    ensure_shape_for_segment(_insertBeforeIndex - 1)
+    update_segment_shape(_insertBeforeIndex - 1)
     update_cached_length()
-    wrapUnwrapCooldown = 5
+    wrapUnwrapCooldown = 7
 
 ## shapecasts between next and previous points. if no collision, removes control point from curve
+var unwrapping: bool = false
 func try_unwrap_point(_pointIndex: int) -> void:
     if wrapUnwrapCooldown > 0 || _pointIndex > pivotIndex || _pointIndex < 1: return
     # TODO if either length is too close to current point, treat it as the same control point and decrement again
@@ -187,10 +184,11 @@ func try_unwrap_point(_pointIndex: int) -> void:
     if unwrapQueryResult.is_empty():
         path.curve.remove_point(_pointIndex)
         remove_excess_shapes()
-        for i: int in range(lastIndex-1, _pointIndex-1, -1):
+        unwrapping = true
+        for i: int in range(_pointIndex-1, lastIndex):
             update_segment_shape(i)
         update_cached_length()
-    wrapUnwrapCooldown = 5
+    wrapUnwrapCooldown = 7
 
 func get_nearest_control_point(_global_pos: Vector3) -> int:
     var nearestDistSq: float = 999999.0
