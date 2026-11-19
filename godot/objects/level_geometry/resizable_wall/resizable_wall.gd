@@ -67,6 +67,8 @@ func set_height(val: float):
     collider.shape.size.y = val + (0.0 if !extendCollisionY else 2.0 * extendCollisionLength)
     meshXNeg.mesh.size.y = val
     meshZNeg.mesh.size.y = val
+    meshXPos.mesh.size.y = val
+    meshZPos.mesh.size.y = val
     occluderXY.occluder.size.y = val * 0.95
     occluderZY.occluder.size.y = val * 0.95
     meshYNeg.transform.origin.y = -val/2.0
@@ -77,6 +79,8 @@ func set_depth(val: float):
     collider.shape.size.z = val + (0.0 if !extendCollisionZ else 2.0 * extendCollisionLength)
     meshYNeg.mesh.size.y = val
     meshXNeg.mesh.size.x = val
+    meshYPos.mesh.size.y = val
+    meshXPos.mesh.size.x = val
     occluderZY.occluder.size.x = val * 0.95
     occluderXZ.occluder.size.y = val * 0.95
     meshZNeg.transform.origin.z = -val/2.0
