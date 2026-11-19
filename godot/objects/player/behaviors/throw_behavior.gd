@@ -11,12 +11,13 @@ func can_act() -> bool:
 
 func start_action() -> void:
     if !unhandledInput: return
-    var velocityInCameraDir: Vector3 = (-p.camera.global_basis.z * pb.grab.grabbedRef.throwImpulse)
-    var lobVelocity: Vector3 = Vector3(0.0, pb.grab.grabbedRef.throwLobFactor, 0.0)
-    pb.grab.grabbedRef.linear_velocity = velocityInCameraDir + lobVelocity
-    pb.grab.grabbedRef.on_throw()
-    unhandledInput = false
+    var thrownRef := pb.grab.grabbedRef
     pb.grab.stop_action()
+    var velocityInCameraDir: Vector3 = (-p.camera.global_basis.z * thrownRef.throwImpulse)
+    var lobVelocity: Vector3 = Vector3(0.0, thrownRef.throwLobFactor, 0.0)
+    thrownRef.linear_velocity = velocityInCameraDir + lobVelocity
+    thrownRef.on_throw()
+    unhandledInput = false
 
 func process_action(_delta: float) -> void:
     if pb.throw.can_act() && unhandledInput:

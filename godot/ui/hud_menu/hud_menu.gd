@@ -3,10 +3,15 @@ class_name HUDMenu
 
 @onready var crosshair = $MarginContainer/GridContainer/CenterContainer/Crosshair
 @onready var popup = $MarginContainer/GridContainer/BottomContainer/PopupPanel
+@onready var ropeAmmoLabel: Label = $MarginContainer/GridContainer/BottomLeftContainer/RopeAmmoLabel
 
 func _ready() -> void:
     SignalBus.popup_displayed.connect(on_popup_displayed)
     SignalBus.popup_closed.connect(on_popup_closed)
+
+func _process(_delta: float) -> void:
+    if State.player != null:
+        ropeAmmoLabel.text = "Rope: " + str(State.player.behaviors.rope.ammo)
 
 func on_popup_displayed(innerPopup: Control) -> void:
     if innerPopup.get_parent() != popup:

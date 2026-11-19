@@ -2,7 +2,7 @@ class_name SprintBehavior
 extends PlayerBehavior
 
 const maybeTransitionFrom: Array[StringName] = [&"crouch", &"squeeze"]
-const cannotTransitionFrom: Array[StringName] = [&"crawl", &"climb", &"vault"]
+const cannotTransitionFrom: Array[StringName] = [&"crawl", &"climb", &"rope", &"vault"]
 const mutuallyExclusiveWith: Array[StringName] = [&"target", &"grab", &"drag", &"film_camera"]
 
 func can_act() -> bool:

@@ -90,8 +90,9 @@ spot_angle = 40.0
 
 [node name="TargetRayCast" type="RayCast3D" parent="Camera" unique_id=1762356518]
 target_position = Vector3(0, 0, -2)
-collision_mask = 129
+collision_mask = 143
 hit_back_faces = false
+collide_with_areas = true
 
 [node name="GrabArm" type="SpringArm3D" parent="Camera" unique_id=1434044525]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
@@ -151,11 +152,6 @@ wait_time = 0.5
 one_shot = true
 
 [node name="InteractTimer" type="Timer" parent="." unique_id=1549516792]
-process_callback = 0
-wait_time = 0.5
-one_shot = true
-
-[node name="CrawlTimer" type="Timer" parent="." unique_id=1961489363]
 process_callback = 0
 wait_time = 0.5
 one_shot = true

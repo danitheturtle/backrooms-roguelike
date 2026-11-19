@@ -1,9 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-const BehaviorStateRes = preload("res://objects/player/behavior_state.gd")
-
-var behaviors: BehaviorState = BehaviorStateRes.new(self)
+var behaviors: BehaviorState = BehaviorState.new(self)
 var b: BehaviorState:
     get: return behaviors
 
@@ -17,20 +15,25 @@ var b: BehaviorState:
 @export var SHOVING_FORCE: float = 2.0
 @export var STRONGER_DOWNWARD_GRAVITY_THRESHOLD: float = 5.0
 @export var STRONGER_GRAVITY_MULTIPLIER: float = 2.0
+@export var ROPE_TANGENT_GRAVITY_MULTIPLIER: float = 20.0
 @export var JUMP_IMPULSE: float = 6.5
 @export var CROUCH_HEIGHT: float = 0.95
 @export var CRAWL_HEIGHT: float = 0.45
 @export var SQUEEZE_RADIUS: float = 0.2
-@export var SLOWED_CAMERA_DAMPING: float = 0.4
+@export var SLOWED_CAMERA_DAMPING: float = 0.6
 @export var SLIDE_IMPULSE: float = 7.5
 @export var SLIDE_DECELERATION: float = 20.0
-@export var CRAWL_STRAFE_DAMPING: float = 0.1
+@export var CRAWL_STRAFE_DAMPING: float = 0.25
 @export var MAX_STEP_HEIGHT: float = 0.3
 @export var VAULT_DURATION: float = 0.4
-@export var ROTATION_SENSITIVITY_MULTIPLIER: float = 10.0
 @export var TARGETING_DISTANCE: float = 2.0
 @export var MAX_GRAB_MASS: float = 15.0
 @export var MAX_DRAG_MASS: float = 150.0
+@export var KILL_FLOOR_Y: float = -512.0
+@export var MAX_UNMOVING_AIRTIME: float = 7.5
+@export var ROTATED_INERTIA: Vector3 = Vector3(0.25,0.25,0.25)
+@export var GRABBED_DAMP_FACTOR: float = 50.0
+@export var STARTING_ROPE_AMMO: int = 5
 
 # child nodes
 @onready var camera: Camera3D = $Camera
@@ -42,17 +45,17 @@ var b: BehaviorState:
 @onready var adjacentDetectorArea: Area3D = $AdjacentDetector
 @onready var actionTimer: Timer = $ActionTimer
 @onready var interactTimer: Timer = $InteractTimer
-@onready var crawlTimer: Timer = $CrawlTimer
 @onready var sprintTimer: Timer = $SprintTimer
 
 # local state
 var moveDir: Vector2
 var lookDir: Vector2
 var movePriority: Dictionary[StringName, bool]
-var mouseCaptured: bool
+var airtimeAtZeroVelocity: float
+var lastPosition: Vector3
+# timers
 var actionTimerFinished: bool
 var interactTimerFinished: bool
-var crawlTimerFinished: bool
 var sprintTimerFinished: bool
 # tracked via roomForStateChangeArea
 var nearbyBodies: Dictionary[Node3D, bool] = {}
@@ -69,17 +72,15 @@ func reinit() -> void:
     moveDir = Vector2.ZERO
     lookDir = Vector2.ZERO
     movePriority = { left = false, right = false, forward = false, backward = false }
-    mouseCaptured = false
+    airtimeAtZeroVelocity = 0.0
     actionTimerFinished = false
     interactTimerFinished = false
-    crawlTimerFinished = false
     sprintTimerFinished = false
     adjacentRef = null
     global_position = Vector3.ZERO
     global_rotation = Vector3.ZERO
     actionTimer.stop()
     interactTimer.stop()
-    crawlTimer.stop()
     sprintTimer.stop()
     set_default_positions()
     for nextBehavior: PlayerBehavior in b.all(): nextBehavior.reinit()
@@ -101,15 +102,20 @@ func _ready() -> void:
     set_long_press_delay(GameSettings.LongPressDelay)
     actionTimer.timeout.connect(on_action_timer_ended)
     interactTimer.timeout.connect(on_interact_timer_ended)
-    crawlTimer.timeout.connect(on_crawl_timer_ended)
     sprintTimer.timeout.connect(on_sprint_timer_ended)
     for nextBehavior: PlayerBehavior in b.all(): nextBehavior.player_ready()
     reinit()
 
 func _physics_process(_delta: float) -> void:
+    # all behaviors are called before move_and_slide. Behaviors that need processing after move_and_slide self-defer
     for nextBehavior: PlayerBehavior in b.all():
         nextBehavior.process_action(_delta)
     move_and_slide()
+    # post-movement sanity checks
+    airtime_check(_delta)
+    prevent_out_of_bounds(_delta)
+    # store position at the end of the frame
+    lastPosition = global_transform.origin
 
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:
@@ -134,17 +140,54 @@ func set_default_positions() -> void:
 func set_long_press_delay(_newDelay: float) -> void:
     actionTimer.wait_time = _newDelay
     interactTimer.wait_time = _newDelay
-    crawlTimer.wait_time = _newDelay
     sprintTimer.wait_time = _newDelay
 
 func can_shape_change():
     var detectedCollisions: Array[Node3D] = nearbyBodies.keys()
-    return detectedCollisions.size() == 0
+    if detectedCollisions.size() == 0: return true
+    var canShapeChangeResult := false
+    for nextNearbyBody: Node3D in nearbyBodies.keys():
+        if nextNearbyBody is Holdable && nextNearbyBody.mass <= MAX_GRAB_MASS:
+            canShapeChangeResult = true
+    return canShapeChangeResult
 
-func on_room_for_state_change_body_entered(_body: Node3D):
+func airtime_check(_delta: float):
+    # if player is in the air for more than n seconds with very small velocity, stop colliding with game objects
+    if !b.unstuck.active && !b.jump.onFloorLastFrame && Utils.equalsf((lastPosition - global_transform.origin).length_squared(), 0.0, 0.00001):
+        airtimeAtZeroVelocity += _delta
+        if airtimeAtZeroVelocity > MAX_UNMOVING_AIRTIME:
+            b.unstuck.start_action()
+    elif !Utils.equalsf(airtimeAtZeroVelocity, 0.0):
+        airtimeAtZeroVelocity = 0.0
+
+func prevent_out_of_bounds(_delta: float):
+    if global_position.y < KILL_FLOOR_Y:
+        velocity = Vector3.ZERO
+        b.stop()
+        b.stand.start_action()
+        var possibleSpawns: Array = Utils.get_children_of_type(LevelManager.root, PlayerSpawn, true)
+        # pick one randomly
+        var randomSpawnIndex: int = randi_range(0,possibleSpawns.size()-1)
+        if possibleSpawns[randomSpawnIndex] != null && possibleSpawns[randomSpawnIndex] is PlayerSpawn:
+            global_transform = possibleSpawns[randomSpawnIndex].global_transform
+
+func get_colliding_bodies() -> Dictionary[CollisionObject3D, bool]:
+    var uniqueBodies: Dictionary[CollisionObject3D, bool] = {}
+    var colCount: int = get_slide_collision_count()
+    for i in colCount:
+        var nextCol: KinematicCollision3D = get_slide_collision(i)
+        # one kinematic collision can represent colliding with multiple bodies, especially while stuck
+        var subColCount: int = nextCol.get_collision_count()
+        for j in subColCount:
+            var nextSubCol: Object = nextCol.get_collider(j)
+            if nextSubCol is CollisionObject3D && nextSubCol.get_collision_layer_value(1):
+                uniqueBodies[nextSubCol as CollisionObject3D] = true
+    return uniqueBodies
+
+func on_room_for_state_change_body_entered(_body: Node3D) -> void:
     nearbyBodies[_body] = true
 
-func on_room_for_state_change_body_exited(_body: Node3D):
+func on_room_for_state_change_body_exited(_body: Node3D) -> void:
     nearbyBodies.erase(_body)
     if (b.squeeze.active && !Input.is_action_pressed("squeeze")):
         if (b.stand.can_act()):
@@ -152,24 +195,25 @@ func on_room_for_state_change_body_exited(_body: Node3D):
             if (Input.is_action_pressed("sprint")):
                 b.sprint.start_action()
 
-func on_adjacent_entered(body: Node3D):
-    # only used for climbing right now
-    # some climbable objects don't need an activation area
+func on_adjacent_entered(body: Node3D) -> void:
+    # some objects don't need an activation area, detect them directly
     if (body.is_in_group("climbable") && body.get_node_or_null("ActivationArea") == null):
         adjacentRef = body
 
-func on_adjacent_exited(body: Node3D):
+func on_adjacent_exited(body: Node3D) -> void:
     if (adjacentRef == body && body.get_node_or_null("ActivationArea") == null):
         adjacentRef = null
 
-func on_adjacent_area_entered(area: Node3D):
-    var areaParent = area.get_parent()
-    if (areaParent.is_in_group("climbable")):
+func on_adjacent_area_entered(_area: Node3D) -> void:
+    if _area is Rope || _area.is_in_group("climbable"):
+        adjacentRef = _area
+        return
+    var areaParent = _area.get_parent()
+    if (areaParent is Rope || areaParent.is_in_group("climbable")):
         adjacentRef = areaParent
 
-func on_adjacent_area_exited(area: Node3D):
-    var areaParent = area.get_parent()
-    if (areaParent == adjacentRef):
+func on_adjacent_area_exited(_area: Node3D) -> void:
+    if _area == adjacentRef || _area.get_parent() == adjacentRef:
         adjacentRef = null
 
 func on_action_timer_ended():
@@ -178,17 +222,11 @@ func on_action_timer_ended():
 func on_interact_timer_ended():
     interactTimerFinished = true
 
-func on_crawl_timer_ended():
-    crawlTimerFinished = true
-    # on long keypress, crawl immediately
-    if b.crawl.can_act():
-        b.crawl.start_action()
-
 func on_sprint_timer_ended():
     sprintTimerFinished = true
 
 func handle_mouse_input(event: InputEventMouseMotion) -> void:
-    if mouseCaptured:
+    if InputManager.mouseCaptured:
         lookDir = event.screen_relative / 100.0
         get_tree().root.set_input_as_handled()
 
@@ -196,7 +234,7 @@ func handle_mouse_input(event: InputEventMouseMotion) -> void:
 ## one action trickles to one function call, where various side effects can happen
 func handle_key_input(event: InputEvent ) -> void:
     var eventHandled: bool = false
-    if (event.is_action_pressed("jump")):
+    if (event.is_action_pressed(&"jump")):
         # try standing from crawling
         if (b.crawl.active && b.crouch.can_act()):
             b.crouch.tryStandAfterCrouching = true
@@ -205,17 +243,18 @@ func handle_key_input(event: InputEvent ) -> void:
         elif (b.crouch.active && b.stand.can_act()):
             b.stand.start_action()
         # climb if possible
-        elif (b.climb.can_act() && !Input.is_action_pressed("sprint")):
+        elif (b.climb.can_act() && !Input.is_action_pressed(&"sprint")):
             b.climb.start_action()
+        # attach to rope if possible
+        elif (b.rope.can_act() && !Input.is_action_pressed(&"sprint")):
+            b.rope.start_action()
         # vault/jump if possible. one of these actions will happen next; synced to physics
         else:
             # seperate unhandledInputs because can_act() conditions diverge
             if b.vault.can_act(): b.vault.unhandledInput = true
             if b.jump.can_act(): b.jump.unhandledInput = true
         eventHandled = true
-    elif (event.is_action_pressed("crouch")):
-        crawlTimerFinished = false
-        crawlTimer.start()
+    elif (event.is_action_pressed(&"crouch")):
         # always crouch immediately on key press; track previous behavior
         if b.crouch.can_act():
             b.crouch.tryStandAfterCrouching = false
@@ -225,24 +264,27 @@ func handle_key_input(event: InputEvent ) -> void:
                 b.crouch.previousBehavior = &"stand"
             b.crouch.start_action()
         eventHandled = true
-    elif (event.is_action_released("crouch")):
-        crawlTimer.stop()
+    elif (event.is_action_released(&"crouch")):
         # do nothing if action was captured on pressed
         if !b.crouch.previousBehavior.is_empty():
             b.crouch.previousBehavior = &""
-        # stand from crouch if crawl timer did not finish
-        elif !crawlTimerFinished && b.crouch.active && b.stand.can_act():
+        # stand from crouch
+        elif b.crouch.active && b.stand.can_act():
             b.stand.start_action()
         eventHandled = true
-    elif (event.is_action_pressed("squeeze")):
+    elif (event.is_action_pressed(&"crawl")):
+        if b.crawl.can_act():
+            b.crawl.start_action()
+        eventHandled = true
+    elif (event.is_action_pressed(&"squeeze")):
         if (b.squeeze.can_act()):
             b.squeeze.start_action()
         eventHandled = true
-    elif (event.is_action_released("squeeze")):
+    elif (event.is_action_released(&"squeeze")):
         if (b.squeeze.active && b.stand.can_act()):
             b.stand.start_action()
         eventHandled = true
-    elif (event.is_action_pressed("action")):
+    elif (event.is_action_pressed(&"action")):
         actionTimerFinished = false
         actionTimer.start()
         if b.grab.active:
@@ -250,7 +292,7 @@ func handle_key_input(event: InputEvent ) -> void:
         elif b.drag.active:
             b.drag.draggedRef.activate()
         eventHandled = true
-    elif (event.is_action_released("action")):
+    elif (event.is_action_released(&"action")):
         actionTimer.stop()
         if b.grab.active:
             b.throw.unhandledInput = !b.grab.grabbedRef.deactivate(actionTimerFinished)
@@ -263,7 +305,13 @@ func handle_key_input(event: InputEvent ) -> void:
                 b.flashlight.stop_action()
         ## TODO action wheel
         eventHandled = true
-    elif (event.is_action_pressed("interact")):
+    elif (event.is_action_released(&"rope_action")):
+        if b.rope.active:
+            b.rope.toggle_extension_mode()
+        elif b.rope.can_place_rope():
+            b.rope.place_new_rope(b.target.ref, b.target.ref.to_local(b.target.targetedPoint))
+        eventHandled = true
+    elif (event.is_action_pressed(&"interact")):
         interactTimerFinished = false
         interactTimer.start()
         if b.target.active:
@@ -271,35 +319,50 @@ func handle_key_input(event: InputEvent ) -> void:
                 b.grab.start_action()
             elif b.drag.can_act():
                 b.drag.start_action()
+            elif not b.target.ref is Holdable:
+                b.target.justInteracted = true
+                b.target.ref.interact_start(self)
         elif b.grab.active:
             b.rotate.start_action()
         eventHandled = true
-    elif (event.is_action_released("interact")):
+    elif (event.is_action_released(&"interact")):
         interactTimer.stop()
         b.rotate.stop_action()
         if b.drag.justDragged:
             b.drag.justDragged = false
         elif b.grab.justGrabbed:
             b.grab.justGrabbed = false
+        elif b.target.justInteracted:
+            b.target.justInteracted = false
+            b.target.ref.interact_stop()
         elif b.drag.active && !interactTimerFinished:
             b.drag.stop_action()
         elif (b.grab.active && !interactTimerFinished && b.rotate.rotationDelta < 100.0):
             b.grab.stop_action()
         eventHandled = true
-    elif (event.is_action_pressed("zoom_in")):
+    elif (event.is_action_pressed(&"reorient")):
+        b.rotate.keepUpright = true
+    elif (event.is_action_released(&"reorient")):
+        b.rotate.keepUpright = false
+    elif (event.is_action_pressed(&"zoom_in")):
         if b.grab.active:
             b.grab.increase_held_distance()
+        elif b.drag.active:
+            b.drag.increase_held_distance()
         eventHandled = true
-    elif (event.is_action_pressed("zoom_out")):
+    elif (event.is_action_pressed(&"zoom_out")):
         if b.grab.active:
             b.grab.decrease_held_distance()
+        elif b.drag.active:
+            b.drag.decrease_held_distance()
         eventHandled = true
-    elif (event.is_action_pressed("sprint")):
+    elif (event.is_action_pressed(&"sprint")):
         sprintTimerFinished = false
         sprintTimer.start()
         if (b.climb.active):
             b.climb.stop_action()
-        # TODO standing up this quickly is jarring. fix with tweens 
+        if (b.rope.active):
+            b.rope.stop_action()
         if b.crawl.active && b.crouch.can_act():
             b.crouch.start_action()
         if (b.sprint.can_act()):
@@ -307,53 +370,41 @@ func handle_key_input(event: InputEvent ) -> void:
         elif b.sprint.active:
             b.sprint.stop_action()
         eventHandled = true
-    elif (event.is_action_released("sprint")):
+    elif (event.is_action_released(&"sprint")):
         sprintTimer.stop()
         if sprintTimerFinished:
             b.sprint.stop_action()
         eventHandled = true
-    elif (event.is_action_pressed("forward")):
+    elif (event.is_action_pressed(&"forward")):
         moveDir = Vector2(moveDir.x, -1)
         eventHandled = true
-    elif (event.is_action_released("forward")):
-        moveDir = Vector2(moveDir.x, 1.0 if Input.is_action_pressed("backward") else 0.0)
+    elif (event.is_action_released(&"forward")):
+        moveDir = Vector2(moveDir.x, 1.0 if Input.is_action_pressed(&"backward") else 0.0)
         eventHandled = true
-    elif (event.is_action_pressed("backward")):
+    elif (event.is_action_pressed(&"backward")):
         moveDir = Vector2(moveDir.x, 1)
         eventHandled = true
-    elif (event.is_action_released("backward")):
-        moveDir = Vector2(moveDir.x, -1.0 if Input.is_action_pressed("forward") else 0.0)
+    elif (event.is_action_released(&"backward")):
+        moveDir = Vector2(moveDir.x, -1.0 if Input.is_action_pressed(&"forward") else 0.0)
         eventHandled = true
-    elif (event.is_action_pressed("left")):
+    elif (event.is_action_pressed(&"left")):
         moveDir = Vector2(-1.0, moveDir.y)
         eventHandled = true
-    elif (event.is_action_released("left")):
-        moveDir = Vector2(1.0 if Input.is_action_pressed("right") else 0.0, moveDir.y)
+    elif (event.is_action_released(&"left")):
+        moveDir = Vector2(1.0 if Input.is_action_pressed(&"right") else 0.0, moveDir.y)
         eventHandled = true
-    elif (event.is_action_pressed("right")):
+    elif (event.is_action_pressed(&"right")):
         moveDir = Vector2(1.0, moveDir.y)
         eventHandled = true
-    elif (event.is_action_released("right")):
-        moveDir = Vector2(-1.0 if Input.is_action_pressed("left") else 0.0, moveDir.y)
-        eventHandled = true
-    moveDir = moveDir.normalized()
-    # cursor capture. lets player get mouse back to interact with UI
-    if (event.is_action_pressed("capture_cursor") && !mouseCaptured):
-        capture_mouse()
-        eventHandled = true
-    if (event.is_action_pressed("toggle_cursor")):
-        if (mouseCaptured):
-            release_mouse()
-        else:
-            capture_mouse()
+    elif (event.is_action_released(&"right")):
+        moveDir = Vector2(-1.0 if Input.is_action_pressed(&"left") else 0.0, moveDir.y)
         eventHandled = true
     # handle pause game
-    if (event.is_action_pressed("pause_game")):
-        if (mouseCaptured):
-            release_mouse()
-        eventHandled = true
+    elif (event.is_action_pressed(&"pause_game")):
         SignalBus.game_paused.emit()
         SignalBus.goto_pause_menu.emit()
+        eventHandled = true
+    moveDir = moveDir.normalized()
     # tell game event was handled and stop propagating
     if (eventHandled):
         get_tree().root.set_input_as_handled()
@@ -361,18 +412,18 @@ func handle_key_input(event: InputEvent ) -> void:
 func handle_axis_input(event: InputEventJoypadMotion) -> void:
     var eventHandled: bool = false
     #Vertical joystick movement
-    if (event.is_action("forward") || event.is_action("backward")):
+    if (event.is_action(&"forward") || event.is_action(&"backward")):
         moveDir = Vector2(moveDir.x, event.axis_value)
         eventHandled = true
     #Horizontal joystick movement
-    if (event.is_action("left") || event.is_action("right")):
+    if (event.is_action(&"left") || event.is_action(&"right")):
         moveDir = Vector2(event.axis_value, moveDir.y)
         eventHandled = true
     #camera
-    if (event.is_action("camera_down") || event.is_action("camera_up")):
+    if (event.is_action(&"camera_down") || event.is_action(&"camera_up")):
         lookDir = Vector2(lookDir.x, event.axis_value)
         eventHandled = true
-    if (event.is_action("camera_left") || event.is_action("camera_right")):
+    if (event.is_action(&"camera_left") || event.is_action(&"camera_right")):
         lookDir = Vector2(event.axis_value, lookDir.y)
         eventHandled = true
     #If vectors are tiny, set to zero
@@ -383,11 +434,3 @@ func handle_axis_input(event: InputEventJoypadMotion) -> void:
     # tell game event was handled and stop propagating
     if (eventHandled):
         get_tree().root.set_input_as_handled()
-
-func release_mouse() -> void:
-    Input.set_mouse_mode(Input.MouseMode.MOUSE_MODE_VISIBLE)
-    mouseCaptured = false
-
-func capture_mouse() -> void:
-    Input.set_mouse_mode(Input.MouseMode.MOUSE_MODE_CAPTURED)
-    mouseCaptured = true

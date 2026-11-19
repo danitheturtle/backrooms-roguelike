@@ -11,8 +11,7 @@ func slot_savegame_path(slotIndex: int) -> String:
     return slot_folder_path(slotIndex) + "/savegame.json"
 func slot_node_data_path(slotIndex: int) -> String:
     return slot_folder_path(slotIndex) + "/node_data.json"
-    
-var currentGameVersion = ProjectSettings.get_setting("application/config/version")
+
 var inMemoryMode: bool
 var savesOnDisk: Dictionary[int, SaveSlotStats]
 var activeSlot: int # -1 means no active slot
@@ -128,27 +127,11 @@ func erase_slot(slotIndex: int) -> void:
             push_warning("could not clear save slot", deleteResult)
             inMemoryMode = true
 
-func is_save_version_compatible(saveVersion: String) -> bool:
-    var saveVersionSplit := saveVersion.split(".", false)
-    if saveVersionSplit.size() == 0: return false
-    var saveVersionNumbers: Array[int] = []
-    for nextNum: String in saveVersionSplit:
-        saveVersionNumbers.append(int(nextNum))
-    if saveVersionNumbers[0] > oldestCompatibleSaveVersion[0]:
-        return true
-    elif saveVersionNumbers[0] == oldestCompatibleSaveVersion[0]:
-        if saveVersionNumbers[1] > oldestCompatibleSaveVersion[1]:
-            return true
-        elif saveVersionNumbers[1] == oldestCompatibleSaveVersion[1]:
-            if saveVersionNumbers[2] >= oldestCompatibleSaveVersion[2]:
-                return true
-    return false
-
 # should serialize the full game state
 func serialize() -> Dictionary:
     var dataDict = {
         "index": activeSlot,
-        "gameVersion": currentGameVersion,
+        "gameVersion": Const.GAME_VERSION,
         "customName": "slot" + str(activeSlot),
         "runs": [],
         "totalScore": totalScore,
@@ -161,7 +144,7 @@ func serialize() -> Dictionary:
     return dataDict
 
 func deserialize(dataDict: Dictionary) -> void:
-    if !is_save_version_compatible(dataDict.gameVersion):
+    if !Utils.is_version_valid(oldestCompatibleSaveVersion, dataDict.gameVersion):
         push_error("this save is for an older version of the game")
         return
     gameVersion = dataDict.gameVersion

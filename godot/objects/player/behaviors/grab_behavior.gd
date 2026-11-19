@@ -1,12 +1,13 @@
 class_name GrabBehavior
 extends PlayerBehavior
 
-const cannotTransitionFrom: Array[StringName] = [&"drag", &"jump", &"vault", &"crouch", &"crawl", &"squeeze", &"sprint", &"climb", &"film_camera"]
+const cannotTransitionFrom: Array[StringName] = [&"drag", &"jump", &"vault", &"crouch", &"crawl", &"squeeze", &"sprint", &"climb",&"film_camera"]
 const mutuallyExclusiveWith: Array[StringName] = [&"target", &"flashlight"]
 
 var grabArm: SpringArm3D
 var grabAnchor: Marker3D
 var grabbedRef: Holdable
+var grabbedInitialDamp: float
 var justGrabbed: bool
 var justDroppedRef: Holdable
 var grabArmShapeRadius: float
@@ -22,25 +23,27 @@ func player_ready() -> void:
 
 func reinit() -> void:
     justGrabbed = false
+    grabbedInitialDamp = 0.0
     if active:
-        grabbedRef.on_drop()
+        grabbedRef.interact_stop()
         justDroppedRef = grabbedRef
         grabbedRef = null
 
 func can_act() -> bool:
-    if (!active && pb.none(cannotTransitionFrom) && pb.jump.onFloorLastFrame):
-        return not (pb.target.ref is Holdable && pb.target.ref.mass > p.MAX_GRAB_MASS)
+    if (!active && pb.target.ref is Holdable && pb.none(cannotTransitionFrom) && pb.jump.onFloorLastFrame):
+        return not (pb.target.ref.mass > p.MAX_GRAB_MASS)
     else:
         return false
 
 func start_action() -> void:
     if active: return
-    pb.target.ref.on_hold(player)
+    grabbedRef = pb.target.ref.interact_start(player)
+    grabbedInitialDamp = grabbedRef.angular_damp
+    grabbedRef.angular_damp = p.GRABBED_DAMP_FACTOR
     grabArm.spring_length = pb.target.ref.heldDistance
     grabArm.shape.radius = pb.target.ref.heldCollisionRadius
     # causes visual bug as spring arm rapidly shifts if we don't wait a frame
     await p.get_tree().process_frame
-    grabbedRef = pb.target.ref
     justGrabbed = true
     pb.stop(mutuallyExclusiveWith)
     # always rotate on pickup
@@ -60,14 +63,15 @@ func process_action(_delta: float) -> void:
         stop_action()
     else:
         grabbedRef.linear_velocity = (toPos - fromPos) / _delta + p.velocity
-        # damp angular movement
-        grabbedRef.angular_velocity *= 0.1
 
 func stop_action() -> void:
     if !active: return
     pb.rotate.stop_action()
     if pb.climb.active:
         pb.climb.climbedRef.del_collision_exception(grabbedRef)
+    grabbedRef.angular_damp = grabbedInitialDamp
+    grabbedRef.linear_velocity = Vector3.ZERO
+    grabbedRef.angular_velocity = Vector3.ZERO
     reinit()
     grabArm.spring_length = p.TARGETING_DISTANCE
     grabArm.shape.radius = grabArmShapeRadius

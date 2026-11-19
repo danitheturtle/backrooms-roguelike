@@ -6,14 +6,16 @@ var crouch: CrouchBehavior
 var crawl: CrawlBehavior
 var squeeze: SqueezeBehavior
 
-## velocity-modifying behaviors. vault and jump are call order dependant
+## velocity-modifying behaviors. vault and jump are call order dependant. rope always called last in group
 var vault: VaultBehavior
 var jump: JumpBehavior
 var climb: ClimbBehavior
 var sprint: SprintBehavior
 var look: LookBehavior
 var move: MoveBehavior
+var gravity: GravityBehavior
 var stairstep: StairstepBehavior
+var rope: RopeBehavior
 
 ## velocity-inheriting behaviors
 var shove: ShoveBehavior
@@ -22,6 +24,7 @@ var throw: ThrowBehavior
 var grab: GrabBehavior # holdable
 var rotate: RotateBehavior
 var drag: DragBehavior # holdable
+var unstuck: UnstuckBehavior
 
 ## Non-physics behaviors
 var film_camera: FilmCameraBehavior
@@ -38,6 +41,8 @@ func _init(_player: Player) -> void:
     sprint = SprintBehavior.new(_player)
     look = LookBehavior.new(_player)
     move = MoveBehavior.new(_player)
+    gravity = GravityBehavior.new(_player)
+    rope = RopeBehavior.new(_player)
     stairstep = StairstepBehavior.new(_player)
     shove = ShoveBehavior.new(_player)
     target = TargetBehavior.new(_player)
@@ -45,6 +50,7 @@ func _init(_player: Player) -> void:
     grab = GrabBehavior.new(_player)
     rotate = RotateBehavior.new(_player)
     drag = DragBehavior.new(_player)
+    unstuck = UnstuckBehavior.new(_player)
     film_camera = FilmCameraBehavior.new(_player)
     flashlight = FlashlightBehavior.new(_player)
 
@@ -53,8 +59,8 @@ func all() -> Array[PlayerBehavior]:
     return [
         stand, crouch, crawl, squeeze, # mutually-exclusive player size and collision changers
         vault, jump, # call order dependant; vaulting prevents jump
-        climb, sprint, look, move, stairstep, # velocity modifying behaviors
-        shove, target, throw, grab, rotate, drag, # velocity inheriting behaviors
+        climb, sprint, look, move, gravity, rope, stairstep, # velocity modifying behaviors
+        shove, target, throw, grab, rotate, drag, unstuck, # velocity inheriting behaviors
         film_camera, flashlight # non-physics behaviors
     ]
 
