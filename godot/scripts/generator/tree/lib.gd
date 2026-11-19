@@ -52,18 +52,6 @@ func reinit(startingRoomIdx: int, s: int) -> GeneratedRoom:
 
     return ret
 
-func stable_sort_chunks(array: Array[Vector3i], center: Vector3i):
-    # Unless the radius gets very big insertion sort will be most efficient.
-    for i in range(1, array.size()):
-        for j in range(i, 0, -1):
-            var a = array[j - 1]
-            var b = array[j]
-            if a.distance_squared_to(center) > b.distance_squared_to(center):
-                array[j - 1] = b
-                array[j] = a
-            else:
-                break
-
 func generate_in_radius(chunk_pos: Vector3i, chunk_radius: int) -> Array[GeneratedRoom]:
     var tracker := chunkTracker[chunk_pos]
     # If the player/generator has already visited this chunk, early exit this call.
@@ -91,6 +79,18 @@ func generate_in_radius(chunk_pos: Vector3i, chunk_radius: int) -> Array[Generat
 
     tracker.isVisited = true
     return ret
+
+func stable_sort_chunks(array: Array[Vector3i], center: Vector3i):
+    # Unless the radius gets very big insertion sort will be most efficient.
+    for i in range(1, array.size()):
+        for j in range(i, 0, -1):
+            var a = array[j - 1]
+            var b = array[j]
+            if a.distance_squared_to(center) > b.distance_squared_to(center):
+                array[j - 1] = b
+                array[j] = a
+            else:
+                break
 
 func generate_chunk(chunk_pos: Vector3i) -> Array[GeneratedRoom]:
     var tracker := chunkTracker[chunk_pos]
@@ -242,8 +242,6 @@ func register_generated(newRoom: GeneratedRoom):
         newUnresolved.generatedRoomIdx = newGeneratedRoomIdx
         newUnresolved.roomConnectorIdx = newConIdx
         newTracker.unresolved.append(newUnresolved)
-
-
 
 func get_tracker(chunk_pos: Vector3i) -> ChunkTracker:
     var tracker := chunkTracker[chunk_pos]
