@@ -45,20 +45,10 @@ func reinit(startingRoomIdx: int, s: int) -> GeneratedRoom:
 
     var ret := GeneratedRoom.new(roomDef)
     ret.roomDefIdx = startingRoomIdx
-    # Currently the starting room can be generated with default values.
-    var retIdx = generatedRooms.size()
-    generatedRooms.append(ret)
+    ret.approximateBounds = AABB(roomDef.approximateBounds)
+    ret.bounds = roomDef.bounds.duplicate_deep()
 
-    for i in range(0, roomDef.connectors.size()):
-        var connector := roomDef.connectors[i]
-        var cur_chunk := Utils.world_to_chunk(connector.position)
-
-        var new_tracker := get_tracker(cur_chunk)
-
-        var new_unresolved := UnresolvedConnection.new()
-        new_unresolved.generatedRoomIdx = retIdx
-        new_unresolved.roomConnectorIdx = i
-        new_tracker.unresolved.append(new_unresolved)
+    register_generated(ret)
 
     return ret
 
@@ -207,24 +197,7 @@ func generate_chunk_unchecked(chunk_pos: Vector3i, tracker: ChunkTracker) -> Arr
                     var curGeneratedConnector := GeneratedConnector.new(curConnectorDef, curRoom.roomInstanceId)
                     curRoom.generatedConnectors.append(curGeneratedConnector)
 
-                    # Add the room to each intersecting chunk tracker.
-                    var newGeneratedRoomIdx = generatedRooms.size()
-                    generatedRooms.append(newRoom)
-                    for x in range(bound_start.x, bound_end.x):
-                        for z in range(bound_start.z, bound_end.z):
-                            for y in range(bound_start.y, bound_end.y):
-                                var newTracker := get_tracker(Vector3i(x, y, z))
-                                newTracker.generated.append(newGeneratedRoomIdx)
-
-                    # Add each new connector to each intersecting chunk tracker.
-                    for newConIdx in range(0, newRoomDef.connectors.size()):
-                        var newConnector := newRoomDef.connectors[newConIdx]
-                        var newCornerMin = Utils.horizontal_rotatei(newRoomNormal, newConnector.cornerMin) + newRoomPlacedPos
-                        var newTracker := get_tracker(Utils.voxel_to_chunk(newCornerMin))
-                        var newUnresolved := UnresolvedConnection.new()
-                        newUnresolved.generatedRoomIdx = newGeneratedRoomIdx
-                        newUnresolved.roomConnectorIdx = newConIdx
-                        newTracker.unresolved.append(newUnresolved)
+                    register_generated(newRoom)
 
                     ret.append(newRoom)
     if !ret.is_empty():
@@ -246,6 +219,31 @@ func alignment(rng: RandomNumberGenerator, cornerMin: Vector3i, cornerMax: Vecto
     else:
         cornerAlignment.z = (cornerMin.z + cornerMax.z) / 2
     return cornerAlignment
+
+func register_generated(newRoom: GeneratedRoom):
+    var bound_start = Utils.world_to_chunk(newRoom.approximateBounds.position)
+    var bound_end = Utils.world_to_chunk(newRoom.approximateBounds.position + newRoom.approximateBounds.size)
+    # Add the room to each intersecting chunk tracker.
+    var newGeneratedRoomIdx = generatedRooms.size()
+    generatedRooms.append(newRoom)
+    for x in range(bound_start.x, bound_end.x):
+        for z in range(bound_start.z, bound_end.z):
+            for y in range(bound_start.y, bound_end.y):
+                var newTracker := get_tracker(Vector3i(x, y, z))
+                newTracker.generated.append(newGeneratedRoomIdx)
+
+    # Add each new connector to each intersecting chunk tracker.
+    var newRoomDef := roomDefinitions[newRoom.roomDefIdx]
+    for newConIdx in range(0, newRoomDef.connectors.size()):
+        var newConnector := newRoomDef.connectors[newConIdx]
+        var newCornerMin = Utils.horizontal_rotatei(newRoom.placedNormal, newConnector.cornerMin) + newRoom.placedPosition
+        var newTracker := get_tracker(Utils.voxel_to_chunk(newCornerMin))
+        var newUnresolved := UnresolvedConnection.new()
+        newUnresolved.generatedRoomIdx = newGeneratedRoomIdx
+        newUnresolved.roomConnectorIdx = newConIdx
+        newTracker.unresolved.append(newUnresolved)
+
+
 
 func get_tracker(chunk_pos: Vector3i) -> ChunkTracker:
     var tracker := chunkTracker[chunk_pos]
