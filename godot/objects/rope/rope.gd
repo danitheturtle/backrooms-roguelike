@@ -18,6 +18,7 @@ var segmentColliders: Array[CollisionShape3D] = []
 var segmentMeshes: Array[MeshInstance3D] = []
 var unwrapTestShape: Shape3D
 var wrapUnwrapCooldown: int = 0
+var baseMaterialUVScale: Vector3 = Vector3.ONE
 
 var diameter: float:
     get: return radius * 2.0
@@ -55,6 +56,8 @@ func _ready() -> void:
         path.curve.add_point(Vector3.ZERO)
     firstSegmentCollider.shape.height = diameter
     firstSegmentCollider.shape.radius = radius
+    baseMaterialUVScale = firstSegmentMesh.material_override.uv1_scale
+    firstSegmentMesh.material_override = firstSegmentMesh.material_override.duplicate()
     firstSegmentMesh.mesh.height = diameter
     firstSegmentMesh.mesh.radius = radius
     unwrapTestShape = CapsuleShape3D.new()
@@ -103,7 +106,9 @@ func ensure_shape_for_segment(_index: int) -> void:
         add_child(newCollider)
     if segmentMeshes.size() - 1 < _index:
         var newMesh = firstSegmentMesh.mesh.duplicate()
+        var newMaterial = firstSegmentMesh.material_override.duplicate()
         var newMeshInstance = firstSegmentMesh.duplicate()
+        newMeshInstance.material_override = newMaterial
         newMeshInstance.mesh = newMesh
         segmentMeshes.append(newMeshInstance)
         add_child(newMeshInstance)
@@ -123,6 +128,9 @@ func update_segment_shape(_index: int) -> void:
     updatedCollider.transform.origin = segmentOrigin
     updatedCollider.shape.mid_height = segmentLength
     updatedMesh.mesh.height = segmentLength + diameter
+    updatedMesh.material_override.uv1_scale.x = updatedMesh.mesh.radius * 20.0
+    updatedMesh.material_override.uv1_scale.y = updatedMesh.mesh.height * 20.0
+    updatedMesh.material_override.uv1_scale.z = updatedMesh.mesh.radius * 20.0
     updatedMesh.mesh.request_update()
     updatedMesh.quaternion = segmentQuaternion
     updatedMesh.transform.origin = segmentOrigin

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dplshl886c0ml" path="res://objects/rope/rope.gd" id="1_vs5eh"]
 [ext_resource type="Script" uid="uid://bswfe7oy012dr" path="res://objects/rope/rope_anchor.gd" id="2_cyxff"]
 [ext_resource type="PackedScene" uid="uid://b160k414l2773" path="res://objects/colliders/primitives/sphere_collider.tscn" id="3_6tqy1"]
+[ext_resource type="Material" uid="uid://dyqnhhkksoxf6" path="res://assets/materials/Rope01/Rope01.tres" id="3_cyxff"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25any"]
 
@@ -11,19 +12,19 @@ material = SubResource("StandardMaterial3D_25any")
 radius = 0.1
 height = 0.2
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_vs5eh"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_6tqy1"]
 resource_local_to_scene = true
 radius = 0.1
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cyxff"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6iagf"]
 resource_local_to_scene = true
 radius = 0.01
-height = 0.02
+height = 0.1
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5q0ne"]
 resource_local_to_scene = true
 radius = 0.01
-height = 0.02
+height = 0.1
 radial_segments = 6
 rings = 4
 
@@ -51,15 +52,18 @@ monitoring = false
 script = ExtResource("2_cyxff")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RopeAnchor" unique_id=699092843]
+visible = false
+material_override = ExtResource("3_cyxff")
 mesh = SubResource("SphereMesh_5q0ne")
 
 [node name="SphereCollider" parent="RopeAnchor" unique_id=653304792 instance=ExtResource("3_6tqy1")]
-shape = SubResource("SphereShape3D_vs5eh")
+shape = SubResource("SphereShape3D_6tqy1")
 
 [node name="SegmentCollider" parent="." unique_id=822846443 instance=ExtResource("3_6tqy1")]
-shape = SubResource("CapsuleShape3D_cyxff")
+shape = SubResource("CapsuleShape3D_6iagf")
 
 [node name="SegmentMesh" type="MeshInstance3D" parent="." unique_id=1975480586]
+material_override = ExtResource("3_cyxff")
 mesh = SubResource("CapsuleMesh_5q0ne")
 
 [node name="RopePath" type="Path3D" parent="." unique_id=980612944]
