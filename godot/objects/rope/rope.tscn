@@ -52,7 +52,6 @@ monitoring = false
 script = ExtResource("2_cyxff")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RopeAnchor" unique_id=699092843]
-visible = false
 material_override = ExtResource("3_cyxff")
 mesh = SubResource("SphereMesh_5q0ne")
 
