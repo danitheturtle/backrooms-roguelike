@@ -15,10 +15,10 @@ Player state machine has many behaviors. By default, they are **standing**
 
 ### Player movement restrictions:
 Voxel sizes given in terms of (width, depth, height)
-- If **crawling**, can fit in (2,2,1) voxel space
+- If **crawling**, can fit in (2,1,2) voxel space
 - If **crouching**, can fit in (2,2,2) voxel space
-- if **standing**, fits in (2,2,4) voxel space
-- If **squeezing**, fits in (1,1,4) voxel space
+- if **standing**, fits in (2,4,2) voxel space
+- If **squeezing**, fits in (1,4,1) voxel space
 - Can walk / crouch over 0.5 voxel obstacles without jumping, but can't crawl over
 - Max jump is 3 voxels
 - Max ledge climbup is 6 voxels

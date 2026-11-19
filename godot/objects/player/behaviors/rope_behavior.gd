@@ -69,13 +69,13 @@ func process_action(_delta: float) -> void:
     else:
         ropeRef.try_unwrap_point(ropeRef.pivotIndex)
     ammo = ammoOnAttach - (ropeRef.length - lengthOnAttach)
-    p.velocity = Vector3(0.0,p.velocity.y,0.0)
+    var nextPlayerVelocity: Vector3 = Vector3(0.0,p.velocity.y,0.0)
     
     var velocityFromInput: Vector3 = get_velocity_from_input()
-    p.velocity += velocityFromInput
+    nextPlayerVelocity += velocityFromInput
     
     var tangentAcceleration: Vector3 = get_tangent_acceleration(_delta)
-    p.velocity += tangentAcceleration
+    nextPlayerVelocity += tangentAcceleration
     
     var scaledClimbSpeed: float = 0.0
     if !ropeExtensionLocked:
@@ -89,12 +89,15 @@ func process_action(_delta: float) -> void:
     )
     
     # keep player at target length of rope
-    var speedOnRopeAxis: float = p.velocity.dot(ropeRef.pivotArmDir)
+    var speedOnRopeAxis: float = nextPlayerVelocity.dot(ropeRef.pivotArmDir)
     var nextFrameLength = ropeRef.length + speedOnRopeAxis * _delta
     var correctingVelocity: Vector3 = Vector3.ZERO
     if ropeRef.lastPointBelowPivot && !pb.jump.onFloorLastFrame || nextFrameLength >= maxLength:
         correctingVelocity = -ropeRef.pivotArmDir * (nextFrameLength - targetLength) / _delta
-    p.velocity += correctingVelocity
+    nextPlayerVelocity += correctingVelocity
+    
+    # directly set final player velocity for this behavior
+    p.velocity = nextPlayerVelocity
 
 func stop_action() -> void:
     if !active: return
