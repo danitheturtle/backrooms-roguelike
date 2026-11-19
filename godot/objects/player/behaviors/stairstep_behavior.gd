@@ -1,7 +1,7 @@
 class_name StairstepBehavior
 extends PlayerBehavior
 
-const cannotTransitionFrom: Array[StringName] = [&"vault", &"jump", &"crawl", &"squeeze", &"drag", &"grab"]
+const cannotTransitionFrom: Array[StringName] = [&"vault", &"jump", &"crawl", &"climb", &"rope", &"squeeze", &"drag", &"grab"]
 
 var stairSolver: Node3D
 var stairRayCast: RayCast3D

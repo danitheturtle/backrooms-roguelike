@@ -5,7 +5,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m67d0"]
 resource_local_to_scene = true
 
-[node name="GrabbableProp" type="RigidBody3D" unique_id=883044359]
+[node name="GrabbableProp" type="RigidBody3D" unique_id=883044359 groups=["targetable"]]
 collision_mask = 191
 input_ray_pickable = false
 mass = 5.0

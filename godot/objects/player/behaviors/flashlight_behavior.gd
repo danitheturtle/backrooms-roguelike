@@ -1,7 +1,7 @@
 class_name FlashlightBehavior
 extends PlayerBehavior
 
-const cannotTransitionFrom: Array[StringName] = [&"drag", &"grab", &"vault", &"climb", &"film_camera"]
+const cannotTransitionFrom: Array[StringName] = [&"drag", &"grab", &"vault", &"climb", &"rope", &"film_camera"]
 
 var light: SpotLight3D
 var offset: Vector3 = Vector3.ZERO

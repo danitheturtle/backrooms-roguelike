@@ -8,5 +8,6 @@ Technical Pillars:
 
 Gamefeel Pillars:
 - The primary horror should come from claustrophobia, environmental storytelling, and unsettling impossible spaces. NOT monsters/entities, though those can exist in some fashion
+- Joy of movement
 - Vertigo-inducing physical unreality
 - A haunted house you want to go into but know you shouldn't

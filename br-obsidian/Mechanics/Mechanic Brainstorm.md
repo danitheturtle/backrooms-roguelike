@@ -1,4 +1,3 @@
-* Rope of a specific length. More rope can be found. Can climb down vertically as far as you can extend the rope
 * camera zoom?
 * perspective puzzle
 * progressive clue system like endfield but good. pick up parts of different stories on different runs. take pictures of environmental storytelling and it gets catalogued. etc.
@@ -7,6 +6,11 @@
 * if you destroy a security camera, another one materializes behind you. Out of view but facing the player. Spooky!
 * forklift thats holding a bin in two positions, up or down, and can be toggled like endfield. Maybe the player can move the forklift
 * "Anchor points" you can attach to walls while rope climbing so its not just up and down traversal
+* rope spike gun that can shoot into and anchor on drywall
+* **static ladder inside a dynamic room with multiple definitions. dynamic height vertical traversal that is garunteed. probably need this**
+* loadouts where more impactful items are bigger and you gotta fit everything into the backpack including loot like in dredge
+* two tutorial paths, one for experienced users and one for genre noobs
+* scan action that reveals all interactable objects color-coded by use
 
 Game is about finding unique "exits"
 

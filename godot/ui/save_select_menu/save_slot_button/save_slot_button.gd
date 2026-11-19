@@ -20,7 +20,7 @@ func _ready() -> void:
 func hydrate(_data: SaveSlotStats):
     data = _data
     saveNameLabel.text = _data.customName
-    if !SaveSlot.is_save_version_compatible(_data.gameVersion):
+    if !Utils.is_version_valid(SaveSlot.oldestCompatibleSaveVersion, _data.gameVersion):
         oldVersionColorRect.show()
         disabled = true
     saveScoreLabel.text = "Score: " + str(_data.totalScore)

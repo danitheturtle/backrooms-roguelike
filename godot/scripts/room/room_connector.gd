@@ -247,7 +247,7 @@ func generate_surfaces_around_holes(surfaceSize: Vector2, allHoles: Array[Rect2]
     # loop through every voxel
     for xi: int in voxelRowSize:
         for yi: int in voxelColumnSize:
-            var voxelIndex = Utils.coordIndex(xi,yi,voxelRowSize)
+            var voxelIndex = Utils.coord_index(xi,yi,voxelRowSize)
             # skip null voxels (already filled or used)
             if !voxels[voxelIndex]: continue
             var workingVoxel = voxels[voxelIndex]
@@ -255,14 +255,14 @@ func generate_surfaces_around_holes(surfaceSize: Vector2, allHoles: Array[Rect2]
             # first, merge down as far as possible
             var expandedByRowsCount = 0
             for myi: int in range(yi+1,voxelColumnSize):
-                var mergeVoxelIndex = Utils.coordIndex(xi,myi,voxelRowSize)
+                var mergeVoxelIndex = Utils.coord_index(xi,myi,voxelRowSize)
                 if !voxels[mergeVoxelIndex]: break
                 workingVoxel = workingVoxel.merge(voxels[mergeVoxelIndex])
                 voxels[mergeVoxelIndex] = Rect2()
                 expandedByRowsCount += 1
             # next, test expanding one column at a time until collision with hole
             for mxi: int in range(xi+1, voxelRowSize):
-                var mergeVoxelIndex = Utils.coordIndex(mxi,yi,voxelRowSize)
+                var mergeVoxelIndex = Utils.coord_index(mxi,yi,voxelRowSize)
                 if !voxels[mergeVoxelIndex]: break # break immediately if known bad
                 var tryExpand: Rect2 = workingVoxel.merge(voxels[mergeVoxelIndex])
                 var collidesWithHole = false
@@ -273,7 +273,7 @@ func generate_surfaces_around_holes(surfaceSize: Vector2, allHoles: Array[Rect2]
                 workingVoxel = tryExpand
                 # clear merged voxel and voxels below it that the working voxel now contains
                 for clearYIndex in range(yi,yi+expandedByRowsCount+1):
-                    var clearVoxelIndex = Utils.coordIndex(mxi,clearYIndex,voxelRowSize)
+                    var clearVoxelIndex = Utils.coord_index(mxi,clearYIndex,voxelRowSize)
                     voxels[clearVoxelIndex] = Rect2()
             generatedSurfaces.append(workingVoxel)
     # filled space array now contains maximally merged planes. Use those for runtime wall geometry

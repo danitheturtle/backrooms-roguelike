@@ -1,5 +1,4 @@
 extends Node
-class_name MenuManager
 
 var mainMenu: MainMenu
 var settingsMenu: SettingsMenu
@@ -7,7 +6,7 @@ var saveSelectMenu: SaveSelectMenu
 var pauseMenu: PauseMenu
 var hudMenu: HUDMenu
 
-func _init(
+func init_from_main(
     _main: MainMenu,
     _settings: SettingsMenu,
     _saveSelect: SaveSelectMenu,

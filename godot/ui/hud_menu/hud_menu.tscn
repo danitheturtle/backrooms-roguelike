@@ -73,6 +73,10 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 10
 
+[node name="RopeAmmoLabel" type="Label" parent="MarginContainer/GridContainer/BottomLeftContainer" unique_id=1402411484]
+layout_mode = 2
+text = "Rope: 10"
+
 [node name="BottomContainer" type="FlowContainer" parent="MarginContainer/GridContainer" unique_id=1328831306]
 layout_mode = 2
 size_flags_horizontal = 3
