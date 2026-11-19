@@ -201,6 +201,12 @@ func generate_chunk_unchecked(chunk_pos: Vector3i, tracker: ChunkTracker) -> Arr
                     newRoom.approximateBounds = newApproximateBounds
                     newRoom.bounds = newBounds
 
+                    var newGeneratedConnector := GeneratedConnector.new(newConnectorDef, newRoom.roomInstanceId)
+                    newRoom.generatedConnectors.append(newGeneratedConnector)
+
+                    var curGeneratedConnector := GeneratedConnector.new(curConnectorDef, curRoom.roomInstanceId)
+                    curRoom.generatedConnectors.append(curGeneratedConnector)
+
                     # Add the room to each intersecting chunk tracker.
                     var newGeneratedRoomIdx = generatedRooms.size()
                     generatedRooms.append(newRoom)

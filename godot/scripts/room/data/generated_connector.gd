@@ -8,7 +8,7 @@ var parentRoomInstanceId: StringName = "room_-1"
 var pathInRoom: NodePath
 
 # don't call directly, get_generated_instance() on room instead
-func _init(_definition: Resource, _parentRoomInstanceId: StringName) -> void:
+func _init(_definition: ConnectorDefinition, _parentRoomInstanceId: StringName) -> void:
     pathInRoom = _definition.pathInRoom
     type = _definition.initialType
     subType = _definition.initialSubType
