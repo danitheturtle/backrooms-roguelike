@@ -46,6 +46,23 @@ func chunk_to_world(chunk_pos: Vector3i) -> Vector3:
 func chunk_to_voxel(chunk_pos: Vector3i) -> Vector3i:
     return chunk_pos * Const.CHUNK_VOXEL_SIDE_LEN
 
+func is_vertical(direction: Const.CardinalDirection) -> bool:
+    return direction == Const.CardinalDirection.YPOS or direction == Const.CardinalDirection.YNEG
+
+func horizontal_rotatei(direction: Const.CardinalDirection, voxel_pos: Vector3i) -> Vector3i:
+    match direction:
+        Const.CardinalDirection.XNEG:
+            return Vector3i(-voxel_pos.z, voxel_pos.y, voxel_pos.x)
+        Const.CardinalDirection.XPOS:
+            return Vector3i(voxel_pos.z, voxel_pos.y, -voxel_pos.x)
+        Const.CardinalDirection.ZPOS:
+            return Vector3i(-voxel_pos.x, voxel_pos.y, -voxel_pos.z)
+        _:
+            return voxel_pos
+
+func horizontal_oppose(direction0: Const.CardinalDirection, direction1: Const.CardinalDirection) -> Const.CardinalDirection:
+    return ((direction0 + 6 - direction1) % 4) as Const.CardinalDirection
+
 # gets self or first found child of given type
 func get_self_or_child_of_type(selfNode: Node, type: Variant, recursive: bool = false):
     if is_instance_of(selfNode, type):

@@ -62,10 +62,10 @@ const YELLOW_LIGHT_DEFAULT = Color(0.945, 0.938, 0.49, 1.0)
 const YELLOW_LIGHT_DEFAULT_BOUNCE = Color(0.966, 0.929, 0.516, 1.0)
 
 enum CardinalDirection {
-    XNEG = 0,
+    ZNEG = 0,
     XPOS = 1,
-    YNEG = 2,
-    YPOS = 3,
-    ZNEG = 4,
-    ZPOS = 5,
+    ZPOS = 2,
+    XNEG = 3,
+    YNEG = 4,
+    YPOS = 5,
 }

@@ -95,7 +95,7 @@ func setup(_generatedRoom: GeneratedRoom) -> void:
     # setup sub-rooms first. not sure if needed?
     # for nextSubRoom: Room in subRooms: nextSubRoom.setup(_generatedRoom)
     transform.origin = _generatedRoom.placedPosition
-    transform.basis = Basis.looking_at(_generatedRoom.placedForwardNormal)
+    transform.basis = Basis.looking_at(_generatedRoom.placedNormal)
     for nextConnectorPath: NodePath in _generatedRoom.generatedConnectors.keys():
         var nextConnector = get_node(nextConnectorPath)
         if nextConnector == null:

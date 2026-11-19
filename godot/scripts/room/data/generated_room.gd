@@ -22,8 +22,8 @@ func _init(_definition: RoomDefinition) -> void:
 var roomDefIdx: int = -1
 # global room position
 var placedPosition: Vector3i = Vector3i.ZERO
-# Forward normal vector for room orientation. All rooms are built with normal facing forward
-var placedForwardNormal: Const.CardinalDirection = Const.CardinalDirection.ZNEG
+# Forward normal vector for room orientation. All rooms are built with normal facing forward. Vertical normals are not permitted.
+var placedNormal: Const.CardinalDirection = Const.CardinalDirection.ZNEG
 # set by level generator and used by room sub-generator
 var placedAtIteration: int = -1
 # generatedConnectors tell the room how to change each connector from the default value

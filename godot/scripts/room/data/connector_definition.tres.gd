@@ -36,17 +36,17 @@ func get_lockable() -> bool:
 @export_group("Baked")
 # how to get this connector by calling get_node() on root room
 @export var pathInRoom: NodePath = ""
-# center position of this connector in room-local space
-@export var position: Vector3 = Vector3.ZERO
+# center voxel position of this connector in room-local space
+@export var position: Vector3i = Vector3i.ZERO
 # depth of this connector (from visible collision surface to edge of room bounds)
 @export var depth: float = Const.HALF_VOXEL
 # direction connector is facing on surface of bounds
 @export var normal: Const.CardinalDirection
 # width / height of connector surface
 @export var size: Vector2 = Vector2.ZERO
-# 3d position of 2d connector rect on surface of bounds. Garunteed to be on voxel grid
-@export var cornerMin: Vector3 = Vector3.ZERO
-@export var cornerMax: Vector3 = Vector3.ZERO
+# 3d voxel position of 2d connector rect on surface of bounds
+@export var cornerMin: Vector3i = Vector3i.ZERO
+@export var cornerMax: Vector3i = Vector3i.ZERO
 # distance to the floor from the lowest point on the connector surface
 @export var distFromFloor: float = 0.0
 @export var bordersCeiling: bool = false
