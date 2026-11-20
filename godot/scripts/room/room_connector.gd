@@ -78,17 +78,17 @@ var localSpace: Rect2:
     get: return Rect2(0.0,0.0,globalWidth,globalHeight)
 var resolvedType: Const.ConnectorType:
     get:
-        if generatedProps != null: return generatedProps.type
+        if generatedConnector != null: return generatedConnector.type
         if definition != null: return definition.initialType
         return Const.ConnectorType.SIMPLE
 var resolvedSubType: Const.ConnectorSubType:
     get:
-        if generatedProps != null: return generatedProps.subType
+        if generatedConnector != null: return generatedConnector.subType
         if definition != null: return definition.initialSubType
         return Const.ConnectorSubType.EMPTY
 var doesNotConnect: bool:
     get:
-        if generatedProps != null: return generatedProps.doesNotConnect
+        if generatedConnector != null: return generatedConnector.doesNotConnect
         return false
 
 # Refs grabbed on ready
@@ -99,7 +99,7 @@ var doesNotConnect: bool:
 @onready var adjacentCollider: CollisionShape3D = $Adjacent/RectCollider
 
 # per-instance levelgen output
-var generatedProps: GeneratedConnector = null
+var generatedConnector: GeneratedConnector = null
 # runtime local state
 var adjacentAABB: AABB
 var surfaceOffsetInNormal: float

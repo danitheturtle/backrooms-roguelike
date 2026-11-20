@@ -7,10 +7,9 @@ const QUARTER_VOXEL: float = VOXEL / 4.0
 const AMBIENT_MAX: float = 0.4
 
 # generator constants
-const CHUNK_VOXEL_SIDE_LEN = 256
-const CHUNK_WORLD_SIDE_LEN = CHUNK_VOXEL_SIDE_LEN * Const.VOXEL
+const CHUNK_VOXEL_SIDE_LEN: int = 256
+const CHUNK_WORLD_SIDE_LEN: int = CHUNK_VOXEL_SIDE_LEN * int(VOXEL)
 
-# from project settings
 # constant project settings (treat as const at runtime)
 var GAME_VERSION = ProjectSettings.get_setting("application/config/version")
 var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -50,6 +49,22 @@ enum GameplayPropType {
     WHITE_ALMOND_WATER,
     RED_ALMOND_WATER
 }
+enum CardinalDirection {
+    ZNEG = 0,
+    XPOS = 1,
+    ZPOS = 2,
+    XNEG = 3,
+    YNEG = 4,
+    YPOS = 5,
+}
+const CardinalVector: Dictionary[CardinalDirection, Vector3] = {
+    CardinalDirection.ZNEG: Vector3.FORWARD,
+    CardinalDirection.XPOS: Vector3.RIGHT,
+    CardinalDirection.ZPOS: Vector3.BACK,
+    CardinalDirection.XNEG: Vector3.LEFT,
+    CardinalDirection.YNEG: Vector3.DOWN,
+    CardinalDirection.YPOS: Vector3.UP
+}
 
 # UI enums
 enum MenuType { MAIN, SETTINGS, SAVE_SELECT, PAUSE, HUD }
@@ -68,12 +83,3 @@ const YellowLight = {
 # const colors cannot be defined via OKHSL
 const YELLOW_LIGHT_DEFAULT = Color(0.945, 0.938, 0.49, 1.0)
 const YELLOW_LIGHT_DEFAULT_BOUNCE = Color(0.966, 0.929, 0.516, 1.0)
-
-enum CardinalDirection {
-    ZNEG = 0,
-    XPOS = 1,
-    ZPOS = 2,
-    XNEG = 3,
-    YNEG = 4,
-    YPOS = 5,
-}

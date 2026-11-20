@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://dxun115m4alsw" path="res://rooms/room_base.tscn" id="1_gr1p3"]
 [ext_resource type="Script" uid="uid://6gjw6ylobaek" path="res://rooms/level_0/hallway/room_L0_hallway.gd" id="2_gr1p3"]
 [ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="3_a2qcn"]
-[ext_resource type="Resource" uid="uid://vfbxf3rc6mfc" path="res://rooms/level_0/hallway/defs/definition_0.tres" id="4_1kamk"]
+[ext_resource type="Resource" uid="uid://cg8fs50awv54s" path="res://rooms/level_0/hallway/defs/definition_0.tres" id="4_1kamk"]
 [ext_resource type="PackedScene" uid="uid://di65tcxw57kit" path="res://objects/connectors/wall/wall_connector.tscn" id="5_5kq66"]
-[ext_resource type="Resource" uid="uid://d0baoo45fuoa1" path="res://rooms/level_0/hallway/defs/definition_1.tres" id="5_a2qcn"]
-[ext_resource type="Resource" uid="uid://box5lf1hths1s" path="res://rooms/level_0/hallway/defs/definition_2.tres" id="6_1kamk"]
-[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="6_8bbvc"]
+[ext_resource type="Resource" uid="uid://bfy6smd0fic6l" path="res://rooms/level_0/hallway/defs/definition_1.tres" id="5_a2qcn"]
+[ext_resource type="Resource" uid="uid://c0p6ebgmwpufe" path="res://rooms/level_0/hallway/defs/definition_2.tres" id="6_1kamk"]
+[ext_resource type="Script" uid="uid://c40u2elpwwspl" path="res://scripts/room/data/connector_definition.tres.gd" id="6_8bbvc"]
 [ext_resource type="Resource" uid="uid://crg0h48u6o1qg" path="res://rooms/level_0/hallway/defs/definition_3.tres" id="7_5kq66"]
 [ext_resource type="PackedScene" uid="uid://crexkx2b82nl2" path="res://objects/level_geometry/resizable_floor/resizable_floor.tscn" id="7_yq5kl"]
 [ext_resource type="Resource" uid="uid://cicrkioso4gcb" path="res://rooms/level_0/hallway/defs/definition_4.tres" id="8_8bbvc"]
@@ -19,12 +19,9 @@
 [sub_resource type="Resource" id="Resource_splww"]
 script = ExtResource("6_8bbvc")
 pathInRoom = NodePath("Connectors/WallConnectorXNeg")
-position = Vector3(-1, 1.5, 0)
-depth = 0.75
-normal = Vector3(-1, 0, 4.371139e-08)
-size = Vector2(4, 3)
-cornerMin = Vector3(-0.99999994, 0, 2)
-cornerMax = Vector3(-1.0000001, 3, -2)
+normal = 3
+cornerMin = Vector3i(-1, 0, 4)
+cornerMax = Vector3i(-2, 6, -4)
 aabb = AABB(-1.25, 0, -2, 0.49999988, 3, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yq5kl"]
@@ -37,7 +34,7 @@ size = Vector3(4, 3, 0.75)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_iu5pl"]
 resource_local_to_scene = true
-size = Vector2(4, 3)
+size = Vector2(4.002, 3.002)
 orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o3pfm"]
@@ -50,7 +47,7 @@ size = Vector3(4, 3, 0.75)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_584vp"]
 resource_local_to_scene = true
-size = Vector2(4, 3)
+size = Vector2(4.002, 3.002)
 orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rh8no"]

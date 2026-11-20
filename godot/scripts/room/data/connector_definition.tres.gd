@@ -13,7 +13,7 @@ extends Resource
 # if true, room supports spawning a prop in front of this connection to block it
 @export var blockable: bool = false
 
-# Whether a connector is lockble is defined by its ConnectorType. If false and  level gen picks
+# Whether a connector is lockble is defined by its ConnectorType. If false and level gen picks
 # a higher connector type, this can become true
 var lockable: bool: get = get_lockable
 func get_lockable() -> bool:
@@ -36,14 +36,8 @@ func get_lockable() -> bool:
 @export_group("Baked")
 # how to get this connector by calling get_node() on root room
 @export var pathInRoom: NodePath = ""
-# center voxel position of this connector in room-local space
-@export var position: Vector3i = Vector3i.ZERO
-# depth of this connector (from visible collision surface to edge of room bounds)
-@export var depth: float = Const.HALF_VOXEL
 # direction connector is facing on surface of bounds
 @export var normal: Const.CardinalDirection
-# width / height of connector surface
-@export var size: Vector2 = Vector2.ZERO
 # 3d voxel position of 2d connector rect on surface of bounds
 @export var cornerMin: Vector3i = Vector3i.ZERO
 @export var cornerMax: Vector3i = Vector3i.ZERO

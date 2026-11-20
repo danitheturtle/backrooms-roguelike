@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bc7fghdybo5ei" path="res://rooms/level_0/hallway/room_L0_hallway.tscn" id="1_7rg08"]
 [ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="3_nm7ab"]
-[ext_resource type="Resource" uid="uid://cwdpx44gsaa6j" path="res://rooms/level_0/crawlway/defs/definition_0.tres" id="4_j8735"]
-[ext_resource type="Resource" uid="uid://13xjgyeinggo" path="res://rooms/level_0/crawlway/defs/definition_1.tres" id="4_rogug"]
-[ext_resource type="Resource" uid="uid://ctg7bthgadqfr" path="res://rooms/level_0/crawlway/defs/definition_2.tres" id="5_hncys"]
-[ext_resource type="Resource" uid="uid://ba0xwj06dq2f7" path="res://rooms/level_0/crawlway/defs/definition_3.tres" id="6_c0a7a"]
+[ext_resource type="Resource" uid="uid://d3atjth8b8rse" path="res://rooms/level_0/crawlway/defs/definition_0.tres" id="4_j8735"]
+[ext_resource type="Resource" uid="uid://l15ngsak666a" path="res://rooms/level_0/crawlway/defs/definition_1.tres" id="4_rogug"]
+[ext_resource type="Resource" uid="uid://b2yeq2rjueb6m" path="res://rooms/level_0/crawlway/defs/definition_2.tres" id="5_hncys"]
+[ext_resource type="Resource" uid="uid://bwlf76wo47wta" path="res://rooms/level_0/crawlway/defs/definition_3.tres" id="6_c0a7a"]
 [ext_resource type="Material" uid="uid://cnjdmo62lxpvu" path="res://assets/materials/WallpaperChevron/WallpaperChevronYellow.tres" id="7_rogug"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rogug"]
@@ -18,7 +18,7 @@ size = Vector3(1, 1, 0.25)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_c0a7a"]
 resource_local_to_scene = true
-size = Vector2(1, 1)
+size = Vector2(1.002, 1.002)
 orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nm7ab"]
@@ -31,7 +31,7 @@ size = Vector3(1, 1, 0.25)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_chtwn"]
 resource_local_to_scene = true
-size = Vector2(1, 1)
+size = Vector2(1.002, 1.002)
 orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_biu2s"]

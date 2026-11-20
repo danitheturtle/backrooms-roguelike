@@ -4,19 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://cnapbejxxdkpf" path="res://objects/connectors/floor/floor_connector.tscn" id="2_mdv3c"]
 [ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_t1q3e"]
 [ext_resource type="PackedScene" uid="uid://dkaflqjkli2wg" path="res://objects/connectors/ceiling/ceiling_connector.tscn" id="3_b6y2s"]
-[ext_resource type="Resource" uid="uid://bu011qyywc4fe" path="res://rooms/level_0/all_way/defs/definition_0.tres" id="3_lvn7y"]
-[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="3_t1q3e"]
+[ext_resource type="Resource" uid="uid://dfry01tubf2rj" path="res://rooms/level_0/all_way/defs/definition_0.tres" id="3_lvn7y"]
+[ext_resource type="Script" uid="uid://c40u2elpwwspl" path="res://scripts/room/data/connector_definition.tres.gd" id="3_t1q3e"]
 [ext_resource type="PackedScene" uid="uid://di65tcxw57kit" path="res://objects/connectors/wall/wall_connector.tscn" id="4_t1q3e"]
 
 [sub_resource type="Resource" id="Resource_eg8m8"]
 script = ExtResource("3_t1q3e")
 pathInRoom = NodePath("Connectors/FloorConnector")
-position = Vector3(0, -0.5, 0)
-depth = 0.5
-normal = Vector3(0, -1, 0)
-size = Vector2(7, 7)
-cornerMin = Vector3(-3.5, -0.5, -3.5)
-cornerMax = Vector3(3.5, -0.5, 3.5)
+normal = 4
+cornerMin = Vector3i(-7, -1, -7)
+cornerMax = Vector3i(7, -1, 7)
 aabb = AABB(-3.5, -0.75, -3.5, 7, 0.5, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2p536"]
@@ -29,17 +26,14 @@ size = Vector3(7, 0.5, 7)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_em4nu"]
 resource_local_to_scene = true
-size = Vector2(7, 7)
+size = Vector2(7.002, 7.002)
 
 [sub_resource type="Resource" id="Resource_ko24d"]
 script = ExtResource("3_t1q3e")
 pathInRoom = NodePath("Connectors/CeilingConnector")
-position = Vector3(0, 3.5, 0)
-depth = 0.5
-normal = Vector3(0, 1, 0)
-size = Vector2(7, 7)
-cornerMin = Vector3(-3.5, 3.5, -3.5)
-cornerMax = Vector3(3.5, 3.5, 3.5)
+normal = 5
+cornerMin = Vector3i(-7, 7, -7)
+cornerMax = Vector3i(7, 7, 7)
 aabb = AABB(-3.5, 3.25, -3.5, 7, 0.5, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8qgfx"]
@@ -53,17 +47,13 @@ size = Vector3(7, 0.5, 7)
 [sub_resource type="PlaneMesh" id="PlaneMesh_nmc24"]
 resource_local_to_scene = true
 flip_faces = true
-size = Vector2(7, 7)
+size = Vector2(7.002, 7.002)
 
 [sub_resource type="Resource" id="Resource_y826x"]
 script = ExtResource("3_t1q3e")
 pathInRoom = NodePath("Connectors/WallConnector")
-position = Vector3(0, 1.5, -4)
-depth = 0.5
-normal = Vector3(0, 0, -1)
-size = Vector2(7, 3)
-cornerMin = Vector3(-3.5, 0, -4)
-cornerMax = Vector3(3.5, 3, -4)
+cornerMin = Vector3i(-7, 0, -8)
+cornerMax = Vector3i(7, 6, -8)
 aabb = AABB(-3.5, 0, -4.25, 7, 3, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oymio"]
@@ -76,18 +66,15 @@ size = Vector3(7, 3, 0.5)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_16vs8"]
 resource_local_to_scene = true
-size = Vector2(7, 3)
+size = Vector2(7.002, 3.002)
 orientation = 2
 
 [sub_resource type="Resource" id="Resource_npa5b"]
 script = ExtResource("3_t1q3e")
 pathInRoom = NodePath("Connectors/WallConnector2")
-position = Vector3(0, 1.5, 4)
-depth = 0.5
-normal = Vector3(-8.742278e-08, 0, 1)
-size = Vector2(7, 3)
-cornerMin = Vector3(3.5, 0, 4.0000005)
-cornerMax = Vector3(-3.5, 3, 3.9999998)
+normal = 2
+cornerMin = Vector3i(7, 0, 8)
+cornerMax = Vector3i(-7, 6, 7)
 aabb = AABB(-3.5, 0, 3.7499998, 7, 3, 0.5000007)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mb58m"]
@@ -100,18 +87,15 @@ size = Vector3(7, 3, 0.5)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gkca4"]
 resource_local_to_scene = true
-size = Vector2(7, 3)
+size = Vector2(7.002, 3.002)
 orientation = 2
 
 [sub_resource type="Resource" id="Resource_f4uve"]
 script = ExtResource("3_t1q3e")
 pathInRoom = NodePath("Connectors/WallConnector3")
-position = Vector3(-4, 1.5, 0)
-depth = 0.5
-normal = Vector3(-1, 0, 4.371139e-08)
-size = Vector2(7, 3)
-cornerMin = Vector3(-3.9999998, 0, 3.5)
-cornerMax = Vector3(-4, 3, -3.5)
+normal = 3
+cornerMin = Vector3i(-7, 0, 7)
+cornerMax = Vector3i(-8, 6, -7)
 aabb = AABB(-4.25, 0, -3.5, 0.5, 3, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_haye5"]
@@ -124,18 +108,15 @@ size = Vector3(7, 3, 0.5)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_llr7o"]
 resource_local_to_scene = true
-size = Vector2(7, 3)
+size = Vector2(7.002, 3.002)
 orientation = 2
 
 [sub_resource type="Resource" id="Resource_hi86o"]
 script = ExtResource("3_t1q3e")
 pathInRoom = NodePath("Connectors/WallConnector4")
-position = Vector3(4, 1.5, 0)
-depth = 0.5
-normal = Vector3(1, 0, 4.371139e-08)
-size = Vector2(7, 3)
-cornerMin = Vector3(4, 0, -3.5)
-cornerMax = Vector3(3.9999998, 3, 3.5)
+normal = 1
+cornerMin = Vector3i(8, 0, -7)
+cornerMax = Vector3i(7, 6, 7)
 aabb = AABB(3.7499998, 0, -3.5, 0.50000024, 3, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iw147"]
@@ -148,7 +129,7 @@ size = Vector3(7, 3, 0.5)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3ekwc"]
 resource_local_to_scene = true
-size = Vector2(7, 3)
+size = Vector2(7.002, 3.002)
 orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ph38h"]

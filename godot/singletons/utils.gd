@@ -1,52 +1,6 @@
 @tool
 extends Node
 
-## Normalize a value in a range to 0.0-1.0
-func normf(_value: float, _rangeStart: float, _rangeEnd: float) -> float:
-    return (_value - _rangeStart) / (_rangeEnd - _rangeStart)
-
-## cubic ease in out. _x is 0.0 to 1.0
-func ease_in_out_cubic(_x: float) -> float:
-    if (_x < 0.5):
-        return 4 * _x * _x * _x
-    else:
-        return 1 - ((-2 * x + 2) ** 3) / 2
-
-# compare two floats with a given precision
-func equalsf(a: float, b: float, epsilon: float = 0.001):
-    return a + epsilon >= b && a - epsilon <= b
-
-# get 2d index in a 1d array given a width
-func coordIndex(x: int, y: int, width: int):
-    return x + (y * width)
-
-# as opposed to default implementation only returns true with overlap greater than epsilon
-func rect_intersectsf(rect1: Rect2, rect2: Rect2, epsilon: float = 0.001) -> bool:
-    var test1 = rect1.position.x + epsilon < rect2.end.x
-    var test2 = rect1.end.x - epsilon > rect2.position.x
-    var test3 = rect1.position.y + epsilon < rect2.end.y
-    var test4 = rect1.end.y - epsilon > rect2.position.y
-    return test1 && test2 && test3 && test4
-
-func world_to_chunk(world_pos: Vector3) -> Vector3i:
-    return Vector3i((world_pos / Const.CHUNK_WORLD_SIDE_LEN))
-
-func world_to_voxel(world_pos: Vector3) -> Vector3i:
-    return Vector3i((world_pos / Const.VOXEL))
-
-func voxel_to_chunk(voxel_pos: Vector3i) -> Vector3i:
-    @warning_ignore("integer_division")
-    return voxel_pos / Const.CHUNK_VOXEL_SIDE_LEN
-
-func voxel_to_world(voxel_pos: Vector3i) -> Vector3:
-    return Vector3(voxel_pos * Const.VOXEL)
-
-func chunk_to_world(chunk_pos: Vector3i) -> Vector3:
-    return Vector3(chunk_pos * Const.CHUNK_WORLD_SIDE_LEN)
-
-func chunk_to_voxel(chunk_pos: Vector3i) -> Vector3i:
-    return chunk_pos * Const.CHUNK_VOXEL_SIDE_LEN
-
 func is_vertical(direction: Const.CardinalDirection) -> bool:
     return direction == Const.CardinalDirection.YPOS or direction == Const.CardinalDirection.YNEG
 
@@ -64,15 +18,27 @@ func horizontal_rotatei(direction: Const.CardinalDirection, voxel_pos: Vector3i)
 func horizontal_oppose(direction0: Const.CardinalDirection, direction1: Const.CardinalDirection) -> Const.CardinalDirection:
     return ((direction0 + 6 - direction1) % 4) as Const.CardinalDirection
 
-# gets self or first found child of given type
-func get_self_or_child_of_type(selfNode: Node, type: Variant, recursive: bool = false):
-    if is_instance_of(selfNode, type):
-        return selfNode
+## Normalize a value in a range to 0.0-1.0
+func normf(_value: float, _rangeStart: float, _rangeEnd: float) -> float:
+    return (_value - _rangeStart) / (_rangeEnd - _rangeStart)
+
+## cubic ease in out. _x is 0.0 to 1.0
+func ease_in_out_cubic(_x: float) -> float:
+    if (_x < 0.5):
+        return 4 * _x * _x * _x
+    else:
         return 1 - ((-2 * _x + 2) ** 3) / 2
 
 ## compare two floats with a given precision
-func equalsf(_a: float, _b: float, _epsilon: float = 0.001):
+func equalsf(_a: float, _b: float, _epsilon: float = 0.001) -> bool:
     return _a + _epsilon >= _b && _a - _epsilon <= _b
+
+## compare two vectors with a given precision
+func equalsv(_a: Vector3, _b: Vector3, _epsilon: float = 0.001) -> bool:
+    var xTest = Utils.equalsf(_a.x, _b.x, _epsilon)
+    var yTest = Utils.equalsf(_a.y, _b.y, _epsilon)
+    var zTest = Utils.equalsf(_a.z, _b.z, _epsilon)
+    return xTest && yTest && zTest
 
 ## get 2d index in a 1d array given a width
 func coord_index(_x: int, _y: int, _width: int):
@@ -123,6 +89,27 @@ func is_in_any_group(_node: Node, _groupList: Array[String]) -> bool:
         if _node.is_in_group(nextGroup):
             return true
     return false
+
+#region Voxel coordinates
+func world_to_chunk(world_pos: Vector3) -> Vector3i:
+    return Vector3i((world_pos / Const.CHUNK_WORLD_SIDE_LEN))
+
+func world_to_voxel(world_pos: Vector3) -> Vector3i:
+    return Vector3i((world_pos / Const.VOXEL))
+
+func voxel_to_chunk(voxel_pos: Vector3i) -> Vector3i:
+    @warning_ignore("integer_division")
+    return voxel_pos / Const.CHUNK_VOXEL_SIDE_LEN
+
+func voxel_to_world(voxel_pos: Vector3i) -> Vector3:
+    return Vector3(voxel_pos * Const.VOXEL)
+
+func chunk_to_world(chunk_pos: Vector3i) -> Vector3:
+    return Vector3(chunk_pos * Const.CHUNK_WORLD_SIDE_LEN)
+
+func chunk_to_voxel(chunk_pos: Vector3i) -> Vector3i:
+    return chunk_pos * Const.CHUNK_VOXEL_SIDE_LEN
+#endregion
 
 #region Typesafe Tree-Traversing Getters
 ## gets self or first found child of given type
@@ -180,8 +167,6 @@ func get_materials_on_mesh(_mesh: MeshInstance3D) -> Array[Material]:
         activeMaterials.append(nextMaterial)
     return activeMaterials
 
-func load_or_create_config(file: ConfigFile, filepath: String) -> Error:
-    var loadError = file.load(filepath)
 func get_surface_overrides_on_mesh(_mesh: MeshInstance3D) -> Array[Material]:
     var totalSurfaces = _mesh.mesh.get_surface_count()
     var surfaceOverrides: Array[Material] = []

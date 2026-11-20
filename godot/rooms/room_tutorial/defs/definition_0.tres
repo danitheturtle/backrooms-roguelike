@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://c7xsynwktxuye"]
+[gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://dyl6xrutlmd2a"]
 
-[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="1_25any"]
+[ext_resource type="Script" uid="uid://c40u2elpwwspl" path="res://scripts/room/data/connector_definition.tres.gd" id="1_25any"]
 [ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_hh7no"]
 
 [resource]
 script = ExtResource("2_hh7no")
+excludeFromGeneration = true
 sceneName = &"tutorial"
 scenePath = "res://rooms/room_tutorial/room_tutorial.tscn"
 approximateBounds = AABB(-8.25, -8, -5.25, 62.25, 20.25, 80.25)

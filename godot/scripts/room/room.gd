@@ -14,8 +14,10 @@ var editorHelper: RoomEditorHelper = null
 @export var copyFirstDefinitionProps: bool = true
 # every room definition levelgen can instantiate using this scene
 @export var definitions: Array[RoomDefinition] = []
-# manually bake without saving
+# manually bake
 @export_tool_button("Bake Definitions") var bakeRoomDefinition = try_bake_definitions
+# clear baked data, including from disk
+@export_tool_button("Clear Definitions") var clearRoomDefinition = try_clear_definitions
 
 # node refs
 var colliders: Node3D
@@ -26,11 +28,11 @@ var connectors: Dictionary[NodePath, RoomConnector]
 var subRooms: Array[Room]
 
 # per-instance levelgen output
-var generatedProps: GeneratedRoom = null
+var generatedConnector: GeneratedRoom = null
 var instanceId: StringName:
     get:
-        if generatedProps == null: return ""
-        return generatedProps.roomInstanceId
+        if generatedConnector == null: return ""
+        return generatedConnector.roomInstanceId
 
 # runtime calculated
 var parentRoom: Room = null
@@ -74,9 +76,6 @@ func _ready() -> void:
         if !isSubRoom && uniqueName != "":
             if editorHelper == null:
                 editorHelper = RoomEditorHelper.new(self)
-            if definitions.size() == 0:
-                editorHelper.bake_room_definitions()
-                editorHelper.persist_definitions()
     else:
         # hole-punch connectors
         await get_tree().process_frame
@@ -87,6 +86,9 @@ func _ready() -> void:
 func try_bake_definitions() -> void:
     if editorHelper != null: editorHelper.bake_room_definitions()
 
+func try_clear_definitions() -> void:
+    if editorHelper != null: editorHelper.clear_room_definitions()
+
 # called after initialization but before being added to the tree
 func setup(_generatedRoom: GeneratedRoom) -> void:
     var chosenDefinition = definitions[_generatedRoom.indexInScene]
@@ -94,16 +96,15 @@ func setup(_generatedRoom: GeneratedRoom) -> void:
     apply_room_dynamics(chosenDefinition.dynamicRoomData)
     # setup sub-rooms first. not sure if needed?
     # for nextSubRoom: Room in subRooms: nextSubRoom.setup(_generatedRoom)
-    transform.origin = _generatedRoom.placedPosition
-    transform.basis = Basis.looking_at(_generatedRoom.placedNormal)
-    for nextConnectorPath: NodePath in _generatedRoom.generatedConnectors.keys():
-        var nextConnector = get_node(nextConnectorPath)
+    transform.origin = Utils.voxel_to_world(_generatedRoom.placedPosition)
+    transform.basis = Basis.looking_at(Const.CardinalVector[_generatedRoom.placedNormal])
+    for nextGeneratedConnector: GeneratedConnector in _generatedRoom.generatedConnectors:
+        var nextConnector = get_node(nextGeneratedConnector.pathInRoom)
         if nextConnector == null:
-            print("extra connector found in room definition, probably stale baked definition: ", str(nextConnectorPath))
+            print("connector from room definition not found in scene, probably stale baked definition: ", str(nextGeneratedConnector.pathInRoom))
             continue
-        var nextGeneratedProps = _generatedRoom.generatedConnectors[nextConnectorPath]
-        nextConnector.generatedProps = nextGeneratedProps
-        LevelManager.connectorInstances.set(nextGeneratedProps.connectorInstanceId, nextConnector)
+        nextConnector.generatedConnector = nextGeneratedConnector
+        LevelManager.connectorInstances.set(nextGeneratedConnector.connectorInstanceId, nextConnector)
     # TODO place props
     # TODO wire up puzzles
     # if sub-random elements, shuffle them
