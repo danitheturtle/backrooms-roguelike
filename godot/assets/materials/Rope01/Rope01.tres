@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dyqnhhkksoxf6"]
+
+[ext_resource type="Texture2D" uid="uid://bplhup8kiu51n" path="res://assets/materials/Rope01/Rope01_albedo.png" id="1_6fqy6"]
+[ext_resource type="Texture2D" uid="uid://dqphc6bclg1wu" path="res://assets/materials/Rope01/Rope01_metallic.png" id="2_6ccky"]
+[ext_resource type="Texture2D" uid="uid://bkqvjiqhgcbf3" path="res://assets/materials/Rope01/Rope01_height.png" id="2_u22ww"]
+[ext_resource type="Texture2D" uid="uid://c2o3mcrhtl5sb" path="res://assets/materials/Rope01/Rope01_roughness.png" id="3_u22ww"]
+[ext_resource type="Texture2D" uid="uid://c3rg1njb420rl" path="res://assets/materials/Rope01/Rope01_normal.png" id="4_ljrvx"]
+
+[resource]
+albedo_texture = ExtResource("1_6fqy6")
+metallic = 1.0
+metallic_texture = ExtResource("2_6ccky")
+roughness_texture = ExtResource("3_u22ww")
+normal_enabled = true
+normal_texture = ExtResource("4_ljrvx")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("2_u22ww")
+uv1_scale = Vector3(0.2, 2, 0.2)
