@@ -6,6 +6,10 @@ const HALF_VOXEL: float = VOXEL / 2.0
 const QUARTER_VOXEL: float = VOXEL / 4.0
 const AMBIENT_MAX: float = 0.4
 
+# generator constants
+const CHUNK_VOXEL_SIDE_LEN: int = 256
+const CHUNK_WORLD_SIDE_LEN: int = CHUNK_VOXEL_SIDE_LEN * int(VOXEL)
+
 # constant project settings (treat as const at runtime)
 var GAME_VERSION = ProjectSettings.get_setting("application/config/version")
 var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -44,6 +48,22 @@ enum GameplayPropType {
     BLUE_ALMOND_WATER,
     WHITE_ALMOND_WATER,
     RED_ALMOND_WATER
+}
+enum CardinalDirection {
+    ZNEG = 0,
+    XPOS = 1,
+    ZPOS = 2,
+    XNEG = 3,
+    YNEG = 4,
+    YPOS = 5,
+}
+const CardinalVector: Dictionary[CardinalDirection, Vector3] = {
+    CardinalDirection.ZNEG: Vector3.FORWARD,
+    CardinalDirection.XPOS: Vector3.RIGHT,
+    CardinalDirection.ZPOS: Vector3.BACK,
+    CardinalDirection.XNEG: Vector3.LEFT,
+    CardinalDirection.YNEG: Vector3.DOWN,
+    CardinalDirection.YPOS: Vector3.UP
 }
 
 # UI enums

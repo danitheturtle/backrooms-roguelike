@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cg1jou2i1bxik" path="res://assets/materials/CeilingLightSquare01/CeilingLightSquare01_Normal.jpg" id="14_l68ec"]
 [ext_resource type="Texture2D" uid="uid://d12k5nn6nkey" path="res://assets/materials/CeilingLightSquare01/CeilingLightSquare01_Roughness.jpg" id="15_dnw08"]
 [ext_resource type="PackedScene" uid="uid://dkaflqjkli2wg" path="res://objects/connectors/ceiling/ceiling_connector.tscn" id="16_48r0w"]
-[ext_resource type="Script" uid="uid://k32pmchuka17" path="res://scripts/room/data/connector_definition.tres.gd" id="18_y65gd"]
+[ext_resource type="Script" uid="uid://c40u2elpwwspl" path="res://scripts/room/data/connector_definition.tres.gd" id="18_y65gd"]
 [ext_resource type="Material" uid="uid://b75agbyu011n4" path="res://assets/materials/DropCeilingSquare01/DropCeilingSquare01.tres" id="19_taakv"]
 [ext_resource type="Material" uid="uid://cnjdmo62lxpvu" path="res://assets/materials/WallpaperChevron/WallpaperChevronYellow.tres" id="20_vqwax"]
 [ext_resource type="PackedScene" uid="uid://cnapbejxxdkpf" path="res://objects/connectors/floor/floor_connector.tscn" id="21_00ig2"]
@@ -540,12 +540,9 @@ uv1_triplanar = true
 [sub_resource type="Resource" id="Resource_qv53x"]
 script = ExtResource("18_y65gd")
 pathInRoom = NodePath("Connectors/CeilingConnector")
-position = Vector3(-7.5, 4, -6.5)
-depth = 2.0
-normal = Vector3(0, 1, 0)
-size = Vector2(2, 2)
-cornerMin = Vector3(-8.5, 4, -7.5)
-cornerMax = Vector3(-6.5, 4, -5.5)
+normal = 5
+cornerMin = Vector3i(-17, 8, -15)
+cornerMax = Vector3i(-13, 8, -11)
 aabb = AABB(-8.5, 3.75, -7.5, 2, 0.5, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_njhvf"]
@@ -564,12 +561,9 @@ size = Vector2(2.002, 2.002)
 [sub_resource type="Resource" id="Resource_fpt8s"]
 script = ExtResource("18_y65gd")
 pathInRoom = NodePath("Connectors/CeilingConnector2")
-position = Vector3(-1, 7.5, -7.5)
-depth = 1.75
-normal = Vector3(0, 1, 0)
-size = Vector2(1, 2)
-cornerMin = Vector3(-1.5, 7.5, -8.5)
-cornerMax = Vector3(-0.5, 7.5, -6.5)
+normal = 5
+cornerMin = Vector3i(-3, 15, -17)
+cornerMax = Vector3i(-1, 15, -13)
 aabb = AABB(-1.5, 7.25, -8.5, 1, 0.5, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u4ph6"]
@@ -588,12 +582,9 @@ size = Vector2(1.002, 2.002)
 [sub_resource type="Resource" id="Resource_8jovn"]
 script = ExtResource("18_y65gd")
 pathInRoom = NodePath("Connectors/FloorConnector")
-position = Vector3(2.75, -3, -2)
-depth = 3.0
-normal = Vector3(0, -1, 0)
-size = Vector2(1.5, 2)
-cornerMin = Vector3(2, -3, -3)
-cornerMax = Vector3(3.5, -3, -1)
+normal = 4
+cornerMin = Vector3i(4, -6, -6)
+cornerMax = Vector3i(7, -6, -2)
 aabb = AABB(2, -3.25, -3, 1.5, 0.5, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tycph"]
@@ -611,11 +602,9 @@ size = Vector2(1.502, 2.002)
 [sub_resource type="Resource" id="Resource_3iqsw"]
 script = ExtResource("18_y65gd")
 pathInRoom = NodePath("Connectors/FloorConnector2")
-position = Vector3(1.5, 2, -8)
-normal = Vector3(0, -1, 0)
-size = Vector2(1, 1)
-cornerMin = Vector3(1, 2, -8.5)
-cornerMax = Vector3(2, 2, -7.5)
+normal = 4
+cornerMin = Vector3i(2, 4, -17)
+cornerMax = Vector3i(4, 4, -15)
 aabb = AABB(1, 1.75, -8.5, 1, 0.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jqxne"]
@@ -633,11 +622,9 @@ size = Vector2(1.002, 1.002)
 [sub_resource type="Resource" id="Resource_rw6p2"]
 script = ExtResource("18_y65gd")
 pathInRoom = NodePath("Connectors/WallConnector")
-position = Vector3(-12.5, 1, 7)
-normal = Vector3(-1, 0, 4.371139e-08)
-size = Vector2(1, 1)
-cornerMin = Vector3(-12.5, 0.5, 7.5)
-cornerMax = Vector3(-12.5, 1.5, 6.5)
+normal = 3
+cornerMin = Vector3i(-25, 1, 15)
+cornerMax = Vector3i(-25, 3, 13)
 aabb = AABB(-12.75, 0.5, 6.5, 0.5, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n0uip"]
@@ -656,12 +643,8 @@ orientation = 2
 [sub_resource type="Resource" id="Resource_6wyk7"]
 script = ExtResource("18_y65gd")
 pathInRoom = NodePath("Connectors/WallConnector2")
-position = Vector3(-7.25, 0.5, -8.5)
-depth = 0.5
-normal = Vector3(0, 0, -1)
-size = Vector2(2.5, 3)
-cornerMin = Vector3(-8.5, -1, -8.5)
-cornerMax = Vector3(-6, 2, -8.5)
+cornerMin = Vector3i(-17, -2, -17)
+cornerMax = Vector3i(-12, 4, -17)
 aabb = AABB(-8.5, -1, -8.75, 2.5, 3, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1c6r3"]
@@ -680,12 +663,9 @@ orientation = 2
 [sub_resource type="Resource" id="Resource_0dj38"]
 script = ExtResource("18_y65gd")
 pathInRoom = NodePath("Connectors/WallConnector3")
-position = Vector3(-9, 0.25, -3.75)
-depth = 0.5
-normal = Vector3(-1, 0, 4.371139e-08)
-size = Vector2(5.5, 2.5)
-cornerMin = Vector3(-9, -1, -1)
-cornerMax = Vector3(-9, 1.5, -6.5)
+normal = 3
+cornerMin = Vector3i(-18, -2, -2)
+cornerMax = Vector3i(-18, 3, -13)
 aabb = AABB(-9.25, -1, -6.5, 0.5, 2.5, 5.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y8dfu"]
@@ -704,12 +684,9 @@ orientation = 2
 [sub_resource type="Resource" id="Resource_gqu2c"]
 script = ExtResource("18_y65gd")
 pathInRoom = NodePath("Connectors/WallConnector4")
-position = Vector3(-2, 1.25, 9)
-depth = 0.75
-normal = Vector3(8.742278e-08, 0, 1)
-size = Vector2(5, 2.5)
-cornerMin = Vector3(0.5, 0, 9)
-cornerMax = Vector3(-4.5, 2.5, 9)
+normal = 2
+cornerMin = Vector3i(1, 0, 18)
+cornerMax = Vector3i(-9, 5, 18)
 aabb = AABB(-4.5, 0, 8.75, 5, 2.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q28s4"]
@@ -728,12 +705,9 @@ orientation = 2
 [sub_resource type="Resource" id="Resource_adi0u"]
 script = ExtResource("18_y65gd")
 pathInRoom = NodePath("Connectors/WallConnector5")
-position = Vector3(6.5, 1.5, 3.75)
-depth = 0.5
-normal = Vector3(1, 0, 4.371139e-08)
-size = Vector2(3.5, 3)
-cornerMin = Vector3(6.5, 0, 2)
-cornerMax = Vector3(6.5, 3, 5.5)
+normal = 1
+cornerMin = Vector3i(13, 0, 4)
+cornerMax = Vector3i(13, 6, 11)
 aabb = AABB(6.25, 0, 2, 0.5, 3, 3.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fcd1u"]
@@ -752,12 +726,8 @@ orientation = 2
 [sub_resource type="Resource" id="Resource_c3rqn"]
 script = ExtResource("18_y65gd")
 pathInRoom = NodePath("Connectors/WallConnector6")
-position = Vector3(5, 3.75, -6)
-depth = 0.75
-normal = Vector3(0, 0, -1)
-size = Vector2(2, 2.5)
-cornerMin = Vector3(4, 2.5, -6)
-cornerMax = Vector3(6, 5, -6)
+cornerMin = Vector3i(8, 5, -12)
+cornerMax = Vector3i(12, 10, -12)
 aabb = AABB(4, 2.5, -6.25, 2, 2.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2gx4g"]
@@ -776,12 +746,9 @@ orientation = 2
 [sub_resource type="Resource" id="Resource_4s5h6"]
 script = ExtResource("18_y65gd")
 pathInRoom = NodePath("Connectors/WallConnector7")
-position = Vector3(3.5, 1, -5.25)
-depth = 1.5
-normal = Vector3(1, 0, 4.371139e-08)
-size = Vector2(1.5, 2)
-cornerMin = Vector3(3.5, 0, -6)
-cornerMax = Vector3(3.5, 2, -4.5)
+normal = 1
+cornerMin = Vector3i(7, 0, -12)
+cornerMax = Vector3i(7, 4, -9)
 aabb = AABB(3.25, 0, -6, 0.5, 2, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cnksn"]

@@ -1,24 +1,20 @@
 {
   "main": {
-    "id": "aa61010e5db8d543",
+    "id": "a24a37903032a245",
     "type": "split",
     "children": [
       {
-        "id": "f552ed28b61e0d78",
+        "id": "3b86868e1e357cce",
         "type": "tabs",
         "children": [
           {
-            "id": "46516998497d2586",
+            "id": "1e0790b000ba13c9",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Mechanics/Player Movement.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Player Movement"
+              "title": "New tab"
             }
           }
         ]
@@ -27,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "29650421a0d6ac7e",
+    "id": "e3c921f0cbaee7bd",
     "type": "split",
     "children": [
       {
-        "id": "1129482350f8008c",
+        "id": "938e4d2104b4ff77",
         "type": "tabs",
         "children": [
           {
-            "id": "7a80f61ff686c88b",
+            "id": "f28b9d69b359f6d2",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -50,7 +46,7 @@
             }
           },
           {
-            "id": "95bd710ce79a3b86",
+            "id": "3b94e724c65b4579",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -67,7 +63,7 @@
             }
           },
           {
-            "id": "5be13b2df6253e63",
+            "id": "90ed19315e6e7e9d",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -83,23 +79,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 277.1870002746582
+    "width": 300
   },
   "right": {
-    "id": "60e38da9fe88d717",
+    "id": "69e71fcd5a69d13f",
     "type": "split",
     "children": [
       {
-        "id": "39bf1e5471b3cd71",
+        "id": "2d12c22f5bf453e3",
         "type": "tabs",
         "children": [
           {
-            "id": "a2bd5b56c869da76",
+            "id": "847d919ab533b5de",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Name Ideas.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,12 +108,11 @@
             }
           },
           {
-            "id": "dd122a99be60d449",
+            "id": "b8e3d7924e56c3fd",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Name Ideas.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -127,7 +121,7 @@
             }
           },
           {
-            "id": "282ef2da228fb92a",
+            "id": "ecf970c5190e2976",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -142,7 +136,7 @@
             }
           },
           {
-            "id": "e74f2b4b02594180",
+            "id": "7d5394234355de08",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -156,12 +150,11 @@
             }
           },
           {
-            "id": "4a05ba4b049804a3",
+            "id": "60ecdc252b8fabc1",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Name Ideas.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -188,42 +181,6 @@
       "bases:Create new base": false
     }
   },
-  "active": "46516998497d2586",
-  "lastOpenFiles": [
-    "Technical/Rope iterative implementation.md",
-    "Todo.md",
-    "Today.md",
-    "Playtest Notes.md",
-    "Decoration/just a really long cat.md",
-    "Decoration/Musical Inspiration.md",
-    "Decoration/Neocities backrooms marketing page.md",
-    "Decoration/Sounds Needed.md",
-    "Decoration/Wall Writing.md",
-    "Decoration/Yellow Light Color.md",
-    "Decoration/Deco Ideas.md",
-    "Technical/Generation Constraints.md",
-    "Technical/Bugs.md",
-    "Mechanics/Tools/Rope.md",
-    "Mechanics/Mechanic Brainstorm.md",
-    "Technical/Pseudo-interfaces/Targetable.md",
-    "Technical/Pseudo-interfaces/Climbable.md",
-    "Technical/Pseudo-interfaces",
-    "What Not To Do.md",
-    "Mechanics/Upgrades.md",
-    "Mechanics/Tools/Flashlight.md",
-    "Technical/Input System with Optional Steam API.md",
-    "Design Pillars.md",
-    "Mechanics/Camera Scoring.md",
-    "Mechanics/Player Movement.md",
-    "Technical/Room Constraints.md",
-    "Technical/Building a room.md",
-    "Mechanics/Pickups",
-    "Mechanics/Resources",
-    "Mechanics/Tools",
-    "Mechanics/Puzzles",
-    "Technical",
-    "Lore",
-    "Decoration",
-    "Mechanics"
-  ]
+  "active": "1e0790b000ba13c9",
+  "lastOpenFiles": []
 }

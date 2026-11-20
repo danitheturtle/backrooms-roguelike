@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dxun115m4alsw" path="res://rooms/room_base.tscn" id="1_xurkv"]
 [ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_gwgcl"]
-[ext_resource type="Resource" uid="uid://dclwrefsscctj" path="res://rooms/room_test/defs/definition_0.tres" id="4_1f6oh"]
+[ext_resource type="Resource" uid="uid://bjuiseqn887sa" path="res://rooms/room_test/defs/definition_0.tres" id="4_1f6oh"]
 [ext_resource type="PackedScene" uid="uid://bo8cc1njenbbh" path="res://rooms/level_0/hobbytown1/room_L0_hobbytown_1.tscn" id="4_gwgcl"]
 [ext_resource type="PackedScene" uid="uid://ch6oue2dlb35s" path="res://objects/furniture/sofa_03/sofa_03_physics.tscn" id="5_1f6oh"]
 [ext_resource type="PackedScene" uid="uid://b4wu7kqyskjug" path="res://objects/furniture/sofa_01/sofa_01_physics.tscn" id="6_pq6pd"]

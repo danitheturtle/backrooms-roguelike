@@ -33,7 +33,7 @@ func _init(_connector: RoomConnector) -> void:
             mesh = nextChild
         elif nextChild is Area3D:
             adjacentCollider = nextChild.get_child(0)
-    # detect 
+    # grab info about room this connector is in
     room = Utils.get_parent_of_type(connector, Room)
     var editedRoot = EditorInterface.get_edited_scene_root()
     isInSubRoom = room != editedRoot
@@ -98,24 +98,41 @@ func bake_connector_definition() -> ConnectorDefinition:
             nextParentRoom = Utils.get_parent_of_type(nextParentRoom, Room)
     var connectorRelativeTransform = relativeTransform * connector.transform
     # bake props into definition. translate into room-local space
-    definition.position = connectorRelativeTransform.origin
-    definition.depth = connector.globalDepth
     var localCornerMin: Vector3
     var localCornerMax: Vector3
+    var connectorNormal: Vector3
     if connector is WallConnector:
-        definition.size = Vector2(adjacentCollider.shape.size.x, adjacentCollider.shape.size.y)
-        definition.normal = -connectorRelativeTransform.basis.z
-        localCornerMin = -0.5 * Vector3(definition.size.x, definition.size.y, 0.0)
-        localCornerMax = 0.5 * Vector3(definition.size.x, definition.size.y, 0.0)
+        var connectorSize = Vector2(adjacentCollider.shape.size.x, adjacentCollider.shape.size.y)
+        connectorNormal = -connectorRelativeTransform.basis.z
+        if Utils.equalsv(connectorNormal, Vector3.LEFT):
+            definition.normal = Const.CardinalDirection.XNEG
+        elif Utils.equalsv(connectorNormal, Vector3.RIGHT):
+            definition.normal = Const.CardinalDirection.XPOS
+        elif Utils.equalsv(connectorNormal, Vector3.FORWARD):
+            definition.normal = Const.CardinalDirection.ZNEG
+        elif Utils.equalsv(connectorNormal, Vector3.BACK):
+            definition.normal = Const.CardinalDirection.ZPOS
+        else:
+            # TODO(Monica): Handle this as an error case
+            assert(false, "connector has non-cardinal normal")
+        localCornerMin = -0.5 * Vector3(connectorSize.x, connectorSize.y, 0.0)
+        localCornerMax = 0.5 * Vector3(connectorSize.x, connectorSize.y, 0.0)
     else:
-        definition.size = Vector2(adjacentCollider.shape.size.x, adjacentCollider.shape.size.z)
-        definition.normal = Vector3.UP if connector is CeilingConnector else Vector3.DOWN
-        localCornerMin = -0.5 * Vector3(definition.size.x, 0.0, definition.size.y)
-        localCornerMax = 0.5 * Vector3(definition.size.x, 0.0, definition.size.y)
-    definition.cornerMin = connectorRelativeTransform * localCornerMin
-    definition.cornerMax = connectorRelativeTransform * localCornerMax
-    var aabbStart = definition.cornerMin + 0.25*definition.normal
-    var aabbEnd = definition.cornerMax - 0.25*definition.normal
+        var connectorSize = Vector2(adjacentCollider.shape.size.x, adjacentCollider.shape.size.z)
+        if connector is CeilingConnector:
+            definition.normal = Const.CardinalDirection.YPOS
+            connectorNormal = Vector3.UP
+        else:
+            definition.normal = Const.CardinalDirection.YNEG
+            connectorNormal = Vector3.DOWN
+        localCornerMin = -0.5 * Vector3(connectorSize.x, 0.0, connectorSize.y)
+        localCornerMax = 0.5 * Vector3(connectorSize.x, 0.0, connectorSize.y)
+    var worldCornerMin = connectorRelativeTransform * localCornerMin
+    var worldCornerMax = connectorRelativeTransform * localCornerMax
+    definition.cornerMin = Utils.world_to_voxel(worldCornerMin)
+    definition.cornerMax = Utils.world_to_voxel(worldCornerMax)
+    var aabbStart = worldCornerMin + 0.25*connectorNormal
+    var aabbEnd = worldCornerMax - 0.25*connectorNormal
     definition.aabb = AABB(aabbStart, aabbEnd - aabbStart).abs()
     # TODO:
     definition.distFromFloor = 0.0
