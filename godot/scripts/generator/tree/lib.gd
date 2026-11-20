@@ -53,7 +53,7 @@ func reinit(startingRoomIdx: int, s: int) -> GeneratedRoom:
     return ret
 
 func generate_in_radius(chunk_pos: Vector3i, chunk_radius: int) -> Array[GeneratedRoom]:
-    var tracker := chunkTracker[chunk_pos]
+    var tracker: ChunkTracker = chunkTracker.find_key(chunk_pos)
     # If the player/generator has already visited this chunk, early exit this call.
     if tracker != null and tracker.isVisited:
         return []
@@ -63,7 +63,7 @@ func generate_in_radius(chunk_pos: Vector3i, chunk_radius: int) -> Array[Generat
         for z in range(chunk_pos.z - chunk_radius, chunk_pos.z + chunk_radius):
             for y in range(chunk_pos.y - chunk_radius, chunk_pos.y + chunk_radius):
                 var cur_chunk := Vector3i(x, y, z)
-                var cur_tracker := chunkTracker[cur_chunk]
+                var cur_tracker: ChunkTracker = chunkTracker.find_key(cur_chunk)
                 if cur_tracker != null and !cur_tracker.unresolved.is_empty():
                     toGenerate.append(cur_chunk)
     if toGenerate.is_empty():
@@ -93,7 +93,7 @@ func stable_sort_chunks(array: Array[Vector3i], center: Vector3i):
                 break
 
 func generate_chunk(chunk_pos: Vector3i) -> Array[GeneratedRoom]:
-    var tracker := chunkTracker[chunk_pos]
+    var tracker: ChunkTracker = chunkTracker.find_key(chunk_pos)
     if tracker != null and !tracker.unresolved.is_empty():
         return generate_chunk_unchecked(chunk_pos, tracker)
     else:
@@ -244,7 +244,7 @@ func register_generated(newRoom: GeneratedRoom):
         newTracker.unresolved.append(newUnresolved)
 
 func get_tracker(chunk_pos: Vector3i) -> ChunkTracker:
-    var tracker := null if !chunkTracker.has(chunk_pos) else chunkTracker[chunk_pos]
+    var tracker: ChunkTracker = chunkTracker.find_key(chunk_pos)
     if tracker == null:
         tracker = ChunkTracker.new()
         chunkTracker[chunk_pos] = tracker
@@ -254,7 +254,7 @@ func check_bounds(newApproximateBounds: AABB, newBounds: Array[AABB], bound_star
     for x in range(bound_start.x, bound_end.x):
         for z in range(bound_start.z, bound_end.z):
             for y in range(bound_start.y, bound_end.y):
-                var tracker := chunkTracker[Vector3i(x, y, z)]
+                var tracker: ChunkTracker = chunkTracker.find_key(Vector3i(x, y, z))
                 if tracker != null:
                     for l in range(0, tracker.generated.size()):
                         var generated := generatedRooms[tracker.generated[l]]
