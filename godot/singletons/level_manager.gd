@@ -13,6 +13,7 @@ var levelActive: bool = false
 var currentLevelSeed: int = 0
 var roomInstances: Dictionary[StringName, Room] = {}
 var connectorInstances: Dictionary[StringName, RoomConnector] = {}
+var generationActive: bool = false
 
 func _init() -> void:
     generator = TreeLevelGenerator.new()
@@ -39,14 +40,23 @@ func reinit(nextSeed: int = -1) -> void:
         State.rng.randomize()
         currentLevelSeed = State.rng.seed
 
+func _process(_delta: float) -> void:
+    if !levelActive: return
+    if generationActive && State.player.process_mode != Node.PROCESS_MODE_DISABLED:
+        var newlyAddedRooms: Array[GeneratedRoom] = generator.generate_in_radius(Utils.world_to_chunk(State.player.global_position), 3)
+        if newlyAddedRooms.size() > 0:
+            place_rooms_in_level(newlyAddedRooms)
+
 # tutorial is its own game mode since it has no rng
 func load_tutorial() -> void:
     var tutorialRoom: Room = rooms["tutorial"].instantiate()
     var tutorialInstance: GeneratedRoom = tutorialRoom.definitions[0].get_generated_instance()
     tutorialRoom.setup(tutorialInstance)
-    await get_tree().process_frame
     root.add_child(tutorialRoom)
     tutorialRoom.owner = root
+    roomInstances[tutorialInstance.roomInstanceId] = tutorialRoom
+    for nextConnector: GeneratedConnector in tutorialInstance.generatedConnectors:
+        connectorInstances[nextConnector.connectorInstanceId] = tutorialRoom.get_node(nextConnector.pathInRoom)
     on_level_ready()
 
 # called at the start of a run
@@ -54,9 +64,9 @@ func generate_initial_level() -> void:
     var firstRoomInstance: GeneratedRoom = generator.reinit(0,State.rng.seed)
     var firstRoom: Room = rooms[firstRoomInstance.roomName].instantiate()
     firstRoom.setup(firstRoomInstance)
-    await get_tree().process_frame
     root.add_child(firstRoom)
     firstRoom.owner = root
+    generationActive = true
     on_level_ready()
 
 func on_level_ready() -> void:
@@ -71,6 +81,21 @@ func on_level_ready() -> void:
     State.player.process_mode = Node.PROCESS_MODE_PAUSABLE
     levelActive = true
     level_ready.emit()
+
+func place_rooms_in_level(_newRooms: Array[GeneratedRoom]) -> void:
+    for nextGeneratedRoom: GeneratedRoom in _newRooms:
+        if !rooms.has(nextGeneratedRoom.roomInstanceId):
+            spawn_room(nextGeneratedRoom)
+    for nextGeneratedRoom: GeneratedRoom in _newRooms:
+        for nextGeneratedConnector: GeneratedConnector in nextGeneratedRoom.generatedConnectors:
+            connectorInstances[nextGeneratedConnector.connectorInstanceId].build_connectors()
+
+func spawn_room(_generatedRoom: GeneratedRoom) -> Room:
+    var spawnedRoom: Room = rooms[_generatedRoom.roomName].instantiate()
+    spawnedRoom.setup(_generatedRoom)
+    root.add_child(spawnedRoom)
+    spawnedRoom.owner = root
+    return spawnedRoom
 
 func load_rooms_from_disk(_dir: String) -> void:
     var allItems: PackedStringArray = ResourceLoader.list_directory(_dir)

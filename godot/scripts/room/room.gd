@@ -81,12 +81,6 @@ func _ready() -> void:
     if Engine.is_editor_hint():
         if !isSubRoom && editorHelper == null:
             editorHelper = RoomEditorHelper.new(self)
-    else:
-        # hole-punch connectors
-        await get_tree().process_frame
-        for nextConnector: RoomConnector in connectors.values():
-            if nextConnector.doesNotConnect: continue
-            nextConnector.build_connectors()
 
 func try_bake_definitions() -> void:
     if editorHelper != null: editorHelper.bake_room_definitions()

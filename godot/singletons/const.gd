@@ -8,7 +8,7 @@ const AMBIENT_MAX: float = 0.4
 
 # generator constants
 const CHUNK_VOXEL_SIDE_LEN: int = 256
-const CHUNK_WORLD_SIDE_LEN: int = CHUNK_VOXEL_SIDE_LEN * int(VOXEL)
+const CHUNK_WORLD_SIDE_LEN: float = CHUNK_VOXEL_SIDE_LEN * VOXEL
 
 # constant project settings (treat as const at runtime)
 var GAME_VERSION = ProjectSettings.get_setting("application/config/version")
