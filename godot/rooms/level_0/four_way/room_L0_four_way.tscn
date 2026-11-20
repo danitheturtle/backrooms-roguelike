@@ -141,7 +141,6 @@ resource_local_to_scene = true
 size = Vector2(7.6, 7.6)
 
 [node name="RoomL0FourWay" unique_id=1900576414 instance=ExtResource("1_3egrg")]
-uniqueName = &"L0_four_way"
 definitions = Array[ExtResource("2_k0ri8")]([ExtResource("3_jin66")])
 
 [node name="WallStaticBody" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="0" unique_id=237774776 instance=ExtResource("7_5xbmh")]

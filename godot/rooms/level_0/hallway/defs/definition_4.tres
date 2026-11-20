@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c40u2elpwwspl" path="res://scripts/room/data/connector_definition.tres.gd" id="1_hm10v"]
 [ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_w7mwl"]
 
-[sub_resource type="Resource" id="Resource_hm10v"]
+[sub_resource type="Resource" id="Resource_f67pt"]
 script = ExtResource("1_hm10v")
 pathInRoom = NodePath("Connectors/WallConnectorXPos")
 normal = 1
@@ -11,7 +11,7 @@ cornerMin = Vector3i(18, 0, -4)
 cornerMax = Vector3i(18, 6, 4)
 aabb = AABB(8.75, 0, -2, 0.5, 3, 4)
 
-[sub_resource type="Resource" id="Resource_w7mwl"]
+[sub_resource type="Resource" id="Resource_ji3t1"]
 script = ExtResource("1_hm10v")
 pathInRoom = NodePath("Connectors/WallConnectorXNeg")
 normal = 3
@@ -21,7 +21,7 @@ aabb = AABB(-9.25, 0, -2, 0.5, 3, 4)
 
 [resource]
 script = ExtResource("2_w7mwl")
-sceneName = &"L0_hallway"
+roomName = &"L0_hallway"
 scenePath = "res://rooms/level_0/hallway/room_L0_hallway.tscn"
 indexInScene = 4
 biomes = Dictionary[int, bool]({
@@ -29,7 +29,7 @@ biomes = Dictionary[int, bool]({
 })
 approximateBounds = AABB(-9, -2, -4, 18, 7, 8)
 bounds = Array[AABB]([AABB(-9, -2, -4, 18, 7, 8)])
-connectors = Array[ExtResource("1_hm10v")]([SubResource("Resource_hm10v"), SubResource("Resource_w7mwl")])
+connectors = Array[ExtResource("1_hm10v")]([SubResource("Resource_f67pt"), SubResource("Resource_ji3t1")])
 dynamicRoomData = Dictionary[StringName, Variant]({
 &"voxelLength": 36
 })

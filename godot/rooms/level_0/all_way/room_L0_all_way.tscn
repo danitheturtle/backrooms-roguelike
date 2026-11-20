@@ -137,7 +137,6 @@ resource_local_to_scene = true
 size = Vector3(8, 4.5, 8)
 
 [node name="RoomL0AllWay" unique_id=1900576414 instance=ExtResource("1_s2072")]
-uniqueName = &"L0_all_way"
 definitions = Array[ExtResource("2_t1q3e")]([ExtResource("3_lvn7y")])
 
 [node name="FloorConnector" parent="Connectors" parent_id_path=PackedInt32Array(1690603826) index="0" unique_id=674166013 instance=ExtResource("2_mdv3c")]

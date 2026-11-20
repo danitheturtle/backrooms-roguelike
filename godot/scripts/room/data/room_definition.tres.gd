@@ -50,7 +50,7 @@ func get_generated_instance() -> GeneratedRoom:
 ###
 @export_group("Baked")
 # unique name for room scene
-@export var sceneName: StringName = ""
+@export var roomName: StringName = ""
 # room scene path for instantiation
 @export var scenePath: String = ""
 # this definition's index in the room's array of definitions

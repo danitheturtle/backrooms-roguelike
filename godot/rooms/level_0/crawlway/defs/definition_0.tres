@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://d3atjth8b8rse"]
+[gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://cwdpx44gsaa6j"]
 
 [ext_resource type="Script" uid="uid://c40u2elpwwspl" path="res://scripts/room/data/connector_definition.tres.gd" id="1_f0h28"]
 [ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_b3cd0"]
@@ -13,7 +13,7 @@ aabb = AABB(-0.75, -0.5, -0.5, 0.5, 1, 1)
 
 [resource]
 script = ExtResource("2_b3cd0")
-sceneName = &"L0_crawlway"
+roomName = &"L0_crawlway"
 scenePath = "res://rooms/level_0/crawlway/room_L0_crawlway.tscn"
 biomes = Dictionary[int, bool]({
 0: true

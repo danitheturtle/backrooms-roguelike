@@ -244,7 +244,7 @@ func register_generated(newRoom: GeneratedRoom):
         newTracker.unresolved.append(newUnresolved)
 
 func get_tracker(chunk_pos: Vector3i) -> ChunkTracker:
-    var tracker := chunkTracker[chunk_pos]
+    var tracker := null if !chunkTracker.has(chunk_pos) else chunkTracker[chunk_pos]
     if tracker == null:
         tracker = ChunkTracker.new()
         chunkTracker[chunk_pos] = tracker

@@ -1,7 +1,7 @@
 class_name RoomEditorHelper
 
 var room: Room
-var uniqueName: StringName
+var roomName: StringName
 var roomScenePath: String
 var connectors: Dictionary[NodePath, RoomConnector]
 var boundsArea: Area3D
@@ -10,17 +10,19 @@ var definitions: Array[RoomDefinition]
 
 func _init(_room: Room):
     room = _room
-    roomScenePath = EditorInterface.get_edited_scene_root().scene_file_path 
+    roomScenePath = EditorInterface.get_edited_scene_root().scene_file_path
+    roomName = roomScenePath.get_file().replace("room_", "").replace(".tscn", "")
     update_refs()
 
 func update_refs() -> void:
-    uniqueName = room.uniqueName
+    room.roomName = roomName
     connectors = room.connectors
     definitionCount = room.definitionCount
     definitions = room.definitions
     boundsArea = room.boundsArea
 
 func bake_room_definitions() -> void:
+    if roomName == "base": return
     ## TODO ensure this works if subrooms change a lot after a pre-existing def is loaded
     if room.isSubRoom: return #sub-rooms don't get baked
     update_refs()
@@ -61,7 +63,7 @@ func bake_room_definitions() -> void:
             if atBoundsEdge:
                 connectorDefinitions.append(nextConnectorDefinition)
                 allBiomes[nextConnectorDefinition.biome] = true
-        nextDefinition.sceneName = uniqueName
+        nextDefinition.roomName = roomName
         nextDefinition.scenePath = roomScenePath
         nextDefinition.indexInScene = definitionIndex
         nextDefinition.connectors = connectorDefinitions
@@ -78,6 +80,7 @@ func bake_room_definitions() -> void:
     notify_property_list_changed()
 
 func persist_definitions() -> void:
+    if roomName == "base": return
     if room.isSubRoom: return #sub-rooms don't get baked
     update_refs()
     var editedRoomFolder = EditorInterface.get_edited_scene_root().scene_file_path.get_base_dir()
@@ -104,6 +107,7 @@ func persist_definitions() -> void:
     notify_property_list_changed()
 
 func clear_room_definitions() -> void:
+    if roomName == "base": return
     var editedRoomFolder = EditorInterface.get_edited_scene_root().scene_file_path.get_base_dir()
     var definitionsFolder = editedRoomFolder + "/defs" 
     if DirAccess.dir_exists_absolute(definitionsFolder):

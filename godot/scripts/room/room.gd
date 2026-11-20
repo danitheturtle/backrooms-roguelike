@@ -4,8 +4,8 @@ class_name Room
 
 var editorHelper: RoomEditorHelper = null
 
-# every room scene in the game has a unique name
-@export var uniqueName: StringName = ""
+# every room scene in the game has a unique name based on its filename
+var roomName: StringName = ""
 # change environmental ambient based on number of active lights
 @export var affectsAmbient: bool = true
 # more than 1 definition requires custom room class inheriting this one
@@ -13,7 +13,13 @@ var editorHelper: RoomEditorHelper = null
 # should the first definition's non-baked props be copied to other definitions
 @export var copyFirstDefinitionProps: bool = true
 # every room definition levelgen can instantiate using this scene
-@export var definitions: Array[RoomDefinition] = []
+@export var definitions: Array[RoomDefinition] = []:
+    set(newDefinitionsArray):
+        # ensure loaded definitions have not been file corrupted
+        for i: int in range(newDefinitionsArray.size()-1, -1, -1):
+            if !is_instance_valid(newDefinitionsArray[i]):
+                newDefinitionsArray.remove_at(i)
+        definitions = newDefinitionsArray
 # manually bake
 @export_tool_button("Bake Definitions") var bakeRoomDefinition = try_bake_definitions
 # clear baked data, including from disk
@@ -40,7 +46,7 @@ var isSubRoom: bool = false
 var calculatedAmbient: float = -1.0 # off by default
 
 func _notification(what: int):
-    if uniqueName == "base": return
+    if roomName == "base": return
     match what:
         Node.NOTIFICATION_SCENE_INSTANTIATED:
             grab_refs()
@@ -73,9 +79,8 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
     if Engine.is_editor_hint():
-        if !isSubRoom && uniqueName != "":
-            if editorHelper == null:
-                editorHelper = RoomEditorHelper.new(self)
+        if !isSubRoom && editorHelper == null:
+            editorHelper = RoomEditorHelper.new(self)
     else:
         # hole-punch connectors
         await get_tree().process_frame

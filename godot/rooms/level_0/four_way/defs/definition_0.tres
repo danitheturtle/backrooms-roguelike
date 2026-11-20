@@ -36,7 +36,7 @@ aabb = AABB(3.7499998, 0, -3.5, 0.50000024, 3, 7)
 
 [resource]
 script = ExtResource("2_hwsps")
-sceneName = &"L0_four_way"
+roomName = &"L0_four_way"
 scenePath = "res://rooms/level_0/four_way/room_L0_four_way.tscn"
 biomes = Dictionary[int, bool]({
 0: true

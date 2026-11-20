@@ -4,13 +4,13 @@ class_name GeneratedRoom
 static var instanceCounter: int = 0
 var roomInstanceId: StringName = "room_-1"
 # unique room scene name
-var sceneName: StringName = ""
+var roomName: StringName = ""
 # which room definition this instance is using
 var indexInScene: int = 0
 
 # don't call directly, get_generated_instance() from RoomDefinition instead
 func _init(_definition: RoomDefinition) -> void:
-    sceneName = _definition.sceneName
+    roomName = _definition.roomName
     indexInScene = _definition.indexInScene
     roomInstanceId = "room_" + str(instanceCounter)
     instanceCounter += 1

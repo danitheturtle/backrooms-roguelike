@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cwq4k3mxd86fb"]
 
 [ext_resource type="PackedScene" uid="uid://dxun115m4alsw" path="res://rooms/room_base.tscn" id="1_xl1nk"]
-[ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_jyo2m"]
-[ext_resource type="Resource" uid="uid://dyl6xrutlmd2a" path="res://rooms/room_tutorial/defs/definition_0.tres" id="3_30s20"]
+[ext_resource type="Script" uid="uid://1s1tvxk06v3e" path="res://scripts/room/data/room_definition.tres.gd" id="2_ta4gn"]
+[ext_resource type="Resource" uid="uid://d24wl47hh6w0t" path="res://rooms/room_tutorial/defs/definition_0.tres" id="3_yk7cw"]
 [ext_resource type="PackedScene" uid="uid://b500l15l80jvq" path="res://objects/colliders/floor_static_body.tscn" id="5_2vefq"]
 [ext_resource type="PackedScene" uid="uid://dgwmutwf473uv" path="res://objects/colliders/ceiling_static_body.tscn" id="6_7xnmx"]
 [ext_resource type="PackedScene" uid="uid://drbjwwtxjt4k0" path="res://objects/colliders/primitives/rect_collider.tscn" id="6_py2y4"]
@@ -1242,8 +1242,7 @@ size = Vector3(2.25, 2.5, 2.25)
 albedo_color = Color(0.8765005, 0, 0.06118556, 1)
 
 [node name="RoomTutorial" unique_id=1900576414 instance=ExtResource("1_xl1nk")]
-uniqueName = &"tutorial"
-definitions = Array[ExtResource("2_jyo2m")]([ExtResource("3_30s20")])
+definitions = Array[ExtResource("2_ta4gn")]([ExtResource("3_yk7cw")])
 
 [node name="FloorStaticBody" parent="Colliders" parent_id_path=PackedInt32Array(1940976534) index="0" unique_id=446596967 instance=ExtResource("5_2vefq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 21.5)
