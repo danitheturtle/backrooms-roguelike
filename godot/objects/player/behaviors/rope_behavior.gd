@@ -106,10 +106,11 @@ func stop_action() -> void:
 func can_place_rope() -> bool:
     return ropeActionActive && !active && pb.target.active && pb.target.ref.is_in_group(&"anchorable")
 
-func place_new_rope(_anchorRef: PhysicsBody3D, _offset: Vector3) -> Rope:
+func place_new_rope(_anchoredToRef: PhysicsBody3D, _offset: Vector3) -> Rope:
     var newRope: Rope = RopeRes.instantiate()
     newRope.transform.origin = _offset
-    _anchorRef.add_child(newRope)
+    newRope.anchoredTo = _anchoredToRef
+    _anchoredToRef.add_child(newRope)
     return newRope
 
 func toggle_extension_mode() -> void:

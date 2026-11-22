@@ -1079,10 +1079,10 @@ rings = 4
 [sub_resource type="Curve3D" id="Curve3D_v7lea"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.2400017, 1, 4.25, 0, 0, 0, 0, 0, 0, -0.43999863, -0.25, 5.5, 0, 0, 0, 0, 0, 0, -2.97, -0.25, 5.5),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.7799988, -0.25, -1),
+"tilts": PackedFloat32Array(0, 0)
 }
-point_count = 4
+point_count = 2
 up_vector_enabled = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dabt3"]
@@ -2753,7 +2753,7 @@ transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.
 physics_material_override = null
 
 [node name="Rope" parent="Props" parent_id_path=PackedInt32Array(1670016214) index="25" unique_id=597474514 instance=ExtResource("22_ta4gn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.746113, 5.4229674, 45.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.746113, 4.96774, 51.5)
 
 [node name="SphereCollider" parent="Props/Rope/RopeAnchor" parent_id_path=PackedInt32Array(597474514, 1304452007) index="1" unique_id=653304792]
 shape = SubResource("SphereShape3D_hppt7")

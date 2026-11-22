@@ -2,6 +2,7 @@ class_name Rope
 extends Area3D
 
 const MIN_CONTROL_POINT_GAP_SQ: float = 0.03 * 0.03
+const WRAP_UNWRAP_COOLDOWN_MAX: int = 3
 
 @export var radius: float = 0.01
 @export_group("Refs")
@@ -10,6 +11,7 @@ const MIN_CONTROL_POINT_GAP_SQ: float = 0.03 * 0.03
 @export var firstSegmentCollider: CollisionShape3D
 @export var firstSegmentMesh: MeshInstance3D
 
+var anchoredTo: PhysicsBody3D = null
 var _cachedLengthToPivot: float = 0.0
 var pivotArm: Vector3 = Vector3.ZERO
 var pivotArmLength: float = 0.0
@@ -144,8 +146,10 @@ func shapecast_segment(_index: int) -> Dictionary:
     var segmentQuery: PhysicsShapeQueryParameters3D = PhysicsShapeQueryParameters3D.new()
     segmentQuery.collision_mask = 0b00000000000000001111
     segmentQuery.exclude = [anchor]
+    if anchoredTo != null:
+        segmentQuery.exclude.append(anchoredTo)
     segmentQuery.shape = colliderForCast.shape
-    segmentQuery.transform = Transform3D(colliderForCast.transform.basis, path.to_global(colliderForCast.transform.origin))
+    segmentQuery.transform = colliderForCast.global_transform
     var segmentQueryResult := spaceState.get_rest_info(segmentQuery)
     return segmentQueryResult
 
@@ -166,7 +170,7 @@ func wrap_around_geometry(_collision: Dictionary, _insertBeforeIndex: int) -> vo
     ensure_shape_for_segment(_insertBeforeIndex - 1)
     update_segment_shape(_insertBeforeIndex - 1)
     update_cached_length()
-    wrapUnwrapCooldown = 7
+    wrapUnwrapCooldown = WRAP_UNWRAP_COOLDOWN_MAX
 
 ## shapecasts between next and previous points. if no collision, removes control point from curve
 var unwrapping: bool = false
@@ -196,7 +200,7 @@ func try_unwrap_point(_pointIndex: int) -> void:
         for i: int in range(_pointIndex-1, lastIndex):
             update_segment_shape(i)
         update_cached_length()
-    wrapUnwrapCooldown = 7
+    wrapUnwrapCooldown = WRAP_UNWRAP_COOLDOWN_MAX
 
 func get_nearest_control_point(_global_pos: Vector3) -> int:
     var nearestDistSq: float = 999999.0
