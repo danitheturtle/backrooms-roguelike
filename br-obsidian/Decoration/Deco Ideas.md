@@ -27,6 +27,8 @@ gordon freeman still life / gman still life (not a serious suggestion but maybe 
 those doors made of drywall that are flush with the wall that always look really mysterious
 printer that just keeps printing paper
 ceiling connector variant that requires the player to physically move a ceiling tile out of the way
+fax machine in the backrooms that spawns and people can just send shit to
+
 
 video:
 - 90s commercials

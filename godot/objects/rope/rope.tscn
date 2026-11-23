@@ -5,18 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://b160k414l2773" path="res://objects/colliders/primitives/sphere_collider.tscn" id="3_6tqy1"]
 [ext_resource type="Material" uid="uid://dyqnhhkksoxf6" path="res://assets/materials/Rope01/Rope01.tres" id="3_cyxff"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25any"]
-
 [sub_resource type="SphereMesh" id="SphereMesh_5q0ne"]
-material = SubResource("StandardMaterial3D_25any")
+material = ExtResource("3_cyxff")
 radius = 0.1
 height = 0.2
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_6tqy1"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_cyxff"]
 resource_local_to_scene = true
 radius = 0.1
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6iagf"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6tqy1"]
 resource_local_to_scene = true
 radius = 0.01
 height = 0.1
@@ -52,14 +50,13 @@ monitoring = false
 script = ExtResource("2_cyxff")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RopeAnchor" unique_id=699092843]
-material_override = ExtResource("3_cyxff")
 mesh = SubResource("SphereMesh_5q0ne")
 
 [node name="SphereCollider" parent="RopeAnchor" unique_id=653304792 instance=ExtResource("3_6tqy1")]
-shape = SubResource("SphereShape3D_6tqy1")
+shape = SubResource("SphereShape3D_cyxff")
 
 [node name="SegmentCollider" parent="." unique_id=822846443 instance=ExtResource("3_6tqy1")]
-shape = SubResource("CapsuleShape3D_6iagf")
+shape = SubResource("CapsuleShape3D_6tqy1")
 
 [node name="SegmentMesh" type="MeshInstance3D" parent="." unique_id=1975480586]
 material_override = ExtResource("3_cyxff")

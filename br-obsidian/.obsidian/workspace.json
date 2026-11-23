@@ -11,10 +11,14 @@
             "id": "1e0790b000ba13c9",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Todo.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Todo"
             }
           }
         ]
@@ -182,5 +186,18 @@
     }
   },
   "active": "1e0790b000ba13c9",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "Technical/Room Definition API Docs.md",
+    "Technical/Rope iterative implementation.md",
+    "Technical/Generation Constraints.md",
+    "Technical/Pseudo-interfaces/Targetable.md",
+    "Technical/Pseudo-interfaces/Climbable.md",
+    "Mechanics/Puzzles Overview.md",
+    "Mechanics/Tools/Rope.md",
+    "Mechanics/Player Movement.md",
+    "Mechanics/Mechanic Brainstorm.md",
+    "Design Pillars.md",
+    "Decoration/Deco Ideas.md",
+    "Todo.md"
+  ]
 }

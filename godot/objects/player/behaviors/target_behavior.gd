@@ -48,8 +48,8 @@ func process_action(_delta: float) -> void:
             if (nextTargetRef != null && nextTargetRef.is_in_group("targetable")):
                 ref = nextTargetRef
                 ref.apply_hover_material()
-    if pb.rope.can_place_rope():
-        Utils.draw_point("ropePlacement", targetedPoint, Color.YELLOW)
+    #if pb.rope.can_place_rope():
+        #Utils.draw_point("ropePlacement", targetedPoint, Color.YELLOW)
 
 func stop_action() -> void:
     reinit()
