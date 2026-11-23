@@ -187,6 +187,10 @@
   },
   "active": "1e0790b000ba13c9",
   "lastOpenFiles": [
+    "Technical/Level Geometry UVs.md",
+    "Technical/Room Constraints.md",
+    "Mechanics/Player Movement.md",
+    "Todo.md",
     "Technical/Room Definition API Docs.md",
     "Technical/Rope iterative implementation.md",
     "Technical/Generation Constraints.md",
@@ -194,10 +198,8 @@
     "Technical/Pseudo-interfaces/Climbable.md",
     "Mechanics/Puzzles Overview.md",
     "Mechanics/Tools/Rope.md",
-    "Mechanics/Player Movement.md",
     "Mechanics/Mechanic Brainstorm.md",
     "Design Pillars.md",
-    "Decoration/Deco Ideas.md",
-    "Todo.md"
+    "Decoration/Deco Ideas.md"
   ]
 }
