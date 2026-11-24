@@ -23,7 +23,7 @@ func update_definitions(roomDefs: Array[RoomDefinition]):
     for room in roomDefinitions:
         var metadata := RoomGeneratorMetadata.new()
         metadata.connectorSampler.resize(room.connectors.size())
-        for j in range(0, room.connectors.size()):
+        for j in range(room.connectors.size()):
             var connector := room.connectors[j]
             metadata.connectorSampler.set(j, connector.selectionWeight)
 
@@ -53,17 +53,17 @@ func reinit(startingRoomIdx: int, s: int) -> GeneratedRoom:
     return ret
 
 func generate_in_radius(chunk_pos: Vector3i, chunk_radius: int) -> Array[GeneratedRoom]:
-    var tracker: ChunkTracker = chunkTracker.find_key(chunk_pos)
+    var tracker: ChunkTracker = chunkTracker.get(chunk_pos)
     # If the player/generator has already visited this chunk, early exit this call.
-    if tracker != null and tracker.isVisited:
+    if tracker == null or tracker.isVisited:
         return []
 
     var toGenerate: Array[Vector3i] = []
-    for x in range(chunk_pos.x - chunk_radius, chunk_pos.x + chunk_radius):
-        for z in range(chunk_pos.z - chunk_radius, chunk_pos.z + chunk_radius):
-            for y in range(chunk_pos.y - chunk_radius, chunk_pos.y + chunk_radius):
+    for x in range(chunk_pos.x - chunk_radius, chunk_pos.x + chunk_radius + 1):
+        for z in range(chunk_pos.z - chunk_radius, chunk_pos.z + chunk_radius + 1):
+            for y in range(chunk_pos.y - chunk_radius, chunk_pos.y + chunk_radius + 1):
                 var cur_chunk := Vector3i(x, y, z)
-                var cur_tracker: ChunkTracker = chunkTracker.find_key(cur_chunk)
+                var cur_tracker: ChunkTracker = chunkTracker.get(cur_chunk)
                 if cur_tracker != null and !cur_tracker.unresolved.is_empty():
                     toGenerate.append(cur_chunk)
     if toGenerate.is_empty():
@@ -73,7 +73,7 @@ func generate_in_radius(chunk_pos: Vector3i, chunk_radius: int) -> Array[Generat
     # We want to generate from the center going outwards.
     stable_sort_chunks(toGenerate, chunk_pos)
 
-    var ret = []
+    var ret: Array[GeneratedRoom] = []
     for chunk in toGenerate:
         ret.append_array(generate_chunk_unchecked(chunk, chunkTracker[chunk]))
 
@@ -93,7 +93,7 @@ func stable_sort_chunks(array: Array[Vector3i], center: Vector3i):
                 break
 
 func generate_chunk(chunk_pos: Vector3i) -> Array[GeneratedRoom]:
-    var tracker: ChunkTracker = chunkTracker.find_key(chunk_pos)
+    var tracker: ChunkTracker = chunkTracker.get(chunk_pos)
     if tracker != null and !tracker.unresolved.is_empty():
         return generate_chunk_unchecked(chunk_pos, tracker)
     else:
@@ -102,34 +102,35 @@ func generate_chunk(chunk_pos: Vector3i) -> Array[GeneratedRoom]:
 
 # This function expects to be passed the array of connections from `chunkTracker` associated with the given chunk.
 func generate_chunk_unchecked(chunk_pos: Vector3i, tracker: ChunkTracker) -> Array[GeneratedRoom]:
-    var all_unresolved := tracker.unresolved
-
-    # Collect all possible connections along with their weights.
-    var connectionSampler := PackedFloat32Array()
-    connectionSampler.resize(all_unresolved.size())
-    for i in range(0, all_unresolved.size()):
-        var unresolved := all_unresolved[i]
-        var roomDef := roomDefinitions[unresolved.generatedRoomIdx]
-        var connector := roomDef.connectors[unresolved.roomConnectorIdx]
-        connectionSampler.set(i, connector.selectionWeight)
+    var ret: Array[GeneratedRoom] = []
 
     # We seed this rng call for increased level gen determinism.
     var rng := RandomNumberGenerator.new()
     rng.seed = hash(Vector4i(rngSeed, chunk_pos.x, chunk_pos.y, chunk_pos.z))
 
-    var ret = []
+    var n := 0
 
     # Resolve all connections in this chunk.
-    while !all_unresolved.is_empty():
+    while !tracker.unresolved.is_empty():
+        n += 1
+        if n > 100:
+            assert(n < 1000)
+        # Collect all possible connections along with their weights.
+        var connectionSampler := PackedFloat32Array()
+        connectionSampler.resize(tracker.unresolved.size())
+        for i in range(tracker.unresolved.size()):
+            var unresolved := tracker.unresolved[i]
+            var roomDef := roomDefinitions[unresolved.roomDefIdx]
+            var connector := roomDef.connectors[unresolved.roomConnectorIdx]
+            connectionSampler.set(i, connector.selectionWeight)
+
         var i := rng.rand_weighted(connectionSampler)
-        var cur_unresolved := all_unresolved[i]
+        var cur_unresolved := tracker.unresolved[i]
 
         # Swap remove the selected connection from the sampler (sample without replacement).
-        var newSize := all_unresolved.size() - 1
-        all_unresolved.set(i, all_unresolved[newSize])
-        all_unresolved.resize(newSize)
-        connectionSampler.set(i, connectionSampler[newSize])
-        connectionSampler.resize(newSize)
+        var newSize := tracker.unresolved.size() - 1
+        tracker.unresolved.set(i, tracker.unresolved[newSize])
+        tracker.unresolved.resize(newSize)
 
         var curRoom := generatedRooms[cur_unresolved.generatedRoomIdx]
         var curRoomDef := roomDefinitions[curRoom.roomDefIdx]
@@ -138,16 +139,21 @@ func generate_chunk_unchecked(chunk_pos: Vector3i, tracker: ChunkTracker) -> Arr
         # Rejection sample a room to generate connected to the selected connection.
         # Currently this samples with replacement.
         # If rejection sampling fails, we assume the connector cannot be resolved and remove it.
-        for j in range(0, MAX_ROOM_REJECTIONS):
+        for j in range(MAX_ROOM_REJECTIONS):
             var newRoomDefIdx := rng.rand_weighted(roomSampler)
             var newRoomDef := roomDefinitions[newRoomDefIdx]
             var newRoomMetadata := roomMetadata[newRoomDefIdx]
 
-            var conSetIdx = newRoomMetadata.map_connector_set(curConnectorDef.normal)
+            var conSetIdx := newRoomMetadata.map_connector_set(curConnectorDef.normal)
+            var conSetSampler := newRoomMetadata.connectorCardinalSamplers[conSetIdx]
+
+            if conSetSampler.is_empty():
+                # There is no correctly oriented available connector on this room so sample again.
+                continue
 
             # Rejection sample a connector in the selected room to be mated with the selected connector.
-            for k in range(0, MAX_CONNECTOR_REJECTIONS):
-                var newConnectorIdx := newRoomMetadata.connectorCardinalIndices[conSetIdx][rng.rand_weighted(newRoomMetadata.connectorCardinalSamplers[conSetIdx])]
+            for k in range(MAX_CONNECTOR_REJECTIONS):
+                var newConnectorIdx := newRoomMetadata.connectorCardinalIndices[conSetIdx][rng.rand_weighted(conSetSampler)]
                 var newConnectorDef := newRoomDef.connectors[newConnectorIdx]
 
                 var newRoomNormal : Const.CardinalDirection
@@ -170,10 +176,10 @@ func generate_chunk_unchecked(chunk_pos: Vector3i, tracker: ChunkTracker) -> Arr
                 var newRoomPos := Utils.voxel_to_world(newRoomPlacedPos)
 
                 # check for intersection with any other existing room
-                var newApproximateBounds := AABB(newRoomDef.newApproximateBounds)
+                var newApproximateBounds := AABB(newRoomDef.approximateBounds)
                 newApproximateBounds.position += newRoomPos
                 var newBounds : Array[AABB] = []
-                for a in range(0, newRoomDef.bounds.size()):
+                for a in range(newRoomDef.bounds.size()):
                     var bound := AABB(newRoomDef.bounds[a])
                     bound.position += newRoomPos
                     newBounds.append(bound)
@@ -226,41 +232,44 @@ func register_generated(newRoom: GeneratedRoom):
     # Add the room to each intersecting chunk tracker.
     var newGeneratedRoomIdx = generatedRooms.size()
     generatedRooms.append(newRoom)
-    for x in range(bound_start.x, bound_end.x):
-        for z in range(bound_start.z, bound_end.z):
-            for y in range(bound_start.y, bound_end.y):
+    # Increment end to change range from exclusive to inclusive.
+    for x in range(bound_start.x, bound_end.x + 1):
+        for z in range(bound_start.z, bound_end.z + 1):
+            for y in range(bound_start.y, bound_end.y + 1):
                 var newTracker := get_tracker(Vector3i(x, y, z))
                 newTracker.generated.append(newGeneratedRoomIdx)
 
     # Add each new connector to each intersecting chunk tracker.
     var newRoomDef := roomDefinitions[newRoom.roomDefIdx]
-    for newConIdx in range(0, newRoomDef.connectors.size()):
+    for newConIdx in range(newRoomDef.connectors.size()):
         var newConnector := newRoomDef.connectors[newConIdx]
         var newCornerMin = Utils.horizontal_rotatei(newRoom.placedNormal, newConnector.cornerMin) + newRoom.placedPosition
         var newTracker := get_tracker(Utils.voxel_to_chunk(newCornerMin))
         var newUnresolved := UnresolvedConnection.new()
         newUnresolved.generatedRoomIdx = newGeneratedRoomIdx
+        newUnresolved.roomDefIdx = newRoom.roomDefIdx
         newUnresolved.roomConnectorIdx = newConIdx
         newTracker.unresolved.append(newUnresolved)
 
 func get_tracker(chunk_pos: Vector3i) -> ChunkTracker:
-    var tracker: ChunkTracker = chunkTracker.find_key(chunk_pos)
+    var tracker: ChunkTracker = chunkTracker.get(chunk_pos)
     if tracker == null:
         tracker = ChunkTracker.new()
         chunkTracker[chunk_pos] = tracker
     return tracker
 
 func check_bounds(newApproximateBounds: AABB, newBounds: Array[AABB], bound_start: Vector3i, bound_end: Vector3i):
-    for x in range(bound_start.x, bound_end.x):
-        for z in range(bound_start.z, bound_end.z):
-            for y in range(bound_start.y, bound_end.y):
-                var tracker: ChunkTracker = chunkTracker.find_key(Vector3i(x, y, z))
+    # Increment end to change range from exclusive to inclusive.
+    for x in range(bound_start.x, bound_end.x + 1):
+        for z in range(bound_start.z, bound_end.z + 1):
+            for y in range(bound_start.y, bound_end.y + 1):
+                var tracker: ChunkTracker = chunkTracker.get(Vector3i(x, y, z))
                 if tracker != null:
-                    for l in range(0, tracker.generated.size()):
+                    for l in range(tracker.generated.size()):
                         var generated := generatedRooms[tracker.generated[l]]
                         if newApproximateBounds.intersection(generated.approximateBounds):
-                            for a in range(0, newBounds.size()):
-                                for b in range(0, generated.bounds.size()):
+                            for a in range(newBounds.size()):
+                                for b in range(generated.bounds.size()):
                                     if newBounds[a].intersection(generated.bounds[b]):
                                         return false
     return true

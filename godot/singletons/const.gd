@@ -7,7 +7,7 @@ const QUARTER_VOXEL: float = VOXEL / 4.0
 const AMBIENT_MAX: float = 0.4
 
 # generator constants
-const CHUNK_VOXEL_SIDE_LEN: int = 256
+const CHUNK_VOXEL_SIDE_LEN: int = 128
 const CHUNK_WORLD_SIDE_LEN: float = CHUNK_VOXEL_SIDE_LEN * VOXEL
 
 # constant project settings (treat as const at runtime)
