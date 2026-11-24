@@ -1,6 +1,4 @@
-- 13 - Ropes
 - 3 - charge up throw over hold_time to let player determine how hard to throw object
-- 3 - connector definition list of connectors should be indexed array instead of dict (will need updated when merging monica's code)
 - 3 - flashlight texture projection with 2 hard circles, one to simulate bounce light? hopefully it won't look shit
 - 5 - dragged object rotation (remove axis lock)
 - 5 - instead of preventing sprint while grabbing, slow down default walking speed while grabbing and let player sprint at normal walk speed
@@ -14,6 +12,7 @@
 * 8 - add position tweening, and don't make it linear or ease_in_out. currently the lack of animation between states plus lack of inertia makes the game feel like a prototype
 - 8 - loading screen, especially important for slower PCs and mobile
 * 8 - add bhopping and adjust how sprint/jump speeds work https://adrianb.io/2015/02/14/bunnyhop.html
+* 8 - tutorial log from pause menu that shows you all tutorials you've seen
 - 13 - navmesh + runtime generation for connections
 - 13 - localization
 - 13 - final ui

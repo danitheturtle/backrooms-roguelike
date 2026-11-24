@@ -2,6 +2,7 @@ class_name Rope
 extends Area3D
 
 const MIN_CONTROL_POINT_GAP_SQ: float = 0.03 * 0.03
+const UNWRAP_COOLDOWN_MAX: int = 3
 
 @export var radius: float = 0.01
 @export_group("Refs")
@@ -10,14 +11,16 @@ const MIN_CONTROL_POINT_GAP_SQ: float = 0.03 * 0.03
 @export var firstSegmentCollider: CollisionShape3D
 @export var firstSegmentMesh: MeshInstance3D
 
+var anchoredTo: PhysicsBody3D = null
 var _cachedLengthToPivot: float = 0.0
+var storedAmmo: float = 0.0
 var pivotArm: Vector3 = Vector3.ZERO
 var pivotArmLength: float = 0.0
 var pivotArmDir: Vector3 = Vector3.ZERO
 var segmentColliders: Array[CollisionShape3D] = []
 var segmentMeshes: Array[MeshInstance3D] = []
 var unwrapTestShape: Shape3D
-var wrapUnwrapCooldown: int = 0
+var unwrapCooldown: int = 0
 var baseMaterialUVScale: Vector3 = Vector3.ONE
 
 var diameter: float:
@@ -68,14 +71,23 @@ func _ready() -> void:
     lastPoint = path.to_global(path.curve.get_point_position(lastIndex))
     update_cached_length()
     update_all_segment_shapes()
+    storedAmmo = length
 
+var nextUnwrapCheckIndex: int = 0
 func _physics_process(_delta: float) -> void:
-    wrapUnwrapCooldown = max(0, wrapUnwrapCooldown - 1)
+    unwrapCooldown = max(0, unwrapCooldown - 1)
+    if storedAmmo < length:
+        storedAmmo = length
     # do not update a rope that is not near the player 
-    if (global_position - State.player.global_position).length_squared() - length * length > 1000.0: return
+    if pointCount < 4 || (global_position - State.player.global_position).length_squared() - length * length > 1000.0: return
     # if this is not the active rope, check for updates along length every few frames
     # 3 casts per check frame, and a check frame happens every ~7-13 frames. prime number to minimize 
     # number of ropes updating on the same frame
+    nextUnwrapCheckIndex += 1
+    if nextUnwrapCheckIndex >= pivotIndex:
+        nextUnwrapCheckIndex = 1
+    try_unwrap_point(nextUnwrapCheckIndex)
+    
 
 func update_cached_length() -> void:
     _cachedLengthToPivot = 0.0
@@ -143,14 +155,15 @@ func shapecast_segment(_index: int) -> Dictionary:
     var spaceState = get_world_3d().direct_space_state
     var segmentQuery: PhysicsShapeQueryParameters3D = PhysicsShapeQueryParameters3D.new()
     segmentQuery.collision_mask = 0b00000000000000001111
-    segmentQuery.exclude = [anchor]
+    segmentQuery.exclude = [anchor.get_rid()]
+    if anchoredTo != null:
+        segmentQuery.exclude = [segmentQuery.exclude[0], anchoredTo.get_rid()]
     segmentQuery.shape = colliderForCast.shape
-    segmentQuery.transform = Transform3D(colliderForCast.transform.basis, path.to_global(colliderForCast.transform.origin))
+    segmentQuery.transform = colliderForCast.global_transform
     var segmentQueryResult := spaceState.get_rest_info(segmentQuery)
     return segmentQueryResult
 
 func wrap_around_geometry(_collision: Dictionary, _insertBeforeIndex: int) -> void:
-    if wrapUnwrapCooldown > 0: return
     var previousPoint = path.to_global(path.curve.get_point_position(_insertBeforeIndex-1))
     var nextPoint = path.to_global(path.curve.get_point_position(_insertBeforeIndex))
     var newControlPoint = _collision.point + _collision.normal * diameter
@@ -166,16 +179,14 @@ func wrap_around_geometry(_collision: Dictionary, _insertBeforeIndex: int) -> vo
     ensure_shape_for_segment(_insertBeforeIndex - 1)
     update_segment_shape(_insertBeforeIndex - 1)
     update_cached_length()
-    wrapUnwrapCooldown = 7
+    update_pivot_arm()
+    unwrapCooldown = UNWRAP_COOLDOWN_MAX
 
 ## shapecasts between next and previous points. if no collision, removes control point from curve
-var unwrapping: bool = false
-func try_unwrap_point(_pointIndex: int) -> void:
-    if wrapUnwrapCooldown > 0 || _pointIndex > pivotIndex || _pointIndex < 1: return
-    # TODO if either length is too close to current point, treat it as the same control point and decrement again
+func try_unwrap_point(_pointIndex: int, noCooldown: bool = false) -> void:
+    if (!noCooldown && unwrapCooldown > 0) || _pointIndex > pivotIndex || _pointIndex < 1: return
     var previousPoint: Vector3 = path.to_global(path.curve.get_point_position(_pointIndex-1))
     var nextPoint: Vector3 = path.to_global(path.curve.get_point_position(_pointIndex+1))
-    
     var unwrapVector: Vector3 = nextPoint - previousPoint
     var unwrapLengthSq: float = unwrapVector.length_squared()
     if unwrapLengthSq < MIN_CONTROL_POINT_GAP_SQ: return
@@ -184,7 +195,9 @@ func try_unwrap_point(_pointIndex: int) -> void:
     var spaceState = get_world_3d().direct_space_state
     var unwrapQuery: PhysicsShapeQueryParameters3D = PhysicsShapeQueryParameters3D.new()
     unwrapQuery.collision_mask = 0b00000000000000001111
-    unwrapQuery.exclude = [anchor]
+    unwrapQuery.exclude = [anchor.get_rid()]
+    if anchoredTo != null:
+        unwrapQuery.exclude = [unwrapQuery.exclude[0], anchoredTo.get_rid()]
     unwrapQuery.shape = unwrapTestShape
     unwrapQuery.shape.mid_height = unwrapLength
     unwrapQuery.transform = Transform3D(Basis(Quaternion(Vector3.UP, unwrapDir)), previousPoint + unwrapVector / 2.0)
@@ -192,11 +205,10 @@ func try_unwrap_point(_pointIndex: int) -> void:
     if unwrapQueryResult.is_empty():
         path.curve.remove_point(_pointIndex)
         remove_excess_shapes()
-        unwrapping = true
         for i: int in range(_pointIndex-1, lastIndex):
             update_segment_shape(i)
         update_cached_length()
-    wrapUnwrapCooldown = 7
+    unwrapCooldown = UNWRAP_COOLDOWN_MAX
 
 func get_nearest_control_point(_global_pos: Vector3) -> int:
     var nearestDistSq: float = 999999.0

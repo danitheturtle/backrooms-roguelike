@@ -11,7 +11,7 @@ var ropeRef: Rope
 ## tracks whether this is the active action on the action wheel
 var ropeActionActive: bool = true
 ## player's carried rope ammo
-var ammo: float = 15.0
+var ammo: float = 20.0
 ## track the toggle state of adjusting rope length while climbing or just swinging
 var ropeExtensionLocked: bool = false
 
@@ -42,7 +42,6 @@ func start_action() -> void:
     pb.stop(mutuallyExclusiveWith)
     ropeRef = p.adjacentRef
     var harnessPosition: Vector3 = get_harness_position()
-    var ropeLengthBeforePickup: float = ropeRef.length
     var closestPointIndex: int = ropeRef.get_nearest_control_point(harnessPosition)
     # cut rope at the control point closest to the player. refund ammo excess
     if ropeRef.path.curve.point_count-1 > closestPointIndex:
@@ -52,7 +51,7 @@ func start_action() -> void:
     ropeRef.lastPoint = harnessPosition
     ropeRef.update_cached_length()
     lengthOnAttach = ropeRef.length
-    ammo += ropeLengthBeforePickup - lengthOnAttach
+    ammo += ropeRef.storedAmmo - lengthOnAttach
     ammoOnAttach = ammo
     targetLength = lengthOnAttach
     maxLength = lengthOnAttach + ammoOnAttach
@@ -67,7 +66,7 @@ func process_action(_delta: float) -> void:
     if !castResult.is_empty():
         ropeRef.wrap_around_geometry(castResult, ropeRef.lastIndex)
     else:
-        ropeRef.try_unwrap_point(ropeRef.pivotIndex)
+        ropeRef.try_unwrap_point(ropeRef.pivotIndex, true)
     ammo = ammoOnAttach - (ropeRef.length - lengthOnAttach)
     var nextPlayerVelocity: Vector3 = Vector3(0.0,p.velocity.y,0.0)
     
@@ -106,10 +105,11 @@ func stop_action() -> void:
 func can_place_rope() -> bool:
     return ropeActionActive && !active && pb.target.active && pb.target.ref.is_in_group(&"anchorable")
 
-func place_new_rope(_anchorRef: PhysicsBody3D, _offset: Vector3) -> Rope:
+func place_new_rope(_anchoredToRef: PhysicsBody3D, _offset: Vector3) -> Rope:
     var newRope: Rope = RopeRes.instantiate()
     newRope.transform.origin = _offset
-    _anchorRef.add_child(newRope)
+    newRope.anchoredTo = _anchoredToRef
+    _anchoredToRef.add_child(newRope)
     return newRope
 
 func toggle_extension_mode() -> void:
