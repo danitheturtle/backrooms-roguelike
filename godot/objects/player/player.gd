@@ -54,9 +54,9 @@ var movePriority: Dictionary[StringName, bool]
 var airtimeAtZeroVelocity: float
 var lastPosition: Vector3
 # timers
-var actionTimerFinished: bool
-var interactTimerFinished: bool
-var sprintTimerFinished: bool
+var actionTimerStoppedAt: float
+var interactTimerStoppedAt: float
+var sprintTimerStoppedAt: float
 # tracked via roomForStateChangeArea
 var nearbyBodies: Dictionary[Node3D, bool] = {}
 # some objects change player controls contextually based on adjacency, eg ladders
@@ -72,10 +72,10 @@ func reinit() -> void:
     moveDir = Vector2.ZERO
     lookDir = Vector2.ZERO
     movePriority = { left = false, right = false, forward = false, backward = false }
-    airtimeAtZeroVelocity = 0.0
-    actionTimerFinished = false
-    interactTimerFinished = false
-    sprintTimerFinished = false
+    airtimeAtZeroVelocity = -1.0
+    actionTimerStoppedAt = -1.0
+    interactTimerStoppedAt = -1.0
+    sprintTimerStoppedAt = -1.0
     adjacentRef = null
     global_position = Vector3.ZERO
     global_rotation = Vector3.ZERO
@@ -217,13 +217,13 @@ func on_adjacent_area_exited(_area: Node3D) -> void:
         adjacentRef = null
 
 func on_action_timer_ended():
-    actionTimerFinished = true
+    actionTimerStoppedAt = actionTimer.wait_time
 
 func on_interact_timer_ended():
-    interactTimerFinished = true
+    interactTimerStoppedAt = interactTimer.wait_time
 
 func on_sprint_timer_ended():
-    sprintTimerFinished = true
+    sprintTimerStoppedAt = sprintTimer.wait_time
 
 func handle_mouse_input(event: InputEventMouseMotion) -> void:
     if InputManager.mouseCaptured:
@@ -285,7 +285,7 @@ func handle_key_input(event: InputEvent ) -> void:
             b.stand.start_action()
         eventHandled = true
     elif (event.is_action_pressed(&"action")):
-        actionTimerFinished = false
+        actionTimerStoppedAt = -1.0
         actionTimer.start()
         if b.grab.active:
             b.grab.grabbedRef.activate()
@@ -293,12 +293,13 @@ func handle_key_input(event: InputEvent ) -> void:
             b.drag.draggedRef.activate()
         eventHandled = true
     elif (event.is_action_released(&"action")):
+        actionTimerStoppedAt = actionTimer.wait_time - actionTimer.time_left
         actionTimer.stop()
         if b.grab.active:
-            b.throw.unhandledInput = !b.grab.grabbedRef.deactivate(actionTimerFinished)
+            b.throw.unhandledInput = !b.grab.grabbedRef.deactivate(actionTimerStoppedAt)
         elif b.drag.active:
-            b.drag.draggedRef.deactivate(actionTimerFinished)
-        elif (!actionTimerFinished):
+            b.drag.draggedRef.deactivate(actionTimerStoppedAt)
+        elif (!Utils.equalsf(actionTimerStoppedAt, actionTimer.wait_time)):
             if b.flashlight.can_act():
                 b.flashlight.start_action()
             else:
@@ -313,7 +314,7 @@ func handle_key_input(event: InputEvent ) -> void:
             b.rope.start_action()
         eventHandled = true
     elif (event.is_action_pressed(&"interact")):
-        interactTimerFinished = false
+        interactTimerStoppedAt = -1.0
         interactTimer.start()
         if b.target.active:
             if b.grab.can_act():
@@ -327,6 +328,7 @@ func handle_key_input(event: InputEvent ) -> void:
             b.rotate.start_action()
         eventHandled = true
     elif (event.is_action_released(&"interact")):
+        interactTimerStoppedAt = interactTimer.wait_time - interactTimer.time_left
         interactTimer.stop()
         b.rotate.stop_action()
         if b.drag.justDragged:
@@ -336,9 +338,9 @@ func handle_key_input(event: InputEvent ) -> void:
         elif b.target.justInteracted:
             b.target.justInteracted = false
             b.target.ref.interact_stop()
-        elif b.drag.active && !interactTimerFinished:
+        elif b.drag.active && !Utils.equalsf(interactTimerStoppedAt, interactTimer.wait_time):
             b.drag.stop_action()
-        elif (b.grab.active && !interactTimerFinished && b.rotate.rotationDelta < 100.0):
+        elif (b.grab.active && !Utils.equalsf(interactTimerStoppedAt, interactTimer.wait_time) && b.rotate.rotationDelta < 100.0):
             b.grab.stop_action()
         eventHandled = true
     elif (event.is_action_pressed(&"reorient")):
@@ -358,7 +360,7 @@ func handle_key_input(event: InputEvent ) -> void:
             b.drag.decrease_held_distance()
         eventHandled = true
     elif (event.is_action_pressed(&"sprint")):
-        sprintTimerFinished = false
+        sprintTimerStoppedAt = -1.0
         sprintTimer.start()
         if (b.climb.active):
             b.climb.stop_action()
@@ -372,8 +374,9 @@ func handle_key_input(event: InputEvent ) -> void:
             b.sprint.stop_action()
         eventHandled = true
     elif (event.is_action_released(&"sprint")):
+        sprintTimerStoppedAt = sprintTimer.wait_time - sprintTimer.time_left
         sprintTimer.stop()
-        if sprintTimerFinished:
+        if Utils.equalsf(sprintTimerStoppedAt, sprintTimer.wait_time):
             b.sprint.stop_action()
         eventHandled = true
     elif (event.is_action_pressed(&"forward")):

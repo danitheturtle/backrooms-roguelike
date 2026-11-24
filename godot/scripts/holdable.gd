@@ -54,7 +54,7 @@ func _physics_process(_delta: float) -> void:
 func activate(): pass
 
 ## return true to prevent throwing behavior
-func deactivate(_actionTimerFinished: bool) -> bool:
+func deactivate(_actionTimerStoppedAt: float) -> bool:
     return false
 
 # occasionally a holdable is acting as a handle, with the primary holdable being another object.

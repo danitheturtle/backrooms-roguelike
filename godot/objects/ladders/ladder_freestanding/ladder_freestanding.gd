@@ -28,8 +28,8 @@ func activate():
     hinge.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, -currentMotorVelocity)
     isClosed = currentMotorVelocity > 0.0
 
-func deactivate(actionTimerFinished: bool) -> bool:
-    super.deactivate(actionTimerFinished)
+func deactivate(_actionTimerStoppedAt: float) -> bool:
+    super.deactivate(_actionTimerStoppedAt)
     return true
 
 func interact_start(_player: Player) -> PhysicsBody3D:

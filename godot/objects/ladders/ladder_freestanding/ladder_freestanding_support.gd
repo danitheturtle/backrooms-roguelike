@@ -22,8 +22,8 @@ func _physics_process(_delta: float) -> void:
 func activate():
     ladder.activate()
 
-func deactivate(_actionTimerFinished: bool) -> bool:
-    return ladder.deactivate(_actionTimerFinished)
+func deactivate(_actionTimerStoppedAt: float) -> bool:
+    return ladder.deactivate(_actionTimerStoppedAt)
 
 func interact_start(_player: Player) -> PhysicsBody3D:
     player = _player
