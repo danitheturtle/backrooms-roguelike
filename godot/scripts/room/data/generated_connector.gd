@@ -23,6 +23,8 @@ func _init(_definition: ConnectorDefinition, _parentRoomInstanceId: StringName) 
 # int-based enum to determine final type of matched connector. higher wins
 # If two locked doors or two one-way null zones match, one will be discarded
 var type: Const.ConnectorType = Const.ConnectorType.SIMPLE
+# When a connection forms, the last connector takes control. this is a ref to the child
+var connectedToInstanceId: StringName
 # Connector sub-type further defines how the room generates.
 # If EMPTY, picks randomly based on resolved ConnectorType
 var subType: Const.ConnectorSubType = Const.ConnectorSubType.EMPTY

@@ -3,7 +3,7 @@ extends PlayerBehavior
 
 const maybeTransitionFrom: Array[StringName] = [&"crouch", &"squeeze"]
 const cannotTransitionFrom: Array[StringName] = [&"crawl", &"climb", &"rope", &"vault"]
-const mutuallyExclusiveWith: Array[StringName] = [&"target", &"grab", &"drag", &"film_camera"]
+const mutuallyExclusiveWith: Array[StringName] = [&"target", &"drag", &"film_camera"]
 
 func can_act() -> bool:
     if active: return false
