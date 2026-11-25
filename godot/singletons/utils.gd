@@ -4,16 +4,16 @@ extends Node
 func is_vertical(direction: Const.CardinalDirection) -> bool:
     return direction == Const.CardinalDirection.YPOS or direction == Const.CardinalDirection.YNEG
 
-func horizontal_rotatei(direction: Const.CardinalDirection, voxel_pos: Vector3i) -> Vector3i:
+func horizontal_rotatei(direction: Const.CardinalDirection, voxelPos: Vector3i) -> Vector3i:
     match direction:
         Const.CardinalDirection.XNEG:
-            return Vector3i(-voxel_pos.z, voxel_pos.y, voxel_pos.x)
+            return Vector3i(-voxelPos.z, voxelPos.y, voxelPos.x)
         Const.CardinalDirection.XPOS:
-            return Vector3i(voxel_pos.z, voxel_pos.y, -voxel_pos.x)
+            return Vector3i(voxelPos.z, voxelPos.y, -voxelPos.x)
         Const.CardinalDirection.ZPOS:
-            return Vector3i(-voxel_pos.x, voxel_pos.y, -voxel_pos.z)
+            return Vector3i(-voxelPos.x, voxelPos.y, -voxelPos.z)
         _:
-            return voxel_pos
+            return voxelPos
 
 func horizontal_oppose(direction0: Const.CardinalDirection, direction1: Const.CardinalDirection) -> Const.CardinalDirection:
     return ((direction0 + 6 - direction1) % 4) as Const.CardinalDirection
