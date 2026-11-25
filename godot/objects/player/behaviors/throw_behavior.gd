@@ -17,7 +17,6 @@ func start_action() -> void:
     var throwCharge: float = 1.0
     if !Utils.equalsf(p.actionTimerStoppedAt, p.actionTimer.wait_time):
          throwCharge = max(0.1, Utils.normf(p.actionTimerStoppedAt, 0.0, p.actionTimer.wait_time))
-    print(throwCharge)
     var lobVelocity: Vector3 = Vector3(0.0, thrownRef.throwLobFactor, 0.0) * throwCharge
     thrownRef.linear_velocity = velocityInCameraDir + lobVelocity
     thrownRef.on_throw()
