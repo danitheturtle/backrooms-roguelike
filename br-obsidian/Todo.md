@@ -5,6 +5,7 @@
 	- ensure room definitions are accurate. potentially write tests and early-exit the bake if the room is invalid. Don't fail to save room, just set a default def with exclude from gen true
 - 8 -&- action wheel
 - 5 -&- you can ledge grab up into a ceiling, especially by spamming space and positioning the raycast at an edge. definitely need shapecasting
+- 5 -&-parent/child relationship for connections so only one of them generates the edges (and also doors when we get there)
 - 5 -&- add a greybox exit room
 - 5 -&- add another greybox exit room
 - 5 -&- add a greybox start room
@@ -14,7 +15,6 @@
 	- This lets us raise base light level while letting some areas be extra dark and some extra bright. Default should be midrange
 - 3 - flashlight texture projection with 2 hard circles, one to simulate bounce light? hopefully it won't look shit
 - 5 - dragged object rotation (remove axis lock)
-- 5 - parent/child relationship for connections so only one of them generates the edges (and also doors when we get there)
 - 8 - add position tweening, and don't make it linear or ease_in_out. currently the lack of animation between states plus lack of inertia makes the game feel like a prototype
 - 8 - loading screen, especially important for slower PCs and mobile
 - 8 - add bhopping and adjust how sprint/jump speeds work https://adrianb.io/2015/02/14/bunnyhop.html
