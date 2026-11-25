@@ -13,7 +13,7 @@ func reinit() -> void:
     onFloorLastFrame = true
 
 func can_act() -> bool:
-    return !active && pb.none(cannotTransitionFrom) && (onFloorLastFrame || pb.climb.active)
+    return !active && pb.none(cannotTransitionFrom) && (onFloorLastFrame || pb.climb.active || pb.rope.active)
 
 func start_action() -> void:
     if active || unhandledInput: return
@@ -32,7 +32,7 @@ func process_action(_delta: float) -> void:
             pb.sprint.start_action()
     onFloorLastFrame = onFloorThisFrame
     # jump starting is synced to physics instead of called directly
-    if unhandledInput && !active && !pb.vault.active && (onFloorLastFrame || pb.climb.active):
+    if unhandledInput && can_act():
         unhandledInput = false
         pb.vault.unhandledInput = false
         start_action()

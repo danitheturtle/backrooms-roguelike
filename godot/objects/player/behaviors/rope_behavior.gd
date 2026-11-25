@@ -32,7 +32,7 @@ func reinit() -> void:
     maxLength = 1.0
 
 func can_act() -> bool:
-    if (p.adjacentRef is Rope && p.adjacentRef != ropeRef && !active && pb.none(cannotTransitionFrom)):
+    if (!active && p.adjacentRef is Rope && p.adjacentRef != ropeRef && pb.none(cannotTransitionFrom)):
         if pb.crouch.active && !p.can_shape_change(): return false
         return true
     return false
