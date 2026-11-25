@@ -16,9 +16,10 @@ func start_action() -> void:
     var velocityInCameraDir: Vector3 = (-p.camera.global_basis.z * thrownRef.throwImpulse)
     var throwCharge: float = 1.0
     if !Utils.equalsf(p.actionTimerStoppedAt, p.actionTimer.wait_time):
-         throwCharge = max(0.1, Utils.normf(p.actionTimerStoppedAt, 0.0, p.actionTimer.wait_time))
-    var lobVelocity: Vector3 = Vector3(0.0, thrownRef.throwLobFactor, 0.0) * throwCharge
-    thrownRef.linear_velocity = velocityInCameraDir + lobVelocity
+         throwCharge = max(0.35, Utils.normf(p.actionTimerStoppedAt, 0.0, p.actionTimer.wait_time))
+    print(throwCharge)
+    var lobVelocity: Vector3 = Vector3(0.0, thrownRef.throwLobFactor, 0.0)
+    thrownRef.linear_velocity = (velocityInCameraDir + lobVelocity) * throwCharge
     thrownRef.on_throw()
     unhandledInput = false
 

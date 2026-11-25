@@ -3,7 +3,6 @@
 - 3 -&- fix connections
 	- temporarily disable uv offset at runtime, then add it back in once things are actually connecting
 	- ensure room definitions are accurate. potentially write tests and early-exit the bake if the room is invalid. Don't fail to save room, just set a default def with exclude from gen true
-- 5 -&- instead of preventing sprint while grabbing, slow down default walking speed while grabbing and let player sprint at normal walk speed
 - 8 -&- action wheel
 - 5 -&- you can ledge grab up into a ceiling, especially by spamming space and positioning the raycast at an edge. definitely need shapecasting
 - 5 -&- add a greybox exit room

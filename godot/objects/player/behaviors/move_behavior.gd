@@ -19,7 +19,10 @@ func process_action(_delta: float) -> void:
 
 func get_current_move_speed() -> float:
     if pb.sprint.active:
-        return p.SPRINT_SPEED
+        if pb.grab.active:
+            return p.SPRINT_GRAB_SPEED
+        else:
+            return p.SPRINT_SPEED
     elif pb.some([&"crouch", &"squeeze", &"drag", &"film_camera"]):
         return p.SLOWED_SPEED
     elif pb.grab.active:

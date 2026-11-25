@@ -5,13 +5,15 @@ var behaviors: BehaviorState = BehaviorState.new(self)
 var b: BehaviorState:
     get: return behaviors
 
-@export var PLAYER_SPEED: float = 4.0
+@export var PLAYER_SPEED: float = 3.0
 @export var PLAYER_MASS: float = 40.0
-@export var SPRINT_SPEED: float = 7.0
+@export var SPRINT_SPEED: float = 6.0
 @export var SLOWED_SPEED: float = 1.5
 @export var EXTRA_SLOW_SPEED: float = 0.5
-@export var CLIMB_SPEED: float = 2.0
-@export var GRAB_SPEED: float = 2.5
+@export var CLIMB_SPEED: float = 1.75
+@export var GRAB_SPEED: float = 2.0
+@export var SPRINT_GRAB_SPEED: float = 4.0
+
 @export var SHOVING_FORCE: float = 2.0
 @export var STRONGER_DOWNWARD_GRAVITY_THRESHOLD: float = 5.0
 @export var STRONGER_GRAVITY_MULTIPLIER: float = 2.0
