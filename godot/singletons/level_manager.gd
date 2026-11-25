@@ -43,9 +43,12 @@ func reinit(nextSeed: int = -1) -> void:
 func _process(_delta: float) -> void:
     if !levelActive: return
     if generationActive && State.player.process_mode != Node.PROCESS_MODE_DISABLED:
-        var newlyAddedRooms: Array[GeneratedRoom] = generator.generate_in_radius(Utils.world_to_chunk(State.player.global_position), 3)
-        if newlyAddedRooms.size() > 0:
-            place_rooms_in_level(newlyAddedRooms)
+        if generator.generate_in_radius(Utils.world_to_chunk(State.player.global_position)):
+            while true:
+                var newlyAddedRoom := generator.resolve_generation()
+                if newlyAddedRoom == null:
+                    break
+                place_room_in_level(newlyAddedRoom)
 
 # tutorial is its own game mode since it has no rng
 func load_tutorial() -> void:
@@ -61,7 +64,7 @@ func load_tutorial() -> void:
 
 # called at the start of a run
 func generate_initial_level() -> void:
-    var firstRoomInstance: GeneratedRoom = generator.reinit(0,State.rng.seed)
+    var firstRoomInstance: GeneratedRoom = generator.reinit(0, State.rng.seed, 3)
     var firstRoom: Room = rooms[firstRoomInstance.roomName].instantiate()
     firstRoom.setup(firstRoomInstance)
     root.add_child(firstRoom)
@@ -82,13 +85,11 @@ func on_level_ready() -> void:
     levelActive = true
     level_ready.emit()
 
-func place_rooms_in_level(_newRooms: Array[GeneratedRoom]) -> void:
-    for nextGeneratedRoom: GeneratedRoom in _newRooms:
-        if !rooms.has(nextGeneratedRoom.roomInstanceId):
-            spawn_room(nextGeneratedRoom)
-    for nextGeneratedRoom: GeneratedRoom in _newRooms:
-        for nextGeneratedConnector: GeneratedConnector in nextGeneratedRoom.generatedConnectors:
-            connectorInstances[nextGeneratedConnector.connectorInstanceId].build_connectors()
+func place_room_in_level(nextGeneratedRoom: GeneratedRoom) -> void:
+    if !rooms.has(nextGeneratedRoom.roomInstanceId):
+        spawn_room(nextGeneratedRoom)
+    for nextGeneratedConnector: GeneratedConnector in nextGeneratedRoom.generatedConnectors:
+        connectorInstances[nextGeneratedConnector.connectorInstanceId].build_connectors()
 
 func spawn_room(_generatedRoom: GeneratedRoom) -> Room:
     var spawnedRoom: Room = rooms[_generatedRoom.roomName].instantiate()
