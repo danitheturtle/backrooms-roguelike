@@ -1,6 +1,6 @@
 class_name UnresolvedConnection
 
-var generatedRoomIdx: int
+var parentRoom: GeneratedRoom
 
 var roomDefIdx: int
 

@@ -11,15 +11,17 @@
 # internal RNG. The same level will be generated if startingRoom and rngSeed are the same and
 # all generate methods are called in the same order on the same chunks.
 # `startingRoomIdx` must be a valid index into the `roomDefs` array last passed to `update_definitions`.
-@abstract func reinit(startingRoomIdx: int, rngSeed: int) -> GeneratedRoom
+@abstract func reinit(startingRoomIdx: int, rngSeed: int, chunkRadius: int) -> GeneratedRoom
 
 # Generate all chunks within the cubic radius chunkRadius of chunkPos.
 # The level generator will choose the ideal order in which to generate each chunk.
 # This method relies on previously generated connections in nearby chunks.
 # If called on chunks too far away from previously generated chunks this will fail to generate rooms.
-@abstract func generate_in_radius(chunkPos: Vector3i, chunkRadius: int) -> Array[GeneratedRoom]
+@abstract func generate_in_radius(chunkPos: Vector3i) -> bool
 
 # Generate the specific chunk at chunkPos.
 # This method relies on previously generated connections in nearby chunks.
 # If called on a chunk too far away from previously generated chunks this will fail to generate rooms.
-@abstract func generate_chunk(chunkPos: Vector3i) -> Array[GeneratedRoom]
+@abstract func generate_chunk(chunkPos: Vector3i) -> bool
+
+@abstract func resolve_generation() -> GeneratedRoom
