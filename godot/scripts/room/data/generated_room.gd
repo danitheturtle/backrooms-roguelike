@@ -29,6 +29,11 @@ var placedAtIteration: int = -1
 # generatedConnectors tell the room how to change each connector from the default value
 # can delete keys that remain unchanged from room definition
 var generatedConnectors: Array[GeneratedConnector] = []
+
+# `updatedConnectors` pairs index to index with `generatedConnectors`, but in this array, each
+# connector's parent is the previously generated room that this room is connecting to.
+var updatedConnectors: Array[GeneratedConnector] = []
+
 # tells room what should *definitely* spawn
 var spawnGameplayProp: Dictionary[Const.GameplayPropType, bool] = {}
 # adjusted prop spawn weight for room sub-generator

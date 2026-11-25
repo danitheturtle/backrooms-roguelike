@@ -204,14 +204,18 @@ func resolve_generation() -> GeneratedRoom:
                         newRoom.bounds = newBounds
 
                         var newGeneratedConnector := GeneratedConnector.new(newConnectorDef, newRoom.roomInstanceId)
-                        newRoom.generatedConnectors.append(newGeneratedConnector)
-
                         var curGeneratedConnector := GeneratedConnector.new(curConnectorDef, curRoom.roomInstanceId)
-                        curRoom.generatedConnectors.append(curGeneratedConnector)
+
+                        newGeneratedConnector.connectedToInstanceId = curGeneratedConnector.connectorInstanceId
+                        curGeneratedConnector.connectedToInstanceId = newGeneratedConnector.connectorInstanceId
+
+                        newRoom.generatedConnectors.append(newGeneratedConnector)
+                        newRoom.updatedConnectors.append(curGeneratedConnector)
 
                         register_generated(newRoom)
 
                         return newRoom
+        tracker.isGenerated = true
         toGenerateQueue.pop_front()
     return null
 
@@ -248,11 +252,12 @@ func register_generated(newRoom: GeneratedRoom):
         var newConnector := newRoomDef.connectors[newConIdx]
         var newCornerMin = Utils.horizontal_rotatei(newRoom.placedNormal, newConnector.cornerMin) + newRoom.placedPosition
         var newTracker := get_tracker(Utils.voxel_to_chunk(newCornerMin))
-        var newUnresolved := UnresolvedConnection.new()
-        newUnresolved.parentRoom = newRoom
-        newUnresolved.roomDefIdx = newRoom.roomDefIdx
-        newUnresolved.roomConnectorIdx = newConIdx
-        newTracker.unresolved.append(newUnresolved)
+        if !newTracker.isGenerated:
+            var newUnresolved := UnresolvedConnection.new()
+            newUnresolved.parentRoom = newRoom
+            newUnresolved.roomDefIdx = newRoom.roomDefIdx
+            newUnresolved.roomConnectorIdx = newConIdx
+            newTracker.unresolved.append(newUnresolved)
 
 func get_tracker(chunkPos: Vector3i) -> ChunkTracker:
     var tracker: ChunkTracker = chunkTracker.get(chunkPos)
