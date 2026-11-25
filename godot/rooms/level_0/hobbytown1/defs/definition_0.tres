@@ -76,6 +76,7 @@ aabb = AABB(7.25, 0, 5, 0.5, 3, 3.5)
 
 [resource]
 script = ExtResource("2_q0853")
+excludeFromGeneration = true
 roomName = &"L0_hobbytown_1"
 scenePath = "res://rooms/level_0/hobbytown1/room_L0_hobbytown_1.tscn"
 biomes = Dictionary[int, bool]({

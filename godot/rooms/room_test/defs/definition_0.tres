@@ -44,6 +44,7 @@ aabb = AABB(-7.5, 0, -9.5, 0.5, 2.5, 6)
 
 [resource]
 script = ExtResource("2_vqn3w")
+excludeFromGeneration = true
 roomName = &"test"
 scenePath = "res://rooms/room_test/room_test.tscn"
 biomes = Dictionary[int, bool]({

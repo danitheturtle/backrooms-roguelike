@@ -91,6 +91,7 @@ aabb = AABB(3.25, 0, -6, 0.5, 2, 1.5)
 
 [resource]
 script = ExtResource("2_si2xf")
+excludeFromGeneration = true
 roomName = &"L0_nook_with_ramp"
 scenePath = "res://rooms/level_0/nook_with_ramp/room_L0_nook_with_ramp.tscn"
 biomes = Dictionary[int, bool]({
