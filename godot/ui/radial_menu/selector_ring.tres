@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cxrukx4vto81h"]
+
+[ext_resource type="Shader" uid="uid://cc1rla5koy2lr" path="res://ui/radial_menu/selector_ring.gdshader" id="1_un4u2"]
+
+[resource]
+shader = ExtResource("1_un4u2")
+shader_parameter/inner_radius = 0.25
+shader_parameter/cursor_deg = 0.4
+shader_parameter/cursor_size = 0.4
+shader_parameter/color_bg = Vector4(0.3, 0.3, 0.3, 1)
+shader_parameter/color_fg = Vector4(0.6, 0.6, 0.6, 1)
+shader_parameter/bevel_radius = 0.05
+shader_parameter/bevel_enabled = false
+shader_parameter/bevel_color = Vector4(0.8, 0.8, 0.8, 1)

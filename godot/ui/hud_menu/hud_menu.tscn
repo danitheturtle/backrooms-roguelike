@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://clt4iyabv43li" path="res://assets/ui/crosshair.png" id="1_6k6t2"]
 [ext_resource type="Script" uid="uid://du6keckrlid2j" path="res://ui/hud_menu/hud_menu.gd" id="1_cg6vh"]
+[ext_resource type="PackedScene" uid="uid://cpes14py4coqc" path="res://ui/radial_menu/radial_menu.tscn" id="2_cg6vh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_068i4"]
 content_margin_left = 16.0
@@ -62,6 +63,21 @@ size_flags_vertical = 3
 layout_mode = 2
 texture = ExtResource("1_6k6t2")
 stretch_mode = 2
+
+[node name="RadialMenu" parent="MarginContainer/GridContainer/CenterContainer" unique_id=688702504 instance=ExtResource("2_cg6vh")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/GridContainer/CenterContainer/RadialMenu" unique_id=585644096]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Text1"
+
+[node name="Button2" type="Button" parent="MarginContainer/GridContainer/CenterContainer/RadialMenu" unique_id=1496536216]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Text2"
 
 [node name="CenterRightContainer" type="CenterContainer" parent="MarginContainer/GridContainer" unique_id=1407422479]
 layout_mode = 2
