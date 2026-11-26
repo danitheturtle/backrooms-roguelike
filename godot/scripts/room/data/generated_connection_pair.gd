@@ -1,4 +1,4 @@
-class_name GeneratedConnector
+class_name GeneratedConnectionPair
 
 # unique per-run instance counter for connector and parent
 static var instanceCounter: int = 0
@@ -7,7 +7,6 @@ var parentRoomInstanceId: StringName = "room_-1"
 # unique connector path passed from ConnectorDefinition
 var pathInRoom: NodePath
 
-# don't call directly, get_generated_instance() on room instead
 func _init(_definition: ConnectorDefinition, _parentRoomInstanceId: StringName) -> void:
     pathInRoom = _definition.pathInRoom
     type = _definition.initialType
@@ -23,7 +22,7 @@ func _init(_definition: ConnectorDefinition, _parentRoomInstanceId: StringName) 
 # int-based enum to determine final type of matched connector. higher wins
 # If two locked doors or two one-way null zones match, one will be discarded
 var type: Const.ConnectorType = Const.ConnectorType.SIMPLE
-# When a connection forms, the last connector takes control. this is a ref to the child
+# Ref to connector instance ID this one connects to
 var connectedToInstanceId: StringName
 # Connector sub-type further defines how the room generates.
 # If EMPTY, picks randomly based on resolved ConnectorType
@@ -32,5 +31,3 @@ var subType: Const.ConnectorSubType = Const.ConnectorSubType.EMPTY
 var locked: bool = false
 # Spawn a draggable prop in front of the connection to obscure it, if supported
 var blocked: bool = false
-# set to true if levelgen knows for sure that this connector doesn't go anywhere
-var doesNotConnect: bool = false

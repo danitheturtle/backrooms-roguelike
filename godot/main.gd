@@ -21,6 +21,7 @@ func _ready() -> void:
     LevelManager.reinit()
     # debug
     #mainMenu.on_tutorial_pressed.call_deferred()
+    mainMenu.on_new_game_pressed.call_deferred()
 
 func create_level_root() -> void:
     LevelManager.root = LevelRootScene.instantiate()
@@ -44,6 +45,9 @@ func on_new_run_started() -> void:
     MenuManager.hudMenu.show()
     MenuManager.hudMenu.process_mode = Node.PROCESS_MODE_PAUSABLE
     InputManager.capture_mouse.call_deferred()
+    # debug
+    get_tree().paused = true
+    InputManager.release_mouse.call_deferred()
 
 func on_tutorial_started() -> void:
     create_level_root()
@@ -68,4 +72,5 @@ func on_game_unpaused() -> void:
     SignalBus.goto_hud_menu.emit()
 
 func on_goto_main_menu() -> void:
+    LevelManager.reinit()
     LevelManager.root.queue_free()

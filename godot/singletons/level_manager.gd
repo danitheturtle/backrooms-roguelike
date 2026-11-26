@@ -1,6 +1,8 @@
 extends Node
 
 signal level_ready
+signal room_spawned
+
 const roomsDir: String = "res://rooms/"
 
 ## load from disk at runtime
@@ -14,6 +16,7 @@ var currentLevelSeed: int = 0
 var roomInstances: Dictionary[StringName, Room] = {}
 var connectorInstances: Dictionary[StringName, RoomConnector] = {}
 var generationActive: bool = false
+var spawningRoom: bool = false
 
 func _init() -> void:
     generator = TreeLevelGenerator.new()
@@ -28,6 +31,8 @@ func reinit(nextSeed: int = -1) -> void:
     roomInstances = {}
     connectorInstances = {}
     levelActive = false
+    generationActive = false
+    spawningRoom = false
     # reinit player
     if State.player != null:
         State.player.reinit()
@@ -42,24 +47,20 @@ func reinit(nextSeed: int = -1) -> void:
 
 func _process(_delta: float) -> void:
     if !levelActive: return
-    if generationActive && State.player.process_mode != Node.PROCESS_MODE_DISABLED:
-        if generator.generate_in_radius(Utils.world_to_chunk(State.player.global_position)):
-            while true:
-                var newlyAddedRoom := generator.resolve_generation()
-                if newlyAddedRoom == null:
-                    break
-                place_room_in_level(newlyAddedRoom)
+    if generationActive && !spawningRoom && State.player.process_mode != Node.PROCESS_MODE_DISABLED:
+        generator.generate_in_radius(Utils.world_to_chunk(State.player.global_position))
+        var newlyAddedRoom := generator.resolve_generation()
+        if newlyAddedRoom != null:
+            place_room_in_level(newlyAddedRoom)
 
 # tutorial is its own game mode since it has no rng
 func load_tutorial() -> void:
     var tutorialRoom: Room = rooms["tutorial"].instantiate()
-    var tutorialInstance: GeneratedRoom = tutorialRoom.definitions[0].get_generated_instance()
+    var tutorialInstance: GeneratedRoom = GeneratedRoom.new(tutorialRoom.definitions[0])
     tutorialRoom.setup(tutorialInstance)
     root.add_child(tutorialRoom)
     tutorialRoom.owner = root
     roomInstances[tutorialInstance.roomInstanceId] = tutorialRoom
-    for nextConnector: GeneratedConnector in tutorialInstance.generatedConnectors:
-        connectorInstances[nextConnector.connectorInstanceId] = tutorialRoom.get_node(nextConnector.pathInRoom)
     on_level_ready()
 
 # called at the start of a run
@@ -88,15 +89,38 @@ func on_level_ready() -> void:
 func place_room_in_level(nextGeneratedRoom: GeneratedRoom) -> void:
     if !rooms.has(nextGeneratedRoom.roomInstanceId):
         spawn_room(nextGeneratedRoom)
-    for nextGeneratedConnector: GeneratedConnector in nextGeneratedRoom.generatedConnectors:
-        connectorInstances[nextGeneratedConnector.connectorInstanceId].build_connectors()
 
-func spawn_room(_generatedRoom: GeneratedRoom) -> Room:
+# emits spawned room object once its fully in the world
+func spawn_room(_generatedRoom: GeneratedRoom) -> void:
+    spawningRoom = true
     var spawnedRoom: Room = rooms[_generatedRoom.roomName].instantiate()
     spawnedRoom.setup(_generatedRoom)
+    roomInstances.set(_generatedRoom.roomInstanceId, spawnedRoom)
+    var connectorsToUpdate: Array[RoomConnector] = []
+    for generatedConnection: GeneratedConnectionPair in _generatedRoom.generatedConnections:
+        var nextConnector: RoomConnector = null
+        if roomInstances.has(generatedConnection.parentRoomInstanceId):
+            var updatedRoom: Room = roomInstances[generatedConnection.parentRoomInstanceId]
+            if updatedRoom.connectors.has(generatedConnection.pathInRoom):
+                nextConnector = updatedRoom.connectors[generatedConnection.pathInRoom]
+                nextConnector.update(generatedConnection)
+        elif spawnedRoom.connectors.has(generatedConnection.pathInRoom):
+            nextConnector = spawnedRoom.connectors[generatedConnection.pathInRoom]
+            nextConnector.setup(generatedConnection)
+        if nextConnector == null:
+            print("problem creating or updating a connection returned by levelgen: ", str(generatedConnection.pathInRoom))
+            continue
+        connectorsToUpdate.append(nextConnector)
+        connectorInstances.set(generatedConnection.connectorInstanceId, nextConnector)
     root.add_child(spawnedRoom)
     spawnedRoom.owner = root
-    return spawnedRoom
+    # TODO why do we need to wait two frames on room spawn?
+    await get_tree().process_frame
+    await get_tree().process_frame
+    for nextConnector: RoomConnector in connectorsToUpdate:
+        nextConnector.build_connectors()
+    spawningRoom = false
+    room_spawned.emit(spawnedRoom)
 
 func load_rooms_from_disk(_dir: String) -> void:
     var allItems: PackedStringArray = ResourceLoader.list_directory(_dir)

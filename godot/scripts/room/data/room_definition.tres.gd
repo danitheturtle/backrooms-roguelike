@@ -6,15 +6,6 @@ extends Resource
 # all values here will remain in room-local space which makes it easy to calculate
 # global coords for any of the values in this data structure
 
-# Called by level generator to get a levelgen output object
-func get_generated_instance() -> GeneratedRoom:
-    var newGeneratedRoom = GeneratedRoom.new(self)
-    for j in range(0, connectors.size()):
-        var nextConnector = connectors[j]
-        var newGeneratedConnector = nextConnector.get_generated_instance(newGeneratedRoom.roomInstanceId)
-        newGeneratedRoom.generatedConnectors[j] = newGeneratedConnector
-    return newGeneratedRoom
-
 ###
 ### ROOM EDITOR
 ###

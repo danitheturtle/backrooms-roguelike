@@ -203,14 +203,14 @@ func resolve_generation() -> GeneratedRoom:
                         newRoom.approximateBounds = newApproximateBounds
                         newRoom.bounds = newBounds
 
-                        var newGeneratedConnector := GeneratedConnector.new(newConnectorDef, newRoom.roomInstanceId)
-                        var curGeneratedConnector := GeneratedConnector.new(curConnectorDef, curRoom.roomInstanceId)
+                        var newGeneratedConnection := GeneratedConnectionPair.new(newConnectorDef, newRoom.roomInstanceId)
+                        var curGeneratedConnection := GeneratedConnectionPair.new(curConnectorDef, curRoom.roomInstanceId)
 
-                        newGeneratedConnector.connectedToInstanceId = curGeneratedConnector.connectorInstanceId
-                        curGeneratedConnector.connectedToInstanceId = newGeneratedConnector.connectorInstanceId
+                        newGeneratedConnection.connectedToInstanceId = curGeneratedConnection.connectorInstanceId
+                        curGeneratedConnection.connectedToInstanceId = newGeneratedConnection.connectorInstanceId
 
-                        newRoom.generatedConnectors.append(newGeneratedConnector)
-                        newRoom.updatedConnectors.append(curGeneratedConnector)
+                        newRoom.generatedConnections.append(newGeneratedConnection)
+                        newRoom.generatedConnections.append(curGeneratedConnection)
 
                         register_generated(newRoom)
 

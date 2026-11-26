@@ -76,7 +76,7 @@ func _input(event: InputEvent) -> void:
     elif (event.is_action_pressed("debug_pause")):
         if get_tree().paused:
             get_tree().paused = false
-            call("pause_after_one_frame")
+            call("pause_after_two_frames")
         else:
             get_tree().paused = true
         eventHandled = true
@@ -89,7 +89,8 @@ func on_game_paused() -> void:
 func on_game_unpaused() -> void:
     capture_mouse()
 
-func pause_after_one_frame() -> void:
+func pause_after_two_frames() -> void:
+    await get_tree().process_frame
     await get_tree().process_frame
     get_tree().paused = true
 

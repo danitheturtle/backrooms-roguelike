@@ -29,6 +29,10 @@ MenuManager="*uid://bs5ma0q16kqqt"
 InputManager="*uid://dnq3ufc8ue3gu"
 LevelManager="*uid://c6t0rnlliqoe7"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=1920

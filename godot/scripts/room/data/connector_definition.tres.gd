@@ -46,6 +46,3 @@ func get_lockable() -> bool:
 @export var bordersCeiling: bool = false
 # AABB used to detect other connectors. Centered with WxHxD = Size.x,size.y,0.5
 @export var aabb: AABB = AABB()
-
-func get_generated_instance(_parentInstanceId: StringName) -> GeneratedConnector:
-    return GeneratedConnector.new(self, _parentInstanceId)

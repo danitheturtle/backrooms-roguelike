@@ -78,18 +78,14 @@ var localSpace: Rect2:
     get: return Rect2(0.0,0.0,globalWidth,globalHeight)
 var resolvedType: Const.ConnectorType:
     get:
-        if generatedConnector != null: return generatedConnector.type
+        if GeneratedConnectionPair != null: return GeneratedConnectionPair.type
         if definition != null: return definition.initialType
         return Const.ConnectorType.SIMPLE
 var resolvedSubType: Const.ConnectorSubType:
     get:
-        if generatedConnector != null: return generatedConnector.subType
+        if GeneratedConnectionPair != null: return GeneratedConnectionPair.subType
         if definition != null: return definition.initialSubType
         return Const.ConnectorSubType.EMPTY
-var doesNotConnect: bool:
-    get:
-        if generatedConnector != null: return generatedConnector.doesNotConnect
-        return false
 
 # Refs grabbed on ready
 @onready var staticBody: StaticBody3D = $Collider
@@ -99,7 +95,7 @@ var doesNotConnect: bool:
 @onready var adjacentCollider: CollisionShape3D = $Adjacent/RectCollider
 
 # per-instance levelgen output
-var generatedConnector: GeneratedConnector = null
+var GeneratedConnectionPair: GeneratedConnectionPair
 # runtime local state
 var adjacentAABB: AABB
 var surfaceOffsetInNormal: float
@@ -120,6 +116,7 @@ func _ready() -> void:
         if editorHelper == null: editorHelper = ConnectorEditorHelper.new(self)
         editorHelper.on_connector_ready()
         return
+    GeneratedConnectionPair = null
     adjacentAABB = AABB()
     adjacentAABB.position = to_global(adjacentCollider.position - (adjacentCollider.shape.size / 2.0))
     adjacentAABB.end = to_global(adjacentCollider.position + (adjacentCollider.shape.size / 2.0))
@@ -136,6 +133,14 @@ func on_other_connector_exited(body: Area3D):
     var parentIndex = coplanarConnectors.find(parentNode)
     if parentIndex != -1:
         coplanarConnectors.remove_at(parentIndex)
+
+func setup(_generatedConnector: GeneratedConnectionPair) -> void:
+    GeneratedConnectionPair = _generatedConnector
+
+func update(_generatedConnector: GeneratedConnectionPair) -> void:
+    # TODO don't save generated connector, but build internal map to all other connectors as the generated connectors come in
+    # generated connectors are only meant to be a pass-between and shouldn't store data
+    GeneratedConnectionPair = _generatedConnector
 
 # Punch hole for every coplanar connector and store metadata about it
 # assumes holes never overlap with half voxel gaps

@@ -34,11 +34,11 @@ var connectors: Dictionary[NodePath, RoomConnector]
 var subRooms: Array[Room]
 
 # per-instance levelgen output
-var generatedConnector: GeneratedRoom = null
+var GeneratedConnectionPair: GeneratedRoom = null
 var instanceId: StringName:
     get:
-        if generatedConnector == null: return ""
-        return generatedConnector.roomInstanceId
+        if GeneratedConnectionPair == null: return ""
+        return GeneratedConnectionPair.roomInstanceId
 
 # runtime calculated
 var parentRoom: Room = null
@@ -91,19 +91,11 @@ func try_clear_definitions() -> void:
 # called after initialization but before being added to the tree
 func setup(_generatedRoom: GeneratedRoom) -> void:
     var chosenDefinition = definitions[_generatedRoom.indexInScene]
-    LevelManager.roomInstances.set(_generatedRoom.roomInstanceId, self)
     apply_room_dynamics(chosenDefinition.dynamicRoomData)
     # setup sub-rooms first. not sure if needed?
     # for nextSubRoom: Room in subRooms: nextSubRoom.setup(_generatedRoom)
     transform.origin = Utils.voxel_to_world(_generatedRoom.placedPosition)
     transform.basis = Basis.looking_at(Const.CardinalVector[_generatedRoom.placedNormal])
-    for nextGeneratedConnector: GeneratedConnector in _generatedRoom.generatedConnectors:
-        var nextConnector = get_node(nextGeneratedConnector.pathInRoom)
-        if nextConnector == null:
-            print("connector from room definition not found in scene, probably stale baked definition: ", str(nextGeneratedConnector.pathInRoom))
-            continue
-        nextConnector.generatedConnector = nextGeneratedConnector
-        LevelManager.connectorInstances.set(nextGeneratedConnector.connectorInstanceId, nextConnector)
     # TODO place props
     # TODO wire up puzzles
     # if sub-random elements, shuffle them

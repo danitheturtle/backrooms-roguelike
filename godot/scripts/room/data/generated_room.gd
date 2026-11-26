@@ -8,7 +8,6 @@ var roomName: StringName = ""
 # which room definition this instance is using
 var indexInScene: int = 0
 
-# don't call directly, get_generated_instance() from RoomDefinition instead
 func _init(_definition: RoomDefinition) -> void:
     roomName = _definition.roomName
     indexInScene = _definition.indexInScene
@@ -26,14 +25,9 @@ var placedPosition: Vector3i = Vector3i.ZERO
 var placedNormal: Const.CardinalDirection = Const.CardinalDirection.ZNEG
 # set by level generator and used by room sub-generator
 var placedAtIteration: int = -1
-# generatedConnectors tell the room how to change each connector from the default value
+# generatedConnections tell the room how to change each connector from the default value
 # can delete keys that remain unchanged from room definition
-var generatedConnectors: Array[GeneratedConnector] = []
-
-# `updatedConnectors` pairs index to index with `generatedConnectors`, but in this array, each
-# connector's parent is the previously generated room that this room is connecting to.
-var updatedConnectors: Array[GeneratedConnector] = []
-
+var generatedConnections: Array[GeneratedConnectionPair] = []
 # tells room what should *definitely* spawn
 var spawnGameplayProp: Dictionary[Const.GameplayPropType, bool] = {}
 # adjusted prop spawn weight for room sub-generator
@@ -47,9 +41,7 @@ var customPropWeights: Dictionary[StringName, float] = {}
 # "solved" can be any activatable thing in the room from a puzzle to a button to
 # powering up a generator. intentionally generic
 var onSolvedListenerIDs: Array[StringName] = []
-
 # A copy of the approximate bounds on this room's room definition, but translated to this room's position.
 var approximateBounds: AABB = AABB(Vector3.ZERO,Vector3.ZERO)
-
 # A copy of the bounds on this room's room definition, but translated to this room's position.
 var bounds: Array[AABB] = []
