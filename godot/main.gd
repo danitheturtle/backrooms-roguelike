@@ -43,7 +43,7 @@ func on_new_run_started() -> void:
     # once ready, put player in game
     MenuManager.hudMenu.show()
     MenuManager.hudMenu.process_mode = Node.PROCESS_MODE_PAUSABLE
-    InputManager.capture_mouse.call_deferred()
+    SignalBus.capture_mouse.emit()
 
 func on_tutorial_started() -> void:
     create_level_root()
@@ -55,7 +55,7 @@ func on_tutorial_started() -> void:
     MenuManager.mainMenu.hide()
     MenuManager.hudMenu.show()
     MenuManager.hudMenu.process_mode = Node.PROCESS_MODE_PAUSABLE
-    InputManager.capture_mouse.call_deferred()
+    SignalBus.capture_mouse.emit()
 
 func on_game_exited() -> void:
     get_tree().quit()

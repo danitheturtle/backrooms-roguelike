@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cwqvfdxb8uh62" path="res://ui/radial_menu/radial_menu.gd" id="1_pkr1m"]
 [ext_resource type="Material" uid="uid://cxrukx4vto81h" path="res://ui/radial_menu/selector_ring.tres" id="2_ok54i"]
 
-[node name="RadialMenu" type="Control" unique_id=688702504]
+[node name="RadialMenu" type="Control" unique_id=688702504 node_paths=PackedStringArray("selectorRing")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -15,4 +15,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_pkr1m")
-radialSelectorMaterial = ExtResource("2_ok54i")
+selectorRing = NodePath("SelectorRing")
+
+[node name="SelectorRing" type="ColorRect" parent="." unique_id=443859070]
+material = ExtResource("2_ok54i")
+layout_mode = 0

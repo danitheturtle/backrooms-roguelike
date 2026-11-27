@@ -5,10 +5,8 @@
 [resource]
 shader = ExtResource("1_un4u2")
 shader_parameter/inner_radius = 0.25
-shader_parameter/cursor_deg = 0.4
-shader_parameter/cursor_size = 0.4
+shader_parameter/cursor_enabled = false
+shader_parameter/cursor_pos = 0.0
+shader_parameter/cursor_size = 1.570796
 shader_parameter/color_bg = Vector4(0.3, 0.3, 0.3, 1)
 shader_parameter/color_fg = Vector4(0.6, 0.6, 0.6, 1)
-shader_parameter/bevel_radius = 0.05
-shader_parameter/bevel_enabled = false
-shader_parameter/bevel_color = Vector4(0.8, 0.8, 0.8, 1)

@@ -17,5 +17,8 @@ extends Node
 @warning_ignore("unused_signal") signal new_run_started
 @warning_ignore("unused_signal") signal tutorial_started
 
+@warning_ignore("unused_signal") signal capture_mouse
+@warning_ignore("unused_signal") signal release_mouse
+
 @warning_ignore("unused_signal") signal popup_displayed
 @warning_ignore("unused_signal") signal popup_closed

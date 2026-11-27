@@ -1,6 +1,7 @@
 extends Node
 
-var mouseCaptured: bool
+var mouseCaptured: bool:
+    get: return Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 var steamDevices: Dictionary[int, bool] = {}
 var lastInputType: Const.InputType
 
@@ -10,11 +11,12 @@ func _init() -> void:
     process_mode = Node.PROCESS_MODE_ALWAYS
     # TODO platform check and set initial input mode
     lastInputType = Const.InputType.MOUSE_AND_KEYBOARD
-    mouseCaptured = false
     # TODO get list of devices steam api will be sending events for
     InputMap.project_settings_loaded.connect(on_project_settings_loaded)
     SignalBus.game_paused.connect(on_game_paused)
     SignalBus.game_unpaused.connect(on_game_unpaused)
+    SignalBus.capture_mouse.connect(on_capture_mouse)
+    SignalBus.release_mouse.connect(on_release_mouse)
     Input.joy_connection_changed.connect(on_joy_connection_changed)
     # track long press forwarding
     forwardOnLongPress[&"crouch"] = new_long_press_action(&"crouch", &"crawl")
@@ -52,7 +54,7 @@ func _input(event: InputEvent) -> void:
     
     # handle global actions
     var eventHandled = false
-    if (event.is_action_pressed("toggle_fullscreen")):
+    if (event.is_action_pressed(&"toggle_fullscreen")):
         var currentWindowMode = DisplayServer.window_get_mode()
         if currentWindowMode == DisplayServer.WINDOW_MODE_WINDOWED:
             DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
@@ -60,20 +62,20 @@ func _input(event: InputEvent) -> void:
         elif currentWindowMode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
             DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
             eventHandled = true
-    elif (event.is_action_pressed("screenshot")):
+    elif (event.is_action_pressed(&"screenshot")):
         take_screenshot()
         eventHandled = true
     # cursor capture. lets player get mouse back to interact with UI
-    elif (event.is_action_pressed("capture_cursor") && !mouseCaptured && !get_tree().paused):
-        capture_mouse()
+    elif (event.is_action_pressed(&"capture_mouse") && !mouseCaptured && !get_tree().paused):
+        SignalBus.capture_mouse.emit()
         eventHandled = true
-    elif (event.is_action_pressed("toggle_cursor")):
+    elif (event.is_action_pressed(&"toggle_mouse")):
         if (mouseCaptured):
-            release_mouse()
+            SignalBus.release_mouse.emit()
         else:
-            capture_mouse()
+            SignalBus.capture_mouse.emit()
         eventHandled = true
-    elif (event.is_action_pressed("debug_pause")):
+    elif (event.is_action_pressed(&"debug_pause")):
         if get_tree().paused:
             get_tree().paused = false
             call("pause_after_one_frame")
@@ -84,10 +86,10 @@ func _input(event: InputEvent) -> void:
         get_tree().root.set_input_as_handled()
 
 func on_game_paused() -> void:
-    release_mouse()
+    SignalBus.release_mouse.emit()
 
 func on_game_unpaused() -> void:
-    capture_mouse()
+    SignalBus.capture_mouse.emit()
 
 func pause_after_one_frame() -> void:
     await get_tree().process_frame
@@ -110,13 +112,11 @@ func on_long_press_timeout(_sourceAction: StringName, _forwardedAction: StringNa
     newEvent.pressed = true
     Input.parse_input_event(newEvent)
 
-func release_mouse() -> void:
+func on_release_mouse() -> void:
     Input.set_mouse_mode(Input.MouseMode.MOUSE_MODE_VISIBLE)
-    mouseCaptured = false
 
-func capture_mouse() -> void:
+func on_capture_mouse() -> void:
     Input.set_mouse_mode(Input.MouseMode.MOUSE_MODE_CAPTURED)
-    mouseCaptured = true
 
 ## eat input event and return true if event was fired by device steam is handling to prevent duplicates
 func filter_steam_input(event: InputEvent) -> bool:

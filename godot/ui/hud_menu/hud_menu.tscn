@@ -69,14 +69,26 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="MarginContainer/GridContainer/CenterContainer/RadialMenu" unique_id=585644096]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -25.5
+offset_top = -15.5
+offset_right = 25.5
+offset_bottom = 15.5
+text = "Text1"
+
+[node name="Button3" type="Button" parent="MarginContainer/GridContainer/CenterContainer/RadialMenu" unique_id=645351798]
+layout_mode = 0
+offset_left = -25.5
+offset_top = -15.5
+offset_right = 25.5
+offset_bottom = 15.5
 text = "Text1"
 
 [node name="Button2" type="Button" parent="MarginContainer/GridContainer/CenterContainer/RadialMenu" unique_id=1496536216]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -25.5
+offset_top = -15.5
+offset_right = 25.5
+offset_bottom = 15.5
 text = "Text2"
 
 [node name="CenterRightContainer" type="CenterContainer" parent="MarginContainer/GridContainer" unique_id=1407422479]

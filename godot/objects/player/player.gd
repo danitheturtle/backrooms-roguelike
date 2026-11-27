@@ -105,6 +105,7 @@ func _ready() -> void:
     actionTimer.timeout.connect(on_action_timer_ended)
     interactTimer.timeout.connect(on_interact_timer_ended)
     sprintTimer.timeout.connect(on_sprint_timer_ended)
+    SignalBus.release_mouse.connect(on_release_mouse)
     for nextBehavior: PlayerBehavior in b.all(): nextBehavior.player_ready()
     reinit()
 
@@ -226,6 +227,9 @@ func on_interact_timer_ended():
 
 func on_sprint_timer_ended():
     sprintTimerStoppedAt = sprintTimer.wait_time
+
+func on_release_mouse():
+    lookDir = Vector2.ZERO
 
 func handle_mouse_input(event: InputEventMouseMotion) -> void:
     if InputManager.mouseCaptured:
